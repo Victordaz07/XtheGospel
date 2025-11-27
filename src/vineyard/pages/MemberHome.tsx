@@ -13,6 +13,7 @@ import {
   FaChartLine,
   FaUser,
   FaTrophy,
+  FaHeart,
 } from 'react-icons/fa';
 import { useI18n } from '../../context/I18nContext';
 import { useMemberProgressStore } from '../state/memberProgressStore';

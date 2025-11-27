@@ -479,6 +479,18 @@ const MemberProfile: React.FC = () => {
             </div>
           </div>
         )}
+
+        {/* Cerrar sesión */}
+        <Card className="member-profile-card">
+          <button
+            type="button"
+            className="profile-logout-button"
+            onClick={handleLogout}
+          >
+            <FaSignOutAlt />
+            <span>{t('profile.logout') || 'Cerrar sesión'}</span>
+          </button>
+        </Card>
       </div>
     </PageContainer>
   );
