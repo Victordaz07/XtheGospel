@@ -1,0 +1,34 @@
+diff --git a/node_modules/@react-native/gradle-plugin/build.gradle.kts b/node_modules/@react-native/gradle-plugin/build.gradle.kts
+index aba3649..a13837f 100644
+--- a/node_modules/@react-native/gradle-plugin/build.gradle.kts
++++ b/node_modules/@react-native/gradle-plugin/build.gradle.kts
+@@ -7,7 +7,6 @@
+ 
+ import org.gradle.api.internal.classpath.ModuleRegistry
+ import org.gradle.api.tasks.testing.logging.TestExceptionFormat
+-import org.gradle.configurationcache.extensions.serviceOf
+ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+ 
+ plugins {
+@@ -40,13 +39,14 @@ dependencies {
+ 
+   testImplementation("junit:junit:4.13.2")
+ 
+-  testRuntimeOnly(
+-      files(
+-          serviceOf<ModuleRegistry>()
+-              .getModule("gradle-tooling-api-builders")
+-              .classpath
+-              .asFiles
+-              .first()))
++  // Commented out testRuntimeOnly to fix serviceOf compatibility issue with Gradle 8.14.3
++  // testRuntimeOnly(
++  //     files(
++  //         serviceOf<ModuleRegistry>()
++  //             .getModule("gradle-tooling-api-builders")
++  //             .classpath
++  //             .asFiles
++  //             .first()))
+ }
+ 
+ java {

@@ -1,0 +1,97 @@
+.ui-person-card {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md, 16px);
+  background: var(--color-surface, #FFFFFF);
+  border-radius: var(--border-radius-lg, 16px);
+  padding: var(--spacing-md, 16px);
+  box-shadow: var(--shadow-sm, 0 1px 3px 0 rgba(0, 0, 0, 0.1));
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  text-decoration: none;
+  color: inherit;
+  transition: all var(--transition-base, 200ms ease);
+  position: relative;
+}
+
+.ui-person-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md, 0 4px 6px -1px rgba(0, 0, 0, 0.1));
+}
+
+.ui-person-card__avatar,
+.ui-person-card__avatar-placeholder {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+
+.ui-person-card__avatar-placeholder {
+  background: linear-gradient(135deg, var(--color-primary, #4F46E5), var(--color-primary-light, #6366F1));
+  color: var(--color-text-on-primary, #FFFFFF);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-lg, 18px);
+  font-weight: var(--font-weight-bold, 700);
+}
+
+.ui-person-card__content {
+  flex: 1;
+  min-width: 0;
+}
+
+.ui-person-card__header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm, 8px);
+  margin-bottom: var(--spacing-xs, 4px);
+}
+
+.ui-person-card__name {
+  font-size: var(--font-size-md, 16px);
+  font-weight: var(--font-weight-semibold, 600);
+  color: var(--color-text, #0F172A);
+  margin: 0;
+}
+
+.ui-person-card__status {
+  font-size: var(--font-size-xs, 12px);
+  padding: var(--spacing-xs, 4px) var(--spacing-sm, 8px);
+  border-radius: var(--border-radius-full, 9999px);
+  font-weight: var(--font-weight-semibold, 600);
+}
+
+.ui-person-card__status--active {
+  background: var(--color-success-light, #D1FAE5);
+  color: var(--color-success, #10B981);
+}
+
+.ui-person-card__status--new {
+  background: var(--color-info-light, #DBEAFE);
+  color: var(--color-info, #3B82F6);
+}
+
+.ui-person-card__status--inactive {
+  background: var(--color-background-alt, #F1F5F9);
+  color: var(--color-text-secondary, #64748B);
+}
+
+.ui-person-card__meta {
+  font-size: var(--font-size-sm, 14px);
+  color: var(--color-text-secondary, #64748B);
+  margin: 0;
+}
+
+.ui-person-card__arrow {
+  font-size: var(--font-size-xl, 20px);
+  color: var(--color-primary, #4F46E5);
+  font-weight: var(--font-weight-bold, 700);
+  transition: transform var(--transition-base, 200ms ease);
+}
+
+.ui-person-card:hover .ui-person-card__arrow {
+  transform: translateX(4px);
+}
+

@@ -1,0 +1,266 @@
+.spiritual-card {
+  background: linear-gradient(135deg, #F9FAFF 0%, #F4F6FA 100%);
+  border-radius: 24px;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  padding: 1.5rem;
+  width: 100%;
+  margin: 0 0 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  box-sizing: border-box;
+}
+
+.spiritual-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.spiritual-card__eyebrow {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #64748b;
+  margin-bottom: 4px;
+}
+
+.spiritual-card__title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+.spiritual-card__subtitle {
+  margin-top: 4px;
+  font-size: 14px;
+  color: #64748b;
+}
+
+.spiritual-card__chip {
+  background: linear-gradient(135deg, #4f46e5, #22c55e);
+  color: #ffffff;
+  font-size: 13px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.spiritual-card__progress-block {
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 18px;
+  padding: 1rem 1.125rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.spiritual-card__progress-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #475569;
+}
+
+.spiritual-card__progress-bar {
+  position: relative;
+  height: 10px;
+  border-radius: 999px;
+  background: #e2e8f0;
+  overflow: hidden;
+}
+
+.spiritual-card__progress-bar-fill {
+  position: absolute;
+  inset: 0;
+  width: 40%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #4f46e5, #22c55e);
+  transition: width 0.4s ease;
+}
+
+.spiritual-card__progress-caption {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.spiritual-card__stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.spiritual-card__stat {
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 14px;
+  padding: 0.625rem 0.75rem;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.spiritual-card__stat-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #94a3b8;
+}
+
+.spiritual-card__stat-value {
+  display: block;
+  margin-top: 4px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.spiritual-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.spiritual-card__btn {
+  border-radius: 999px;
+  font-size: 13px;
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.2s ease;
+}
+
+.spiritual-card__btn--primary {
+  background: linear-gradient(135deg, #A8C5FF 0%, #C7C9FF 100%);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.spiritual-card__btn--primary:hover {
+  background: linear-gradient(135deg, #9AB7FF 0%, #B0B2FF 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(154, 183, 255, 0.3);
+}
+
+.spiritual-card__btn--ghost {
+  background: rgba(255, 255, 255, 0.9);
+  color: #5B6C94;
+  border: 1px solid rgba(224, 230, 255, 0.8);
+}
+
+.spiritual-card__btn--ghost:hover {
+  background: rgba(255, 255, 255, 1);
+  border-color: #9AB7FF;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(154, 183, 255, 0.15);
+}
+
+.spiritual-card__btn--link {
+  background: transparent;
+  color: #4f46e5;
+  padding-left: 0;
+}
+
+.spiritual-card__btn--link:hover {
+  text-decoration: underline;
+}
+
+.spiritual-card__badges {
+  border-top: 1px solid #e2e8f0;
+  padding-top: 14px;
+}
+
+.spiritual-card__badges-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.spiritual-card__badges-header h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.spiritual-card__badges-hint {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.spiritual-card__badges-empty {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #64748b;
+}
+
+.spiritual-card__badges-grid {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 10px;
+}
+
+.spiritual-card__badge {
+  border-radius: 12px;
+  padding: 8px 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+}
+
+.spiritual-card__badge--unlocked {
+  background: linear-gradient(135deg, #D4EDDA 0%, #C3E6CB 100%);
+  color: #059669;
+  border: 1px solid rgba(5, 150, 105, 0.2);
+}
+
+.spiritual-card__badge--locked {
+  background: rgba(0, 0, 0, 0.02);
+  color: #9CA3AF;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.spiritual-card__badge-icon {
+  font-size: 18px;
+}
+
+.spiritual-card__badge-label {
+  font-weight: 500;
+}
+
+.spiritual-card__footer {
+  border-top: 1px dashed #e2e8f0;
+  padding-top: 10px;
+  font-size: 12px;
+  color: #64748b;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .spiritual-card {
+    padding: 20px 16px;
+  }
+
+  .spiritual-card__header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .spiritual-card__stats {
+    grid-template-columns: 1fr;
+  }
+
+  .spiritual-card__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+

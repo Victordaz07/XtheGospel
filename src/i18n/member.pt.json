@@ -1,0 +1,635 @@
+{
+  "member": {
+    "meta": {
+      "roleName": "Membro",
+      "shortDescription": "Membros que amam o Salvador e desejam ajudar a reunir Israel.",
+      "longDescription": "Este módulo foi criado para ajudar você a viver como um discípulo-missionário no dia a dia, apoiando os missionários de tempo integral, convidando pessoas a vir a Cristo e cuidando de conversos e amigos da Igreja.",
+      "futureProfileNote": "Mais tarde você poderá indicar se serviu missão, sua experiência na obra missionária e como prefere ajudar. Por agora, concentre-se em aprender e agir."
+    },
+    "home": {
+      "title": "Membro Missionário",
+      "welcomeTitle": "Sua ala é seu campo missionário",
+      "welcomeSubtitle": "Você não precisa de um crachá para fazer parte da obra. Como membro convênio, sua vida é sua mensagem.",
+      "heroCallToAction": "Hoje, alguém perto de você precisa de uma palavra de fé, uma gentileza ou um convite inspirado. O Espírito mostrará quem e como ajudar.",
+      "cards": {
+        "study": {
+          "title": "Estudo Missionário",
+          "subtitle": "Aprenda doutrina, princípios e habilidades para compartilhar o evangelho.",
+          "cta": "Ir para minhas habilidades"
+        },
+        "friends": {
+          "title": "Meus Amigos",
+          "subtitle": "Registre pessoas pelas quais você ora e busca oportunidades espirituais.",
+          "cta": "Ver lista"
+        },
+        "support": {
+          "title": "Apoiar os Missionários",
+          "subtitle": "Descubra maneiras práticas de fortalecer a obra na ala.",
+          "cta": "Como ajudar"
+        },
+        "conversionCare": {
+          "title": "Cuidado com Conversos",
+          "subtitle": "Aprenda a sustentar novos membros e amigos da Igreja.",
+          "cta": "Aprender a ajudar"
+        }
+      }
+    },
+  "convertidos": {
+    "title": "Cuidado com novos conversos",
+    "subtitle": "Fortaleça os recém-batizados com amizades, hábitos e preparação para o templo guiadas pelo Espírito.",
+    "progressLabel": "Progresso geral no guia",
+    "detailsButton": "Ver detalhes",
+    "sectionStatus": {
+      "completed": "Marcado como concluído",
+      "inProgress": "Em andamento"
+    },
+    "chips": {
+      "bullets": "• {{count}} pontos",
+      "scriptures": "• {{count}} escrituras",
+      "tips": "• {{count}} dicas"
+    },
+    "modal": {
+      "bulletsTitle": "Princípios essenciais",
+      "scripturesTitle": "Escrituras sugeridas",
+      "tipsTitle": "Dicas práticas",
+      "markComplete": "Marcar como concluído",
+      "markIncomplete": "Marcar como pendente",
+      "close": "Fechar"
+    }
+  },
+    "devotional": {
+      "title": "Devocional do Dia",
+      "promptTitle": "Ouça o Espírito",
+      "description": "Antes de agir, dedique alguns minutos a esta escritura e a esta citação. Pergunte ao Senhor quem você pode ajudar hoje e como fazê-lo com amor e coragem.",
+      "feltSomethingQuestion": "Sentiu alguma inspiração ao ler?",
+      "feltSomethingYes": "Sim, senti algo",
+      "feltSomethingNo": "Ainda não, continuarei tentando",
+      "reflectionPlaceholder": "Escreva o que sentiu ou o que planeja fazer hoje...",
+      "exampleScriptures": [
+        "3 Néfi 5:13",
+        "Doutrina e Convênios 88:81",
+        "Mosias 18:9",
+        "Mateus 5:14–16"
+      ],
+      "exampleQuote": "O Senhor não exige que você faça tudo, mas pede que esteja disposto a fazer algo hoje. Às vezes, o milagre está em seguir uma única inspiração com fé."
+    },
+    "profilePrep": {
+      "sectionTitle": "Sua experiência missionária",
+      "sectionDescription": "No futuro, você poderá preencher um perfil missionário. Isso ajudará os líderes e missionários da sua ala a saber como você pode servir.",
+      "futureFieldsDescription": "Campos planejados:",
+      "futureFields": [
+        "Serviu missão de tempo integral? (sim/não)",
+        "Anos e local da missão (se aplicável)",
+        "Áreas de serviço preferidas (acompanhante, ensino, cuidado de conversos, serviço etc.)",
+        "Idiomas que fala ou entende",
+        "Disponibilidade aproximada (semanal, fim de semana, virtual/presencial)"
+      ],
+      "motivationText": "Não é sobre pressão; é sobre preparar-se para ser um instrumento nas mãos do Senhor."
+    },
+    "friends": {
+      "title": "Meus Amigos",
+      "description": "Registre aqui amigos pelos quais você decide orar, servir e convidar. Eles não são ‘projetos’, mas filhos de Deus e amigos do Salvador.",
+      "explanation": "A obra missionária começa no coração do membro.",
+      "labels": {
+        "name": "Nome",
+        "relationship": "Relação",
+        "spiritualSituation": "Situação espiritual aproximada",
+        "lastPositiveContact": "Último contato positivo",
+        "preparedLevel": "Nível de preparação",
+        "notes": "Notas espirituais",
+        "isPraying": "Estou orando por esta pessoa",
+        "readyForMissionaries": "Acho que está pronto para conversar com os missionários"
+      },
+      "preparedLevels": {
+        "cold": "Distante do evangelho — posso amar, servir e ouvir.",
+        "warm": "Aberto a temas espirituais ou conhece algo sobre a Igreja.",
+        "hot": "Mostra interesse genuíno em Jesus Cristo ou em mudar de vida."
+      },
+      "spiritualNotesHint": "Escreva impressões, pequenos milagres ou sentimentos.",
+      "reflectionQuestions": [
+        "Vejo meus amigos como o Senhor os vê?",
+        "Estou disposto a ser paciente no tempo do Senhor?",
+        "Meu lar é um lugar onde o Espírito pode ser sentido?"
+      ],
+      "doctrineBlock": {
+        "title": "Princípios para amar sem forçar",
+        "points": [
+          "O verdadeiro amor nunca manipula.",
+          "Compartilhar o evangelho começa com ouvir.",
+          "Respeitar o arbítrio é honrar convênios.",
+          "Às vezes o seu papel é preparar o terreno."
+        ]
+      }
+    },
+    "skills": {
+      "title": "Minhas Habilidades Missionárias",
+      "intro": "Você não precisa ser pregador profissional, mas um discípulo disposto.",
+      "sections": {
+        "discipuloMisionero": {
+          "title": "Viver como discípulo-missionário",
+          "summary": "O discipulado precede o convite.",
+          "content": "Suas alianças colocam você na obra do Senhor. Um discípulo-missionário vive sua fé de maneira visível e inspiradora. [...]"
+        },
+        "doctrinaDeCristo": {
+          "title": "A Doutrina de Cristo e a Segunda Vinda",
+          "summary": "A doutrina de Cristo é um caminho para a vida eterna.",
+          "content": "Cada vez que ajuda alguém a exercer fé, arrepender-se ou fazer convênios, você participa da preparação para a Segunda Vinda. [...]"
+        },
+        "compartirElEvangelio": {
+          "title": "Compartilhar o Evangelho naturalmente",
+          "summary": "O evangelho se compartilha com autenticidade.",
+          "content": "Converse com naturalidade sobre Deus, fé e milagres do dia a dia. [...]"
+        },
+        "invitaciones": {
+          "title": "Convites que respeitam o arbítrio",
+          "summary": "Um convite inspirado respeita o ‘sim’, ‘não’ ou ‘ainda não’.",
+          "content": "Convites devem ser claros, amorosos e sem pressão. [...]"
+        },
+        "testimonio": {
+          "title": "Dar testemunho com poder",
+          "summary": "Testemunho é um ato espiritual.",
+          "content": "Testemunhos simples e sinceros tocam o coração. [...]"
+        },
+        "apoyoMisioneros": {
+          "title": "Trabalhar com os missionários",
+          "summary": "Missionários ampliam o trabalho dos membros.",
+          "content": "Apoie os missionários com fé, amor e testemunho. [...]"
+        },
+        "cuidadoConversos": {
+          "title": "Cuidar de conversos",
+          "summary": "O batismo é o começo.",
+          "content": "Novos membros precisam de apoio, amizade e paciência. [...]"
+        }
+      }
+    },
+    "resources": {
+      "title": "Recursos Missionários",
+      "intro": "Recursos para estudar e agir com fé.",
+      "scriptureGroups": [
+        {
+          "title": "Seu papel no recolhimento de Israel",
+          "references": [
+            "3 Néfi 5:13",
+            "D&C 4",
+            "D&C 88:81",
+            "Abraão 3:27",
+            "Mateus 28:19–20"
+          ],
+          "comment": "O Senhor chama todos a avisar com amor."
+        },
+        {
+          "title": "Amar, convidar e não forçar",
+          "references": [
+            "2 Néfi 26:24–28",
+            "Alma 31:32–35",
+            "Moisés 7:28–33",
+            "D&C 121:41–46"
+          ],
+          "comment": "Deus age por persuasão e amor."
+        },
+        {
+          "title": "Cuidar dos fracos e conversos",
+          "references": [
+            "Mosias 18:8–10",
+            "Morôni 6:4–5",
+            "D&C 20:53–55",
+            "Lucas 15:4–7"
+          ],
+          "comment": "As alianças exigem consolar e sustentar."
+        }
+      ],
+      "propheticQuotes": [
+        {
+          "label": "Discípulos, não espectadores",
+          "text": "O Senhor precisa de discípulos que abram a boca, o coração e o lar.",
+          "usage": "Use quando estiver desanimado."
+        },
+        {
+          "label": "Preparar para a Segunda Vinda",
+          "text": "Cada alma que vem ao Cristo prepara silenciosamente Sua vinda.",
+          "usage": "Lembre-se disso quando achar que faz pouco."
+        }
+      ],
+      "familyIdeas": [
+        "Noite familiar missionária uma vez por mês.",
+        "Orar pelos missionários e amigos.",
+        "Convidar os missionários para compartilhar mensagens curtas.",
+        "Ensinar crianças e jovens a sentir o Espírito."
+      ]
+    },
+    "supportMissionaries": {
+      "title": "Apoiar os Missionários",
+      "intro": "Missionários deixam o lar temporariamente; membros servem no próprio campo a vida inteira.",
+      "howToHelpList": [
+        "Acompanhar às lições.",
+        "Oferecer o lar para algumas discussões.",
+        "Enviar mensagens de encorajamento.",
+        "Perguntar como ajudar apropriadamente.",
+        "Ajudar com transporte e acompanhamento."
+      ],
+      "attitudeBlock": {
+        "title": "Atitudes que constroem confiança",
+        "points": [
+          "Falar sempre bem dos missionários.",
+          "Não usar missionários para pressionar amigos.",
+          "Respeitar horários de estudo e descanso.",
+          "Falar com amor e líderes adequados se surgir algo preocupante."
+        ]
+      }
+    },
+    "conversionCare": {
+      "id": "care-of-converts",
+      "title": "Cuidado de conversos",
+      "subtitle": "El Señor no deja solos a quienes entran por la puerta del bautismo. Nosotros tampoco.",
+      "intro": {
+        "summary": "Un nuevo converso no es un número ni un proyecto; es un hijo del convenio recién nacido en el reino de Dios. Su fe es real, pero aún frágil. El propósito de esta sección es ayudar a cada miembro y líder a nutrir esa fe con amor, doctrina y pertenencia.",
+        "doctrinalPoints": [
+          "La conversión es un proceso continuo, no un evento aislado. El bautismo abre la puerta al discipulado, pero el corazón sigue aprendiendo y ajustándose al convenio.",
+          "El Señor mandó: \"Apacienta mis ovejas\". Cuidar conversos no es un programa, es una expresión de amor leal al Salvador.",
+          "Los misioneros sirven por un tiempo; el barrio y la rama son el hogar espiritual permanente del nuevo miembro."
+        ],
+        "scriptures": [
+          {
+            "ref": "Juan 21:15–17",
+            "note": "Jesús repite a Pedro el mandato de apacentar Sus ovejas, enseñando que el verdadero amor al Salvador se expresa al cuidar a Sus hijos."
+          },
+          {
+            "ref": "Moroni 6:4",
+            "note": "La Iglesia antigua velaba para nutrir a los nuevos con la buena palabra de Dios y mantenerlos en el camino de la verdad."
+          }
+        ]
+      },
+      "memberGuide": {
+        "title": "Guía para miembros",
+        "sections": [
+          {
+            "id": "principios",
+            "title": "Principios para cuidar a los nuevos conversos",
+            "description": "Estos principios ayudan a cualquier miembro, incluso sin llamamiento formal, a sostener a un nuevo converso desde su bautismo hasta una conversión profunda.",
+            "items": [
+              {
+                "title": "Verlos como parte del convenio, no como \"proyectos\"",
+                "body": "Evita hablar de ellos como \"casos\" o \"nombres en una lista\". Trátalos como tratarías a un familiar que acaba de regresar a casa: con interés genuino, seguimiento constante y cariño sincero.",
+                "practices": [
+                  "Aprende y usa su nombre completo.",
+                  "Recuerda detalles de su historia y conversión.",
+                  "Ora por ellos por nombre en tus oraciones personales y familiares."
+                ]
+              },
+              {
+                "title": "Pertenencia antes que perfección",
+                "body": "Es normal que traigan hábitos, dudas o costumbres del pasado. Primero ayúdales a sentir que pertenecen; la corrección viene después y siempre envuelta en amor y paciencia.",
+                "practices": [
+                  "Evita comentarios críticos sobre su vestimenta o costumbres en los primeros meses.",
+                  "En lugar de decir \"Eso está mal\", explica con calma el porqué de una norma o principio.",
+                  "Celebra los pequeños avances: asistencia a la reunión sacramental, lectura de un capítulo, una oración sencilla."
+                ]
+              },
+              {
+                "title": "Un círculo de amigos, no solo un amigo",
+                "body": "Un solo miembro amigo es un buen inicio, pero un converso necesitará varias relaciones sólidas para permanecer firme cuando lleguen las pruebas.",
+                "practices": [
+                  "Preséntalo a personas de diferentes edades y circunstancias.",
+                  "Invita a otra familia cuando lo invites a tu hogar.",
+                  "Ayuda a que participe en actividades donde pueda conocer a más miembros de manera natural."
+                ]
+              },
+              {
+                "title": "Nutrir mente, corazón y manos",
+                "body": "La enseñanza doctrinal es esencial, pero la conversión se fortalece cuando el converso sirve, ama y se siente útil.",
+                "practices": [
+                  "Invítalo a ayudarte en un acto de servicio sencillo: llevar comida, limpiar la capilla, apoyar en una mudanza.",
+                  "Explícale cómo aplicar el estudio del evangelio a sus problemas diarios.",
+                  "Pregúntale: \"¿En qué te gustaría servir en la Iglesia?\" y comparte su deseo con los líderes."
+                ]
+              }
+            ]
+          },
+          {
+            "id": "acciones-sencillas",
+            "title": "Acciones sencillas que marcan la diferencia",
+            "description": "Pequeños gestos constantes valen más que una gran actividad ocasional.",
+            "items": [
+              {
+                "title": "Domingos más cálidos",
+                "steps": [
+                  "Queda en encontrarte con él o ella en la puerta antes de la reunión.",
+                  "Siéntate a su lado y preséntalo a quienes se sienten cerca.",
+                  "Después de la reunión, quédate unos minutos conversando sobre lo que sintió y entendió."
+                ]
+              },
+              {
+                "title": "Un hogar amigo",
+                "steps": [
+                  "Invítalo a una noche de hogar al menos una vez al mes.",
+                  "Permite que participe: que lea una escritura, comparta un pensamiento o dirija una oración.",
+                  "Si tiene hijos, incluye actividades para ellos y ayúdales a sentirse cómodos."
+                ]
+              },
+              {
+                "title": "Acompañamiento entre semana",
+                "steps": [
+                  "Envía un mensaje breve con una escritura o una pregunta espiritual.",
+                  "Ofrece ayuda sincera en algo concreto: traducir un documento, buscar trabajo, entender una factura.",
+                  "Invítalo a instituto, seminario de adultos o actividades de barrio que puedan fortalecer su fe."
+                ]
+              },
+              {
+                "title": "Primera experiencia en el templo",
+                "steps": [
+                  "Explícale con sencillez que el templo es la casa del Señor y un lugar de paz.",
+                  "Ayúdalo a prepararse para hacer bautismos por sus antepasados cuando tenga recomendación de uso limitado.",
+                  "Acompáñalo en su primera visita, ayudándole con la logística: ropa blanca, horario, cómo llegar."
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "auxiliaryGuide": {
+        "title": "Guía para organizaciones auxiliares",
+        "description": "Las organizaciones del barrio son esenciales para que el nuevo miembro encuentre un lugar donde servir y aprender.",
+        "organizations": [
+          {
+            "id": "relief-society",
+            "name": "Sociedad de Socorro",
+            "focus": "Abrazar, enseñar y sostener a las hermanas recién bautizadas.",
+            "ideas": [
+              "Preparar un paquete de bienvenida con teléfonos de líderes, horarios de reuniones y una breve carta escrita a mano.",
+              "Asignar a dos hermanas que se turnen para sentarse con la nueva miembro los primeros domingos.",
+              "Invitarla a participar en un proyecto de servicio sencillo donde pueda sentir que ya está aportando algo."
+            ]
+          },
+          {
+            "id": "elders-quorum",
+            "name": "Cuórum de Élderes",
+            "focus": "Ayudar a los hermanos conversos a comprender y prepararse para portar el sacerdocio dignamente.",
+            "ideas": [
+              "Organizar una breve clase trimestral: \"Introducción al sacerdocio\" para nuevos hermanos.",
+              "Asignar compañeros de ministración experimentados que lo acompañen en visitas sencillas.",
+              "Invitarlo a participar en actividades de servicio físico del cuórum, donde pueda integrarse sin presión de enseñar aún."
+            ]
+          },
+          {
+            "id": "young-men",
+            "name": "Hombres Jóvenes",
+            "focus": "Convertir la clase de los jóvenes en un lugar seguro y motivador para los nuevos conversos adolescentes.",
+            "ideas": [
+              "Designar a un joven de su misma edad para ser su \"compañero de bienvenida\" durante los primeros meses.",
+              "Involucrarlo en actividades deportivas y de servicio, evitando que sus primeras experiencias sean solo clases teóricas.",
+              "Ayudarle a prepararse para recibir y ejercer el sacerdocio de Aarón con tareas sencillas como recoger la Santa Cena o acomodar sillas."
+            ]
+          },
+          {
+            "id": "young-women",
+            "name": "Mujeres Jóvenes",
+            "focus": "Ayudar a las jovencitas conversas a encontrar amistad, identidad y propósito en el evangelio.",
+            "ideas": [
+              "Integrarla rápidamente en un grupo pequeño de amigas con intereses similares.",
+              "Invitarla a participar en proyectos de meta personal y servicio comunitario.",
+              "Acompañarla en sus primeras experiencias espirituales significativas, como testimonios o campamentos."
+            ]
+          },
+          {
+            "id": "primary",
+            "name": "Primaria",
+            "focus": "Ayudar a que los niños conversos y sus padres entiendan la estructura de la Iglesia de manera simple.",
+            "ideas": [
+              "Recibirlos personalmente en la puerta de la Primaria y mostrarles su salón.",
+              "Explicar brevemente a los padres qué hacen los niños en la Primaria y cómo pueden apoyar desde el hogar.",
+              "Enviar a casa una hoja sencilla con una escritura corta y una actividad para hacer en familia."
+            ]
+          }
+        ]
+      },
+      "callingsForNewMembers": {
+        "title": "Llamamientos y asignaciones apropiadas",
+        "description": "Un llamamiento bien escogido puede afianzar la fe de un nuevo converso; uno prematuro o pesado puede abrumarlo.",
+        "principles": [
+          "Empezar con responsabilidades pequeñas, claras y acompañadas.",
+          "Buscar llamamientos que permitan aprender observando a otros antes de dirigir.",
+          "Consultar siempre con el nuevo miembro sobre su situación familiar y laboral antes de extender un llamamiento."
+        ],
+        "goodCallings": [
+          "Recibir a los miembros en la puerta con una sonrisa y un saludo.",
+          "Ayudar en la organización y limpieza de salones antes o después de las reuniones.",
+          "Apoyar en actividades de servicio: recolección de alimentos, visitas a enfermos, proyectos comunitarios.",
+          "Ayudar con la parte técnica básica: proyectores, micrófonos, transmisión de reuniones (si tiene habilidades tecnológicas)."
+        ],
+        "callingsToDelay": [
+          "Presidencias de organizaciones.",
+          "Maestros de doctrina profunda o clases avanzadas.",
+          "Secretarios con alta carga administrativa.",
+          "Llamamientos que requieran muchas reuniones entre semana desde el inicio."
+        ]
+      },
+      "priesthoodPath": {
+        "title": "Camino del sacerdocio para nuevos conversos",
+        "description": "Para los hombres conversos, recibir el sacerdocio de Aarón y luego el de Melquisedec puede ser un cambio profundo en su identidad y deberes espirituales.",
+        "aaronic": {
+          "title": "Preparación para el Sacerdocio Aarónico",
+          "objectives": [
+            "Comprender que el sacerdocio es la autoridad de Dios para servir y bendecir, no un privilegio para mandar.",
+            "Aprender el propósito de la Santa Cena y cómo prepararla, bendecirla y repartirla con reverencia.",
+            "Desarrollar hábitos de dignidad: oración, estudio y obediencia a los mandamientos básicos."
+          ],
+          "lessons": [
+            {
+              "title": "Qué es el sacerdocio",
+              "points": [
+                "El sacerdocio se recibe por la imposición de manos de quienes tienen autoridad.",
+                "Se usa para servir y levantar a los demás, no para buscar prestigio.",
+                "Un portador del sacerdocio representa al Salvador en lo que hace."
+              ]
+            },
+            {
+              "title": "La Santa Cena en la vida del converso",
+              "points": [
+                "La Santa Cena renueva los convenios del bautismo cada semana.",
+                "Prepararla con cuidado y orden es una forma de adoración.",
+                "Repartirla es un privilegio que requiere reverencia, modestia y concentración."
+              ]
+            },
+            {
+              "title": "Viviendo dignamente",
+              "points": [
+                "Evitar medios y ambientes que inviten al pecado.",
+                "Ser honesto en el trabajo, en la familia y en la Iglesia.",
+                "Buscar la guía del Espíritu al tomar decisiones."
+              ]
+            }
+          ]
+        },
+        "melchizedek": {
+          "title": "Preparación para el Sacerdocio de Melquisedec",
+          "objectives": [
+            "Comprender que el Sacerdocio de Melquisedec se centra en la obra de salvación y exaltación.",
+            "Prepararse para hacer y guardar convenios más sagrados en el templo.",
+            "Aprender a ministrar, consolar y presidir con amor cristiano."
+          ],
+          "lessons": [
+            {
+              "title": "Responsabilidad espiritual mayor",
+              "points": [
+                "Un élder ayuda a presidir en el hogar mediante consejo, ejemplo y servicio.",
+                "Bendecir y consolar a los enfermos forma parte de sus deberes.",
+                "Debe buscar el Espíritu con mayor diligencia, pues sus decisiones impactan a otros."
+              ]
+            },
+            {
+              "title": "Conexión con el templo",
+              "points": [
+                "El Sacerdocio de Melquisedec está ligado a las ordenanzas del templo.",
+                "Los convenios del templo requieren pureza de corazón y disposición a sacrificar.",
+                "El templo fortalece el matrimonio, la familia y la capacidad de soportar pruebas."
+              ]
+            }
+          ]
+        }
+      },
+      "templePreparation": {
+        "title": "Preparação para a recomendação do templo",
+        "description": "A recomendação é um sinal de confiança e dignidade perante o Senhor. Não é um exame de perfeição, e sim uma conversa sagrada entre o membro, o líder e Deus.",
+        "topics": [
+          "Por que o Senhor pede padrões de dignidade mais elevados para entrar em Sua casa.",
+          "Como a obediência aos mandamentos (palavra de sabedoria, lei da castidade, honestidade e dízimo) prepara o coração.",
+          "A importância de sustentar os profetas e líderes da Igreja.",
+          "O valor de arrepender-se sinceramente quando nos equivocamos."
+        ],
+        "firstVisit": {
+          "title": "O que esperar na primeira visita ao templo",
+          "points": [
+            "O templo é um lugar de reverência e paz; falar em voz baixa e mostrar respeito ajuda a sentir o Espírito.",
+            "Nas ordenanças de batismo pelos mortos usa-se roupa branca que simboliza pureza e unidade.",
+            "Oficiais amorosos guiam cada passo; não se espera que um novo membro memorize tudo.",
+            "Os detalhes das ordenanças não são discutidos fora do templo, mas podemos compartilhar como fortalecem nossa fé em Jesus Cristo.",
+            "Ao sair do templo, muitos sentem profunda gratidão e desejo de voltar; incentive o novo membro a registrar seus sentimentos em um diário."
+          ]
+        }
+      }
+    },
+    "leader": {
+      "meta": {
+        "roleName": "Líderes da ala e estaca",
+        "shortDescription": "Líderes que desejam mobilizar os membros e trabalhar em unidade com os missionários.",
+        "longDescription": "Este módulo ajuda bispos, conselheiros, presidentes de estaca e líderes de organização a entender seu papel doutrinário e prático na obra missionária, alinhar esforços com os missionários de tempo integral e cuidar de conversos e amigos da Igreja."
+      },
+      "home": {
+        "title": "Liderança na Obra Missionária",
+        "welcomeTitle": "Presidir é pastorear, não apenas administrar",
+        "welcomeSubtitle": "O Senhor não chamou gerentes de agenda, mas pastores de almas. A forma como uma ala vive a obra missionária reflete como ela entende o convênio de servir a Cristo."
+      },
+      "vision": {
+        "title": "Construir uma Visão Missionária da Ala",
+        "doctrine": {
+          "title": "Fundamento doutrinário",
+          "points": [
+            "A obra missionária não é um programa separado, é parte central do convênio batismal de 'tomar sobre nós o nome de Cristo'.",
+            "Uma ala missionária não é aquela que apenas envia muitos missionários, mas aquela que vive a doutrina de Cristo no lar, no conselho e na comunidade.",
+            "A liderança missionária começa no coração do bispo e do conselho da ala: como oram, o que priorizam e do que falam diante dos jovens e crianças."
+          ],
+          "keyScriptures": "Escrituras-chave",
+          "keyScripturesList": [
+            "3 Néfi 5:13",
+            "D&C 4",
+            "D&C 88:81",
+            "Mosias 18:8–10"
+          ]
+        },
+        "practical": {
+          "title": "Passos práticos",
+          "steps": [
+            "Incluir sempre um ponto breve de 'obra missionária' no conselho da ala, mesmo que não haja relatórios espetaculares.",
+            "Convidar periodicamente membros da ala a compartilhar experiências reais ao convidar amigos a vir a Cristo.",
+            "Alinhar metas missionárias com a realidade da ala: menos números vazios, mais compromissos concretos.",
+            "Celebrar pequenas vitórias: um amigo que aceita orar, uma família que participa de uma atividade, um converso que recebe sua recomendação limitada do templo."
+          ]
+        }
+      },
+      "coordination": {
+        "title": "Trabalhar em Unidade com os Missionários",
+        "principles": {
+          "title": "Princípios-chave",
+          "points": [
+            "Os missionários servem sob a direção do presidente da missão; a ala colabora, não dirige de forma independente.",
+            "Um plano missionário eficaz começa no conselho da ala e é implementado com líderes de quórum, Sociedade de Socorro e jovens.",
+            "As reuniões de coordenação devem ser breves, focadas e espirituais, não uma sessão de reclamações nem de pura logística."
+          ]
+        },
+        "coordinationMeetings": {
+          "title": "Reuniões de coordenação eficazes",
+          "suggestedAgenda": [
+            "Oração e breve pensamento centrado na doutrina de Cristo ou no ajuntamento de Israel.",
+            "Relatório breve dos missionários: amigos sendo ensinados, progresso de conversos recentes, necessidades principais.",
+            "Identificar 2–3 ações concretas para a semana.",
+            "Designar responsáveis claros e dar seguimento ao que foi acordado.",
+            "Testemunhos breves ou impressões espirituais finais."
+          ]
+        }
+      },
+      "convertCare": {
+        "title": "Cuidado de Conversos e Amigos",
+        "risks": {
+          "title": "Riscos comuns",
+          "points": [
+            "Conversos muito acompanhados antes do batismo, mas sozinhos depois.",
+            "Expectativas irreais sobre mudanças imediatas.",
+            "Designar muitas responsabilidades sem uma amizade real que os sustente."
+          ]
+        },
+        "bestPractices": {
+          "title": "Melhores práticas",
+          "points": [
+            "Designar um 'núcleo de apoio': família amiga + líder de organização + líder do quórum.",
+            "Envolver os conversos em serviço real, não apenas aulas adicionais.",
+            "Coordenar bispo, líderes de organização, missionários e membros amigos com propósito e respeito."
+          ]
+        }
+      },
+      "dashboardIdeas": {
+        "title": "Ideias para um Painel de Líder",
+        "explanation": "Mais adiante, o app poderia mostrar indicadores espirituais simples (não confidenciais) para ajudar os líderes a discernir onde ministrar melhor.",
+        "examples": [
+          "Quantidade de membros que adicionaram pelo menos um amigo em 'Meus Amigos'.",
+          "Número de membros que acompanharam os missionários pelo menos uma vez por mês.",
+          "Conversos recentes com 'núcleo de apoio' completo.",
+          "Famílias que participaram de pelo menos uma noite familiar missionária no trimestre."
+        ],
+        "note": "Esses indicadores nunca devem ser usados para envergonhar, mas para discernir onde ministrar melhor."
+      }
+    },
+    "viewMode": {
+      "member": "Visão de membro",
+      "leader": "Visão de líder",
+      "helper": "Altere a visão para ver o conteúdo como membro ou como líder de ala/estaca.",
+      "leaderLocked": "A visão de líder está disponível apenas para quem tem um chamado de liderança.",
+      "badge.member": "Membro",
+      "badge.leader": "Líder",
+      "title": "Como você quer ver esta seção?",
+      "subtitle": "Seu perfil determina se você pode acessar as ferramentas de liderança. Você sempre poderá usar a visão de membro."
+    },
+    "activities": {
+      "category": "Praticar",
+      "title": "Atividades interativas",
+      "subtitle": "Primeiro estude, depois pratique o que aprendeu.",
+      "description": "Use essas dinâmicas como complemento. Primeiro estude, depois reforce o que aprendeu agindo.",
+      "filterByModule": "Filtrar por módulo",
+      "allModules": "Todos os módulos",
+      "activitiesCount": "atividades",
+      "level": "Nível",
+      "start": "Começar",
+      "selectedActivity": "Atividade selecionada",
+      "selectActivity": "Selecione uma atividade",
+      "selectActivityDescription": "Escolha um cartão para abri-lo aqui. Você pode repeti-los sem perder o foco do seu estudo."
+    },
+    "activityTypes": {
+      "QUIZ_SINGLE": "Quiz doutrinal",
+      "SCENARIO": "Situações reais",
+      "QUIZ_SCRIPTURE_MATCH": "Escrituras para cada necessidade",
+      "CHARACTER_GUESS": "Personagens e exemplos",
+      "REAL_WORLD_MISSION": "Missões na vida real",
+      "READING_BLOCK": "Blocos de leitura"
+    }
+  }
+}
+

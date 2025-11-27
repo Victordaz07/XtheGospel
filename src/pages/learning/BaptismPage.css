@@ -1,0 +1,144 @@
+.baptism-section-card {
+  background: var(--color-surface);
+  border-radius: var(--border-radius-lg);
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  transition: all var(--transition-base);
+}
+
+.baptism-section-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.baptism-section-header {
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
+  transition: all var(--transition-base);
+}
+
+.baptism-section-header:hover {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+}
+
+.baptism-section-header h2 {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+}
+
+.section-toggle {
+  font-size: 20px;
+  color: var(--color-primary);
+  transition: transform var(--transition-base);
+}
+
+.baptism-section-content {
+  padding: 24px;
+  animation: slideDown 0.3s ease-out;
+}
+
+.baptism-section-content p {
+  margin: 0;
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+  line-height: 1.7;
+  white-space: pre-line;
+}
+
+.baptism-action-steps {
+  margin-top: 32px;
+  background: var(--color-surface);
+  padding: 32px;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(59, 130, 246, 0.1);
+}
+
+.action-steps-header h2 {
+  margin: 0;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+}
+
+.action-steps-header p {
+  margin: 8px 0 24px 0;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-base);
+}
+
+.action-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.action-step-card {
+  display: flex;
+  gap: 16px;
+  background: var(--color-background-alt);
+  border-radius: var(--border-radius-lg);
+  padding: 16px 20px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all var(--transition-base);
+}
+
+.action-step-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.action-step-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(79, 70, 229, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+.action-step-content h3 {
+  margin: 0 0 6px 0;
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+}
+
+.action-step-content p {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .baptism-section-header,
+  .faq-question {
+    padding: 16px;
+  }
+  
+  .baptism-section-content {
+    padding: 16px;
+  }
+}
+

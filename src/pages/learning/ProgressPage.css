@@ -1,0 +1,176 @@
+.progress-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.metric-card {
+  background: linear-gradient(135deg, #eef2ff, #ede9fe);
+  padding: 20px;
+  border-radius: 24px;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.metric-icon {
+  font-size: 24px;
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 25px rgba(124, 58, 237, 0.15);
+}
+
+.metric-icon-violet {
+  background: #fff;
+  color: #7c3aed;
+}
+
+.metric-icon-green {
+  background: #fff;
+  color: #10b981;
+}
+
+.metric-content h3 {
+  margin: 0 0 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.metric-value {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1;
+}
+
+.progress-card {
+  background: #fff;
+  padding: 24px;
+  border-radius: 30px;
+  box-shadow: 0 25px 45px rgba(15, 23, 42, 0.08);
+  margin-bottom: 16px;
+  border: 1px solid rgba(226, 232, 240, 0.9);
+}
+
+.progress-card h2 {
+  margin: 0 0 12px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.progress-bar-container {
+  width: 100%;
+  height: 24px;
+  background: #eef2ff;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #8b5cf6, #3b82f6);
+  border-radius: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  color: #fff;
+  font-weight: 600;
+  font-size: 12px;
+  padding-right: 12px;
+  transition: width 0.3s ease;
+}
+
+.progress-description {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  text-align: center;
+}
+
+.baptism-checklist-card {
+  background: #fff;
+  padding: 24px;
+  border-radius: 30px;
+  box-shadow: 0 25px 45px rgba(15, 23, 42, 0.08);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+}
+
+.baptism-checklist-card h2 {
+  margin: 0 0 8px 0;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+}
+
+.checklist-subtitle {
+  margin: 0 0 20px 0;
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+}
+
+.checklist-items {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.checklist-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px;
+  background: #f8fafc;
+  border-radius: 20px;
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.checklist-item.completed {
+  background: #ecfdf5;
+  border-color: #a7f3d0;
+}
+
+.checklist-item.completed .checklist-label {
+  text-decoration: line-through;
+  color: #475569;
+}
+
+.checklist-checkbox {
+  flex-shrink: 0;
+}
+
+.checklist-checkbox input {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: #7c3aed;
+}
+
+.checklist-label {
+  flex: 1;
+  font-size: 14px;
+  color: #0f172a;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .progress-metrics {
+    grid-template-columns: 1fr;
+  }
+}
+

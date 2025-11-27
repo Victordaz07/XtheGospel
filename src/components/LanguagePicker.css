@@ -1,0 +1,122 @@
+.language-picker {
+  margin: 0;
+}
+
+.language-picker-button {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0.75rem 1rem;
+  border-radius: 14px;
+  border: 1px solid rgba(224, 230, 255, 0.8);
+  width: 100%;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #4A4A4A;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.language-picker-button:hover {
+  background: rgba(255, 255, 255, 1);
+  border-color: #9AB7FF;
+  box-shadow: 0 2px 8px rgba(154, 183, 255, 0.15);
+  transform: translateY(-1px);
+}
+
+.language-picker-compact {
+  background-color: #007AFF;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.language-picker-compact:hover {
+  background-color: #0056b3;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  width: 80%;
+  max-width: 300px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.modal-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.option-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  background-color: #f8f9fa;
+  border: 1px solid transparent;
+  width: 100%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 16px;
+  color: #2c3e50;
+}
+
+.option-button:hover {
+  background-color: #e9ecef;
+}
+
+.option-button.selected {
+  background-color: #e3f2fd;
+  border-color: #007AFF;
+}
+
+.checkmark {
+  font-size: 18px;
+  color: #007AFF;
+  font-weight: bold;
+}
+
+.cancel-button {
+  margin-top: 15px;
+  padding: 10px;
+  width: 100%;
+  background: transparent;
+  border: none;
+  font-size: 16px;
+  color: #7f8c8d;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.cancel-button:hover {
+  color: #2c3e50;
+}
+

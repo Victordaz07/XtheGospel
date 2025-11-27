@@ -1,0 +1,705 @@
+{
+  "member": {
+    "meta": {
+      "roleName": "Member",
+      "shortDescription": "Members who love the Savior and want to help gather Israel.",
+      "longDescription": "This module is designed to help you live as a disciple-missionary in daily life: supporting full-time missionaries, inviting others to come unto Christ, and caring for converts and friends of the Church.",
+      "futureProfileNote": "Later you’ll be able to indicate if you served a mission, your missionary experience, and how you prefer to help. For now, focus on learning and acting."
+    },
+    "home": {
+      "title": "Missionary member",
+      "welcomeTitle": "Your ward is your mission field",
+      "welcomeSubtitle": "You don’t need a badge to be part of the work. As a covenant member, your life is your message.",
+      "heroCallToAction": "Today someone around you needs a kind invitation, a word of faith, or a simple act of Christlike love. The Spirit will show you who it is and what to do.",
+      "cards": {
+        "study": {
+          "title": "Missionary study",
+          "subtitle": "Learn doctrine, principles, and skills to share the gospel.",
+          "cta": "Go to my skills"
+        },
+        "friends": {
+          "title": "My friends",
+          "subtitle": "Record the people you pray for and seek spiritual opportunities with.",
+          "cta": "View friend list"
+        },
+        "support": {
+          "title": "Support the missionaries",
+          "subtitle": "Discover concrete ways to strengthen the work in your ward.",
+          "cta": "Ways to help"
+        },
+        "conversionCare": {
+          "title": "Convert care",
+          "subtitle": "Learn how to sustain new members and friends of the Church.",
+          "cta": "Learn to care"
+        }
+      }
+    },
+  "convertidos": {
+    "title": "New convert care",
+    "subtitle": "Walk with recent converts as they build habits, relationships, and temple preparation with Spirit-led steps.",
+    "progressLabel": "Overall progress in the guide",
+    "detailsButton": "View details",
+    "sectionStatus": {
+      "completed": "Marked as completed",
+      "inProgress": "In progress"
+    },
+    "chips": {
+      "bullets": "• {{count}} insights",
+      "scriptures": "• {{count}} scriptures",
+      "tips": "• {{count}} tips"
+    },
+    "modal": {
+      "bulletsTitle": "Key principles",
+      "scripturesTitle": "Suggested scriptures",
+      "tipsTitle": "Practical tips",
+      "markComplete": "Mark as completed",
+      "markIncomplete": "Mark as pending",
+      "close": "Close"
+    }
+  },
+    "devotional": {
+      "title": "Devotional of the day",
+      "promptTitle": "Listen to the Spirit",
+      "description": "Before acting, spend a few minutes with this scripture and quote. Ask the Lord whom you can help today and how to do it without pressure but with courage.",
+      "feltSomethingQuestion": "Did you feel any impression while reading?",
+      "feltSomethingYes": "Yes, I felt something",
+      "feltSomethingNo": "Not yet, I’ll keep trying",
+      "reflectionPlaceholder": "Write briefly what you felt or what you plan to do today...",
+      "exampleScriptures": [
+        "3 Nephi 5:13",
+        "Doctrine and Covenants 88:81",
+        "Mosiah 18:9",
+        "Matthew 5:14–16"
+      ],
+      "exampleQuote": "The Lord doesn’t require you to do everything, but He does ask you to be willing to do something today. Often the miracle isn’t in the number of people we invite but in how faithfully we follow one single prompting."
+    },
+    "profilePrep": {
+      "sectionTitle": "Your missionary experience",
+      "sectionDescription": "Soon you’ll be able to complete a quick missionary profile. This will help your leaders and the missionaries in your ward know how you want to serve.",
+      "futureFieldsDescription": "Planned fields (not active yet):",
+      "futureFields": [
+        "Did you serve a full-time mission? (yes/no)",
+        "Years and place of the mission (if applicable)",
+        "Areas where you feel most comfortable serving (companion, teacher, friend of new converts, service, etc.)",
+        "Languages you speak or understand",
+        "Approximate availability (weekdays, weekends, virtual/in-person)"
+      ],
+      "motivationText": "It’s not about creating pressure or filling out forms, but about having an instrument ready for the Lord. He knows your past, your capacity, and your current situation; this information just helps organize the work in your ward."
+    },
+    "friends": {
+      "title": "My friends",
+      "description": "Record the names of people you love and for whom you choose to pray, serve, and invite with love. They aren’t “projects”; they are children of God, your friends and the Savior’s friends.",
+      "explanation": "Missionary work begins in the member’s heart, not in a contact list. This section isn’t to pressure, but to remember, pray, and listen to the Spirit.",
+      "labels": {
+        "name": "Name",
+        "relationship": "Relationship",
+        "spiritualSituation": "Approximate spiritual situation",
+        "lastPositiveContact": "Last positive interaction",
+        "preparedLevel": "Preparation level",
+        "notes": "Spiritual notes",
+        "isPraying": "I’m praying for this person",
+        "readyForMissionaries": "I feel they’re ready to speak with the missionaries"
+      },
+      "preparedLevels": {
+        "cold": "They seem distant from the gospel, but I can love, serve, and listen.",
+        "warm": "They know something about the Church or are open to spiritual topics.",
+        "hot": "They show genuine interest in Jesus Christ, the Church, or in changing their life."
+      },
+      "spiritualNotesHint": "Write impressions, small miracles, feelings, or experiences that help you see how the Lord is already working in this person’s life.",
+      "reflectionQuestions": [
+        "Am I seeing my friends as the Lord sees them, or just as another task?",
+        "Am I willing to be patient for months or years if that’s what the Lord requires?",
+        "What can I do so my home and life are a safe place where my friends can feel the Spirit?"
+      ],
+      "doctrineBlock": {
+        "title": "Principles to love without pressuring",
+        "points": [
+          "True love never uses guilt or manipulation. The Savior invites; He never forces.",
+          "Sharing the gospel begins by listening—understanding the person’s questions, fears, and hopes.",
+          "Respecting agency is part of honoring covenants. Not everyone will accept now; some just need to feel we still believe in them.",
+          "Sometimes your role isn’t to teach every lesson but to prepare the soil so the missionaries can teach later."
+        ]
+      }
+    },
+    "skills": {
+      "title": "My missionary skills",
+      "intro": "You’re not expected to be a professional preacher, but you can be a willing disciple. These sections will help you develop spiritual and practical skills to take part in the Lord’s work naturally and guided by the Spirit.",
+      "sections": {
+        "discipuloMisionero": {
+          "title": "Living as a disciple-missionary",
+          "summary": "Before speaking of Christ we need to live in Christ. Member missionary work doesn’t start with an invitation but with a covenant.",
+          "content": "As a member of the Church, you’ve already made covenants that bind you to the Savior. Those covenants place you, by definition, inside His work. It’s not an optional assignment but a natural part of following Him. A disciple-missionary isn’t perfect or all-knowing—just someone whose faith doesn’t stay locked inside the chapel.\n\nBeing a disciple-missionary means your testimony isn’t limited to the Sunday microphone; it filters into how you work, treat your family, react when someone makes mistakes, and talk about Jesus when opportunities arise. It isn’t about preaching nonstop, but about living so the Spirit can trust you to speak when needed.\n\nPrepare spiritually with simple, steady habits: real prayer, deliberate scripture study, full participation in the sacrament, and small decisions of obedience. The more your heart and behavior align with the Savior, the more naturally you’ll participate in His gathering work."
+        },
+        "doctrinaDeCristo": {
+          "title": "The doctrine of Christ and the Second Coming",
+          "summary": "Faith in Christ, repentance, baptism, the gift of the Holy Ghost, and enduring to the end aren’t just for investigators—they’re the pattern of every disciple’s life.",
+          "content": "The doctrine of Christ isn’t just a lesson outline; it’s the roadmap to the Lord’s return. Every time you help someone exercise faith, repent, receive covenants, or remain faithful, you’re directly participating in preparing for the Second Coming.\n\nFor members, that means examining how we live the doctrine ourselves: Is our faith merely intellectual or tied to obedience? Is repentance occasional or a daily process? Do we value our baptismal covenants as a living contract with heaven? Do we seek the Holy Ghost with the same urgency we seek temporary solutions?\n\nWhen a friend sees someone truly repenting—acknowledging mistakes without excuses and changing with the Savior’s help—they’re seeing the doctrine of Christ in action. Your personal repentance and covenant loyalty are some of your most powerful witnessing tools. Missionary work isn’t just inviting others to be baptized; it’s walking with them through every stage of the doctrine of Christ."
+        },
+        "compartirElEvangelio": {
+          "title": "Sharing the gospel without being invasive",
+          "summary": "The world needs more authentic disciples and fewer hollow speeches. Sharing the gospel is about real conversations, in real moments, with real people.",
+          "content": "Many members fear talking about the gospel because they only imagine awkward scenarios—forcing topics, insisting when someone doesn’t want to listen, or seeming fanatic. The key is remembering that the gospel is shared more like a personal testimony than a debate.\n\nStart by weaving God naturally into your everyday language. Instead of saying “I was lucky,” you might say “I felt the Lord helped me with this.” When someone talks about a trial, you could share, “When I faced something similar, praying brought me peace.” You’re not delivering a sermon; you’re opening a spiritual door.\n\nLearn to ask inspired questions: “Do you believe in God?” “Have you wondered what happens after death?” “Would you like to come to an activity where we talk about these things?” Don’t respond with memorized phrases; truly listen and answer from your sincere experience. Leave room for silence—sometimes the Spirit speaks when we decide not to fill every second with words."
+        },
+        "invitaciones": {
+          "title": "Invitations that honor agency",
+          "summary": "The goal isn’t to win an argument but to open a door. An inspired invitation honors agency and leaves space for yes, no, or not yet.",
+          "content": "A good invitation is specific, kind, and paired with “whether you come or not, we’re still friends.” For example: “This Sunday we’re having a special meeting about Jesus Christ. I’d love for you to come. If you can’t or don’t feel ready, that’s okay—just know I’ll still be here for you.”\n\nAvoid phrases that guilt or corner someone. Don’t say, “If you cared, you’d come,” or turn the invitation into a test of loyalty. The Savior never manipulated anyone into following Him; He extended His hand and respected the choice.\n\nRemember that even a “no” can be part of the process. Sometimes people remember your invitation years later when they need the gospel. Your role is to invite with love and remain a true friend, not control the timing or the response."
+        },
+        "testimonio": {
+          "title": "Bearing testimony with power and simplicity",
+          "summary": "A testimony isn’t a speech—it’s a spiritual act where you declare what you know and feel through the Spirit.",
+          "content": "An effective testimony doesn’t need to be long or perfect. It can have three parts: what you experienced, what you felt, and what you now believe. For example: “Our family went through something hard. I prayed and studied the Book of Mormon. Not everything changed at once, but I felt peace that could only come from God. That’s why I know He listens to prayers.”\n\nAvoid language that sounds too formal or unlike how you normally speak. People sense when words are genuine or rehearsed. Talk about Jesus naturally—as a living Being who walks with you, not a distant historical figure.\n\nAsk the Spirit to help you know when to finish. Sometimes talking too long weakens what was already said with power. Learn to close simply: “That’s what I feel” or “I wanted to share that with you.” The Spirit will do the rest."
+        },
+        "apoyoMisioneros": {
+          "title": "Teaming up with the missionaries",
+          "summary": "Missionaries aren’t sent to replace members but to amplify what faithful members are already doing.",
+          "content": "When a member truly engages in missionary work, missionaries stop being “the ones who handle referrals” and become spiritual companions. You can help in many ways: praying for them, accompanying them, introducing them to friends, offering your home as a safe teaching space, or simply encouraging them when they’re discouraged.\n\nRemember they serve under the mission president and local priesthood leaders. Avoid pushing them to break rules even if you think it’ll help. If you have suggestions, share them humbly and let them seek appropriate direction.\n\nWhen you’re in a lesson, your role isn’t to correct every word or dominate the conversation but to support spiritually—bearing testimony, sharing a brief experience, loving the friend who is learning, and showing how the gospel works in real life. Investigators remember both the doctrine and the spirit they felt as they watched how members and missionaries treat each other."
+        },
+        "cuidadoConversos": {
+          "title": "Caring for converts and friends",
+          "summary": "Baptism is a beginning, not an endpoint. New converts need friendships, service opportunities, and patient mentoring as they learn to live the gospel.",
+          "content": "A new member often experiences many changes quickly: new standards, responsibilities, and sometimes opposition. What they need most isn’t constant reminders of everything they lack but someone to walk beside them, answer questions without judgment, and show that the Church has room for imperfect people becoming real disciples.\n\nSit with them in meetings, explain how the sacrament works, who’s who in the ward, how to find classes, and how to use Gospel Library resources. Invite them to your home naturally—not as a “project” but as another friend of the family.\n\nSome converts see the temple as distant or intimidating. Share your preparation experience, explain that the temple is a place of peace, not human perfection, and help them take small steps: attend temple baptisms, prepare family names, and meet with leaders confidently and without fear."
+        }
+      }
+    },
+    "resources": {
+      "title": "Missionary resources for members",
+      "intro": "These resources help you study, ponder, and act. They don’t replace the scriptures, Preach My Gospel, or your leaders’ guidance, but they can help you apply those teachings to your reality.",
+      "propheticQuotesTitle": "Prophetic quotes to inspire you",
+      "familyIdeasTitle": "Family missionary ideas",
+      "scriptureGroups": [
+        {
+          "title": "Your role in gathering Israel",
+          "references": [
+            "3 Nephi 5:13",
+            "Doctrine and Covenants 4",
+            "Doctrine and Covenants 88:81",
+            "Abraham 3:27",
+            "Matthew 28:19–20"
+          ],
+          "comment": "These verses show that the Lord calls His servants to proclaim the gospel and lovingly warn all. Not everyone will wear a badge, but everyone can testify."
+        },
+        {
+          "title": "Love, invite, don’t compel",
+          "references": [
+            "2 Nephi 26:24–28",
+            "Alma 31:32–35",
+            "Moses 7:28–33",
+            "Doctrine and Covenants 121:41–46"
+          ],
+          "comment": "God works through persuasion, patience, and love. These passages teach how to share the gospel without domination or pressure."
+        },
+        {
+          "title": "Care for converts and the weak",
+          "references": [
+            "Mosiah 18:8–10",
+            "Moroni 6:4–5",
+            "Doctrine and Covenants 20:53–55",
+            "Luke 15:4–7"
+          ],
+          "comment": "The covenant to “mourn with those that mourn” becomes very concrete when we care for new members."
+        }
+      ],
+      "propheticQuotes": [
+        {
+          "label": "Disciples, not spectators",
+          "text": "The Lord doesn’t need members who admire missionary work from the bench. He needs disciples who, weaknesses and all, are willing to open their mouth, their home, and their heart.",
+          "usage": "Use this when you feel discouraged or think your efforts are small. The Lord magnifies sincere attempts."
+        },
+        {
+          "label": "Preparing the Second Coming",
+          "text": "Every soul who turns to Christ—through a small invitation or a big change—is part of the quiet preparation for the Second Coming. There won’t be trumpets in every conversation, but heaven records each act of faith.",
+          "usage": "Remember this when you think “I’m not doing much.” In the Lord’s eyes, walking with one person in their spiritual growth counts as participating in His great work."
+        }
+      ],
+      "familyIdeas": [
+        "Dedicate at least one family home evening a month to missionary topics: mission stories, Preach My Gospel study, practicing invitations.",
+        "Pray as a family for specific missionaries and for friends you can invite to simple activities.",
+        "Invite missionaries to share a short message at home and then talk together without rush.",
+        "Teach children and youth to recognize the Spirit and share what they feel in simple prayers and testimonies."
+      ]
+    },
+    "supportMissionaries": {
+      "title": "Supporting the missionaries",
+      "intro": "Full-time missionaries leave home for a season; members live in their mission field for life. When both unite, the Lord works quiet but deep miracles.",
+      "activitiesTitle": "Ward missionary activities",
+      "howToHelpTitle": "Ways you can help",
+      "form": {
+        "name": "Name",
+        "availability": "Availability",
+        "notes": "Notes",
+        "friendName": "Friend's name",
+        "contact": "Contact information"
+      },
+      "howToHelpList": [
+        "Offer to accompany missionaries when they teach in your area. Your presence calms fears and shows friends how the gospel looks in everyday life.",
+        "Offer your home for some lessons when appropriate. A warm, respectful environment helps the Spirit be felt.",
+        "Send brief messages of encouragement with scriptures, testimonies, and experiences. Missionaries need strengthening too.",
+        "Ask them what challenges they face in your ward and how you can help specifically, without directing or controlling.",
+        "Help coordinate transportation, companions, and leader contacts when missionaries need support."
+      ],
+      "attitudeBlock": {
+        "title": "Attitudes that build trust",
+        "points": [
+          "Speak well of missionaries even when they make youthful mistakes. Remember they’re learning.",
+          "Don’t use missionaries as leverage to pressure friends or relatives who aren’t ready. They follow inspired guidelines.",
+          "Respect their study and rest schedule. Serving hard doesn’t mean ignoring protective rules.",
+          "If you notice something concerning, address it lovingly and, if necessary, with appropriate leaders—not through rumors."
+        ]
+      }
+    },
+    "conversionCare": {
+      "id": "care-of-converts",
+      "title": "Caring for converts",
+      "subtitle": "The Lord does not leave alone those who enter the baptismal gate. Neither should we.",
+      "intro": {
+        "summary": "A new convert is not a statistic or a project; they are a covenant child newly born into the kingdom of God. Their faith is real yet still fragile. This section helps every member and leader nurture that faith with love, doctrine, and belonging.",
+        "doctrinalPoints": [
+          "Conversion is an ongoing process, not a single milestone. Baptism opens the door to discipleship, but the heart keeps learning and adjusting to the covenant.",
+          "The Savior commanded, “Feed my sheep.” Caring for converts is not a program; it is proof of loyal love for Him.",
+          "Missionaries serve for a time; the ward or branch becomes the new member’s permanent spiritual home."
+        ],
+        "scriptures": [
+          {
+            "ref": "John 21:15–17",
+            "note": "Jesus repeats to Peter the charge to feed His sheep, showing that true love for the Savior is expressed by caring for His children."
+          },
+          {
+            "ref": "Moroni 6:4",
+            "note": "The ancient Church watched over new members, nourishing them with the good word of God and keeping them in the path of truth."
+          }
+        ]
+      },
+      "memberGuide": {
+        "title": "Guide for members",
+        "sections": [
+          {
+            "id": "principios",
+            "title": "Principles to sustain new converts",
+            "description": "Any member—even without a formal calling—can help a convert grow from baptism toward deep conversion by living these principles.",
+            "items": [
+              {
+                "title": "See them as covenant family, not “projects”",
+                "body": "Never speak of them as “cases” or “names on a list.” Treat them like family returning home: with genuine interest, steady follow-up, and sincere kindness.",
+                "practices": [
+                  "Learn and use their full name.",
+                  "Remember key details from their story and conversion.",
+                  "Pray for them by name in personal and family prayers."
+                ]
+              },
+              {
+                "title": "Belonging before perfection",
+                "body": "They may bring past habits, doubts, or cultural patterns. Help them belong first; correction comes later, wrapped in love and patience.",
+                "practices": [
+                  "Avoid critical remarks about clothing or customs during the first months.",
+                  "Instead of saying “That is wrong,” calmly explain why a principle matters.",
+                  "Celebrate small victories: attending sacrament meeting, reading a chapter, offering a heartfelt prayer."
+                ]
+              },
+              {
+                "title": "A circle of friends, not just one friend",
+                "body": "A single friend is a good start, but a convert needs several strong relationships to stay anchored when trials arrive.",
+                "practices": [
+                  "Introduce them to members of different ages and backgrounds.",
+                  "Invite another family when you host them at home.",
+                  "Help them join activities where they can naturally meet more people."
+                ]
+              },
+              {
+                "title": "Nurture mind, heart, and hands",
+                "body": "Teaching doctrine is essential, but conversion deepens when the convert serves, loves, and feels useful.",
+                "practices": [
+                  "Invite them to join you in simple service: delivering a meal, cleaning the chapel, helping with a move.",
+                  "Show them how gospel study can answer everyday problems.",
+                  "Ask, “How would you like to serve in the Church?” and share their desire with leaders."
+                ]
+              }
+            ]
+          },
+          {
+            "id": "acciones-sencillas",
+            "title": "Small actions that make a big difference",
+            "description": "Consistent little gestures are worth more than a single big activity.",
+            "items": [
+              {
+                "title": "Warmer Sundays",
+                "steps": [
+                  "Plan to meet them at the door before meetings begin.",
+                  "Sit beside them and introduce them to those nearby.",
+                  "After the meeting, spend a few minutes discussing how they felt and what they understood."
+                ]
+              },
+              {
+                "title": "A welcoming home",
+                "steps": [
+                  "Invite them to family home evening at least once a month.",
+                  "Let them participate: read a scripture, share a thought, or offer a prayer.",
+                  "If they have children, include activities for them and help them feel comfortable."
+                ]
+              },
+              {
+                "title": "Weekday follow-up",
+                "steps": [
+                  "Send a short message with a scripture or spiritual question.",
+                  "Offer concrete help: translating paperwork, job searching, understanding a bill.",
+                  "Invite them to institute, adult seminary, or ward activities that can strengthen their faith."
+                ]
+              },
+              {
+                "title": "First temple experience",
+                "steps": [
+                  "Explain simply that the temple is the Lord’s house and a place of peace.",
+                  "Help them prepare to perform baptisms for their ancestors when they have a limited-use recommend.",
+                  "Accompany them on the first visit, helping with logistics such as white clothing, schedule, and transportation."
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "auxiliaryGuide": {
+        "title": "Guide for auxiliary organizations",
+        "description": "Ward organizations are critical so new members quickly find a place to serve, learn, and feel needed.",
+        "organizations": [
+          {
+            "id": "relief-society",
+            "name": "Relief Society",
+            "focus": "Embrace, teach, and sustain newly baptized sisters.",
+            "ideas": [
+              "Prepare a welcome kit with leader phone numbers, meeting schedules, and a handwritten note.",
+              "Assign two sisters to take turns sitting with her during the first Sundays.",
+              "Invite her to participate in a simple service project so she can feel she is already contributing."
+            ]
+          },
+          {
+            "id": "elders-quorum",
+            "name": "Elders quorum",
+            "focus": "Help new brothers understand and prepare to hold the priesthood worthily.",
+            "ideas": [
+              "Hold a short “Priesthood 101” class each quarter for new brethren.",
+              "Assign experienced ministers to accompany him on easy visits.",
+              "Invite him to physical service projects where he can integrate without the pressure to teach yet."
+            ]
+          },
+          {
+            "id": "young-men",
+            "name": "Young Men",
+            "focus": "Make the quorum a safe, motivating place for teenage converts.",
+            "ideas": [
+              "Assign a youth of the same age to act as his “welcome companion.”",
+              "Include him in sports and service activities instead of only classroom settings.",
+              "Help him prepare to receive and use the Aaronic Priesthood with tasks such as setting up the sacrament or arranging chairs."
+            ]
+          },
+          {
+            "id": "young-women",
+            "name": "Young Women",
+            "focus": "Help young convert women find friendship, identity, and purpose in the gospel.",
+            "ideas": [
+              "Quickly integrate her into a small group with similar interests.",
+              "Invite her to personal goal projects and community service.",
+              "Accompany her in key spiritual experiences like testimony meetings or camps."
+            ]
+          },
+          {
+            "id": "primary",
+            "name": "Primary",
+            "focus": "Help convert children—and their parents—understand the Church structure in simple ways.",
+            "ideas": [
+              "Personally greet them at the Primary door and show them their classroom.",
+              "Briefly explain to the parents what Primary does and how they can help at home.",
+              "Send home a short page with a scripture and a family activity."
+            ]
+          }
+        ]
+      },
+      "callingsForNewMembers": {
+        "title": "Appropriate callings and assignments",
+        "description": "The right calling can anchor a convert’s faith; a heavy or premature calling can overwhelm them.",
+        "principles": [
+          "Begin with small, clear responsibilities that include mentoring.",
+          "Choose callings where they can observe others before leading.",
+          "Always discuss family and work circumstances before extending a calling."
+        ],
+        "goodCallings": [
+          "Greeting worshippers at the door with a smile.",
+          "Helping set up or tidy classrooms before and after meetings.",
+          "Supporting service projects: food drives, visiting the sick, community efforts.",
+          "Providing basic tech help with projectors, microphones, or meeting broadcasts."
+        ],
+        "callingsToDelay": [
+          "Organization presidencies.",
+          "Advanced doctrine teachers or deep-gospel classes.",
+          "Secretaries with heavy administrative loads.",
+          "Callings that require numerous midweek meetings immediately."
+        ]
+      },
+      "priesthoodPath": {
+        "title": "Priesthood path for new converts",
+        "description": "For male converts, receiving the Aaronic Priesthood and later the Melchizedek Priesthood reshapes identity and spiritual duty.",
+        "aaronic": {
+          "title": "Preparing for the Aaronic Priesthood",
+          "objectives": [
+            "Understand that priesthood is God’s authority to serve and bless, not a privilege to command.",
+            "Learn the purpose of the sacrament and how to prepare, bless, and pass it reverently.",
+            "Develop habits of worthiness: prayer, study, and obedience to foundational commandments."
+          ],
+          "lessons": [
+            {
+              "title": "What the priesthood is",
+              "points": [
+                "Priesthood is received by the laying on of hands from those with authority.",
+                "It is used to lift and bless, never to seek prestige.",
+                "A priesthood holder represents the Savior in all he does."
+              ]
+            },
+            {
+              "title": "The sacrament in a convert’s life",
+              "points": [
+                "The sacrament renews baptismal covenants each week.",
+                "Preparing it carefully is an act of worship.",
+                "Passing it is a privilege that requires reverence, modesty, and focus."
+              ]
+            },
+            {
+              "title": "Living worthily",
+              "points": [
+                "Avoid media and environments that invite sin.",
+                "Be honest at work, at home, and in the Church.",
+                "Seek the Spirit’s guidance when making decisions."
+              ]
+            }
+          ]
+        },
+        "melchizedek": {
+          "title": "Preparing for the Melchizedek Priesthood",
+          "objectives": [
+            "Recognize that the Melchizedek Priesthood focuses on the work of salvation and exaltation.",
+            "Prepare to make and keep deeper temple covenants.",
+            "Learn to minister, comfort, and preside with Christlike charity."
+          ],
+          "lessons": [
+            {
+              "title": "Greater spiritual responsibility",
+              "points": [
+                "An elder helps preside in the home through counsel, example, and service.",
+                "Blessing and comforting the sick is part of his sacred duty.",
+                "He must seek the Spirit diligently because his decisions affect others."
+              ]
+            },
+            {
+              "title": "Connection to the temple",
+              "points": [
+                "The Melchizedek Priesthood is tied to temple ordinances.",
+                "Temple covenants require purity of heart and willingness to sacrifice.",
+                "The temple strengthens marriages, families, and the ability to endure trials."
+              ]
+            }
+          ]
+        }
+      },
+      "templePreparation": {
+        "title": "Preparing for a temple recommend",
+        "description": "A temple recommend is a sign of trust and worthiness before the Lord. It is not a perfection exam but a sacred conversation between the member, the leader, and God.",
+        "topics": [
+          "Why the Lord asks for higher standards of worthiness to enter His house.",
+          "How obedience to commandments—Word of Wisdom, law of chastity, honesty, tithing—prepares the heart.",
+          "The importance of sustaining prophets and Church leaders.",
+          "The value of sincere repentance whenever we fall short."
+        ],
+        "firstVisit": {
+          "title": "What to expect during the first temple visit",
+          "points": [
+            "The temple is a place of reverence and peace; quiet voices and respect invite the Spirit.",
+            "During baptisms for the dead, white clothing symbolizes purity and unity.",
+            "Loving temple workers guide every step; no one expects a new member to memorize everything.",
+            "We do not discuss ordinance details outside the temple, but we can share how they strengthen faith in Jesus Christ.",
+            "Many feel deep gratitude and a desire to return; encourage them to record those feelings."
+          ]
+        }
+      },
+      "conversionFlow": {
+        "title": "Flow: investigator → new member",
+        "description": "The app can make the baptism transition clear and orderly.",
+        "steps": [
+          {
+            "id": "baptism-record",
+            "title": "Record the baptism",
+            "detail": "When an investigator is marked as baptized, the app sets their role to “New member” and unlocks first-step resources."
+          },
+          {
+            "id": "first-30-days",
+            "title": "30-day spiritual path",
+            "detail": "Daily micro-goals: scripture study, prayers, attending the new-member class, meeting leaders, joining a service activity."
+          },
+          {
+            "id": "assign-support",
+            "title": "Assign a support circle",
+            "detail": "Displays their friend family, assigned ministers, and the key leader accompanying them."
+          },
+          {
+            "id": "temple-goal",
+            "title": "Goal: attend the temple",
+            "detail": "Records a tentative goal to obtain a limited-use recommend and perform baptisms for the dead, outlining the needed steps."
+          }
+        ]
+      }
+    },
+    "leader": {
+      "meta": {
+        "roleName": "Ward and Stake Leaders",
+        "shortDescription": "Leaders who want to mobilize members and work in unity with missionaries.",
+        "longDescription": "This module helps bishops, counselors, stake presidents, and organization leaders understand their doctrinal and practical role in missionary work, align efforts with full-time missionaries, and care for converts and friends of the Church."
+      },
+      "home": {
+        "title": "Leadership in Missionary Work",
+        "welcomeTitle": "To preside is to shepherd, not just to administer",
+        "welcomeSubtitle": "The Lord did not call schedule managers, but shepherds of souls. How a ward lives missionary work reflects how it understands the covenant to serve Christ.",
+        "sections": {
+          "vision": {
+            "title": "Missionary Vision of the Ward",
+            "summary": "Help the ward see missionary work as a natural part of discipleship, not as a seasonal program."
+          },
+          "coordination": {
+            "title": "Coordination with Missionaries",
+            "summary": "Effective meetings, realistic goals, and wise use of missionaries' time."
+          },
+          "care": {
+            "title": "Care of Converts and Friends",
+            "summary": "Prevent the newly baptized from being lost in silence after confirmation."
+          }
+        }
+      },
+      "vision": {
+        "title": "Building a Missionary Vision for the Ward",
+        "doctrine": {
+          "title": "Doctrinal foundation",
+          "points": [
+            "Missionary work is not a separate program; it is a central part of the baptismal covenant to 'take upon us the name of Christ.'",
+            "A missionary ward is not one that only sends many missionaries, but one that lives the doctrine of Christ in the home, in council, and in the community.",
+            "Missionary leadership begins in the heart of the bishop and ward council: how they pray, what they prioritize, and what they speak before youth and children."
+          ],
+          "keyScriptures": "Key scriptures",
+          "keyScripturesList": [
+            "3 Nephi 5:13",
+            "D&C 4",
+            "D&C 88:81",
+            "Mosiah 18:8–10"
+          ]
+        },
+        "practical": {
+          "title": "Practical steps",
+          "steps": [
+            "Always include a brief 'missionary work' item in ward council, even if there are no spectacular reports.",
+            "Periodically invite ward members to share real experiences inviting friends to come unto Christ.",
+            "Align missionary goals with ward reality: fewer empty numbers, more concrete commitments.",
+            "Celebrate small victories: a friend who accepts prayer, a family that attends an activity, a convert who receives their limited temple recommend."
+          ]
+        }
+      },
+      "coordination": {
+        "title": "Working in Unity with Missionaries",
+        "principles": {
+          "title": "Key principles",
+          "points": [
+            "Missionaries serve under the direction of the mission president; the ward collaborates, not directs independently.",
+            "An effective missionary plan begins in the ward council and is implemented with quorum, Relief Society, and youth leaders.",
+            "Coordination meetings should be brief, focused, and spiritual, not a session of complaints or pure logistics."
+          ]
+        },
+        "coordinationMeetings": {
+          "title": "Effective coordination meetings",
+          "suggestedAgenda": [
+            "Prayer and brief thought centered on the doctrine of Christ or the gathering of Israel.",
+            "Brief missionary report: friends being taught, progress of recent converts, key needs.",
+            "Identify 2–3 concrete actions for the week.",
+            "Assign clear responsibilities and follow up on what was agreed.",
+            "Brief testimonies or final spiritual impressions."
+          ]
+        }
+      },
+      "convertCare": {
+        "title": "Care of Converts and Friends",
+        "risks": {
+          "title": "Common risks",
+          "points": [
+            "Converts very well supported before baptism, but alone afterward.",
+            "Unrealistic expectations about immediate changes.",
+            "Assigning too many responsibilities without real friendship to support them."
+          ]
+        },
+        "bestPractices": {
+          "title": "Best practices",
+          "points": [
+            "Assign a 'support core': friend family + organization leader + quorum leader.",
+            "Involve converts in real service, not just additional classes.",
+            "Coordinate bishop, organization leaders, missionaries, and friend members with purpose and respect."
+          ]
+        }
+      },
+      "dashboardIdeas": {
+        "title": "Ideas for a Leader Dashboard",
+        "explanation": "Later, the app could show simple spiritual indicators (not confidential) to help leaders discern where to minister better.",
+        "examples": [
+          "Number of members who added at least one friend in 'My Friends'.",
+          "Number of members who accompanied missionaries at least once a month.",
+          "Recent converts with complete 'support core'.",
+          "Families who participated in at least one missionary family home evening in the quarter."
+        ],
+        "note": "These indicators should never be used to shame, but to discern where to minister better."
+      }
+    },
+    "viewMode": {
+      "member": "Member view",
+      "leader": "Leader view",
+      "helper": "Switch the view to see content as a regular member or as a ward/stake leader.",
+      "leaderLocked": "Leader view is only available to those with a leadership calling.",
+      "badge.member": "Member",
+      "badge.leader": "Leader",
+      "title": "How do you want to see this section?",
+      "subtitle": "Your profile determines whether you can access leader tools. You can always use the member view."
+    },
+    "ui": {
+      "addFriend": "Add friend",
+      "editFriend": "Edit friend",
+      "save": "Save",
+      "cancel": "Cancel",
+      "addInteraction": "Log interaction",
+      "interactionPlaceholder": "Write a short note about what you did or felt...",
+      "readyForMissionaries": "Mark as ready for missionaries",
+      "friendListEmpty": "You haven't added friends yet. Start with prayer and ask whom you should love better today.",
+      "activitiesComingSoon": "Scheduled missionary activities coming soon.",
+      "offerCompanionship": "Offer to accompany",
+      "sendReferral": "Send safe referral",
+      "comingSoon": "Available soon",
+      "newFriendTitle": "New friend",
+      "actions": "Actions",
+      "notes": "Notes",
+      "yes": "Yes",
+      "no": "No"
+    },
+    "activities": {
+      "category": "Practice",
+      "title": "Interactive activities",
+      "subtitle": "First study, then practice what you've learned.",
+      "description": "Use these dynamics as a complement. First study, then reinforce what you've learned by acting.",
+      "filterByModule": "Filter by module",
+      "allModules": "All modules",
+      "activitiesCount": "activities",
+      "level": "Level",
+      "start": "Start",
+      "selectedActivity": "Selected activity",
+      "selectActivity": "Select an activity",
+      "selectActivityDescription": "Choose a card to open it here. You can repeat them without losing focus on your study."
+    },
+    "activityTypes": {
+      "QUIZ_SINGLE": "Doctrinal Quiz",
+      "SCENARIO": "Real Situations",
+      "QUIZ_SCRIPTURE_MATCH": "Scriptures for Every Need",
+      "CHARACTER_GUESS": "Characters and Examples",
+      "REAL_WORLD_MISSION": "Real-World Missions",
+      "READING_BLOCK": "Reading Blocks"
+    }
+  }
+}
+

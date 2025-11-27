@@ -1,0 +1,39 @@
+.ui-card {
+  background: var(--color-surface, #FFFFFF);
+  border-radius: var(--border-radius-lg, 16px);
+  box-shadow: var(--shadow-sm, 0 1px 3px 0 rgba(0, 0, 0, 0.1));
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all var(--transition-base, 200ms ease);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.ui-card--elevated {
+  box-shadow: var(--shadow-md, 0 4px 6px -1px rgba(0, 0, 0, 0.1));
+}
+
+.ui-card--outlined {
+  border: 1px solid var(--color-border-subtle, #E2E8F0);
+  box-shadow: none;
+}
+
+.ui-card--gradient {
+  background: linear-gradient(135deg, var(--color-primary, #4F46E5) 0%, var(--color-primary-light, #6366F1) 100%);
+  color: var(--color-text-on-primary, #FFFFFF);
+  border: none;
+}
+
+.ui-card--clickable {
+  cursor: pointer;
+}
+
+.ui-card--clickable:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg, 0 10px 15px -3px rgba(0, 0, 0, 0.1));
+  border-color: var(--color-primary-light, #6366F1);
+}
+
+.ui-card--clickable:active {
+  transform: translateY(0);
+}
+

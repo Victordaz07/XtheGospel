@@ -1,0 +1,45 @@
+.ui-icon-button {
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-base, 200ms ease);
+}
+
+.ui-icon-button--default {
+  background: var(--color-background-alt, #F1F5F9);
+  color: var(--color-text-secondary, #475569);
+}
+
+.ui-icon-button--default:hover:not(:disabled) {
+  background: var(--color-gray-200, #E5E7EB);
+  color: var(--color-text, #0F172A);
+}
+
+.ui-icon-button--primary {
+  background: var(--color-primary, #4F46E5);
+  color: var(--color-text-on-primary, #FFFFFF);
+}
+
+.ui-icon-button--primary:hover:not(:disabled) {
+  background: var(--color-primary-dark, #4338CA);
+  transform: scale(1.05);
+}
+
+.ui-icon-button--ghost {
+  background: transparent;
+  color: var(--color-text-secondary, #475569);
+}
+
+.ui-icon-button--ghost:hover:not(:disabled) {
+  background: var(--color-background-alt, #F1F5F9);
+  color: var(--color-text, #0F172A);
+}
+
+.ui-icon-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+

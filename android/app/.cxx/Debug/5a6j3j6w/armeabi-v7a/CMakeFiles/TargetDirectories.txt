@@ -1,0 +1,6 @@
+C:/Projects/ListaDeTareasApp/android/app/.cxx/Debug/5a6j3j6w/armeabi-v7a/CMakeFiles/appmodules.dir
+C:/Projects/ListaDeTareasApp/android/app/.cxx/Debug/5a6j3j6w/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Projects/ListaDeTareasApp/android/app/.cxx/Debug/5a6j3j6w/armeabi-v7a/CMakeFiles/rebuild_cache.dir
+C:/Projects/ListaDeTareasApp/android/app/.cxx/Debug/5a6j3j6w/armeabi-v7a/safeareacontext_autolinked_build/CMakeFiles/react_codegen_safeareacontext.dir
+C:/Projects/ListaDeTareasApp/android/app/.cxx/Debug/5a6j3j6w/armeabi-v7a/safeareacontext_autolinked_build/CMakeFiles/edit_cache.dir
+C:/Projects/ListaDeTareasApp/android/app/.cxx/Debug/5a6j3j6w/armeabi-v7a/safeareacontext_autolinked_build/CMakeFiles/rebuild_cache.dir

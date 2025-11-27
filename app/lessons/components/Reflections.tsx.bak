@@ -1,0 +1,252 @@
+import React, { useState } from 'react';
+import {
+    View,
+    Text,
+    StyleSheet,
+    TextInput,
+    TouchableOpacity,
+    ScrollView,
+    Alert,
+} from 'react-native';
+import { useI18n } from '../../../context/I18nContext';
+
+interface ReflectionsProps {
+    lessonTitle: string;
+    onSave: (reflection: string, shareWithMissionaries: boolean) => void;
+}
+
+export default function Reflections({ lessonTitle, onSave }: ReflectionsProps) {
+    const { t } = useI18n();
+    const [reflection, setReflection] = useState('');
+    const [shareWithMissionaries, setShareWithMissionaries] = useState(false);
+
+    const handleSave = () => {
+        if (reflection.trim().length === 0) {
+            Alert.alert(
+                t('reflections.alertTitle'),
+                t('reflections.alertMessage'),
+                [{ text: t('reflections.ok') }]
+            );
+            return;
+        }
+
+        onSave(reflection.trim(), shareWithMissionaries);
+    };
+
+    const getCharacterCount = () => {
+        return reflection.length;
+    };
+
+    const getCharacterCountColor = () => {
+        const count = getCharacterCount();
+        if (count > 1000) return '#ef4444';
+        if (count > 800) return '#f59e0b';
+        return '#6b7280';
+    };
+
+    return (
+        <ScrollView style={styles.container}>
+            <View style={styles.header}>
+                <Text style={styles.title}>{t('reflections.title')}</Text>
+                <Text style={styles.subtitle}>
+                    {t('reflections.subtitle')} "{lessonTitle}"
+                </Text>
+            </View>
+
+            <View style={styles.promptContainer}>
+                <Text style={styles.promptTitle}>{t('reflections.promptTitle')}</Text>
+                <Text style={styles.promptText}>{t('reflections.promptText')}</Text>
+            </View>
+
+            <View style={styles.inputContainer}>
+                <TextInput
+                    style={styles.textInput}
+                    value={reflection}
+                    onChangeText={setReflection}
+                    placeholder={t('reflections.placeholder')}
+                    placeholderTextColor="#9ca3af"
+                    multiline
+                    textAlignVertical="top"
+                    maxLength={1500}
+                />
+                <View style={styles.characterCountContainer}>
+                    <Text style={[styles.characterCount, { color: getCharacterCountColor() }]}>
+                        {getCharacterCount()} / 1500
+                    </Text>
+                </View>
+            </View>
+
+            <View style={styles.shareContainer}>
+                <TouchableOpacity
+                    style={styles.checkboxContainer}
+                    onPress={() => setShareWithMissionaries(!shareWithMissionaries)}
+                >
+                    <View style={[
+                        styles.checkbox,
+                        shareWithMissionaries && styles.checkboxChecked
+                    ]}>
+                        {shareWithMissionaries && (
+                            <Text style={styles.checkmark}>✓</Text>
+                        )}
+                    </View>
+                    <View style={styles.checkboxTextContainer}>
+                        <Text style={styles.checkboxTitle}>{t('reflections.shareTitle')}</Text>
+                        <Text style={styles.checkboxDescription}>{t('reflections.shareDescription')}</Text>
+                    </View>
+                </TouchableOpacity>
+            </View>
+
+            <View style={styles.privacyContainer}>
+                <Text style={styles.privacyTitle}>{t('reflections.privacyTitle')}</Text>
+                <Text style={styles.privacyText}>{t('reflections.privacyText')}</Text>
+            </View>
+
+            <TouchableOpacity style={styles.saveButton} onPress={handleSave}>
+                <Text style={styles.saveButtonText}>{t('reflections.save')}</Text>
+            </TouchableOpacity>
+        </ScrollView>
+    );
+}
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#f9fafb',
+        padding: 20,
+    },
+    header: {
+        marginBottom: 24,
+    },
+    title: {
+        fontSize: 24,
+        fontWeight: '700',
+        color: '#1f2937',
+        textAlign: 'center',
+        marginBottom: 8,
+    },
+    subtitle: {
+        fontSize: 16,
+        color: '#6b7280',
+        textAlign: 'center',
+    },
+    promptContainer: {
+        backgroundColor: '#ffffff',
+        borderRadius: 12,
+        padding: 16,
+        marginBottom: 20,
+        borderLeftWidth: 4,
+        borderLeftColor: '#3b82f6',
+    },
+    promptTitle: {
+        fontSize: 18,
+        fontWeight: '600',
+        color: '#1f2937',
+        marginBottom: 8,
+    },
+    promptText: {
+        fontSize: 14,
+        color: '#6b7280',
+        lineHeight: 20,
+    },
+    inputContainer: {
+        backgroundColor: '#ffffff',
+        borderRadius: 12,
+        padding: 16,
+        marginBottom: 20,
+        shadowColor: '#000',
+        shadowOpacity: 0.05,
+        shadowRadius: 4,
+        elevation: 2,
+    },
+    textInput: {
+        fontSize: 16,
+        color: '#1f2937',
+        minHeight: 120,
+        textAlignVertical: 'top',
+    },
+    characterCountContainer: {
+        alignItems: 'flex-end',
+        marginTop: 8,
+    },
+    characterCount: {
+        fontSize: 12,
+        fontWeight: '500',
+    },
+    shareContainer: {
+        backgroundColor: '#ffffff',
+        borderRadius: 12,
+        padding: 16,
+        marginBottom: 20,
+        shadowColor: '#000',
+        shadowOpacity: 0.05,
+        shadowRadius: 4,
+        elevation: 2,
+    },
+    checkboxContainer: {
+        flexDirection: 'row',
+        alignItems: 'flex-start',
+    },
+    checkbox: {
+        width: 24,
+        height: 24,
+        borderRadius: 6,
+        borderWidth: 2,
+        borderColor: '#d1d5db',
+        marginRight: 12,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    checkboxChecked: {
+        backgroundColor: '#3b82f6',
+        borderColor: '#3b82f6',
+    },
+    checkmark: {
+        color: '#ffffff',
+        fontSize: 14,
+        fontWeight: 'bold',
+    },
+    checkboxTextContainer: {
+        flex: 1,
+    },
+    checkboxTitle: {
+        fontSize: 16,
+        fontWeight: '600',
+        color: '#1f2937',
+        marginBottom: 4,
+    },
+    checkboxDescription: {
+        fontSize: 14,
+        color: '#6b7280',
+        lineHeight: 20,
+    },
+    privacyContainer: {
+        backgroundColor: '#f3f4f6',
+        borderRadius: 12,
+        padding: 16,
+        marginBottom: 24,
+    },
+    privacyTitle: {
+        fontSize: 14,
+        fontWeight: '600',
+        color: '#374151',
+        marginBottom: 4,
+    },
+    privacyText: {
+        fontSize: 12,
+        color: '#6b7280',
+        lineHeight: 16,
+    },
+    saveButton: {
+        backgroundColor: '#10b981',
+        borderRadius: 12,
+        paddingVertical: 16,
+        paddingHorizontal: 24,
+        alignItems: 'center',
+        marginBottom: 20,
+    },
+    saveButtonText: {
+        color: '#ffffff',
+        fontSize: 16,
+        fontWeight: '600',
+    },
+});

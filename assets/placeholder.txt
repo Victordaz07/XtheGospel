@@ -1,0 +1,14 @@
+# PLACEHOLDER IMAGE
+# 
+# Este archivo es un placeholder para las imágenes que se generarán con AI.
+# 
+# Para reemplazar:
+# 1. Crear imagen PNG de 120x120px
+# 2. Renombrar este archivo a placeholder.png
+# 3. Las imágenes AI se pueden agregar como:
+#    - lesson1-topic1.png
+#    - lesson1-topic2.png
+#    - etc.
+#
+# Formato recomendado: PNG con transparencia
+# Tamaño: 120x120px (para LessonCard)

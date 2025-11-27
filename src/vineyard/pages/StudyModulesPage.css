@@ -1,0 +1,84 @@
+/* Study Modules Page - Back Button and Header Styles */
+.study-modules-page-content {
+  padding: 1.5rem 1rem;
+  max-width: 100%;
+}
+
+.study-modules-back-button {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 100;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.5rem 0.875rem;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(224, 230, 255, 0.8);
+  border-radius: 1000px;
+  color: #5B6C94;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  -webkit-tap-highlight-color: transparent;
+  width: auto;
+  min-width: auto;
+  max-width: none;
+  white-space: nowrap;
+  backdrop-filter: blur(8px);
+}
+
+.study-modules-back-button:hover {
+  background: rgba(255, 255, 255, 1);
+  border-color: #9AB7FF;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(154, 183, 255, 0.2);
+}
+
+.study-modules-back-button:active {
+  transform: translateY(0);
+}
+
+.study-modules-back-button svg {
+  font-size: 0.75rem;
+  flex-shrink: 0;
+}
+
+.study-modules-header {
+  margin-bottom: 2rem;
+  max-width: 100%;
+}
+
+.study-modules-category {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #5B6C94;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.study-modules-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1A1A1A;
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.study-modules-description {
+  font-size: 0.9375rem;
+  color: #6A6A6A;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.study-modules-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+

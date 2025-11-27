@@ -1,0 +1,24 @@
+.role-button {
+  background-color: var(--color-primary);
+  padding: var(--spacing-md);
+  border-radius: 8px;
+  margin: var(--spacing-sm) 0;
+  width: 80%;
+  border: none;
+  color: var(--color-white);
+  font-size: var(--font-size-base);
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.role-button:hover {
+  background-color: #2563eb;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.role-button:active {
+  transform: translateY(0);
+}
+

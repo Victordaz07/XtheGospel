@@ -1,0 +1,125 @@
+[33mcommit 12d8b30d004cb13995e89d324c7abae72dee4a6c[m
+Author: Tu Nombre <tu-email@ejemplo.com>
+Date:   Tue Nov 25 10:01:43 2025 -0800
+
+    feat: Complete member role implementation with visual dashboard
+    
+    - Rebuilt MemberHome as comprehensive visual dashboard
+    - Added study modules page with deep doctrinal content
+    - Enhanced activities page with interactive gamification
+    - Improved convertidos page with visual sections
+    - Added RoleSwitcherDev component for easy role testing
+    - Connected all member pages to existing datasets
+    - Full i18n support (ES, EN, FR, PT) for all member content
+    - Responsive design consistent with investigator/missionary roles
+    - Added routes for /member/friends and /member/support
+    - Fixed infinite loop bug in ActivityRenderer
+    - Optimized I18nContext interval performance
+    - Added comprehensive bilingual README
+    
+    Member routes:
+    - /member/home - Dashboard
+    - /member/study - Study modules
+    - /member/convertidos - New convert care guide
+    - /member/activities - Interactive activities
+    - /member/progress - Progress tracking
+    - /member/friends - Friends management
+    - /member/support - Missionary support
+
+ README.md                                        |  443 [32m+++++++[m[31m-[m
+ android/gradle/wrapper/gradle-wrapper.properties |    3 [32m+[m[31m-[m
+ i18n/en.json                                     |   45 [32m+[m[31m-[m
+ i18n/es.json                                     |   45 [32m+[m[31m-[m
+ i18n/fr.json                                     |   47 [32m+[m[31m-[m
+ i18n/pt.json                                     |   45 [32m+[m[31m-[m
+ package-lock.json                                | 1242 [32m+++++++++++++++++++++[m[31m-[m
+ package.json                                     |    4 [32m+[m[31m-[m
+ scripts/validate-i18n-member.ts                  |  116 [32m++[m
+ src/App.tsx                                      |   22 [32m+[m[31m-[m
+ src/components/ErrorBoundary.tsx                 |   70 [32m++[m
+ src/components/NewConvertProgressBar.tsx         |   27 [32m+[m
+ src/components/NewConvertSectionCard.tsx         |   73 [32m++[m
+ src/components/RoleSwitcherDev.css               |   63 [32m++[m
+ src/components/RoleSwitcherDev.tsx               |   58 [32m+[m
+ src/components/member/MemberComponents.css       |  218 [32m++++[m
+ src/components/member/MemberDevotionalCard.tsx   |   55 [32m+[m
+ src/components/member/MemberFriendsPreview.tsx   |   32 [32m+[m
+ src/components/member/MemberHero.tsx             |   59 [32m+[m
+ src/components/member/MemberLeaderView.css       |  157 [32m+++[m
+ src/components/member/MemberLeaderView.tsx       |  139 [32m+++[m
+ src/components/member/MemberRoleToggle.css       |   39 [32m+[m
+ src/components/member/MemberRoleToggle.tsx       |   80 [32m++[m
+ src/components/member/MemberSkillsPreview.tsx    |   38 [32m+[m
+ src/context/AuthContext.tsx                      |    5 [32m+[m[31m-[m
+ src/context/I18nContext.tsx                      |   99 [32m+[m[31m-[m
+ src/hooks/useMemberFriends.ts                    |   71 [32m++[m
+ src/hooks/useMemberProfile.ts                    |   70 [32m++[m
+ src/hooks/useNewConvertProgress.ts               |   82 [32m++[m
+ src/i18n/leaders/leaders.es.json                 |  106 [32m++[m
+ src/i18n/member.en.json                          |  683 [32m++++++++++++[m
+ src/i18n/member.es.json                          |  682 [32m++++++++++++[m
+ src/i18n/member.fr.json                          |  639 [32m+++++++++++[m
+ src/i18n/member.pt.json                          |  613 [32m+++++++++++[m
+ src/i18n/memberKeys.ts                           |  190 [32m++++[m
+ src/layouts/MemberLayout.tsx                     |    1 [32m+[m
+ src/layouts/MissionaryLayout.tsx                 |    4 [32m+[m[31m-[m
+ src/main.tsx                                     |   13 [32m+[m[31m-[m
+ src/member/components/ActivityRenderer.tsx       |  248 [32m+++++[m
+ src/member/components/ProgressSummary.tsx        |   74 [32m++[m
+ src/member/components/StudyModuleCard.tsx        |   62 [32m++[m
+ src/member/components/StudySectionView.tsx       |  142 [32m+++[m
+ src/member/data/activitiesTypes.ts               |   37 [32m+[m
+ src/member/data/memberActivities.en.ts           |  263 [32m+++++[m
+ src/member/data/memberActivities.es.ts           |  264 [32m+++++[m
+ src/member/data/memberActivities.fr.ts           |  266 [32m+++++[m
+ src/member/data/memberActivities.pt.ts           |  263 [32m+++++[m
+ src/member/data/memberActivities.ts              |  315 [32m++++++[m
+ src/member/data/memberStudyModules.en.ts         |  275 [32m+++++[m
+ src/member/data/memberStudyModules.es.ts         |  271 [32m+++++[m
+ src/member/data/memberStudyModules.fr.ts         |  256 [32m+++++[m
+ src/member/data/memberStudyModules.pt.ts         |  251 [32m+++++[m
+ src/member/data/memberStudyModules.ts            |   12 [32m+[m
+ src/member/data/memberTypes.ts                   |   14 [32m+[m
+ src/member/data/newConvertGuide.en.ts            |  223 [32m++++[m
+ src/member/data/newConvertGuide.es.ts            |  223 [32m++++[m
+ src/member/data/newConvertGuide.fr.ts            |  223 [32m++++[m
+ src/member/data/newConvertGuide.pt.ts            |  223 [32m++++[m
+ src/member/data/newConvertGuide.ts               |    7 [32m+[m
+ src/member/data/types.ts                         |   27 [32m+[m
+ src/member/layout/MemberLayout.tsx               |   72 [32m++[m
+ src/member/pages/ActivitiesPage.tsx              |  144 [32m+++[m
+ src/member/pages/MemberConvertidosPage.tsx       |  168 [32m+++[m
+ src/member/pages/MemberHome.css                  |  186 [32m++++[m
+ src/member/pages/MemberHome.tsx                  |  183 [32m++++[m
+ src/member/pages/ProgressPage.tsx                |   99 [32m++[m
+ src/member/pages/StudyModulesPage.tsx            |   37 [32m+[m
+ src/member/state/memberProgressStore.ts          |  224 [32m++++[m
+ src/member/utils/progressIds.ts                  |    2 [32m+[m
+ src/pages/AuthPage.tsx                           |   17 [32m+[m[31m-[m
+ src/pages/Page.css                               |  190 [32m++++[m
+ src/pages/investigator/BaptismPage.css           |   79 [32m+[m[31m-[m
+ src/pages/investigator/InvestigatorBaptism.tsx   |   76 [32m+[m[31m-[m
+ src/pages/investigator/InvestigatorProfile.tsx   |   51 [32m+[m[31m-[m
+ src/pages/member/MemberConversionCare.css        |  146 [32m+++[m
+ src/pages/member/MemberConversionCare.tsx        |  190 [32m++++[m
+ src/pages/member/MemberFriends.tsx               |  243 [32m+++++[m
+ src/pages/member/MemberHome.tsx                  |   68 [32m++[m
+ src/pages/member/MemberMissionarySupport.tsx     |  204 [32m++++[m
+ src/pages/member/MemberProfile.tsx               |   90 [32m++[m
+ src/pages/member/MemberResources.tsx             |   56 [32m+[m
+ src/pages/member/MemberSkills.tsx                |   47 [32m+[m
+ src/pages/missionary/EventModal.css              |  201 [32m++++[m
+ src/pages/missionary/EventModal.tsx              |  270 [32m+++++[m
+ src/pages/missionary/MissionaryAgenda.css        |  291 [32m++[m[31m---[m
+ src/pages/missionary/MissionaryAgenda.tsx        |  324 [32m+++++[m[31m-[m
+ src/pages/missionary/MissionaryHome.tsx          |  140 [32m++[m[31m-[m
+ src/pages/missionary/MissionaryPeople.tsx        |  294 [32m++++[m[31m-[m
+ src/pages/missionary/MissionaryProfile.tsx       |   23 [32m+[m[31m-[m
+ src/router/AppRouter.tsx                         |   23 [32m+[m[31m-[m
+ src/screens/MemberMissionaryScreen.tsx           |   91 [32m++[m
+ src/services/memberFriendsService.ts             |   69 [32m++[m
+ src/types/memberProfile.ts                       |   56 [32m+[m
+ src/types/missionaryEvent.ts                     |   69 [32m++[m
+ src/utils/memberData.ts                          |  318 [32m++++++[m
+ src/utils/missionaryData.ts                      |  164 [32m+[m[31m--[m
+ 96 files changed, 14799 insertions(+), 423 deletions(-)

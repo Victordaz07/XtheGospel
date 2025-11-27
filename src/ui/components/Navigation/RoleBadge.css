@@ -1,0 +1,12 @@
+.ui-role-badge {
+  display: inline-flex;
+  margin-top: var(--spacing-xs, 4px);
+  padding: var(--spacing-xs, 4px) var(--spacing-sm, 8px);
+  border-radius: var(--border-radius-full, 9999px);
+  background: #ede9fe;
+  color: var(--color-primary, #4F46E5);
+  font-size: 11px;
+  letter-spacing: 0.6px;
+  font-weight: var(--font-weight-semibold, 600);
+}
+

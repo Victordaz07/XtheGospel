@@ -1,0 +1,116 @@
+/* New Convert Section Card - Clean, minimal design matching featured content cards */
+.new-convert-section-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background: linear-gradient(135deg, #F9FAFF 0%, #F4F6FA 100%);
+  border-radius: 24px;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  padding: 1.5rem;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  cursor: pointer;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.new-convert-section-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.new-convert-section-card.completed {
+  border-color: rgba(5, 150, 105, 0.3);
+  background: linear-gradient(135deg, #F0FDF4 0%, #ECFDF5 100%);
+}
+
+.new-convert-section-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.new-convert-section-card-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1A1A1A;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
+.new-convert-section-card-status {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #059669;
+  margin: 0;
+}
+
+.new-convert-section-card-content {
+  font-size: 0.9375rem;
+  color: #4A4A4A;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.new-convert-section-card-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.new-convert-section-card-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 0.25rem 0.75rem;
+  border-radius: 1000px;
+  color: #5B6C94;
+  white-space: nowrap;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.new-convert-section-card-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.5rem;
+}
+
+.new-convert-section-card-button {
+  border-radius: 1000px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0.625rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #5B6C94;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.new-convert-section-card-button:hover {
+  background: rgba(255, 255, 255, 1);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.new-convert-section-card-button:active {
+  transform: translateY(0);
+}
+
+/* Grid container for cards - single column, full width */
+.new-convert-cards-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+

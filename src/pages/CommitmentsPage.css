@@ -1,0 +1,249 @@
+.commitment-input-section {
+  margin-bottom: 24px;
+}
+
+.commitment-input-group {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  background: #fff;
+  padding: 16px;
+  border-radius: 24px;
+  box-shadow: 0 18px 35px rgba(15, 23, 42, 0.08);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+}
+
+.commitment-input-field {
+  flex: 1;
+  min-width: 200px;
+  padding: 14px 18px;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  font-size: 15px;
+  font-family: inherit;
+  transition: all 0.2s ease;
+  background: #f8fafc;
+}
+
+.commitment-input-field:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+
+.commitment-add-button {
+  padding: 14px 24px;
+  background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  white-space: nowrap;
+  box-shadow: 0 15px 30px rgba(79, 70, 229, 0.25);
+}
+
+.commitment-add-button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.commitment-filters {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.filter-chip {
+  padding: 8px 16px;
+  border: 2px solid var(--color-primary-light);
+  background: var(--color-surface);
+  color: var(--color-text);
+  border-radius: var(--border-radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.filter-chip:hover {
+  border-color: var(--color-primary);
+  background: rgba(79, 70, 229, 0.05);
+}
+
+.filter-chip.active {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+  color: white;
+  border-color: var(--color-primary);
+}
+
+.commitments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.commitment-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 26px;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.commitment-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 25px 50px rgba(124, 58, 237, 0.15);
+  border-color: rgba(124, 58, 237, 0.4);
+}
+
+.commitment-item.completed {
+  opacity: 0.8;
+  background: #f1f5f9;
+}
+
+.commitment-item.completed .commitment-title {
+  text-decoration: line-through;
+  color: var(--color-text-secondary);
+}
+
+.commitment-checkbox-container {
+  padding-top: 4px;
+}
+
+.commitment-checkbox {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: var(--color-primary);
+}
+
+.commitment-content {
+  flex: 1;
+}
+
+.commitment-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.commitment-title {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  flex: 1;
+}
+
+.commitment-category-badge {
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.category-study {
+  background: rgba(59, 130, 246, 0.1);
+  color: #3b82f6;
+}
+
+.category-spiritual {
+  background: rgba(139, 92, 246, 0.1);
+  color: #8b5cf6;
+}
+
+.category-attendance {
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+}
+
+.commitment-description {
+  margin: 8px 0;
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+.commitment-due-date {
+  margin-top: 8px;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+  font-style: italic;
+}
+
+.commitment-delete {
+  background: #f1f5f9;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 12px;
+  color: #94a3b8;
+  align-self: flex-start;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.commitment-delete:hover {
+  background: #fee2e2;
+  color: #ef4444;
+}
+
+.commitments-empty {
+  text-align: center;
+  padding: 50px 20px;
+  background: #fff;
+  border-radius: 28px;
+  border: 2px dashed rgba(124, 58, 237, 0.3);
+  box-shadow: 0 15px 30px rgba(15, 23, 42, 0.05);
+}
+
+.empty-icon {
+  font-size: 64px;
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+
+.commitments-empty p {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  margin: 0;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 768px) {
+  .commitment-input-group {
+    flex-direction: column;
+  }
+  
+  .commitment-input-field,
+  .commitment-category-select,
+  .commitment-add-button {
+    width: 100%;
+  }
+  
+  .commitment-header-row {
+    flex-direction: column;
+  }
+  
+  .commitment-category-badge {
+    align-self: flex-start;
+  }
+}
+

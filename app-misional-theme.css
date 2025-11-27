@@ -1,0 +1,324 @@
+/* ================================
+   APP MISIONAL – THEME CSS
+   Import this file in UX Pilot as theme
+   ================================ */
+
+:root {
+  /* Colors */
+  --am-color-primary: #6366f1;
+  --am-color-primary-soft: #eef2ff;
+  --am-color-primary-strong: #4f46e5;
+  --am-color-primary-gradient-start: #6366f1;
+  --am-color-primary-gradient-end: #3b82f6;
+
+  --am-color-secondary: #22c55e;
+  --am-color-secondary-soft: #ecfdf3;
+
+  --am-color-bg: #f5f7fb;
+  --am-color-surface: #ffffff;
+  --am-color-surface-alt: #f0f4ff;
+
+  --am-color-text-main: #0f172a;
+  --am-color-text-muted: #64748b;
+  --am-color-text-soft: #94a3b8;
+
+  --am-color-border: #e2e8f0;
+
+  --am-color-warning: #f59e0b;
+  --am-color-danger: #ef4444;
+  --am-color-success: #16a34a;
+  --am-color-info: #3b82f6;
+
+  /* Radius */
+  --am-radius-xs: 6px;
+  --am-radius-sm: 10px;
+  --am-radius-md: 16px;
+  --am-radius-lg: 22px;
+  --am-radius-xl: 28px;
+  --am-radius-pill: 999px;
+
+  /* Spacing */
+  --am-space-xs: 4px;
+  --am-space-sm: 8px;
+  --am-space-md: 16px;
+  --am-space-lg: 24px;
+  --am-space-xl: 32px;
+  --am-space-xxl: 48px;
+
+  /* Shadows */
+  --am-shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.08);
+  --am-shadow-md: 0 4px 12px rgba(15, 23, 42, 0.10);
+  --am-shadow-lg: 0 8px 24px rgba(15, 23, 42, 0.14);
+
+  /* Typography */
+  --am-font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+    "Segoe UI", sans-serif;
+
+  --am-font-xs: 12px;
+  --am-font-sm: 14px;
+  --am-font-md: 16px;
+  --am-font-lg: 20px;
+  --am-font-xl: 24px;
+  --am-font-display: 32px;
+}
+
+/* Global layout */
+
+body {
+  font-family: var(--am-font-family);
+  font-size: var(--am-font-md);
+  background: radial-gradient(circle at top left, #eef2ff 0, #f5f7fb 40%, #f5f7fb 100%);
+  color: var(--am-color-text-main);
+}
+
+.app-shell {
+  background: transparent;
+  padding: var(--am-space-lg);
+}
+
+/* Top app bar */
+
+.am-appbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--am-space-md);
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(18px);
+  border-radius: 0 0 var(--am-radius-lg) var(--am-radius-lg);
+  box-shadow: var(--am-shadow-sm);
+}
+
+.am-appbar-title {
+  font-size: var(--am-font-lg);
+  font-weight: 700;
+}
+
+/* Cards */
+
+.am-card {
+  background: var(--am-color-surface);
+  border-radius: var(--am-radius-lg);
+  padding: var(--am-space-lg);
+  box-shadow: var(--am-shadow-md);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+}
+
+.am-card-muted {
+  background: var(--am-color-surface-alt);
+}
+
+.am-card-hero {
+  background: linear-gradient(
+    135deg,
+    rgba(99, 102, 241, 0.1),
+    rgba(59, 130, 246, 0.08)
+  );
+  border-radius: var(--am-radius-xl);
+}
+
+/* Buttons */
+
+.am-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 18px;
+  border-radius: var(--am-radius-pill);
+  font-size: var(--am-font-sm);
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease,
+    background-color 0.1s ease;
+}
+
+.am-button-primary {
+  background: linear-gradient(
+    135deg,
+    var(--am-color-primary-gradient-start),
+    var(--am-color-primary-gradient-end)
+  );
+  color: white;
+  box-shadow: var(--am-shadow-md);
+}
+
+.am-button-secondary {
+  background: var(--am-color-secondary-soft);
+  color: var(--am-color-secondary);
+}
+
+.am-button-ghost {
+  background: transparent;
+  color: var(--am-color-text-main);
+  border: 1px solid var(--am-color-border);
+}
+
+.am-button:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--am-shadow-lg);
+}
+
+/* Chips & badges */
+
+.am-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: var(--am-radius-pill);
+  font-size: var(--am-font-xs);
+  font-weight: 600;
+  background: var(--am-color-primary-soft);
+  color: var(--am-color-primary-strong);
+}
+
+.am-chip-soft {
+  background: #e0f2fe;
+  color: var(--am-color-info);
+}
+
+/* Progress + XP */
+
+.am-progress-bar {
+  width: 100%;
+  height: 8px;
+  border-radius: var(--am-radius-pill);
+  background: #e5e7eb;
+  overflow: hidden;
+}
+
+.am-progress-bar-fill {
+  height: 100%;
+  width: 35%;
+  background: linear-gradient(
+    90deg,
+    var(--am-color-primary),
+    var(--am-color-secondary)
+  );
+  border-radius: inherit;
+}
+
+.am-xp-tag {
+  font-size: var(--am-font-xs);
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: var(--am-radius-pill);
+  background: rgba(34, 197, 94, 0.12);
+  color: var(--am-color-success);
+}
+
+/* Bottom navigation */
+
+.am-tabbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 8px 16px 20px;
+  background: rgba(248, 250, 252, 0.95);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(148, 163, 184, 0.3);
+  display: flex;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.am-tab-item {
+  flex: 1;
+  padding: 8px 6px;
+  border-radius: 999px;
+  text-align: center;
+  font-size: 11px;
+  color: var(--am-color-text-soft);
+}
+
+.am-tab-item-active {
+  background: linear-gradient(
+    135deg,
+    rgba(99, 102, 241, 0.15),
+    rgba(59, 130, 246, 0.20)
+  );
+  color: var(--am-color-primary-strong);
+  font-weight: 600;
+}
+
+/* Member progress card */
+
+.am-progress-card {
+  background: var(--am-color-surface);
+  border-radius: var(--am-radius-xl);
+  padding: var(--am-space-lg);
+  box-shadow: var(--am-shadow-md);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.am-progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.am-progress-title {
+  font-size: var(--am-font-md);
+  font-weight: 700;
+}
+
+.am-progress-subtitle {
+  font-size: var(--am-font-sm);
+  color: var(--am-color-text-muted);
+}
+
+/* Sections with good padding */
+
+.am-section {
+  padding: var(--am-space-lg) var(--am-space-lg) var(--am-space-xl);
+}
+
+.am-section-title {
+  font-size: var(--am-font-lg);
+  font-weight: 700;
+  margin-bottom: var(--am-space-sm);
+}
+
+.am-section-subtitle {
+  font-size: var(--am-font-sm);
+  color: var(--am-color-text-muted);
+  margin-bottom: var(--am-space-md);
+}
+
+/* Badge grid */
+
+.am-badges-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: var(--am-space-md);
+}
+
+.am-badge-card {
+  padding: 10px 12px;
+  border-radius: var(--am-radius-md);
+  background: #f9fafb;
+  border: 1px dashed rgba(148, 163, 184, 0.7);
+  font-size: var(--am-font-xs);
+  color: var(--am-color-text-muted);
+}
+
+/* Utility classes */
+
+.am-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--am-space-md);
+}
+
+.am-row {
+  display: flex;
+  flex-direction: row;
+  gap: var(--am-space-md);
+  align-items: center;
+}

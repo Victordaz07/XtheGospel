@@ -1,0 +1,303 @@
+import React, { useState } from 'react';
+import {
+    View,
+    Text,
+    StyleSheet,
+    TouchableOpacity,
+    Alert,
+} from 'react-native';
+import { useI18n } from '../../../context/I18nContext';
+import Quiz from './components/Quiz';
+import Reflections from './components/Reflections';
+
+interface QuizQuestion {
+    id: string;
+    question: string;
+    options: string[];
+    correctAnswer: number;
+    explanation?: string;
+}
+
+interface LessonCompletionProps {
+    lessonTitle: string;
+    questions: QuizQuestion[];
+    onComplete: () => void;
+    onBack: () => void;
+}
+
+type CompletionStep = 'quiz' | 'reflections' | 'finished';
+
+export default function LessonCompletion({
+    lessonTitle,
+    questions,
+    onComplete,
+    onBack
+}: LessonCompletionProps) {
+    const { t } = useI18n();
+    const [currentStep, setCurrentStep] = useState<CompletionStep>('quiz');
+    const [quizScore, setQuizScore] = useState<{ score: number; total: number } | null>(null);
+    const [reflection, setReflection] = useState<string>('');
+    const [shareWithMissionaries, setShareWithMissionaries] = useState(false);
+
+    const handleQuizComplete = (score: number, totalQuestions: number) => {
+        setQuizScore({ score, total: totalQuestions });
+        setCurrentStep('reflections');
+    };
+
+    const handleReflectionSave = (reflectionText: string, share: boolean) => {
+        setReflection(reflectionText);
+        setShareWithMissionaries(share);
+        setCurrentStep('finished');
+    };
+
+    const handleFinishLesson = () => {
+        Alert.alert(
+            t('completion.congratulations'),
+            t('completion.completedMessage'),
+            [
+                {
+                    text: t('completion.continue'),
+                    onPress: onComplete,
+                },
+            ]
+        );
+    };
+
+    const handleBackToQuiz = () => {
+        setCurrentStep('quiz');
+    };
+
+    const handleBackToReflections = () => {
+        setCurrentStep('reflections');
+    };
+
+    const renderHeader = () => (
+        <View style={styles.header}>
+            <TouchableOpacity style={styles.backButton} onPress={onBack}>
+                <Text style={styles.backButtonText}>← {t('back')}</Text>
+            </TouchableOpacity>
+            <Text style={styles.headerTitle}>{lessonTitle}</Text>
+            <View style={styles.stepIndicator}>
+                <View style={[styles.step, currentStep === 'quiz' && styles.activeStep]} />
+                <View style={[styles.step, currentStep === 'reflections' && styles.activeStep]} />
+                <View style={[styles.step, currentStep === 'finished' && styles.activeStep]} />
+            </View>
+        </View>
+    );
+
+    const renderFinishedScreen = () => (
+        <View style={styles.finishedContainer}>
+            <View style={styles.completionIcon}>
+                <Text style={styles.completionEmoji}>🎉</Text>
+            </View>
+
+            <Text style={styles.completionTitle}>{t('completion.congratulations')}</Text>
+            <Text style={styles.completionSubtitle}>
+                {t('completion.lessonCompleted')} "{lessonTitle}"
+            </Text>
+
+            {quizScore && (
+                <View style={styles.scoreSummary}>
+                    <Text style={styles.scoreTitle}>{t('completion.quizScore')}</Text>
+                    <Text style={styles.scoreText}>
+                        {quizScore.score} / {quizScore.total} ({Math.round((quizScore.score / quizScore.total) * 100)}%)
+                    </Text>
+                </View>
+            )}
+
+            {reflection && (
+                <View style={styles.reflectionSummary}>
+                    <Text style={styles.reflectionTitle}>{t('completion.yourReflection')}</Text>
+                    <Text style={styles.reflectionPreview} numberOfLines={3}>
+                        {reflection}
+                    </Text>
+                    {shareWithMissionaries && (
+                        <Text style={styles.shareNote}>{t('completion.willShare')}</Text>
+                    )}
+                </View>
+            )}
+
+            <TouchableOpacity style={styles.finishButton} onPress={handleFinishLesson}>
+                <Text style={styles.finishButtonText}>{t('completion.finishLesson')}</Text>
+            </TouchableOpacity>
+
+            <View style={styles.navigationButtons}>
+                <TouchableOpacity style={styles.secondaryButton} onPress={handleBackToQuiz}>
+                    <Text style={styles.secondaryButtonText}>{t('completion.reviewQuiz')}</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.secondaryButton} onPress={handleBackToReflections}>
+                    <Text style={styles.secondaryButtonText}>{t('completion.editReflection')}</Text>
+                </TouchableOpacity>
+            </View>
+        </View>
+    );
+
+    return (
+        <View style={styles.container}>
+            {renderHeader()}
+
+            {currentStep === 'quiz' && (
+                <Quiz questions={questions} onComplete={handleQuizComplete} />
+            )}
+
+            {currentStep === 'reflections' && (
+                <Reflections
+                    lessonTitle={lessonTitle}
+                    onSave={handleReflectionSave}
+                />
+            )}
+
+            {currentStep === 'finished' && renderFinishedScreen()}
+        </View>
+    );
+}
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#f9fafb',
+    },
+    header: {
+        backgroundColor: '#ffffff',
+        paddingHorizontal: 20,
+        paddingVertical: 12,
+        borderBottomWidth: 1,
+        borderBottomColor: '#e5e7eb',
+    },
+    backButton: {
+        alignSelf: 'flex-start',
+        paddingVertical: 8,
+        paddingHorizontal: 12,
+        backgroundColor: '#6b7280',
+        borderRadius: 8,
+        marginBottom: 12,
+    },
+    backButtonText: {
+        color: '#ffffff',
+        fontSize: 14,
+        fontWeight: '600',
+    },
+    headerTitle: {
+        fontSize: 20,
+        fontWeight: '600',
+        color: '#1f2937',
+        textAlign: 'center',
+        marginBottom: 16,
+    },
+    stepIndicator: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        gap: 8,
+    },
+    step: {
+        width: 8,
+        height: 8,
+        borderRadius: 4,
+        backgroundColor: '#d1d5db',
+    },
+    activeStep: {
+        backgroundColor: '#3b82f6',
+    },
+    finishedContainer: {
+        flex: 1,
+        padding: 20,
+        justifyContent: 'center',
+    },
+    completionIcon: {
+        alignItems: 'center',
+        marginBottom: 24,
+    },
+    completionEmoji: {
+        fontSize: 64,
+    },
+    completionTitle: {
+        fontSize: 28,
+        fontWeight: '700',
+        color: '#1f2937',
+        textAlign: 'center',
+        marginBottom: 8,
+    },
+    completionSubtitle: {
+        fontSize: 16,
+        color: '#6b7280',
+        textAlign: 'center',
+        marginBottom: 32,
+    },
+    scoreSummary: {
+        backgroundColor: '#ffffff',
+        borderRadius: 12,
+        padding: 16,
+        marginBottom: 16,
+        alignItems: 'center',
+        borderLeftWidth: 4,
+        borderLeftColor: '#10b981',
+    },
+    scoreTitle: {
+        fontSize: 16,
+        fontWeight: '600',
+        color: '#1f2937',
+        marginBottom: 4,
+    },
+    scoreText: {
+        fontSize: 20,
+        fontWeight: '700',
+        color: '#10b981',
+    },
+    reflectionSummary: {
+        backgroundColor: '#ffffff',
+        borderRadius: 12,
+        padding: 16,
+        marginBottom: 24,
+        borderLeftWidth: 4,
+        borderLeftColor: '#3b82f6',
+    },
+    reflectionTitle: {
+        fontSize: 16,
+        fontWeight: '600',
+        color: '#1f2937',
+        marginBottom: 8,
+    },
+    reflectionPreview: {
+        fontSize: 14,
+        color: '#6b7280',
+        lineHeight: 20,
+    },
+    shareNote: {
+        fontSize: 12,
+        color: '#10b981',
+        fontWeight: '600',
+        marginTop: 8,
+    },
+    finishButton: {
+        backgroundColor: '#10b981',
+        borderRadius: 12,
+        paddingVertical: 16,
+        paddingHorizontal: 24,
+        alignItems: 'center',
+        marginBottom: 16,
+    },
+    finishButtonText: {
+        color: '#ffffff',
+        fontSize: 16,
+        fontWeight: '600',
+    },
+    navigationButtons: {
+        flexDirection: 'row',
+        gap: 12,
+    },
+    secondaryButton: {
+        flex: 1,
+        backgroundColor: '#ffffff',
+        borderRadius: 12,
+        paddingVertical: 12,
+        paddingHorizontal: 16,
+        alignItems: 'center',
+        borderWidth: 1,
+        borderColor: '#d1d5db',
+    },
+    secondaryButtonText: {
+        color: '#6b7280',
+        fontSize: 14,
+        fontWeight: '600',
+    },
+});

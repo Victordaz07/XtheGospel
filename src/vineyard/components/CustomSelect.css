@@ -1,0 +1,151 @@
+/* Custom Select - Clean, minimal design matching the rest of the app */
+.custom-select-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.custom-select-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #4A4A4A;
+}
+
+.custom-select {
+  position: relative;
+  width: 100%;
+}
+
+.custom-select-trigger {
+  width: 100%;
+  padding: 0.75rem 1.25rem;
+  padding-right: 2.5rem;
+  border-radius: 20px;
+  border: 1px solid rgba(224, 230, 255, 0.8);
+  background: rgba(255, 255, 255, 0.95);
+  color: #4A4A4A;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.custom-select-trigger:hover {
+  border-color: #9AB7FF;
+  box-shadow: 0 2px 12px rgba(154, 183, 255, 0.15);
+  background-color: #FFFFFF;
+}
+
+.custom-select.open .custom-select-trigger {
+  border-color: #9AB7FF;
+  box-shadow: 0 0 0 3px rgba(154, 183, 255, 0.1), 0 2px 12px rgba(154, 183, 255, 0.15);
+  background-color: #FFFFFF;
+}
+
+.custom-select-value {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.custom-select-arrow {
+  position: absolute;
+  right: 1rem;
+  font-size: 0.75rem;
+  color: #5B6C94;
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+.custom-select-arrow.open {
+  transform: rotate(180deg);
+}
+
+.custom-select-dropdown {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  right: 0;
+  background: #FFFFFF;
+  border-radius: 20px;
+  border: 1px solid rgba(224, 230, 255, 0.8);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08);
+  z-index: 1000;
+  overflow: hidden;
+  animation: dropdownFadeIn 0.2s ease;
+}
+
+@keyframes dropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.custom-select-options {
+  list-style: none;
+  margin: 0;
+  padding: 0.5rem 0;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.custom-select-option {
+  padding: 0.75rem 1.25rem;
+  font-size: 0.875rem;
+  color: #4A4A4A;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.custom-select-option:hover {
+  background: linear-gradient(135deg, #EEF3FF 0%, #E4E9F8 100%);
+  color: #1A1A1A;
+}
+
+.custom-select-option.selected {
+  background: linear-gradient(135deg, #A8C5FF 0%, #C7C9FF 100%);
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+.custom-select-option.selected:hover {
+  background: linear-gradient(135deg, #9AB7FF 0%, #B0B2FF 100%);
+}
+
+/* Scrollbar styling for dropdown */
+.custom-select-options::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-select-options::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: 10px;
+}
+
+.custom-select-options::-webkit-scrollbar-thumb {
+  background: rgba(91, 108, 148, 0.2);
+  border-radius: 10px;
+}
+
+.custom-select-options::-webkit-scrollbar-thumb:hover {
+  background: rgba(91, 108, 148, 0.3);
+}
+

@@ -1,0 +1,106 @@
+{
+  "leaders": {
+    "meta": {
+      "roleName": "Líderes de barrio y estaca",
+      "shortDescription": "Líderes que desean movilizar a los miembros y trabajar en unidad con los misioneros.",
+      "longDescription": "Este módulo ayuda a obispos, consejeros, presidentes de estaca y líderes de organización a entender su rol doctrinal y práctico en la obra misional, alinear esfuerzos con los misioneros de tiempo completo y cuidar de conversos y amigos de la Iglesia."
+    },
+    "home": {
+      "title": "Liderazgo en la Obra Misional",
+      "welcomeTitle": "Presidir es pastorear, no sólo administrar",
+      "welcomeSubtitle": "El Señor no llamó gerentes de agenda, sino pastores de almas. La forma en que un barrio vive la obra misional refleja cómo entiende el convenio de servir a Cristo.",
+      "sections": {
+        "vision": {
+          "title": "Visión Misional de Barrio",
+          "summary": "Ayuda al barrio a ver la obra misional como parte natural del discipulado, no como un programa de temporada."
+        },
+        "coordination": {
+          "title": "Coordinación con los Misioneros",
+          "summary": "Reuniones efectivas, metas realistas y un uso sabio del tiempo de los misioneros."
+        },
+        "care": {
+          "title": "Cuidado de Conversos y Amigos",
+          "summary": "Evitar que los recién bautizados se pierdan en el silencio después de la confirmación."
+        }
+      }
+    },
+    "vision": {
+      "title": "Construir una Visión Misional de Barrio",
+      "doctrine": {
+        "title": "Fundamento doctrinal",
+        "points": [
+          "La obra misional no es un programa separado, es parte central del convenio bautismal de 'tomar sobre nosotros el nombre de Cristo'.",
+          "Un barrio misional no es aquel que solo envía muchos misioneros, sino aquel que vive la doctrina de Cristo en el hogar, en el consejo y en la comunidad.",
+          "El liderazgo misional comienza en el corazón del obispo y del consejo de barrio: cómo oran, qué priorizan y de qué hablan delante de los jóvenes y los niños."
+        ],
+        "keyScriptures": [
+          "3 Nefi 5:13",
+          "DyC 4",
+          "DyC 88:81",
+          "Mosíah 18:8–10"
+        ]
+      },
+      "practical": {
+        "title": "Pasos prácticos",
+        "steps": [
+          "Incluir siempre un punto breve de 'obra misional' en el consejo de barrio, aunque no haya reportes espectaculares. La constancia enseña que esto importa.",
+          "Invitar periódicamente a miembros del barrio a compartir, en consejo, experiencias reales (éxitos y fracasos) al invitar amigos a venir a Cristo.",
+          "Alinear metas misionales con la realidad del barrio: menos números vacíos, más compromisos concretos: 'contactar a 3 amigos', 'acompañar a los misioneros una vez al mes', etc.",
+          "Celebrar las pequeñas victorias: un amigo que acepta orar, una familia que asiste a una actividad, un converso que recibe su recomendación limitada del templo."
+        ]
+      }
+    },
+    "coordination": {
+      "title": "Trabajar en Unidad con los Misioneros",
+      "principles": {
+        "title": "Principios clave",
+        "points": [
+          "Los misioneros sirven bajo la dirección del presidente de misión; el barrio colabora, no dirige de manera independiente.",
+          "Un plan misional efectivo comienza en el consejo de barrio y se implementa con los líderes de cuórum, Sociedad de Socorro y jóvenes.",
+          "Las reuniones de coordinación deben ser breves, enfocadas y espirituales, no una sesión de quejas ni de pura logística."
+        ]
+      },
+      "coordinationMeetings": {
+        "title": "Reuniones de coordinación efectivas",
+        "suggestedAgenda": [
+          "Oración y breve pensamiento centrado en la doctrina de Cristo o el recogimiento de Israel.",
+          "Reporte breve de misioneros: amigos en enseñanza, progreso de conversos recientes, necesidades clave.",
+          "Identificar 2–3 acciones concretas para la semana (miembros específicos que pueden ayudar, familias anfitrionas, oportunidades de servicio).",
+          "Asignar responsables claros y hacer un breve seguimiento de lo acordado la semana anterior.",
+          "Testimonios breves o impresiones espirituales finales."
+        ]
+      }
+    },
+    "convertCare": {
+      "title": "Cuidado de Conversos y Amigos",
+      "risks": {
+        "title": "Riesgos comunes",
+        "points": [
+          "Conversos que se sienten muy acompañados antes del bautismo pero muy solos después.",
+          "Expectativas irreales sobre el cambio de vida inmediato ('ahora ya debe saber todo').",
+          "Asignar al mismo converso a demasiadas organizaciones sin una amistad real que lo sostenga."
+        ]
+      },
+      "bestPractices": {
+        "title": "Mejores prácticas",
+        "points": [
+          "Asignar desde el inicio un 'núcleo de apoyo': familia amiga, líder de organización y un maestro o líder del cuórum que se vea con el converso con regularidad.",
+          "Involucrar a los conversos en servicio pequeño y real, no solo en recibir clases adicionales.",
+          "Trabajar en equipo: obispo, líderes de organización, misioneros y miembros amigos se comunican con respeto y propósito."
+        ]
+      }
+    },
+    "dashboardIdeas": {
+      "title": "Ideas para un panel de líder en la app",
+      "explanation": "En el futuro, esta app podría mostrar a los líderes un panel muy simple (sin datos confidenciales) con indicadores espirituales, no solo números.",
+      "examples": [
+        "Número de miembros que han agregado al menos un amigo en oración en 'Mis Amigos'.",
+        "Cantidad de miembros que acompañan a los misioneros al menos una vez al mes.",
+        "Conversos recientes que tienen asignado un 'núcleo de apoyo' completo.",
+        "Familias que participaron en al menos una noche de hogar misional en el trimestre."
+      ],
+      "note": "Estos indicadores nunca deben usarse para avergonzar, sino para discernir dónde ministrar mejor."
+    }
+  }
+}
+

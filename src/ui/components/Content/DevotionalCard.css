@@ -1,0 +1,77 @@
+.ui-devotional-card {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+.ui-devotional-card__header {
+  margin-bottom: var(--spacing-md, 16px);
+}
+
+.ui-devotional-card__title {
+  font-size: var(--font-size-xl, 20px);
+  font-weight: var(--font-weight-semibold, 600);
+  color: var(--color-text, #0F172A);
+  margin: 0;
+}
+
+.ui-devotional-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md, 16px);
+}
+
+.ui-devotional-card__scripture {
+  background: var(--color-surface, #FFFFFF);
+  padding: var(--spacing-md, 16px);
+  border-radius: var(--border-radius-md, 10px);
+  border-left: 4px solid var(--color-primary, #4F46E5);
+}
+
+.ui-devotional-card__scripture-ref {
+  font-weight: var(--font-weight-semibold, 600);
+  color: var(--color-primary, #4F46E5);
+  margin-bottom: var(--spacing-sm, 8px);
+  font-size: var(--font-size-sm, 14px);
+}
+
+.ui-devotional-card__scripture-text {
+  font-size: var(--font-size-md, 16px);
+  color: var(--color-text, #0F172A);
+  line-height: var(--line-height-relaxed, 1.6);
+  font-style: italic;
+}
+
+.ui-devotional-card__application {
+  background: rgba(255, 255, 255, 0.5);
+  padding: var(--spacing-md, 16px);
+  border-radius: var(--border-radius-md, 10px);
+}
+
+.ui-devotional-card__application p {
+  margin: 0;
+  font-size: var(--font-size-md, 16px);
+  color: var(--color-text, #0F172A);
+  line-height: var(--line-height-relaxed, 1.6);
+}
+
+.ui-devotional-card__action {
+  background: var(--color-primary-light, #6366F1);
+  padding: var(--spacing-md, 16px);
+  border-radius: var(--border-radius-md, 10px);
+  color: var(--color-text-on-primary, #FFFFFF);
+}
+
+.ui-devotional-card__action strong {
+  display: block;
+  margin-bottom: var(--spacing-xs, 4px);
+  font-size: var(--font-size-sm, 14px);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ui-devotional-card__feedback {
+  display: flex;
+  gap: var(--spacing-sm, 8px);
+  margin-top: var(--spacing-xs, 4px);
+}
+
