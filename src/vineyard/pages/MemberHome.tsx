@@ -1,6 +1,19 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaBook, FaHeart, FaPen, FaBullseye, FaBell, FaBars, FaHome, FaCompass, FaUsers, FaChartLine, FaUser, FaTrophy } from 'react-icons/fa';
+import {
+  FaBookOpen,
+  FaHandsHelping,
+  FaShareSquare,
+  FaBullhorn,
+  FaBell,
+  FaBars,
+  FaHome,
+  FaCompass,
+  FaUsers,
+  FaChartLine,
+  FaUser,
+  FaTrophy,
+} from 'react-icons/fa';
 import { useI18n } from '../../context/I18nContext';
 import { useMemberProgressStore } from '../state/memberProgressStore';
 import {
@@ -32,10 +45,30 @@ export const MemberHome: React.FC = () => {
   };
 
   const quickActions = [
-    { icon: FaBook, label: t('memberHome.quickActions.dailyReading'), color: 'blue', link: '/member/study' },
-    { icon: FaHeart, label: t('memberHome.quickActions.meditation'), color: 'green', link: '/member/activities' },
-    { icon: FaPen, label: t('memberHome.quickActions.journal'), color: 'yellow', link: '/member/progress' },
-    { icon: FaBullseye, label: t('memberHome.quickActions.goals'), color: 'purple', link: '/member/progress' },
+    {
+      icon: FaBookOpen,
+      label: t('memberHome.quickActions.studyPlan') || 'Plan de estudio',
+      color: 'blue',
+      link: '/member/study',
+    },
+    {
+      icon: FaHandsHelping,
+      label: t('memberHome.quickActions.followUp') || 'Seguimiento de amigos',
+      color: 'green',
+      link: '/member/friends',
+    },
+    {
+      icon: FaShareSquare,
+      label: t('memberHome.quickActions.shareResource') || 'Compartir recurso',
+      color: 'yellow',
+      link: '/member/support',
+    },
+    {
+      icon: FaBullhorn,
+      label: t('memberHome.quickActions.logService') || 'Registrar servicio',
+      color: 'purple',
+      link: '/member/activities',
+    },
   ];
 
   return (

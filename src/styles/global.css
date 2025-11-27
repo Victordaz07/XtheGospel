@@ -54,6 +54,15 @@
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
   
+  /* Layout globals */
+  --app-content-max-width: 460px;
+  --app-shell-max-width: 460px;
+  --app-content-padding-x: 16px;
+  --app-content-padding-top: 24px;
+  --app-content-padding-bottom: 40px;
+  --app-bottom-nav-max-width: 460px;
+  --app-bottom-nav-height: 88px;
+  
   /* Espaciado */
   --spacing-xs: 4px;
   --spacing-sm: 8px;

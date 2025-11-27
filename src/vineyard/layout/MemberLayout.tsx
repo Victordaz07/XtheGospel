@@ -106,9 +106,11 @@ export const MemberLayout: React.FC = () => {
 
   const bottomNavTabs = getBottomNavTabs();
 
+  const isProfilePage = location.pathname === '/member/profile';
+
   return (
     <div className="layout">
-      <div className="layout-shell">
+      <div className={`layout-shell ${isProfilePage ? 'layout-shell-profile' : ''}`}>
         <div className="layout-deco layout-deco-top" />
         <div className="layout-deco layout-deco-bottom" />
         <main className="layout-content">

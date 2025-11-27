@@ -25,9 +25,9 @@ import {
 } from 'react-icons/fa';
 import { useAuth } from '../../context/AuthContext';
 import { useI18n, Locale } from '../../context/I18nContext';
-import { LanguagePicker } from '../../components/LanguagePicker';
 import { RoleSettingsCard } from '../../components/RoleSettingsCard';
 import { ROLE_DEFINITIONS, UserRoleKey } from '../../config/roles';
+import { PageContainer, Card } from '../../ui/components';
 import '../Page.css';
 import './MemberProfile.css';
 
@@ -54,6 +54,13 @@ const localeLabels: Record<Locale, string> = {
   fr: 'Français',
   pt: 'Português',
 };
+
+const languageOptions: { code: Locale; name: string; flag: string }[] = [
+  { code: 'es', name: 'Español', flag: '🇪🇸' },
+  { code: 'en', name: 'English', flag: '🇺🇸' },
+  { code: 'fr', name: 'Français', flag: '🇫🇷' },
+  { code: 'pt', name: 'Português', flag: '🇧🇷' },
+];
 
 const roleHighlights: Record<
   UserRoleKey,
@@ -122,7 +129,7 @@ const DEFAULT_AVATAR =
 
 const MemberProfile: React.FC = () => {
   const { logout, userRole } = useAuth();
-  const { t, locale } = useI18n();
+  const { t, locale, setLocale } = useI18n();
   const navigate = useNavigate();
   const normalizedRole = (userRole ?? 'member') as UserRoleKey;
 
@@ -140,8 +147,30 @@ const MemberProfile: React.FC = () => {
   });
   const [isSavingProfile, setIsSavingProfile] = useState(false);
   const [showSavedMessage, setShowSavedMessage] = useState(false);
+  const [showLanguageModal, setShowLanguageModal] = useState(false);
+  const [showRoleSheet, setShowRoleSheet] = useState(false);
 
   const avatarInputRef = useRef<HTMLInputElement | null>(null);
+
+  const openLanguageModal = () => {
+    setShowLanguageModal(true);
+    setShowRoleSheet(false);
+  };
+
+  const openRoleSheet = () => {
+    setShowRoleSheet(true);
+    setShowLanguageModal(false);
+  };
+
+  const closeAllOverlays = () => {
+    setShowLanguageModal(false);
+    setShowRoleSheet(false);
+  };
+
+  const handleLanguageSelect = async (code: Locale) => {
+    await setLocale(code);
+    setShowLanguageModal(false);
+  };
 
   const formattedMemberSince = useMemo(() => {
     try {
@@ -202,54 +231,123 @@ const MemberProfile: React.FC = () => {
   const activeRoleDefinition = ROLE_DEFINITIONS[normalizedRole];
   const currentHighlight = roleHighlights[normalizedRole];
 
-  return (
-    <div className="page profile-page">
-      <button
-        className="profile-back-button"
-        onClick={() => navigate(-1)}
-        aria-label={t('common.back') || 'Volver'}
-      >
-        <FaArrowLeft />
-        <span>{t('common.back') || 'Volver'}</span>
-      </button>
+  const currentLanguage = languageOptions.find(opt => opt.code === locale);
 
-      <div className="page-content profile-page-content">
-        <header className="profile-hero-card">
-          <div className="profile-avatar-wrapper">
-            <img
-              src={profileData.avatarUrl}
-              alt={profileData.name}
-              className="profile-avatar"
-            />
-            <button
-              type="button"
-              className="profile-avatar-upload"
-              onClick={() => avatarInputRef.current?.click()}
-            >
-              <FaCamera />
-            </button>
-            <input
-              ref={avatarInputRef}
-              type="file"
-              accept="image/*"
-              onChange={handleAvatarUpload}
-              className="profile-avatar-input"
-            />
-          </div>
-          <div className="profile-hero-text">
-            <h1 className="profile-hero-name">{profileData.name}</h1>
-            <span className="profile-role-pill">
-              {t(activeRoleDefinition.i18nKey)}
-            </span>
-            <p className="profile-hero-meta">
-              {t('memberProfile.hero.memberSince', {
-                date: formattedMemberSince,
-              })}
-            </p>
-          </div>
+  return (
+    <PageContainer>
+      <div className="member-profile-page">
+        <header className="member-profile-header">
+          <h1>{t('memberProfile.preferences.title') || 'Preferencias'}</h1>
+          <p>{t('memberProfile.preferences.subtitle') || 'Personaliza cómo usas la app.'}</p>
         </header>
 
-        <section className="profile-section">
+        {/* Preferencias */}
+        <Card className="member-profile-card">
+          <div className="profile-preference-row">
+            <div className="profile-preference-info">
+              <div className="profile-preference-icon profile-preference-icon-blue">
+                <FaGlobe />
+              </div>
+              <div>
+                <p className="profile-preference-title">
+                  {t('memberProfile.preferences.language')}
+                </p>
+                <p className="profile-preference-subtitle">{localeLabel}</p>
+              </div>
+            </div>
+            <button
+              type="button"
+              className="profile-language-button"
+              onClick={openLanguageModal}
+            >
+              {currentLanguage?.flag} {currentLanguage?.name}
+              <FaChevronRight />
+            </button>
+          </div>
+          <div className="profile-preference-row">
+            <div className="profile-preference-info">
+              <div className="profile-preference-icon profile-preference-icon-violet">
+                <FaBell />
+              </div>
+              <div>
+                <p className="profile-preference-title">
+                  {t('memberProfile.preferences.notifications')}
+                </p>
+                <p className="profile-preference-subtitle">
+                  {t('memberProfile.preferences.notificationsHint')}
+                </p>
+              </div>
+            </div>
+            <label className="profile-switch">
+              <input
+                type="checkbox"
+                checked={preferences.notifications}
+                onChange={togglePreference('notifications')}
+              />
+              <span className="profile-switch-track" />
+            </label>
+          </div>
+          <div className="profile-preference-row">
+            <div className="profile-preference-info">
+              <div className="profile-preference-icon profile-preference-icon-green">
+                <FaMoon />
+              </div>
+              <div>
+                <p className="profile-preference-title">
+                  {t('memberProfile.preferences.darkMode')}
+                </p>
+                <p className="profile-preference-subtitle">
+                  {t('memberProfile.preferences.darkModeHint')}
+                </p>
+              </div>
+            </div>
+            <label className="profile-switch">
+              <input
+                type="checkbox"
+                checked={preferences.darkMode}
+                onChange={togglePreference('darkMode')}
+              />
+              <span className="profile-switch-track" />
+            </label>
+          </div>
+        </Card>
+
+        {/* Cambiar de rol */}
+        <Card className="member-profile-card">
+          <div className="profile-section-heading profile-section-heading--plain">
+            <div>
+              <h2 className="profile-section-title">
+                {t('memberProfile.roleSwitcher.title')}
+              </h2>
+              <p className="profile-section-subtitle">
+                {t('memberProfile.roleSwitcher.subtitle')}
+              </p>
+            </div>
+          </div>
+          <button
+            type="button"
+            className="profile-role-button"
+            onClick={openRoleSheet}
+          >
+            <div className="profile-role-button-content">
+              <span className="profile-role-button-icon">
+                {ROLE_DEFINITIONS[normalizedRole].icon}
+              </span>
+              <div>
+                <p className="profile-role-button-title">
+                  {t(ROLE_DEFINITIONS[normalizedRole].i18nKey)}
+                </p>
+                <p className="profile-role-button-subtitle">
+                  {t('memberProfile.roleSwitcher.subtitle')}
+                </p>
+              </div>
+            </div>
+            <FaChevronRight />
+          </button>
+        </Card>
+
+        {/* Info personal */}
+        <Card className="member-profile-card">
           <div className="profile-section-heading">
             <div className="profile-section-icon profile-section-icon-primary">
               <FaUser />
@@ -263,7 +361,7 @@ const MemberProfile: React.FC = () => {
               </p>
             </div>
           </div>
-          <form className="profile-card profile-form-card profile-form-card-stack" onSubmit={handleProfileSave}>
+          <form className="profile-form-card" onSubmit={handleProfileSave}>
             <div className="profile-field">
               <label className="profile-label" htmlFor="profile-full-name">
                 {t('memberProfile.personalInfo.fullName')}
@@ -331,227 +429,58 @@ const MemberProfile: React.FC = () => {
               )}
             </div>
           </form>
-        </section>
+        </Card>
 
-        <section className="profile-section">
-          <div className="profile-section-heading">
-            <div className="profile-section-icon profile-section-icon-secondary">
-              <FaSlidersH />
-            </div>
-            <div>
-              <h2 className="profile-section-title">
-                {t('memberProfile.preferences.title')}
-              </h2>
-              <p className="profile-section-subtitle">
-                {t('memberProfile.preferences.subtitle')}
-              </p>
+        {/* Modal de idioma */}
+        {showLanguageModal && (
+          <div className="modal-backdrop" onClick={closeAllOverlays}>
+            <div className="modal-panel" onClick={(e) => e.stopPropagation()}>
+              <h3 className="modal-title">{t('memberProfile.preferences.language') || 'Idioma'}</h3>
+              <div className="modal-language-list">
+                {languageOptions.map((option) => (
+                  <button
+                    key={option.code}
+                    type="button"
+                    className={`modal-language-option ${locale === option.code ? 'selected' : ''}`}
+                    onClick={() => handleLanguageSelect(option.code)}
+                  >
+                    <span>{option.flag} {option.name}</span>
+                    {locale === option.code && <span className="checkmark">✓</span>}
+                  </button>
+                ))}
+              </div>
+              <button
+                type="button"
+                className="modal-cancel-button"
+                onClick={closeAllOverlays}
+              >
+                {t('common.cancel') || 'Cancelar'}
+              </button>
             </div>
           </div>
-          <div className="profile-card profile-preferences-card">
-            <div className="profile-preference-row">
-              <div className="profile-preference-info">
-                <div className="profile-preference-icon profile-preference-icon-blue">
-                  <FaGlobe />
-                </div>
-                <div>
-                  <p className="profile-preference-title">
-                    {t('memberProfile.preferences.language')}
-                  </p>
-                  <p className="profile-preference-subtitle">{localeLabel}</p>
-                </div>
-              </div>
-              <div className="profile-language-picker-wrapper">
-                <LanguagePicker />
-              </div>
-            </div>
-            <div className="profile-preference-row">
-              <div className="profile-preference-info">
-                <div className="profile-preference-icon profile-preference-icon-violet">
-                  <FaBell />
-                </div>
-                <div>
-                  <p className="profile-preference-title">
-                    {t('memberProfile.preferences.notifications')}
-                  </p>
-                  <p className="profile-preference-subtitle">
-                    {t('memberProfile.preferences.notificationsHint')}
-                  </p>
-                </div>
-              </div>
-              <label className="profile-switch">
-                <input
-                  type="checkbox"
-                  checked={preferences.notifications}
-                  onChange={togglePreference('notifications')}
-                />
-                <span className="profile-switch-track" />
-              </label>
-            </div>
-            <div className="profile-preference-row">
-              <div className="profile-preference-info">
-                <div className="profile-preference-icon profile-preference-icon-green">
-                  <FaMoon />
-                </div>
-                <div>
-                  <p className="profile-preference-title">
-                    {t('memberProfile.preferences.darkMode')}
-                  </p>
-                  <p className="profile-preference-subtitle">
-                    {t('memberProfile.preferences.darkModeHint')}
-                  </p>
-                </div>
-              </div>
-              <label className="profile-switch">
-                <input
-                  type="checkbox"
-                  checked={preferences.darkMode}
-                  onChange={togglePreference('darkMode')}
-                />
-                <span className="profile-switch-track" />
-              </label>
-            </div>
-          </div>
-        </section>
+        )}
 
-        <section className="profile-section">
-          <div className="profile-section-heading profile-section-heading--plain">
-            <div>
-              <h2 className="profile-section-title">
-                {t('memberProfile.roleSwitcher.title')}
-              </h2>
-              <p className="profile-section-subtitle">
-                {t('memberProfile.roleSwitcher.subtitle')}
-              </p>
+        {/* Hoja inferior de rol */}
+        {showRoleSheet && (
+          <div className="sheet-backdrop" onClick={closeAllOverlays}>
+            <div className="sheet-panel" onClick={(e) => e.stopPropagation()}>
+              <h3 className="sheet-title">{t('memberProfile.roleSwitcher.title')}</h3>
+              <p className="sheet-subtitle">{t('memberProfile.roleSwitcher.subtitle')}</p>
+              <div className="sheet-content">
+                <RoleSettingsCard currentRole={normalizedRole} />
+              </div>
+              <button
+                type="button"
+                className="sheet-close-button"
+                onClick={closeAllOverlays}
+              >
+                {t('common.close') || 'Cerrar'}
+              </button>
             </div>
           </div>
-          <div className="profile-card profile-role-switcher-card">
-            <RoleSettingsCard currentRole={normalizedRole} />
-          </div>
-        </section>
-
-        <section className="profile-section">
-          <div className="profile-section-heading">
-            <div className="profile-section-icon profile-section-icon-gold">
-              <FaUser />
-            </div>
-            <div>
-              <h2 className="profile-section-title">
-                {t('memberProfile.roleHighlights.title')}
-              </h2>
-              <p className="profile-section-subtitle">
-                {t(currentHighlight.eyebrowKey)}
-              </p>
-            </div>
-          </div>
-          <div className="profile-card profile-role-highlight-card">
-            <span className="profile-role-eyebrow">
-              {t(activeRoleDefinition.i18nKey)}
-            </span>
-            <h3 className="profile-role-title">{t(currentHighlight.titleKey)}</h3>
-            <p className="profile-role-description">
-              {t(currentHighlight.descriptionKey)}
-            </p>
-            <div className="profile-role-checkpoints">
-              {currentHighlight.checkpoints.map((item) => (
-                <div key={item.titleKey} className="profile-role-checkpoint">
-                  <p className="profile-role-checkpoint-title">
-                    {t(item.titleKey)}
-                  </p>
-                  <p className="profile-role-checkpoint-text">
-                    {t(item.descriptionKey)}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="profile-section">
-          <div className="profile-section-heading">
-            <div className="profile-section-icon profile-section-icon-primary">
-              <FaCog />
-            </div>
-            <div>
-              <h2 className="profile-section-title">
-                {t('memberProfile.appSettings.title')}
-              </h2>
-              <p className="profile-section-subtitle">
-                {t('memberProfile.appSettings.subtitle')}
-              </p>
-            </div>
-          </div>
-          <div className="profile-card profile-app-settings-card">
-            <button
-              className="profile-setting-row"
-              type="button"
-              onClick={() => handleAppSettingNavigation('/member/support')}
-            >
-              <div className="profile-setting-icon">
-                <FaShieldAlt />
-              </div>
-              <div className="profile-setting-copy">
-                <p>{t('memberProfile.appSettings.privacy')}</p>
-                <span>{t('memberProfile.appSettings.privacyHint')}</span>
-              </div>
-              <FaChevronRight className="profile-setting-arrow" />
-            </button>
-            <button
-              className="profile-setting-row"
-              type="button"
-              onClick={() => handleAppSettingNavigation('/member/support')}
-            >
-              <div className="profile-setting-icon">
-                <FaQuestionCircle />
-              </div>
-              <div className="profile-setting-copy">
-                <p>{t('memberProfile.appSettings.help')}</p>
-                <span>{t('memberProfile.appSettings.helpHint')}</span>
-              </div>
-              <FaChevronRight className="profile-setting-arrow" />
-            </button>
-            <button
-              className="profile-setting-row"
-              type="button"
-              onClick={() => handleAppSettingNavigation('/member/about')}
-            >
-              <div className="profile-setting-icon">
-                <FaInfoCircle />
-              </div>
-              <div className="profile-setting-copy">
-                <p>{t('memberProfile.appSettings.about')}</p>
-                <span>{t('memberProfile.appSettings.aboutHint')}</span>
-              </div>
-              <FaChevronRight className="profile-setting-arrow" />
-            </button>
-          </div>
-        </section>
-
-        <section className="profile-section">
-          <div className="profile-card profile-account-actions">
-            <button
-              type="button"
-              className="profile-secondary-btn"
-              onClick={handleLogout}
-            >
-              <FaSignOutAlt />
-              {t('profile.logout')}
-            </button>
-            <button
-              type="button"
-              className="profile-danger-btn"
-              onClick={handleDeleteAccount}
-            >
-              <FaTrashAlt />
-              {t('memberProfile.accountActions.delete')}
-            </button>
-          </div>
-          <div className="profile-footer">
-            <p>{t('memberProfile.footer.version', { version: '1.0.0' })}</p>
-            <p>{t('memberProfile.footer.tagline')}</p>
-          </div>
-        </section>
+        )}
       </div>
-    </div>
+    </PageContainer>
   );
 };
 

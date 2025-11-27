@@ -1,4 +1,15 @@
 .page {
+  width: 100%;
+  max-width: var(--app-content-max-width, 460px);
+  margin-left: auto;
+  margin-right: auto;
+  padding: var(--app-content-padding-top, 24px)
+    var(--app-content-padding-x, 16px)
+    calc(
+      var(--app-content-padding-bottom, 40px) +
+        var(--app-bottom-nav-height, 88px)
+    );
+  box-sizing: border-box;
   min-height: 100%;
   background-color: transparent;
   animation: fadeIn var(--transition-slow) ease-out;
@@ -185,11 +196,13 @@
 }
 
 .page-content {
-  padding: 24px;
-  max-width: 1200px;
-  margin: 0 auto;
   width: 100%;
   position: relative;
+  padding: var(--spacing-lg, 24px) 0 var(--spacing-xl, 32px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg, 24px);
+  box-sizing: border-box;
 }
 
 .profile-section {
