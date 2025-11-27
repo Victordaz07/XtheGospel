@@ -131,23 +131,23 @@ export const MemberLayout: React.FC = () => {
             <Route path="*" element={<Navigate to="/member/home" replace />} />
           </Routes>
         </main>
+        <nav className="bottom-nav">
+          {bottomNavTabs.map((tab) => {
+            const isActive = location.pathname === tab.path || 
+                           (tab.path === '/member/home' && location.pathname === '/member');
+            return (
+              <Link
+                key={tab.path}
+                to={tab.path}
+                className={`nav-item ${isActive ? 'active' : ''}`}
+              >
+                <span className="nav-icon">{tab.icon}</span>
+                <span className="nav-label">{tab.label}</span>
+              </Link>
+            );
+          })}
+        </nav>
       </div>
-      <nav className="bottom-nav">
-        {bottomNavTabs.map((tab) => {
-          const isActive = location.pathname === tab.path || 
-                         (tab.path === '/member/home' && location.pathname === '/member');
-          return (
-            <Link
-              key={tab.path}
-              to={tab.path}
-              className={`nav-item ${isActive ? 'active' : ''}`}
-            >
-              <span className="nav-icon">{tab.icon}</span>
-              <span className="nav-label">{tab.label}</span>
-            </Link>
-          );
-        })}
-      </nav>
     </div>
   );
 };

@@ -9,8 +9,7 @@
   padding-bottom: var(
     --ui-page-container-padding-bottom,
     calc(
-      var(--app-content-padding-bottom, 40px) +
-        var(--app-bottom-nav-height, 88px)
+      var(--app-content-padding-bottom, 40px)
     )
   );
   box-sizing: border-box;

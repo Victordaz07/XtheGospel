@@ -14,15 +14,15 @@ export default function Lesson1() {
   const [currentTopicIndex, setCurrentTopicIndex] = React.useState<number>(0);
 
   const topics = [
-    { id: "lesson1.topic1", icon: "👨‍👩‍👧‍👦" },
-    { id: "lesson1.topic2", icon: "🏠" },
-    { id: "lesson1.topic3", icon: "📜" },
-    { id: "lesson1.topic4", icon: "✝️" },
-    { id: "lesson1.topic5", icon: "🌑" },
-    { id: "lesson1.topic6", icon: "✨" },
-    { id: "lesson1.topic7", icon: "👨‍💼" },
-    { id: "lesson1.topic8", icon: "📖" },
-    { id: "lesson1.topic9", icon: "🙏" }
+    { id: "lesson1.intro", icon: "🙏" },
+    { id: "lesson1.christ_church", icon: "✝️" },
+    { id: "lesson1.apostasy", icon: "🌑" },
+    { id: "lesson1.jose_smith_searches", icon: "🔍" },
+    { id: "lesson1.first_vision", icon: "✨" },
+    { id: "lesson1.book_of_mormon", icon: "📖" },
+    { id: "lesson1.priesthood_and_church_today", icon: "👨‍💼" },
+    { id: "lesson1.objections", icon: "❓" },
+    { id: "lesson1.testimony_and_invitations", icon: "💬" }
   ];
 
   const handleTopicPress = (topicId: string) => {

@@ -50,19 +50,19 @@ const InvestigatorLayout: React.FC = () => {
             <Route path="/" element={<Navigate to="/home" replace />} />
           </Routes>
         </main>
+        <nav className="bottom-nav">
+          {tabs.map((tab) => (
+            <Link
+              key={tab.path}
+              to={tab.path}
+              className={`nav-item ${location.pathname.startsWith(tab.path) ? 'active' : ''}`}
+            >
+              <span className="nav-icon">{tab.icon}</span>
+              <span className="nav-label">{tab.label}</span>
+            </Link>
+          ))}
+        </nav>
       </div>
-      <nav className="bottom-nav">
-        {tabs.map((tab) => (
-          <Link
-            key={tab.path}
-            to={tab.path}
-            className={`nav-item ${location.pathname.startsWith(tab.path) ? 'active' : ''}`}
-          >
-            <span className="nav-icon">{tab.icon}</span>
-            <span className="nav-label">{tab.label}</span>
-          </Link>
-        ))}
-      </nav>
     </div>
   );
 };

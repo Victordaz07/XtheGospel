@@ -5,10 +5,7 @@
   margin-right: auto;
   padding: var(--app-content-padding-top, 24px)
     var(--app-content-padding-x, 16px)
-    calc(
-      var(--app-content-padding-bottom, 40px) +
-        var(--app-bottom-nav-height, 88px)
-    );
+    var(--app-content-padding-bottom, 40px);
   box-sizing: border-box;
   min-height: 100%;
   background-color: transparent;

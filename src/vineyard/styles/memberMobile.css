@@ -83,7 +83,7 @@
 /* Main content */
 .member-mobile-main {
   padding: 1.5rem var(--app-content-padding-x, 16px);
-  padding-bottom: 6rem; /* Space for bottom nav */
+  padding-bottom: 1.5rem;
 }
 
 /* Gradient cards */

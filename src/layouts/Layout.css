@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 32px 16px 100px;
+  padding: 32px 16px;
   position: relative;
 }
 
@@ -14,10 +14,12 @@
   min-height: 640px;
   background: #fff;
   border-radius: 36px;
-  padding: 0 0 120px;
+  padding: 0;
   box-shadow: 0 30px 70px rgba(15, 23, 42, 0.2);
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .layout-deco {
@@ -45,8 +47,8 @@
 .layout-content {
   position: relative;
   z-index: 1;
-  min-height: 100%;
-  padding-bottom: 32px;
+  flex: 1;
+  padding-bottom: 16px;
   overflow: hidden auto;
   background: transparent;
   padding-top: 0;
@@ -72,21 +74,19 @@
 }
 
 .bottom-nav {
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: calc(100% - 32px);
-  max-width: var(--app-bottom-nav-max-width, var(--app-content-max-width, 460px));
+  position: relative;
+  width: 100%;
+  max-width: 100%;
   background: #fff;
-  border-radius: 24px;
-  box-shadow: 0 25px 45px rgba(15, 23, 42, 0.18);
+  border-radius: 0 0 36px 36px;
+  box-shadow: 0 -4px 20px rgba(15, 23, 42, 0.08);
   padding: 10px 12px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid rgba(148, 163, 184, 0.2);
-  z-index: 10;
+  border-top: 1px solid rgba(148, 163, 184, 0.2);
+  z-index: 1;
+  flex-shrink: 0;
 }
 
 .nav-item {
@@ -129,7 +129,7 @@
 
 @media (max-width: 520px) {
   .layout {
-    padding: 16px 12px 90px;
+    padding: 16px 12px;
   }
 
   .layout-shell {
@@ -137,7 +137,7 @@
   }
 
   .bottom-nav {
-    width: calc(100% - 24px);
+    border-radius: 0 0 28px 28px;
     padding: 8px 10px;
   }
 }
