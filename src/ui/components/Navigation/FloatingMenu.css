@@ -37,7 +37,8 @@
   position: absolute;
   top: 60px;
   right: 0;
-  min-width: 200px;
+  min-width: auto;
+  width: auto;
   background: #ffffff;
   border-radius: 16px;
   box-shadow: 0 8px 32px rgba(15, 23, 42, 0.2);
@@ -67,8 +68,8 @@
 .floating-menu-item {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 12px 16px;
+  justify-content: center;
+  padding: 12px;
   border-radius: 12px;
   text-decoration: none;
   color: #334155;
@@ -76,6 +77,9 @@
   font-weight: 500;
   transition: all 0.2s ease;
   cursor: pointer;
+  width: 44px;
+  height: 44px;
+  box-sizing: border-box;
 }
 
 .floating-menu-item:hover {
@@ -90,17 +94,13 @@
 }
 
 .floating-menu-item-icon {
-  font-size: 18px;
+  font-size: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 24px;
+  width: 100%;
+  height: 100%;
   color: inherit;
-}
-
-.floating-menu-item-label {
-  flex: 1;
-  white-space: nowrap;
 }
 
 /* Responsive */
@@ -117,19 +117,19 @@
   }
 
   .floating-menu-dropdown {
-    min-width: 180px;
+    min-width: auto;
     top: 56px;
     right: 0;
   }
 
   .floating-menu-item {
-    padding: 10px 14px;
-    font-size: 13px;
+    padding: 10px;
+    width: 40px;
+    height: 40px;
   }
 
   .floating-menu-item-icon {
-    font-size: 16px;
-    width: 22px;
+    font-size: 18px;
   }
 }
 

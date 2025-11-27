@@ -67,9 +67,10 @@ export const FloatingMenu: React.FC<FloatingMenuProps> = ({ tabs }) => {
               to={tab.path}
               className={`floating-menu-item ${isActive(tab.path) ? 'active' : ''}`}
               onClick={() => setIsOpen(false)}
+              title={tab.label}
+              aria-label={tab.label}
             >
               <span className="floating-menu-item-icon">{tab.icon}</span>
-              <span className="floating-menu-item-label">{tab.label}</span>
             </Link>
           ))}
         </div>
