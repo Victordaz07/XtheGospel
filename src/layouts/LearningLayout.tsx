@@ -9,6 +9,7 @@ import {
   FaUser,
 } from 'react-icons/fa6';
 import { useI18n } from '../context/I18nContext';
+import { FloatingMenu } from '../ui/components';
 import InvestigatorHome from '../pages/learning/InvestigatorHome';
 import InvestigatorLessons from '../pages/learning/InvestigatorLessons';
 import InvestigatorProgress from '../pages/learning/InvestigatorProgress';
@@ -37,6 +38,7 @@ const InvestigatorLayout: React.FC = () => {
       <div className="layout-shell">
         <div className="layout-deco layout-deco-top" />
         <div className="layout-deco layout-deco-bottom" />
+        <FloatingMenu tabs={tabs} />
         <main className="layout-content">
           <Routes>
             <Route path="/home" element={<InvestigatorHome />} />

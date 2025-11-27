@@ -10,6 +10,7 @@ import {
 } from 'react-icons/fa6';
 import { useI18n } from '../context/I18nContext';
 import { useAuth } from '../context/AuthContext';
+import { FloatingMenu } from '../ui/components';
 import MissionaryHome from '../pages/serving/MissionaryHome';
 import MissionaryAgenda from '../pages/serving/MissionaryAgenda';
 import MissionaryPeople from '../pages/serving/MissionaryPeople';
@@ -37,6 +38,7 @@ const MissionaryLayout: React.FC = () => {
       <div className="layout-shell">
         <div className="layout-deco layout-deco-top" />
         <div className="layout-deco layout-deco-bottom" />
+        <FloatingMenu tabs={tabs} />
         <main className="layout-content">
           <Routes>
             <Route path="/home" element={<MissionaryHome />} />

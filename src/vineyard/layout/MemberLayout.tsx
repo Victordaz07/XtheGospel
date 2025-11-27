@@ -12,6 +12,7 @@ import {
   FaSeedling,
 } from 'react-icons/fa6';
 import { useI18n } from '../../context/I18nContext';
+import { FloatingMenu } from '../../ui/components';
 import { MemberHome } from '../pages/MemberHome';
 import { StudyModulesPage } from '../pages/StudyModulesPage';
 import { ActivitiesPage } from '../pages/ActivitiesPage';
@@ -113,6 +114,7 @@ export const MemberLayout: React.FC = () => {
       <div className={`layout-shell ${isProfilePage ? 'layout-shell-profile' : ''}`}>
         <div className="layout-deco layout-deco-top" />
         <div className="layout-deco layout-deco-bottom" />
+        <FloatingMenu tabs={bottomNavTabs} />
         <main className="layout-content">
           <Routes>
             <Route path="/member" element={<MemberHome />} />

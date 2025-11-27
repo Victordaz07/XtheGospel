@@ -75,6 +75,16 @@ export default function LessonDetail({
             objections.push({ objection, answer });
         }
     }
+    // Si no hay objeciones en el formato anterior, intentar con el formato nested
+    if (objections.length === 0) {
+        for (let i = 0; i < 5; i++) {
+            const objection = t(`${topicId}.objections.objections.${i}.objection`);
+            const answer = t(`${topicId}.objections.objections.${i}.answer`);
+            if (objection && objection !== `${topicId}.objections.objections.${i}.objection`) {
+                objections.push({ objection, answer });
+            }
+        }
+    }
 
     // Obtener diálogos
     const dialogues = [];

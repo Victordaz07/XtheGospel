@@ -14,15 +14,17 @@ export default function Lesson4() {
   const [currentTopicIndex, setCurrentTopicIndex] = React.useState<number>(0);
 
   const topics = [
-    { id: "lesson4.topic1", icon: "💕" }, // Ley de Castidad
-    { id: "lesson4.topic2", icon: "🌿" }, // Palabra de Sabiduría
-    { id: "lesson4.topic3", icon: "💰" }, // Ley del Diezmo
-    { id: "lesson4.topic4", icon: "⛪" }, // Guardar el día de reposo
-    { id: "lesson4.topic5", icon: "🙏" }, // Orar a menudo
-    { id: "lesson4.topic6", icon: "📖" }, // Estudiar las Escrituras
-    { id: "lesson4.topic7", icon: "📜" }, // Diez Mandamientos
-    { id: "lesson4.topic8", icon: "🤝" }, // Servir a los demás
-    { id: "lesson4.topic9", icon: "⚖️" } // Obedecer y sostener la ley
+    { id: "lesson4.intro", icon: "🙏" },
+    { id: "lesson4.prophets_modern_revelation", icon: "👨‍💼" },
+    { id: "lesson4.pray_daily", icon: "🙏" },
+    { id: "lesson4.scripture_study", icon: "📖" },
+    { id: "lesson4.sabbath_day", icon: "⛪" },
+    { id: "lesson4.law_of_chastity", icon: "💕" },
+    { id: "lesson4.word_of_wisdom", icon: "🌿" },
+    { id: "lesson4.tithing", icon: "💰" },
+    { id: "lesson4.chastity_additional_obedience", icon: "⚖️" },
+    { id: "lesson4.objections", icon: "❓" },
+    { id: "lesson4.testimony_and_invitations", icon: "💬" }
   ];
 
   const handleTopicPress = (topicId: string) => {

@@ -1,0 +1,148 @@
+/* Floating Menu - Burbuja flotante con menú vertical */
+.floating-menu {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 50;
+}
+
+.floating-menu-button {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+  border: none;
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #ffffff;
+  font-size: 18px;
+  z-index: 101;
+}
+
+.floating-menu-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(79, 70, 229, 0.5);
+}
+
+.floating-menu-button:active {
+  transform: scale(0.95);
+}
+
+/* Dropdown Menu */
+.floating-menu-dropdown {
+  position: absolute;
+  top: 60px;
+  right: 0;
+  min-width: 200px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(15, 23, 42, 0.2);
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  animation: slideDown 0.3s ease-out;
+  z-index: 102;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Menu Items */
+.floating-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: #334155;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.floating-menu-item:hover {
+  background: rgba(79, 70, 229, 0.1);
+  color: #4f46e5;
+}
+
+.floating-menu-item.active {
+  background: rgba(79, 70, 229, 0.15);
+  color: #4f46e5;
+  font-weight: 600;
+}
+
+.floating-menu-item-icon {
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  color: inherit;
+}
+
+.floating-menu-item-label {
+  flex: 1;
+  white-space: nowrap;
+}
+
+/* Responsive */
+@media (max-width: 520px) {
+  .floating-menu {
+    top: 16px;
+    right: 16px;
+  }
+
+  .floating-menu-button {
+    width: 44px;
+    height: 44px;
+    font-size: 16px;
+  }
+
+  .floating-menu-dropdown {
+    min-width: 180px;
+    top: 56px;
+    right: 0;
+  }
+
+  .floating-menu-item {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+
+  .floating-menu-item-icon {
+    font-size: 16px;
+    width: 22px;
+  }
+}
+
+/* Asegurar que esté por encima de contenido pero debajo de modales (z-index: 1000) */
+.floating-menu {
+  z-index: 50;
+}
+
+.floating-menu-button {
+  z-index: 51;
+}
+
+.floating-menu-dropdown {
+  z-index: 52;
+}
+
