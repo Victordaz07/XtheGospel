@@ -42,7 +42,7 @@
 }
 
 .progress-page-content-new {
-  padding: 1rem 1.5rem;
+  padding: var(--perfect-padding-vertical, 12px) var(--perfect-padding-horizontal, 16px);
   max-width: 100%;
   padding-bottom: 6rem; /* Space for bottom nav if needed */
   position: relative;
@@ -121,7 +121,7 @@
 /* Header */
 .progress-header-new {
   background: rgba(255, 255, 255, 0.9);
-  padding: 1rem 1.5rem;
+  padding: var(--perfect-padding-vertical, 12px) var(--perfect-padding-horizontal, 16px);
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   margin: -1rem -1.5rem 1.5rem -1.5rem;
   display: flex;
@@ -194,7 +194,7 @@
 
 /* XP Overview Section */
 .progress-xp-section {
-  margin-bottom: 2rem;
+  margin-bottom: var(--perfect-margin-bottom, 10px);
   position: relative;
   z-index: 1;
 }
@@ -202,7 +202,7 @@
 .progress-xp-card {
   background: linear-gradient(135deg, #A8C5FF 0%, #C7C9FF 100%);
   border-radius: 24px;
-  padding: 1.5rem;
+  padding: var(--perfect-padding-vertical, 12px) var(--perfect-padding-horizontal, 16px);
   color: #FFFFFF;
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.8);
@@ -274,7 +274,7 @@
 
 /* Badges Section */
 .progress-badges-section {
-  margin-bottom: 2rem;
+  margin-bottom: var(--perfect-margin-bottom, 10px);
   position: relative;
   z-index: 1;
 }
@@ -302,7 +302,7 @@
 .progress-badges-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
+  gap: var(--perfect-gap, 10px);
 }
 
 .progress-badge-item {
@@ -379,7 +379,7 @@
 
 /* Actions Section */
 .progress-actions-section {
-  margin-bottom: 2rem;
+  margin-bottom: var(--perfect-margin-bottom, 10px);
   position: relative;
   z-index: 1;
 }
@@ -387,7 +387,7 @@
 .progress-actions-card {
   background: linear-gradient(135deg, #F9FAFF 0%, #F4F6FA 100%);
   border-radius: 24px;
-  padding: 1.5rem;
+  padding: var(--perfect-padding-vertical, 12px) var(--perfect-padding-horizontal, 16px);
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.8);
   position: relative;
@@ -526,7 +526,7 @@
 
 /* Encouragement Section */
 .progress-encouragement-section {
-  margin-bottom: 2rem;
+  margin-bottom: var(--perfect-margin-bottom, 10px);
   position: relative;
   z-index: 1;
 }
@@ -534,7 +534,7 @@
 .progress-encouragement-card {
   background: linear-gradient(135deg, #DDE6FF 0%, #A8C5FF 100%);
   border-radius: 24px;
-  padding: 1.5rem;
+  padding: var(--perfect-padding-vertical, 12px) var(--perfect-padding-horizontal, 16px);
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.8);
   color: #1A1A1A;

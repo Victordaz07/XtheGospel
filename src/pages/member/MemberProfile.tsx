@@ -26,6 +26,7 @@ import {
 import { useAuth } from '../../context/AuthContext';
 import { useI18n, Locale } from '../../context/I18nContext';
 import { RoleSettingsCard } from '../../components/RoleSettingsCard';
+import { RoleSwitcher } from '../../components/RoleSwitcher';
 import { ROLE_DEFINITIONS, UserRoleKey } from '../../config/roles';
 import { PageContainer, Card } from '../../ui/components';
 import '../Page.css';
@@ -241,6 +242,41 @@ const MemberProfile: React.FC = () => {
           <p>{t('memberProfile.preferences.subtitle') || 'Personaliza cómo usas la app.'}</p>
         </header>
 
+        {/* Hero Card con Avatar */}
+        <Card className="member-profile-card profile-hero-card">
+          <div className="profile-avatar-wrapper">
+            <img
+              src={profileData.avatarUrl}
+              alt={profileData.name}
+              className="profile-avatar"
+            />
+            <button
+              type="button"
+              className="profile-avatar-upload"
+              onClick={() => avatarInputRef.current?.click()}
+              aria-label={t('memberProfile.personalInfo.changePhoto') || 'Cambiar foto'}
+            >
+              <FaCamera />
+            </button>
+            <input
+              ref={avatarInputRef}
+              type="file"
+              accept="image/*"
+              className="profile-avatar-input"
+              onChange={handleAvatarUpload}
+            />
+          </div>
+          <div className="profile-hero-text">
+            <h2 className="profile-hero-name">{profileData.name}</h2>
+            <span className="profile-role-pill">
+              {t(ROLE_DEFINITIONS[normalizedRole].i18nKey)}
+            </span>
+            <p className="profile-hero-meta">
+              {t('memberProfile.personalInfo.memberSince') || 'Member since'} {formattedMemberSince}
+            </p>
+          </div>
+        </Card>
+
         {/* Preferencias */}
         <Card className="member-profile-card">
           <div className="profile-preference-row">
@@ -345,6 +381,13 @@ const MemberProfile: React.FC = () => {
             <FaChevronRight />
           </button>
         </Card>
+
+        {/* Role Switcher - Solo para miembros */}
+        {normalizedRole === 'member' && (
+          <Card className="member-profile-card">
+            <RoleSwitcher />
+          </Card>
+        )}
 
         {/* Info personal */}
         <Card className="member-profile-card">

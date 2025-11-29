@@ -1,20 +1,31 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { useRoleStore } from '../store/useRoleStore';
 import AuthPage from '../pages/AuthPage';
 import InvestigatorLayout from '../layouts/LearningLayout';
 import MissionaryLayout from '../layouts/MissionaryLayout';
 import MemberLayout from '../layouts/MemberLayout';
+import { LeaderLayout } from '../vineyard/layout/LeaderLayout';
 import LoadingScreen from '../components/LoadingScreen';
 import { getRoleDefaultRoute, UserRoleKey } from '../config/roles';
 
 const AppRouter: React.FC = () => {
   const { userRole, isLoading } = useAuth();
   const location = useLocation();
+  const appRole = useRoleStore((s) => s.role);
+  const isHydrated = useRoleStore((s) => s.isHydrated);
+  const hydrateRole = useRoleStore((s) => s.hydrateRole);
 
-  console.log('🔀 AppRouter - userRole:', userRole, 'isLoading:', isLoading, 'pathname:', location.pathname);
+  useEffect(() => {
+    if (!isHydrated) {
+      hydrateRole();
+    }
+  }, [isHydrated, hydrateRole]);
 
-  if (isLoading) {
+  console.log('🔀 AppRouter - userRole:', userRole, 'appRole:', appRole, 'isLoading:', isLoading, 'pathname:', location.pathname);
+
+  if (isLoading || !isHydrated) {
     console.log('⏳ Mostrando pantalla de carga...');
     return <LoadingScreen />;
   }
@@ -28,15 +39,26 @@ const AppRouter: React.FC = () => {
   if (userRole) {
     const defaultRoute = getRoleDefaultRoute(userRole);
     const isOnMemberRoute = location.pathname.startsWith('/member');
+    const isOnLeaderRoute = location.pathname.startsWith('/leader');
     const isOnMemberRole = userRole === 'member';
 
-    // Redirect member users to member routes if they're not already there
-    if (isOnMemberRole && !isOnMemberRoute) {
-      return <Navigate to={defaultRoute} replace />;
+    // For member role users, check appRole to decide between member or leader layout
+    if (isOnMemberRole) {
+      if (appRole === 'leader') {
+        // User is in leader mode, redirect to leader routes
+        if (!isOnLeaderRoute) {
+          return <Navigate to="/leader/home" replace />;
+        }
+      } else {
+        // User is in member mode, redirect to member routes
+        if (!isOnMemberRoute) {
+          return <Navigate to={defaultRoute} replace />;
+        }
+      }
     }
 
-    // Redirect non-member users away from member routes
-    if (!isOnMemberRole && isOnMemberRoute) {
+    // Redirect non-member users away from member/leader routes
+    if (!isOnMemberRole && (isOnMemberRoute || isOnLeaderRoute)) {
       return <Navigate to={defaultRoute} replace />;
     }
 
@@ -53,7 +75,11 @@ const AppRouter: React.FC = () => {
           <Route path="/*" element={<InvestigatorLayout />} />
         ) : userRole === 'missionary' ? (
           <Route path="/*" element={<MissionaryLayout />} />
+        ) : appRole === 'leader' ? (
+          // Member role but in leader app mode
+          <Route path="/*" element={<LeaderLayout />} />
         ) : (
+          // Member role in member app mode
           <Route path="/*" element={<MemberLayout />} />
         )
       ) : (

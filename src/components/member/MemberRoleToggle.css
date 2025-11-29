@@ -1,7 +1,7 @@
 .member-role-toggle {
   display: flex;
   gap: 8px;
-  margin-bottom: 24px;
+  margin-bottom: var(--perfect-margin-bottom, 10px);
   background: var(--color-background-alt, #f5f5f5);
   padding: 4px;
   border-radius: var(--border-radius-lg, 12px);

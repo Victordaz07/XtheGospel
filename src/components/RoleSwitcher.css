@@ -1,0 +1,43 @@
+.role-switcher {
+  margin-top: 16px;
+  padding: 16px;
+  border-radius: 16px;
+  background: #EEF2FF;
+  border: 1px solid rgba(90, 72, 255, 0.2);
+}
+
+.role-switcher-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 12px;
+}
+
+.role-switcher-label strong {
+  color: #5A48FF;
+}
+
+.role-switcher-button {
+  background: #5A48FF;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.role-switcher-button:hover {
+  background: #4A3ADF;
+}
+
+.role-switcher-helper {
+  font-size: 11px;
+  color: #4B5563;
+  line-height: 1.5;
+}
+

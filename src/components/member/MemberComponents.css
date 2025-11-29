@@ -1,15 +1,17 @@
 /* Member-specific component styles */
 
 .member-hero {
-  margin-bottom: var(--spacing-xl, 32px);
+  margin-bottom: var(--perfect-margin-bottom, 10px);
 }
 
 .hero-card {
   background: var(--color-surface, #ffffff);
   border-radius: var(--border-radius-lg, 12px);
-  padding: var(--spacing-lg, 24px);
-  margin-bottom: var(--spacing-lg, 24px);
+  padding: var(--perfect-padding-vertical, 12px) var(--perfect-padding-horizontal, 16px);
+  margin-bottom: var(--perfect-margin-bottom, 10px);
   box-shadow: var(--shadow-md, 0 4px 6px -1px rgba(0, 0, 0, 0.1));
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .hero-card h2 {
@@ -27,14 +29,15 @@
 .cards-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: var(--spacing-md, 16px);
-  margin-bottom: var(--spacing-lg, 24px);
+  gap: var(--perfect-gap, 10px);
+  margin-bottom: var(--perfect-margin-bottom, 10px);
+  width: 100%;
 }
 
 .member-card {
   background: linear-gradient(135deg, #F9FAFF 0%, #F4F6FA 100%);
   border-radius: 24px;
-  padding: 1.5rem;
+  padding: var(--perfect-padding-vertical, 12px) var(--perfect-padding-horizontal, 16px);
   text-decoration: none;
   color: inherit;
   display: flex;
@@ -44,7 +47,7 @@
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   width: 100%;
   box-sizing: border-box;
-  gap: 1rem;
+  gap: var(--perfect-gap, 10px);
 }
 
 .member-card:hover {
@@ -73,12 +76,14 @@
 }
 
 .member-devotional-card {
-  margin-bottom: var(--spacing-lg, 24px);
+  margin-bottom: var(--perfect-margin-bottom, 10px);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .devotional-scripture {
   background: var(--color-background, #f9fafb);
-  padding: var(--spacing-md, 16px);
+  padding: var(--perfect-padding-vertical, 12px) var(--perfect-padding-horizontal, 16px);
   border-radius: var(--border-radius-md, 8px);
   margin: var(--spacing-md, 16px) 0;
   text-align: center;
@@ -99,7 +104,7 @@
 
 .devotional-card textarea {
   width: 100%;
-  padding: var(--spacing-md, 16px);
+  padding: var(--perfect-padding-vertical, 12px) var(--perfect-padding-horizontal, 16px);
   border: 1px solid var(--color-gray, #9ca3af);
   border-radius: var(--border-radius-md, 8px);
   font-family: inherit;
@@ -117,7 +122,7 @@
 .devotional-feedback {
   background: var(--color-success, #10b981);
   color: white;
-  padding: var(--spacing-md, 16px);
+  padding: var(--perfect-padding-vertical, 12px) var(--perfect-padding-horizontal, 16px);
   border-radius: var(--border-radius-md, 8px);
   margin-top: var(--spacing-md, 16px);
 }
@@ -126,7 +131,7 @@
   background: var(--color-surface, #ffffff);
   border-radius: var(--border-radius-lg, 12px);
   padding: var(--spacing-lg, 24px);
-  margin-bottom: var(--spacing-lg, 24px);
+  margin-bottom: var(--perfect-margin-bottom, 10px);
   box-shadow: var(--shadow-md, 0 4px 6px -1px rgba(0, 0, 0, 0.1));
 }
 
@@ -142,11 +147,11 @@
 }
 
 .skills-preview-list {
-  margin-bottom: var(--spacing-lg, 24px);
+  margin-bottom: var(--perfect-margin-bottom, 10px);
 }
 
 .skill-preview-item {
-  padding: var(--spacing-md, 16px);
+  padding: var(--perfect-padding-vertical, 12px) var(--perfect-padding-horizontal, 16px);
   border-bottom: 1px solid var(--color-gray, #9ca3af);
 }
 
@@ -167,7 +172,7 @@
 }
 
 .member-friends-preview {
-  margin-bottom: var(--spacing-lg, 24px);
+  margin-bottom: var(--perfect-margin-bottom, 10px);
 }
 
 .friends-explanation {
@@ -187,7 +192,7 @@
   display: inline-block;
   background: var(--color-primary, #3b82f6);
   color: white;
-  padding: var(--spacing-md, 16px) var(--spacing-lg, 24px);
+  padding: var(--perfect-padding-vertical, 12px) var(--perfect-padding-horizontal, 16px);
   border: none;
   border-radius: var(--border-radius-md, 8px);
   font-size: var(--font-size-base, 16px);
@@ -206,7 +211,7 @@
   display: inline-block;
   background: transparent;
   color: var(--color-primary, #3b82f6);
-  padding: var(--spacing-md, 16px) var(--spacing-lg, 24px);
+  padding: var(--perfect-padding-vertical, 12px) var(--perfect-padding-horizontal, 16px);
   border: 2px solid var(--color-primary, #3b82f6);
   border-radius: var(--border-radius-md, 8px);
   font-size: var(--font-size-base, 16px);

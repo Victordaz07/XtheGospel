@@ -23,9 +23,22 @@ const MissionaryLessonDetail: React.FC = () => {
     );
   }
 
-  // Convertir "1" a "lesson1", etc.
-  const normalizedLessonId = lessonId.match(/^\d+$/) ? `lesson${lessonId}` : lessonId;
+  // Convertir "1" a "lesson1", "Lesson1" a "lesson1", etc.
+  let normalizedLessonId = lessonId;
+  if (lessonId.match(/^\d+$/)) {
+    normalizedLessonId = `lesson${lessonId}`;
+  } else if (lessonId.startsWith('Lesson')) {
+    normalizedLessonId = lessonId.toLowerCase();
+  }
+  
+  console.log('🔍 Buscando lección:', { lessonId, normalizedLessonId });
   const lessonData = getMissionaryLessonData(normalizedLessonId, t);
+  
+  if (!lessonData) {
+    console.warn('❌ No se encontró lessonData para:', normalizedLessonId);
+  } else {
+    console.log('✅ Lección encontrada:', lessonData.title);
+  }
 
   if (!lessonData) {
     return (

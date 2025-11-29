@@ -14,13 +14,15 @@ export default function Lesson5() {
   const [currentTopicIndex, setCurrentTopicIndex] = React.useState<number>(0);
 
   const topics = [
-    { id: "lesson5.topic1", icon: "💧" }, // Bautismo y confirmación
-    { id: "lesson5.topic2", icon: "👨‍💼" }, // Seguir al profeta
-    { id: "lesson5.topic3", icon: "👨‍💼" }, // Sacerdocio y organizaciones auxiliares
-    { id: "lesson5.topic4", icon: "💍" }, // Matrimonio eterno y familia
-    { id: "lesson5.topic5", icon: "🏛️" }, // Templos e historia familiar
-    { id: "lesson5.topic6", icon: "🌍" }, // La obra misional
-    { id: "lesson5.topic7", icon: "🏁" } // Perseverar hasta el fin
+    { id: "lesson5.intro", icon: "🙏" },
+    { id: "lesson5.what_is_covenant", icon: "🤝" },
+    { id: "lesson5.baptism_and_confirmation_as_covenant", icon: "💧" },
+    { id: "lesson5.sacrament_renewal", icon: "🍞" },
+    { id: "lesson5.priesthood_and_ordinances", icon: "👨‍💼" },
+    { id: "lesson5.temple_and_eternal_family", icon: "🏛️" },
+    { id: "lesson5.living_covenants_daily", icon: "📅" },
+    { id: "lesson5.objections", icon: "❓" },
+    { id: "lesson5.testimony_and_invitations", icon: "💬" }
   ];
 
   const handleTopicPress = (topicId: string) => {

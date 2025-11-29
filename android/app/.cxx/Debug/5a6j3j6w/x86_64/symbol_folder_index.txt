@@ -1,1 +1,0 @@
-C:\Projects\ListaDeTareasApp\android\app\build\intermediates\cxx\Debug\5a6j3j6w\obj\x86_64

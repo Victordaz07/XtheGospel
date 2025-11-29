@@ -1,5 +1,7 @@
 .ui-section {
-  margin-bottom: var(--spacing-xl, 32px);
+  margin-bottom: var(--perfect-margin-bottom, 10px);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .ui-section-header {

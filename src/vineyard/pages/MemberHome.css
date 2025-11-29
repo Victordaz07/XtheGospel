@@ -35,7 +35,7 @@
 }
 
 .member-p-4 {
-  padding: 1rem;
+  padding: var(--perfect-padding-vertical, 12px) var(--perfect-padding-horizontal, 16px);
 }
 
 .member-progress-trophy-icon {

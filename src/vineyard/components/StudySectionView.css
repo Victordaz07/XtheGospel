@@ -2,9 +2,9 @@
 .study-section-container {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  padding: 1rem 1.25rem;
-  max-width: 500px;
+  gap: var(--perfect-gap, 10px);
+  padding: var(--perfect-padding-vertical, 12px) var(--perfect-padding-horizontal, 16px);
+  max-width: 100%;
   margin: 0 auto;
   width: 100%;
   box-sizing: border-box;
@@ -16,7 +16,7 @@
   border-radius: 24px;
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.8);
-  padding: 1rem;
+  padding: var(--perfect-padding-vertical, 12px) var(--perfect-padding-horizontal, 16px);
   order: 2;
   box-sizing: border-box;
 }
@@ -115,7 +115,7 @@
   border-radius: 24px;
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.8);
-  padding: 1.5rem;
+  padding: var(--perfect-padding-vertical, 12px) var(--perfect-padding-horizontal, 16px);
   order: 3;
   min-height: auto;
   box-sizing: border-box;
@@ -127,7 +127,7 @@
   border-radius: 24px;
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.8);
-  padding: 1.5rem;
+  padding: var(--perfect-padding-vertical, 12px) var(--perfect-padding-horizontal, 16px);
   order: 1;
   margin-bottom: 0;
   width: 100%;
@@ -191,7 +191,7 @@
   background: linear-gradient(135deg, #EEF3FF 0%, #E4E9F8 100%);
   border-radius: 20px;
   padding: 1.25rem;
-  margin-bottom: 2rem;
+  margin-bottom: var(--perfect-margin-bottom, 10px);
   font-size: 0.9375rem;
   color: #4A4A4A;
   line-height: 1.7;
@@ -389,7 +389,7 @@
   border-radius: 24px;
   border: 1px solid rgba(239, 68, 68, 0.2);
   background: linear-gradient(135deg, #FEF2F2 0%, #FEE2E2 100%);
-  padding: 1.5rem;
+  padding: var(--perfect-padding-vertical, 12px) var(--perfect-padding-horizontal, 16px);
   text-align: center;
   color: #DC2626;
   font-size: 0.9375rem;
@@ -399,7 +399,7 @@
 /* Mobile First - Always single column */
 @media (min-width: 768px) {
   .study-section-container {
-    padding: 1.5rem;
+    padding: var(--perfect-padding-vertical, 12px) var(--perfect-padding-horizontal, 16px);
     gap: 2rem;
   }
 

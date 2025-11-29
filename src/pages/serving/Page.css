@@ -12,6 +12,13 @@
   animation: fadeIn var(--transition-slow) ease-out;
 }
 
+/* Override para páginas de Missionary Guide - usar todo el ancho */
+.page.missionary-guide-page {
+  max-width: 100%;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
 .page-header {
   background: linear-gradient(135deg, var(--color-surface) 0%, rgba(255, 255, 255, 0.95) 100%);
   padding: 32px 24px;

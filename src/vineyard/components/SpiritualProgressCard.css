@@ -3,12 +3,12 @@
   border-radius: 24px;
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.8);
-  padding: 1.5rem;
+  padding: var(--perfect-padding-vertical, 12px) var(--perfect-padding-horizontal, 16px);
   width: 100%;
-  margin: 0 0 2rem 0;
+  margin: 0 0 var(--perfect-margin-bottom, 10px) 0;
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: var(--perfect-gap, 10px);
   box-sizing: border-box;
 }
 
@@ -16,7 +16,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 16px;
+  gap: var(--perfect-gap, 10px);
 }
 
 .spiritual-card__eyebrow {

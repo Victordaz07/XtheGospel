@@ -54,13 +54,20 @@
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
   
-  /* Layout globals */
-  --app-content-max-width: 460px;
-  --app-shell-max-width: 460px;
+  /* LA MEDIDA PERFECTA - Estándar Universal */
+  --perfect-padding-horizontal: 16px;
+  --perfect-padding-vertical: 12px;
+  --perfect-margin-bottom: 10px;
+  --perfect-gap: 10px;
+  --perfect-header-padding: 16px;
+  
+  /* Layout globals - Actualizados con la medida perfecta */
+  --app-content-max-width: 100%;
+  --app-shell-max-width: 100%;
   --app-content-padding-x: 16px;
-  --app-content-padding-top: 24px;
-  --app-content-padding-bottom: 40px;
-  --app-bottom-nav-max-width: 460px;
+  --app-content-padding-top: 16px;
+  --app-content-padding-bottom: 24px;
+  --app-bottom-nav-max-width: 100%;
   --app-bottom-nav-height: 88px;
   
   /* Espaciado */

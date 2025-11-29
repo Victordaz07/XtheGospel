@@ -14,19 +14,15 @@ const Lesson6: React.FC = () => {
     const [currentTopicIndex, setCurrentTopicIndex] = useState<number>(0);
 
     const topics = [
-        { id: "lesson6.topic1", icon: "👨‍👩‍👧‍👦" }, // Artículo de Fe 1
-        { id: "lesson6.topic2", icon: "⚖️" }, // Artículo de Fe 2
-        { id: "lesson6.topic3", icon: "💝" }, // Artículo de Fe 3
-        { id: "lesson6.topic4", icon: "🚪" }, // Artículo de Fe 4
-        { id: "lesson6.topic5", icon: "📞" }, // Artículo de Fe 5
-        { id: "lesson6.topic6", icon: "🏛️" }, // Artículo de Fe 6
-        { id: "lesson6.topic7", icon: "🎁" }, // Artículo de Fe 7
-        { id: "lesson6.topic8", icon: "📚" }, // Artículo de Fe 8
-        { id: "lesson6.topic9", icon: "📡" }, // Artículo de Fe 9
-        { id: "lesson6.topic10", icon: "🌍" }, // Artículo de Fe 10
-        { id: "lesson6.topic11", icon: "🕊️" }, // Artículo de Fe 11
-        { id: "lesson6.topic12", icon: "🏛️" }, // Artículo de Fe 12
-        { id: "lesson6.topic13", icon: "✨" } // Artículo de Fe 13
+        { id: "lesson6.intro", icon: "🙏" },
+        { id: "lesson6.priesthood", icon: "👨‍💼" },
+        { id: "lesson6.missionary_work", icon: "🌍" },
+        { id: "lesson6.service_and_charity", icon: "💝" },
+        { id: "lesson6.temple_work", icon: "🏛️" },
+        { id: "lesson6.family_history", icon: "📚" },
+        { id: "lesson6.endure_faithfully", icon: "🏁" },
+        { id: "lesson6.objections", icon: "❓" },
+        { id: "lesson6.testimony_and_invitations", icon: "💬" }
     ];
 
     const handleTopicPress = (topicId: string) => {

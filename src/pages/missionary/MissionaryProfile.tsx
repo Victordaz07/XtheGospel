@@ -1,11 +1,25 @@
-import React, { useState } from 'react';
-import { FaChevronRight, FaGlobe, FaSignOutAlt } from 'react-icons/fa';
+import React, { useState, ChangeEvent, FormEvent, useMemo, useRef } from 'react';
+import { FaChevronRight, FaGlobe, FaSignOutAlt, FaCamera, FaUser } from 'react-icons/fa';
 import { useAuth } from '../../context/AuthContext';
 import { useI18n, Locale } from '../../context/I18nContext';
 import { RoleSettingsCard } from '../../components/RoleSettingsCard';
 import { PageContainer, Card } from '../../ui/components';
 import '../Page.css';
 import './MissionaryProfile.css';
+
+const DEFAULT_AVATAR =
+  'https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg';
+
+type ProfileFieldKey = 'name' | 'email' | 'phone' | 'address';
+
+interface ProfileFormState {
+  name: string;
+  email: string;
+  phone: string;
+  address: string;
+  memberSince: string;
+  avatarUrl: string;
+}
 
 const languageOptions: { code: Locale; name: string; flag: string }[] = [
   { code: 'es', name: 'Español', flag: '🇪🇸' },
@@ -26,6 +40,17 @@ const MissionaryProfile: React.FC = () => {
   const { t, locale, setLocale } = useI18n();
   const [showLanguageModal, setShowLanguageModal] = useState(false);
   const [showRoleSheet, setShowRoleSheet] = useState(false);
+  const [profileData, setProfileData] = useState<ProfileFormState>({
+    name: 'John Smith',
+    email: 'john.smith@email.com',
+    phone: '+1 (555) 987-6543',
+    address: '123 Mission Street · Salt Lake City, UT',
+    memberSince: '2023-06-01',
+    avatarUrl: DEFAULT_AVATAR,
+  });
+  const [isSavingProfile, setIsSavingProfile] = useState(false);
+  const [showSavedMessage, setShowSavedMessage] = useState(false);
+  const avatarInputRef = useRef<HTMLInputElement | null>(null);
 
   const handleLogout = async () => {
     await logout();
@@ -54,6 +79,40 @@ const MissionaryProfile: React.FC = () => {
   const localeLabel = t(`memberProfile.languages.${locale}`) || localeLabels[locale];
   const currentLanguage = languageOptions.find(opt => opt.code === locale);
 
+  const formattedMemberSince = useMemo(() => {
+    try {
+      return new Intl.DateTimeFormat(locale, {
+        month: 'long',
+        year: 'numeric',
+      }).format(new Date(profileData.memberSince));
+    } catch {
+      return profileData.memberSince;
+    }
+  }, [profileData.memberSince, locale]);
+
+  const handleAvatarUpload = (event: ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+    const url = URL.createObjectURL(file);
+    setProfileData((prev) => ({ ...prev, avatarUrl: url }));
+  };
+
+  const handleProfileInputChange =
+    (field: ProfileFieldKey) => (event: ChangeEvent<HTMLInputElement>) => {
+      setProfileData((prev) => ({ ...prev, [field]: event.target.value }));
+    };
+
+  const handleProfileSave = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setIsSavingProfile(true);
+    setShowSavedMessage(false);
+    // Simular guardado
+    await new Promise((resolve) => setTimeout(resolve, 800));
+    setIsSavingProfile(false);
+    setShowSavedMessage(true);
+    setTimeout(() => setShowSavedMessage(false), 3000);
+  };
+
   return (
     <PageContainer>
       <div className="missionary-profile-page">
@@ -61,6 +120,126 @@ const MissionaryProfile: React.FC = () => {
           <h1>{t('tabs.profile') || 'Perfil'}</h1>
           <p>{t('profile.settings') || 'Configuración'}</p>
         </header>
+
+        {/* Hero Card con Avatar */}
+        <Card className="missionary-profile-card profile-hero-card">
+          <div className="profile-avatar-wrapper">
+            <img
+              src={profileData.avatarUrl}
+              alt={profileData.name}
+              className="profile-avatar"
+            />
+            <button
+              type="button"
+              className="profile-avatar-upload"
+              onClick={() => avatarInputRef.current?.click()}
+              aria-label={t('memberProfile.personalInfo.changePhoto') || 'Cambiar foto'}
+            >
+              <FaCamera />
+            </button>
+            <input
+              ref={avatarInputRef}
+              type="file"
+              accept="image/*"
+              className="profile-avatar-input"
+              onChange={handleAvatarUpload}
+            />
+          </div>
+          <div className="profile-hero-text">
+            <h2 className="profile-hero-name">{profileData.name}</h2>
+            <span className="profile-role-pill">
+              {t('auth.missionary') || 'Misionero'}
+            </span>
+            <p className="profile-hero-meta">
+              {t('memberProfile.personalInfo.memberSince') || 'Member since'} {formattedMemberSince}
+            </p>
+          </div>
+        </Card>
+
+        {/* Info personal */}
+        <Card className="missionary-profile-card">
+          <div className="profile-section-heading">
+            <div className="profile-section-icon profile-section-icon-primary">
+              <FaUser />
+            </div>
+            <div>
+              <h2 className="profile-section-title">
+                {t('memberProfile.personalInfo.title') || 'Información Personal'}
+              </h2>
+              <p className="profile-section-subtitle">
+                {t('memberProfile.personalInfo.subtitle') || 'Actualiza tu información de contacto'}
+              </p>
+            </div>
+          </div>
+          <form className="profile-form-card" onSubmit={handleProfileSave}>
+            <div className="profile-field">
+              <label className="profile-label" htmlFor="profile-full-name">
+                {t('memberProfile.personalInfo.fullName') || 'Nombre Completo'}
+              </label>
+              <input
+                id="profile-full-name"
+                type="text"
+                className="profile-input"
+                value={profileData.name}
+                onChange={handleProfileInputChange('name')}
+                required
+              />
+            </div>
+            <div className="profile-field">
+              <label className="profile-label" htmlFor="profile-email">
+                {t('memberProfile.personalInfo.email') || 'Correo Electrónico'}
+              </label>
+              <input
+                id="profile-email"
+                type="email"
+                className="profile-input"
+                value={profileData.email}
+                onChange={handleProfileInputChange('email')}
+                required
+              />
+            </div>
+            <div className="profile-field">
+              <label className="profile-label" htmlFor="profile-phone">
+                {t('memberProfile.personalInfo.phone') || 'Teléfono'}
+              </label>
+              <input
+                id="profile-phone"
+                type="tel"
+                className="profile-input"
+                value={profileData.phone}
+                onChange={handleProfileInputChange('phone')}
+              />
+            </div>
+            <div className="profile-field">
+              <label className="profile-label" htmlFor="profile-address">
+                {t('memberProfile.personalInfo.address') || 'Dirección'}
+              </label>
+              <input
+                id="profile-address"
+                type="text"
+                className="profile-input"
+                value={profileData.address}
+                onChange={handleProfileInputChange('address')}
+              />
+            </div>
+            <div className="profile-actions">
+              <button
+                type="submit"
+                className="profile-save-button"
+                disabled={isSavingProfile}
+              >
+                {isSavingProfile
+                  ? t('memberProfile.personalInfo.saving') || 'Guardando...'
+                  : t('memberProfile.personalInfo.save') || 'Guardar'}
+              </button>
+              {showSavedMessage && (
+                <span className="profile-save-message">
+                  {t('memberProfile.personalInfo.saved') || 'Guardado'}
+                </span>
+              )}
+            </div>
+          </form>
+        </Card>
 
         {/* Configuración de Rol */}
         <Card className="missionary-profile-card">

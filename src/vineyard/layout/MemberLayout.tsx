@@ -24,6 +24,10 @@ import MemberFriends from '../../pages/member/MemberFriends';
 import MemberMissionarySupport from '../../pages/member/MemberMissionarySupport';
 import MemberProfile from '../../pages/member/MemberProfile';
 import { FeaturedContentPage } from '../../pages/member/FeaturedContentPage';
+import { LeaderTodayPanelScreen } from '../../pages/member/LeaderTodayPanelScreen';
+import { LeaderNewConvertsScreen } from '../../pages/member/LeaderNewConvertsScreen';
+import { LeaderFriendsTeachingScreen } from '../../pages/member/LeaderFriendsTeachingScreen';
+import { LeaderMeetingsResourcesScreen } from '../../pages/member/LeaderMeetingsResourcesScreen';
 import '../../layouts/Layout.css';
 
 export const MemberLayout: React.FC = () => {
@@ -130,6 +134,10 @@ export const MemberLayout: React.FC = () => {
             <Route path="/member/support" element={<MemberMissionarySupport />} />
             <Route path="/member/profile" element={<MemberProfile />} />
             <Route path="/member/featured" element={<FeaturedContentPage />} />
+            <Route path="/member/leader/today" element={<LeaderTodayPanelScreen />} />
+            <Route path="/member/leader/converts" element={<LeaderNewConvertsScreen />} />
+            <Route path="/member/leader/friends" element={<LeaderFriendsTeachingScreen />} />
+            <Route path="/member/leader/meetings" element={<LeaderMeetingsResourcesScreen />} />
             <Route path="*" element={<Navigate to="/member/home" replace />} />
           </Routes>
         </main>

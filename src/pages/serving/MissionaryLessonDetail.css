@@ -1,12 +1,14 @@
 .missionary-lesson-header {
   background: linear-gradient(135deg, var(--color-surface) 0%, rgba(255, 255, 255, 0.95) 100%);
-  padding: 32px 24px;
+  padding: 16px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   box-shadow: var(--shadow-sm);
   position: sticky;
   top: 0;
   z-index: 10;
   backdrop-filter: blur(10px);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .missionary-lesson-header h1 {
@@ -21,18 +23,19 @@
 }
 
 .missionary-lesson-content {
-  padding: 24px;
-  max-width: 1000px;
-  margin: 0 auto;
+  padding: 16px;
+  width: 100%;
 }
 
 .study-section {
   background: var(--color-surface);
   border-radius: var(--border-radius-lg);
-  padding: 24px;
-  margin-bottom: 24px;
+  padding: 12px 16px;
+  margin-bottom: 10px;
+  width: 100%;
   box-shadow: var(--shadow-sm);
   border: 1px solid rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
 }
 
 .section-title {
@@ -197,6 +200,8 @@
   background: var(--color-background-alt);
   border-radius: var(--border-radius-md);
   border-left: 4px solid var(--color-secondary);
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .question-number {
@@ -219,6 +224,10 @@
   color: var(--color-text);
   line-height: 1.6;
   font-weight: var(--font-weight-medium);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  max-width: 100%;
 }
 
 .commitments-list {
@@ -304,13 +313,182 @@
   line-height: 1.6;
 }
 
+.full-section {
+  margin-bottom: 10px;
+  border: 2px solid rgba(59, 130, 246, 0.1);
+}
+
+.section-goal {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+  padding: 16px;
+  border-radius: var(--border-radius-md);
+  margin-bottom: 20px;
+  border-left: 4px solid var(--color-primary);
+}
+
+.scripture-block {
+  background: var(--color-background-alt);
+  padding: 20px;
+  border-radius: var(--border-radius-md);
+  margin-bottom: 20px;
+  border-left: 4px solid var(--color-secondary);
+}
+
+.scripture-title {
+  margin: 0 0 12px 0;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.scripture-reference {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+  margin-bottom: 8px;
+}
+
+.scripture-text {
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+  font-style: italic;
+  margin-bottom: 12px;
+  line-height: 1.7;
+}
+
+.scripture-explanation {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  padding-top: 12px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.expandable-section {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.expandable-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  background: var(--color-surface);
+  border: 2px solid var(--color-primary-light);
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  text-align: left;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.expandable-header:hover {
+  border-color: var(--color-primary);
+  background: rgba(79, 70, 229, 0.05);
+}
+
+.expandable-header h3 {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+}
+
+.expandable-content {
+  padding: 16px;
+  background: var(--color-background-alt);
+  border-radius: var(--border-radius-md);
+  margin-top: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.example-block {
+  padding: 16px;
+  background: var(--color-surface);
+  border-radius: var(--border-radius-md);
+  margin-bottom: 16px;
+  border-left: 4px solid var(--color-primary-light);
+}
+
+.example-title {
+  margin: 0 0 8px 0;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+}
+
+.example-story {
+  margin: 0;
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+  line-height: 1.7;
+}
+
+.dialogue-block {
+  padding: 16px;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.05) 0%, rgba(139, 92, 246, 0.02) 100%);
+  border-radius: var(--border-radius-md);
+  margin-bottom: 16px;
+  border-left: 4px solid var(--color-primary-light);
+}
+
+.dialogue-title {
+  margin: 0 0 12px 0;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+}
+
+.dialogue-line {
+  padding: 8px 0;
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+  line-height: 1.7;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.dialogue-line:last-child {
+  border-bottom: none;
+}
+
+.objection-block {
+  padding: 16px;
+  background: var(--color-surface);
+  border-radius: var(--border-radius-md);
+  margin-bottom: 16px;
+  border-left: 4px solid var(--color-secondary);
+}
+
+.objection-question {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  margin-bottom: 12px;
+}
+
+.objection-answer {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  padding-left: 16px;
+  border-left: 2px solid var(--color-primary-light);
+}
+
 @media (max-width: 768px) {
   .missionary-lesson-content {
     padding: 16px;
   }
 
   .study-section {
-    padding: 16px;
+    padding: 12px 16px;
   }
 
   .study-tabs {
@@ -329,6 +507,10 @@
 
   .add-commitment-button {
     width: 100%;
+  }
+  
+  .expandable-header {
+    padding: 10px 14px;
   }
 }
 

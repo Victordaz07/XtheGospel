@@ -4,13 +4,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 32px 16px;
+  padding: var(--perfect-header-padding, 16px);
   position: relative;
 }
 
 .layout-shell {
   width: 100%;
-  max-width: var(--app-shell-max-width, var(--app-content-max-width, 460px));
+  max-width: var(--app-shell-max-width, var(--app-content-max-width, 100%));
   min-height: 640px;
   background: #fff;
   border-radius: 36px;
@@ -69,7 +69,7 @@
 /* En móviles estándar y grandes en vertical, mantener diseño móvil */
 @media (max-width: 768px) {
   .layout-shell-profile {
-    max-width: var(--app-shell-max-width, var(--app-content-max-width, 460px));
+    max-width: var(--app-shell-max-width, var(--app-content-max-width, 100%));
   }
 }
 
