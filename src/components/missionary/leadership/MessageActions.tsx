@@ -35,7 +35,7 @@ ${message.body}
         ShareService.shareToWhatsApp(template);
       } else if (method === 'email') {
         ShareService.shareToEmail(
-          `Mensaje del líder de zona – ${message.title}`,
+          `Mensaje del líder – ${message.title}`,
           template
         );
       } else {

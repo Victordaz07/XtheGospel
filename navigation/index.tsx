@@ -15,11 +15,12 @@ import InvestigatorBaptism from '../app/(tabs)/investigator/baptism';
 import InvestigatorProfile from '../app/(tabs)/investigator/profile';
 
 // Importar pantallas del misionero
-import MissionaryHome from '../app/(tabs)/missionary/index';
+import MissionaryHomeScreen from '../src/screens/MissionaryHomeScreen';
 import MissionaryAgenda from '../app/(tabs)/missionary/agenda';
 import MissionaryLessons from '../app/(tabs)/missionary/lessons';
 import MissionaryPeople from '../app/(tabs)/missionary/people';
 import MissionaryProfile from '../app/(tabs)/missionary/profile';
+import { LeadershipCenterFeedScreen } from '../src/screens/LeadershipCenterFeedScreen';
 
 // Importar pantallas del Asistente del Presidente
 import APDashboard from '../app/(tabs)/ap/dashboard';
@@ -160,7 +161,7 @@ const MissionaryTabs = () => {
     >
       <Tab.Screen
         name="Inicio"
-        component={MissionaryHome}
+        component={MissionaryHomeScreen}
         options={{
           title: t('tabs.home'),
           tabBarIcon: ({ color, size }) => (
@@ -205,6 +206,16 @@ const MissionaryTabs = () => {
           title: t('tabs.lessons'),
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="book" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Liderazgo"
+        component={LeadershipCenterFeedScreen}
+        options={{
+          title: 'Liderazgo',
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="account-group" color={color} size={size} />
           ),
         }}
       />

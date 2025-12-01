@@ -1,221 +1,368 @@
-# Missionary & Investigator App / App Misional
+# 📘 Mi Diario Misional
 
-A comprehensive web application designed to support missionaries, investigators, and members of The Church of Jesus Christ of Latter-day Saints in their spiritual journey and missionary work.
-
-## 📋 Table of Contents / Tabla de Contenidos
-
-- [English](#english)
-- [Español](#español)
+**Aplicación Web Integral para Misioneros, Investigadores, Miembros y Líderes de La Iglesia de Jesucristo de los Santos de los Últimos Días**
 
 ---
 
-## English
+## 📋 Tabla de Contenidos
 
-### Overview
-
-This application provides three distinct user roles, each with tailored features and content:
-
-1. **Investigator** - For those learning about the Church
-2. **Missionary** - For full-time missionaries
-3. **Member** - For members supporting missionary work
-
-### Features
-
-#### Investigator Role
-- Daily devotional messages
-- Interactive lessons and study materials
-- Progress tracking
-- Baptism preparation guide
-- Personal commitments and tasks
-- God's story journal
-- Difficult questions FAQ
-
-#### Missionary Role
-- Mission agenda and scheduling
-- People management (investigators, contacts)
-- Lesson planning and resources
-- Commitment tracking
-- Progress monitoring
-
-#### Member Role
-- **Study Modules**: Deep doctrinal content organized by topics
-  - Doctrine of Christ in daily life
-  - Working with missionaries
-  - Sharing the gospel naturally
-  - Caring for new converts
-  - Temple preparation
-- **Interactive Activities**: Gamified learning experiences
-  - Doctrinal quizzes
-  - Real-world scenarios
-  - Scripture matching exercises
-  - Character guessing games
-  - Real-world mission assignments
-  - Reading blocks with reflection
-- **New Convert Care**: Comprehensive guide for supporting new members
-  - Welcome to the Kingdom
-  - Ward integration
-  - Aaronic and Melchizedek Priesthood preparation
-  - First temple visit guidance
-  - Temple recommend preparation
-  - 90-day spiritual growth path
-- **Friends Management**: Track and pray for friends interested in the gospel
-- **Missionary Support**: Ways to help full-time missionaries
-- **Progress Tracking**: XP system, levels, streaks, and badges
-
-### Technology Stack
-
-- **Frontend**: React 18.3.1, TypeScript
-- **Routing**: React Router DOM 6.20.0
-- **State Management**: Zustand 5.0.8
-- **Build Tool**: Vite 5.0.0
-- **Styling**: CSS with custom design system
-- **Internationalization**: Custom i18n system supporting ES, EN, FR, PT
-
-### Getting Started
-
-#### Prerequisites
-
-- Node.js 18+ and npm
-
-#### Installation
-
-```bash
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
-
-# Build for production
-npm run build
-
-# Preview production build
-npm run preview
-```
-
-The application will be available at `http://localhost:3000`
-
-### Project Structure
-
-```
-src/
-├── components/          # Reusable UI components
-├── context/            # React contexts (Auth, I18n, Progress)
-├── data/              # Static data and lessons
-├── hooks/             # Custom React hooks
-├── i18n/              # Translation files (ES, EN, FR, PT)
-├── layouts/           # Layout components for each role
-├── member/            # Member role specific code
-│   ├── components/   # Member-specific components
-│   ├── data/         # Member study modules and activities
-│   ├── pages/        # Member pages
-│   └── state/        # Member state management
-├── pages/             # Page components
-│   ├── investigator/ # Investigator pages
-│   ├── missionary/   # Missionary pages
-│   └── member/       # Member pages (legacy)
-├── router/           # Routing configuration
-├── services/         # Business logic services
-├── utils/            # Utility functions
-└── styles/           # Global styles
-```
-
-### Member Module Routes
-
-- `/member` or `/member/home` - Dashboard with quick access to all features
-- `/member/study` - Study modules overview
-- `/member/study/:moduleId` - Module detail
-- `/member/study/:moduleId/:sectionId` - Section detail
-- `/member/convertidos` - New convert care guide
-- `/member/activities` - Interactive activities
-- `/member/progress` - Progress tracking (XP, levels, badges)
-- `/member/friends` - Friends management
-- `/member/support` - Missionary support resources
-
-### Internationalization
-
-The app supports 4 languages:
-- **Spanish (ES)** - Default
-- **English (EN)**
-- **French (FR)**
-- **Portuguese (PT)**
-
-Language can be changed via the language picker in the UI. All member content (study modules, activities, convert care guide) is fully translated.
-
-### Development Features
-
-- **Role Switcher**: In development mode, a role switcher appears in the top-right corner for easy testing between roles
-- **Hot Module Replacement**: Fast development with Vite HMR
-- **TypeScript**: Full type safety throughout the codebase
-
-### Data Sources
-
-#### Member Study Modules
-Located in `src/member/data/memberStudyModules.*.ts`:
-- Doctrinal content organized by modules and sections
-- Available in ES, EN, FR, PT
-
-#### Member Activities
-Located in `src/member/data/memberActivities.ts`:
-- Interactive activities with XP rewards
-- Types: QUIZ_SINGLE, SCENARIO, QUIZ_SCRIPTURE_MATCH, CHARACTER_GUESS, REAL_WORLD_MISSION, READING_BLOCK
-
-#### New Convert Guide
-Located in `src/member/data/newConvertGuide.*.ts`:
-- Comprehensive guide for new member care
-- 7 main sections covering the first 90 days and beyond
-- Available in ES, EN, FR, PT
-
-### State Management
-
-- **AuthContext**: User role and authentication state
-- **I18nContext**: Language and translation management
-- **ProgressContext**: Lesson progress tracking
-- **useMemberProgressStore** (Zustand): Member-specific progress (XP, levels, badges, completed sections)
-
-### Storage
-
-The app uses `localStorage` for:
-- User role persistence
-- Language preference
-- Progress tracking
-- Member friends list
-- Completed activities and study sections
-
-### Building and Deployment
-
-```bash
-# Production build
-npm run build
-
-# Output will be in dist/
-```
-
-The `dist/` folder contains static files ready for deployment to any static hosting service (Netlify, Vercel, GitHub Pages, etc.).
-
-### Contributing
-
-This is a private project. For questions or contributions, please contact the project maintainer.
-
-### License
-
-Private - All rights reserved
+- [Visión General](#-visión-general)
+- [Módulo de Liderazgo Misional](#-módulo-de-liderazgo-misional)
+- [Roles de Usuario](#-roles-de-usuario)
+- [Stack Tecnológico](#-stack-tecnológico)
+- [Inicio Rápido](#-inicio-rápido)
 
 ---
 
-## Español
+## 🌟 Visión General
 
-### Resumen
-
-Esta aplicación web proporciona tres roles de usuario distintos, cada uno con características y contenido personalizado:
+Esta aplicación web proporciona cuatro roles de usuario distintos, cada uno con características y contenido personalizado:
 
 1. **Investigador** - Para quienes están aprendiendo sobre la Iglesia
 2. **Misionero** - Para misioneros de tiempo completo
 3. **Miembro** - Para miembros que apoyan la obra misional
+4. **Líder Misional** - Para líderes de distrito, zona y asistentes del presidente
 
-### Características
+---
 
-#### Rol Investigador
+# 🛡️ Módulo de Liderazgo Misional
+
+**Sistema de Coordinación y Capacitación para Misiones de La Iglesia de Jesucristo de los Santos de los Últimos Días**
+
+---
+
+## 🌟 Visión General
+
+Este módulo transforma la organización misional en un sistema moderno, ordenado y escalable. Cada líder —Distrito, Zona o Asistente del Presidente— cuenta con herramientas reales para dirigir, entrenar, comunicar y coordinar; todo desde la palma de su mano.
+
+El misionero regular recibe solo lo necesario: agendas, mensajes y eventos relevantes.
+
+**Lo que antes requería papeles, WhatsApp, llamadas y cadenas informales… ahora fluye con orden celestial.**
+
+---
+
+## 🏛 Arquitectura del Sistema
+
+### Diagrama General del Sistema
+
+```mermaid
+flowchart TD
+    %% Roles
+    A1[<b>Misionero Regular</b><br/>• Recibe mensajes<br/>• Recibe agendas<br/>• Ve eventos<br/>• No edita]:::role
+    A2[<b>Líder de Distrito</b><br/>• Reunión de distrito<br/>• Intercambios<br/>• Entrevistas<br/>• Mensajes a distrito<br/>• Notas]:::role
+    A3[<b>Líder de Zona</b><br/>• Reunión de zona<br/>• Intercambios<br/>• Entrevistas LZ<br/>• Mensajes a zona<br/>• Notas]:::role
+    A4[<b>Asistente del Presidente (AP)</b><br/>• Giras<br/>• Transfers<br/>• Mensajes misión<br/>• Dashboard misión<br/>• Notas AP]:::role
+    A5[<b>Presidente de Misión</b><br/>• Lectura global<br/>• Recibe reportes<br/>• Supervisa]:::role
+
+    %% Principal collections
+    B1[(leadershipEvents)]:::db
+    B2[(leaderMessages)]:::db
+    B3[(districtCouncils)]:::db
+    B4[(zoneCouncils)]:::db
+    B5[(exchanges)]:::db
+    B6[(baptismalInterviews)]:::db
+    B7[(transferPlans)]:::db
+    B8[(personalNotes)]:::db
+
+    %% Centro de liderazgo
+    C1[[<b>Centro de Liderazgo</b><br/>Feed único para todos<br/>LeadershipCenterScreen]]:::center
+
+    %% Connections
+    A2 --> B3
+    A3 --> B4
+    A4 --> B7
+
+    A2 --> B1
+    A3 --> B1
+    A4 --> B1
+
+    A2 --> B2
+    A3 --> B2
+    A4 --> B2
+
+    A2 --> B5
+    A3 --> B5
+    A4 --> B5
+
+    A2 --> B6
+    A3 --> B6
+
+    A2 --> B8
+    A3 --> B8
+    A4 --> B8
+
+    %% Feed
+    B1 --> C1
+    B2 --> C1
+
+    A1 --> C1
+    A2 --> C1
+    A3 --> C1
+    A4 --> C1
+    A5 --> C1
+
+    classDef role fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#0c4a6e
+    classDef db fill:#ede9fe,stroke:#6d28d9,stroke-width:2px,color:#4c1d95
+    classDef center fill:#fef3c7,stroke:#d97706,stroke-width:2px,color:#92400e
+```
+
+### Arquitectura de Datos (Firestore)
+
+```mermaid
+flowchart LR
+    subgraph Mission["Misión"]
+        direction TB
+
+        E1[(districtCouncils)]:::db
+        E2[(zoneCouncils)]:::db
+        E3[(leadershipEvents)]:::db
+        E4[(leaderMessages)]:::db
+        E5[(baptismalInterviews)]:::db
+        E6[(exchanges)]:::db
+        E7[(transferPlans)]:::db
+        E8[(personalNotes)]:::db
+    end
+
+    %% District Council
+    DC1[DL crea reunión distrito<br/>-> publishToDistrict]:::logic --> E1
+    E1 --> E3
+
+    %% Zone Council
+    ZC1[LZ crea reunión zona<br/>-> publishToZone]:::logic --> E2
+    E2 --> E3
+
+    %% Messages
+    MSG1[DL/LZ/AP<br/>publishMessage]:::logic --> E4
+    E4 --> FEED
+
+    %% Exchanges
+    EX1[DL/LZ/AP<br/>crean intercambio]:::logic --> E6
+    E6 --> E3
+
+    %% Interviews
+    BI1[DL/LZ programan<br/>y completan entrevistas]:::logic --> E5
+    E5 --> E3
+
+    %% Transfers
+    TP1[AP arma plan<br/>transfer]:::logic --> E7
+
+    %% Notes
+    NT1[DL/LZ/AP<br/>notas privadas<br/>-> opcional: promover a mensaje]:::logic --> E8
+    E8 -. promote .-> E4
+
+    %% Feed
+    FEED[[LeadershipCenter<br/>Feed Central]]:::center
+
+    E3 --> FEED
+    E4 --> FEED
+
+    classDef db fill:#ede9fe,stroke:#6d28d9,stroke-width:2px,color:#4c1d95
+    classDef logic fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#075985
+    classDef center fill:#fef3c7,stroke:#d97706,stroke-width:2px,color:#92400e
+```
+
+---
+
+## 🛠 Funcionalidad Principal
+
+### 👤 Misionero Regular
+
+**Acceso al Centro de Liderazgo:**
+- Reuniones programadas (LD, LZ, AP)
+- Mensajes oficiales
+- Recordatorios
+- Anuncios
+- Eventos próximos
+- Vista de solo lectura de agendas y detalles
+
+### 🟦 Líder de Distrito (DL)
+
+**Herramientas de Liderazgo:**
+- **Reunión de distrito**: Crear, publicar y completar agendas semanales
+- **Intercambios**: Planificar, ejecutar y dar seguimiento a intercambios con misioneros
+- **Entrevistas bautismales**: Organizar, programar y completar entrevistas
+- **Mensajes al distrito**: Publicar mensajes espirituales y anuncios
+- **Notas personales**: Bitácora privada con opción de promover a mensajes
+- **Dashboard**: KPIs del distrito, eventos próximos y mensajes recientes
+
+### 🟨 Líder de Zona (LZ)
+
+**Herramientas de Supervisión:**
+- **Reunión de zona**: Crear, publicar y completar consejos de zona
+- **Intercambios**: Giras con líderes de distrito y misioneros clave
+- **Entrevistas bautismales**: Supervisar y realizar entrevistas a nivel zona
+- **Mensajes a la zona**: Publicar mensajes y énfasis para toda la zona
+- **Notas de liderazgo**: Reflexiones y seguimiento de distritos
+- **Dashboard de zona**: Visión general de todos los distritos bajo su supervisión
+
+### 🟣 Asistente del Presidente (AP)
+
+**Herramientas de Misión:**
+- **Dashboard de la misión**: Visión global en tiempo real de toda la misión
+- **Giras / intercambios**: Planificar y ejecutar giras con líderes de zona
+- **Planificación de transfers**: Crear y gestionar planes de transferencias
+- **Mensajes oficiales**: Publicar mensajes a toda la misión o zonas específicas
+- **Notas privadas**: Reflexiones de alto nivel y seguimiento misional
+- **Apoyo al Presidente**: Checklist y herramientas para servir al presidente
+
+---
+
+## 🏗 Estructura Técnica
+
+### Colecciones de Datos (localStorage/Firestore)
+
+| Colección | Propósito | Roles que Crean | Roles que Ven |
+|-----------|-----------|----------------|---------------|
+| `districtCouncils` | Reuniones de distrito | DL | DL, LZ, AP, Misioneros (solo lectura) |
+| `zoneCouncils` | Reuniones de zona | LZ | LZ, AP, Misioneros (solo lectura) |
+| `leadershipEvents` | Feed central de eventos | DL, LZ, AP | Todos |
+| `leaderMessages` | Mensajes oficiales | DL, LZ, AP | Todos (según scope) |
+| `exchanges` | Intercambios y giras | DL, LZ, AP | Creador, misionero involucrado |
+| `baptismalInterviews` | Entrevistas bautismales | DL, LZ | DL, LZ, AP, Compañerismo |
+| `transferPlans` | Planes de transferencias | AP | AP |
+| `personalNotes` | Notas privadas | DL, LZ, AP | Solo el creador |
+
+### Flujo de Publicación
+
+1. **Líder crea contenido** (reunión, mensaje, intercambio, etc.)
+2. **Guarda como borrador** → Se almacena en su colección correspondiente
+3. **Publica** → Se crea un `leadershipEvent` en el feed central
+4. **Distribución automática** → Aparece en el Centro de Liderazgo según:
+   - `targetScope` (district, zone, mission)
+   - `districtId` / `zoneId` del misionero
+   - Filtros de rol y permisos
+
+### Servicios Principales
+
+- `districtCouncilService.ts` - Gestión de reuniones de distrito
+- `zoneCouncilService.ts` - Gestión de reuniones de zona
+- `exchangeService.ts` - Gestión de intercambios (reutilizable por todos los roles)
+- `baptismalInterviewService.ts` - Gestión de entrevistas bautismales
+- `leaderMessageService.ts` - Gestión de mensajes de liderazgo
+- `transferPlanService.ts` - Gestión de planes de transferencias
+- `personalNoteService.ts` - Gestión de notas personales
+- `shareService.ts` - Compartir contenido (WhatsApp, Email, Clipboard)
+
+---
+
+## 🔒 Seguridad y Roles
+
+Cada acción está protegida por:
+
+- **Rol del usuario**: `missionary`, `district_leader`, `zone_leader`, `assistant_to_president`
+- **Filtros geográficos**: `zoneId`, `districtId`, `missionId`
+- **Scope del contenido**: `district`, `zone`, `mission`
+- **Permisos de lectura/escritura**: Los misioneros regulares solo leen contenido publicado
+
+**Los misioneros regulares nunca ven información interna de liderazgo.**
+
+---
+
+## 📱 Filosofía del Sistema
+
+- **Sencillo para el usuario**: Interfaz intuitiva, sin complejidad innecesaria
+- **Poderoso para el líder**: Herramientas completas para dirigir eficazmente
+- **Ordenado para la misión**: Todo centralizado y accesible
+- **Eficiente para el presidente**: Visión global y reportes claros
+
+Un diseño inspirado en los principios de:
+- **Transparencia**: Todos ven lo que necesitan ver
+- **Diligencia**: Herramientas para ser más efectivos
+- **Responsabilidad**: Registro claro de acciones y decisiones
+- **Liderazgo cristiano**: Enfoque en personas, no solo números
+
+---
+
+## 🧩 Estado Actual
+
+### ✅ Implementado
+
+- ✅ Estructura completa de roles (DL, LZ, AP)
+- ✅ Servicios con localStorage (listos para migrar a Firestore)
+- ✅ Hooks funcionales para todos los roles
+- ✅ Pantallas totalmente operativas:
+  - Dashboards por rol
+  - Reuniones de distrito/zona
+  - Intercambios y giras
+  - Entrevistas bautismales
+  - Mensajes de liderazgo
+  - Planes de transferencias
+  - Notas personales
+  - Perfil y cambio de roles
+- ✅ Centro de liderazgo para misioneros
+- ✅ Publicación y distribución en tiempo real
+- ✅ Sistema de compartir (WhatsApp, Email, Clipboard)
+- ✅ Historial completo de todas las actividades
+- ✅ Validaciones y estados (draft, published, completed)
+
+### ⏳ Próximas Mejoras
+
+- 🔄 Migración a Firestore para sincronización en tiempo real
+- 📄 Exportación a PDF de agendas y reportes
+- 🔔 Notificaciones push para eventos importantes
+- 📊 Analytics y métricas avanzadas
+- 🌐 Sincronización offline
+- 🎨 Mejoras de UI/UX y animaciones
+- 🔐 Privacidad avanzada y permisos granulares
+
+---
+
+## 🚀 Inicio Rápido
+
+### Requisitos
+
+- Node.js 18+
+- React 18+
+- React Router DOM 6+
+
+### Instalación
+
+```bash
+npm install
+npm run dev
+```
+
+### Estructura de Carpetas
+
+```
+src/
+├── pages/missionary/leadership/    # Pantallas de liderazgo
+├── services/                        # Servicios de datos
+├── components/missionary/leadership/ # Componentes reutilizables
+├── hooks/                          # Hooks personalizados
+├── data/missionary/                # Configuración de roles
+└── layouts/                        # Layouts de navegación
+```
+
+---
+
+## 📊 Métricas y KPIs
+
+El sistema rastrea automáticamente:
+
+- **Reuniones realizadas** por distrito/zona
+- **Intercambios completados** por líder
+- **Entrevistas bautismales** programadas y completadas
+- **Mensajes publicados** por scope
+- **Participación** en el Centro de Liderazgo
+
+---
+
+## 🙌 Agradecimientos
+
+Este proyecto nace del deseo sincero de servir a la obra del Señor, elevando el estándar de coordinación y liderazgo dentro de las misiones.
+
+**Organización, inspiración y orden — tal como Él lo manda.**
+
+---
+
+---
+
+## 👤 Otros Módulos de la Aplicación
+
+### 👤 Investigador
+
+**Características:**
 - Mensajes devocionales diarios
 - Lecciones interactivas y materiales de estudio
 - Seguimiento de progreso
@@ -224,14 +371,19 @@ Esta aplicación web proporciona tres roles de usuario distintos, cada uno con c
 - Diario de la historia con Dios
 - Preguntas difíciles FAQ
 
-#### Rol Misionero
+### 👔 Misionero Regular
+
+**Características:**
 - Agenda misional y programación
 - Gestión de personas (investigadores, contactos)
 - Planificación de lecciones y recursos
 - Seguimiento de compromisos
 - Monitoreo de progreso
+- **Centro de Liderazgo**: Acceso a agendas, mensajes y eventos de sus líderes
 
-#### Rol Miembro
+### 👥 Miembro
+
+**Características:**
 - **Módulos de Estudio**: Contenido doctrinal profundo organizado por temas
   - Doctrina de Cristo en la vida diaria
   - Trabajar con los misioneros
@@ -256,22 +408,27 @@ Esta aplicación web proporciona tres roles de usuario distintos, cada uno con c
 - **Apoyo Misionero**: Formas de ayudar a los misioneros de tiempo completo
 - **Seguimiento de Progreso**: Sistema de XP, niveles, rachas e insignias
 
-### Stack Tecnológico
+---
+
+## 🛠 Stack Tecnológico
 
 - **Frontend**: React 18.3.1, TypeScript
 - **Routing**: React Router DOM 6.20.0
-- **Gestión de Estado**: Zustand 5.0.8
-- **Herramienta de Build**: Vite 5.0.0
-- **Estilos**: CSS con sistema de diseño personalizado
-- **Internacionalización**: Sistema i18n personalizado que soporta ES, EN, FR, PT
+- **State Management**: Zustand 5.0.8, React Context API
+- **Build Tool**: Vite 5.0.0
+- **Styling**: CSS con sistema de diseño personalizado
+- **Internationalization**: Sistema i18n personalizado (ES, EN, FR, PT)
+- **Storage**: localStorage (preparado para migración a Firestore)
 
-### Comenzar
+---
 
-#### Prerrequisitos
+## 🚀 Inicio Rápido
+
+### Prerrequisitos
 
 - Node.js 18+ y npm
 
-#### Instalación
+### Instalación
 
 ```bash
 # Instalar dependencias
@@ -293,134 +450,76 @@ La aplicación estará disponible en `http://localhost:3000`
 
 ```
 src/
-├── components/          # Componentes UI reutilizables
-├── context/            # Contextos de React (Auth, I18n, Progress)
-├── data/              # Datos estáticos y lecciones
-├── hooks/             # Hooks personalizados de React
-├── i18n/              # Archivos de traducción (ES, EN, FR, PT)
-├── layouts/           # Componentes de layout para cada rol
-├── member/            # Código específico del rol miembro
-│   ├── components/   # Componentes específicos de miembro
-│   ├── data/         # Módulos de estudio y actividades de miembro
-│   ├── pages/        # Páginas de miembro
-│   └── state/        # Gestión de estado de miembro
-├── pages/             # Componentes de página
-│   ├── investigator/ # Páginas de investigador
-│   ├── missionary/   # Páginas de misionero
-│   └── member/       # Páginas de miembro (legacy)
-├── router/           # Configuración de routing
-├── services/         # Servicios de lógica de negocio
-├── utils/            # Funciones de utilidad
-└── styles/           # Estilos globales
+├── components/                    # Componentes UI reutilizables
+├── context/                      # Contextos de React (Auth, I18n, Progress)
+├── data/                         # Datos estáticos y lecciones
+│   ├── missionary/               # Configuración de roles de liderazgo
+│   └── member/                   # Módulos de estudio y actividades
+├── hooks/                        # Hooks personalizados de React
+├── i18n/                         # Archivos de traducción (ES, EN, FR, PT)
+├── layouts/                      # Layouts de navegación
+│   └── MissionaryLeadershipLayout.tsx
+├── pages/                        # Componentes de página
+│   ├── investigator/            # Páginas de investigador
+│   ├── missionary/              # Páginas de misionero
+│   │   └── leadership/          # Pantallas de liderazgo
+│   └── member/                  # Páginas de miembro
+├── services/                    # Servicios de lógica de negocio
+│   ├── districtCouncilService.ts
+│   ├── zoneCouncilService.ts
+│   ├── exchangeService.ts
+│   ├── baptismalInterviewService.ts
+│   ├── leaderMessageService.ts
+│   ├── transferPlanService.ts
+│   └── personalNoteService.ts
+├── router/                      # Configuración de routing
+└── utils/                       # Funciones de utilidad
 ```
-
-### Rutas del Módulo Miembro
-
-- `/member` o `/member/home` - Dashboard con acceso rápido a todas las características
-- `/member/study` - Resumen de módulos de estudio
-- `/member/study/:moduleId` - Detalle del módulo
-- `/member/study/:moduleId/:sectionId` - Detalle de la sección
-- `/member/convertidos` - Guía de cuidado de nuevos conversos
-- `/member/activities` - Actividades interactivas
-- `/member/progress` - Seguimiento de progreso (XP, niveles, insignias)
-- `/member/friends` - Gestión de amigos
-- `/member/support` - Recursos de apoyo misionero
-
-### Internacionalización
-
-La aplicación soporta 4 idiomas:
-- **Español (ES)** - Por defecto
-- **Inglés (EN)**
-- **Francés (FR)**
-- **Portugués (PT)**
-
-El idioma se puede cambiar mediante el selector de idioma en la UI. Todo el contenido de miembro (módulos de estudio, actividades, guía de cuidado de conversos) está completamente traducido.
-
-### Características de Desarrollo
-
-- **Cambiador de Rol**: En modo desarrollo, aparece un cambiador de rol en la esquina superior derecha para facilitar las pruebas entre roles
-- **Hot Module Replacement**: Desarrollo rápido con Vite HMR
-- **TypeScript**: Seguridad de tipos completa en todo el código
-
-### Fuentes de Datos
-
-#### Módulos de Estudio de Miembro
-Ubicados en `src/member/data/memberStudyModules.*.ts`:
-- Contenido doctrinal organizado por módulos y secciones
-- Disponible en ES, EN, FR, PT
-
-#### Actividades de Miembro
-Ubicadas en `src/member/data/memberActivities.ts`:
-- Actividades interactivas con recompensas de XP
-- Tipos: QUIZ_SINGLE, SCENARIO, QUIZ_SCRIPTURE_MATCH, CHARACTER_GUESS, REAL_WORLD_MISSION, READING_BLOCK
-
-#### Guía de Nuevos Conversos
-Ubicada en `src/member/data/newConvertGuide.*.ts`:
-- Guía completa para el cuidado de nuevos miembros
-- 7 secciones principales que cubren los primeros 90 días y más allá
-- Disponible en ES, EN, FR, PT
-
-### Gestión de Estado
-
-- **AuthContext**: Estado de rol de usuario y autenticación
-- **I18nContext**: Gestión de idioma y traducción
-- **ProgressContext**: Seguimiento de progreso de lecciones
-- **useMemberProgressStore** (Zustand): Progreso específico de miembro (XP, niveles, insignias, secciones completadas)
-
-### Almacenamiento
-
-La aplicación usa `localStorage` para:
-- Persistencia del rol de usuario
-- Preferencia de idioma
-- Seguimiento de progreso
-- Lista de amigos de miembro
-- Actividades y secciones de estudio completadas
-
-### Construcción y Despliegue
-
-```bash
-# Build de producción
-npm run build
-
-# La salida estará en dist/
-```
-
-La carpeta `dist/` contiene archivos estáticos listos para desplegar en cualquier servicio de hosting estático (Netlify, Vercel, GitHub Pages, etc.).
-
-### Contribuir
-
-Este es un proyecto privado. Para preguntas o contribuciones, por favor contacta al mantenedor del proyecto.
-
-### Licencia
-
-Privado - Todos los derechos reservados
 
 ---
 
-## 📝 Recent Updates / Actualizaciones Recientes
+## 📊 Estado del Proyecto
 
-### Member Role Complete Implementation / Implementación Completa del Rol Miembro
+### ✅ Implementado
 
-- ✅ Complete visual dashboard for member role
-- ✅ Study modules with deep doctrinal content
-- ✅ Interactive activities with gamification
-- ✅ New convert care guide (7 sections, 4 languages)
-- ✅ Progress tracking (XP, levels, streaks, badges)
-- ✅ Friends management
-- ✅ Missionary support resources
-- ✅ Role switcher for development testing
-- ✅ Full i18n support (ES, EN, FR, PT)
-- ✅ Responsive design consistent with investigator/missionary roles
+#### Módulo de Liderazgo
+- ✅ Estructura completa de roles (DL, LZ, AP)
+- ✅ Servicios con localStorage (listos para migrar a Firestore)
+- ✅ Hooks funcionales para todos los roles
+- ✅ Pantallas totalmente operativas
+- ✅ Centro de liderazgo para misioneros
+- ✅ Publicación y distribución en tiempo real
+- ✅ Sistema de compartir (WhatsApp, Email, Clipboard)
+- ✅ Historial completo de todas las actividades
+
+#### Otros Módulos
+- ✅ Dashboard visual para rol miembro
+- ✅ Módulos de estudio con contenido doctrinal profundo
+- ✅ Actividades interactivas con gamificación
+- ✅ Guía de cuidado de nuevos conversos (7 secciones, 4 idiomas)
+- ✅ Seguimiento de progreso (XP, niveles, rachas, insignias)
+- ✅ Gestión de amigos
+- ✅ Recursos de apoyo misionero
+- ✅ Soporte completo i18n (ES, EN, FR, PT)
+
+### ⏳ Próximas Mejoras
+
+- 🔄 Migración a Firestore para sincronización en tiempo real
+- 📄 Exportación a PDF de agendas y reportes
+- 🔔 Notificaciones push para eventos importantes
+- 📊 Analytics y métricas avanzadas
+- 🌐 Sincronización offline
+- 🎨 Mejoras de UI/UX y animaciones
+- 🔐 Privacidad avanzada y permisos granulares
 
 ---
 
-## 🚀 Quick Start / Inicio Rápido
+## 📄 Licencia
 
-```bash
-npm install
-npm run dev
-```
+Este proyecto es de uso interno para misiones de La Iglesia de Jesucristo de los Santos de los Últimos Días.
 
-Open `http://localhost:3000` and select a role to begin.
+---
 
-Abre `http://localhost:3000` y selecciona un rol para comenzar.
+**Designed & Architected by:** Víctor Ruiz Bello
+
+*"Y todo lo que hagáis, hacedlo de corazón, como para el Señor y no para los hombres"* — Colosenses 3:23
