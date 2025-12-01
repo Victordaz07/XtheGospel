@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { useI18n } from '../../context/I18nContext';
 import { meetingTemplates, quickResources } from '../../data/leaderMeetingsResources';
+import { convertPath12Weeks } from '../../data/leader/convertPath12Weeks';
 import '../../pages/Page.css';
 import './LeaderScreens.css';
 
 export const LeaderMeetingsResourcesScreen: React.FC = () => {
   const { t } = useI18n();
+  const location = useLocation();
   const [expandedTemplate, setExpandedTemplate] = useState<string | null>(null);
   const [expandedResource, setExpandedResource] = useState<string | null>(null);
 
@@ -27,7 +30,7 @@ export const LeaderMeetingsResourcesScreen: React.FC = () => {
       <div className="page-content">
         {/* Meeting Templates Section */}
         <div className="leader-section-header">
-          <h2>Plantillas de Reunión</h2>
+          <h2>{t('memberLeader.meetingsResources.sections.templates') || 'Plantillas de Reunión'}</h2>
         </div>
 
         {meetingTemplates.map(template => (
@@ -57,7 +60,7 @@ export const LeaderMeetingsResourcesScreen: React.FC = () => {
 
         {/* Quick Resources Section */}
         <div className="leader-section-header" style={{ marginTop: '24px' }}>
-          <h2>Recursos rápidos</h2>
+          <h2>{t('memberLeader.meetingsResources.sections.quickResources') || 'Recursos rápidos'}</h2>
         </div>
 
         {quickResources.map(resource => (
@@ -81,6 +84,34 @@ export const LeaderMeetingsResourcesScreen: React.FC = () => {
             )}
           </div>
         ))}
+
+        {/* Convert Path 12 Weeks Section */}
+        <div className="leader-section-header" style={{ marginTop: '24px' }}>
+          <h2>Guías extensas</h2>
+        </div>
+
+        <div className="leader-template-card">
+          <div className="leader-template-header">
+            <div style={{ flex: 1 }}>
+              <h3>{convertPath12Weeks.title}</h3>
+              <p>{convertPath12Weeks.description}</p>
+            </div>
+            <Link
+              to={location.pathname.includes('/member/') 
+                ? '/member/leader/meetings/convert-path' 
+                : '/leader/meetings/convert-path'}
+              className="leader-button-small"
+              style={{ 
+                textDecoration: 'none', 
+                display: 'inline-block',
+                whiteSpace: 'nowrap',
+                marginLeft: '12px'
+              }}
+            >
+              Ver guía completa
+            </Link>
+          </div>
+        </div>
       </div>
     </div>
   );

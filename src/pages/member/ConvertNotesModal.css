@@ -1,0 +1,163 @@
+/* Convert Notes Modal Styles */
+
+.convert-notes-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.convert-notes-modal {
+  background: #FFFFFF;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 600px;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 10000;
+  overflow: hidden;
+}
+
+.convert-notes-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 20px;
+  border-bottom: 1px solid #F2F4F7;
+}
+
+.convert-notes-modal-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.convert-notes-close {
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: #6B7280;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.convert-notes-close:hover {
+  background: #F3F4F6;
+}
+
+.convert-notes-modal-body {
+  padding: 20px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.convert-notes-textarea {
+  width: 100%;
+  min-height: 200px;
+  padding: 12px;
+  border: 1.5px solid #E5E7EB;
+  border-radius: 12px;
+  font-size: 14px;
+  font-family: inherit;
+  color: #111827;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.convert-notes-textarea:focus {
+  outline: none;
+  border-color: #5A48FF;
+  box-shadow: 0 0 0 3px rgba(90, 72, 255, 0.1);
+}
+
+.convert-notes-textarea::placeholder {
+  color: #9CA3AF;
+}
+
+.convert-notes-timestamp {
+  margin: 12px 0 0 0;
+  font-size: 12px;
+  color: #6B7280;
+}
+
+.convert-notes-modal-footer {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  padding: 18px 20px;
+  border-top: 1px solid #F2F4F7;
+}
+
+.leader-button-small.has-note {
+  background: #EEF2FF;
+  color: #4F46E5;
+  border: 1.5px solid #4F46E5;
+}
+
+.leader-plan-section {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #F2F4F7;
+}
+
+.leader-plan-section:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+
+.leader-plan-section h5 {
+  margin: 0 0 8px 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: #4F46E5;
+}
+
+.leader-plan-section ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.leader-plan-section li {
+  margin: 6px 0;
+  font-size: 13px;
+  color: #111827;
+  line-height: 1.6;
+}
+
+.leader-scripture-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.leader-scripture-chip {
+  display: inline-block;
+  padding: 4px 10px;
+  background: #F0FDF4;
+  color: #16A34A;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+}
+

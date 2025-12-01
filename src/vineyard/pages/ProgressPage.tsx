@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { FaArrowLeft, FaBookOpen, FaHandshake, FaBook, FaHeart, FaStar, FaFire, FaUsers, FaCrown, FaLock } from 'react-icons/fa';
+import { FaArrowLeft, FaBookOpen, FaHandshake, FaBook, FaHeart, FaStar, FaFire, FaUsers, FaCrown, FaLock, FaGamepad, FaRocket, FaChevronRight } from 'react-icons/fa';
 import { useI18n } from '../../context/I18nContext';
 import { useMemberProgressStore } from '../state/memberProgressStore';
 import { memberStudyModules } from '../data/memberStudyModules';
@@ -38,7 +38,7 @@ export const ProgressPage: React.FC = () => {
     return (
       <div className="page progress-page-new">
         <div className="page-content progress-page-content-new">
-          <p>Loading progress...</p>
+          <p>{t('member.progress.loading') || 'Cargando progreso...'}</p>
         </div>
       </div>
     );
@@ -109,6 +109,65 @@ export const ProgressPage: React.FC = () => {
             <span>🔔</span>
           </button>
         </header>
+
+        {/* Skills/Activities Card */}
+        <section className="progress-skills-section">
+          <Link to="/member/activities" className="progress-skills-card">
+            <div className="progress-skills-background-pattern"></div>
+            <div className="progress-skills-content">
+              <div className="progress-skills-header">
+                <div className="progress-skills-icon-wrapper">
+                  <FaGamepad className="progress-skills-icon" />
+                  <div className="progress-skills-icon-glow"></div>
+                </div>
+                <div className="progress-skills-text">
+                  <h2 className="progress-skills-title">
+                    {t('member.progress.skills.title') || 'Habilidades Misionales'}
+                  </h2>
+                  <p className="progress-skills-subtitle">
+                    {t('member.progress.skills.subtitle') || 'Desarrolla tu capacidad para compartir el evangelio'}
+                  </p>
+                </div>
+              </div>
+              <div className="progress-skills-stats">
+                <div className="progress-skills-stat">
+                  <span className="progress-skills-stat-value">{completedActivities.length}</span>
+                  <span className="progress-skills-stat-label">
+                    {t('member.progress.skills.completed') || 'Completadas'}
+                  </span>
+                </div>
+                <div className="progress-skills-divider"></div>
+                <div className="progress-skills-stat">
+                  <span className="progress-skills-stat-value">{memberActivities.length}</span>
+                  <span className="progress-skills-stat-label">
+                    {t('member.progress.skills.total') || 'Total'}
+                  </span>
+                </div>
+                <div className="progress-skills-divider"></div>
+                <div className="progress-skills-stat">
+                  <span className="progress-skills-stat-value">
+                    {Math.round((completedActivities.length / memberActivities.length) * 100) || 0}%
+                  </span>
+                  <span className="progress-skills-stat-label">
+                    {t('member.progress.skills.progress') || 'Progreso'}
+                  </span>
+                </div>
+              </div>
+              <div className="progress-skills-progress-bar">
+                <div 
+                  className="progress-skills-progress-fill"
+                  style={{ width: `${Math.round((completedActivities.length / memberActivities.length) * 100) || 0}%` }}
+                ></div>
+              </div>
+              <div className="progress-skills-cta">
+                <span className="progress-skills-cta-text">
+                  {t('member.progress.skills.cta') || 'Explorar actividades'}
+                </span>
+                <FaChevronRight className="progress-skills-cta-icon" />
+              </div>
+            </div>
+          </Link>
+        </section>
 
         {/* XP Overview Section */}
         <section className="progress-xp-section">

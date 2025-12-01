@@ -1,0 +1,76 @@
+/* Section Card Styles */
+
+.section-card {
+  background: #FFFFFF;
+  border-radius: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  border: 1px solid #F2F4F7;
+  border-left: 4px solid;
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+
+.section-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.section-card-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.2s;
+}
+
+.section-card-header:hover {
+  background: #F9FAFB;
+}
+
+.section-card-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  flex: 1;
+}
+
+.section-card-toggle {
+  font-size: 14px;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.section-card-header:hover .section-card-toggle {
+  opacity: 1;
+}
+
+.section-card-content {
+  padding: 0 20px 20px 20px;
+  animation: slideDown 0.3s ease-out;
+}
+
+.section-card-description {
+  margin: 0 0 16px 0;
+  font-size: 14px;
+  color: #6B7280;
+  line-height: 1.6;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #F2F4F7;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+

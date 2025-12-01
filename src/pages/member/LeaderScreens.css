@@ -139,6 +139,8 @@
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
   width: 100%;
   box-sizing: border-box;
+  position: static;
+  z-index: auto;
 }
 
 .leader-convert-header {

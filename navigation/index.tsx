@@ -21,6 +21,15 @@ import MissionaryLessons from '../app/(tabs)/missionary/lessons';
 import MissionaryPeople from '../app/(tabs)/missionary/people';
 import MissionaryProfile from '../app/(tabs)/missionary/profile';
 
+// Importar pantallas del Asistente del Presidente
+import APDashboard from '../app/(tabs)/ap/dashboard';
+import APCouncil from '../app/(tabs)/ap/council';
+import APTransfers from '../app/(tabs)/ap/transfers';
+import APOffice from '../app/(tabs)/ap/office';
+import APTours from '../app/(tabs)/ap/tours';
+import APCompanionship from '../app/(tabs)/ap/companionship';
+import APProfile from '../app/(tabs)/ap/profile';
+
 // Importar la nueva estructura de lecciones
 import LessonsNavigator from './LessonsNavigator';
 
@@ -53,6 +62,7 @@ const Stack = createStackNavigator();
 export type RootStackParamList = {
   InvestigatorApp: undefined;
   MissionaryApp: undefined;
+  APApp: undefined;
   Auth: undefined;
   LessonDetail: { lessonId: string };
   LessonsNavigator: undefined;
@@ -212,6 +222,91 @@ const MissionaryTabs = () => {
   );
 };
 
+// Navigator para Asistente del Presidente
+const APTabs = () => {
+  return (
+    <Tab.Navigator
+      screenOptions={{
+        headerShown: false,
+        tabBarStyle: { backgroundColor: '#fff', paddingBottom: 5, paddingTop: 5 },
+        tabBarActiveTintColor: '#007AFF',
+        tabBarInactiveTintColor: '#8E8E93',
+      }}
+    >
+      <Tab.Screen
+        name="Dashboard"
+        component={APDashboard}
+        options={{
+          title: 'Dashboard',
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="view-dashboard" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Consejo"
+        component={APCouncil}
+        options={{
+          title: 'Consejo',
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="account-group" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Transfers"
+        component={APTransfers}
+        options={{
+          title: 'Transfers',
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="swap-horizontal" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Oficina"
+        component={APOffice}
+        options={{
+          title: 'Oficina',
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="office-building" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Giras"
+        component={APTours}
+        options={{
+          title: 'Giras',
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="map-marker-path" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Compañerismo"
+        component={APCompanionship}
+        options={{
+          title: 'Compañerismo',
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="handshake" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Perfil"
+        component={APProfile}
+        options={{
+          title: 'Perfil',
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="account" color={color} size={size} />
+          ),
+        }}
+      />
+    </Tab.Navigator>
+  );
+};
+
 // Componente de carga
 const LoadingScreen = () => (
   <View style={{
@@ -255,6 +350,25 @@ const MainStack = () => {
               }}
             />
             {/* QR Scanner removido temporalmente */}
+          </>
+        ) : userRole === 'assistant_to_president' ? (
+          <>
+            <Stack.Screen name="APApp" component={APTabs} />
+            <Stack.Screen
+              name="LessonDetail"
+              component={LessonDetail}
+              options={{
+                headerShown: true,
+                title: 'Detalle de Lección',
+                headerStyle: {
+                  backgroundColor: '#007AFF',
+                },
+                headerTintColor: '#fff',
+                headerTitleStyle: {
+                  fontWeight: 'bold',
+                },
+              }}
+            />
           </>
         ) : (
           <>

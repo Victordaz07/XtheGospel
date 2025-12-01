@@ -1,15 +1,11 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Link, Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import {
   FaHouse,
   FaBookOpen,
-  FaHandshake,
   FaChartLine,
   FaUser,
   FaUsers,
-  FaGamepad,
-  FaBook,
-  FaSeedling,
 } from 'react-icons/fa6';
 import { useI18n } from '../../context/I18nContext';
 import { FloatingMenu } from '../../ui/components';
@@ -28,88 +24,63 @@ import { LeaderTodayPanelScreen } from '../../pages/member/LeaderTodayPanelScree
 import { LeaderNewConvertsScreen } from '../../pages/member/LeaderNewConvertsScreen';
 import { LeaderFriendsTeachingScreen } from '../../pages/member/LeaderFriendsTeachingScreen';
 import { LeaderMeetingsResourcesScreen } from '../../pages/member/LeaderMeetingsResourcesScreen';
+import { ConvertPath12WeeksScreen } from '../../pages/member/ConvertPath12WeeksScreen';
+import { LeaderNewConvertsExtendedScreen } from '../../pages/member/LeaderNewConvertsExtendedScreen';
+import { LeaderFriendsExtendedScreen } from '../../pages/member/LeaderFriendsExtendedScreen';
+import { LeaderGuideExtendedScreen } from '../../pages/member/LeaderGuideExtendedScreen';
 import '../../layouts/Layout.css';
+
+/**
+ * Single source of truth for MEMBER role bottom navigation tabs.
+ * This configuration is ALWAYS used regardless of the current route.
+ * 
+ * Tabs are displayed in this exact order:
+ * 1. Inicio (Home)
+ * 2. Lecciones (Lessons)
+ * 3. Mis Amigos (Friends)
+ * 4. Progreso (Progress)
+ * 5. Perfil (Profile)
+ */
+export const MEMBER_TABS_CONFIG = [
+  {
+    path: '/member/home',
+    translationKey: 'tabs.home',
+    icon: FaHouse,
+  },
+  {
+    path: '/member/study',
+    translationKey: 'tabs.lessons',
+    icon: FaBookOpen,
+  },
+  {
+    path: '/member/friends',
+    translationKey: 'tabs.memberFriends',
+    icon: FaUsers,
+  },
+  {
+    path: '/member/progress',
+    translationKey: 'tabs.progress',
+    icon: FaChartLine,
+  },
+  {
+    path: '/member/profile',
+    translationKey: 'tabs.profile',
+    icon: FaUser,
+  },
+] as const;
 
 export const MemberLayout: React.FC = () => {
   const { t } = useI18n();
   const location = useLocation();
 
-  // Determine which bottom nav tabs to show based on current page
-  const getBottomNavTabs = () => {
-    if (location.pathname.startsWith('/member/study')) {
-      return [
-        { path: '/member/home', label: t('tabs.home'), icon: <FaHouse /> },
-        { path: '/member/study', label: t('tabs.lessons'), icon: <FaBookOpen /> },
-        { path: '/member/friends', label: t('tabs.tasks'), icon: <FaHandshake /> },
-        { path: '/member/progress', label: t('tabs.progress'), icon: <FaChartLine /> },
-        { path: '/member/profile', label: t('tabs.profile'), icon: <FaUser /> },
-      ];
-    }
-    if (location.pathname === '/member/activities') {
-      return [
-        { path: '/member/home', label: t('tabs.home'), icon: <FaHouse /> },
-        { path: '/member/friends', label: t('tabs.memberFriends'), icon: <FaUsers /> },
-        { path: '/member/activities', label: t('tabs.memberSkills'), icon: <FaGamepad /> },
-        { path: '/member/support', label: t('tabs.memberResources'), icon: <FaBook /> },
-        { path: '/member/progress', label: t('tabs.progress'), icon: <FaChartLine /> },
-      ];
-    }
-    if (location.pathname === '/member/convertidos') {
-      return [
-        { path: '/member/home', label: t('tabs.home'), icon: <FaHouse /> },
-        { path: '/member/friends', label: t('tabs.memberFriends'), icon: <FaUsers /> },
-        { path: '/member/activities', label: t('tabs.memberSkills'), icon: <FaGamepad /> },
-        { path: '/member/convertidos', label: t('tabs.memberConversion'), icon: <FaSeedling /> },
-        { path: '/member/profile', label: t('tabs.profile'), icon: <FaUser /> },
-      ];
-    }
-    if (location.pathname === '/member/support') {
-      return [
-        { path: '/member/home', label: t('tabs.home'), icon: <FaHouse /> },
-        { path: '/member/friends', label: t('tabs.memberFriends'), icon: <FaUsers /> },
-        { path: '/member/activities', label: t('tabs.memberSkills'), icon: <FaGamepad /> },
-        { path: '/member/support', label: t('tabs.memberResources'), icon: <FaBook /> },
-        { path: '/member/profile', label: t('tabs.profile'), icon: <FaUser /> },
-      ];
-    }
-    if (location.pathname === '/member/friends') {
-      return [
-        { path: '/member/home', label: t('tabs.home'), icon: <FaHouse /> },
-        { path: '/member/friends', label: t('tabs.memberFriends'), icon: <FaUsers /> },
-        { path: '/member/activities', label: t('tabs.memberSkills'), icon: <FaGamepad /> },
-        { path: '/member/progress', label: t('tabs.progress'), icon: <FaChartLine /> },
-        { path: '/member/profile', label: t('tabs.profile'), icon: <FaUser /> },
-      ];
-    }
-    if (location.pathname === '/member/progress') {
-      return [
-        { path: '/member/home', label: t('tabs.home'), icon: <FaHouse /> },
-        { path: '/member/study', label: t('tabs.lessons'), icon: <FaBookOpen /> },
-        { path: '/member/friends', label: t('tabs.tasks'), icon: <FaHandshake /> },
-        { path: '/member/progress', label: t('tabs.progress'), icon: <FaChartLine /> },
-        { path: '/member/profile', label: t('tabs.profile'), icon: <FaUser /> },
-      ];
-    }
-    if (location.pathname === '/member/profile') {
-      return [
-        { path: '/member/home', label: t('tabs.home'), icon: <FaHouse /> },
-        { path: '/member/study', label: t('tabs.lessons'), icon: <FaBookOpen /> },
-        { path: '/member/friends', label: t('tabs.tasks'), icon: <FaHandshake /> },
-        { path: '/member/progress', label: t('tabs.progress'), icon: <FaChartLine /> },
-        { path: '/member/profile', label: t('tabs.profile'), icon: <FaUser /> },
-      ];
-    }
-    // Default for home
-    return [
-      { path: '/member/home', label: t('tabs.home'), icon: <FaHouse /> },
-      { path: '/member/study', label: t('tabs.lessons'), icon: <FaBookOpen /> },
-      { path: '/member/friends', label: t('tabs.memberFriends'), icon: <FaUsers /> },
-      { path: '/member/progress', label: t('tabs.progress'), icon: <FaChartLine /> },
-      { path: '/member/profile', label: t('tabs.profile'), icon: <FaUser /> },
-    ];
-  };
-
-  const bottomNavTabs = getBottomNavTabs();
+  // Create stable tab configuration - NEVER changes based on route
+  const bottomNavTabs = useMemo(() => {
+    return MEMBER_TABS_CONFIG.map((tab) => ({
+      path: tab.path,
+      label: t(tab.translationKey),
+      icon: React.createElement(tab.icon),
+    }));
+  }, [t]);
 
   const isProfilePage = location.pathname === '/member/profile';
 
@@ -136,15 +107,29 @@ export const MemberLayout: React.FC = () => {
             <Route path="/member/featured" element={<FeaturedContentPage />} />
             <Route path="/member/leader/today" element={<LeaderTodayPanelScreen />} />
             <Route path="/member/leader/converts" element={<LeaderNewConvertsScreen />} />
+            <Route path="/member/leader/converts/extended" element={<LeaderNewConvertsExtendedScreen />} />
             <Route path="/member/leader/friends" element={<LeaderFriendsTeachingScreen />} />
+            <Route path="/member/leader/friends/extended" element={<LeaderFriendsExtendedScreen />} />
             <Route path="/member/leader/meetings" element={<LeaderMeetingsResourcesScreen />} />
+            <Route path="/member/leader/meetings/convert-path" element={<ConvertPath12WeeksScreen />} />
+            <Route path="/member/leader/guidelines/extended" element={<LeaderGuideExtendedScreen />} />
             <Route path="*" element={<Navigate to="/member/home" replace />} />
           </Routes>
         </main>
         <nav className="bottom-nav">
           {bottomNavTabs.map((tab) => {
-            const isActive = location.pathname === tab.path || 
-                           (tab.path === '/member/home' && location.pathname === '/member');
+            // Determine if this tab is active
+            // Handle exact matches and nested routes (e.g., /member/study/:moduleId)
+            // Also handle leader routes within member layout
+            const isActive = 
+              location.pathname === tab.path ||
+              (tab.path === '/member/home' && location.pathname === '/member') ||
+              (tab.path !== '/member/home' && location.pathname.startsWith(tab.path)) ||
+              // Para rutas de leader dentro de member, mantener el tab activo según el contexto
+              (location.pathname.startsWith('/member/leader/converts') && tab.path === '/member/home') ||
+              (location.pathname.startsWith('/member/leader/friends') && tab.path === '/member/home') ||
+              (location.pathname.startsWith('/member/leader/meetings') && tab.path === '/member/home') ||
+              (location.pathname.startsWith('/member/leader/guidelines') && tab.path === '/member/home');
             return (
               <Link
                 key={tab.path}

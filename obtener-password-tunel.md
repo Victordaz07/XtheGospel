@@ -35,3 +35,5 @@ Si no encuentras la contraseña, puedes:
 
 **Nota:** La contraseña normalmente es un código de 6 caracteres que aparece justo después de la URL en la terminal.
 
+
+

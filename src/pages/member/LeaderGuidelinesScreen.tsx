@@ -1,15 +1,18 @@
 import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { useI18n } from '../../context/I18nContext';
 import {
   getLeaderGuidelines,
   getLeaderBehavior,
   getLeaderSafeNotesSystem,
 } from '../../data/leader';
+import { leaderGuideExtended } from '../../data/leader/leaderGuideExtended';
 import '../../pages/Page.css';
 import './LeaderScreens.css';
 
 export const LeaderGuidelinesScreen: React.FC = () => {
   const { t } = useI18n();
+  const location = useLocation();
   const guidelines = getLeaderGuidelines();
   const behavior = getLeaderBehavior();
   const notesSystem = getLeaderSafeNotesSystem();
@@ -127,6 +130,25 @@ export const LeaderGuidelinesScreen: React.FC = () => {
         <div className="leader-guidelines-disclaimer">
           <h2>Aviso importante</h2>
           <p>{guidelines.disclaimerText}</p>
+        </div>
+
+        {/* Guía extendida */}
+        <div className="leader-template-card" style={{ marginTop: '20px' }}>
+          <div className="leader-template-header">
+            <div>
+              <h3>{leaderGuideExtended.title}</h3>
+              <p>{leaderGuideExtended.description}</p>
+            </div>
+            <Link
+              to={location.pathname.includes('/member/') 
+                ? '/member/leader/guidelines/extended' 
+                : '/leader/guidelines/extended'}
+              className="leader-button-small"
+              style={{ textDecoration: 'none', display: 'inline-block' }}
+            >
+              Ver guía completa
+            </Link>
+          </div>
         </div>
       </div>
     </div>

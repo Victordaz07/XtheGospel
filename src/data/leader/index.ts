@@ -5,6 +5,10 @@ import { leaderMode } from './leaderMode';
 import { leaderModeAdditional } from './leaderModeAdditional';
 import { leaderIntegrationExtended } from './leaderIntegrationExtended';
 import { leaderScreensConfig } from './leaderScreensConfig';
+import { convertPath12Weeks } from './convertPath12Weeks';
+import { newConvertsExtended } from './newConvertsExtended';
+import { friendsInTeachingExtended } from './friendsInTeachingExtended';
+import { leaderGuideExtended } from './leaderGuideExtended';
 
 // 🔹 2. Tipos básicos
 
@@ -100,6 +104,22 @@ export const getLeaderSafeNotesSystem = () => {
   return leaderModeAdditional.safeNotesSystem;
 };
 
+export const getLeaderConvertPath12Weeks = () => {
+  return convertPath12Weeks;
+};
+
+export const getLeaderNewConvertsExtended = () => {
+  return newConvertsExtended;
+};
+
+export const getLeaderFriendsExtended = () => {
+  return friendsInTeachingExtended;
+};
+
+export const getLeaderGuideExtended = () => {
+  return leaderGuideExtended;
+};
+
 // 🔹 6. Export maestro: todo lo relacionado al modo Líder
 
 export const leaderData = {
@@ -112,5 +132,14 @@ export const leaderData = {
 };
 
 // Re-exportar los datos principales para acceso directo
-export { leaderMode, leaderModeAdditional, leaderIntegrationExtended, leaderScreensConfig };
+export { 
+  leaderMode, 
+  leaderModeAdditional, 
+  leaderIntegrationExtended, 
+  leaderScreensConfig, 
+  convertPath12Weeks,
+  newConvertsExtended,
+  friendsInTeachingExtended,
+  leaderGuideExtended
+};
 

@@ -31,8 +31,20 @@
   margin-bottom: 8px;
 }
 
-.role-switcher-button:hover {
+.role-switcher-button:hover:not(:disabled) {
   background: #4A3ADF;
+}
+
+.role-switcher-button.disabled,
+.role-switcher-button:disabled {
+  background: #9CA3AF;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.role-switcher-button.disabled:hover,
+.role-switcher-button:disabled:hover {
+  background: #9CA3AF;
 }
 
 .role-switcher-helper {

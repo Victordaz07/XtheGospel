@@ -38,12 +38,29 @@ export const useRoleStore = create<RoleState>()(
     {
       name: ROLE_KEY,
       storage: createJSONStorage(() => localStorage),
-      onRehydrateStorage: () => (state) => {
-        if (state) {
-          state.isHydrated = true;
-        }
+      onRehydrateStorage: () => {
+        return (state, error) => {
+          if (error) {
+            console.error('Error rehydrating store:', error);
+          }
+          // Always mark as hydrated after rehydration attempt
+          if (state) {
+            state.isHydrated = true;
+          }
+        };
       },
     }
   )
 );
+
+// Auto-hydrate on module load for web
+if (typeof globalThis !== 'undefined' && typeof (globalThis as any).window !== 'undefined') {
+  // Small delay to ensure store is ready
+  (globalThis as any).setTimeout(() => {
+    const store = useRoleStore.getState();
+    if (!store.isHydrated) {
+      store.hydrateRole();
+    }
+  }, 0);
+}
 

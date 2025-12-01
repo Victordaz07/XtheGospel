@@ -1,0 +1,295 @@
+/* Leadership Dashboard Styles */
+
+.page-header {
+  border-left: 4px solid;
+  padding-left: 20px;
+}
+
+.leadership-header-badge {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  margin-bottom: 12px;
+}
+
+.leadership-kpis-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.leadership-kpi-card {
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid #F2F4F7;
+}
+
+.leadership-kpi-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.leadership-kpi-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.leadership-kpi-label {
+  margin: 0 0 4px 0;
+  font-size: 12px;
+  color: #6B7280;
+  font-weight: 600;
+}
+
+.leadership-kpi-value {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.leadership-content-card {
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  border: 1px solid #F2F4F7;
+}
+
+.leadership-content-card h2 {
+  margin: 0 0 12px 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.leadership-content-text {
+  margin: 0;
+  font-size: 14px;
+  color: #475467;
+  line-height: 1.7;
+}
+
+.leadership-tabs-preview {
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  border: 1px solid #F2F4F7;
+}
+
+.leadership-tabs-preview h3 {
+  margin: 0 0 16px 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.leadership-tabs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.leadership-tab-preview {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: #F9FAFB;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #111827;
+  font-weight: 500;
+}
+
+.leadership-tab-icon {
+  font-size: 18px;
+}
+
+/* Hero Card */
+.leadership-hero-card {
+  background: linear-gradient(135deg, #FFFFFF 0%, #F9FAFB 100%);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  border: 1px solid #F2F4F7;
+  border-left: 4px solid;
+}
+
+.leadership-hero-text {
+  margin: 0 0 12px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #111827;
+  line-height: 1.6;
+}
+
+.leadership-spiritual-motto {
+  margin: 0;
+  font-size: 14px;
+  font-style: italic;
+  color: #6B7280;
+  line-height: 1.6;
+}
+
+/* Scriptures Card */
+.leadership-scriptures-card {
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  border: 1px solid #F2F4F7;
+}
+
+.leadership-scriptures-card h3 {
+  margin: 0 0 16px 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.leadership-scriptures-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.leadership-scripture-item {
+  padding: 12px;
+  background: #F9FAFB;
+  border-radius: 10px;
+  border-left: 3px solid #3B82F6;
+}
+
+.leadership-scripture-ref {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: #3B82F6;
+  margin-bottom: 6px;
+}
+
+.leadership-scripture-focus {
+  margin: 0;
+  font-size: 13px;
+  color: #475467;
+  line-height: 1.6;
+}
+
+/* KPI Description */
+.leadership-kpi-description {
+  margin: 6px 0 0 0;
+  font-size: 11px;
+  color: #6B7280;
+  line-height: 1.4;
+}
+
+/* Quick Actions */
+.leadership-quick-actions {
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  border: 1px solid #F2F4F7;
+}
+
+.leadership-quick-actions h3 {
+  margin: 0 0 16px 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.leadership-quick-actions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.leadership-quick-action-button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1.5px solid;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.leadership-quick-action-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.leadership-quick-action-icon {
+  font-size: 18px;
+}
+
+/* Recommended Habits */
+.leadership-habits-card {
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  border: 1px solid #F2F4F7;
+}
+
+.leadership-habits-card h3 {
+  margin: 0 0 16px 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.leadership-habits-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.leadership-habit-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px;
+  background: #F9FAFB;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #475467;
+  line-height: 1.6;
+}
+
+.leadership-habit-icon {
+  color: #10B981;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+

@@ -1,0 +1,361 @@
+{
+  "assistant_to_president": {
+    "title": "Asistente del Presidente",
+    "description": "Herramientas para apoyar directamente al presidente de misión en el liderazgo y la administración de toda la misión.",
+    "tabs": {
+      "dashboard": {
+        "title": "Dashboard",
+        "subtitle": "Visión general de la misión.",
+        "purpose": "Dar un resumen de la misión para apoyar decisiones inspiradas junto al presidente.",
+        "sections": [
+          {
+            "id": "summary_info",
+            "type": "info",
+            "title": "Resumen de la misión",
+            "bullets": [
+              "Ver el panorama general de bautismos, lecciones y progreso.",
+              "Detectar tendencias buenas y preocupantes.",
+              "Prepararte para las conversaciones diarias con el presidente."
+            ]
+          },
+          {
+            "id": "kpi_definitions",
+            "type": "list",
+            "title": "Indicadores misionales (KPIs)",
+            "fields": [
+              "Bautismos y confirmaciones (transferencia)",
+              "Personas con fecha bautismal",
+              "Lecciones enseñadas",
+              "Lecciones con miembro presente",
+              "Investigadores en la Iglesia",
+              "Investigadores nuevos"
+            ]
+          },
+          {
+            "id": "mission_kpi_status",
+            "type": "form",
+            "title": "Estado actual de la misión",
+            "description": "Valores consolidados por zonas.",
+            "fields": [
+              "Bautismos/confirmaciones esta semana",
+              "Personas con fecha bautismal",
+              "Lecciones totales",
+              "Lecciones con miembro",
+              "Investigadores en la Iglesia",
+              "Zonas con indicadores críticos"
+            ]
+          },
+          {
+            "id": "mission_spiritual_index",
+            "type": "form",
+            "title": "Índice espiritual por zonas (percepción)",
+            "fields": [
+              "Zonas con alto ánimo y fe",
+              "Zonas desanimadas o estancadas",
+              "Zonas con desafíos de obediencia",
+              "Zonas modelo a destacar"
+            ]
+          },
+          {
+            "id": "daily_focus",
+            "type": "journal",
+            "title": "Enfoque diario como AP",
+            "prompts": [
+              "¿Qué siente el Señor que debo priorizar hoy?",
+              "¿Qué zonas o líderes necesitan más atención?",
+              "¿Qué carga puedo aliviarle al presidente hoy?",
+              "¿Qué quiero reportar al final del día con gozo?"
+            ]
+          }
+        ]
+      },
+      "mission_leaders_council": {
+        "title": "Consejo de Líderes",
+        "subtitle": "Planifica y registra el Consejo de Líderes de la Misión.",
+        "purpose": "Ayudar al presidente a dirigir un consejo poderoso, doctrinal y enfocado en la misión entera.",
+        "sections": [
+          {
+            "id": "council_purpose",
+            "type": "info",
+            "title": "Propósito del Consejo de Líderes",
+            "bullets": [
+              "Buscar revelación conjunta para la misión.",
+              "Alinear zonas y distritos a la visión del presidente.",
+              "Tratar asuntos espirituales y prácticos clave.",
+              "Salirse de la rutina y ver el panorama completo."
+            ]
+          },
+          {
+            "id": "council_objectives",
+            "type": "form",
+            "title": "Objetivos del próximo consejo",
+            "fields": [
+              "Tema central indicado por el presidente",
+              "Metas misionales a revisar o establecer",
+              "Problemas clave de la misión a tratar",
+              "Resultados esperados después del consejo"
+            ]
+          },
+          {
+            "id": "training_blocks",
+            "type": "list",
+            "title": "Bloques de capacitación",
+            "fields": [
+              "Tema",
+              "Ponente (presidente, esposa, AP, ZL, otros)",
+              "Escritura base",
+              "Objetivo doctrinal",
+              "Aplicación práctica para la misión"
+            ]
+          },
+          {
+            "id": "logistics",
+            "type": "checklist",
+            "title": "Logística del consejo",
+            "items": [
+              "Líderes invitados confirmados.",
+              "Lugar, horario y transporte coordinados.",
+              "Materiales de apoyo listos (esquemas, impresos, etc.).",
+              "Agenda final revisada con el presidente.",
+              "Asignaciones previas de lectura/capacitación enviadas."
+            ]
+          },
+          {
+            "id": "council_notes",
+            "type": "journal",
+            "title": "Notas e impresiones del consejo",
+            "prompts": [
+              "¿Qué dijo o enseñó el presidente que debe repetirse mucho?",
+              "¿Qué decisiones clave se tomaron?",
+              "¿Qué impresiones espirituales sentiste sobre la dirección de la misión?",
+              "¿Qué compromisos debes ayudar a que se cumplan en zonas y distritos?"
+            ]
+          }
+        ]
+      },
+      "transfers_planning": {
+        "title": "Transfers y asignaciones",
+        "subtitle": "Apoya al presidente en las decisiones de traslados.",
+        "purpose": "Organizar información e impresiones que ayuden al presidente a inspirarse al asignar misioneros.",
+        "sections": [
+          {
+            "id": "transfers_info",
+            "type": "info",
+            "title": "Principios para transfers",
+            "bullets": [
+              "Las decisiones finales son del presidente, por revelación.",
+              "Tu rol es aportar información honesta y espiritual.",
+              "Piensa en el crecimiento del misionero y de la misión.",
+              "Evita favoritismos; busca solo la voluntad del Señor."
+            ]
+          },
+          {
+            "id": "zone_feedback",
+            "type": "list",
+            "title": "Comentarios de líderes de zona",
+            "fields": [
+              "Nombre del misionero",
+              "Zona / distrito actual",
+              "Fortalezas",
+              "Desafíos",
+              "Recomendación del ZL (entrenador, líder, cambio de área, etc.)"
+            ]
+          },
+          {
+            "id": "transfer_candidates",
+            "type": "form",
+            "title": "Posibles asignaciones",
+            "fields": [
+              "Misioneros listos para liderar (DL, ZL, entrenadores)",
+              "Misioneros que necesitan compañero fuerte",
+              "Zonas que requieren refuerzo espiritual",
+              "Áreas que necesitan misioneros más experimentados",
+              "Parejas o combinaciones a evitar por prudencia"
+            ]
+          },
+          {
+            "id": "transfer_inspiration",
+            "type": "journal",
+            "title": "Impresiones espirituales sobre transfers",
+            "prompts": [
+              "¿Qué sientes que el Señor quiere para este misionero?",
+              "¿Hay algún cambio que te genere inquietud o paz especial?",
+              "¿Qué zonas verían un cambio notable si se mueve cierto misionero?",
+              "¿Qué debes comentar explícitamente al presidente antes de que él decida?"
+            ]
+          }
+        ]
+      },
+      "office_admin": {
+        "title": "Oficina y administración",
+        "subtitle": "Coordina datos, comunicaciones y logística diaria.",
+        "purpose": "Liberar al presidente de cargas operativas para que se enfoque en lo espiritual.",
+        "sections": [
+          {
+            "id": "office_role_info",
+            "type": "info",
+            "title": "Tu rol en la oficina",
+            "bullets": [
+              "Organizar datos semanales de la misión.",
+              "Mantener comunicación clara con zonas y misioneros.",
+              "Apoyar toda logística de transfers, llegadas y salidas.",
+              "Preparar materiales y agendas misionales."
+            ]
+          },
+          {
+            "id": "daily_office_checklist",
+            "type": "checklist",
+            "title": "Rutina diaria",
+            "items": [
+              "Revisar mensajes/correos del presidente.",
+              "Actualizar indicadores de la misión.",
+              "Responder o reenviar mensajes urgentes de zonas.",
+              "Revisar calendarios de transfers, entrevistas y consejos.",
+              "Coordinar viajes o logística necesaria del día."
+            ]
+          },
+          {
+            "id": "mission_messages",
+            "type": "form",
+            "title": "Mensajes a toda la misión",
+            "fields": [
+              "Tema del mensaje",
+              "Contexto (por qué se envía)",
+              "Instrucciones concretas para los misioneros",
+              "Fecha límite (si aplica)",
+              "Escritura o cita de respaldo"
+            ]
+          },
+          {
+            "id": "materials_and_stock",
+            "type": "form",
+            "title": "Materiales y recursos",
+            "fields": [
+              "Materiales en bajo stock (folletos, LdM, formularios)",
+              "Acciones para reponer",
+              "Responsable",
+              "Fecha estimada de solución"
+            ]
+          },
+          {
+            "id": "office_notes",
+            "type": "journal",
+            "title": "Notas de oficina",
+            "prompts": [
+              "Temas logísticos pendientes para hablar con el presidente.",
+              "Procesos que se pueden simplificar.",
+              "Errores recientes que conviene no repetir.",
+              "Ideas para mejorar el flujo de información."
+            ]
+          }
+        ]
+      },
+      "field_tours": {
+        "title": "Giras e intercambios",
+        "subtitle": "Planifica visitas y giras por la misión.",
+        "purpose": "Llegar al terreno para fortalecer, corregir y animar con el presidente o en nombre de él.",
+        "sections": [
+          {
+            "id": "tours_info",
+            "type": "info",
+            "title": "Propósito de las giras",
+            "bullets": [
+              "Ver de cerca lo que viven los misioneros.",
+              "Llevar el ánimo y la visión del presidente a cada rincón.",
+              "Detectar necesidades que no se ven en los reportes.",
+              "Fortalecer líderes locales y miembros cuando se requiera."
+            ]
+          },
+          {
+            "id": "tour_planner",
+            "type": "list",
+            "title": "Plan de gira",
+            "fields": [
+              "Zona a visitar",
+              "Fechas",
+              "Zonas/distritos prioritarios",
+              "Objetivo doctrinal",
+              "Objetivo práctico",
+              "Temas que se enfatizarán"
+            ]
+          },
+          {
+            "id": "tour_day_detail",
+            "type": "form",
+            "title": "Detalle de día de gira",
+            "fields": [
+              "Área",
+              "Misioneros con los que se trabajó",
+              "Personas clave visitadas",
+              "Mensajes o capacitaciones dadas",
+              "Situaciones que deben reportarse al presidente"
+            ]
+          },
+          {
+            "id": "seed_planting_journal",
+            "type": "journal",
+            "title": "Semillas plantadas",
+            "prompts": [
+              "¿Qué mensajes clave se compartieron en esta visita?",
+              "¿Qué testimonios o promesas se dieron?",
+              "¿Qué misioneros o líderes parecieron especialmente tocados?",
+              "¿Qué seguimiento debo coordinar con ZL o DL después de la gira?"
+            ]
+          }
+        ]
+      },
+      "ap_companionship": {
+        "title": "Compañerismo AP",
+        "subtitle": "Cuida la unidad y salud espiritual de los asistentes.",
+        "purpose": "Modelar un compañerismo ejemplar para toda la misión.",
+        "sections": [
+          {
+            "id": "companionship_info",
+            "type": "info",
+            "title": "Principios para el compañerismo AP",
+            "bullets": [
+              "Nunca usar la asignación para mandar, solo para servir.",
+              "Resolver diferencias en privado y con humildad.",
+              "Hablar bien del compañero siempre, sobre todo en público.",
+              "Cuidar la salud espiritual, emocional y física del otro."
+            ]
+          },
+          {
+            "id": "companionship_inventory",
+            "type": "journal",
+            "title": "Inventario regular de compañerismo",
+            "prompts": [
+              "¿En qué nos estamos comunicando bien?",
+              "¿Qué cosas nos están molestando que aún no hablamos?",
+              "¿Qué admiramos uno del otro esta semana?",
+              "¿Qué meta espiritual fijaremos como compañerismo?"
+            ]
+          },
+          {
+            "id": "rest_and_balance",
+            "type": "checklist",
+            "title": "Equilibrio y cuidado personal",
+            "items": [
+              "Dormimos lo suficiente la mayoría de los días.",
+              "Tuvimos algún momento breve de recreación permitida en el día de preparación.",
+              "No descuidamos estudio personal ni de compañerismo por tareas administrativas.",
+              "Pedimos ayuda al presidente cuando la carga se sintió demasiado pesada."
+            ]
+          },
+          {
+            "id": "companionship_goals",
+            "type": "form",
+            "title": "Metas del compañerismo AP",
+            "fields": [
+              "Meta espiritual conjunta",
+              "Meta de servicio a la misión (ej.: levantar tal zona, mejorar tal indicador)",
+              "Hábito de compañerismo que queremos mejorar",
+              "Cómo mediremos nuestro progreso"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
+

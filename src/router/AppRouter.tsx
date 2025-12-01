@@ -7,8 +7,10 @@ import InvestigatorLayout from '../layouts/LearningLayout';
 import MissionaryLayout from '../layouts/MissionaryLayout';
 import MemberLayout from '../layouts/MemberLayout';
 import { LeaderLayout } from '../vineyard/layout/LeaderLayout';
+import { MissionaryLeadershipLayout } from '../layouts/MissionaryLeadershipLayout';
 import LoadingScreen from '../components/LoadingScreen';
 import { getRoleDefaultRoute, UserRoleKey } from '../config/roles';
+import { LeadershipRoleService } from '../services/leadershipRoleService';
 
 const AppRouter: React.FC = () => {
   const { userRole, isLoading } = useAuth();
@@ -66,7 +68,28 @@ const AppRouter: React.FC = () => {
     if (userRole === 'missionary' && (location.pathname.startsWith('/baptism') || location.pathname.startsWith('/progress'))) {
       return <Navigate to={defaultRoute} replace />;
     }
+
+    // Check if missionary has leadership role and should be in leadership layout
+    if (userRole === 'missionary') {
+      const leadershipRole = LeadershipRoleService.getCurrentRole();
+      const hasLeadershipRole = leadershipRole !== 'none';
+      const isOnLeadershipRoute = location.pathname.startsWith('/missionary/leadership');
+      
+      if (hasLeadershipRole && !isOnLeadershipRoute && location.pathname !== '/missionary/profile') {
+        // Redirect to leadership dashboard
+        return <Navigate to={`/missionary/leadership/${leadershipRole}/dashboard`} replace />;
+      }
+      
+      if (!hasLeadershipRole && isOnLeadershipRoute) {
+        // Redirect away from leadership routes if no role active
+        return <Navigate to={defaultRoute} replace />;
+      }
+    }
   }
+
+  // Check if missionary has leadership role active
+  const leadershipRole = userRole === 'missionary' ? LeadershipRoleService.getCurrentRole() : 'none';
+  const hasLeadershipRole = leadershipRole !== 'none';
 
   return (
     <Routes>
@@ -74,7 +97,13 @@ const AppRouter: React.FC = () => {
         userRole === 'investigator' ? (
           <Route path="/*" element={<InvestigatorLayout />} />
         ) : userRole === 'missionary' ? (
-          <Route path="/*" element={<MissionaryLayout />} />
+          hasLeadershipRole ? (
+            // Missionary with active leadership role
+            <Route path="/*" element={<MissionaryLeadershipLayout />} />
+          ) : (
+            // Regular missionary
+            <Route path="/*" element={<MissionaryLayout />} />
+          )
         ) : appRole === 'leader' ? (
           // Member role but in leader app mode
           <Route path="/*" element={<LeaderLayout />} />

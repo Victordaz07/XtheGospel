@@ -17,7 +17,6 @@ import {
   FaMoon,
   FaQuestionCircle,
   FaRetweet,
-  FaShieldAlt,
   FaSignOutAlt,
   FaSlidersH,
   FaTrashAlt,
@@ -29,6 +28,8 @@ import { RoleSettingsCard } from '../../components/RoleSettingsCard';
 import { RoleSwitcher } from '../../components/RoleSwitcher';
 import { ROLE_DEFINITIONS, UserRoleKey } from '../../config/roles';
 import { PageContainer, Card } from '../../ui/components';
+import { StorageService } from '../../utils/storage';
+import { useRoleStore } from '../../store/useRoleStore';
 import '../Page.css';
 import './MemberProfile.css';
 
@@ -133,6 +134,11 @@ const MemberProfile: React.FC = () => {
   const { t, locale, setLocale } = useI18n();
   const navigate = useNavigate();
   const normalizedRole = (userRole ?? 'member') as UserRoleKey;
+  const roleStore = useRoleStore((s) => s.role);
+  
+  // Verificar si el usuario está en modo líder
+  const memberMode = StorageService.getItem('memberMode') as 'regular' | 'leader' | null;
+  const isLeaderMode = roleStore === 'leader' || memberMode === 'leader';
 
   const [profileData, setProfileData] = useState<ProfileFormState>({
     name: 'Sarah Johnson',
@@ -382,7 +388,7 @@ const MemberProfile: React.FC = () => {
           </button>
         </Card>
 
-        {/* Role Switcher - Solo para miembros */}
+        {/* Role Switcher - Solo para miembros, pero deshabilitado si está en modo líder */}
         {normalizedRole === 'member' && (
           <Card className="member-profile-card">
             <RoleSwitcher />

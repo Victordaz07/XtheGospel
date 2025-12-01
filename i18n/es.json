@@ -26,6 +26,7 @@
     "profile.switchToMember": "Cambiar a modo Miembro",
     "memberProfile.hero.moreOptions": "Más opciones",
     "memberProfile.hero.memberSince": "Miembro desde {{date}}",
+    "memberProfile.personalInfo.memberSince": "Miembro desde",
     "memberProfile.personalInfo.title": "Información personal",
     "memberProfile.personalInfo.subtitle": "Actualiza tus datos y mantén todo sincronizado.",
     "memberProfile.personalInfo.fullName": "Nombre completo",
@@ -1419,25 +1420,32 @@
       "pt": "Português"
     }
   },
-  "member.progress.header.dashboard": "Progress Dashboard",
-  "member.progress.xp.total": "Total Experience",
-  "member.progress.xp.dayStreak": "Day Streak",
-  "member.progress.xp.level": "Level",
-  "member.progress.xp.currentLevel": "Current Level",
-  "member.progress.xp.toNextLevel": "To Next Level",
-  "member.progress.badges.title": "Badges Earned",
-  "member.progress.badges.of": "of",
-  "member.progress.badges.locked": "Locked",
-  "member.progress.actions.title": "What do you want to do now?",
-  "member.progress.actions.subtitle": "Continue building your spiritual foundation",
-  "member.progress.actions.reviewCommitments": "Review Commitments",
-  "member.progress.actions.activeCommitments": "{{count}} active commitments",
-  "member.progress.actions.dailyScripture": "Daily Scripture Study",
-  "member.progress.actions.strengthenTestimony": "Strengthen your testimony",
-  "member.progress.encouragement.title": "You're doing amazing!",
-  "member.progress.encouragement.message": "Every step you take brings you closer to understanding eternal truths. Keep going, and remember that the Lord is with you on this journey.",
-  "member.progress.nextLesson.title": "Continue Next Lesson",
-  "member.progress.nextLesson.subtitle": "The Gospel of Jesus Christ",
+  "member.progress.loading": "Cargando progreso...",
+  "member.progress.header.dashboard": "Panel de Progreso",
+  "member.progress.xp.total": "Experiencia Total",
+  "member.progress.xp.dayStreak": "Racha de Días",
+  "member.progress.xp.level": "Nivel",
+  "member.progress.xp.currentLevel": "Nivel Actual",
+  "member.progress.xp.toNextLevel": "Para el Siguiente Nivel",
+  "member.progress.badges.title": "Insignias Obtenidas",
+  "member.progress.badges.of": "de",
+  "member.progress.badges.locked": "Bloqueada",
+  "member.progress.actions.title": "¿Qué quieres hacer ahora?",
+  "member.progress.actions.subtitle": "Continúa construyendo tu fundamento espiritual",
+  "member.progress.actions.reviewCommitments": "Revisar Compromisos",
+  "member.progress.actions.activeCommitments": "{{count}} compromisos activos",
+  "member.progress.actions.dailyScripture": "Estudio Diario de las Escrituras",
+  "member.progress.actions.strengthenTestimony": "Fortalece tu testimonio",
+  "member.progress.encouragement.title": "¡Lo estás haciendo increíble!",
+  "member.progress.encouragement.message": "Cada paso que das te acerca más a comprender las verdades eternas. Sigue adelante, y recuerda que el Señor está contigo en este viaje.",
+  "member.progress.nextLesson.title": "Continuar Siguiente Lección",
+  "member.progress.nextLesson.subtitle": "El Evangelio de Jesucristo",
+  "member.progress.skills.title": "Habilidades Misionales",
+  "member.progress.skills.subtitle": "Desarrolla tu capacidad para compartir el evangelio",
+  "member.progress.skills.completed": "Completadas",
+  "member.progress.skills.total": "Total",
+  "member.progress.skills.progress": "Progreso",
+  "member.progress.skills.cta": "Explorar actividades",
   "featured.tags.doctrineOfChrist": "Doctrina de Cristo",
   "featured.tags.covenants": "Convenios",
   "featured.tags.perseverance": "Perseverancia",
@@ -1622,30 +1630,34 @@
     "meetingsResources": {
       "title": "Reuniones y recursos",
       "subtitle": "Plantillas para coordinación misional y guías rápidas",
+      "sections": {
+        "templates": "Plantillas de Reunión",
+        "quickResources": "Recursos rápidos"
+      },
       "templates": {
         "weeklyCoordination": {
-          "title": "Coordinación Misional Semanal",
-          "subtitle": "Lista de revisión para reuniones con misioneros",
-          "content": "1. Amigos por nombre (qué necesitan esta semana)\n2. Nuevos conversos (qué principio enseñar, quién les acompaña)\n3. Actividades próximas donde invitarles\n4. Obstáculos identificados y soluciones\n5. Oración y compromisos específicos"
+          "title": "Coordinación Misional Semanal — Versión Extendida",
+          "subtitle": "Alinear barrio y misioneros para asegurar que cada amigo en enseñanza y nuevo converso reciba apoyo doctrinal, espiritual, social y misional",
+          "content": "🎯 PROPÓSITO DOCTRINAL\nAsegurar que cada persona en enseñanza y cada nuevo converso tenga un camino claro, apoyo real y seguimiento consistente.\n\n📋 BLOQUE A — OBJETIVOS INSPIRADOS\n• Identificar necesidades espirituales, sociales y temporales\n• Coordinar quién acompaña cada lección\n• Resolver obstáculos antes de que se conviertan en problemas\n• Mantener a los líderes informados sin violar confidencialidad\n• Planear integración en actividades, clases y sacramentos\n\n📝 BLOQUE B — LISTA AVANZADA DE REVISIÓN\n\n1. AMIGOS EN ENSEÑANZA\n• ¿Quién está progresando hacia el bautismo?\n• ¿Quién necesita una experiencia espiritual clara esta semana?\n• ¿Quién necesita un compromiso más simple (leer 1 versículo, orar 10 segundos, asistir 20 minutos)?\n• ¿Qué dudas doctrinales han surgido?\n• ¿Quién necesita venir al templo (afuera) para sentir el Espíritu?\n\n2. NUEVOS CONVERSOS\n\nChecklist espiritual:\n• ¿Tomó la Santa Cena?\n• ¿Entiende que ya es miembro con convenios?\n• ¿Ora y lee diario?\n• ¿Fue recibido cálidamente esta semana?\n\nChecklist misional:\n• ¿Ya recibió recomendación limitada?\n• ¿Ya recibió doctrina básica reforzada?\n• ¿Fue entrevistado para el sacerdocio (si aplica)?\n• ¿Fue invitado a un viaje al templo?\n\nChecklist social:\n• ¿Tiene amigos?\n• ¿Tiene transporte?\n• ¿Se siente parte del barrio?\n\n3. LECCIONES CLAVES ESTA SEMANA\n• ¿Qué lección requiere apoyo en esta etapa?\n• ¿Qué miembro testificará mejor ese principio?\n• ¿Quién puede compartir una historia real del barrio?\n\n4. ACOMPAÑAMIENTO\n• ¿Qué jóvenes varones pueden acompañar?\n• ¿Qué jóvenes mujeres pueden acompañar a las misioneras?\n• ¿Qué líder puede cubrir una necesidad especial?\n• ¿Qué familia puede ser \"familia puente\"?\n\n💡 BLOQUE C — CASOS REALES Y CÓMO RESOLVERLOS\n\nCaso 1 — \"Viene a la Iglesia, pero no habla\"\nProblema: Timidez, ansiedad o inseguridad.\nSolución líder:\n• Familia cálida lo adopta 2 semanas\n• Un joven lo sienta a su lado\n• Un líder lo visita sin agenda formal\n\nCaso 2 — \"Está listo para bautizarse, pero teme que su familia lo rechace\"\nSolución:\n• Enseñar la lección de \"Temor y fe\"\n• Testimonios de miembros que pasaron lo mismo\n• Enviar carta de apoyo del obispo (si aplica)\n\nCaso 3 — \"Nuevo converso desanimado porque cayó en un error\"\nSolución:\n• Reforzar la doctrina del arrepentimiento\n• Asegurar que la Santa Cena es para personas en progreso\n• Visita especial del obispo o consejero\n• Releer Mosíah 26 o DyC 58\n\n👥 BLOQUE D — ROLES SEGÚN ORGANIZACIÓN\n\nObispado:\n• Entrevista, sacerdocio, recomendación limitada\n• Asegurar doctrinas clave\n\nSociedad de Socorro:\n• Acoger mujeres conversas\n• Crear red inmediata de amistad\n\nQuórum de Élderes:\n• Ministrar a varones, acompañar lecciones\n• Detectar necesidades temporales\n\nHombres Jóvenes:\n• Acompañar misioneros cuando sea apropiado\n• Integrar jóvenes conversos\n\nMujeres Jóvenes:\n• Ser referentes para conversas adolescentes\n• Suavizar la transición social\n\nPrimaria:\n• Cuidar a niños conversos o investigadores"
         },
         "wardCouncil": {
           "title": "Consejo de Barrio — Obra Misional & Nuevos Conversos",
-          "subtitle": "Preguntas guía para el consejo",
-          "content": "• ¿Quién necesita un amigo, un llamamiento y ser alimentado espiritualmente?\n• ¿Qué obstáculos tienen para asistir el domingo?\n• ¿Hay algún nuevo converso que se esté sintiendo solo o confundido?\n• ¿Cómo podemos apoyar mejor a los misioneros esta semana?\n• ¿Qué miembros pueden acompañar en lecciones clave?"
+          "subtitle": "Integrar la obra misional en todas las organizaciones del barrio, supervisar la conversión y solucionar obstáculos",
+          "content": "❓ PREGUNTAS DOCTRINALES PROFUNDAS PARA LÍDERES\n\n• ¿Qué doctrina no comprendieron nuestros conversos esta semana?\n• ¿Qué principio podría fortalecerlos HOY?\n• ¿Qué miembro podría compartir testimonio clave?\n\n🎯 PREGUNTAS ESTRATÉGICAS\n\n• ¿Quién está en riesgo de desaparecer sin avisar?\n• ¿Qué familia puede ser familia puente?\n• ¿Qué organización puede integrarlo mejor?\n• ¿Qué actividad del barrio será clave este mes?\n\n📚 GUÍA RÁPIDA SEGÚN TIPO DE CONVERSO\n\nConverso joven (12–18):\n• Integrarlo en clases juveniles\n• Asegurar entrevistas oportunas\n• Asignar amigos de su edad\n\nConverso mujer adulta:\n• Integrarla con Sociedad de Socorro\n• Asignar hermanas con experiencias similares\n\nConverso hombre adulto:\n• Ministración inmediata\n• Preparación para el sacerdocio (si aplica)\n\nConverso mamá soltera:\n• Soporte social\n• Transporte\n• Hermana acompañante\n\nConverso con trauma religioso previo:\n• Enfocar en Jesucristo\n• Doctrina clara, sin presión\n• Paciencia y amor\n\n⚠️ ERRORES QUE EL CONSEJO DEBE EVITAR\n\n• Tratar a los conversos como \"proyectos\"\n• Hablar de ellos como problemas\n• Enviar ayudas sin conocer el contexto\n• Saturarlos con información\n\n📖 ACLARACIONES DOCTRINALES IMPORTANTES\n\n✔ Nuevo converso varón:\nPuede recibir Sacerdocio Aarónico inmediatamente si es digno. El obispo entrevista y aprueba.\n\n✔ Cualquier converso:\n• Puede recibir Recomendación Limitada en días\n• Puede asistir al templo para bautismos por los muertos casi de inmediato\n• Puede ir a visitas al templo mientras es investigador"
         }
       },
       "resources": {
         "receiveConvert": {
           "title": "Cómo recibir un nuevo converso el primer domingo",
-          "content": "1. Llegar 10–15 min antes\n2. Asignar alguien que se siente con él\n3. Presentarlo a líderes clave\n4. Explicar brevemente cómo funciona la reunión sacramental\n5. Invitarle a quedarse después para las otras clases\n6. Seguir con él durante el domingo completo"
+          "content": "✅ ACCIONES CLAVE\n\n1. Recibirlo en la puerta por un miembro asignado\n2. Explicación sencilla de la reunión sacramental\n3. Sentarlo con una familia cálida y constante\n4. Asegurar participación en la Santa Cena\n5. Acompañarlo a las clases y presentarlo a los maestros\n6. Presentarlo discretamente al obispo\n7. Invitarlo explícitamente al próximo domingo\n8. No dejarlo solo ni un minuto\n9. Mostrarle los salones\n10. Testificar con amor\n\n❌ ERRORES COMUNES A EVITAR\n\n• Ignorarlo\n• Usar lenguaje complicado\n• Hablar de normas avanzadas desde el primer día\n• Dejarlo solo después de la reunión\n• Suponer que entiende cómo funciona la Iglesia"
         },
         "warningSigns": {
           "title": "Señales de alerta en nuevos conversos",
-          "content": "Señales:\n• Deja de asistir sin explicación\n• Comentarios de sentirse solo o perdido\n• Confusión sobre mandamientos\n• Falta de conexión con otros miembros\n\nQué hacer:\n• Contacto amoroso inmediato\n• Visita del obispado o líderes\n• Reunión con ministradores\n• Asignar amigo dedicado\n• Invitar a actividades del barrio"
+          "content": "🔴 SEÑALES ESPIRITUALES\n\n• Falta de comprensión de la Santa Cena\n• Dudas constantes sobre arrepentimiento\n• No desarrolla estudio personal\n• Expresa sentirse indigno de asistir\n\n🔴 SEÑALES SOCIALES\n\n• Deja de asistir sin explicación\n• Falta dos domingos seguidos\n• Comentarios de sentirse solo o perdido\n• Soledad o aislamiento\n• Problemas familiares o rechazo\n• Dificultad de transporte\n• Falta de conexión con otros miembros\n\n🔴 SEÑALES QUE REQUIEREN ACCIÓN INMEDIATA\n\n• Empieza a evitar contacto\n• Se confunde por doctrinas externas\n• Confusión sobre mandamientos\n• Depresión o ansiedad visibles\n\n✅ QUÉ HACER\n\n• Contacto amoroso inmediato\n• Visita del obispado o líderes\n• Reunión con ministradores\n• Asignar amigo dedicado\n• Invitar a actividades del barrio\n• No esperar a que \"pase solo\""
         },
         "workingMissionaries": {
-          "title": "Trabajando con los misioneros",
-          "content": "Comunicación:\n• Siempre comunicar cambios grandes en su vida\n• Compartir progreso y obstáculos\n• Coordinar visitas y lecciones\n\nApoyo:\n• Invitarles a enseñar en el hogar de miembros\n• Acompañarles en lecciones clave (Ley de Castidad, Diezmo, etc.)\n• Proporcionar referencias cuando sea apropiado\n• Ayudar con necesidades prácticas (transporte, etc.)\n\nRespeto:\n• Los misioneros tienen la responsabilidad principal\n• Los líderes coordinan y apoyan\n• Los miembros acompañan y fortalecen"
+          "title": "Trabajando con los misioneros (versión extendida)",
+          "content": "✅ LO QUE LOS MISIONEROS NECESITAN\n\nComunicación:\n• Referencias reales\n• Información actualizada de familias menos activas\n• Siempre comunicar cambios grandes en su vida\n• Compartir progreso y obstáculos\n• Coordinar visitas y lecciones\n\nApoyo:\n• Invitarles a enseñar en el hogar de miembros\n• Acompañarles en lecciones clave (Ley de Castidad, Diezmo, etc.)\n• Proporcionar referencias cuando sea apropiado\n• Ayudar con necesidades prácticas (transporte, etc.)\n• Apoyo emocional\n• Metas claras del obispado\n\nRespeto:\n• Los misioneros tienen la responsabilidad principal\n• Los líderes coordinan y apoyan\n• Los miembros acompañan y fortalecen\n\n❌ LO QUE LOS MISIONEROS NO NECESITAN\n\n• Correcciones doctrinales públicas\n• Quejas del barrio\n• Envío de \"problemas\" sin contexto\n• Opiniones personales como doctrina\n• Criticar a los misioneros frente a investigadores\n• Crear confusión doctrinal\n• Evitar comunicación"
         }
       }
     },

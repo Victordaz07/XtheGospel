@@ -1,0 +1,284 @@
+/* Tab Section Renderer Styles */
+
+.tab-section {
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
+  margin-bottom: 0;
+  box-shadow: none;
+  border: none;
+}
+
+.tab-section-title {
+  margin: 0 0 12px 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.tab-section-description {
+  margin: 0 0 16px 0;
+  font-size: 14px;
+  color: #6B7280;
+  line-height: 1.6;
+}
+
+/* Info Section */
+.tab-section-info {
+  background: linear-gradient(135deg, #EEF2FF 0%, #FFFFFF 100%);
+}
+
+.tab-section-bullets {
+  margin: 0;
+  padding-left: 20px;
+  list-style: none;
+}
+
+.tab-section-bullets li {
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #475467;
+  line-height: 1.7;
+  position: relative;
+  padding-left: 24px;
+}
+
+.tab-section-bullets li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #3B82F6;
+  font-weight: 700;
+}
+
+/* Template Section */
+.tab-section-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.tab-section-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tab-section-field-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.tab-section-field-input {
+  width: 100%;
+  padding: 12px;
+  border: 1.5px solid #E5E7EB;
+  border-left: 4px solid;
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: inherit;
+  color: #111827;
+  resize: vertical;
+  transition: border-color 0.2s;
+}
+
+.tab-section-field-input:focus {
+  outline: none;
+  border-color: #3B82F6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Checklist Section */
+.tab-section-checklist-items {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tab-section-checklist-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px;
+  background: #F9FAFB;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.tab-section-checklist-item:hover {
+  background: #F3F4F6;
+}
+
+.tab-section-checklist-item input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.tab-section-checklist-item span {
+  font-size: 14px;
+  color: #475467;
+  line-height: 1.6;
+  flex: 1;
+}
+
+.tab-section-checklist-item input[type="checkbox"]:checked + span {
+  color: #111827;
+  font-weight: 500;
+}
+
+/* Journal Section */
+.tab-section-journal-prompts {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.tab-section-journal-prompt {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tab-section-journal-prompt-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+  font-style: italic;
+}
+
+.tab-section-journal-prompt-input {
+  width: 100%;
+  padding: 12px;
+  border: 1.5px solid #E5E7EB;
+  border-left: 4px solid;
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: inherit;
+  color: #111827;
+  resize: vertical;
+  transition: border-color 0.2s;
+}
+
+.tab-section-journal-prompt-input:focus {
+  outline: none;
+  border-color: #3B82F6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Form Section */
+.tab-section-form-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.tab-section-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tab-section-form-field-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.tab-section-form-field-input {
+  width: 100%;
+  padding: 12px;
+  border: 1.5px solid #E5E7EB;
+  border-left: 4px solid;
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: inherit;
+  color: #111827;
+  transition: border-color 0.2s;
+}
+
+.tab-section-form-field-input:focus {
+  outline: none;
+  border-color: #3B82F6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* List Section */
+.tab-section-list-structure {
+  background: #F9FAFB;
+  border-radius: 10px;
+  padding: 16px;
+}
+
+.tab-section-list-note {
+  margin: 0 0 12px 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: #6B7280;
+}
+
+.tab-section-list-fields {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tab-section-list-field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #475467;
+}
+
+.tab-section-list-field-icon {
+  color: #3B82F6;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+/* Practice Section */
+.tab-section-practice-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.tab-section-practice-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tab-section-practice-field-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.tab-section-practice-field-input {
+  width: 100%;
+  padding: 12px;
+  border: 1.5px solid #E5E7EB;
+  border-left: 4px solid;
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: inherit;
+  color: #111827;
+  resize: vertical;
+  transition: border-color 0.2s;
+}
+
+.tab-section-practice-field-input:focus {
+  outline: none;
+  border-color: #3B82F6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+

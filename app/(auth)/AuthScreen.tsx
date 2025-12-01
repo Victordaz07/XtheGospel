@@ -73,6 +73,24 @@ export default function AuthScreen() {
                         Estoy enseñando el evangelio
                     </Text>
                 </TouchableOpacity>
+
+                <TouchableOpacity
+                    style={[
+                        styles.roleButton,
+                        selectedRole === 'assistant_to_president' && styles.roleButtonSelected
+                    ]}
+                    onPress={() => handleRoleSelection('assistant_to_president')}
+                >
+                    <Text style={[
+                        styles.roleButtonText,
+                        selectedRole === 'assistant_to_president' && styles.roleButtonTextSelected
+                    ]}>
+                        🟩 Asistente del Presidente
+                    </Text>
+                    <Text style={styles.roleDescription}>
+                        Apoyo al presidente en el liderazgo de la misión
+                    </Text>
+                </TouchableOpacity>
             </View>
 
             <TouchableOpacity

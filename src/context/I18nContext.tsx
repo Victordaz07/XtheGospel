@@ -47,7 +47,15 @@ interface I18nContextType {
 const I18nContext = createContext<I18nContextType | undefined>(undefined);
 
 // Helper to get nested value from object using dot notation
+// Primero intenta buscar la key directamente (para keys planas en JSON)
+// Luego intenta buscar en estructura anidada
 const getNestedValue = (obj: Record<string, any>, path: string): any => {
+    // Primero intentar buscar la key directamente (para keys planas como "roleSettings.member.title")
+    if (obj && typeof obj === 'object' && path in obj) {
+        return obj[path];
+    }
+    
+    // Si no se encuentra, intentar buscar en estructura anidada
     const keys = path.split('.');
     let current = obj;
     for (const key of keys) {
@@ -146,7 +154,15 @@ export const I18nProvider: React.FC<I18nProviderProps> = ({ children }) => {
     };
 
     // Helper para navegar objetos anidados usando path con puntos
+    // Primero intenta buscar la key directamente (para keys planas en JSON)
+    // Luego intenta buscar en estructura anidada
     const getNestedValue = (obj: any, path: string): any => {
+        // Primero intentar buscar la key directamente (para keys planas como "roleSettings.member.title")
+        if (obj && typeof obj === 'object' && path in obj) {
+            return obj[path];
+        }
+        
+        // Si no se encuentra, intentar buscar en estructura anidada
         const keys = path.split('.');
         let current = obj;
         for (const key of keys) {
@@ -191,13 +207,14 @@ export const I18nProvider: React.FC<I18nProviderProps> = ({ children }) => {
             }
         }
 
-        const currentTranslations = dictionaries[locale] as Record<string, string>;
-        const value = currentTranslations[path];
+        // Buscar en el diccionario principal usando getNestedValue para soportar keys anidadas
+        const currentTranslations = dictionaries[locale] as Record<string, any>;
+        const value = getNestedValue(currentTranslations, path);
 
         // Si no se encuentra en el idioma actual, buscar en inglés como fallback
         if (value === undefined) {
-            const englishTranslations = dictionaries.en as Record<string, string>;
-            const englishValue = englishTranslations[path];
+            const englishTranslations = dictionaries.en as Record<string, any>;
+            const englishValue = getNestedValue(englishTranslations, path);
             if (englishValue === undefined) {
                 return path; // Devolver la clave si no se encuentra en ningún idioma
             }

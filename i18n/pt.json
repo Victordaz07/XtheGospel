@@ -20,6 +20,7 @@
   "profile.switchToMember": "Mudar para modo Membro",
   "memberProfile.hero.moreOptions": "Mais opções",
   "memberProfile.hero.memberSince": "Membro desde {{date}}",
+  "memberProfile.personalInfo.memberSince": "Membro desde",
   "memberProfile.personalInfo.title": "Informações pessoais",
   "memberProfile.personalInfo.subtitle": "Mantenha seus dados básicos atualizados e sincronizados.",
   "memberProfile.personalInfo.fullName": "Nome completo",
@@ -1048,6 +1049,7 @@
       "pt": "Português"
     }
   },
+  "member.progress.loading": "Carregando progresso...",
   "member.progress.header.dashboard": "Painel de Progresso",
   "member.progress.xp.total": "Experiência Total",
   "member.progress.xp.dayStreak": "Sequência de Dias",
@@ -1067,6 +1069,12 @@
   "member.progress.encouragement.message": "Cada passo que você dá o aproxima de entender as verdades eternas. Continue, e lembre-se de que o Senhor está com você nesta jornada.",
   "member.progress.nextLesson.title": "Continuar Próxima Lição",
   "member.progress.nextLesson.subtitle": "O Evangelho de Jesus Cristo",
+  "member.progress.skills.title": "Habilidades Missionárias",
+  "member.progress.skills.subtitle": "Desenvolva sua capacidade de compartilhar o evangelho",
+  "member.progress.skills.completed": "Concluídas",
+  "member.progress.skills.total": "Total",
+  "member.progress.skills.progress": "Progresso",
+  "member.progress.skills.cta": "Explorar atividades",
   "memberStudy.header.category": "Estudo Profundo",
   "memberStudy.header.title": "Módulos reveladores para membros",
   "memberStudy.header.description": "Comece pelo módulo que melhor se adapte ao seu papel atual na obra. Leia com calma, medite e tome notas. Marque cada seção estudada para ver seu progresso.",
@@ -1186,5 +1194,132 @@
   "lesson1.testimony_and_invitations.questions.0": "Você leria Morôni 10 esta semana e depois oraria para saber se o Livro de Mórmon é verdadeiro?",
   "lesson1.testimony_and_invitations.questions.1": "Você assistiria à Igreja neste domingo para ver como adoramos Jesus Cristo?",
   "lesson1.testimony_and_invitations.questions.2": "Podemos marcar outra visita para tal dia para continuar aprendendo sobre o plano que Deus tem para você?",
-  "lesson1.testimony_and_invitations.questions.3": "Se você vier a saber pelo Espírito que essas coisas são verdadeiras, estaria disposto a se preparar para o batismo?"
+  "lesson1.testimony_and_invitations.questions.3": "Se você vier a saber pelo Espírito que essas coisas são verdadeiras, estaria disposto a se preparar para o batismo?",
+  "memberLeader": {
+    "roleName": "Líder — Apoiando a obra e novos conversos",
+    "description": "Modo para líderes de ala ou ramo que desejam apoiar melhor amigos em ensino e novos conversos, em harmonia com Pregar Meu Evangelho e o Manual Geral",
+    "headerTitle": "Líder — Apoiando a obra e novos conversos",
+    "headerSubtitle": "Modo para líderes de ala ou ramo com ferramentas adicionais",
+    "todayPanel": {
+      "title": "Painel de Hoje",
+      "subtitle": "O mais importante para cuidar de amigos e novos conversos hoje",
+      "empty": "Você não tem tarefas urgentes hoje. Ore para saber a quem você pode fortalecer.",
+      "groups": {
+        "newConverts": "Novos conversos",
+        "friends": "Amigos em ensino",
+        "general": "Lembretes gerais"
+      }
+    },
+    "newConverts": {
+      "title": "Novos conversos (0–12 meses)",
+      "subtitle": "Acompanhe seu primeiro ano no evangelho",
+      "status": {
+        "attendsSacrament": "Assiste à reunião sacramental",
+        "hasMinistry": "Tem ministração",
+        "hasCalling": "Chamado",
+        "takingGospelPrinciples": "Classe de Princípios do Evangelho",
+        "preparingTemple": "Preparando para o templo"
+      },
+      "timeframeLabel": "{{months}} meses",
+      "stats": "{{withCalling}} de {{total}} com chamado • {{preparing}} preparados para recomendação",
+      "plan": {
+        "title": "Plano de {{timeframe}} meses",
+        "months0_3": {
+          "title": "Primeiros 3 meses",
+          "items": [
+            "Apresentá-lo ao bispado",
+            "Garantir ministração atribuída",
+            "Incentivá-lo com leitura e oração"
+          ]
+        },
+        "months3_6": {
+          "title": "3–6 meses",
+          "items": [
+            "Chamado simples",
+            "Primeiras experiências no templo (batismos pelos mortos)",
+            "Integração na classe apropriada"
+          ]
+        },
+        "months6_12": {
+          "title": "6–12 meses",
+          "items": [
+            "Curso do templo ou preparação missão / selamento",
+            "Reafirmar testemunhos e responder dúvidas",
+            "Acompanhar no serviço"
+          ]
+        }
+      },
+      "viewPlan": "Ver plano de 3 meses",
+      "quickNotes": "Notas rápidas"
+    },
+    "friendsInTeaching": {
+      "title": "Amigos em ensino",
+      "subtitle": "Coordene com os missionários e membros para cada amigo",
+      "status": {
+        "hasBaptismDate": "Com data de batismo",
+        "attendsSacrament": "Assiste à reunião sacramental",
+        "lesson1": "Na lição 1",
+        "lesson2": "Na lição 2",
+        "lesson3": "Na lição 3",
+        "lesson4": "Na lição 4",
+        "lesson5": "Na lição 5"
+      },
+      "broughtBy": "Trazido por: {{name}}",
+      "actions": {
+        "coordinateVisit": "Coordenar visita",
+        "prepareSunday": "Preparar domingo",
+        "inspiredQuestions": "Pergunta inspirada sugerida"
+      },
+      "sundaySuggestions": {
+        "title": "Sugestões para o domingo",
+        "items": [
+          "Atribuir membro para sentar com ele/ela",
+          "Apresentá-lo aos líderes do quórum/organização",
+          "Convidá-lo para a classe apropriada (adultos, jovens, JAS)"
+        ]
+      }
+    },
+    "meetingsResources": {
+      "title": "Reuniões e recursos",
+      "subtitle": "Modelos para coordenação missionária e guias rápidos",
+      "sections": {
+        "templates": "Modelos de Reunião",
+        "quickResources": "Recursos Rápidos"
+      },
+      "templates": {
+        "weeklyCoordination": {
+          "title": "Coordenação Missionária Semanal — Versão Estendida",
+          "subtitle": "Alinhar ala e missionários para garantir que cada amigo em ensino e novo converso receba apoio doutrinário, espiritual, social e missionário",
+          "content": "🎯 PROPÓSITO DOUTRINÁRIO\nGarantir que cada pessoa em ensino e cada novo converso tenha um caminho claro, apoio real e acompanhamento consistente.\n\n📋 BLOCO A — OBJETIVOS INSPIRADOS DA REUNIÃO\n• Identificar necessidades espirituais, sociais e temporais\n• Coordenar quem acompanha cada lição\n• Resolver obstáculos antes que se tornem problemas\n• Manter líderes informados sem violar confidencialidade\n• Planejar integração em atividades, classes e reuniões sacramentais\n\n📝 BLOCO B — LISTA AVANÇADA DE VERIFICAÇÃO\n\n1. AMIGOS EM ENSINO\n• Quem está progredindo para o batismo?\n• Quem precisa de uma experiência espiritual clara esta semana?\n• Quem precisa de um compromisso mais simples (ler 1 versículo, orar 10 segundos, assistir 20 minutos)?\n• Quais preocupações doutrinárias surgiram?\n• Quem precisa visitar o templo (exterior) para sentir o Espírito?\n\n2. NOVOS CONVERSOS\n\nLista espiritual:\n• Tomou a Santa Ceia?\n• Entende que já é membro com convênios?\n• Ora e lê diariamente?\n• Foi recebido calorosamente esta semana?\n\nLista missionária:\n• Já recebeu recomendação limitada?\n• Já recebeu doutrina básica reforçada?\n• Foi entrevistado para o sacerdócio (se aplicável)?\n• Foi convidado para uma visita ao templo?\n\nLista social:\n• Tem amigos?\n• Tem transporte?\n• Se sente parte da ala?\n\n3. LIÇÕES-CHAVE ESTA SEMANA\n• Qual lição requer apoio nesta etapa?\n• Qual membro testificará melhor desse princípio?\n• Quem pode compartilhar uma história real da ala?\n\n4. ACOMPANHAMENTO\n• Quais jovens podem acompanhar?\n• Quais jovens mulheres podem acompanhar as missionárias?\n• Qual líder pode cobrir uma necessidade especial?\n• Qual família pode ser \"família ponte\"?\n\n💡 BLOCO C — CASOS REAIS E COMO RESOLVÊ-LOS\n\nCaso 1 — \"Vem à Igreja, mas não fala\"\nProblema: Timidez, ansiedade ou insegurança.\nSolução do líder:\n• Família calorosa o adota por 2 semanas\n• Um jovem se senta ao lado dele\n• Um líder o visita sem agenda formal\n\nCaso 2 — \"Está pronto para batizar-se, mas teme rejeição da família\"\nSolução:\n• Ensinar a lição de \"Temor e Fé\"\n• Testemunhos de membros que passaram pelo mesmo\n• Enviar carta de apoio do bispo (se aplicável)\n\nCaso 3 — \"Novo converso desanimado porque cometeu um erro\"\nSolução:\n• Reforçar a doutrina do arrependimento\n• Garantir que a Santa Ceia é para pessoas em progresso\n• Visita especial do bispo ou conselheiro\n• Reler Mosias 26 ou D&C 58\n\n👥 BLOCO D — PAPÉIS POR ORGANIZAÇÃO\n\nBispado:\n• Entrevista, sacerdócio, recomendação limitada\n• Garantir doutrinas-chave\n\nSociedade de Socorro:\n• Acolher mulheres convertidas\n• Criar rede imediata de amizade\n\nQuórum de Élderes:\n• Ministrar a homens, acompanhar lições\n• Detectar necessidades temporais\n\nRapazes:\n• Acompanhar missionários quando apropriado\n• Integrar jovens convertidos\n\nMoças:\n• Ser referências para convertidas adolescentes\n• Suavizar a transição social\n\nPrimária:\n• Cuidar de crianças convertidas ou investigadores"
+        },
+        "wardCouncil": {
+          "title": "Conselho da Ala — Obra Missionária & Novos Conversos",
+          "subtitle": "Integrar a obra missionária em todas as organizações da ala, supervisionar a conversão e resolver obstáculos",
+          "content": "❓ PERGUNTAS DOUTRINÁRIAS PROFUNDAS PARA LÍDERES\n\n• Qual doutrina nossos conversos não compreenderam esta semana?\n• Qual princípio poderia fortalecê-los HOJE?\n• Qual membro poderia compartilhar um testemunho-chave?\n\n🎯 PERGUNTAS ESTRATÉGICAS\n\n• Quem está em risco de desaparecer sem aviso?\n• Qual família pode ser família ponte?\n• Qual organização pode integrá-lo melhor?\n• Qual atividade da ala será chave este mês?\n\n📚 GUIA RÁPIDA POR TIPO DE CONVERSO\n\nConversa jovem (12–18):\n• Integrá-lo em classes de jovens\n• Garantir entrevistas oportunas\n• Atribuir amigos da mesma idade\n\nConversa mulher adulta:\n• Integrá-la com a Sociedade de Socorro\n• Atribuir irmãs com experiências similares\n\nConverso homem adulto:\n• Ministração imediata\n• Preparação para o sacerdócio (se aplicável)\n\nConversa mãe solteira:\n• Apoio social\n• Transporte\n• Irmã acompanhante\n\nConversa com trauma religioso prévio:\n• Focar em Jesus Cristo\n• Doutrina clara, sem pressão\n• Paciência e amor\n\n⚠️ ERROS QUE O CONSELHO DEVE EVITAR\n\n• Tratar conversos como \"projetos\"\n• Falar deles como problemas\n• Enviar ajudas sem conhecer o contexto\n• Saturados com informações\n\n📖 ESCLARECIMENTOS DOUTRINÁRIOS IMPORTANTES\n\n✔ Novo converso masculino:\nPode receber Sacerdócio Aarônico imediatamente se for digno. O bispo entrevista e aprova.\n\n✔ Qualquer converso:\n• Pode receber Recomendação Limitada em dias\n• Pode assistir ao templo para batismos pelos mortos quase imediatamente\n• Pode ir a visitas ao templo enquanto ainda é investigador"
+        }
+      },
+      "resources": {
+        "receiveConvert": {
+          "title": "Como receber um novo converso no primeiro domingo",
+          "content": "✅ AÇÕES-CHAVE\n\n1. Ser recebido na porta por um membro atribuído\n2. Explicação simples da reunião sacramental\n3. Sentá-lo com uma família calorosa e constante\n4. Garantir participação na Santa Ceia\n5. Acompanhá-lo às classes e apresentá-lo aos professores\n6. Apresentá-lo discretamente ao bispo\n7. Convidá-lo explicitamente ao próximo domingo\n8. Não deixá-lo sozinho nem por um minuto\n9. Mostrar-lhe as salas\n10. Testemunhar com amor\n\n❌ ERROS COMUNS A EVITAR\n\n• Ignorá-lo\n• Usar linguagem complicada\n• Falar de normas avançadas desde o primeiro dia\n• Deixá-lo sozinho após a reunião\n• Supor que entende como a Igreja funciona"
+        },
+        "warningSigns": {
+          "title": "Sinais de alerta em novos conversos",
+          "content": "🔴 SINAIS ESPIRITUAIS\n\n• Falta de compreensão da Santa Ceia\n• Dúvidas constantes sobre arrependimento\n• Não desenvolve estudo pessoal\n• Expressa sentir-se indigno de assistir\n\n🔴 SINAIS SOCIAIS\n\n• Para de assistir sem explicação\n• Falta dois domingos seguidos\n• Comentários sobre sentir-se sozinho ou perdido\n• Solidão ou isolamento\n• Problemas familiares ou rejeição\n• Dificuldades de transporte\n• Falta de conexão com outros membros\n\n🔴 SINAIS QUE REQUEREM AÇÃO IMEDIATA\n\n• Começa a evitar contato\n• Confuso por doutrinas externas\n• Confusão sobre mandamentos\n• Depressão ou ansiedade visíveis\n\n✅ O QUE FAZER\n\n• Contato amoroso imediato\n• Visita do bispado ou líderes\n• Reunião com ministrantes\n• Atribuir amigo dedicado\n• Convidar para atividades da ala\n• Não esperar que \"passe sozinho\""
+        },
+        "workingMissionaries": {
+          "title": "Trabalhando com os missionários (versão estendida)",
+          "content": "✅ O QUE OS MISSIONÁRIOS PRECISAM\n\nComunicação:\n• Referências reais\n• Informações atualizadas de famílias menos ativas\n• Sempre comunicar mudanças grandes em sua vida\n• Compartilhar progresso e obstáculos\n• Coordenar visitas e lições\n\nApoio:\n• Convidá-los a ensinar nos lares dos membros\n• Acompanhá-los em lições-chave (Lei de Castidade, Dízimo, etc.)\n• Fornecer referências quando apropriado\n• Ajudar com necessidades práticas (transporte, etc.)\n• Apoio emocional\n• Metas claras do bispado\n\nRespeito:\n• Os missionários têm a responsabilidade principal\n• Os líderes coordenam e apoiam\n• Os membros acompanham e fortalecem\n\n❌ O QUE OS MISSIONÁRIOS NÃO PRECISAM\n\n• Correções doutrinárias públicas\n• Queixas da ala\n• Envio de \"problemas\" sem contexto\n• Opiniões pessoais como doutrina\n• Criticar missionários na frente de investigadores\n• Criar confusão doutrinária\n• Evitar comunicação"
+        }
+      }
+    },
+    "guidelines": {
+      "title": "Diretrizes e autoridade",
+      "subtitle": "Sob quais normas este modo é usado"
+    },
+    "integrationMap": {
+      "title": "Mapa de integração (12 meses)",
+      "subtitle": "Guia do primeiro ano do novo converso"
+    }
+  }
 }

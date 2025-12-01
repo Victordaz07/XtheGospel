@@ -20,6 +20,7 @@
   "profile.switchToMember": "Passer en mode Membre",
   "memberProfile.hero.moreOptions": "Plus d'options",
   "memberProfile.hero.memberSince": "Membre depuis {{date}}",
+  "memberProfile.personalInfo.memberSince": "Membre depuis",
   "memberProfile.personalInfo.title": "Informations personnelles",
   "memberProfile.personalInfo.subtitle": "Mettez à jour vos données de base pour rester synchronisé.",
   "memberProfile.personalInfo.fullName": "Nom complet",
@@ -982,6 +983,7 @@
       "pt": "Português"
     }
   },
+  "member.progress.loading": "Chargement du progrès...",
   "member.progress.header.dashboard": "Tableau de Bord de Progrès",
   "member.progress.xp.total": "Expérience Totale",
   "member.progress.xp.dayStreak": "Série de Jours",
@@ -1001,6 +1003,12 @@
   "member.progress.encouragement.message": "Chaque pas que vous faites vous rapproche de la compréhension des vérités éternelles. Continuez, et rappelez-vous que le Seigneur est avec vous dans ce voyage.",
   "member.progress.nextLesson.title": "Continuer la Leçon Suivante",
   "member.progress.nextLesson.subtitle": "L'Évangile de Jésus-Christ",
+  "member.progress.skills.title": "Compétences Missionnaires",
+  "member.progress.skills.subtitle": "Développez votre capacité à partager l'évangile",
+  "member.progress.skills.completed": "Terminées",
+  "member.progress.skills.total": "Total",
+  "member.progress.skills.progress": "Progrès",
+  "member.progress.skills.cta": "Explorer les activités",
   "memberStudy.header.category": "Étude approfondie",
   "memberStudy.header.title": "Modules révélateurs pour les membres",
   "memberStudy.header.description": "Commencez par le module qui correspond le mieux à votre rôle actuel dans l'œuvre. Lisez calmement, méditez et prenez des notes. Marquez chaque section étudiée pour voir vos progrès.",
@@ -1120,5 +1128,132 @@
   "lesson1.testimony_and_invitations.questions.0": "Liriez-vous Moroni 10 cette semaine puis prieriez-vous pour savoir si le Livre de Mormon est vrai?",
   "lesson1.testimony_and_invitations.questions.1": "Assisteriez-vous à l'Église ce dimanche pour voir comment nous adorons Jésus-Christ?",
   "lesson1.testimony_and_invitations.questions.2": "Pouvons-nous fixer une autre visite pour tel jour pour continuer à apprendre sur le plan que Dieu a pour vous?",
-  "lesson1.testimony_and_invitations.questions.3": "Si vous en venez à savoir par l'Esprit que ces choses sont vraies, seriez-vous disposé à vous préparer pour le baptême?"
+  "lesson1.testimony_and_invitations.questions.3": "Si vous en venez à savoir par l'Esprit que ces choses sont vraies, seriez-vous disposé à vous préparer pour le baptême?",
+  "memberLeader": {
+    "roleName": "Leader — Soutenir l'œuvre et les nouveaux convertis",
+    "description": "Mode pour les dirigeants de paroisse ou de branche qui souhaitent mieux soutenir les amis en enseignement et les nouveaux convertis, en harmonie avec Prêchez Mon Évangile et le Manuel général",
+    "headerTitle": "Leader — Soutenir l'œuvre et les nouveaux convertis",
+    "headerSubtitle": "Mode pour les dirigeants de paroisse ou de branche avec des outils supplémentaires",
+    "todayPanel": {
+      "title": "Panneau d'aujourd'hui",
+      "subtitle": "Les choses les plus importantes pour prendre soin des amis et des nouveaux convertis aujourd'hui",
+      "empty": "Vous n'avez pas de tâches urgentes aujourd'hui. Priez pour savoir qui vous pouvez fortifier.",
+      "groups": {
+        "newConverts": "Nouveaux convertis",
+        "friends": "Amis en enseignement",
+        "general": "Rappels généraux"
+      }
+    },
+    "newConverts": {
+      "title": "Nouveaux convertis (0–12 mois)",
+      "subtitle": "Accompagnez leur première année dans l'évangile",
+      "status": {
+        "attendsSacrament": "Assiste à la réunion de Sainte-Cène",
+        "hasMinistry": "A la ministération",
+        "hasCalling": "Appel",
+        "takingGospelPrinciples": "Classe de Principes de l'Évangile",
+        "preparingTemple": "Préparation au temple"
+      },
+      "timeframeLabel": "{{months}} mois",
+      "stats": "{{withCalling}} sur {{total}} avec appel • {{preparing}} préparés pour la recommandation",
+      "plan": {
+        "title": "Plan de {{timeframe}} mois",
+        "months0_3": {
+          "title": "Premiers 3 mois",
+          "items": [
+            "Le présenter à l'évêque",
+            "S'assurer que la ministération est assignée",
+            "L'encourager avec la lecture et la prière"
+          ]
+        },
+        "months3_6": {
+          "title": "3–6 mois",
+          "items": [
+            "Appel simple",
+            "Premières expériences au temple (baptêmes pour les morts)",
+            "Intégration dans la classe appropriée"
+          ]
+        },
+        "months6_12": {
+          "title": "6–12 mois",
+          "items": [
+            "Cours du temple ou préparation mission / scellement",
+            "Réaffirmer les témoignages et répondre aux questions",
+            "Accompagner dans le service"
+          ]
+        }
+      },
+      "viewPlan": "Voir le plan de 3 mois",
+      "quickNotes": "Notes rapides"
+    },
+    "friendsInTeaching": {
+      "title": "Amis en enseignement",
+      "subtitle": "Coordonner avec les missionnaires et les membres pour chaque ami",
+      "status": {
+        "hasBaptismDate": "Avec date de baptême",
+        "attendsSacrament": "Assiste à la réunion de Sainte-Cène",
+        "lesson1": "En leçon 1",
+        "lesson2": "En leçon 2",
+        "lesson3": "En leçon 3",
+        "lesson4": "En leçon 4",
+        "lesson5": "En leçon 5"
+      },
+      "broughtBy": "Amené par: {{name}}",
+      "actions": {
+        "coordinateVisit": "Coordonner la visite",
+        "prepareSunday": "Préparer le dimanche",
+        "inspiredQuestions": "Question inspirée suggérée"
+      },
+      "sundaySuggestions": {
+        "title": "Suggestions pour le dimanche",
+        "items": [
+          "Assigner un membre pour s'asseoir avec lui/elle",
+          "Le présenter aux dirigeants du collège/organisation",
+          "L'inviter à la classe appropriée (adultes, jeunes, JAS)"
+        ]
+      }
+    },
+    "meetingsResources": {
+      "title": "Réunions et ressources",
+      "subtitle": "Modèles pour la coordination missionnaire et guides rapides",
+      "sections": {
+        "templates": "Modèles de Réunion",
+        "quickResources": "Ressources Rapides"
+      },
+      "templates": {
+        "weeklyCoordination": {
+          "title": "Coordination Missionnaire Hebdomadaire — Version Étendue",
+          "subtitle": "Aligner la paroisse et les missionnaires pour assurer que chaque ami en enseignement et nouveau converti reçoive un soutien doctrinal, spirituel, social et missionnaire",
+          "content": "🎯 BUT DOCTRINAL\nAssurer que chaque personne en enseignement et chaque nouveau converti ait un chemin clair, un soutien réel et un suivi cohérent.\n\n📋 BLOC A — OBJECTIFS INSPIRÉS DE LA RÉUNION\n• Identifier les besoins spirituels, sociaux et temporels\n• Coordonner qui accompagne chaque leçon\n• Résoudre les obstacles avant qu'ils ne deviennent des problèmes\n• Maintenir les dirigeants informés sans violer la confidentialité\n• Planifier l'intégration dans les activités, classes et réunions de Sainte-Cène\n\n📝 BLOC B — LISTE DE VÉRIFICATION AVANCÉE\n\n1. AMIS EN ENSEIGNEMENT\n• Qui progresse vers le baptême?\n• Qui a besoin d'une expérience spirituelle claire cette semaine?\n• Qui a besoin d'un engagement plus simple (lire 1 verset, prier 10 secondes, assister 20 minutes)?\n• Quelles préoccupations doctrinales sont apparues?\n• Qui doit être invité à visiter le temple (extérieur)?\n\n2. NOUVEAUX CONVERTIS\n\nListe de vérification spirituelle:\n• Ont-ils pris la Sainte-Cène?\n• Comprennent-ils qu'ils sont maintenant membres avec des alliances?\n• Prient-ils et lisent-ils quotidiennement?\n• Ont-ils été chaleureusement accueillis cette semaine?\n\nListe de vérification missionnaire:\n• Ont-ils reçu une recommandation à usage limité?\n• Ont-ils reçu une doctrine de base renforcée?\n• Ont-ils été interviewés pour la prêtrise (si applicable)?\n• Ont-ils été invités à un voyage au temple?\n\nListe de vérification sociale:\n• Ont-ils des amis?\n• Ont-ils un moyen de transport?\n• Se sentent-ils partie de la paroisse?\n\n3. LEÇONS CLÉS CETTE SEMAINE\n• Quelle leçon nécessite un soutien à ce stade?\n• Quel membre témoignera le mieux de ce principe?\n• Qui peut partager une histoire réelle de la paroisse?\n\n4. ACCOMPAGNEMENT\n• Quels jeunes hommes peuvent accompagner?\n• Quelles jeunes femmes peuvent accompagner les sœurs missionnaires?\n• Quel dirigeant peut couvrir un besoin spécial?\n• Quelle famille peut être une \"famille pont\"?\n\n💡 BLOC C — CAS RÉELS ET COMMENT LES RÉSOUDRE\n\nCas 1 — \"Vient à l'Église, mais ne parle pas\"\nProblème: Timidité, anxiété ou insécurité.\nSolution du dirigeant:\n• Famille chaleureuse les adopte pendant 2 semaines\n• Un jeune s'assoit à côté d'eux\n• Un dirigeant les visite sans ordre du jour formel\n\nCas 2 — \"Prêt à être baptisé, mais craint le rejet de la famille\"\nSolution:\n• Enseigner la leçon sur \"Peur et Foi\"\n• Témoignages de membres qui ont vécu la même chose\n• Envoyer une lettre de soutien de l'évêque (si applicable)\n\nCas 3 — \"Nouveau converti découragé parce qu'il a fait une erreur\"\nSolution:\n• Renforcer la doctrine du repentir\n• S'assurer que la Sainte-Cène est pour les personnes en progression\n• Visite spéciale de l'évêque ou du conseiller\n• Relire Mosiah 26 ou D&A 58\n\n👥 BLOC D — RÔLES PAR ORGANISATION\n\nÉvêque:\n• Entretien, prêtrise, recommandation à usage limité\n• Assurer les doctrines clés\n\nSociété de Secours:\n• Accueillir les femmes converties\n• Créer un réseau d'amitié immédiat\n\nCollège des Anciens:\n• Ministrer aux hommes, accompagner les leçons\n• Détecter les besoins temporels\n\nJeunes Gens:\n• Accompagner les missionnaires quand c'est approprié\n• Intégrer les jeunes convertis\n\nJeunes Filles:\n• Être des références pour les converties adolescentes\n• Adoucir la transition sociale\n\nPrimaire:\n• Prendre soin des enfants convertis ou investigateurs"
+        },
+        "wardCouncil": {
+          "title": "Conseil de Paroisse — Œuvre Missionnaire & Nouveaux Convertis",
+          "subtitle": "Intégrer l'œuvre missionnaire dans toutes les organisations de la paroisse, superviser la conversion et résoudre les obstacles",
+          "content": "❓ QUESTIONS DOCTRINALES PROFONDES POUR LES DIRIGEANTS\n\n• Quelle doctrine nos convertis n'ont-ils pas comprise cette semaine?\n• Quel principe pourrait les fortifier AUJOURD'HUI?\n• Quel membre pourrait partager un témoignage clé?\n\n🎯 QUESTIONS STRATÉGIQUES\n\n• Qui risque de disparaître sans préavis?\n• Quelle famille peut être une famille pont?\n• Quelle organisation peut le mieux l'intégrer?\n• Quelle activité de la paroisse sera clé ce mois-ci?\n\n📚 GUIDE RAPIDE PAR TYPE DE CONVERTI\n\nJeune converti (12–18):\n• L'intégrer dans les classes de jeunes\n• Assurer des entretiens opportuns\n• Assigner des amis de leur âge\n\nFemme adulte convertie:\n• L'intégrer avec la Société de Secours\n• Assigner des sœurs avec des expériences similaires\n\nHomme adulte converti:\n• Ministération immédiate\n• Préparation pour la prêtrise (si applicable)\n\nMère célibataire convertie:\n• Soutien social\n• Transport\n• Sœur accompagnante\n\nConverti avec traumatisme religieux antérieur:\n• Se concentrer sur Jésus-Christ\n• Doctrine claire, sans pression\n• Patience et amour\n\n⚠️ ERREURS QUE LE CONSEIL DOIT ÉVITER\n\n• Traiter les convertis comme des \"projets\"\n• Parler d'eux comme des problèmes\n• Envoyer de l'aide sans connaître le contexte\n• Les saturer d'informations\n\n📖 CLARIFICATIONS DOCTRINALES IMPORTANTES\n\n✔ Nouveau converti masculin:\nPeut recevoir la Prêtrise d'Aaron immédiatement s'il est digne. L'évêque l'interview et approuve.\n\n✔ Tout converti:\n• Peut recevoir une Recommandation à Usage Limité en quelques jours\n• Peut assister au temple pour les baptêmes pour les morts presque immédiatement\n• Peut aller aux visites du temple tout en étant investigateur"
+        }
+      },
+      "resources": {
+        "receiveConvert": {
+          "title": "Comment recevoir un nouveau converti le premier dimanche",
+          "content": "✅ ACTIONS CLÉS\n\n1. Être reçu à la porte par un membre assigné\n2. Explication simple de la réunion de Sainte-Cène\n3. Les asseoir avec une famille chaleureuse et constante\n4. Assurer la participation à la Sainte-Cène\n5. Les accompagner aux classes et les présenter aux enseignants\n6. Les présenter discrètement à l'évêque\n7. Les inviter explicitement au dimanche suivant\n8. Ne pas les laisser seuls une minute\n9. Leur montrer les salles\n10. Témoigner avec amour\n\n❌ ERREURS COMMUNES À ÉVITER\n\n• Les ignorer\n• Utiliser un langage compliqué\n• Parler de normes avancées dès le premier jour\n• Les laisser seuls après la réunion\n• Supposer qu'ils comprennent comment fonctionne l'Église"
+        },
+        "warningSigns": {
+          "title": "Signes d'alerte chez les nouveaux convertis",
+          "content": "🔴 SIGNAUX SPIRITUELS\n\n• Manque de compréhension de la Sainte-Cène\n• Doutes constants sur le repentir\n• Ne développe pas l'étude personnelle\n• Exprime se sentir indigne d'assister\n\n🔴 SIGNAUX SOCIAUX\n\n• Cesse d'assister sans explication\n• Manque deux dimanches consécutifs\n• Commentaires sur le sentiment de solitude ou de perte\n• Solitude ou isolement\n• Problèmes familiaux ou rejet\n• Difficultés de transport\n• Manque de connexion avec d'autres membres\n\n🔴 SIGNAUX REQUÉRANT UNE ACTION IMMÉDIATE\n\n• Commence à éviter le contact\n• Confus par des doctrines externes\n• Confusion sur les commandements\n• Dépression ou anxiété visibles\n\n✅ QUE FAIRE\n\n• Contact aimant immédiat\n• Visite de l'évêque ou des dirigeants\n• Réunion avec les ministrants\n• Assigner un ami dévoué\n• Inviter aux activités de la paroisse\n• Ne pas attendre que cela \"passe tout seul\""
+        },
+        "workingMissionaries": {
+          "title": "Travailler avec les missionnaires (version étendue)",
+          "content": "✅ CE DONT LES MISSIONNAIRES ONT BESOIN\n\nCommunication:\n• Références réelles\n• Informations mises à jour sur les familles moins actives\n• Toujours communiquer les changements majeurs dans leur vie\n• Partager le progrès et les obstacles\n• Coordonner les visites et les leçons\n\nSoutien:\n• Les inviter à enseigner dans les foyers des membres\n• Les accompagner dans les leçons clés (Loi de Chasteté, Dîme, etc.)\n• Fournir des références quand c'est approprié\n• Aider avec les besoins pratiques (transport, etc.)\n• Soutien émotionnel\n• Objectifs clairs de l'évêque\n\nRespect:\n• Les missionnaires ont la responsabilité principale\n• Les dirigeants coordonnent et soutiennent\n• Les membres accompagnent et fortifient\n\n❌ CE DONT LES MISSIONNAIRES N'ONT PAS BESOIN\n\n• Corrections doctrinales publiques\n• Plaintes de la paroisse\n• Envoi de \"problèmes\" sans contexte\n• Opinions personnelles comme doctrine\n• Critiquer les missionnaires devant les investigateurs\n• Créer une confusion doctrinale\n• Éviter la communication"
+        }
+      }
+    },
+    "guidelines": {
+      "title": "Directives et autorité",
+      "subtitle": "Sous quelles normes ce mode est utilisé"
+    },
+    "integrationMap": {
+      "title": "Carte d'intégration (12 mois)",
+      "subtitle": "Guide pour la première année du nouveau converti"
+    }
+  }
 }

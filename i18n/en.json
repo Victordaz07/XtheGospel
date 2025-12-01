@@ -20,6 +20,7 @@
   "profile.switchToMember": "Switch to Member mode",
   "memberProfile.hero.moreOptions": "More options",
   "memberProfile.hero.memberSince": "Member since {{date}}",
+  "memberProfile.personalInfo.memberSince": "Member since",
   "memberProfile.personalInfo.title": "Personal information",
   "memberProfile.personalInfo.subtitle": "Keep your core details current so everything stays in sync.",
   "memberProfile.personalInfo.fullName": "Full name",
@@ -1044,6 +1045,7 @@
       "pt": "Português"
     }
   },
+  "member.progress.loading": "Loading progress...",
   "member.progress.header.dashboard": "Progress Dashboard",
   "member.progress.xp.total": "Total Experience",
   "member.progress.xp.dayStreak": "Day Streak",
@@ -1063,6 +1065,12 @@
   "member.progress.encouragement.message": "Every step you take brings you closer to understanding eternal truths. Keep going, and remember that the Lord is with you on this journey.",
   "member.progress.nextLesson.title": "Continue Next Lesson",
   "member.progress.nextLesson.subtitle": "The Gospel of Jesus Christ",
+  "member.progress.skills.title": "Missionary Skills",
+  "member.progress.skills.subtitle": "Develop your ability to share the gospel",
+  "member.progress.skills.completed": "Completed",
+  "member.progress.skills.total": "Total",
+  "member.progress.skills.progress": "Progress",
+  "member.progress.skills.cta": "Explore activities",
   "featured.tags.doctrineOfChrist": "Doctrine of Christ",
   "featured.tags.covenants": "Covenants",
   "featured.tags.perseverance": "Perseverance",
@@ -1268,5 +1276,132 @@
   "lesson1.testimony_and_invitations.questions.0": "Would you read Moroni 10 this week and then pray to know if the Book of Mormon is true?",
   "lesson1.testimony_and_invitations.questions.1": "Would you attend Church this Sunday to see how we worship Jesus Christ?",
   "lesson1.testimony_and_invitations.questions.2": "Can we schedule another visit for such and such day to continue learning about the plan God has for you?",
-  "lesson1.testimony_and_invitations.questions.3": "If you come to know through the Spirit that these things are true, would you be willing to prepare for baptism?"
+  "lesson1.testimony_and_invitations.questions.3": "If you come to know through the Spirit that these things are true, would you be willing to prepare for baptism?",
+  "memberLeader": {
+    "roleName": "Leader — Supporting the work and new converts",
+    "description": "Mode for ward or branch leaders who want to better support friends in teaching and new converts, in harmony with Preach My Gospel and the General Handbook",
+    "headerTitle": "Leader — Supporting the work and new converts",
+    "headerSubtitle": "Mode for ward or branch leaders with additional tools",
+    "todayPanel": {
+      "title": "Today's Panel",
+      "subtitle": "The most important things to care for friends and new converts today",
+      "empty": "You have no urgent tasks today. Pray to know who you can strengthen.",
+      "groups": {
+        "newConverts": "New converts",
+        "friends": "Friends in teaching",
+        "general": "General reminders"
+      }
+    },
+    "newConverts": {
+      "title": "New converts (0–12 months)",
+      "subtitle": "Accompany their first year in the gospel",
+      "status": {
+        "attendsSacrament": "Attends sacrament meeting",
+        "hasMinistry": "Has ministering",
+        "hasCalling": "Calling",
+        "takingGospelPrinciples": "Gospel Principles class",
+        "preparingTemple": "Preparing for temple"
+      },
+      "timeframeLabel": "{{months}} months",
+      "stats": "{{withCalling}} of {{total}} with calling • {{preparing}} prepared for recommend",
+      "plan": {
+        "title": "{{timeframe}} month plan",
+        "months0_3": {
+          "title": "First 3 months",
+          "items": [
+            "Introduce to bishopric",
+            "Ensure ministering assigned",
+            "Encourage with reading and prayer"
+          ]
+        },
+        "months3_6": {
+          "title": "3–6 months",
+          "items": [
+            "Simple calling",
+            "First temple experiences (baptisms for the dead)",
+            "Integration into appropriate class"
+          ]
+        },
+        "months6_12": {
+          "title": "6–12 months",
+          "items": [
+            "Temple course or mission preparation / sealing",
+            "Reaffirm testimonies and answer questions",
+            "Accompany in service"
+          ]
+        }
+      },
+      "viewPlan": "View 3 month plan",
+      "quickNotes": "Quick notes"
+    },
+    "friendsInTeaching": {
+      "title": "Friends in teaching",
+      "subtitle": "Coordinate with missionaries and members for each friend",
+      "status": {
+        "hasBaptismDate": "With baptism date",
+        "attendsSacrament": "Attends sacrament meeting",
+        "lesson1": "In lesson 1",
+        "lesson2": "In lesson 2",
+        "lesson3": "In lesson 3",
+        "lesson4": "In lesson 4",
+        "lesson5": "In lesson 5"
+      },
+      "broughtBy": "Brought by: {{name}}",
+      "actions": {
+        "coordinateVisit": "Coordinate visit",
+        "prepareSunday": "Prepare Sunday",
+        "inspiredQuestions": "Suggested inspired question"
+      },
+      "sundaySuggestions": {
+        "title": "Sunday suggestions",
+        "items": [
+          "Assign member to sit with him/her",
+          "Introduce to quorum/organization leaders",
+          "Invite to appropriate class (adults, youth, YSA)"
+        ]
+      }
+    },
+    "meetingsResources": {
+      "title": "Meetings and resources",
+      "subtitle": "Templates for missionary coordination and quick guides",
+      "sections": {
+        "templates": "Meeting Templates",
+        "quickResources": "Quick Resources"
+      },
+      "templates": {
+        "weeklyCoordination": {
+          "title": "Weekly Missionary Coordination — Extended Version",
+          "subtitle": "Align ward and missionaries to ensure each friend in teaching and new convert receives doctrinal, spiritual, social and missionary support",
+          "content": "🎯 DOCTRINAL PURPOSE\nEnsure that each person in teaching and each new convert has a clear path, real support and consistent follow-up.\n\n📋 BLOCK A — INSPIRED MEETING OBJECTIVES\n• Identify spiritual, social and temporal needs\n• Coordinate who accompanies each lesson\n• Resolve obstacles before they become problems\n• Keep leaders informed without violating confidentiality\n• Plan integration into activities, classes and sacrament meetings\n\n📝 BLOCK B — ADVANCED REVIEW CHECKLIST\n\n1. FRIENDS IN TEACHING\n• Who is progressing toward baptism?\n• Who needs a clear spiritual experience this week?\n• Who needs a simpler commitment (read 1 verse, pray 10 seconds, attend 20 minutes)?\n• What doctrinal concerns have arisen?\n• Who needs to visit the temple (outside) to feel the Spirit?\n\n2. NEW CONVERTS\n\nSpiritual checklist:\n• Did they take the sacrament?\n• Do they understand they are now a member with covenants?\n• Are they praying and reading daily?\n• Were they warmly received this week?\n\nMissionary checklist:\n• Have they received a limited-use recommend?\n• Have they received reinforced basic doctrine?\n• Were they interviewed for the priesthood (if applicable)?\n• Were they invited to a temple trip?\n\nSocial checklist:\n• Do they have friends?\n• Do they have transportation?\n• Do they feel part of the ward?\n\n3. KEY LESSONS THIS WEEK\n• What lesson requires support at this stage?\n• Which member will best testify of that principle?\n• Who can share a real ward story?\n\n4. ACCOMPANIMENT\n• Which young men can accompany?\n• Which young women can accompany the sister missionaries?\n• Which leader can cover a special need?\n• Which family can be a \"bridge family\"?\n\n💡 BLOCK C — REAL CASES AND HOW TO RESOLVE THEM\n\nCase 1 — \"Comes to Church, but doesn't speak\"\nProblem: Shyness, anxiety or insecurity.\nLeader solution:\n• Warm family adopts them for 2 weeks\n• A young person sits them next to them\n• A leader visits them without a formal agenda\n\nCase 2 — \"Ready to be baptized, but fears family rejection\"\nSolution:\n• Teach the lesson on \"Fear and Faith\"\n• Testimonies from members who went through the same\n• Send support letter from bishop (if applicable)\n\nCase 3 — \"New convert discouraged because they made a mistake\"\nSolution:\n• Reinforce the doctrine of repentance\n• Ensure that the sacrament is for people in progress\n• Special visit from bishop or counselor\n• Re-read Mosiah 26 or D&C 58\n\n👥 BLOCK D — ROLES BY ORGANIZATION\n\nBishopric:\n• Interview, priesthood, limited-use recommend\n• Ensure key doctrines\n\nRelief Society:\n• Welcome women converts\n• Create immediate friendship network\n\nElders Quorum:\n• Minister to men, accompany lessons\n• Detect temporal needs\n\nYoung Men:\n• Accompany missionaries when appropriate\n• Integrate young converts\n\nYoung Women:\n• Be references for teenage converts\n• Smooth social transition\n\nPrimary:\n• Care for convert or investigator children"
+        },
+        "wardCouncil": {
+          "title": "Ward Council — Missionary Work & New Converts",
+          "subtitle": "Integrate missionary work into all ward organizations, supervise conversion and solve obstacles",
+          "content": "❓ DEEP DOCTRINAL QUESTIONS FOR LEADERS\n\n• What doctrine did our converts not understand this week?\n• What principle could strengthen them TODAY?\n• Which member could share a key testimony?\n\n🎯 STRATEGIC QUESTIONS\n\n• Who is at risk of disappearing without notice?\n• Which family can be a bridge family?\n• Which organization can best integrate them?\n• Which ward activity will be key this month?\n\n📚 QUICK GUIDE BY CONVERT TYPE\n\nYoung convert (12–18):\n• Integrate them into youth classes\n• Ensure timely interviews\n• Assign friends their age\n\nAdult woman convert:\n• Integrate with Relief Society\n• Assign sisters with similar experiences\n\nAdult man convert:\n• Immediate ministering\n• Preparation for priesthood (if applicable)\n\nSingle mother convert:\n• Social support\n• Transportation\n• Accompanying sister\n\nConvert with previous religious trauma:\n• Focus on Jesus Christ\n• Clear doctrine, no pressure\n• Patience and love\n\n⚠️ ERRORS THE COUNCIL MUST AVOID\n\n• Treating converts as \"projects\"\n• Speaking of them as problems\n• Sending help without knowing the context\n• Saturating them with information\n\n📖 IMPORTANT DOCTRINAL CLARIFICATIONS\n\n✔ New male convert:\nCan receive Aaronic Priesthood immediately if worthy. Bishop interviews and approves.\n\n✔ Any convert:\n• Can receive Limited-Use Recommend in days\n• Can attend temple for baptisms for the dead almost immediately\n• Can go to temple visits while still an investigator"
+        }
+      },
+      "resources": {
+        "receiveConvert": {
+          "title": "How to receive a new convert on their first Sunday",
+          "content": "✅ KEY ACTIONS\n\n1. Be received at the door by an assigned member\n2. Simple explanation of sacrament meeting\n3. Sit them with a warm and consistent family\n4. Ensure participation in the sacrament\n5. Accompany them to classes and introduce them to teachers\n6. Discreetly introduce them to the bishop\n7. Explicitly invite them to next Sunday\n8. Don't leave them alone for a minute\n9. Show them the rooms\n10. Testify with love\n\n❌ COMMON MISTAKES TO AVOID\n\n• Ignoring them\n• Using complicated language\n• Talking about advanced standards from the first day\n• Leaving them alone after the meeting\n• Assuming they understand how the Church works"
+        },
+        "warningSigns": {
+          "title": "Warning signs in new converts",
+          "content": "🔴 SPIRITUAL SIGNS\n\n• Lack of understanding of the sacrament\n• Constant doubts about repentance\n• Does not develop personal study\n• Expresses feeling unworthy to attend\n\n🔴 SOCIAL SIGNS\n\n• Stops attending without explanation\n• Misses two Sundays in a row\n• Comments about feeling alone or lost\n• Loneliness or isolation\n• Family problems or rejection\n• Transportation difficulties\n• Lack of connection with other members\n\n🔴 SIGNS REQUIRING IMMEDIATE ACTION\n\n• Begins to avoid contact\n• Confused by external doctrines\n• Confusion about commandments\n• Visible depression or anxiety\n\n✅ WHAT TO DO\n\n• Immediate loving contact\n• Visit from bishopric or leaders\n• Meeting with ministering brothers/sisters\n• Assign dedicated friend\n• Invite to ward activities\n• Don't wait for it to \"pass on its own\""
+        },
+        "workingMissionaries": {
+          "title": "Working with missionaries (extended version)",
+          "content": "✅ WHAT MISSIONARIES NEED\n\nCommunication:\n• Real referrals\n• Updated information on less active families\n• Always communicate major life changes\n• Share progress and obstacles\n• Coordinate visits and lessons\n\nSupport:\n• Invite them to teach in member homes\n• Accompany them in key lessons (Law of Chastity, Tithing, etc.)\n• Provide referrals when appropriate\n• Help with practical needs (transportation, etc.)\n• Emotional support\n• Clear goals from bishopric\n\nRespect:\n• Missionaries have primary responsibility\n• Leaders coordinate and support\n• Members accompany and strengthen\n\n❌ WHAT MISSIONARIES DO NOT NEED\n\n• Public doctrinal corrections\n• Ward complaints\n• Sending \"problems\" without context\n• Personal opinions as doctrine\n• Criticizing missionaries in front of investigators\n• Creating doctrinal confusion\n• Avoiding communication"
+        }
+      }
+    },
+    "guidelines": {
+      "title": "Guidelines and authority",
+      "subtitle": "Under what standards this mode is used"
+    },
+    "integrationMap": {
+      "title": "Integration map (12 months)",
+      "subtitle": "Guide for the new convert's first year"
+    }
+  }
 }

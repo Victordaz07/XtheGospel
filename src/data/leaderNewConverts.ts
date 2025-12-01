@@ -6,6 +6,7 @@ export type ConvertStatus =
   | 'preparingTemple';
 
 export type ConvertTimeframe = '0-3' | '3-6' | '6-12';
+export type OrganizationType = 'eldersQuorum' | 'reliefSociety' | 'youngAdults' | 'youngMen' | 'youngWomen' | 'primary';
 
 export interface NewConvert {
   id: string;
@@ -15,6 +16,7 @@ export interface NewConvert {
   hasCalling: boolean;
   isPreparingForTemple: boolean;
   timeframe: ConvertTimeframe;
+  organization?: OrganizationType; // Organización a la que pertenece
 }
 
 export const mockNewConverts: NewConvert[] = [
@@ -25,7 +27,8 @@ export const mockNewConverts: NewConvert[] = [
     statuses: ['attendsSacrament', 'hasMinistry', 'hasCalling'],
     hasCalling: true,
     isPreparingForTemple: false,
-    timeframe: '0-3'
+    timeframe: '0-3',
+    organization: 'eldersQuorum'
   },
   {
     id: 'nc2',
@@ -34,7 +37,8 @@ export const mockNewConverts: NewConvert[] = [
     statuses: ['attendsSacrament', 'hasMinistry', 'hasCalling', 'preparingTemple'],
     hasCalling: true,
     isPreparingForTemple: true,
-    timeframe: '6-12'
+    timeframe: '6-12',
+    organization: 'reliefSociety'
   },
   {
     id: 'nc3',
@@ -43,7 +47,8 @@ export const mockNewConverts: NewConvert[] = [
     statuses: ['attendsSacrament', 'hasMinistry', 'takingGospelPrinciples'],
     hasCalling: false,
     isPreparingForTemple: false,
-    timeframe: '3-6'
+    timeframe: '3-6',
+    organization: 'youngAdults'
   },
   {
     id: 'nc4',
@@ -52,7 +57,8 @@ export const mockNewConverts: NewConvert[] = [
     statuses: ['attendsSacrament', 'hasMinistry', 'hasCalling'],
     hasCalling: true,
     isPreparingForTemple: false,
-    timeframe: '6-12'
+    timeframe: '6-12',
+    organization: 'reliefSociety'
   },
   {
     id: 'nc5',
@@ -61,7 +67,8 @@ export const mockNewConverts: NewConvert[] = [
     statuses: ['attendsSacrament', 'hasMinistry'],
     hasCalling: false,
     isPreparingForTemple: false,
-    timeframe: '0-3'
+    timeframe: '0-3',
+    organization: 'eldersQuorum'
   }
 ];
 

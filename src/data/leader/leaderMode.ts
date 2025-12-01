@@ -420,6 +420,13 @@ export const leaderMode = {
         ],
       },
     ],
+    convertPath12Weeks: {
+      id: 'convert_12_weeks_path',
+      title: 'Camino del Nuevo Converso — Primeras 12 Semanas',
+      description:
+        'Guía doctrinal, espiritual y social para los primeros tres meses del nuevo converso. Úsala en coordinación misional, consejo de barrio y entrevistas personales.',
+      reference: 'convertPath12Weeks',
+    },
   },
 
   integrationMap: {

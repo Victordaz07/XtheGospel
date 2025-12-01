@@ -3,15 +3,19 @@ import { useRoleStore } from '../store/useRoleStore';
 import './RoleSwitcher.css';
 
 export const RoleSwitcher: React.FC = () => {
-  const role = useRoleStore((s) => s.role);
-  const setRole = useRoleStore((s) => s.setRole);
+  const role = useRoleStore(s => s.role);
+  const setRole = useRoleStore(s => s.setRole);
 
   const isLeader = role === 'leader';
 
   const handleToggle = async () => {
     await setRole(isLeader ? 'member' : 'leader');
     // Reload to apply new layout
-    window.location.href = isLeader ? '/member/home' : '/leader/home';
+    if (typeof globalThis !== 'undefined' && 'window' in globalThis) {
+      (globalThis as any).window.location.href = isLeader
+        ? '/member/home'
+        : '/leader/home';
+    }
   };
 
   return (
@@ -19,13 +23,17 @@ export const RoleSwitcher: React.FC = () => {
       <div className="role-switcher-label">
         Modo actual: <strong>{isLeader ? 'Líder' : 'Miembro'}</strong>
       </div>
-      <button className="role-switcher-button" onClick={handleToggle} type="button">
+      <button
+        className="role-switcher-button"
+        onClick={handleToggle}
+        type="button"
+      >
         Cambiar a modo {isLeader ? 'Miembro' : 'Líder'}
       </button>
       <div className="role-switcher-helper">
-        El modo seleccionado se mantendrá aunque cierres la aplicación, hasta que lo cambies de nuevo.
+        El modo seleccionado se mantendrá aunque cierres la aplicación, hasta
+        que lo cambies de nuevo.
       </div>
     </div>
   );
 };
-

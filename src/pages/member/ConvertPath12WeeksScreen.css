@@ -1,0 +1,178 @@
+/* Convert Path 12 Weeks Screen Styles */
+
+.convert-path-note-card {
+  display: flex;
+  align-items: flex-start;
+  background: #EEF2FF;
+  border-radius: 16px;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+  gap: 8px;
+}
+
+.convert-path-note-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.convert-path-note-text {
+  flex: 1;
+  margin: 0;
+  font-size: 13px;
+  color: #4B5563;
+  line-height: 1.5;
+}
+
+.convert-path-week-card {
+  background: #FFFFFF;
+  border-radius: 18px;
+  padding: 14px 18px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.convert-path-week-header {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 10px;
+}
+
+.convert-path-week-badge {
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  background: #EEF2FF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: #4F46E5;
+}
+
+.convert-path-week-header-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.convert-path-week-title {
+  margin: 0 0 2px 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.convert-path-week-subtitle {
+  margin: 0;
+  font-size: 11px;
+  color: #6B7280;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.convert-path-expand-icon {
+  color: #6B7280;
+  font-size: 14px;
+  flex-shrink: 0;
+  margin-left: 8px;
+}
+
+.convert-path-week-body {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #F2F4F7;
+}
+
+.convert-path-section {
+  margin-top: 12px;
+}
+
+.convert-path-section:first-child {
+  margin-top: 0;
+}
+
+.convert-path-section-title {
+  margin: 0 0 8px 0;
+  font-size: 13px;
+  font-weight: 700;
+  color: #4B5563;
+}
+
+.convert-path-list {
+  margin: 0;
+  padding-left: 20px;
+  list-style: none;
+}
+
+.convert-path-list-item {
+  margin: 6px 0;
+  font-size: 13px;
+  color: #111827;
+  line-height: 1.6;
+  position: relative;
+  padding-left: 0;
+}
+
+.convert-path-list-item::before {
+  content: '•';
+  position: absolute;
+  left: -16px;
+  color: #4B5563;
+  font-weight: bold;
+}
+
+.convert-path-tasks-list {
+  padding-left: 0;
+}
+
+.convert-path-task-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding-left: 0;
+}
+
+.convert-path-task-item::before {
+  display: none;
+}
+
+.convert-path-task-icon {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  background: #EEF2FF;
+  color: #4F46E5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  margin-top: 2px;
+}
+
+.convert-path-scripture-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.convert-path-scripture-chip {
+  display: inline-block;
+  padding: 4px 10px;
+  background: #EEF2FF;
+  color: #4F46E5;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+}
+

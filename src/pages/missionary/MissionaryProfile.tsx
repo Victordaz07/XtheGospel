@@ -3,6 +3,7 @@ import { FaChevronRight, FaGlobe, FaSignOutAlt, FaCamera, FaUser } from 'react-i
 import { useAuth } from '../../context/AuthContext';
 import { useI18n, Locale } from '../../context/I18nContext';
 import { RoleSettingsCard } from '../../components/RoleSettingsCard';
+import { LeadershipRoleSelector } from '../../components/missionary/LeadershipRoleSelector';
 import { PageContainer, Card } from '../../ui/components';
 import '../Page.css';
 import './MissionaryProfile.css';
@@ -239,6 +240,11 @@ const MissionaryProfile: React.FC = () => {
               )}
             </div>
           </form>
+        </Card>
+
+        {/* Mi Llamamiento Actual - Modo Liderazgo Misional */}
+        <Card className="missionary-profile-card">
+          <LeadershipRoleSelector />
         </Card>
 
         {/* Configuración de Rol */}

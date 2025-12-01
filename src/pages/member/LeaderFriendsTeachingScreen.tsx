@@ -1,11 +1,14 @@
 import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { useI18n } from '../../context/I18nContext';
 import { mockFriendsInTeaching } from '../../data/leaderFriendsTeaching';
+import { friendsInTeachingExtended } from '../../data/leader/friendsInTeachingExtended';
 import '../../pages/Page.css';
 import './LeaderScreens.css';
 
 export const LeaderFriendsTeachingScreen: React.FC = () => {
   const { t } = useI18n();
+  const location = useLocation();
 
   const getStatusLabel = (status: string) => {
     return t(`memberLeader.friendsInTeaching.status.${status}`);
@@ -65,6 +68,25 @@ export const LeaderFriendsTeachingScreen: React.FC = () => {
             </div>
           </div>
         ))}
+
+        {/* Guía extendida */}
+        <div className="leader-template-card" style={{ marginTop: '20px' }}>
+          <div className="leader-template-header">
+            <div>
+              <h3>{friendsInTeachingExtended.title}</h3>
+              <p>{friendsInTeachingExtended.description}</p>
+            </div>
+            <Link
+              to={location.pathname.includes('/member/') 
+                ? '/member/leader/friends/extended' 
+                : '/leader/friends/extended'}
+              className="leader-button-small"
+              style={{ textDecoration: 'none', display: 'inline-block' }}
+            >
+              Ver guía completa
+            </Link>
+          </div>
+        </div>
       </div>
     </div>
   );
