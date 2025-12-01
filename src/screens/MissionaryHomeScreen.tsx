@@ -8,12 +8,19 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+
+type RouteParams = {
+  fromLeadership?: boolean;
+};
 
 export default function MissionaryHomeScreen() {
   const navigation = useNavigation<any>();
+  const route = useRoute<any>();
   const insets = useSafeAreaInsets();
+  
+  const fromLeadership: boolean = route?.params?.fromLeadership ?? false;
 
   const goToDashboard = () => {
     // Navegar a dashboard/estadísticas del misionero
@@ -34,6 +41,17 @@ export default function MissionaryHomeScreen() {
         contentContainerStyle={[styles.content, { paddingBottom: insets.bottom + 20 }]}
         showsVerticalScrollIndicator={false}
       >
+        {/* Banner especial si viene desde liderazgo */}
+        {fromLeadership && (
+          <View style={styles.banner}>
+            <Text style={styles.bannerTitle}>Sigues siendo un misionero</Text>
+            <Text style={styles.bannerText}>
+              Aunque hayas servido como líder de distrito, líder de zona o asistente del presidente,
+              tu identidad principal sigue siendo la de un misionero consagrado de Jesucristo.
+            </Text>
+          </View>
+        )}
+
         {/* Botones de acceso rápido */}
         <View style={styles.quickActionsContainer}>
           <TouchableOpacity
@@ -63,11 +81,15 @@ export default function MissionaryHomeScreen() {
           </View>
 
           {/* Título principal */}
-          <Text style={styles.title}>Eres un misionero de Jesucristo</Text>
+          <Text style={styles.title}>
+            {fromLeadership ? 'Tu propósito eterno' : 'Eres un misionero de Jesucristo'}
+          </Text>
 
           {/* Subtítulo */}
           <Text style={styles.subtitle}>
-            Aunque tengas asignaciones de liderazgo, sigues siendo un siervo consagrado del Señor.
+            {fromLeadership
+              ? 'Has sido llamado para invitar a todos a venir a Cristo, predicar Su evangelio y ministrar al uno dondequiera que el Señor te envíe.'
+              : 'Aunque tengas asignaciones de liderazgo, sigues siendo un siervo consagrado del Señor.'}
           </Text>
 
           {/* Card con cita */}
@@ -79,55 +101,87 @@ export default function MissionaryHomeScreen() {
               "No importa dónde sirvas, sino cómo sirvas."
             </Text>
             <Text style={styles.cardText}>
-              Tu llamamiento es sagrado. Tu ministerio es eterno. Predica el evangelio,
-              ama a las personas, y busca al uno al estilo del Salvador.
+              {fromLeadership
+                ? 'Las asignaciones de liderazgo son temporales; tu llamamiento como discípulo misionero es eterno. Tu poder no viene del título, sino de tu fe, tu obediencia y tu amor por las almas.'
+                : 'Tu llamamiento es sagrado. Tu ministerio es eterno. Predica el evangelio, ama a las personas, y busca al uno al estilo del Salvador.'}
             </Text>
           </View>
 
           {/* Sección de propósito */}
-          <View style={styles.section}>
-            <View style={styles.sectionHeader}>
-              <MaterialCommunityIcons name="heart" size={20} color="#1e40af" />
-              <Text style={styles.sectionTitle}>Tu propósito eterno</Text>
+          {!fromLeadership && (
+            <View style={styles.section}>
+              <View style={styles.sectionHeader}>
+                <MaterialCommunityIcons name="heart" size={20} color="#1e40af" />
+                <Text style={styles.sectionTitle}>Tu propósito eterno</Text>
+              </View>
+              <Text style={styles.sectionText}>
+                Eres un misionero de Jesucristo. Un siervo consagrado, enviado a invitar a todos a venir a Él.
+              </Text>
+              <Text style={styles.sectionText}>
+                Aunque tengas asignaciones de liderazgo, sigues siendo un representante del Salvador.
+              </Text>
+              <Text style={styles.sectionText}>
+                Tu poder viene del Espíritu y de tu obediencia. Tu influencia viene de tu ejemplo, no de tu título.
+              </Text>
             </View>
-            <Text style={styles.sectionText}>
-              Eres un misionero de Jesucristo. Un siervo consagrado, enviado a invitar a todos a venir a Él.
-            </Text>
-            <Text style={styles.sectionText}>
-              Aunque tengas asignaciones de liderazgo, sigues siendo un representante del Salvador.
-            </Text>
-            <Text style={styles.sectionText}>
-              Tu poder viene del Espíritu y de tu obediencia. Tu influencia viene de tu ejemplo, no de tu título.
-            </Text>
-          </View>
+          )}
 
           {/* Sección de misión diaria */}
           <View style={styles.section}>
             <View style={styles.sectionHeader}>
               <MaterialCommunityIcons name="target" size={20} color="#1e40af" />
-              <Text style={styles.sectionTitle}>Tu misión diaria</Text>
+              <Text style={styles.sectionTitle}>
+                {fromLeadership ? 'Hoy, como misionero regular:' : 'Tu misión diaria'}
+              </Text>
             </View>
             <View style={styles.pointsContainer}>
-              <View style={styles.pointRow}>
-                <MaterialCommunityIcons name="check-circle" size={18} color="#10b981" />
-                <Text style={styles.point}>Proclamar el evangelio de Jesucristo</Text>
-              </View>
-              <View style={styles.pointRow}>
-                <MaterialCommunityIcons name="check-circle" size={18} color="#10b981" />
-                <Text style={styles.point}>Enseñar con el poder del Espíritu</Text>
-              </View>
-              <View style={styles.pointRow}>
-                <MaterialCommunityIcons name="check-circle" size={18} color="#10b981" />
-                <Text style={styles.point}>Servir con amor y humildad</Text>
-              </View>
-              <View style={styles.pointRow}>
-                <MaterialCommunityIcons name="check-circle" size={18} color="#10b981" />
-                <Text style={styles.point}>Ministrar al uno</Text>
-              </View>
-              <View style={styles.pointRow}>
-                <MaterialCommunityIcons name="check-circle" size={18} color="#10b981" />
-                <Text style={styles.point}>Ser un testigo especial del Salvador</Text>
-              </View>
+              {fromLeadership ? (
+                <>
+                  <View style={styles.pointRow}>
+                    <MaterialCommunityIcons name="check-circle" size={18} color="#10b981" />
+                    <Text style={styles.point}>Proclama el evangelio con sencillez y poder.</Text>
+                  </View>
+                  <View style={styles.pointRow}>
+                    <MaterialCommunityIcons name="check-circle" size={18} color="#10b981" />
+                    <Text style={styles.point}>Busca y enseña a las personas una por una.</Text>
+                  </View>
+                  <View style={styles.pointRow}>
+                    <MaterialCommunityIcons name="check-circle" size={18} color="#10b981" />
+                    <Text style={styles.point}>Sirve con humildad y buen ánimo.</Text>
+                  </View>
+                  <View style={styles.pointRow}>
+                    <MaterialCommunityIcons name="check-circle" size={18} color="#10b981" />
+                    <Text style={styles.point}>Sé un ejemplo para tu compañero y tu distrito.</Text>
+                  </View>
+                  <View style={styles.pointRow}>
+                    <MaterialCommunityIcons name="check-circle" size={18} color="#10b981" />
+                    <Text style={styles.point}>Recuerda que cada meta representa almas reales.</Text>
+                  </View>
+                </>
+              ) : (
+                <>
+                  <View style={styles.pointRow}>
+                    <MaterialCommunityIcons name="check-circle" size={18} color="#10b981" />
+                    <Text style={styles.point}>Proclamar el evangelio de Jesucristo</Text>
+                  </View>
+                  <View style={styles.pointRow}>
+                    <MaterialCommunityIcons name="check-circle" size={18} color="#10b981" />
+                    <Text style={styles.point}>Enseñar con el poder del Espíritu</Text>
+                  </View>
+                  <View style={styles.pointRow}>
+                    <MaterialCommunityIcons name="check-circle" size={18} color="#10b981" />
+                    <Text style={styles.point}>Servir con amor y humildad</Text>
+                  </View>
+                  <View style={styles.pointRow}>
+                    <MaterialCommunityIcons name="check-circle" size={18} color="#10b981" />
+                    <Text style={styles.point}>Ministrar al uno</Text>
+                  </View>
+                  <View style={styles.pointRow}>
+                    <MaterialCommunityIcons name="check-circle" size={18} color="#10b981" />
+                    <Text style={styles.point}>Ser un testigo especial del Salvador</Text>
+                  </View>
+                </>
+              )}
             </View>
           </View>
 
@@ -312,6 +366,25 @@ const styles = StyleSheet.create({
     color: '#78350f',
     textAlign: 'center',
     lineHeight: 20,
+  },
+  banner: {
+    backgroundColor: '#eef2ff',
+    borderRadius: 14,
+    padding: 16,
+    marginBottom: 20,
+    borderLeftWidth: 4,
+    borderLeftColor: '#3730a3',
+  },
+  bannerTitle: {
+    fontSize: 16,
+    fontWeight: '700',
+    color: '#3730a3',
+    marginBottom: 6,
+  },
+  bannerText: {
+    fontSize: 13,
+    color: '#4b5563',
+    lineHeight: 18,
   },
 });
 

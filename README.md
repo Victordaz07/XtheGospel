@@ -1,49 +1,117 @@
 # 📘 Mi Diario Misional
 
-**Aplicación Web Integral para Misioneros, Investigadores, Miembros y Líderes de La Iglesia de Jesucristo de los Santos de los Últimos Días**
+**Aplicación Web Integral para Apoyar a Investigadores, Misioneros, Miembros y Líderes de La Iglesia de Jesucristo de los Santos de los Últimos Días**
+
+---
+
+## 🌟 Visión General
+
+Esta aplicación nació con un propósito principal: **ayudar a los investigadores en su camino hacia el bautismo y la conversión**. Es una herramienta diseñada para acompañar a quienes están aprendiendo sobre el Evangelio, proporcionándoles recursos espirituales, lecciones interactivas y un seguimiento personalizado de su progreso.
+
+Además, la aplicación ofrece herramientas complementarias para:
+- **Misioneros** que enseñan y acompañan a los investigadores
+- **Miembros** que apoyan la obra misional
+- **Líderes misionales** que coordinan y capacitan
+
+**El enfoque principal siempre será el investigador y su crecimiento espiritual.**
 
 ---
 
 ## 📋 Tabla de Contenidos
 
-- [Visión General](#-visión-general)
-- [Módulo de Liderazgo Misional](#-módulo-de-liderazgo-misional)
-- [Roles de Usuario](#-roles-de-usuario)
+- [Enfoque Principal: Investigadores](#-enfoque-principal-investigadores)
+- [Módulos Adicionales](#-módulos-adicionales)
+  - [Misioneros](#-misioneros)
+  - [Miembros](#-miembros)
+  - [Líderes Misionales](#-líderes-misionales)
 - [Stack Tecnológico](#-stack-tecnológico)
 - [Inicio Rápido](#-inicio-rápido)
 
 ---
 
-## 🌟 Visión General
+## 👤 Enfoque Principal: Investigadores
 
-Esta aplicación web proporciona cuatro roles de usuario distintos, cada uno con características y contenido personalizado:
+### Propósito
 
-1. **Investigador** - Para quienes están aprendiendo sobre la Iglesia
-2. **Misionero** - Para misioneros de tiempo completo
-3. **Miembro** - Para miembros que apoyan la obra misional
-4. **Líder Misional** - Para líderes de distrito, zona y asistentes del presidente
+Ayudar a los investigadores a:
+- Comprender las doctrinas del Evangelio
+- Prepararse espiritualmente para el bautismo
+- Desarrollar un testimonio personal
+- Integrarse a la comunidad de la Iglesia
+- Mantener compromisos y progresar en su conversión
+
+### Características Principales
+
+#### 📖 Lecciones Interactivas
+- Contenido doctrinal organizado y progresivo
+- Materiales de estudio adaptados a su nivel
+- Seguimiento de progreso personalizado
+
+#### 💬 Mensajes Devocionales Diarios
+- Reflexiones espirituales diarias
+- Escrituras y citas inspiradoras
+- Aplicación práctica en la vida diaria
+
+#### 📝 Diario Espiritual
+- "La Historia con Dios": Registro personal de experiencias espirituales
+- Reflexiones sobre el progreso
+- Momentos de revelación y crecimiento
+
+#### 🎯 Preparación para el Bautismo
+- Guía paso a paso hacia el bautismo
+- Compromisos y tareas personales
+- Seguimiento de preparación espiritual
+
+#### ❓ Preguntas Difíciles
+- FAQ con respuestas doctrinales
+- Recursos para resolver dudas comunes
+- Apoyo en el proceso de aprendizaje
+
+#### 📊 Seguimiento de Progreso
+- Visualización del crecimiento espiritual
+- Logros y metas alcanzadas
+- Recordatorios de compromisos
 
 ---
 
-# 🛡️ Módulo de Liderazgo Misional
+## 🛠 Módulos Adicionales
 
-**Sistema de Coordinación y Capacitación para Misiones de La Iglesia de Jesucristo de los Santos de los Últimos Días**
+### 👔 Misioneros
 
----
+**Herramientas para apoyar a los investigadores:**
 
-## 🌟 Visión General
+- **Agenda Misional**: Planificación y seguimiento de citas con investigadores
+- **Gestión de Personas**: Base de datos de investigadores, contactos y miembros
+- **Planificación de Lecciones**: Recursos y materiales para enseñar
+- **Seguimiento de Compromisos**: Recordatorios y seguimiento de compromisos de investigadores
+- **Centro de Liderazgo**: Acceso a agendas, mensajes y eventos de sus líderes
 
-Este módulo transforma la organización misional en un sistema moderno, ordenado y escalable. Cada líder —Distrito, Zona o Asistente del Presidente— cuenta con herramientas reales para dirigir, entrenar, comunicar y coordinar; todo desde la palma de su mano.
+### 👥 Miembros
 
-El misionero regular recibe solo lo necesario: agendas, mensajes y eventos relevantes.
+**Recursos para apoyar la obra misional:**
 
-**Lo que antes requería papeles, WhatsApp, llamadas y cadenas informales… ahora fluye con orden celestial.**
+- **Módulos de Estudio**: Contenido doctrinal profundo para fortalecer el testimonio
+- **Actividades Interactivas**: Aprendizaje gamificado con quizzes, escenarios y ejercicios
+- **Cuidado de Conversos**: Guía completa para apoyar a nuevos miembros (7 secciones, 4 idiomas)
+- **Gestión de Amigos**: Rastrear y orar por amigos interesados en el evangelio
+- **Apoyo Misionero**: Formas prácticas de ayudar a los misioneros
+- **Seguimiento de Progreso**: Sistema de XP, niveles, rachas e insignias
 
----
+### 🛡️ Líderes Misionales
 
-## 🏛 Arquitectura del Sistema
+**Herramientas de coordinación y capacitación** (funcionalidad adicional):
 
-### Diagrama General del Sistema
+Este módulo ayuda a los líderes (Líderes de Distrito, Líderes de Zona y Asistentes del Presidente) a coordinar y capacitar a los misioneros, pero **siempre con el objetivo final de servir mejor a los investigadores**.
+
+#### Funcionalidades:
+
+- **Reuniones de Distrito/Zona**: Planificar y registrar reuniones de capacitación
+- **Intercambios**: Organizar intercambios para entrenar misioneros
+- **Entrevistas Bautismales**: Coordinar entrevistas para investigadores
+- **Mensajes de Liderazgo**: Comunicar énfasis y visión a los misioneros
+- **Dashboard**: Visión general del progreso del distrito/zona/misión
+
+#### Arquitectura del Módulo de Liderazgo
 
 ```mermaid
 flowchart TD
@@ -52,7 +120,6 @@ flowchart TD
     A2[<b>Líder de Distrito</b><br/>• Reunión de distrito<br/>• Intercambios<br/>• Entrevistas<br/>• Mensajes a distrito<br/>• Notas]:::role
     A3[<b>Líder de Zona</b><br/>• Reunión de zona<br/>• Intercambios<br/>• Entrevistas LZ<br/>• Mensajes a zona<br/>• Notas]:::role
     A4[<b>Asistente del Presidente (AP)</b><br/>• Giras<br/>• Transfers<br/>• Mensajes misión<br/>• Dashboard misión<br/>• Notas AP]:::role
-    A5[<b>Presidente de Misión</b><br/>• Lectura global<br/>• Recibe reportes<br/>• Supervisa]:::role
 
     %% Principal collections
     B1[(leadershipEvents)]:::db
@@ -99,314 +166,13 @@ flowchart TD
     A2 --> C1
     A3 --> C1
     A4 --> C1
-    A5 --> C1
 
     classDef role fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#0c4a6e
     classDef db fill:#ede9fe,stroke:#6d28d9,stroke-width:2px,color:#4c1d95
     classDef center fill:#fef3c7,stroke:#d97706,stroke-width:2px,color:#92400e
 ```
 
-### Arquitectura de Datos (Firestore)
-
-```mermaid
-flowchart LR
-    subgraph Mission["Misión"]
-        direction TB
-
-        E1[(districtCouncils)]:::db
-        E2[(zoneCouncils)]:::db
-        E3[(leadershipEvents)]:::db
-        E4[(leaderMessages)]:::db
-        E5[(baptismalInterviews)]:::db
-        E6[(exchanges)]:::db
-        E7[(transferPlans)]:::db
-        E8[(personalNotes)]:::db
-    end
-
-    %% District Council
-    DC1[DL crea reunión distrito<br/>-> publishToDistrict]:::logic --> E1
-    E1 --> E3
-
-    %% Zone Council
-    ZC1[LZ crea reunión zona<br/>-> publishToZone]:::logic --> E2
-    E2 --> E3
-
-    %% Messages
-    MSG1[DL/LZ/AP<br/>publishMessage]:::logic --> E4
-    E4 --> FEED
-
-    %% Exchanges
-    EX1[DL/LZ/AP<br/>crean intercambio]:::logic --> E6
-    E6 --> E3
-
-    %% Interviews
-    BI1[DL/LZ programan<br/>y completan entrevistas]:::logic --> E5
-    E5 --> E3
-
-    %% Transfers
-    TP1[AP arma plan<br/>transfer]:::logic --> E7
-
-    %% Notes
-    NT1[DL/LZ/AP<br/>notas privadas<br/>-> opcional: promover a mensaje]:::logic --> E8
-    E8 -. promote .-> E4
-
-    %% Feed
-    FEED[[LeadershipCenter<br/>Feed Central]]:::center
-
-    E3 --> FEED
-    E4 --> FEED
-
-    classDef db fill:#ede9fe,stroke:#6d28d9,stroke-width:2px,color:#4c1d95
-    classDef logic fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#075985
-    classDef center fill:#fef3c7,stroke:#d97706,stroke-width:2px,color:#92400e
-```
-
----
-
-## 🛠 Funcionalidad Principal
-
-### 👤 Misionero Regular
-
-**Acceso al Centro de Liderazgo:**
-- Reuniones programadas (LD, LZ, AP)
-- Mensajes oficiales
-- Recordatorios
-- Anuncios
-- Eventos próximos
-- Vista de solo lectura de agendas y detalles
-
-### 🟦 Líder de Distrito (DL)
-
-**Herramientas de Liderazgo:**
-- **Reunión de distrito**: Crear, publicar y completar agendas semanales
-- **Intercambios**: Planificar, ejecutar y dar seguimiento a intercambios con misioneros
-- **Entrevistas bautismales**: Organizar, programar y completar entrevistas
-- **Mensajes al distrito**: Publicar mensajes espirituales y anuncios
-- **Notas personales**: Bitácora privada con opción de promover a mensajes
-- **Dashboard**: KPIs del distrito, eventos próximos y mensajes recientes
-
-### 🟨 Líder de Zona (LZ)
-
-**Herramientas de Supervisión:**
-- **Reunión de zona**: Crear, publicar y completar consejos de zona
-- **Intercambios**: Giras con líderes de distrito y misioneros clave
-- **Entrevistas bautismales**: Supervisar y realizar entrevistas a nivel zona
-- **Mensajes a la zona**: Publicar mensajes y énfasis para toda la zona
-- **Notas de liderazgo**: Reflexiones y seguimiento de distritos
-- **Dashboard de zona**: Visión general de todos los distritos bajo su supervisión
-
-### 🟣 Asistente del Presidente (AP)
-
-**Herramientas de Misión:**
-- **Dashboard de la misión**: Visión global en tiempo real de toda la misión
-- **Giras / intercambios**: Planificar y ejecutar giras con líderes de zona
-- **Planificación de transfers**: Crear y gestionar planes de transferencias
-- **Mensajes oficiales**: Publicar mensajes a toda la misión o zonas específicas
-- **Notas privadas**: Reflexiones de alto nivel y seguimiento misional
-- **Apoyo al Presidente**: Checklist y herramientas para servir al presidente
-
----
-
-## 🏗 Estructura Técnica
-
-### Colecciones de Datos (localStorage/Firestore)
-
-| Colección | Propósito | Roles que Crean | Roles que Ven |
-|-----------|-----------|----------------|---------------|
-| `districtCouncils` | Reuniones de distrito | DL | DL, LZ, AP, Misioneros (solo lectura) |
-| `zoneCouncils` | Reuniones de zona | LZ | LZ, AP, Misioneros (solo lectura) |
-| `leadershipEvents` | Feed central de eventos | DL, LZ, AP | Todos |
-| `leaderMessages` | Mensajes oficiales | DL, LZ, AP | Todos (según scope) |
-| `exchanges` | Intercambios y giras | DL, LZ, AP | Creador, misionero involucrado |
-| `baptismalInterviews` | Entrevistas bautismales | DL, LZ | DL, LZ, AP, Compañerismo |
-| `transferPlans` | Planes de transferencias | AP | AP |
-| `personalNotes` | Notas privadas | DL, LZ, AP | Solo el creador |
-
-### Flujo de Publicación
-
-1. **Líder crea contenido** (reunión, mensaje, intercambio, etc.)
-2. **Guarda como borrador** → Se almacena en su colección correspondiente
-3. **Publica** → Se crea un `leadershipEvent` en el feed central
-4. **Distribución automática** → Aparece en el Centro de Liderazgo según:
-   - `targetScope` (district, zone, mission)
-   - `districtId` / `zoneId` del misionero
-   - Filtros de rol y permisos
-
-### Servicios Principales
-
-- `districtCouncilService.ts` - Gestión de reuniones de distrito
-- `zoneCouncilService.ts` - Gestión de reuniones de zona
-- `exchangeService.ts` - Gestión de intercambios (reutilizable por todos los roles)
-- `baptismalInterviewService.ts` - Gestión de entrevistas bautismales
-- `leaderMessageService.ts` - Gestión de mensajes de liderazgo
-- `transferPlanService.ts` - Gestión de planes de transferencias
-- `personalNoteService.ts` - Gestión de notas personales
-- `shareService.ts` - Compartir contenido (WhatsApp, Email, Clipboard)
-
----
-
-## 🔒 Seguridad y Roles
-
-Cada acción está protegida por:
-
-- **Rol del usuario**: `missionary`, `district_leader`, `zone_leader`, `assistant_to_president`
-- **Filtros geográficos**: `zoneId`, `districtId`, `missionId`
-- **Scope del contenido**: `district`, `zone`, `mission`
-- **Permisos de lectura/escritura**: Los misioneros regulares solo leen contenido publicado
-
-**Los misioneros regulares nunca ven información interna de liderazgo.**
-
----
-
-## 📱 Filosofía del Sistema
-
-- **Sencillo para el usuario**: Interfaz intuitiva, sin complejidad innecesaria
-- **Poderoso para el líder**: Herramientas completas para dirigir eficazmente
-- **Ordenado para la misión**: Todo centralizado y accesible
-- **Eficiente para el presidente**: Visión global y reportes claros
-
-Un diseño inspirado en los principios de:
-- **Transparencia**: Todos ven lo que necesitan ver
-- **Diligencia**: Herramientas para ser más efectivos
-- **Responsabilidad**: Registro claro de acciones y decisiones
-- **Liderazgo cristiano**: Enfoque en personas, no solo números
-
----
-
-## 🧩 Estado Actual
-
-### ✅ Implementado
-
-- ✅ Estructura completa de roles (DL, LZ, AP)
-- ✅ Servicios con localStorage (listos para migrar a Firestore)
-- ✅ Hooks funcionales para todos los roles
-- ✅ Pantallas totalmente operativas:
-  - Dashboards por rol
-  - Reuniones de distrito/zona
-  - Intercambios y giras
-  - Entrevistas bautismales
-  - Mensajes de liderazgo
-  - Planes de transferencias
-  - Notas personales
-  - Perfil y cambio de roles
-- ✅ Centro de liderazgo para misioneros
-- ✅ Publicación y distribución en tiempo real
-- ✅ Sistema de compartir (WhatsApp, Email, Clipboard)
-- ✅ Historial completo de todas las actividades
-- ✅ Validaciones y estados (draft, published, completed)
-
-### ⏳ Próximas Mejoras
-
-- 🔄 Migración a Firestore para sincronización en tiempo real
-- 📄 Exportación a PDF de agendas y reportes
-- 🔔 Notificaciones push para eventos importantes
-- 📊 Analytics y métricas avanzadas
-- 🌐 Sincronización offline
-- 🎨 Mejoras de UI/UX y animaciones
-- 🔐 Privacidad avanzada y permisos granulares
-
----
-
-## 🚀 Inicio Rápido
-
-### Requisitos
-
-- Node.js 18+
-- React 18+
-- React Router DOM 6+
-
-### Instalación
-
-```bash
-npm install
-npm run dev
-```
-
-### Estructura de Carpetas
-
-```
-src/
-├── pages/missionary/leadership/    # Pantallas de liderazgo
-├── services/                        # Servicios de datos
-├── components/missionary/leadership/ # Componentes reutilizables
-├── hooks/                          # Hooks personalizados
-├── data/missionary/                # Configuración de roles
-└── layouts/                        # Layouts de navegación
-```
-
----
-
-## 📊 Métricas y KPIs
-
-El sistema rastrea automáticamente:
-
-- **Reuniones realizadas** por distrito/zona
-- **Intercambios completados** por líder
-- **Entrevistas bautismales** programadas y completadas
-- **Mensajes publicados** por scope
-- **Participación** en el Centro de Liderazgo
-
----
-
-## 🙌 Agradecimientos
-
-Este proyecto nace del deseo sincero de servir a la obra del Señor, elevando el estándar de coordinación y liderazgo dentro de las misiones.
-
-**Organización, inspiración y orden — tal como Él lo manda.**
-
----
-
----
-
-## 👤 Otros Módulos de la Aplicación
-
-### 👤 Investigador
-
-**Características:**
-- Mensajes devocionales diarios
-- Lecciones interactivas y materiales de estudio
-- Seguimiento de progreso
-- Guía de preparación para el bautismo
-- Compromisos y tareas personales
-- Diario de la historia con Dios
-- Preguntas difíciles FAQ
-
-### 👔 Misionero Regular
-
-**Características:**
-- Agenda misional y programación
-- Gestión de personas (investigadores, contactos)
-- Planificación de lecciones y recursos
-- Seguimiento de compromisos
-- Monitoreo de progreso
-- **Centro de Liderazgo**: Acceso a agendas, mensajes y eventos de sus líderes
-
-### 👥 Miembro
-
-**Características:**
-- **Módulos de Estudio**: Contenido doctrinal profundo organizado por temas
-  - Doctrina de Cristo en la vida diaria
-  - Trabajar con los misioneros
-  - Compartir el evangelio naturalmente
-  - Cuidado de nuevos conversos
-  - Preparación para el templo
-- **Actividades Interactivas**: Experiencias de aprendizaje gamificadas
-  - Quizzes doctrinales
-  - Escenarios del mundo real
-  - Ejercicios de emparejamiento de escrituras
-  - Juegos de adivinanza de personajes
-  - Asignaciones misionales del mundo real
-  - Bloques de lectura con reflexión
-- **Cuidado de Conversos**: Guía completa para apoyar a nuevos miembros
-  - Bienvenida al Reino
-  - Integración al barrio
-  - Preparación para el Sacerdocio Aarónico y de Melquisedec
-  - Guía para la primera visita al templo
-  - Preparación para la recomendación del templo
-  - Ruta de crecimiento espiritual de 90 días
-- **Gestión de Amigos**: Rastrear y orar por amigos interesados en el evangelio
-- **Apoyo Misionero**: Formas de ayudar a los misioneros de tiempo completo
-- **Seguimiento de Progreso**: Sistema de XP, niveles, rachas e insignias
+**Nota**: Este módulo es una funcionalidad adicional diseñada para mejorar la coordinación entre líderes y misioneros, con el objetivo final de servir mejor a los investigadores.
 
 ---
 
@@ -460,9 +226,9 @@ src/
 ├── layouts/                      # Layouts de navegación
 │   └── MissionaryLeadershipLayout.tsx
 ├── pages/                        # Componentes de página
-│   ├── investigator/            # Páginas de investigador
+│   ├── investigator/            # Páginas de investigador (ENFOQUE PRINCIPAL)
 │   ├── missionary/              # Páginas de misionero
-│   │   └── leadership/          # Pantallas de liderazgo
+│   │   └── leadership/          # Pantallas de liderazgo (funcionalidad adicional)
 │   └── member/                  # Páginas de miembro
 ├── services/                    # Servicios de lógica de negocio
 │   ├── districtCouncilService.ts
@@ -482,7 +248,33 @@ src/
 
 ### ✅ Implementado
 
-#### Módulo de Liderazgo
+#### Módulo Principal: Investigadores
+- ✅ Lecciones interactivas y materiales de estudio
+- ✅ Mensajes devocionales diarios
+- ✅ Diario espiritual "La Historia con Dios"
+- ✅ Guía de preparación para el bautismo
+- ✅ Sistema de compromisos y tareas
+- ✅ FAQ de preguntas difíciles
+- ✅ Seguimiento de progreso personalizado
+
+#### Módulo: Misioneros
+- ✅ Agenda misional y programación
+- ✅ Gestión de personas (investigadores, contactos)
+- ✅ Planificación de lecciones y recursos
+- ✅ Seguimiento de compromisos
+- ✅ Centro de liderazgo (acceso a información de líderes)
+
+#### Módulo: Miembros
+- ✅ Dashboard visual
+- ✅ Módulos de estudio con contenido doctrinal profundo
+- ✅ Actividades interactivas con gamificación
+- ✅ Guía de cuidado de nuevos conversos (7 secciones, 4 idiomas)
+- ✅ Seguimiento de progreso (XP, niveles, rachas, insignias)
+- ✅ Gestión de amigos
+- ✅ Recursos de apoyo misionero
+- ✅ Soporte completo i18n (ES, EN, FR, PT)
+
+#### Módulo Adicional: Líderes Misionales
 - ✅ Estructura completa de roles (DL, LZ, AP)
 - ✅ Servicios con localStorage (listos para migrar a Firestore)
 - ✅ Hooks funcionales para todos los roles
@@ -492,25 +284,29 @@ src/
 - ✅ Sistema de compartir (WhatsApp, Email, Clipboard)
 - ✅ Historial completo de todas las actividades
 
-#### Otros Módulos
-- ✅ Dashboard visual para rol miembro
-- ✅ Módulos de estudio con contenido doctrinal profundo
-- ✅ Actividades interactivas con gamificación
-- ✅ Guía de cuidado de nuevos conversos (7 secciones, 4 idiomas)
-- ✅ Seguimiento de progreso (XP, niveles, rachas, insignias)
-- ✅ Gestión de amigos
-- ✅ Recursos de apoyo misionero
-- ✅ Soporte completo i18n (ES, EN, FR, PT)
-
 ### ⏳ Próximas Mejoras
 
 - 🔄 Migración a Firestore para sincronización en tiempo real
-- 📄 Exportación a PDF de agendas y reportes
-- 🔔 Notificaciones push para eventos importantes
-- 📊 Analytics y métricas avanzadas
+- 📄 Exportación a PDF de reportes y materiales
+- 🔔 Notificaciones push para recordatorios importantes
+- 📊 Analytics y métricas de progreso de investigadores
 - 🌐 Sincronización offline
 - 🎨 Mejoras de UI/UX y animaciones
 - 🔐 Privacidad avanzada y permisos granulares
+- 📱 Versión móvil nativa (React Native)
+
+---
+
+## 💡 Filosofía del Proyecto
+
+Esta aplicación fue creada con el propósito de **ayudar a los investigadores** en su camino hacia el bautismo y la conversión. Todos los módulos y funcionalidades adicionales están diseñados para apoyar este objetivo principal:
+
+- **Para Investigadores**: Herramientas directas para su crecimiento espiritual
+- **Para Misioneros**: Recursos para enseñar y acompañar mejor a los investigadores
+- **Para Miembros**: Guías para apoyar a nuevos conversos e investigadores
+- **Para Líderes**: Herramientas de coordinación para capacitar misioneros que a su vez sirven mejor a los investigadores
+
+**El enfoque siempre será: ¿Cómo podemos ayudar mejor a los investigadores a acercarse a Cristo?**
 
 ---
 
