@@ -22,6 +22,7 @@ import { LeaderMessageScreen } from '../pages/missionary/leadership/LeaderMessag
 import { PersonalNotesScreen } from '../pages/missionary/leadership/PersonalNotesScreen';
 import { TransferPlanScreen } from '../pages/missionary/leadership/TransferPlanScreen';
 import { ZoneLeaderMessagesScreen } from '../pages/missionary/leadership/ZoneLeaderMessagesScreen';
+import { LeadershipProfileScreen } from '../pages/missionary/leadership/LeadershipProfileScreen';
 import { FloatingMenu } from '../ui/components';
 import '../pages/Page.css';
 import '../layouts/Layout.css';
@@ -143,7 +144,7 @@ export const MissionaryLeadershipLayout: React.FC = () => {
   const allTabs = getTabsForRole();
   const hasDashboardTab = allTabs.some(tab => tab.path.includes('/dashboard'));
   
-  const tabs = hasDashboardTab 
+  const baseTabs = hasDashboardTab 
     ? allTabs
     : [
         { 
@@ -153,6 +154,16 @@ export const MissionaryLeadershipLayout: React.FC = () => {
         },
         ...allTabs
       ];
+  
+  // Agregar tab de perfil al final
+  const tabs = [
+    ...baseTabs,
+    {
+      path: `/missionary/leadership/${currentRole}/profile`,
+      label: 'Perfil',
+      icon: getTabIcon('profile', 'person-outline')
+    }
+  ];
 
   return (
     <div className="layout">
@@ -171,6 +182,7 @@ export const MissionaryLeadershipLayout: React.FC = () => {
             <Route path="/missionary/leadership/districtLeader/baptismal_interviews" element={<BaptismalInterviewsScreen />} />
             <Route path="/missionary/leadership/districtLeader/personal_notes" element={<PersonalNotesScreen />} />
             <Route path="/missionary/leadership/districtLeader/zone_messages" element={<ZoneLeaderMessagesScreenWrapper />} />
+            <Route path="/missionary/leadership/districtLeader/profile" element={<LeadershipProfileScreen />} />
             {/* Legacy routes for backwards compatibility */}
             <Route path="/missionary/leadership/districtLeader/reunion-de-distrito" element={<DistrictMeetingScreen />} />
             <Route path="/missionary/leadership/districtLeader/intercambios" element={<ExchangesScreen />} />
@@ -187,6 +199,7 @@ export const MissionaryLeadershipLayout: React.FC = () => {
             <Route path="/missionary/leadership/zoneLeader/zone_communication" element={<ZoneMessagesScreen />} />
             <Route path="/missionary/leadership/zoneLeader/personal_notes" element={<PersonalNotesScreen />} />
             <Route path="/missionary/leadership/zoneLeader/baptismal_interviews" element={<BaptismalInterviewScreen />} />
+            <Route path="/missionary/leadership/zoneLeader/profile" element={<LeadershipProfileScreen />} />
             {/* Legacy routes */}
             <Route path="/missionary/leadership/zoneLeader/consejo-de-zona" element={<ZoneCouncilScreenWrapper />} />
             <Route path="/missionary/leadership/zoneLeader/apoyo-personalizado-por-misionero" element={<PersonalizedSupportScreen />} />
@@ -202,8 +215,10 @@ export const MissionaryLeadershipLayout: React.FC = () => {
             <Route path="/missionary/leadership/assistantToPresident/office_admin" element={<TrainingPlanningScreen />} />
             <Route path="/missionary/leadership/assistantToPresident/field_tours" element={<ExchangeScreen />} />
             <Route path="/missionary/leadership/assistantToPresident/ap_companionship" element={<LeadersChatScreen />} />
+            <Route path="/missionary/leadership/assistantToPresident/president_support" element={<LeadershipTabScreen roleId="assistantToPresident" tabId="president_support" />} />
             <Route path="/missionary/leadership/assistantToPresident/personal_notes" element={<PersonalNotesScreen />} />
             <Route path="/missionary/leadership/assistantToPresident/mission_messages" element={<LeaderMessageScreen />} />
+            <Route path="/missionary/leadership/assistantToPresident/profile" element={<LeadershipProfileScreen />} />
             {/* Legacy routes */}
             <Route path="/missionary/leadership/assistantToPresident/reuniones-de-consejo" element={<CouncilMeetingsScreen />} />
             <Route path="/missionary/leadership/assistantToPresident/viajes-giras-transferencias" element={<TravelsTransfersScreen />} />

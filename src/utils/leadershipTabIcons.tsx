@@ -11,7 +11,8 @@ import {
   FaMapMarkedAlt,
   FaBriefcase,
   FaPlane,
-  FaHeart
+  FaHeart,
+  FaUser
 } from 'react-icons/fa';
 
 // Mapeo de iconos para tabs de liderazgo
@@ -35,7 +36,8 @@ export const getTabIcon = (tabId: string, iconName?: string): React.ReactNode =>
       'star-outline': <FaHandshake />,
       'mail-outline': <FaComments />,
       'clipboard-outline': <FaBriefcase />,
-      'sync-outline': <FaExchangeAlt />
+      'sync-outline': <FaExchangeAlt />,
+      'person-outline': <FaUser />
     };
     if (iconMap[iconName]) {
       return iconMap[iconName];
@@ -48,6 +50,7 @@ export const getTabIcon = (tabId: string, iconName?: string): React.ReactNode =>
     'district_council': <FaUsers />,
     'exchanges': <FaExchangeAlt />,
     'baptismal_interviews': <FaWater />,
+    'profile': <FaUser />,
     'personal_notes': <FaBook />,
     'zone_messages': <FaComments />,
     'zone_council': <FaChartLine />,

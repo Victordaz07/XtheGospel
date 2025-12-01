@@ -180,6 +180,7 @@ export const ExchangeScreen: React.FC = () => {
 
     const updated = { ...exchange };
     
+    // Mapeo para secciones de intercambios (DL/ZL)
     if (sectionId === 'exchange_planner') {
       updated.companionshipName = data.field_0 || '';
       updated.missionaryName = data.field_1 || '';
@@ -188,7 +189,53 @@ export const ExchangeScreen: React.FC = () => {
       updated.area = data.field_4 || '';
       updated.focus = data.field_5 || '';
       updated.scripture = data.field_6 || '';
-    } else if (sectionId === 'exchange_goals') {
+    } 
+    // Mapeo para secciones de giras (AP)
+    else if (sectionId === 'tour_planner') {
+      // Para AP, tour_planner tiene: Zona, Fechas, Enfoque, Zonas/misioneros prioritarios, Metas
+      updated.area = data.field_0 || ''; // Zona a visitar
+      // field_1: Fechas (puede ser múltiple, se guarda en notes o focus)
+      updated.focus = data.field_2 || ''; // Enfoque doctrinal y práctico
+      updated.companionshipName = data.field_3 || ''; // Zonas/misioneros prioritarios
+      updated.goals = {
+        ...updated.goals,
+        metasDia: data.field_4 || '' // Metas de la gira
+      };
+    }
+    else if (sectionId === 'tour_detail') {
+      // Detalles de una gira: Zona, Líderes/misioneros, Objetivo, Personas clave, Milagros
+      updated.area = data.field_0 || ''; // Zona visitada
+      updated.companionshipName = data.field_1 || ''; // Líderes y misioneros
+      updated.focus = data.field_2 || ''; // Objetivo de la gira
+      updated.goals = {
+        ...updated.goals,
+        personasVisitar: data.field_3 || '' // Personas clave visitadas
+      };
+      updated.summary = {
+        ...updated.summary,
+        donesVistos: data.field_4 || '' // Milagros o experiencias relevantes
+      };
+    }
+    else if (sectionId === 'seed_planting_journal') {
+      // Semillas plantadas (journal con prompts)
+      updated.summary = {
+        donesVistos: data.prompt_0 || '', // ¿Qué mensajes clave compartimos?
+        necesitaAyuda: data.prompt_1 || '', // ¿Qué testimonios y promesas?
+        compromisoEspiritual: data.prompt_2 || '', // ¿A quién vimos necesitado de ánimo?
+        impresionEspiritu: data.prompt_3 || '' // ¿Qué impresiones del Espíritu?
+      };
+    }
+    else if (sectionId === 'tour_followup') {
+      // Seguimiento de la gira (checklist)
+      updated.followUp = {
+        compartiLoBueno: data.item_0 || false,
+        hableMejorar: data.item_1 || false,
+        fijamosMetas: data.item_2 || false,
+        reporteEnviado: data.item_3 || false,
+        futuraRevisionPlaneada: data.item_4 || false
+      };
+    }
+    else if (sectionId === 'exchange_goals') {
       updated.goals = {
         metasDia: data.field_0 || '',
         personasVisitar: data.field_1 || '',
@@ -273,8 +320,24 @@ export const ExchangeScreen: React.FC = () => {
     );
   }
 
-  const tabConfig = role.tabs.find(t => t.id === 'exchanges');
-  if (!tabConfig) return null;
+  // Detectar el tab correcto según el rol
+  // Para AP es 'field_tours', para DL/ZL es 'exchanges'
+  const tabId = currentRoleId === 'assistantToPresident' ? 'field_tours' : 'exchanges';
+  const tabConfig = role.tabs.find(t => t.id === tabId);
+  if (!tabConfig) {
+    // Fallback: si no encuentra el tab, mostrar mensaje
+    return (
+      <div className="page">
+        <div className="page-header">
+          <h1>Giras e intercambios</h1>
+          <p className="page-subtitle">Configuración no encontrada</p>
+        </div>
+        <div className="page-content">
+          <p>No se encontró la configuración para este tab.</p>
+        </div>
+      </div>
+    );
+  }
 
   const roleColor = role.color || '#3B82F6';
 
@@ -398,9 +461,9 @@ export const ExchangeScreen: React.FC = () => {
               key={section.id}
               section={section}
               roleColor={roleColor}
-              tabId="exchanges"
-              roleId="districtLeader"
-              defaultExpanded={section.id === 'exchange_planner'}
+              tabId={tabId}
+              roleId={currentRoleId}
+              defaultExpanded={section.id === 'exchange_planner' || section.id === 'tour_planner'}
               onDataChange={handleDataChange}
             />
           );

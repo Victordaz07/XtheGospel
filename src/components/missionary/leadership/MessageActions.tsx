@@ -20,13 +20,11 @@ export const MessageActions: React.FC<MessageActionsProps> = ({
   const [showShareMenu, setShowShareMenu] = useState(false);
 
   const handleShare = async (method: 'whatsapp' | 'email' | 'clipboard') => {
-    const template = `📣 Mensaje del líder de zona
+    const template = `📣 Mensaje del líder
 
 Título: ${message.title}
 Tipo: ${message.type}
 ${message.scripture ? `Escritura: ${message.scripture}` : ''}
-
-${message.body}
 
 ${message.body}
 
