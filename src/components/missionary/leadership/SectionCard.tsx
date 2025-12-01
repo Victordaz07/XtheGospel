@@ -10,6 +10,7 @@ interface SectionCardProps {
   tabId: string;
   roleId: string;
   defaultExpanded?: boolean;
+  onDataChange?: (sectionId: string, data: Record<string, any>) => void;
 }
 
 export const SectionCard: React.FC<SectionCardProps> = ({ 
@@ -17,7 +18,8 @@ export const SectionCard: React.FC<SectionCardProps> = ({
   roleColor,
   tabId,
   roleId,
-  defaultExpanded = false
+  defaultExpanded = false,
+  onDataChange
 }) => {
   const [isExpanded, setIsExpanded] = useState(defaultExpanded);
 
@@ -43,6 +45,7 @@ export const SectionCard: React.FC<SectionCardProps> = ({
             roleColor={roleColor}
             tabId={tabId}
             roleId={roleId}
+            onDataChange={onDataChange}
           />
         </div>
       )}

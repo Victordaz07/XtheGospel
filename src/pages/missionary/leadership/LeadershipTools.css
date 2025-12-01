@@ -43,6 +43,36 @@
   margin-bottom: 12px;
 }
 
+.bitacora-entry-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.bitacora-promote-button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: transparent;
+  border: 1px solid #3B82F6;
+  color: #3B82F6;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.bitacora-promote-button:hover {
+  background: #EEF2FF;
+  transform: translateY(-1px);
+}
+
+.bitacora-promote-button svg {
+  font-size: 12px;
+}
+
 .bitacora-entry-date {
   font-size: 13px;
   font-weight: 600;

@@ -350,57 +350,90 @@ export const zoneLeaderComplete = {
             ]
         },
         {
-            id: "zone_communication",
-            title: "Comunicación",
-            subtitle: "Comunica la visión, noticias y ánimo a toda la zona.",
-            purpose: "Mantener a la zona alineada, informada e inspirada.",
+            id: "zone_messages",
+            title: "Mensajes del líder de zona",
+            subtitle: "Comparte visión, énfasis y ánimo con toda tu zona.",
+            purpose: "Conectar las instrucciones del presidente con acciones concretas en la zona.",
             icon: "chatbubbles-outline",
-            description: "Comunica la visión, noticias y ánimo a toda la zona.",
+            description: "Comparte visión, énfasis y ánimo con toda tu zona.",
+            meta: {
+                entity: "leaderMessage",
+                supportsSave: true,
+                supportsShare: true
+            },
+            actions: [
+                {
+                    id: "save_zone_message_draft",
+                    label: "Guardar borrador",
+                    kind: "secondary"
+                },
+                {
+                    id: "publish_zone_message",
+                    label: "Publicar a la zona",
+                    kind: "primary",
+                    target: "missionary_app"
+                },
+                {
+                    id: "export_zone_message",
+                    label: "Compartir por…",
+                    kind: "ghost",
+                    shareTemplateId: "zone_message_text"
+                }
+            ],
+            shareTemplates: [
+                {
+                    id: "zone_message_text",
+                    title: "Mensaje del líder de zona",
+                    body: "📣 Mensaje del líder de zona\n\nTítulo: {{title}}\nTipo: {{type}}\nEscritura: {{scripture}}\n\n{{body}}\n\nInvitación para esta semana:\n{{invitation}}\n\n– {{senderName}}"
+                }
+            ],
             sections: [
                 {
-                    id: "communication_info",
+                    id: "zone_messages_info",
                     type: "info" as const,
-                    title: "Principios de comunicación como ZL",
+                    title: "Rol de tus mensajes",
                     bullets: [
-                        "Ser claro, breve y espiritual.",
-                        "Evitar mensajes que solo sean presión numérica.",
-                        "Compartir historias y milagros, no solo indicadores.",
-                        "Recordar siempre el propósito: invitar a otros a venir a Cristo."
+                        "Mantener a la zona alineada con la visión del presidente.",
+                        "Animar y levantar el ánimo espiritual.",
+                        "Dar instrucciones claras sin caer en presión numérica.",
+                        "Compartir milagros y buenas prácticas entre distritos."
                     ]
                 },
                 {
-                    id: "weekly_zone_message",
+                    id: "new_zone_message",
                     type: "form" as const,
-                    title: "Mensaje semanal a la zona",
+                    title: "Nuevo mensaje para la zona",
                     fields: [
-                        "Tema doctrinal principal",
-                        "Milagro o historia para compartir",
-                        "Meta concreta de la semana (zona)",
-                        "Invitación espiritual a toda la zona",
-                        "Escritura o cita profética de apoyo"
+                        "Título del mensaje",
+                        "Tipo (devocional, invitación, capacitación, anuncio)",
+                        "Principio doctrinal principal",
+                        "Escritura/cita de apoyo",
+                        "Cuerpo del mensaje (texto completo)",
+                        "Acción o invitación específica para la zona"
                     ]
                 },
                 {
-                    id: "district_followup",
+                    id: "district_action_items",
                     type: "checklist" as const,
-                    title: "Checklist de seguimiento con los distritos",
+                    title: "Checklist de aplicación por distrito",
                     items: [
-                        "Verifiqué que cada líder de distrito entendió el mensaje de la semana.",
-                        "Pregunté cómo lo aplicarán en su distrito.",
-                        "Recibí al menos un milagro o buena noticia de cada distrito.",
-                        "Atendí dudas o inquietudes que surgieron.",
-                        "Compartí los mejores ejemplos con toda la zona (respetando la privacidad)."
+                        "He explicado este mensaje a cada líder de distrito.",
+                        "Cada distrito fijó al menos una meta alineada al mensaje.",
+                        "He pedido un breve reporte de cómo lo aplicarán.",
+                        "Recolecté al menos un milagro o experiencia ligada a este mensaje.",
+                        "Compartí ejemplos destacados con el resto de la zona (respetando la privacidad)."
                     ]
                 },
                 {
-                    id: "zone_notes",
-                    type: "journal" as const,
-                    title: "Notas de comunicación y ánimo",
-                    prompts: [
-                        "¿Qué tono estoy transmitiendo a mi zona: miedo o fe?",
-                        "¿Qué tipo de mensajes han levantado más el ánimo últimamente?",
-                        "¿Quién en la zona necesita un mensaje personal de aliento esta semana?",
-                        "¿Qué debo comunicar a los AP o al presidente sobre el estado de la zona?"
+                    id: "sent_messages",
+                    type: "list" as const,
+                    title: "Mensajes enviados recientemente",
+                    fields: [
+                        "Fecha de envío",
+                        "Título",
+                        "Tipo",
+                        "Alcance (zona completa / distritos específicos)",
+                        "Estado (borrador, enviado, archivado)"
                     ]
                 }
             ]

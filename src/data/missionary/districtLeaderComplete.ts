@@ -279,6 +279,39 @@ export const districtLeaderComplete = {
             purpose: "Usar los intercambios como herramienta de entrenamiento, ánimo y discernimiento espiritual.",
             icon: "swap-horizontal-outline",
             description: "Planifica y evalúa intercambios con cada élder del distrito.",
+            meta: {
+                entity: "exchange",
+                supportsSave: true,
+                supportsShare: true,
+                supportsComments: false,
+                shareTargets: ["missionary_app", "whatsapp", "email"]
+            },
+            actions: [
+                {
+                    id: "save_draft",
+                    label: "Guardar borrador",
+                    kind: "secondary"
+                },
+                {
+                    id: "publish_to_missionary",
+                    label: "Publicar al misionero",
+                    kind: "primary",
+                    target: "missionary_app"
+                },
+                {
+                    id: "export_exchange",
+                    label: "Compartir por…",
+                    kind: "ghost",
+                    shareTemplateId: "exchange_agenda_text"
+                }
+            ],
+            shareTemplates: [
+                {
+                    id: "exchange_agenda_text",
+                    title: "Detalle del intercambio",
+                    body: "📌 Intercambio – {{date}} {{time}}\n\nCompañerismo: {{companionshipName}}\nMisionero contigo: {{missionaryName}}\nÁrea: {{area}}\n\nEnfoque principal: {{focus}}\nEscritura/principio: {{scripture}}\n\nMetas del día: {{goals.metasDia}}\nPersonas a visitar: {{goals.personasVisitar}}\nHábito a modelar: {{goals.habitoModelar}}\nIndicador de éxito: {{goals.indicadorExito}}\n\nNos veremos preparados y con fe para aprender juntos. – {{leaderName}}"
+                }
+            ],
             sections: [
                 {
                     id: "exchanges_info",
@@ -300,6 +333,7 @@ export const districtLeaderComplete = {
                         "Compañerismo visitado",
                         "Misionero que estará contigo",
                         "Fecha del intercambio",
+                        "Hora del intercambio",
                         "Área donde se realizará",
                         "Enfoque principal (buscar, enseñar, fijar fechas, planificación, obediencia, ánimo)",
                         "Escritura o principio que quieres enfatizar"
@@ -360,6 +394,39 @@ export const districtLeaderComplete = {
             purpose: "Asegurar entrevistas reverentes, ordenadas y centradas en el testimonio y la conversión real.",
             icon: "water-outline",
             description: "Organiza y da seguimiento a las entrevistas bautismales del distrito.",
+            meta: {
+                entity: "baptismalInterview",
+                supportsSave: true,
+                supportsShare: true,
+                supportsComments: false,
+                shareTargets: ["missionary_app", "whatsapp", "email"]
+            },
+            actions: [
+                {
+                    id: "save_draft",
+                    label: "Guardar borrador",
+                    kind: "secondary"
+                },
+                {
+                    id: "publish_to_companionship",
+                    label: "Publicar al compañerismo",
+                    kind: "primary",
+                    target: "missionary_app"
+                },
+                {
+                    id: "export_interview",
+                    label: "Compartir por…",
+                    kind: "ghost",
+                    shareTemplateId: "baptismal_interview_text"
+                }
+            ],
+            shareTemplates: [
+                {
+                    id: "baptismal_interview_text",
+                    title: "Aviso de entrevista bautismal",
+                    body: "🕊️ Entrevista bautismal programada\n\nPersona: {{personName}}\nCompañerismo: {{teachingCompanionship}}\nÁrea: {{teachingArea}}\n\nEntrevistador: {{interviewLeaderName}}\nFecha: {{date}} – Hora: {{time}}\nLugar: {{place}}\n\nNotas previas: {{notesBefore.concerns}}\n\nPor favor asegúrense de que llegue puntual, con un miembro de apoyo si es posible, y en un ambiente reverente."
+                }
+            ],
             sections: [
                 {
                     id: "baptismal_info",
@@ -373,29 +440,27 @@ export const districtLeaderComplete = {
                     ]
                 },
                 {
-                    id: "interview_list_structure",
-                    type: "list" as const,
-                    title: "Personas con entrevista programada (estructura)",
+                    id: "interview_planner",
+                    type: "form" as const,
+                    title: "Nueva entrevista",
                     fields: [
                         "Nombre de la persona",
-                        "Área y misioneros que enseñan",
-                        "Fecha y hora de la entrevista",
-                        "Lugar",
-                        "Entrevistador",
-                        "Estado (pendiente, realizada, reprogramada)",
-                        "Observaciones"
+                        "Compañerismo que enseña",
+                        "Área",
+                        "Entrevistador (tú, ZL u otro designado)",
+                        "Fecha de la entrevista",
+                        "Hora de la entrevista",
+                        "Lugar de la entrevista"
                     ]
                 },
                 {
-                    id: "interview_planner",
+                    id: "pre_notes",
                     type: "form" as const,
-                    title: "Planificación de entrevistas",
+                    title: "Información previa",
                     fields: [
-                        "Nombre de la persona",
-                        "Contacto de la persona (barrio/miembro que apoya)",
-                        "Cuáles lecciones ya se han enseñado",
+                        "Lecciones enseñadas (resumen)",
                         "Preocupaciones o dudas que ha expresado",
-                        "Necesidades especiales (idioma, apoyo, etc.)"
+                        "Necesidades especiales (idioma, apoyo, situación familiar)"
                     ]
                 },
                 {
@@ -411,14 +476,38 @@ export const districtLeaderComplete = {
                     ]
                 },
                 {
+                    id: "spiritual_check",
+                    type: "checklist" as const,
+                    title: "Revisión espiritual básica",
+                    items: [
+                        "Comprende los principios básicos del Evangelio de Jesucristo.",
+                        "Entiende el significado del convenio de bautismo.",
+                        "Manifiesta deseo de guardar los mandamientos.",
+                        "Testifica de Jesucristo.",
+                        "Reconoce a José Smith como profeta y la Restauración."
+                    ]
+                },
+                {
                     id: "pastoral_notes",
                     type: "journal" as const,
                     title: "Observaciones pastorales",
                     prompts: [
                         "¿Qué impresión tuviste del testimonio de esta persona?",
-                        "¿Hay algo que los misioneros deban reforzar después del bautismo?",
-                        "¿Qué invitación espiritual sentiste hacerle?",
-                        "¿Hay algún riesgo de que se pierda si no se le apoya bien?"
+                        "¿Qué debe reforzarse antes del bautismo (si hay tiempo)?",
+                        "¿Qué debería reforzarse inmediatamente después del bautismo?",
+                        "¿Qué riesgo ves si no recibe apoyo constante?"
+                    ]
+                },
+                {
+                    id: "interview_history",
+                    type: "list" as const,
+                    title: "Historial de entrevistas",
+                    fields: [
+                        "Fecha",
+                        "Nombre de la persona",
+                        "Área",
+                        "Estado (programada, completada, reprogramada)",
+                        "Comentario breve"
                     ]
                 }
             ]
@@ -430,6 +519,19 @@ export const districtLeaderComplete = {
             purpose: "Registrar impresiones del Espíritu y planes para servir mejor a cada misionero.",
             icon: "journal-outline",
             description: "Espacio para registrar impresiones espirituales sobre tu distrito.",
+            meta: {
+                entity: "personalNote",
+                supportsSave: true,
+                supportsPromoteToMessage: true
+            },
+            actions: [
+                {
+                    id: "promote_to_message",
+                    label: "Compartir como mensaje al distrito",
+                    kind: "ghost",
+                    target: "leader_message"
+                }
+            ],
             sections: [
                 {
                     id: "notes_info",

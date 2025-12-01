@@ -16,7 +16,9 @@ import MissionaryAgenda from '../pages/serving/MissionaryAgenda';
 import MissionaryPeople from '../pages/serving/MissionaryPeople';
 import MissionaryLessons from '../pages/serving/MissionaryLessons';
 import MissionaryProfile from '../pages/missionary/MissionaryProfile';
+import { LeadershipCenterScreen } from '../pages/missionary/leadership/LeadershipCenterScreen';
 import CommitmentsPage from '../pages/CommitmentsPage';
+import { FaShield } from 'react-icons/fa6';
 import './Layout.css';
 
 const MissionaryLayout: React.FC = () => {
@@ -29,6 +31,7 @@ const MissionaryLayout: React.FC = () => {
     { path: '/agenda', label: t('tabs.agenda'), icon: <FaCalendarDays /> },
     { path: '/people', label: t('tabs.people'), icon: <FaUsers /> },
     { path: '/tasks', label: t('tabs.tasks'), icon: <FaHandshake /> },
+    { path: '/leadership', label: 'Liderazgo', icon: <FaShield /> },
     { path: '/lessons', label: t('missionary.header') || 'Mis Lecciones', icon: <FaBookOpen /> },
     { path: '/profile', label: t('tabs.profile'), icon: <FaUser /> },
   ];
@@ -45,6 +48,7 @@ const MissionaryLayout: React.FC = () => {
             <Route path="/agenda" element={<MissionaryAgenda />} />
             <Route path="/people" element={<MissionaryPeople />} />
             <Route path="/tasks" element={<CommitmentsPage />} />
+            <Route path="/leadership" element={<LeadershipCenterScreen />} />
             <Route path="/lessons/*" element={<MissionaryLessons />} />
             <Route path="/missionary/lessons/*" element={<MissionaryLessons />} />
             <Route path="/profile" element={<MissionaryProfile />} />

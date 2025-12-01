@@ -1,12 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { LeadershipBitacoraService, BitacoraEntry } from '../../../services/leadershipBitacoraService';
+import { PromoteNoteModal } from '../../../components/missionary/leadership/PromoteNoteModal';
+import { getLeadershipRoleEnhanced } from '../../../data/missionary/leadershipModeEnhanced';
+import { FaPaperPlane } from 'react-icons/fa';
 import '../../../pages/Page.css';
 import './LeadershipTools.css';
 
 export const PersonalNotesScreen: React.FC = () => {
   const [entries, setEntries] = useState<BitacoraEntry[]>([]);
   const [showAddModal, setShowAddModal] = useState(false);
+  const [showPromoteModal, setShowPromoteModal] = useState(false);
+  const [selectedNoteContent, setSelectedNoteContent] = useState('');
   const [newEntry, setNewEntry] = useState({ date: new Date().toISOString().split('T')[0], content: '', tags: [] as string[] });
+  
+  const role = getLeadershipRoleEnhanced('districtLeader');
+  const roleColor = role?.color || '#3B82F6';
 
   useEffect(() => {
     loadEntries();
@@ -70,12 +78,25 @@ export const PersonalNotesScreen: React.FC = () => {
                       day: 'numeric' 
                     })}
                   </span>
-                  <button
-                    className="bitacora-delete-button"
-                    onClick={() => handleDeleteEntry(entry.id)}
-                  >
-                    ×
-                  </button>
+                  <div className="bitacora-entry-actions">
+                    <button
+                      className="bitacora-promote-button"
+                      onClick={() => {
+                        setSelectedNoteContent(entry.content);
+                        setShowPromoteModal(true);
+                      }}
+                      title="Compartir como mensaje al distrito"
+                    >
+                      <FaPaperPlane />
+                      <span>Compartir</span>
+                    </button>
+                    <button
+                      className="bitacora-delete-button"
+                      onClick={() => handleDeleteEntry(entry.id)}
+                    >
+                      ×
+                    </button>
+                  </div>
                 </div>
                 <div className="bitacora-entry-content">
                   {entry.content.split('\n').map((line, idx) => (
@@ -135,6 +156,17 @@ export const PersonalNotesScreen: React.FC = () => {
             </div>
           </div>
         )}
+
+        {/* Promote Note Modal */}
+        <PromoteNoteModal
+          isOpen={showPromoteModal}
+          onClose={() => {
+            setShowPromoteModal(false);
+            setSelectedNoteContent('');
+          }}
+          noteContent={selectedNoteContent}
+          roleColor={roleColor}
+        />
       </div>
     </div>
   );

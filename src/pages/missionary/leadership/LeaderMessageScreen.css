@@ -1,0 +1,143 @@
+.message-form-card {
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.message-form-card h2 {
+  margin: 0 0 20px 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.message-form-field {
+  margin-bottom: 20px;
+}
+
+.message-form-field label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #111827;
+  font-size: 14px;
+}
+
+.message-form-field input,
+.message-form-field textarea,
+.message-form-field select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #D1D5DB;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  resize: vertical;
+}
+
+.message-form-field input:focus,
+.message-form-field textarea:focus,
+.message-form-field select:focus {
+  outline: none;
+  border-color: #3B82F6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.sent-messages-section {
+  margin-top: 32px;
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.sent-messages-section h2 {
+  margin: 0 0 20px 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.sent-messages-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sent-message-card {
+  background: #F9FAFB;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  border-left: 4px solid #F59E0B;
+}
+
+.sent-message-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+  gap: 12px;
+}
+
+.sent-message-header > div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.sent-message-header strong {
+  font-size: 16px;
+  color: #111827;
+}
+
+.message-type-badge {
+  background: #EEF2FF;
+  color: #3B82F6;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.message-date {
+  font-size: 12px;
+  color: #6B7280;
+  white-space: nowrap;
+}
+
+.sent-message-preview {
+  margin: 8px 0;
+  font-size: 14px;
+  color: #475467;
+  line-height: 1.6;
+}
+
+.sent-message-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+  font-size: 12px;
+  color: #6B7280;
+}
+
+.message-status {
+  font-weight: 600;
+}
+
+.message-scope {
+  text-transform: capitalize;
+}
+
+.empty-messages {
+  text-align: center;
+  color: #9CA3AF;
+  padding: 40px 20px;
+  font-style: italic;
+}
+

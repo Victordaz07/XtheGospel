@@ -7,13 +7,15 @@ interface TabSectionRendererProps {
   roleColor: string;
   tabId: string;
   roleId: string;
+  onDataChange?: (sectionId: string, data: Record<string, any>) => void;
 }
 
 export const TabSectionRenderer: React.FC<TabSectionRendererProps> = ({ 
   section, 
   roleColor,
   tabId,
-  roleId 
+  roleId,
+  onDataChange
 }) => {
   const storageKey = `@leadership_${roleId}_${tabId}_${section.id}`;
   const [data, setData] = useState<Record<string, any>>({});
@@ -43,16 +45,25 @@ export const TabSectionRenderer: React.FC<TabSectionRendererProps> = ({
   const handleFieldChange = (fieldIndex: number, value: string) => {
     const newData = { ...data, [`field_${fieldIndex}`]: value };
     saveData(newData);
+    if (onDataChange) {
+      onDataChange(section.id, newData);
+    }
   };
 
   const handleItemToggle = (itemIndex: number) => {
     const newData = { ...data, [`item_${itemIndex}`]: !data[`item_${itemIndex}`] };
     saveData(newData);
+    if (onDataChange) {
+      onDataChange(section.id, newData);
+    }
   };
 
   const handlePromptChange = (promptIndex: number, value: string) => {
     const newData = { ...data, [`prompt_${promptIndex}`]: value };
     saveData(newData);
+    if (onDataChange) {
+      onDataChange(section.id, newData);
+    }
   };
 
   // Render según el tipo

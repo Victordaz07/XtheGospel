@@ -71,25 +71,42 @@ const AppRouter: React.FC = () => {
 
     // Check if missionary has leadership role and should be in leadership layout
     if (userRole === 'missionary') {
-      const leadershipRole = LeadershipRoleService.getCurrentRole();
-      const hasLeadershipRole = leadershipRole !== 'none';
-      const isOnLeadershipRoute = location.pathname.startsWith('/missionary/leadership');
-      
-      if (hasLeadershipRole && !isOnLeadershipRoute && location.pathname !== '/missionary/profile') {
-        // Redirect to leadership dashboard
-        return <Navigate to={`/missionary/leadership/${leadershipRole}/dashboard`} replace />;
-      }
-      
-      if (!hasLeadershipRole && isOnLeadershipRoute) {
-        // Redirect away from leadership routes if no role active
-        return <Navigate to={defaultRoute} replace />;
+      try {
+        const leadershipRole = LeadershipRoleService.getCurrentRole();
+        const hasLeadershipRole = leadershipRole !== 'none';
+        const isOnLeadershipRoute = location.pathname.startsWith('/missionary/leadership');
+        
+        if (hasLeadershipRole && !isOnLeadershipRoute && location.pathname !== '/missionary/profile') {
+          // Redirect to leadership dashboard
+          return <Navigate to={`/missionary/leadership/${leadershipRole}/dashboard`} replace />;
+        }
+        
+        if (!hasLeadershipRole && isOnLeadershipRoute) {
+          // Redirect away from leadership routes if no role active
+          return <Navigate to={defaultRoute} replace />;
+        }
+      } catch (error) {
+        console.error('Error checking leadership role:', error);
+        // Continue with normal flow if there's an error
       }
     }
   }
 
   // Check if missionary has leadership role active
-  const leadershipRole = userRole === 'missionary' ? LeadershipRoleService.getCurrentRole() : 'none';
-  const hasLeadershipRole = leadershipRole !== 'none';
+  let leadershipRole: string = 'none';
+  let hasLeadershipRole = false;
+  
+  if (userRole === 'missionary') {
+    try {
+      leadershipRole = LeadershipRoleService.getCurrentRole();
+      hasLeadershipRole = leadershipRole !== 'none';
+    } catch (error) {
+      console.error('Error getting leadership role:', error);
+      // Default to 'none' if there's an error
+      leadershipRole = 'none';
+      hasLeadershipRole = false;
+    }
+  }
 
   return (
     <Routes>

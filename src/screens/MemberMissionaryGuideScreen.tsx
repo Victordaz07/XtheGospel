@@ -18,11 +18,16 @@ type MemberGuideStackParamList = {
   MissionaryLessonDetail: { lessonId: MissionaryLessonId };
 };
 
-type Props = NativeStackScreenProps<MemberGuideStackParamList, 'MemberMissionaryGuide'>;
+type Props = NativeStackScreenProps<
+  MemberGuideStackParamList,
+  'MemberMissionaryGuide'
+>;
 
 const H_PADDING = 16;
 
-export const MemberMissionaryGuideScreen: React.FC<Props> = ({ navigation }) => {
+export const MemberMissionaryGuideScreen: React.FC<Props> = ({
+  navigation,
+}) => {
   const lessons = getMissionaryLessons();
 
   return (
@@ -35,12 +40,12 @@ export const MemberMissionaryGuideScreen: React.FC<Props> = ({ navigation }) => 
         <View style={styles.headerCard}>
           <Text style={styles.headerTitle}>Missionary Guide</Text>
           <Text style={styles.headerSubtitle}>
-            Practica las lecciones con estructura, escrituras, preguntas inspiradas y ejemplos
-            reales antes de enseñar.
+            Practica las lecciones con estructura, escrituras, preguntas
+            inspiradas y ejemplos reales antes de enseñar.
           </Text>
         </View>
 
-        {lessons.map((lesson) => (
+        {lessons.map(lesson => (
           <TouchableOpacity
             key={lesson.id}
             activeOpacity={0.85}
@@ -64,7 +69,12 @@ export const MemberMissionaryGuideScreen: React.FC<Props> = ({ navigation }) => 
               </View>
             </View>
 
-            <Ionicons name="chevron-forward" size={18} color="#94A3B8" style={{ marginLeft: 8 }} />
+            <Ionicons
+              name="chevron-forward"
+              size={18}
+              color="#94A3B8"
+              style={{ marginLeft: 8 }}
+            />
           </TouchableOpacity>
         ))}
       </ScrollView>
@@ -161,7 +171,3 @@ const styles = StyleSheet.create({
 });
 
 export default MemberMissionaryGuideScreen;
-
-
-
-

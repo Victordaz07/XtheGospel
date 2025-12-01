@@ -35,7 +35,7 @@ export const LeadershipRoleSelector: React.FC<LeadershipRoleSelectorProps> = ({ 
       missionaryLeadershipMaster.activation.testingOverride
     );
 
-    if (!canChangeInfo.canChange && !missionaryLeadershipMaster.activation.testingOverride) {
+    if (!canChangeInfo.canChange) {
       setPendingRole(role);
       setShowConfirmDialog(true);
       return;

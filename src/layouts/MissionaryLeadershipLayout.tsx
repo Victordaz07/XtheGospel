@@ -14,20 +14,41 @@ import { DistrictLeaderDashboard } from '../pages/missionary/leadership/District
 import { ZoneLeaderDashboard } from '../pages/missionary/leadership/ZoneLeaderDashboard';
 import { AssistantToPresidentDashboard } from '../pages/missionary/leadership/AssistantToPresidentDashboard';
 import { LeadershipTabScreen } from '../pages/missionary/leadership/LeadershipTabScreen';
+import { DistrictCouncilScreen } from '../pages/missionary/leadership/DistrictCouncilScreen';
+import { ExchangeScreen } from '../pages/missionary/leadership/ExchangeScreen';
+import { BaptismalInterviewScreen } from '../pages/missionary/leadership/BaptismalInterviewScreen';
+import { LeaderMessageScreen } from '../pages/missionary/leadership/LeaderMessageScreen';
 import { PersonalNotesScreen } from '../pages/missionary/leadership/PersonalNotesScreen';
+import { ZoneLeaderMessagesScreen } from '../pages/missionary/leadership/ZoneLeaderMessagesScreen';
 import { FloatingMenu } from '../ui/components';
 import '../pages/Page.css';
 import '../layouts/Layout.css';
 import './MissionaryLeadershipLayout.css';
 
 // Screens funcionales para tabs del Líder de Distrito
-const DistrictMeetingScreen = () => <LeadershipTabScreen roleId="districtLeader" tabId="district_council" />;
-const ExchangesScreen = () => <LeadershipTabScreen roleId="districtLeader" tabId="exchanges" />;
-const BaptismalInterviewsScreen = () => <LeadershipTabScreen roleId="districtLeader" tabId="baptismal_interviews" />;
-const ZoneLeaderMessagesScreen = () => <LeadershipTabScreen roleId="districtLeader" tabId="zone_messages" />;
+const DistrictMeetingScreen = () => <DistrictCouncilScreen />;
+const ExchangesScreen = () => <ExchangeScreen />;
+const BaptismalInterviewsScreen = () => <BaptismalInterviewScreen />;
+const ZoneLeaderMessagesScreenWrapper = () => <ZoneLeaderMessagesScreen />;
 const DistrictDashboardTabScreen = () => <LeadershipTabScreen roleId="districtLeader" tabId="dashboard" />;
 
+// Placeholder component para tabs no implementados aún
+const PlaceholderScreen: React.FC<{ title: string; description?: string }> = ({ title, description }) => (
+  <div className="page">
+    <div className="page-header">
+      <h1>{title}</h1>
+      {description && <p className="page-subtitle">{description}</p>}
+    </div>
+    <div className="page-content">
+      <div className="leader-empty-card">
+        <p>Esta funcionalidad estará disponible próximamente.</p>
+      </div>
+    </div>
+  </div>
+);
+
 const ZoneCouncilScreen = () => <PlaceholderScreen title="Consejo de zona" description="Participa en consejos de zona" />;
+const ZoneMessagesScreen = () => <LeaderMessageScreen />;
 const PersonalizedSupportScreen = () => <PlaceholderScreen title="Apoyo personalizado" description="Brinda apoyo específico a cada misionero" />;
 const SuggestedTransfersScreen = () => <PlaceholderScreen title="Transferencias sugeridas" description="Gestiona sugerencias de transferencias" />;
 const ConferenceAttendanceScreen = () => <PlaceholderScreen title="Asistencia a conferencias" description="Registra asistencia a conferencias" />;
@@ -45,10 +66,17 @@ export const MissionaryLeadershipLayout: React.FC = () => {
   const [roleConfig, setRoleConfig] = useState(getLeadershipRoleConfig('none'));
 
   useEffect(() => {
-    const role = LeadershipRoleService.getCurrentRole();
-    setCurrentRole(role);
-    const config = getLeadershipRoleConfig(role);
-    setRoleConfig(config);
+    try {
+      const role = LeadershipRoleService.getCurrentRole();
+      setCurrentRole(role);
+      const config = getLeadershipRoleConfig(role);
+      setRoleConfig(config);
+    } catch (error) {
+      console.error('Error loading leadership role:', error);
+      // Fallback a 'none' si hay error
+      setCurrentRole('none');
+      setRoleConfig(getLeadershipRoleConfig('none'));
+    }
   }, [location.pathname]);
 
   // Si no hay rol de liderazgo activo, redirigir al modo misionero normal
@@ -126,20 +154,21 @@ export const MissionaryLeadershipLayout: React.FC = () => {
             <Route path="/missionary/leadership/districtLeader/exchanges" element={<ExchangesScreen />} />
             <Route path="/missionary/leadership/districtLeader/baptismal_interviews" element={<BaptismalInterviewsScreen />} />
             <Route path="/missionary/leadership/districtLeader/personal_notes" element={<PersonalNotesScreen />} />
-            <Route path="/missionary/leadership/districtLeader/zone_messages" element={<ZoneLeaderMessagesScreen />} />
+            <Route path="/missionary/leadership/districtLeader/zone_messages" element={<ZoneLeaderMessagesScreenWrapper />} />
             {/* Legacy routes for backwards compatibility */}
             <Route path="/missionary/leadership/districtLeader/reunion-de-distrito" element={<DistrictMeetingScreen />} />
             <Route path="/missionary/leadership/districtLeader/intercambios" element={<ExchangesScreen />} />
             <Route path="/missionary/leadership/districtLeader/entrevistas-bautismales" element={<BaptismalInterviewsScreen />} />
             <Route path="/missionary/leadership/districtLeader/notas-personales" element={<PersonalNotesScreen />} />
-            <Route path="/missionary/leadership/districtLeader/mensajes-del-lider-de-zona" element={<ZoneLeaderMessagesScreen />} />
+            <Route path="/missionary/leadership/districtLeader/mensajes-del-lider-de-zona" element={<ZoneLeaderMessagesScreenWrapper />} />
 
             {/* Zone Leader Routes */}
             <Route path="/missionary/leadership/zoneLeader/dashboard" element={<ZoneLeaderDashboard />} />
             <Route path="/missionary/leadership/zoneLeader/zone_council" element={<ZoneCouncilScreen />} />
             <Route path="/missionary/leadership/zoneLeader/zone_exchanges" element={<PersonalizedSupportScreen />} />
             <Route path="/missionary/leadership/zoneLeader/zone_reports" element={<SuggestedTransfersScreen />} />
-            <Route path="/missionary/leadership/zoneLeader/zone_communication" element={<ConferenceAttendanceScreen />} />
+            <Route path="/missionary/leadership/zoneLeader/zone_messages" element={<ZoneMessagesScreen />} />
+            <Route path="/missionary/leadership/zoneLeader/zone_communication" element={<ZoneMessagesScreen />} />
             <Route path="/missionary/leadership/zoneLeader/personal_notes" element={<PersonalNotesScreen />} />
             {/* Legacy routes */}
             <Route path="/missionary/leadership/zoneLeader/consejo-de-zona" element={<ZoneCouncilScreen />} />

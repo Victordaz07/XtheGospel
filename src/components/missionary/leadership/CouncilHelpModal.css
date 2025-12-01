@@ -1,0 +1,283 @@
+/* Council Help Modal Styles */
+
+.council-help-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: transparent;
+  border: 2px solid;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.council-help-button:hover {
+  background: rgba(59, 130, 246, 0.1);
+  transform: translateY(-1px);
+}
+
+.council-help-button svg {
+  font-size: 16px;
+}
+
+.council-help-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 20px;
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.council-help-modal {
+  background: #FFFFFF;
+  border-radius: 20px;
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  border-top: 4px solid;
+  animation: slideUp 0.3s ease-out;
+  position: relative;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.council-help-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 24px 20px 24px;
+  border-bottom: 1px solid #F2F4F7;
+  position: sticky;
+  top: 0;
+  background: #FFFFFF;
+  z-index: 100;
+  gap: 16px;
+}
+
+.council-help-header h2 {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  padding-right: 16px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.council-help-close {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
+  border: 2px solid #D1D5DB;
+  background: #FFFFFF;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #6B7280;
+  transition: all 0.2s;
+  flex-shrink: 0;
+  font-size: 18px;
+  position: relative;
+  z-index: 1001;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 0;
+  padding: 0;
+}
+
+.council-help-close:hover {
+  background: #F3F4F6;
+  border-color: #9CA3AF;
+  color: #111827;
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.council-help-close:active {
+  transform: scale(0.95);
+}
+
+.council-help-close svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+  flex-shrink: 0;
+}
+
+.council-help-content {
+  padding: 24px;
+}
+
+.council-help-section {
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #F2F4F7;
+}
+
+.council-help-section:last-of-type {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.council-help-section h3 {
+  margin: 0 0 12px 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.council-help-section p {
+  margin: 0 0 10px 0;
+  font-size: 14px;
+  color: #475467;
+  line-height: 1.7;
+}
+
+.council-help-section p strong {
+  color: #111827;
+  font-weight: 600;
+}
+
+.council-help-section ul {
+  margin: 12px 0 0 0;
+  padding-left: 20px;
+  list-style: none;
+}
+
+.council-help-section ul li {
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #475467;
+  line-height: 1.7;
+  position: relative;
+  padding-left: 24px;
+}
+
+.council-help-section ul li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #3B82F6;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.council-help-tips {
+  margin-top: 24px;
+  padding: 20px;
+  background: linear-gradient(135deg, #EEF2FF 0%, #F9FAFB 100%);
+  border-radius: 12px;
+  border-left: 4px solid #3B82F6;
+}
+
+.council-help-tips h3 {
+  margin: 0 0 12px 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.council-help-tips ul {
+  margin: 0;
+  padding-left: 20px;
+  list-style: none;
+}
+
+.council-help-tips ul li {
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #475467;
+  line-height: 1.7;
+  position: relative;
+  padding-left: 24px;
+}
+
+.council-help-tips ul li::before {
+  content: "💡";
+  position: absolute;
+  left: 0;
+  font-size: 16px;
+}
+
+/* Scrollbar styling */
+.council-help-modal::-webkit-scrollbar {
+  width: 8px;
+}
+
+.council-help-modal::-webkit-scrollbar-track {
+  background: #F9FAFB;
+  border-radius: 4px;
+}
+
+.council-help-modal::-webkit-scrollbar-thumb {
+  background: #D1D5DB;
+  border-radius: 4px;
+}
+
+.council-help-modal::-webkit-scrollbar-thumb:hover {
+  background: #9CA3AF;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .council-help-overlay {
+    padding: 10px;
+  }
+
+  .council-help-modal {
+    max-height: 95vh;
+    border-radius: 16px;
+  }
+
+  .council-help-header {
+    padding: 20px 20px 16px 20px;
+  }
+
+  .council-help-header h2 {
+    font-size: 18px;
+  }
+
+  .council-help-content {
+    padding: 20px;
+  }
+
+  .council-help-section {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+  }
+}
