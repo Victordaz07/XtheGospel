@@ -1,127 +1,166 @@
-# 📘 Mi Diario Misional
+# Por el Evangelio
 
-**Aplicación Web Integral para Apoyar a Investigadores, Misioneros, Miembros y Líderes de La Iglesia de Jesucristo de los Santos de los Últimos Días**
-
----
-
-## 🌟 Visión General
-
-Esta aplicación nació con un propósito principal: **ayudar a los investigadores en su camino hacia el bautismo y la conversión**. Es una herramienta diseñada para acompañar a quienes están aprendiendo sobre el Evangelio, proporcionándoles recursos espirituales, lecciones interactivas y un seguimiento personalizado de su progreso.
-
-Además, la aplicación ofrece herramientas complementarias para:
-- **Misioneros** que enseñan y acompañan a los investigadores
-- **Miembros** que apoyan la obra misional
-- **Líderes misionales** que coordinan y capacitan
-
-**El enfoque principal siempre será el investigador y su crecimiento espiritual.**
+**Integrated Web Application to Support Investigators, Missionaries, Members, and Mission Leaders of The Church of Jesus Christ of Latter-day Saints**
 
 ---
 
-## 📋 Tabla de Contenidos
+## 🌟 Vision
 
-- [Enfoque Principal: Investigadores](#-enfoque-principal-investigadores)
-- [Módulos Adicionales](#-módulos-adicionales)
-  - [Misioneros](#-misioneros)
-  - [Miembros](#-miembros)
-  - [Líderes Misionales](#-líderes-misionales)
-- [Stack Tecnológico](#-stack-tecnológico)
-- [Inicio Rápido](#-inicio-rápido)
+**Por el Evangelio** was created with one core purpose:
 
----
+> To help investigators on their path toward baptism, conversion, and a personal relationship with Jesus Christ.
 
-## 👤 Enfoque Principal: Investigadores
+The app is designed to **accompany investigators** as they learn about the gospel, giving them:
+- spiritual resources
+- interactive lessons
+- clear commitments
+- and a personal record of their journey with God.
 
-### Propósito
+In addition, the app provides complementary tools for:
 
-Ayudar a los investigadores a:
-- Comprender las doctrinas del Evangelio
-- Prepararse espiritualmente para el bautismo
-- Desarrollar un testimonio personal
-- Integrarse a la comunidad de la Iglesia
-- Mantener compromisos y progresar en su conversión
+- **Missionaries** who teach and walk with investigators  
+- **Members** who support missionary work  
+- **Mission leaders** who coordinate, train, and inspire  
 
-### Características Principales
+Always with one central question in mind:  
 
-#### 📖 Lecciones Interactivas
-- Contenido doctrinal organizado y progresivo
-- Materiales de estudio adaptados a su nivel
-- Seguimiento de progreso personalizado
-
-#### 💬 Mensajes Devocionales Diarios
-- Reflexiones espirituales diarias
-- Escrituras y citas inspiradoras
-- Aplicación práctica en la vida diaria
-
-#### 📝 Diario Espiritual
-- "La Historia con Dios": Registro personal de experiencias espirituales
-- Reflexiones sobre el progreso
-- Momentos de revelación y crecimiento
-
-#### 🎯 Preparación para el Bautismo
-- Guía paso a paso hacia el bautismo
-- Compromisos y tareas personales
-- Seguimiento de preparación espiritual
-
-#### ❓ Preguntas Difíciles
-- FAQ con respuestas doctrinales
-- Recursos para resolver dudas comunes
-- Apoyo en el proceso de aprendizaje
-
-#### 📊 Seguimiento de Progreso
-- Visualización del crecimiento espiritual
-- Logros y metas alcanzadas
-- Recordatorios de compromisos
+**"How can we help investigators come closer to Christ?"**
 
 ---
 
-## 🛠 Módulos Adicionales
+## 📋 Table of Contents
 
-### 👔 Misioneros
+1. [Primary Focus: Investigators](#-primary-focus-investigators)  
+2. [Additional Modules](#-additional-modules)  
+   - [Missionaries](#-missionaries)  
+   - [Members](#-members)  
+   - [Mission Leaders](#-mission-leaders-leadership-module)  
+3. [Leadership Module Architecture](#-leadership-module-architecture)  
+4. [Tech Stack](#-tech-stack)  
+5. [Quick Start](#-quick-start)  
+6. [Project Structure](#-project-structure)  
+7. [Project Status](#-project-status)  
+8. [Next Steps](#-next-steps)  
+9. [Project Philosophy](#-project-philosophy)  
+10. [License](#-license)
 
-**Herramientas para apoyar a los investigadores:**
+---
 
-- **Agenda Misional**: Planificación y seguimiento de citas con investigadores
-- **Gestión de Personas**: Base de datos de investigadores, contactos y miembros
-- **Planificación de Lecciones**: Recursos y materiales para enseñar
-- **Seguimiento de Compromisos**: Recordatorios y seguimiento de compromisos de investigadores
-- **Centro de Liderazgo**: Acceso a agendas, mensajes y eventos de sus líderes
+## 👤 Primary Focus: Investigators
 
-### 👥 Miembros
+### Purpose
 
-**Recursos para apoyar la obra misional:**
+Help investigators:
 
-- **Módulos de Estudio**: Contenido doctrinal profundo para fortalecer el testimonio
-- **Actividades Interactivas**: Aprendizaje gamificado con quizzes, escenarios y ejercicios
-- **Cuidado de Conversos**: Guía completa para apoyar a nuevos miembros (7 secciones, 4 idiomas)
-- **Gestión de Amigos**: Rastrear y orar por amigos interesados en el evangelio
-- **Apoyo Misionero**: Formas prácticas de ayudar a los misioneros
-- **Seguimiento de Progreso**: Sistema de XP, niveles, rachas e insignias
+- Understand the doctrines of the gospel  
+- Prepare spiritually for baptism  
+- Develop a personal testimony  
+- Integrate into the Church community  
+- Keep commitments and progress in their conversion
 
-### 🛡️ Líderes Misionales
+### Key Features
 
-**Herramientas de coordinación y capacitación** (funcionalidad adicional):
+#### 📖 Interactive Lessons
 
-Este módulo ayuda a los líderes (Líderes de Distrito, Líderes de Zona y Asistentes del Presidente) a coordinar y capacitar a los misioneros, pero **siempre con el objetivo final de servir mejor a los investigadores**.
+- Doctrinal content organized in a clear, progressive path  
+- Study materials adapted to the investigator's level  
+- Personalized progress tracking
 
-#### Funcionalidades:
+#### 💬 Daily Devotional Messages
 
-- **Reuniones de Distrito/Zona**: Planificar y registrar reuniones de capacitación
-- **Intercambios**: Organizar intercambios para entrenar misioneros
-- **Entrevistas Bautismales**: Coordinar entrevistas para investigadores
-- **Mensajes de Liderazgo**: Comunicar énfasis y visión a los misioneros
-- **Dashboard**: Visión general del progreso del distrito/zona/misión
+- Short, daily spiritual thoughts  
+- Scriptures and inspired quotes  
+- Practical application to daily life
 
-#### Arquitectura del Módulo de Liderazgo
+#### 📝 Spiritual Journal – "My Story with God"
+
+- Personal record of spiritual experiences  
+- Space for reflections about their progress  
+- Notes on key moments of revelation and growth
+
+#### 🎯 Baptism Preparation
+
+- Step-by-step guide towards baptism  
+- Personal commitments and tasks  
+- Spiritual readiness tracking
+
+#### ❓ Difficult Questions
+
+- FAQ with doctrinally sound answers  
+- Resources for common doubts  
+- Support for investigators who are sincerely searching
+
+#### 📊 Progress Tracking
+
+- Visual overview of spiritual growth  
+- Achievements and reached milestones  
+- Commitment reminders
+
+---
+
+## 🛠 Additional Modules
+
+### 👔 Missionaries
+
+Tools for missionaries who teach and support investigators:
+
+- **Missionary Agenda**: planning and tracking lessons & visits  
+- **People Management**: investigators, contacts, members, friends  
+- **Lesson Planning**: study resources and teaching outlines  
+- **Commitment Tracking**: follow-up on investigator commitments  
+- **Leadership Center**: access to agendas, messages, and events from mission leaders  
+
+---
+
+### 👥 Members
+
+Resources to help members actively support missionary work:
+
+- **Study Modules**: deeper doctrinal content to strengthen testimony  
+- **Interactive Activities**: gamified learning (quizzes, scenarios, exercises)  
+- **Convert Care Guide**: 7-section guide (available in 4 languages) to support new members  
+- **Friends Management**: track, pray for, and minister to friends interested in the gospel  
+- **Missionary Support**: practical ways to help full-time missionaries  
+- **Progress Tracking**: XP system, levels, streaks, and badges to encourage consistency  
+
+---
+
+### 🛡️ Mission Leaders (Leadership Module)
+
+This module assists **District Leaders, Zone Leaders, and Assistants to the President** in training and coordinating missionaries — always with the final goal of serving investigators better.
+
+**Main functionalities:**
+
+- **District/Zone Councils**  
+  Plan and record training meetings with spiritual focus, people-based metrics, and clear follow-up.
+
+- **Exchanges**  
+  Organize and document exchanges to train missionaries, share best practices, and discern needs.
+
+- **Baptismal Interviews**  
+  Coordinate interviews for investigators, with pastoral notes and follow-up.
+
+- **Leadership Messages**  
+  Send spiritual emphasis, focus for the week, and instructions to zones/districts/mission.
+
+- **Dashboards**  
+  High-level overview of progress for district, zone, and (for AP) the entire mission.
+
+---
+
+## 🧩 Leadership Module Architecture
+
+The Leadership module uses a clean, role-based data architecture based on collections and scopes (mission, zone, district).
 
 ```mermaid
 flowchart TD
     %% Roles
-    A1[<b>Misionero Regular</b><br/>• Recibe mensajes<br/>• Recibe agendas<br/>• Ve eventos<br/>• No edita]:::role
-    A2[<b>Líder de Distrito</b><br/>• Reunión de distrito<br/>• Intercambios<br/>• Entrevistas<br/>• Mensajes a distrito<br/>• Notas]:::role
-    A3[<b>Líder de Zona</b><br/>• Reunión de zona<br/>• Intercambios<br/>• Entrevistas LZ<br/>• Mensajes a zona<br/>• Notas]:::role
-    A4[<b>Asistente del Presidente (AP)</b><br/>• Giras<br/>• Transfers<br/>• Mensajes misión<br/>• Dashboard misión<br/>• Notas AP]:::role
+    A1["Missionary (regular)\n• Receives messages\n• Receives agendas\n• Sees events\n• Cannot edit leadership data"]:::role
+    A2["District Leader\n• District councils\n• Exchanges\n• Baptismal interviews\n• Messages to district\n• Notes"]:::role
+    A3["Zone Leader\n• Zone councils\n• Exchanges with DLs\n• Baptismal interviews\n• Messages to zone\n• Notes"]:::role
+    A4["Assistant to the President (AP)\n• Mission dashboard\n• Transfers\n• Leadership tours\n• Messages to mission\n• Notes"]:::role
 
-    %% Principal collections
+    %% Core collections
     B1[(leadershipEvents)]:::db
     B2[(leaderMessages)]:::db
     B3[(districtCouncils)]:::db
@@ -131,8 +170,8 @@ flowchart TD
     B7[(transferPlans)]:::db
     B8[(personalNotes)]:::db
 
-    %% Centro de liderazgo
-    C1[[<b>Centro de Liderazgo</b><br/>Feed único para todos<br/>LeadershipCenterScreen]]:::center
+    %% Leadership center
+    C1["Leadership Center\nUnified read-only feed\nLeadershipCenterScreen"]:::center
 
     %% Connections
     A2 --> B3
@@ -172,65 +211,69 @@ flowchart TD
     classDef center fill:#fef3c7,stroke:#d97706,stroke-width:2px,color:#92400e
 ```
 
-**Nota**: Este módulo es una funcionalidad adicional diseñada para mejorar la coordinación entre líderes y misioneros, con el objetivo final de servir mejor a los investigadores.
+> **Note:**  
+> This module is an *additional* feature to improve coordination between leaders and missionaries, so that they can serve investigators with more order, love, and vision.
 
 ---
 
-## 🛠 Stack Tecnológico
+## 🛠 Tech Stack
 
-- **Frontend**: React 18.3.1, TypeScript
-- **Routing**: React Router DOM 6.20.0
-- **State Management**: Zustand 5.0.8, React Context API
-- **Build Tool**: Vite 5.0.0
-- **Styling**: CSS con sistema de diseño personalizado
-- **Internationalization**: Sistema i18n personalizado (ES, EN, FR, PT)
-- **Storage**: localStorage (preparado para migración a Firestore)
+* **Frontend:** React 18.3.1, TypeScript
+* **Routing:** React Router DOM 6.20.0
+* **State Management:** Zustand 5.0.8, React Context API
+* **Build Tool:** Vite 5.0.0
+* **Styling:** Custom design system with CSS
+* **Internationalization (i18n):** Custom engine with ES, EN, FR, PT
+* **Storage:** `localStorage` (prepared for migration to Firestore / real-time sync)
 
 ---
 
-## 🚀 Inicio Rápido
+## 🚀 Quick Start
 
-### Prerrequisitos
+### Prerequisites
 
-- Node.js 18+ y npm
+* Node.js 18+
+* npm
 
-### Instalación
+### Installation
 
 ```bash
-# Instalar dependencias
+# Install dependencies
 npm install
 
-# Iniciar servidor de desarrollo
+# Start dev server
 npm run dev
 
-# Construir para producción
+# Build for production
 npm run build
 
-# Vista previa de la build de producción
+# Preview production build
 npm run preview
 ```
 
-La aplicación estará disponible en `http://localhost:3000`
+By default, the app runs at: `http://localhost:3000`
 
-### Estructura del Proyecto
+---
+
+## 📂 Project Structure
 
 ```
 src/
-├── components/                    # Componentes UI reutilizables
-├── context/                      # Contextos de React (Auth, I18n, Progress)
-├── data/                         # Datos estáticos y lecciones
-│   ├── missionary/               # Configuración de roles de liderazgo
-│   └── member/                   # Módulos de estudio y actividades
-├── hooks/                        # Hooks personalizados de React
-├── i18n/                         # Archivos de traducción (ES, EN, FR, PT)
-├── layouts/                      # Layouts de navegación
+├── components/                    # Reusable UI components
+├── context/                       # React contexts (Auth, I18n, Progress)
+├── data/                          # Static data and lessons
+│   ├── missionary/                # Missionary & leadership configuration
+│   └── member/                    # Member study modules and activities
+├── hooks/                         # Custom React hooks
+├── i18n/                          # Translation files (ES, EN, FR, PT)
+├── layouts/                       # Layout components
 │   └── MissionaryLeadershipLayout.tsx
-├── pages/                        # Componentes de página
-│   ├── investigator/            # Páginas de investigador (ENFOQUE PRINCIPAL)
-│   ├── missionary/              # Páginas de misionero
-│   │   └── leadership/          # Pantallas de liderazgo (funcionalidad adicional)
-│   └── member/                  # Páginas de miembro
-├── services/                    # Servicios de lógica de negocio
+├── pages/                         # Page-level components
+│   ├── investigator/              # Investigator pages (PRIMARY FOCUS)
+│   ├── missionary/                # Missionary pages
+│   │   └── leadership/            # Leadership screens (additional module)
+│   └── member/                    # Member pages
+├── services/                      # Business logic services
 │   ├── districtCouncilService.ts
 │   ├── zoneCouncilService.ts
 │   ├── exchangeService.ts
@@ -238,84 +281,230 @@ src/
 │   ├── leaderMessageService.ts
 │   ├── transferPlanService.ts
 │   └── personalNoteService.ts
-├── router/                      # Configuración de routing
-└── utils/                       # Funciones de utilidad
+├── router/                        # Routing configuration
+└── utils/                         # Utility functions
 ```
 
 ---
 
-## 📊 Estado del Proyecto
+## 📊 Project Status
 
-### ✅ Implementado
+### ✅ Main Module: Investigators
 
-#### Módulo Principal: Investigadores
-- ✅ Lecciones interactivas y materiales de estudio
-- ✅ Mensajes devocionales diarios
-- ✅ Diario espiritual "La Historia con Dios"
-- ✅ Guía de preparación para el bautismo
-- ✅ Sistema de compromisos y tareas
-- ✅ FAQ de preguntas difíciles
-- ✅ Seguimiento de progreso personalizado
+* Interactive lessons & study materials
+* Daily devotional messages
+* Spiritual journal **"My Story with God"**
+* Step-by-step baptism preparation guide
+* Commitments & tasks system
+* Difficult questions FAQ
+* Personalized progress tracking
 
-#### Módulo: Misioneros
-- ✅ Agenda misional y programación
-- ✅ Gestión de personas (investigadores, contactos)
-- ✅ Planificación de lecciones y recursos
-- ✅ Seguimiento de compromisos
-- ✅ Centro de liderazgo (acceso a información de líderes)
+### ✅ Missionary Module
 
-#### Módulo: Miembros
-- ✅ Dashboard visual
-- ✅ Módulos de estudio con contenido doctrinal profundo
-- ✅ Actividades interactivas con gamificación
-- ✅ Guía de cuidado de nuevos conversos (7 secciones, 4 idiomas)
-- ✅ Seguimiento de progreso (XP, niveles, rachas, insignias)
-- ✅ Gestión de amigos
-- ✅ Recursos de apoyo misionero
-- ✅ Soporte completo i18n (ES, EN, FR, PT)
+* Missionary agenda & scheduling
+* People management (investigators, contacts, members)
+* Lesson plans & teaching resources
+* Commitment tracking
+* Leadership Center (access to leader messages, events, agendas)
 
-#### Módulo Adicional: Líderes Misionales
-- ✅ Estructura completa de roles (DL, LZ, AP)
-- ✅ Servicios con localStorage (listos para migrar a Firestore)
-- ✅ Hooks funcionales para todos los roles
-- ✅ Pantallas totalmente operativas
-- ✅ Centro de liderazgo para misioneros
-- ✅ Publicación y distribución en tiempo real
-- ✅ Sistema de compartir (WhatsApp, Email, Clipboard)
-- ✅ Historial completo de todas las actividades
+### ✅ Member Module
 
-### ⏳ Próximas Mejoras
+* Visual dashboard
+* Deep doctrinal study modules
+* Interactive, gamified activities
+* New convert care guide (7 sections, 4 languages)
+* Progress tracking (XP, levels, streaks, badges)
+* Friends management
+* Missionary support resources
+* Full i18n support (ES, EN, FR, PT)
 
-- 🔄 Migración a Firestore para sincronización en tiempo real
-- 📄 Exportación a PDF de reportes y materiales
-- 🔔 Notificaciones push para recordatorios importantes
-- 📊 Analytics y métricas de progreso de investigadores
-- 🌐 Sincronización offline
-- 🎨 Mejoras de UI/UX y animaciones
-- 🔐 Privacidad avanzada y permisos granulares
-- 📱 Versión móvil nativa (React Native)
+### ✅ Additional Module: Mission Leaders
+
+* Full role structure (DL, ZL, AP)
+* Services using `localStorage` (ready to migrate to Firestore)
+* Working hooks for all roles
+* Fully functional leadership screens
+* Leadership Center for missionaries
+* Real-time publication & distribution (within current storage limits)
+* Share system (WhatsApp, email, clipboard)
+* Full history of all activities
 
 ---
 
-## 💡 Filosofía del Proyecto
+## ⏳ Next Steps
 
-Esta aplicación fue creada con el propósito de **ayudar a los investigadores** en su camino hacia el bautismo y la conversión. Todos los módulos y funcionalidades adicionales están diseñados para apoyar este objetivo principal:
-
-- **Para Investigadores**: Herramientas directas para su crecimiento espiritual
-- **Para Misioneros**: Recursos para enseñar y acompañar mejor a los investigadores
-- **Para Miembros**: Guías para apoyar a nuevos conversos e investigadores
-- **Para Líderes**: Herramientas de coordinación para capacitar misioneros que a su vez sirven mejor a los investigadores
-
-**El enfoque siempre será: ¿Cómo podemos ayudar mejor a los investigadores a acercarse a Cristo?**
-
----
-
-## 📄 Licencia
-
-Este proyecto es de uso interno para misiones de La Iglesia de Jesucristo de los Santos de los Últimos Días.
+* 🔄 Migration to **Firestore** for real-time, multi-device sync
+* 📄 PDF export of reports and study materials
+* 🔔 Push notifications for key reminders
+* 📊 Analytics & progress metrics for investigators
+* 🌐 Offline synchronization
+* 🎨 UI/UX improvements and subtle animations
+* 🔐 Advanced privacy and granular permissions
+* 📱 Native mobile version (React Native / Expo)
 
 ---
 
-**Designed & Architected by:** Víctor Ruiz Bello
+## 💡 Project Philosophy
 
-*"Y todo lo que hagáis, hacedlo de corazón, como para el Señor y no para los hombres"* — Colosenses 3:23
+This project was built with one spiritual priority:
+
+> **Help investigators come unto Christ.**
+
+Every module and feature is aligned to that:
+
+* For **Investigators**: direct tools for spiritual growth
+* For **Missionaries**: resources to teach and walk with investigators
+* For **Members**: guides to strengthen converts and friends of the Church
+* For **Leaders**: coordination tools to train missionaries who then serve investigators better
+
+The central question behind each new feature is:
+
+> *"How does this help investigators draw nearer to the Savior?"*
+
+---
+
+## 📄 License
+
+This project is intended for internal use to support the work of
+**The Church of Jesus Christ of Latter-day Saints.**
+
+Designed & Architected by: **Víctor Ruiz Bello**
+
+> "And whatsoever ye do, do it heartily, as to the Lord, and not unto men." — Colossians 3:23
+
+---
+
+---
+
+# README en Español
+
+> **Nota:** La interfaz principal del proyecto y la documentación técnica se mantienen en inglés.  
+> A continuación se incluye un resumen completo en español.
+
+---
+
+## 📘 Por el Evangelio
+
+**Aplicación Web Integral para Apoyar a Investigadores, Misioneros, Miembros y Líderes de La Iglesia de Jesucristo de los Santos de los Últimos Días**
+
+### 🌟 Visión General
+
+**Por el Evangelio** nació con un propósito principal:
+
+> Ayudar a los investigadores en su camino hacia el bautismo, la conversión y una relación personal con Jesucristo.
+
+La aplicación acompaña a los investigadores mientras aprenden del Evangelio, dándoles:
+
+* recursos espirituales
+* lecciones interactivas
+* compromisos claros
+* y un registro personal de su "historia con Dios".
+
+Además, ofrece herramientas para:
+
+* **Misioneros** que enseñan y acompañan
+* **Miembros** que apoyan la obra misional
+* **Líderes misionales** que coordinan y capacitan
+
+---
+
+### 👤 Enfoque Principal: Investigadores
+
+* Comprender las doctrinas del Evangelio
+* Prepararse espiritualmente para el bautismo
+* Desarrollar un testimonio personal
+* Integrarse a la comunidad de la Iglesia
+* Mantener compromisos y progresar en su conversión
+
+**Funciones clave:**
+
+* **Lecciones interactivas**
+* **Mensajes devocionales diarios**
+* **Diario espiritual "La historia con Dios"**
+* **Guía de preparación para el bautismo**
+* **Preguntas difíciles (FAQ)**
+* **Seguimiento de progreso**
+
+---
+
+### 👔 Módulo: Misioneros
+
+* Agenda misional
+* Gestión de personas (investigadores, contactos, miembros)
+* Planificación de lecciones
+* Seguimiento de compromisos
+* Acceso al **Centro de Liderazgo**
+
+---
+
+### 👥 Módulo: Miembros
+
+* Módulos de estudio doctrinal profundo
+* Actividades interactivas y gamificación
+* Guía de cuidado de nuevos conversos (7 secciones, 4 idiomas)
+* Gestión de amigos interesados en el Evangelio
+* Recursos para apoyar a los misioneros
+* Sistema de XP, niveles, rachas e insignias
+
+---
+
+### 🛡️ Módulo Adicional: Líderes Misionales
+
+Herramientas para **Líderes de Distrito, Líderes de Zona y Asistentes del Presidente**:
+
+* Reuniones de distrito/zona (planificación y registro)
+* Intercambios (planificación, seguimiento, notas espirituales)
+* Entrevistas bautismales (coordinación y notas pastorales)
+* Mensajes de liderazgo (enfoque doctrinal, metas, anuncios)
+* Dashboards de progreso (distrito, zona, misión)
+* Centro de liderazgo de solo lectura para los misioneros
+
+La arquitectura está basada en colecciones como:
+
+* `districtCouncils`, `zoneCouncils`
+* `leadershipEvents`, `leaderMessages`
+* `exchanges`, `baptismalInterviews`
+* `transferPlans`, `personalNotes`
+
+Y un **LeadershipCenterScreen** que reúne todo para el misionero regular.
+
+---
+
+### 🛠 Stack Tecnológico (resumen)
+
+* React 18 + TypeScript
+* React Router DOM
+* Zustand + Context API
+* Vite
+* CSS con diseño personalizado
+* i18n (ES, EN, FR, PT)
+* `localStorage` (listo para migrar a Firestore)
+
+---
+
+### 📊 Estado del Proyecto
+
+Totalmente implementado para:
+
+* Investigadores (módulo principal)
+* Misioneros
+* Miembros
+* Líderes misionales (módulo adicional, listo para migrar a Firestore y a app móvil nativa)
+
+---
+
+### 💡 Filosofía
+
+El enfoque siempre será:
+
+> **¿Cómo ayudamos mejor a los investigadores a acercarse a Cristo?**
+
+Todo lo demás —misioneros, miembros, líderes— existe para servir ese propósito.
+
+---
+
+### 📄 Licencia
+
+Uso interno para apoyar la obra misional de **La Iglesia de Jesucristo de los Santos de los Últimos Días**.
+
+Diseñado y Arquitectado por: **Víctor Ruiz Bello**
