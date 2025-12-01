@@ -1,12 +1,12 @@
-# Por el Evangelio
+# xthegospel
 
-**Integrated Web Application to Support Investigators, Missionaries, Members, and Mission Leaders of The Church of Jesus Christ of Latter-day Saints**
+**For The Gospel** — Integrated Web Application to Support Investigators, Missionaries, Members, and Mission Leaders of The Church of Jesus Christ of Latter-day Saints
 
 ---
 
 ## 🌟 Vision
 
-**Por el Evangelio** was created with one core purpose:
+**xthegospel** (For The Gospel) was created with one core purpose:
 
 > To help investigators on their path toward baptism, conversion, and a personal relationship with Jesus Christ.
 
@@ -383,13 +383,13 @@ Designed & Architected by: **Víctor Ruiz Bello**
 
 ---
 
-## 📘 Por el Evangelio
+## 📘 xthegospel
 
-**Aplicación Web Integral para Apoyar a Investigadores, Misioneros, Miembros y Líderes de La Iglesia de Jesucristo de los Santos de los Últimos Días**
+**Por el Evangelio** — Aplicación Web Integral para Apoyar a Investigadores, Misioneros, Miembros y Líderes de La Iglesia de Jesucristo de los Santos de los Últimos Días
 
 ### 🌟 Visión General
 
-**Por el Evangelio** nació con un propósito principal:
+**xthegospel** (Por el Evangelio) nació con un propósito principal:
 
 > Ayudar a los investigadores en su camino hacia el bautismo, la conversión y una relación personal con Jesucristo.
 
