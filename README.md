@@ -1,230 +1,154 @@
-# xTheGospel  
+# xTheGospel
 
 ### For The Gospel — A Multilingual Web Application for Investigators, Missionaries, Members, and Mission Leaders
 
-### *(Natively available in English, Spanish, French, and Portuguese)*
-
-
+### _(Natively available in English, Spanish, French, and Portuguese)_
 
 ---
-
-
 
 ## 🌟 Vision & Purpose
 
-
-
 **xTheGospel (For The Gospel)** is a fully integrated gospel-focused platform designed to:
-
-
 
 > **Help investigators come unto Christ and progress toward baptism, conversion, and a lasting relationship with the Savior.**
 
-
-
 This application provides a unified, spiritually centered experience for four main audiences:
 
+1. **Investigators** — The primary focus of the entire platform
 
+2. **Missionaries** — Teachers and gospel companions who guide investigators
 
-1. **Investigators** — The primary focus of the entire platform  
+3. **Members** — Supporters who strengthen and accompany new friends
 
-2. **Missionaries** — Teachers and gospel companions who guide investigators  
-
-3. **Members** — Supporters who strengthen and accompany new friends  
-
-4. **Mission Leaders (DL, ZL, AP)** — Coordinators and spiritual trainers of the work  
-
-
+4. **Mission Leaders (DL, ZL, AP)** — Coordinators and spiritual trainers of the work
 
 The entire architecture is built around a single guiding principle:
 
-
-
 > **"How can this help investigators draw closer to Jesus Christ?"**
-
-
 
 Everything else—missionary tools, member tools, leadership tools—exists to support that sacred purpose.
 
-
-
 ---
-
-
 
 # 📘 1. Investigators Module (PRIMARY & CENTRAL)
 
-
-
 This is the heart of xTheGospel.
-
-
 
 ### **Purpose**
 
 To guide investigators through:
 
+- Understanding gospel doctrine
 
+- Building faith and testimony
 
-- Understanding gospel doctrine  
+- Preparing spiritually and emotionally for baptism
 
-- Building faith and testimony  
+- Making and keeping commitments
 
-- Preparing spiritually and emotionally for baptism  
+- Recording their spiritual journey
 
-- Making and keeping commitments  
-
-- Recording their spiritual journey  
-
-- Integrating into the Church with confidence  
-
-
+- Integrating into the Church with confidence
 
 ### **Key Features**
 
-
-
 #### **📖 Interactive Gospel Lessons**
 
-- Doctrinally accurate  
+- Doctrinally accurate
 
-- Simple, structured, progressive  
+- Simple, structured, progressive
 
-- Available in 4 languages  
+- Available in 4 languages
 
 - Tracks personal progress
 
-
-
 #### **💬 Daily Devotional Messages**
 
-- Short spiritual insights  
+- Short spiritual insights
 
-- Scripture-based  
+- Scripture-based
 
-- Practical application  
-
-
+- Practical application
 
 #### **📝 Spiritual Journal – "My Story with God"**
 
-- Record inspiration, experiences, prayers, and spiritual growth  
+- Record inspiration, experiences, prayers, and spiritual growth
 
-- A guided format that builds testimony over time  
-
-
+- A guided format that builds testimony over time
 
 #### **🎯 Baptism Preparation**
 
-- Step-by-step system  
+- Step-by-step system
 
-- Commitments, tasks, reminders  
+- Commitments, tasks, reminders
 
-- Evaluates readiness  
-
-
+- Evaluates readiness
 
 #### **❓ Difficult Questions (FAQ)**
 
-- Faithful doctrinal answers  
+- Faithful doctrinal answers
 
-- Pastoral and respectful tone  
+- Pastoral and respectful tone
 
-- Helps investigators overcome doubts  
-
-
+- Helps investigators overcome doubts
 
 #### **📊 Visual Progress Tracking**
 
-- Milestones  
+- Milestones
 
-- Achievements  
+- Achievements
 
-- Progress dashboard  
-
-
+- Progress dashboard
 
 ---
-
-
 
 # 🧭 2. Missionary Module
 
-
-
 Designed to help missionaries **teach more effectively** and **support investigators with structure**.
-
-
 
 ### **Features:**
 
+- Missionary Agenda (appointments, planning, follow-up)
 
+- People Manager (investigators, contacts, members)
 
-- Missionary Agenda (appointments, planning, follow-up)  
+- Lesson Plans & Resources
 
-- People Manager (investigators, contacts, members)  
+- Commitments Tracking
 
-- Lesson Plans & Resources  
-
-- Commitments Tracking  
-
-- Access to Leadership Center (read-only for missionary role)  
-
-
+- Access to Leadership Center (read-only for missionary role)
 
 Everything is built around **real-world missionary workflows**.
 
-
-
 ---
-
-
 
 # 👥 3. Member Module
 
-
-
 Members receive tools to strengthen their testimony and support missionary work.
-
-
 
 ### **Features:**
 
+- Deep doctrinal study modules
 
+- Interactive activities with gamification
 
-- Deep doctrinal study modules  
+- Convert Care Guide (7 sections, 4 languages)
 
-- Interactive activities with gamification  
+- Friends Management
 
-- Convert Care Guide (7 sections, 4 languages)  
+- XP / Levels / Streaks / Badges
 
-- Friends Management  
-
-- XP / Levels / Streaks / Badges  
-
-- Missionary Support Resource Center  
-
-
+- Missionary Support Resource Center
 
 Designed to make members **active partners in missionary work**.
 
-
-
 ---
-
-
 
 # 🛡️ 4. Leadership Module (District Leaders, Zone Leaders, AP)
 
-
-
 This is a **full corporate-level leadership system**, designed like a professional managerial dashboard but built for the Lord's work.
 
-
-
 ### **Features:**
-
-
 
 #### **District Leaders**
 
@@ -238,8 +162,6 @@ This is a **full corporate-level leadership system**, designed like a profession
 
 - Notes (private)
 
-
-
 #### **Zone Leaders**
 
 - Zone Councils
@@ -251,8 +173,6 @@ This is a **full corporate-level leadership system**, designed like a profession
 - Zone-wide Messaging
 
 - Leadership Notes
-
-
 
 #### **Assistants to the President (AP)**
 
@@ -266,8 +186,6 @@ This is a **full corporate-level leadership system**, designed like a profession
 
 - AP Notes
 
-
-
 #### **Universal for All Leaders**
 
 - History of all published events
@@ -278,15 +196,9 @@ This is a **full corporate-level leadership system**, designed like a profession
 
 - Role-based access permissions
 
-
-
 ---
 
-
-
 # 🧩 5. Leadership Architecture Diagram
-
-
 
 ```mermaid
 flowchart TD
@@ -342,15 +254,9 @@ flowchart TD
     classDef center fill:#fef3c7,stroke:#d97706,color:#92400e
 ```
 
-
-
 ---
 
-
-
 # 🏗️ 6. Tech Stack
-
-
 
 - React 18 + TypeScript
 
@@ -364,15 +270,9 @@ flowchart TD
 
 - localStorage (prepared for Firestore real-time sync)
 
-
-
 ---
 
-
-
 # 🚀 7. Quick Start
-
-
 
 ```bash
 npm install
@@ -381,19 +281,11 @@ npm run build
 npm run preview
 ```
 
-
-
 **Default dev URL:** `http://localhost:3000`
-
-
 
 ---
 
-
-
 # 📂 8. Project Structure
-
-
 
 ```
 src/
@@ -415,19 +307,11 @@ src/
 └── utils/
 ```
 
-
-
 ---
-
-
 
 # 📊 9. Project Status
 
-
-
 **All major modules completed:**
-
-
 
 - ✅ Investigator module
 
@@ -441,15 +325,9 @@ src/
 
 - ✅ Leadership architecture fully operational
 
-
-
 ---
 
-
-
 # ⏳ 10. Next Steps
-
-
 
 - 🔄 Firestore real-time sync
 
@@ -463,15 +341,9 @@ src/
 
 - 🌐 Offline mode
 
-
-
 ---
 
-
-
 # 💡 11. Philosophy
-
-
 
 Everything exists to help investigators come unto Christ.
 
@@ -483,327 +355,221 @@ Leaders guide better.
 
 Investigators grow and believe.
 
-
-
 ---
 
-
-
 # 📄 12. License
-
-
 
 Internal spiritual-use software for missions of
 
 **The Church of Jesus Christ of Latter-day Saints.**
 
-
-
 **Designed & Architected by Víctor Ruiz Bello**
-
-
 
 > "And whatsoever ye do, do it heartily, as to the Lord, and not unto men." — Colossians 3:23
 
-
-
 ---
 
-
-
 ---
-
-
 
 # 🇪🇸 **VERSIÓN COMPLETA EN ESPAÑOL (FULL)**
 
-
-
-# xTheGospel  
+# xTheGospel
 
 ### Por El Evangelio — Aplicación Web Multilingüe para Investigadores, Misioneros, Miembros y Líderes Misionales
 
-### *(Disponible de forma nativa en Español, Inglés, Francés y Portugués)*
-
-
+### _(Disponible de forma nativa en Español, Inglés, Francés y Portugués)_
 
 ---
-
-
 
 ## 🌟 Visión y Propósito
 
-
-
 **xTheGospel (Por El Evangelio)** es una plataforma integral centrada en el evangelio diseñada para:
-
-
 
 > **Ayudar a los investigadores a venir a Cristo y progresar hacia el bautismo, la conversión y una relación duradera con el Salvador.**
 
-
-
 Esta aplicación provee una experiencia espiritual unificada para cuatro grupos principales:
 
+1. **Investigadores** — El enfoque principal del proyecto
 
+2. **Misioneros** — Maestros y compañeros en el evangelio
 
-1. **Investigadores** — El enfoque principal del proyecto  
+3. **Miembros** — Apoyan y fortalecen a los nuevos amigos
 
-2. **Misioneros** — Maestros y compañeros en el evangelio  
-
-3. **Miembros** — Apoyan y fortalecen a los nuevos amigos  
-
-4. **Líderes misionales (LD, LZ, AP)** — Coordina y capacita la obra  
-
-
+4. **Líderes misionales (LD, LZ, AP)** — Coordina y capacita la obra
 
 Todo está construido sobre un principio guía:
 
-
-
 > **"¿Cómo ayuda esto a que los investigadores se acerquen al Salvador Jesucristo?"**
-
-
 
 Todo lo demás — herramientas de misioneros, miembros y líderes — existe para apoyar ese propósito sagrado.
 
-
-
 ---
-
-
 
 # 📘 1. Módulo de Investigadores (PRINCIPAL Y CENTRAL)
 
-
-
 El corazón de xTheGospel.
-
-
 
 ### **Propósito**
 
-
-
 Guiar a los investigadores en:
 
+- Comprender la doctrina del evangelio
 
+- Construir fe y testimonio
 
-- Comprender la doctrina del evangelio  
+- Prepararse espiritualmente y emocionalmente para el bautismo
 
-- Construir fe y testimonio  
+- Hacer y guardar compromisos
 
-- Prepararse espiritualmente y emocionalmente para el bautismo  
+- Registrar su experiencia espiritual
 
-- Hacer y guardar compromisos  
-
-- Registrar su experiencia espiritual  
-
-- Integrarse a la Iglesia con seguridad  
-
-
+- Integrarse a la Iglesia con seguridad
 
 ### **Funciones Principales**
 
-
-
 #### **📖 Lecciones Interactivas del Evangelio**
 
-- Doctrinalmente correctas  
+- Doctrinalmente correctas
 
-- Simples, estructuradas y progresivas  
+- Simples, estructuradas y progresivas
 
-- Disponibles en 4 idiomas  
+- Disponibles en 4 idiomas
 
-- Seguimiento de progreso  
-
-
+- Seguimiento de progreso
 
 #### **💬 Mensajes Devocionales Diarios**
 
-- Inspiración espiritual  
+- Inspiración espiritual
 
-- Escrituras y citas  
+- Escrituras y citas
 
-- Aplicación práctica  
-
-
+- Aplicación práctica
 
 #### **📝 Diario Espiritual — "Mi Historia con Dios"**
 
-- Registros de fe, experiencias, oraciones  
+- Registros de fe, experiencias, oraciones
 
-- Desarrollo espiritual guiado  
-
-
+- Desarrollo espiritual guiado
 
 #### **🎯 Preparación Bautismal**
 
-- Sistema paso a paso  
+- Sistema paso a paso
 
-- Compromisos, tareas, recordatorios  
+- Compromisos, tareas, recordatorios
 
-- Evaluación de preparación  
-
-
+- Evaluación de preparación
 
 #### **❓ Preguntas Difíciles (FAQ)**
 
-- Respuestas doctrinales fieles  
+- Respuestas doctrinales fieles
 
-- Tono pastoral y respetuoso  
-
-
+- Tono pastoral y respetuoso
 
 #### **📊 Seguimiento Visual del Progreso**
 
-- Logros  
+- Logros
 
-- Metas cumplidas  
+- Metas cumplidas
 
-- Panel visual  
-
-
+- Panel visual
 
 ---
-
-
 
 # 🧭 2. Módulo de Misioneros
 
-
-
 Ayuda a los misioneros a **enseñar mejor** y **apoyar a los investigadores** con estructura.
-
-
 
 ### **Funciones:**
 
+- Agenda misional
 
+- Planificación de lecciones
 
-- Agenda misional  
+- Gestión de personas (investigadores, miembros, contactos)
 
-- Planificación de lecciones  
+- Seguimiento de compromisos
 
-- Gestión de personas (investigadores, miembros, contactos)  
-
-- Seguimiento de compromisos  
-
-- Acceso al Centro de Liderazgo (solo lectura)  
-
-
+- Acceso al Centro de Liderazgo (solo lectura)
 
 ---
-
-
 
 # 👥 3. Módulo de Miembros
 
-
-
 Diseñado para ayudar a los miembros a fortalecer su testimonio y apoyar la obra misional.
-
-
 
 ### **Funciones:**
 
+- Módulos doctrinales profundos
 
+- Actividades interactivas (gamificación)
 
-- Módulos doctrinales profundos  
+- Guía de Cuidado de Conversos (7 secciones, 4 idiomas)
 
-- Actividades interactivas (gamificación)  
+- Gestión de amigos
 
-- Guía de Cuidado de Conversos (7 secciones, 4 idiomas)  
+- Sistema de XP, rachas, niveles e insignias
 
-- Gestión de amigos  
-
-- Sistema de XP, rachas, niveles e insignias  
-
-- Centro de apoyo al misionero  
-
-
+- Centro de apoyo al misionero
 
 ---
-
-
 
 # 🛡️ 4. Módulo de Liderazgo (LD, LZ, AP)
 
-
-
 Un sistema profesional de liderazgo con visión corporativa, diseñado especialmente para la obra del Señor.
-
-
 
 ### **Funciones:**
 
-
-
 #### **Líderes de Distrito**
 
-- Reuniones de distrito  
+- Reuniones de distrito
 
-- Intercambios  
+- Intercambios
 
-- Entrevistas bautismales  
+- Entrevistas bautismales
 
-- Mensajes a distrito  
+- Mensajes a distrito
 
-- Notas privadas  
-
-
+- Notas privadas
 
 #### **Líderes de Zona**
 
-- Reuniones de zona  
+- Reuniones de zona
 
-- Intercambios con LD  
+- Intercambios con LD
 
-- Entrevistas bautismales  
+- Entrevistas bautismales
 
-- Mensajes a zona  
+- Mensajes a zona
 
-- Notas de liderazgo  
-
-
+- Notas de liderazgo
 
 #### **Asistentes del Presidente (AP)**
 
-- Dashboard de la misión  
+- Dashboard de la misión
 
-- Planificación de transfers  
+- Planificación de transfers
 
-- Giras de liderazgo  
+- Giras de liderazgo
 
-- Mensajes a la misión  
+- Mensajes a la misión
 
-- Notas AP  
-
-
+- Notas AP
 
 #### **Funciones Universales**
 
-- Historial de eventos  
+- Historial de eventos
 
-- Sistema de compartir (WhatsApp, Email, Portapapeles)  
+- Sistema de compartir (WhatsApp, Email, Portapapeles)
 
-- Registros completos  
+- Registros completos
 
-- Permisos según rol  
-
-
+- Permisos según rol
 
 ---
 
-
-
 # 🧩 5. Diagrama de Arquitectura de Liderazgo
 
-
-
-*(El diagrama es neutral en idioma y funcional en GitHub)*
-
-
+_(El diagrama es neutral en idioma y funcional en GitHub)_
 
 ```mermaid
 flowchart TD
@@ -859,15 +625,9 @@ flowchart TD
     classDef center fill:#fef3c7,stroke:#d97706,color:#92400e
 ```
 
-
-
 ---
 
-
-
 # 🏗️ 6. Stack Tecnológico
-
-
 
 - React 18 + TypeScript
 
@@ -881,15 +641,9 @@ flowchart TD
 
 - localStorage (listo para Firestore)
 
-
-
 ---
 
-
-
 # 🚀 7. Inicio Rápido
-
-
 
 ```bash
 npm install
@@ -898,19 +652,11 @@ npm run build
 npm run preview
 ```
 
-
-
 **URL por defecto:** `http://localhost:3000`
-
-
 
 ---
 
-
-
 # 📂 8. Estructura del Proyecto
-
-
 
 ```
 src/
@@ -932,19 +678,11 @@ src/
 └── utils/
 ```
 
-
-
 ---
-
-
 
 # 📊 9. Estado del Proyecto
 
-
-
 **Módulos completados:**
-
-
 
 - ✅ Investigadores
 
@@ -956,15 +694,9 @@ src/
 
 - ✅ Multilingüe nativo (ES, EN, FR, PT)
 
-
-
 ---
 
-
-
 # ⏳ 10. Próximas Mejoras
-
-
 
 - 🔄 Sincronización en tiempo real con Firestore
 
@@ -978,15 +710,9 @@ src/
 
 - 📊 Analíticas
 
-
-
 ---
 
-
-
 # 💡 11. Filosofía
-
-
 
 Todo existe para ayudar a los investigadores a venir a Cristo.
 
@@ -998,24 +724,14 @@ Los líderes guían mejor.
 
 Los investigadores crecen y creen.
 
-
-
 ---
 
-
-
 # 📄 12. Licencia
-
-
 
 Uso espiritual interno para las misiones de
 
 **La Iglesia de Jesucristo de los Santos de los Últimos Días.**
 
-
-
 **Diseñado y Arquitectado por Víctor Ruiz Bello**
-
-
 
 > "Y todo lo que hagáis, hacedlo de corazón, como para el Señor y no para los hombres." — Colosenses 3:23
