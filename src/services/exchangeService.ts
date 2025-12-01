@@ -10,6 +10,7 @@ export interface Exchange {
   districtId?: string;
   leaderId: string;
   leaderName: string;
+  leaderRole?: 'district_leader' | 'zone_leader' | 'assistant_to_president';
   
   companionshipName: string;
   missionaryId?: string;
@@ -107,7 +108,7 @@ export const ExchangeService = {
         time: exchange.time || '',
         location: exchange.area,
         leaderName: exchange.leaderName,
-        leaderRole: 'district_leader',
+        leaderRole: exchange.leaderRole || 'district_leader',
         status: 'upcoming',
         districtId: exchange.districtId,
         missionaryId: exchange.missionaryId

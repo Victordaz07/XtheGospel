@@ -15,10 +15,12 @@ import { ZoneLeaderDashboard } from '../pages/missionary/leadership/ZoneLeaderDa
 import { AssistantToPresidentDashboard } from '../pages/missionary/leadership/AssistantToPresidentDashboard';
 import { LeadershipTabScreen } from '../pages/missionary/leadership/LeadershipTabScreen';
 import { DistrictCouncilScreen } from '../pages/missionary/leadership/DistrictCouncilScreen';
+import { ZoneCouncilScreen } from '../pages/missionary/leadership/ZoneCouncilScreen';
 import { ExchangeScreen } from '../pages/missionary/leadership/ExchangeScreen';
 import { BaptismalInterviewScreen } from '../pages/missionary/leadership/BaptismalInterviewScreen';
 import { LeaderMessageScreen } from '../pages/missionary/leadership/LeaderMessageScreen';
 import { PersonalNotesScreen } from '../pages/missionary/leadership/PersonalNotesScreen';
+import { TransferPlanScreen } from '../pages/missionary/leadership/TransferPlanScreen';
 import { ZoneLeaderMessagesScreen } from '../pages/missionary/leadership/ZoneLeaderMessagesScreen';
 import { FloatingMenu } from '../ui/components';
 import '../pages/Page.css';
@@ -47,7 +49,7 @@ const PlaceholderScreen: React.FC<{ title: string; description?: string }> = ({ 
   </div>
 );
 
-const ZoneCouncilScreen = () => <PlaceholderScreen title="Consejo de zona" description="Participa en consejos de zona" />;
+const ZoneCouncilScreenWrapper = () => <ZoneCouncilScreen />;
 const ZoneMessagesScreen = () => <LeaderMessageScreen />;
 const PersonalizedSupportScreen = () => <PlaceholderScreen title="Apoyo personalizado" description="Brinda apoyo específico a cada misionero" />;
 const SuggestedTransfersScreen = () => <PlaceholderScreen title="Transferencias sugeridas" description="Gestiona sugerencias de transferencias" />;
@@ -55,7 +57,7 @@ const ConferenceAttendanceScreen = () => <PlaceholderScreen title="Asistencia a 
 const TrainingResourcesScreen = () => <PlaceholderScreen title="Recursos de capacitación" description="Accede a materiales de capacitación" />;
 
 const CouncilMeetingsScreen = () => <PlaceholderScreen title="Reuniones de consejo" description="Gestiona reuniones de consejo de misión" />;
-const TravelsTransfersScreen = () => <PlaceholderScreen title="Viajes / Transferencias" description="Planifica viajes y transferencias" />;
+const TravelsTransfersScreen = () => <TransferPlanScreen />;
 const TrainingPlanningScreen = () => <PlaceholderScreen title="Planificación de capacitaciones" description="Organiza capacitaciones para la misión" />;
 const ZoneFeedbackScreen = () => <PlaceholderScreen title="Feedback de zonas" description="Recibe y gestiona feedback de zonas" />;
 const LeadersChatScreen = () => <PlaceholderScreen title="Chat interno con líderes" description="Comunícate con otros líderes" />;
@@ -68,24 +70,38 @@ export const MissionaryLeadershipLayout: React.FC = () => {
   useEffect(() => {
     try {
       const role = LeadershipRoleService.getCurrentRole();
+      if (role === 'none') {
+        // Si no hay rol, el AppRouter ya maneja la redirección
+        return;
+      }
       setCurrentRole(role);
       const config = getLeadershipRoleConfig(role);
       setRoleConfig(config);
     } catch (error) {
       console.error('Error loading leadership role:', error);
-      // Fallback a 'none' si hay error
-      setCurrentRole('none');
-      setRoleConfig(getLeadershipRoleConfig('none'));
+      // Si hay error, dejar que AppRouter maneje la redirección
     }
-  }, [location.pathname]);
+  }, []); // Solo ejecutar una vez al montar
 
-  // Si no hay rol de liderazgo activo, redirigir al modo misionero normal
+  // Si no hay rol de liderazgo activo, mostrar loading o dejar que AppRouter redirija
   if (currentRole === 'none') {
-    return <Navigate to="/missionary/home" replace />;
+    return (
+      <div className="page">
+        <div className="page-header">
+          <h1>Cargando...</h1>
+        </div>
+      </div>
+    );
   }
 
   if (!roleConfig) {
-    return <Navigate to="/missionary/home" replace />;
+    return (
+      <div className="page">
+        <div className="page-header">
+          <h1>Cargando...</h1>
+        </div>
+      </div>
+    );
   }
 
   // Generar tabs según el rol usando la estructura enriquecida
@@ -164,14 +180,15 @@ export const MissionaryLeadershipLayout: React.FC = () => {
 
             {/* Zone Leader Routes */}
             <Route path="/missionary/leadership/zoneLeader/dashboard" element={<ZoneLeaderDashboard />} />
-            <Route path="/missionary/leadership/zoneLeader/zone_council" element={<ZoneCouncilScreen />} />
-            <Route path="/missionary/leadership/zoneLeader/zone_exchanges" element={<PersonalizedSupportScreen />} />
+            <Route path="/missionary/leadership/zoneLeader/zone_council" element={<ZoneCouncilScreenWrapper />} />
+            <Route path="/missionary/leadership/zoneLeader/zone_exchanges" element={<ExchangeScreen />} />
             <Route path="/missionary/leadership/zoneLeader/zone_reports" element={<SuggestedTransfersScreen />} />
             <Route path="/missionary/leadership/zoneLeader/zone_messages" element={<ZoneMessagesScreen />} />
             <Route path="/missionary/leadership/zoneLeader/zone_communication" element={<ZoneMessagesScreen />} />
             <Route path="/missionary/leadership/zoneLeader/personal_notes" element={<PersonalNotesScreen />} />
+            <Route path="/missionary/leadership/zoneLeader/baptismal_interviews" element={<BaptismalInterviewScreen />} />
             {/* Legacy routes */}
-            <Route path="/missionary/leadership/zoneLeader/consejo-de-zona" element={<ZoneCouncilScreen />} />
+            <Route path="/missionary/leadership/zoneLeader/consejo-de-zona" element={<ZoneCouncilScreenWrapper />} />
             <Route path="/missionary/leadership/zoneLeader/apoyo-personalizado-por-misionero" element={<PersonalizedSupportScreen />} />
             <Route path="/missionary/leadership/zoneLeader/transferencias-sugeridas" element={<SuggestedTransfersScreen />} />
             <Route path="/missionary/leadership/zoneLeader/asistencia-a-conferencias" element={<ConferenceAttendanceScreen />} />
@@ -181,11 +198,12 @@ export const MissionaryLeadershipLayout: React.FC = () => {
             {/* Assistant to President Routes */}
             <Route path="/missionary/leadership/assistantToPresident/dashboard" element={<AssistantToPresidentDashboard />} />
             <Route path="/missionary/leadership/assistantToPresident/mission_leaders_council" element={<CouncilMeetingsScreen />} />
-            <Route path="/missionary/leadership/assistantToPresident/transfers_planning" element={<TravelsTransfersScreen />} />
+            <Route path="/missionary/leadership/assistantToPresident/transfers_planning" element={<TransferPlanScreen />} />
             <Route path="/missionary/leadership/assistantToPresident/office_admin" element={<TrainingPlanningScreen />} />
-            <Route path="/missionary/leadership/assistantToPresident/field_tours" element={<ZoneFeedbackScreen />} />
+            <Route path="/missionary/leadership/assistantToPresident/field_tours" element={<ExchangeScreen />} />
             <Route path="/missionary/leadership/assistantToPresident/ap_companionship" element={<LeadersChatScreen />} />
             <Route path="/missionary/leadership/assistantToPresident/personal_notes" element={<PersonalNotesScreen />} />
+            <Route path="/missionary/leadership/assistantToPresident/mission_messages" element={<LeaderMessageScreen />} />
             {/* Legacy routes */}
             <Route path="/missionary/leadership/assistantToPresident/reuniones-de-consejo" element={<CouncilMeetingsScreen />} />
             <Route path="/missionary/leadership/assistantToPresident/viajes-giras-transferencias" element={<TravelsTransfersScreen />} />

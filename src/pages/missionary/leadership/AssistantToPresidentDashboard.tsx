@@ -1,14 +1,50 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { getLeadershipRoleEnhanced } from '../../../data/missionary/leadershipModeEnhanced';
+import { LeaderMessageService } from '../../../services/leaderMessageService';
 import '../../../pages/Page.css';
 import './LeadershipDashboard.css';
 
 export const AssistantToPresidentDashboard: React.FC = () => {
   const location = useLocation();
   const role = getLeadershipRoleEnhanced('assistantToPresident');
+  const [upcomingEvents, setUpcomingEvents] = useState<any[]>([]);
+  const [recentMessages, setRecentMessages] = useState<any[]>([]);
 
-  if (!role) return null;
+  useEffect(() => {
+    loadDashboardData();
+  }, []);
+
+  const loadDashboardData = () => {
+    // Cargar eventos de toda la misión
+    const events = LeaderMessageService.getAllLeadershipEvents();
+    const upcoming = events
+      .filter(e => e.status === 'upcoming')
+      .slice(0, 5);
+    setUpcomingEvents(upcoming);
+
+    // Cargar mensajes recientes de toda la misión
+    const messages = LeaderMessageService.getAllMessages()
+      .filter(m => m.status === 'published' && m.targetScope === 'mission')
+      .sort((a, b) => {
+        const dateA = new Date(a.publishedAt || a.createdAt).getTime();
+        const dateB = new Date(b.publishedAt || b.createdAt).getTime();
+        return dateB - dateA;
+      })
+      .slice(0, 3);
+    setRecentMessages(messages);
+  };
+
+  if (!role) {
+    return (
+      <div className="page">
+        <div className="page-header">
+          <h1>Error</h1>
+          <p className="page-subtitle">No se pudo cargar la configuración del rol</p>
+        </div>
+      </div>
+    );
+  }
 
   const getTabRoute = (tabId: string) => {
     const basePath = location.pathname.includes('/member/') 
@@ -84,6 +120,60 @@ export const AssistantToPresidentDashboard: React.FC = () => {
               </Link>
             ))}
           </div>
+        </div>
+
+        {/* Próximos eventos */}
+        <div className="leadership-events-card">
+          <h3>Próximos eventos de la misión</h3>
+          {upcomingEvents.length === 0 ? (
+            <p className="dashboard-empty">No hay eventos programados</p>
+          ) : (
+            <div className="dashboard-events-list">
+              {upcomingEvents.map((event) => (
+                <div key={event.id} className="dashboard-event-item">
+                  <div className="dashboard-event-icon" style={{ backgroundColor: `${role.color}15`, color: role.color }}>
+                    {event.type === 'zone_council' ? '📋' : event.type === 'district_council' ? '📋' : event.type === 'exchange' ? '🔄' : event.type === 'baptismal_interview' ? '💧' : '📨'}
+                  </div>
+                  <div className="dashboard-event-content">
+                    <strong>{event.title}</strong>
+                    <p>{event.date} {event.time && `– ${event.time}`}</p>
+                    {event.location && <p className="dashboard-event-location">{event.location}</p>}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* Mensajes recientes */}
+        <div className="leadership-messages-card">
+          <h3>Mensajes recientes</h3>
+          {recentMessages.length === 0 ? (
+            <p className="dashboard-empty">No hay mensajes recientes</p>
+          ) : (
+            <div className="dashboard-messages-list">
+              {recentMessages.map((message) => (
+                <div key={message.id} className="dashboard-message-item">
+                  <div className="dashboard-message-header">
+                    <strong>{message.title}</strong>
+                    <span className="dashboard-message-date">
+                      {new Date(message.publishedAt || message.createdAt).toLocaleDateString('es-ES', {
+                        month: 'short',
+                        day: 'numeric'
+                      })}
+                    </span>
+                  </div>
+                  <p className="dashboard-message-preview">
+                    {message.body.substring(0, 100)}
+                    {message.body.length > 100 && '...'}
+                  </p>
+                  <p className="dashboard-message-sender">
+                    De: {message.senderName}
+                  </p>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* Recommended Habits */}

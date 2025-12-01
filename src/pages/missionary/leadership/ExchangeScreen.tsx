@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { getLeadershipRoleEnhanced } from '../../../data/missionary/leadershipModeEnhanced';
+import { getLeadershipRoleEnhanced, LeadershipRole } from '../../../data/missionary/leadershipModeEnhanced';
+import { LeadershipRoleService } from '../../../services/leadershipRoleService';
 import {
   Exchange,
   ExchangeService,
@@ -13,7 +14,14 @@ import './ExchangeScreen.css';
 
 export const ExchangeScreen: React.FC = () => {
   const location = useLocation();
-  const role = getLeadershipRoleEnhanced('districtLeader');
+  const [currentRoleId, setCurrentRoleId] = useState<LeadershipRole>('districtLeader');
+  const [role, setRole] = useState(getLeadershipRoleEnhanced('districtLeader'));
+  
+  useEffect(() => {
+    const roleFromService = LeadershipRoleService.getCurrentRole();
+    setCurrentRoleId(roleFromService);
+    setRole(getLeadershipRoleEnhanced(roleFromService));
+  }, [location.pathname]);
   const [exchange, setExchange] = useState<Exchange | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [history, setHistory] = useState<Exchange[]>([]);
@@ -21,7 +29,7 @@ export const ExchangeScreen: React.FC = () => {
 
   useEffect(() => {
     loadHistory();
-  }, []);
+  }, [currentRoleId]);
 
   useEffect(() => {
     if (selectedExchangeId) {
@@ -29,7 +37,7 @@ export const ExchangeScreen: React.FC = () => {
     } else {
       loadExchange();
     }
-  }, [selectedExchangeId]);
+  }, [selectedExchangeId, currentRoleId]);
 
   const loadHistory = () => {
     // Cargar TODOS los intercambios del líder (no solo completados)
@@ -59,10 +67,25 @@ export const ExchangeScreen: React.FC = () => {
       setExchange(latestDraft);
       setIsLoading(false);
     } else {
+      const getLeaderName = () => {
+        if (currentRoleId === 'districtLeader') return 'Líder de Distrito';
+        if (currentRoleId === 'zoneLeader') return 'Líder de Zona';
+        if (currentRoleId === 'assistantToPresident') return 'Asistente del Presidente';
+        return 'Líder';
+      };
+      
+      const getLeaderRole = () => {
+        if (currentRoleId === 'districtLeader') return 'district_leader';
+        if (currentRoleId === 'zoneLeader') return 'zone_leader';
+        if (currentRoleId === 'assistantToPresident') return 'assistant_to_president';
+        return 'district_leader';
+      };
+      
       const newExchange: Exchange = {
         id: '',
         leaderId: 'current_user',
-        leaderName: 'Líder de Distrito',
+        leaderName: getLeaderName(),
+        leaderRole: getLeaderRole(),
         companionshipName: '',
         date: new Date().toISOString().split('T')[0],
         time: '10:00',

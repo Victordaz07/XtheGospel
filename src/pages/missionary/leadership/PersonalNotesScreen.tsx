@@ -1,19 +1,29 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { LeadershipBitacoraService, BitacoraEntry } from '../../../services/leadershipBitacoraService';
 import { PromoteNoteModal } from '../../../components/missionary/leadership/PromoteNoteModal';
-import { getLeadershipRoleEnhanced } from '../../../data/missionary/leadershipModeEnhanced';
+import { getLeadershipRoleEnhanced, LeadershipRole } from '../../../data/missionary/leadershipModeEnhanced';
+import { LeadershipRoleService } from '../../../services/leadershipRoleService';
 import { FaPaperPlane } from 'react-icons/fa';
 import '../../../pages/Page.css';
 import './LeadershipTools.css';
 
 export const PersonalNotesScreen: React.FC = () => {
+  const location = useLocation();
+  const [currentRoleId, setCurrentRoleId] = useState<LeadershipRole>('districtLeader');
+  const [role, setRole] = useState(getLeadershipRoleEnhanced('districtLeader'));
   const [entries, setEntries] = useState<BitacoraEntry[]>([]);
   const [showAddModal, setShowAddModal] = useState(false);
   const [showPromoteModal, setShowPromoteModal] = useState(false);
   const [selectedNoteContent, setSelectedNoteContent] = useState('');
   const [newEntry, setNewEntry] = useState({ date: new Date().toISOString().split('T')[0], content: '', tags: [] as string[] });
   
-  const role = getLeadershipRoleEnhanced('districtLeader');
+  useEffect(() => {
+    const roleFromService = LeadershipRoleService.getCurrentRole();
+    setCurrentRoleId(roleFromService);
+    setRole(getLeadershipRoleEnhanced(roleFromService));
+  }, [location.pathname]);
+  
   const roleColor = role?.color || '#3B82F6';
 
   useEffect(() => {

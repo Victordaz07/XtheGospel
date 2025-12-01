@@ -167,6 +167,24 @@ export const LeaderMessageService = {
       });
   },
 
+  // Obtener mensajes para una zona (incluye mensajes de misión que aplican)
+  getMessagesForZone: (zoneId: string): LeaderMessage[] => {
+    return LeaderMessageService.getAllMessages()
+      .filter(m => {
+        if (m.status !== 'published') return false;
+        // Mensajes dirigidos a la zona
+        if (m.targetScope === 'zone' && m.zoneId === zoneId) return true;
+        // Mensajes de misión (para todos)
+        if (m.targetScope === 'mission') return true;
+        return false;
+      })
+      .sort((a, b) => {
+        const dateA = new Date(a.publishedAt || a.createdAt).getTime();
+        const dateB = new Date(b.publishedAt || b.createdAt).getTime();
+        return dateB - dateA;
+      });
+  },
+
   // Obtener mensajes publicados para un misionero
   getMessagesForMissionary: (districtId?: string, zoneId?: string, missionId?: string): LeaderMessage[] => {
     const messages = LeaderMessageService.getAllMessages()

@@ -5,13 +5,23 @@ import { useAuth } from '../../../context/AuthContext';
 import { useProgress } from '../../../context/ProgressContext';
 import { useI18n } from '../../../context/I18nContext';
 import { LanguagePicker } from '../../../components/LanguagePicker';
+import RoleSelector from '../../../components/RoleSelector';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const MissionaryProfile: React.FC = () => {
-    const { logout, userRole } = useAuth();
+    const { logout, userRole, availableRoles, switchRole } = useAuth();
     const { progress, getOverallProgress, clearProgress } = useProgress();
     const { t } = useI18n();
     const insets = useSafeAreaInsets();
+
+    const handleRoleSwitch = async (newRole: string) => {
+        try {
+            await switchRole(newRole);
+        } catch (error) {
+            Alert.alert('Error', 'No se pudo cambiar de rol. Intenta nuevamente.');
+            console.error('Error switching role:', error);
+        }
+    };
 
     const handleLogout = async () => {
         Alert.alert(
@@ -81,6 +91,16 @@ const MissionaryProfile: React.FC = () => {
                         <Text style={styles.statNumber}>{overallProgress}%</Text>
                         <Text style={styles.statLabel}>Progreso total</Text>
                     </View>
+                </View>
+
+                <View style={styles.section}>
+                    <Text style={styles.sectionTitle}>Cambiar de rol</Text>
+                    <RoleSelector
+                        currentRole={userRole}
+                        availableRoles={availableRoles.length > 0 ? availableRoles : ['investigator', 'missionary', 'district_leader', 'zone_leader', 'assistant_to_president']}
+                        onRoleSelect={handleRoleSwitch}
+                        title=""
+                    />
                 </View>
 
                 <View style={styles.section}>

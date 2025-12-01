@@ -24,7 +24,8 @@ export const LeaderMessageScreen: React.FC = () => {
     // Detectar el rol actual desde la URL o el servicio
     const roleFromService = LeadershipRoleService.getCurrentRole();
     const roleId = roleFromService === 'zoneLeader' ? 'zoneLeader' : 
-                   roleFromService === 'districtLeader' ? 'districtLeader' : 'zoneLeader';
+                   roleFromService === 'districtLeader' ? 'districtLeader' :
+                   roleFromService === 'assistantToPresident' ? 'assistantToPresident' : 'zoneLeader';
     setCurrentRoleId(roleId);
     setRole(getLeadershipRoleEnhanced(roleId));
   }, [location.pathname]);
@@ -44,18 +45,36 @@ export const LeaderMessageScreen: React.FC = () => {
       setMessage(latestDraft);
     } else {
       const isDistrictLeader = currentRoleId === 'districtLeader';
+      const isAP = currentRoleId === 'assistantToPresident';
+      const getSenderName = () => {
+        if (isDistrictLeader) return 'Líder de Distrito';
+        if (isAP) return 'Asistente del Presidente';
+        return 'Líder de Zona';
+      };
+      const getSenderRole = () => {
+        if (isDistrictLeader) return 'district_leader';
+        if (isAP) return 'assistant_to_president';
+        return 'zone_leader';
+      };
+      const getTargetScope = (): TargetScope => {
+        if (isDistrictLeader) return 'district';
+        if (isAP) return 'mission';
+        return 'zone';
+      };
+      
       const newMessage: LeaderMessage = {
         id: '',
         senderId: 'current_user',
-        senderName: isDistrictLeader ? 'Líder de Distrito' : 'Líder de Zona',
-        senderRole: isDistrictLeader ? 'district_leader' : 'zone_leader',
-        zoneId: 'current_zone',
+        senderName: getSenderName(),
+        senderRole: getSenderRole(),
+        zoneId: isAP ? undefined : 'current_zone',
         districtId: isDistrictLeader ? 'current_district' : undefined,
+        missionId: 'current_mission',
         title: '',
         body: '',
         scripture: '',
         type: 'devotional',
-        targetScope: isDistrictLeader ? 'district' : 'zone',
+        targetScope: getTargetScope(),
         status: 'draft',
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString()
@@ -69,6 +88,15 @@ export const LeaderMessageScreen: React.FC = () => {
     if (currentRoleId === 'districtLeader') {
       const districtMessages = LeaderMessageService.getMessagesByDistrict('current_district');
       setSentMessages(districtMessages);
+    } else if (currentRoleId === 'assistantToPresident') {
+      const missionMessages = LeaderMessageService.getAllMessages()
+        .filter(m => m.status === 'published' && (m.targetScope === 'mission' || m.senderRole === 'assistant_to_president'))
+        .sort((a, b) => {
+          const dateA = new Date(a.publishedAt || a.createdAt).getTime();
+          const dateB = new Date(b.publishedAt || b.createdAt).getTime();
+          return dateB - dateA;
+        });
+      setSentMessages(missionMessages);
     } else {
       const zoneMessages = LeaderMessageService.getMessagesByZone('current_zone');
       setSentMessages(zoneMessages);

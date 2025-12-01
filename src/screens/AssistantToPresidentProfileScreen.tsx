@@ -1,69 +1,73 @@
+// src/screens/AssistantToPresidentProfileScreen.tsx
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Alert, ScrollView } from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  Alert,
+  ScrollView,
+} from 'react-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
-import { useAuth } from '../../../context/AuthContext';
-import { useProgress } from '../../../context/ProgressContext';
-import { useI18n } from '../../../context/I18nContext';
-import { LanguagePicker } from '../../../components/LanguagePicker';
-import RoleSelector from '../../../components/RoleSelector';
+import { useAuth } from '../../context/AuthContext';
+import { useI18n } from '../../context/I18nContext';
+import { useCurrentUser } from '../hooks/useCurrentUser';
+import { LanguagePicker } from '../../components/LanguagePicker';
+import RoleSelector from '../../components/RoleSelector';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-export default function InvestigatorProfile() {
+export const AssistantToPresidentProfileScreen: React.FC = () => {
   const { logout, userRole, availableRoles, switchRole } = useAuth();
-  const { progress, getOverallProgress, clearProgress } = useProgress();
   const { t } = useI18n();
+  const { user, loading: loadingUser } = useCurrentUser();
   const insets = useSafeAreaInsets();
+
+  if (loadingUser) {
+    return (
+      <View style={styles.center}>
+        <Text>Cargando usuario…</Text>
+      </View>
+    );
+  }
+
+  if (!user || user.missionRole !== 'assistant_to_president') {
+    return (
+      <View style={styles.center}>
+        <Text>No tienes permiso para ver este perfil.</Text>
+      </View>
+    );
+  }
 
   const handleRoleSwitch = async (newRole: string) => {
     try {
       await switchRole(newRole);
+      Alert.alert('Rol cambiado', 'Tu rol ha sido actualizado correctamente.');
     } catch (error) {
-      Alert.alert(t('common.error'), 'No se pudo cambiar de rol. Intenta nuevamente.');
+      Alert.alert('Error', 'No se pudo cambiar de rol. Intenta nuevamente.');
       console.error('Error switching role:', error);
     }
   };
 
   const handleLogout = async () => {
     Alert.alert(
-      t('profile.logout'),
-      t('profile.logoutConfirm'),
+      'Cerrar Sesión',
+      '¿Estás seguro de que quieres cerrar sesión?',
       [
-        { text: t('common.cancel'), style: 'cancel' },
+        { text: 'Cancelar', style: 'cancel' },
         {
-          text: t('profile.logout'),
+          text: 'Cerrar Sesión',
           style: 'destructive',
           onPress: async () => {
             try {
               await logout();
             } catch (error) {
-              Alert.alert(t('common.error'), t('profile.logoutError'));
+              Alert.alert('Error', 'No se pudo cerrar sesión');
             }
-          }
-        }
+          },
+        },
       ]
     );
   };
-
-  const handleClearProgress = () => {
-    Alert.alert(
-      t('profile.clearProgress'),
-      t('profile.clearProgressConfirm'),
-      [
-        { text: t('common.cancel'), style: 'cancel' },
-        {
-          text: t('profile.clearProgress'),
-          style: 'destructive',
-          onPress: () => {
-            clearProgress();
-            Alert.alert(t('common.success'), t('profile.clearProgressSuccess'));
-          }
-        }
-      ]
-    );
-  };
-
-  const completedLessons = progress.filter(lesson => lesson.completed).length;
-  const overallProgress = getOverallProgress();
 
   return (
     <SafeAreaView style={[styles.safeArea, { paddingTop: insets.top, paddingBottom: insets.bottom }]}>
@@ -73,23 +77,24 @@ export default function InvestigatorProfile() {
       >
         <View style={styles.header}>
           <View style={styles.avatar}>
-            <MaterialCommunityIcons name="account" size={60} color="#007AFF" />
+            <MaterialCommunityIcons name="star" size={60} color="#10B981" />
           </View>
-          <Text style={styles.username}>Investigador</Text>
-          <Text style={styles.role}>{userRole}</Text>
+          <Text style={styles.username}>{user.displayName || 'Asistente del Presidente'}</Text>
+          <Text style={styles.role}>Asistente del Presidente</Text>
+          <Text style={styles.missionName}>Misión: {user.missionId || 'Mi misión'}</Text>
         </View>
 
         <View style={styles.statsContainer}>
           <View style={styles.statCard}>
-            <MaterialCommunityIcons name="book-check" size={30} color="#007AFF" />
-            <Text style={styles.statNumber}>{completedLessons}</Text>
-            <Text style={styles.statLabel}>Lecciones completadas</Text>
+            <MaterialCommunityIcons name="account-tie" size={30} color="#10B981" />
+            <Text style={styles.statNumber}>Rol</Text>
+            <Text style={styles.statLabel}>Asistente del Presidente</Text>
           </View>
 
           <View style={styles.statCard}>
-            <MaterialCommunityIcons name="progress-check" size={30} color="#34C759" />
-            <Text style={styles.statNumber}>{overallProgress}%</Text>
-            <Text style={styles.statLabel}>{t('profile.progressTotal')}</Text>
+            <MaterialCommunityIcons name="map-marker" size={30} color="#10B981" />
+            <Text style={styles.statNumber}>Misión</Text>
+            <Text style={styles.statLabel}>{user.missionId || 'Mi misión'}</Text>
           </View>
         </View>
 
@@ -104,14 +109,19 @@ export default function InvestigatorProfile() {
         </View>
 
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Acciones</Text>
+          <Text style={styles.sectionTitle}>Configuración</Text>
 
-          <TouchableOpacity style={styles.actionButton} onPress={handleClearProgress}>
-            <MaterialCommunityIcons name="trash-can-outline" size={24} color="#FF3B30" />
-            <Text style={[styles.actionButtonText, { color: '#FF3B30' }]}>
-              Limpiar progreso
-            </Text>
-          </TouchableOpacity>
+          <View style={styles.settingItem}>
+            <MaterialCommunityIcons name="translate" size={24} color="#007AFF" />
+            <View style={styles.settingContent}>
+              <Text style={styles.settingLabel}>{t('profile.language')}</Text>
+              <LanguagePicker />
+            </View>
+          </View>
+        </View>
+
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Acciones</Text>
 
           <TouchableOpacity style={styles.actionButton} onPress={handleLogout}>
             <MaterialCommunityIcons name="logout" size={24} color="#FF9500" />
@@ -121,18 +131,13 @@ export default function InvestigatorProfile() {
           </TouchableOpacity>
         </View>
 
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>{t('profile.language')}</Text>
-          <LanguagePicker />
-        </View>
-
         <View style={styles.footer}>
           <Text style={styles.version}>Versión 1.0.0</Text>
         </View>
       </ScrollView>
     </SafeAreaView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   safeArea: {
@@ -145,6 +150,11 @@ const styles = StyleSheet.create({
   scrollContent: {
     flexGrow: 1,
   },
+  center: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   header: {
     alignItems: 'center',
     padding: 30,
@@ -154,7 +164,7 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     borderRadius: 50,
-    backgroundColor: '#f0f8ff',
+    backgroundColor: '#D1FAE5',
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 15,
@@ -167,8 +177,14 @@ const styles = StyleSheet.create({
   },
   role: {
     fontSize: 16,
-    color: '#7f8c8d',
+    color: '#10B981',
+    fontWeight: '600',
     textTransform: 'capitalize',
+  },
+  missionName: {
+    fontSize: 14,
+    color: '#7f8c8d',
+    marginTop: 4,
   },
   statsContainer: {
     flexDirection: 'row',
@@ -182,13 +198,13 @@ const styles = StyleSheet.create({
     padding: 15,
   },
   statNumber: {
-    fontSize: 24,
-    fontWeight: 'bold',
+    fontSize: 16,
+    fontWeight: '600',
     color: '#2c3e50',
     marginVertical: 5,
   },
   statLabel: {
-    fontSize: 14,
+    fontSize: 12,
     color: '#7f8c8d',
     textAlign: 'center',
   },
@@ -202,6 +218,21 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     color: '#2c3e50',
     marginBottom: 15,
+  },
+  settingItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 10,
+  },
+  settingContent: {
+    flex: 1,
+    marginLeft: 15,
+  },
+  settingLabel: {
+    fontSize: 16,
+    fontWeight: '500',
+    color: '#2c3e50',
+    marginBottom: 8,
   },
   actionButton: {
     flexDirection: 'row',
@@ -225,3 +256,4 @@ const styles = StyleSheet.create({
     color: '#7f8c8d',
   },
 });
+

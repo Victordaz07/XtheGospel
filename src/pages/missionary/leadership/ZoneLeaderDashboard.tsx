@@ -1,14 +1,44 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { getLeadershipRoleEnhanced } from '../../../data/missionary/leadershipModeEnhanced';
+import { ZoneCouncilService } from '../../../services/zoneCouncilService';
+import { LeaderMessageService } from '../../../services/leaderMessageService';
 import '../../../pages/Page.css';
 import './LeadershipDashboard.css';
 
 export const ZoneLeaderDashboard: React.FC = () => {
   const location = useLocation();
   const role = getLeadershipRoleEnhanced('zoneLeader');
+  const [upcomingEvents, setUpcomingEvents] = useState<any[]>([]);
+  const [recentMessages, setRecentMessages] = useState<any[]>([]);
 
-  if (!role) return null;
+  useEffect(() => {
+    loadDashboardData();
+  }, []);
+
+  const loadDashboardData = () => {
+    // Cargar próximos eventos de la zona
+    const events = ZoneCouncilService.getEventsForZone('current_zone');
+    const upcoming = events
+      .filter(e => e.status === 'upcoming')
+      .slice(0, 5);
+    setUpcomingEvents(upcoming);
+
+    // Cargar mensajes recientes
+    const messages = LeaderMessageService.getMessagesForZone('current_zone');
+    setRecentMessages(messages.slice(0, 3));
+  };
+
+  if (!role) {
+    return (
+      <div className="page">
+        <div className="page-header">
+          <h1>Error</h1>
+          <p className="page-subtitle">No se pudo cargar la configuración del rol</p>
+        </div>
+      </div>
+    );
+  }
 
   const getTabRoute = (tabId: string) => {
     const basePath = location.pathname.includes('/member/') 
@@ -84,6 +114,60 @@ export const ZoneLeaderDashboard: React.FC = () => {
               </Link>
             ))}
           </div>
+        </div>
+
+        {/* Próximos eventos */}
+        <div className="leadership-events-card">
+          <h3>Próximos eventos de la zona</h3>
+          {upcomingEvents.length === 0 ? (
+            <p className="dashboard-empty">No hay eventos programados</p>
+          ) : (
+            <div className="dashboard-events-list">
+              {upcomingEvents.map((event) => (
+                <div key={event.id} className="dashboard-event-item">
+                  <div className="dashboard-event-icon" style={{ backgroundColor: `${role.color}15`, color: role.color }}>
+                    {event.type === 'zone_council' ? '📋' : event.type === 'exchange' ? '🔄' : event.type === 'baptismal_interview' ? '💧' : '📨'}
+                  </div>
+                  <div className="dashboard-event-content">
+                    <strong>{event.title}</strong>
+                    <p>{event.date} {event.time && `– ${event.time}`}</p>
+                    {event.location && <p className="dashboard-event-location">{event.location}</p>}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* Mensajes recientes */}
+        <div className="leadership-messages-card">
+          <h3>Mensajes recientes</h3>
+          {recentMessages.length === 0 ? (
+            <p className="dashboard-empty">No hay mensajes recientes</p>
+          ) : (
+            <div className="dashboard-messages-list">
+              {recentMessages.map((message) => (
+                <div key={message.id} className="dashboard-message-item">
+                  <div className="dashboard-message-header">
+                    <strong>{message.title}</strong>
+                    <span className="dashboard-message-date">
+                      {new Date(message.publishedAt || message.createdAt).toLocaleDateString('es-ES', {
+                        month: 'short',
+                        day: 'numeric'
+                      })}
+                    </span>
+                  </div>
+                  <p className="dashboard-message-preview">
+                    {message.body.substring(0, 100)}
+                    {message.body.length > 100 && '...'}
+                  </p>
+                  <p className="dashboard-message-sender">
+                    De: {message.senderName}
+                  </p>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* Recommended Habits */}
