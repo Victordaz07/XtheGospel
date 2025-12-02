@@ -57,10 +57,10 @@ export const LeadershipRoleSelector: React.FC<LeadershipRoleSelectorProps> = ({ 
     // Navigate to appropriate layout based on role
     if (role !== 'none') {
       // Redirect to leadership dashboard
-      navigate(`/missionary/leadership/${role}/dashboard`);
+      navigate(`/missionary/leadership/${role}/dashboard`, { replace: true });
     } else {
-      // Redirect to regular missionary home
-      navigate('/missionary/home');
+      // When switching to 'none', show transition screen first
+      navigate('/missionary/leadership/transition-to-regular', { replace: true });
     }
   };
 

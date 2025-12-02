@@ -5,6 +5,7 @@ import { AuthProvider } from './context/AuthContext';
 import { ProgressProvider } from './context/ProgressContext';
 import AppRouter from './router/AppRouter';
 import ErrorBoundary from './components/ErrorBoundary';
+import { XtgAppLayout } from './layouts/XtgAppLayout';
 
 export default function App() {
   console.log('📱 Renderizando App...');
@@ -14,7 +15,9 @@ export default function App() {
         <AuthProvider>
           <ProgressProvider>
             <BrowserRouter>
-              <AppRouter />
+              <XtgAppLayout>
+                <AppRouter />
+              </XtgAppLayout>
             </BrowserRouter>
           </ProgressProvider>
         </AuthProvider>

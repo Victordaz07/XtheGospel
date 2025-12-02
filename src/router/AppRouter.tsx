@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useRoleStore } from '../store/useRoleStore';
-import AuthPage from '../pages/AuthPage';
+import { RoleSelectionScreen } from '../pages/auth/RoleSelectionScreen';
 import InvestigatorLayout from '../layouts/LearningLayout';
 import MissionaryLayout from '../layouts/MissionaryLayout';
 import MemberLayout from '../layouts/MemberLayout';
@@ -130,7 +130,7 @@ const AppRouter: React.FC = () => {
         )
       ) : (
         <>
-          <Route path="/auth" element={<AuthPage />} />
+          <Route path="/auth" element={<RoleSelectionScreen />} />
           <Route path="*" element={<Navigate to="/auth" replace />} />
         </>
       )}

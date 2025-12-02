@@ -1,0 +1,135 @@
+:root {
+  /* Colors */
+  --xtg-bg: #f3f4f6;
+  --xtg-surface: #ffffff;
+  --xtg-border: #e5e7eb;
+  --xtg-text: #111827;
+  --xtg-text-muted: #6b7280;
+  --xtg-primary: #1d4ed8;
+  --xtg-primary-soft: #e0ecff;
+  --xtg-accent: #16a34a;
+  --xtg-radius-lg: 16px;
+  --xtg-radius-md: 12px;
+  --xtg-shadow-soft: 0 1px 3px rgba(15, 23, 42, 0.08);
+
+  /* Spacing */
+  --xtg-space-xs: 4px;
+  --xtg-space-sm: 8px;
+  --xtg-space-md: 12px;
+  --xtg-space-lg: 16px;
+  --xtg-space-xl: 24px;
+
+  /* Layout */
+  --xtg-max-width: 1120px;
+}
+
+/* App background */
+.xtg-app-shell {
+  min-height: 100vh;
+  background-color: var(--xtg-bg);
+}
+
+/* Centered page container (misma línea que Perfiles Misionales) */
+.xtg-page {
+  max-width: var(--xtg-max-width);
+  margin: 0 auto;
+  padding: var(--xtg-space-xl) var(--xtg-space-lg);
+}
+
+/* Page header */
+.xtg-page-header {
+  margin-bottom: var(--xtg-space-xl);
+}
+
+.xtg-page-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--xtg-text);
+  margin-bottom: var(--xtg-space-sm);
+}
+
+.xtg-page-subtitle {
+  font-size: 14px;
+  color: var(--xtg-text-muted);
+}
+
+/* Cards */
+.xtg-card {
+  background-color: var(--xtg-surface);
+  border-radius: var(--xtg-radius-lg);
+  border: 1px solid var(--xtg-border);
+  box-shadow: var(--xtg-shadow-soft);
+  padding: var(--xtg-space-lg);
+}
+
+/* Sections */
+.xtg-section {
+  margin-bottom: var(--xtg-space-xl);
+}
+
+.xtg-section-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: var(--xtg-space-md);
+  color: var(--xtg-text);
+}
+
+/* Grid helpers */
+.xtg-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--xtg-space-lg);
+}
+
+.xtg-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--xtg-space-lg);
+}
+
+@media (max-width: 900px) {
+  .xtg-page {
+    padding: var(--xtg-space-lg) var(--xtg-space-md);
+  }
+
+  .xtg-grid-2,
+  .xtg-grid-3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Text helpers */
+.xtg-text-muted {
+  color: var(--xtg-text-muted);
+  font-size: 14px;
+}
+
+/* Badges */
+.xtg-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 500;
+  background-color: var(--xtg-primary-soft);
+  color: #1e40af;
+  margin-bottom: var(--xtg-space-sm);
+}
+
+/* Card title */
+.xtg-card-title {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: var(--xtg-space-sm);
+}
+
+/* Vertical stacks */
+.xtg-stack-md > * + * {
+  margin-top: var(--xtg-space-md);
+}
+
+.xtg-stack-lg > * + * {
+  margin-top: var(--xtg-space-lg);
+}
+

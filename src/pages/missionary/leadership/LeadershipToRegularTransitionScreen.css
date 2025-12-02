@@ -1,0 +1,250 @@
+.transition-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Hero Card */
+.transition-hero-card {
+  text-align: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #ffffff;
+  border: none;
+  padding: 40px 32px;
+}
+
+.transition-icon-wrapper {
+  margin-bottom: 20px;
+}
+
+.transition-icon {
+  font-size: 64px;
+  display: inline-block;
+  animation: gentlePulse 2s ease-in-out infinite;
+}
+
+@keyframes gentlePulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.transition-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #ffffff;
+}
+
+.transition-message {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 24px;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.transition-message strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.transition-quote {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.transition-quote-text {
+  font-size: 18px;
+  font-style: italic;
+  font-weight: 500;
+  margin-bottom: 12px;
+  color: #ffffff;
+}
+
+.transition-quote-author {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.5;
+}
+
+/* Encouragement Card */
+.transition-encouragement {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border: 2px solid #fbbf24;
+  padding: 24px;
+}
+
+.encouragement-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.encouragement-icon {
+  font-size: 32px;
+  flex-shrink: 0;
+}
+
+.encouragement-text h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #92400e;
+  margin-bottom: 8px;
+}
+
+.encouragement-text p {
+  font-size: 14px;
+  color: #78350f;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Options Section */
+.transition-options-section {
+  margin-top: 32px;
+}
+
+.transition-options-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.transition-options-subtitle {
+  font-size: 14px;
+  color: #6b7280;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.transition-options-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.transition-option {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  background: #ffffff;
+  border: 2px solid #e5e7eb;
+  border-radius: 16px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.transition-option:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12);
+}
+
+.transition-option--active {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.transition-option-icon {
+  font-size: 32px;
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: #f3f4f6;
+}
+
+.transition-option--blue .transition-option-icon {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+}
+
+.transition-option--green .transition-option-icon {
+  background: linear-gradient(135deg, #10b981, #059669);
+}
+
+.transition-option--purple .transition-option-icon {
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+}
+
+.transition-option--orange .transition-option-icon {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+}
+
+.transition-option-content {
+  flex: 1;
+}
+
+.transition-option-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 4px;
+}
+
+.transition-option-description {
+  font-size: 13px;
+  color: #6b7280;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.transition-option-arrow {
+  font-size: 20px;
+  color: #9ca3af;
+  flex-shrink: 0;
+}
+
+.transition-option:hover .transition-option-arrow {
+  color: #3b82f6;
+  transform: translateX(4px);
+}
+
+/* Reminder Card */
+.transition-reminder {
+  margin-top: 32px;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  padding: 20px;
+}
+
+.transition-reminder-text {
+  font-size: 14px;
+  color: #1e40af;
+  line-height: 1.6;
+  margin: 0;
+  text-align: center;
+}
+
+.transition-reminder-text strong {
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .transition-hero-card {
+    padding: 32px 24px;
+  }
+
+  .transition-title {
+    font-size: 24px;
+  }
+
+  .transition-options-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .transition-option {
+    padding: 16px;
+  }
+}
+
