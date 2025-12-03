@@ -1,0 +1,254 @@
+/* Header */
+.mg-header-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+}
+
+.mg-header-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.mg-header-sub {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.mg-header-badge {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #4c1d95;
+  background: #ede9fe;
+}
+
+/* Progreso global */
+.mg-progress-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.mg-progress-bar {
+  flex: 1;
+  height: 8px;
+  border-radius: 999px;
+  background: #e5e7eb;
+  overflow: hidden;
+}
+
+.mg-progress-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #4f46e5, #a855f7);
+}
+
+.mg-progress-text {
+  font-size: 12px;
+  color: #4b5563;
+}
+
+/* Filtros */
+.mg-filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.mg-filter-pill {
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  padding: 5px 10px;
+  font-size: 11px;
+  background: #ffffff;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mg-filter-pill:hover {
+  border-color: #d1d5db;
+  background: #f9fafb;
+}
+
+.mg-filter-pill--active {
+  border-color: #4f46e5;
+  background: #eef2ff;
+  color: #312e81;
+  font-weight: 500;
+}
+
+/* Lista de lecciones */
+.mg-lesson-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mg-lesson-card {
+  border-radius: 18px;
+  padding: 14px 14px 12px;
+  background: #ffffff;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+  border: 1px solid #eef2ff;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.mg-lesson-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.1);
+}
+
+.mg-lesson-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.mg-lesson-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 2px;
+}
+
+.mg-lesson-meta {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.mg-lesson-status {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.mg-lesson-status--not-started {
+  background: #f9fafb;
+  color: #6b7280;
+}
+
+.mg-lesson-status--in-progress {
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+.mg-lesson-status--completed {
+  background: #ecfdf3;
+  color: #166534;
+}
+
+.mg-lesson-recommended {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #4b5563;
+  line-height: 1.4;
+}
+
+/* Progreso por lección */
+.mg-lesson-progress-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.mg-lesson-progress-bar {
+  flex: 1;
+  height: 6px;
+  border-radius: 999px;
+  background: #e5e7eb;
+  overflow: hidden;
+}
+
+.mg-lesson-progress-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #6366f1, #a855f7);
+  transition: width 0.3s ease;
+}
+
+.mg-lesson-progress-text {
+  font-size: 11px;
+  color: #6b7280;
+  white-space: nowrap;
+}
+
+/* Acciones */
+.mg-lesson-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.mg-lesson-primary {
+  flex: 1 1 140px;
+  border: none;
+  border-radius: 999px;
+  padding: 9px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #ffffff;
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.mg-lesson-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+}
+
+.mg-lesson-primary:active {
+  transform: translateY(0);
+}
+
+.mg-lesson-secondary {
+  flex: 1 1 140px;
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  color: #4b5563;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mg-lesson-secondary:hover {
+  border-color: #d1d5db;
+  background: #ffffff;
+  color: #111827;
+}
+
+.mg-lesson-secondary:active {
+  background: #f3f4f6;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .mg-header-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .mg-lesson-actions {
+    flex-direction: column;
+  }
+
+  .mg-lesson-primary,
+  .mg-lesson-secondary {
+    flex: 1 1 100%;
+  }
+}
+

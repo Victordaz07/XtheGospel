@@ -11,12 +11,14 @@ import {
 import { useI18n } from '../context/I18nContext';
 import { useAuth } from '../context/AuthContext';
 import { FloatingMenu } from '../ui/components';
-import MissionaryHome from '../pages/serving/MissionaryHome';
+import { MissionaryHomeScreen } from '../pages/missionary/MissionaryHomeScreen';
+import { MissionaryGuideScreen } from '../pages/missionary/MissionaryGuideScreen';
+import { MissionaryPeopleScreen } from '../pages/missionary/MissionaryPeopleScreen';
 import MissionaryAgenda from '../pages/serving/MissionaryAgenda';
-import MissionaryPeople from '../pages/serving/MissionaryPeople';
 import MissionaryLessons from '../pages/serving/MissionaryLessons';
 import MissionaryProfile from '../pages/missionary/MissionaryProfile';
 import { LeadershipCenterScreen } from '../pages/missionary/leadership/LeadershipCenterScreen';
+import { MissionaryIdentityReminderPage } from '../pages/missionary/MissionaryIdentityReminderPage';
 import CommitmentsPage from '../pages/CommitmentsPage';
 import { FaShield } from 'react-icons/fa6';
 import './Layout.css';
@@ -44,12 +46,15 @@ const MissionaryLayout: React.FC = () => {
         <FloatingMenu tabs={tabs} />
         <main className="layout-content">
           <Routes>
-            <Route path="/home" element={<MissionaryHome />} />
+            <Route path="/home" element={<MissionaryHomeScreen />} />
             <Route path="/agenda" element={<MissionaryAgenda />} />
-            <Route path="/people" element={<MissionaryPeople />} />
+            <Route path="/people" element={<MissionaryPeopleScreen />} />
             <Route path="/tasks" element={<CommitmentsPage />} />
             <Route path="/leadership" element={<LeadershipCenterScreen />} />
-            <Route path="/lessons/*" element={<MissionaryLessons />} />
+            <Route path="/guide" element={<MissionaryGuideScreen />} />
+            <Route path="/identity-reminder" element={<MissionaryIdentityReminderPage />} />
+            <Route path="/lessons" element={<MissionaryGuideScreen />} />
+            <Route path="/lessons/:lessonId/*" element={<MissionaryLessons />} />
             <Route path="/missionary/lessons/*" element={<MissionaryLessons />} />
             <Route path="/profile" element={<MissionaryProfile />} />
             <Route path="/" element={<Navigate to="/home" replace />} />

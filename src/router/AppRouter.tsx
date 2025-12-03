@@ -11,6 +11,9 @@ import { MissionaryLeadershipLayout } from '../layouts/MissionaryLeadershipLayou
 import LoadingScreen from '../components/LoadingScreen';
 import { getRoleDefaultRoute, UserRoleKey } from '../config/roles';
 import { LeadershipRoleService } from '../services/leadershipRoleService';
+import { PrivacyPage } from '../pages/legal/PrivacyPage';
+import { TermsPage } from '../pages/legal/TermsPage';
+import { SupportPage } from '../pages/support/SupportPage';
 
 const AppRouter: React.FC = () => {
   const { userRole, isLoading } = useAuth();
@@ -77,13 +80,24 @@ const AppRouter: React.FC = () => {
         const isOnLeadershipRoute = location.pathname.startsWith('/missionary/leadership');
         
         if (hasLeadershipRole && !isOnLeadershipRoute && location.pathname !== '/missionary/profile') {
-          // Redirect to leadership dashboard
-          return <Navigate to={`/missionary/leadership/${leadershipRole}/dashboard`} replace />;
+          // Allow access to leadership center screen for regular missionaries
+          // This is the "Centro de Liderazgo" screen within MissionaryLayout
+          if (location.pathname === '/leadership') {
+            // Let it through to MissionaryLayout - don't redirect
+          } else {
+            // Redirect to leadership dashboard
+            return <Navigate to={`/missionary/leadership/${leadershipRole}/dashboard`} replace />;
+          }
         }
         
         if (!hasLeadershipRole && isOnLeadershipRoute) {
-          // Redirect away from leadership routes if no role active
-          return <Navigate to={defaultRoute} replace />;
+          // Allow identity reminder screen when transitioning from leadership to regular
+          if (location.pathname === '/identity-reminder') {
+            // Let it through to MissionaryLayout - don't redirect
+          } else {
+            // Redirect away from leadership routes if no role active
+            return <Navigate to={defaultRoute} replace />;
+          }
         }
       } catch (error) {
         console.error('Error checking leadership role:', error);
@@ -110,6 +124,11 @@ const AppRouter: React.FC = () => {
 
   return (
     <Routes>
+      {/* Legal pages - accessible to everyone */}
+      <Route path="/privacy" element={<PrivacyPage />} />
+      <Route path="/terms" element={<TermsPage />} />
+      <Route path="/support" element={<SupportPage />} />
+      
       {userRole ? (
         userRole === 'investigator' ? (
           <Route path="/*" element={<InvestigatorLayout />} />

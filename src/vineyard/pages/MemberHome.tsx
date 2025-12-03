@@ -29,6 +29,7 @@ import {
 import { FeaturedContentSection } from '../../member/components/FeaturedContentSection';
 import { NotificationsModal } from '../components/NotificationsModal';
 import { MemberMenu } from '../components/MemberMenu';
+import { AppFooter } from '../../components/layout/AppFooter';
 import '../styles/memberMobile.css';
 import './MemberHome.css';
 
@@ -202,6 +203,7 @@ export const MemberHome: React.FC = () => {
           </div>
         </section>
       </div>
+      <AppFooter />
     </PageContainer>
   );
 };

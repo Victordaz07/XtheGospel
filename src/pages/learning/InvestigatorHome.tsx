@@ -6,6 +6,7 @@ import { useProgress } from '../../context/ProgressContext';
 import { LESSONS } from '../../../data/lessonsData';
 import { getDailyDevotional } from '../../data/devotionals';
 import { CommitmentsService } from '../../services/commitmentsService';
+import { AppFooter } from '../../components/layout/AppFooter';
 import {
   PageContainer,
   TopBar,
@@ -216,6 +217,7 @@ const InvestigatorHome: React.FC = () => {
           </div>
         </Section>
       </div>
+      <AppFooter />
     </PageContainer>
   );
 };

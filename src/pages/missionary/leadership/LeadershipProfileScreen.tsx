@@ -11,6 +11,10 @@ import { FaSignOutAlt, FaGlobe, FaUser, FaChevronRight } from 'react-icons/fa';
 import '../../../pages/Page.css';
 import './LeadershipProfileScreen.css';
 
+// Browser globals for web environment
+declare const confirm: (message?: string) => boolean;
+declare const alert: (message?: string) => void;
+
 const languageOptions: { code: Locale; name: string; flag: string }[] = [
   { code: 'es', name: 'Español', flag: '🇪🇸' },
   { code: 'en', name: 'English', flag: '🇺🇸' },
@@ -27,6 +31,7 @@ export const LeadershipProfileScreen: React.FC = () => {
   const roleConfig = getLeadershipRoleEnhanced(currentLeadershipRole);
 
   const handleLogout = async () => {
+    // eslint-disable-next-line no-restricted-globals
     if (confirm('¿Estás seguro de que deseas cerrar sesión?')) {
       await logout();
       navigate('/');
@@ -43,13 +48,30 @@ export const LeadershipProfileScreen: React.FC = () => {
 
     if (newRole === 'none') {
       // Volver al modo misionero normal
+      const previousRole = currentLeadershipRole;
       LeadershipRoleService.setCurrentRole('none');
-      // Force router to re-evaluate layout by reloading
-      window.location.href = '/home';
+
+      // Map leadership role to abbreviation
+      const roleAbbreviation =
+        previousRole === 'districtLeader'
+          ? 'DL'
+          : previousRole === 'zoneLeader'
+          ? 'ZL'
+          : previousRole === 'assistantToPresident'
+          ? 'AP'
+          : undefined;
+
+      // Show identity reminder screen first
+      // Navigate to identity reminder - router will switch to MissionaryLayout
+      navigate('/identity-reminder', {
+        replace: true,
+        state: { previousLeadershipRole: roleAbbreviation },
+      });
     } else {
       // Cambiar a otro rol de liderazgo
       const canChange = LeadershipRoleService.canChangeRole();
       if (!canChange) {
+        // eslint-disable-next-line no-restricted-globals
         alert(
           'No puedes cambiar de rol en este momento. Debes esperar 6 semanas desde el último cambio.',
         );

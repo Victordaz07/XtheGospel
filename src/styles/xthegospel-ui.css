@@ -41,6 +41,25 @@
   margin-bottom: var(--xtg-space-xl);
 }
 
+.xtg-page-header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--xtg-space-md);
+}
+
+.xtg-page-right-icon {
+  font-size: 20px;
+  cursor: pointer;
+  padding: var(--xtg-space-sm);
+  border-radius: var(--xtg-radius-md);
+  transition: background-color 0.2s ease;
+}
+
+.xtg-page-right-icon:hover {
+  background-color: var(--xtg-primary-soft);
+}
+
 .xtg-page-title {
   font-size: 22px;
   font-weight: 700;
@@ -117,11 +136,40 @@
   margin-bottom: var(--xtg-space-sm);
 }
 
+/* Card header */
+.xtg-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--xtg-space-md);
+  gap: var(--xtg-space-md);
+}
+
 /* Card title */
 .xtg-card-title {
   font-size: 15px;
   font-weight: 600;
-  margin-bottom: var(--xtg-space-sm);
+  margin: 0;
+  flex: 1;
+}
+
+/* Card action button */
+.xtg-card-action {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--xtg-primary);
+  background: none;
+  border: none;
+  padding: var(--xtg-space-xs) var(--xtg-space-sm);
+  cursor: pointer;
+  border-radius: var(--xtg-radius-md);
+  transition: background-color 0.2s ease, color 0.2s ease;
+  white-space: nowrap;
+}
+
+.xtg-card-action:hover {
+  background-color: var(--xtg-primary-soft);
+  color: #1e40af;
 }
 
 /* Vertical stacks */

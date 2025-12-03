@@ -1,0 +1,312 @@
+.mh-section-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 8px;
+}
+
+/* Resumen de hoy */
+.mh-today-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.mh-today-item {
+  padding: 8px 10px;
+  border-radius: 12px;
+  background: #f9fafb;
+}
+
+.mh-today-label {
+  display: block;
+  font-size: 11px;
+  color: #6b7280;
+  margin-bottom: 4px;
+}
+
+.mh-today-value {
+  font-size: 16px;
+  font-weight: 600;
+  color: #111827;
+}
+
+/* Grid de métricas */
+.mh-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.mh-metric-title {
+  font-size: 12px;
+  color: #6b7280;
+  margin-bottom: 4px;
+}
+
+.mh-metric-main {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 2px;
+}
+
+.mh-metric-sub {
+  font-size: 11px;
+  color: #9ca3af;
+}
+
+/* Tarjeta de progreso */
+.mh-metric-wide {
+  grid-column: span 2 / span 2;
+}
+
+.mh-progress-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 4px 0;
+}
+
+.mh-progress-bar {
+  flex: 1;
+  height: 8px;
+  border-radius: 999px;
+  background: #e5e7eb;
+  overflow: hidden;
+}
+
+.mh-progress-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #4f46e5, #0ea5e9);
+}
+
+.mh-progress-value {
+  font-size: 12px;
+  font-weight: 500;
+  color: #111827;
+}
+
+/* Lista de eventos */
+.mh-event-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mh-event-item {
+  display: flex;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.mh-event-item:last-child {
+  border-bottom: none;
+}
+
+.mh-event-time {
+  font-size: 12px;
+  font-weight: 500;
+  color: #4b5563;
+  min-width: 60px;
+}
+
+.mh-event-main {
+  flex: 1;
+}
+
+.mh-event-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: #111827;
+}
+
+.mh-event-subtitle {
+  font-size: 11px;
+  color: #9ca3af;
+}
+
+/* Personas en enfoque */
+.mh-person-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mh-person-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.mh-person-item:last-child {
+  border-bottom: none;
+}
+
+.mh-person-name {
+  font-size: 13px;
+  color: #111827;
+}
+
+.mh-person-status {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+.mh-person-status--green {
+  background: #ecfdf3;
+  color: #166534;
+}
+
+.mh-person-status--amber {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.mh-person-status--red {
+  background: #fef2f2;
+  color: #b91c1c;
+}
+
+.mh-person-status--blue {
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+/* Compromisos clave */
+.mh-commitment-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mh-commitment-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 6px 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.mh-commitment-item:last-child {
+  border-bottom: none;
+}
+
+.mh-commitment-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.mh-commitment-person {
+  font-size: 13px;
+  font-weight: 500;
+  color: #111827;
+}
+
+.mh-commitment-desc {
+  font-size: 11px;
+  color: #6b7280;
+}
+
+.mh-commitment-due {
+  font-size: 11px;
+  color: #7c3aed;
+}
+
+/* Enfoque espiritual */
+.mh-spiritual-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.mh-spiritual-ref {
+  font-size: 12px;
+  color: #7c3aed;
+  margin-bottom: 4px;
+}
+
+.mh-spiritual-summary {
+  font-size: 13px;
+  color: #4b5563;
+}
+
+/* Acciones rápidas */
+.mh-quick-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.mh-quick-card {
+  border: none;
+  border-radius: 16px;
+  padding: 10px 12px;
+  background: #ffffff;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.mh-quick-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.12);
+}
+
+.mh-quick-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #eef2ff;
+  font-size: 18px;
+}
+
+.mh-quick-text {
+  flex: 1;
+}
+
+.mh-quick-title {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.mh-quick-sub {
+  display: block;
+  font-size: 11px;
+  color: #6b7280;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .mh-today-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mh-grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .mh-metric-wide {
+    grid-column: span 1 / span 1;
+  }
+
+  .mh-quick-grid {
+    grid-template-columns: 1fr;
+  }
+}
+

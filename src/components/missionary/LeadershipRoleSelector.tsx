@@ -45,6 +45,7 @@ export const LeadershipRoleSelector: React.FC<LeadershipRoleSelectorProps> = ({ 
   };
 
   const confirmRoleChange = (role: LeadershipRole) => {
+    const previousRole = currentRole;
     LeadershipRoleService.setCurrentRole(role);
     setCurrentRole(role);
     setShowSelector(false);
@@ -59,8 +60,19 @@ export const LeadershipRoleSelector: React.FC<LeadershipRoleSelectorProps> = ({ 
       // Redirect to leadership dashboard
       navigate(`/missionary/leadership/${role}/dashboard`, { replace: true });
     } else {
-      // When switching to 'none', show transition screen first
-      navigate('/missionary/leadership/transition-to-regular', { replace: true });
+      // When switching to 'none', show identity reminder screen first
+      // Map leadership role to abbreviation
+      const roleAbbreviation = previousRole === 'districtLeader' ? 'DL' 
+        : previousRole === 'zoneLeader' ? 'ZL'
+        : previousRole === 'assistantToPresident' ? 'AP'
+        : undefined;
+      
+      // Navigate to identity reminder - this will work once router switches to MissionaryLayout
+      // Use absolute path that router will handle
+      navigate('/identity-reminder', { 
+        replace: true,
+        state: { previousLeadershipRole: roleAbbreviation }
+      });
     }
   };
 
