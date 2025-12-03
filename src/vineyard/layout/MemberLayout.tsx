@@ -18,7 +18,7 @@ import { MemberConvertidosPage } from '../pages/MemberConvertidosPage';
 import { MemberConvertidosDetailPage } from '../pages/MemberConvertidosDetailPage';
 import MemberFriends from '../../pages/member/MemberFriends';
 import MemberMissionarySupport from '../../pages/member/MemberMissionarySupport';
-import MemberProfile from '../../pages/member/MemberProfile';
+import { MissionaryProfileScreen } from '../../pages/profile/MissionaryProfileScreen';
 import { FeaturedContentPage } from '../../pages/member/FeaturedContentPage';
 import { LeaderTodayPanelScreen } from '../../pages/member/LeaderTodayPanelScreen';
 import { LeaderNewConvertsScreen } from '../../pages/member/LeaderNewConvertsScreen';
@@ -103,7 +103,7 @@ export const MemberLayout: React.FC = () => {
             <Route path="/member/progress" element={<ProgressPage />} />
             <Route path="/member/friends" element={<MemberFriends />} />
             <Route path="/member/support" element={<MemberMissionarySupport />} />
-            <Route path="/member/profile" element={<MemberProfile />} />
+            <Route path="/member/profile" element={<MissionaryProfileScreen />} />
             <Route path="/member/featured" element={<FeaturedContentPage />} />
             <Route path="/member/leader/today" element={<LeaderTodayPanelScreen />} />
             <Route path="/member/leader/converts" element={<LeaderNewConvertsScreen />} />

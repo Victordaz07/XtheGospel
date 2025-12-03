@@ -1,0 +1,362 @@
+.mc-section-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 6px;
+}
+
+/* Métricas */
+.mc-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.mc-metric-label {
+  font-size: 11px;
+  color: #6b7280;
+}
+
+.mc-metric-value {
+  margin-top: 2px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+}
+
+/* Formulario de nuevo compromiso */
+.mc-add-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mc-input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  font-size: 14px;
+  color: #111827;
+  background: #ffffff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.mc-input:focus {
+  outline: none;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.mc-select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  font-size: 14px;
+  color: #111827;
+  background: #ffffff;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.mc-select:focus {
+  outline: none;
+  border-color: #4f46e5;
+}
+
+.mc-add-button {
+  border: none;
+  border-radius: 999px;
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #ffffff;
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.mc-add-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+}
+
+.mc-add-button:active {
+  transform: translateY(0);
+}
+
+.mc-add-hint {
+  margin-top: 8px;
+  font-size: 11px;
+  color: #6b7280;
+  line-height: 1.4;
+}
+
+/* Filtros */
+.mc-filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.mc-filter-pill {
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  padding: 5px 10px;
+  font-size: 11px;
+  background: #ffffff;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mc-filter-pill:hover {
+  border-color: #d1d5db;
+  background: #f9fafb;
+}
+
+.mc-filter-pill--active {
+  border-color: #4f46e5;
+  background: #eef2ff;
+  color: #312e81;
+  font-weight: 500;
+}
+
+/* Lista */
+.mc-list-section {
+  margin-top: 4px;
+}
+
+/* Empty state */
+.mc-empty-state {
+  text-align: center;
+  padding: 24px 12px;
+  border-radius: 18px;
+  background: #f9fafb;
+  border: 1px dashed #d1d5db;
+}
+
+.mc-empty-icon {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.mc-empty-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.mc-empty-text {
+  font-size: 12px;
+  color: #6b7280;
+  margin-top: 4px;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.mc-empty-button {
+  border-radius: 999px;
+  border: none;
+  padding: 8px 16px;
+  font-size: 12px;
+  font-weight: 600;
+  background: #4f46e5;
+  color: #ffffff;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.mc-empty-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+}
+
+.mc-empty-button:active {
+  transform: translateY(0);
+}
+
+/* Cards de compromisos */
+.mc-commitment-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mc-commitment-card {
+  border-radius: 18px;
+  padding: 12px 14px;
+  background: #ffffff;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
+  border: 1px solid #eef2ff;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.mc-commitment-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.1);
+}
+
+.mc-commitment-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.mc-commitment-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0 0 2px 0;
+}
+
+.mc-commitment-meta {
+  font-size: 11px;
+  color: #9ca3af;
+  margin: 0;
+}
+
+.mc-status-pill {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+/* Colores por estado */
+.mc-status-pill--pending {
+  background: #eef2ff;
+  color: #1d4ed8;
+}
+
+.mc-status-pill--in-progress {
+  background: #ecfeff;
+  color: #0e7490;
+}
+
+.mc-status-pill--completed {
+  background: #ecfdf3;
+  color: #166534;
+}
+
+.mc-status-pill--overdue {
+  background: #fef2f2;
+  color: #b91c1c;
+}
+
+.mc-due-label {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #4b5563;
+  margin-bottom: 4px;
+}
+
+/* Tags de tipo */
+.mc-tag-row {
+  margin-top: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.mc-type-pill {
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+.mc-type-pill--spiritual {
+  background: #f3e8ff;
+  color: #7c3aed;
+}
+
+.mc-type-pill--study {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.mc-type-pill--attendance {
+  background: #ecfdf3;
+  color: #166534;
+}
+
+.mc-type-pill--service {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+/* Acciones */
+.mc-card-actions {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.mc-card-primary {
+  flex: 1 1 140px;
+  border-radius: 999px;
+  border: none;
+  padding: 8px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #ffffff;
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.mc-card-primary:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+}
+
+.mc-card-primary:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.mc-card-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.mc-card-secondary {
+  flex: 1 1 140px;
+  border-radius: 999px;
+  padding: 7px 14px;
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  color: #4b5563;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mc-card-secondary:hover {
+  border-color: #d1d5db;
+  background: #ffffff;
+  color: #111827;
+}
+
+.mc-card-secondary:active {
+  background: #f3f4f6;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .mc-metrics-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .mc-card-actions {
+    flex-direction: column;
+  }
+
+  .mc-card-primary,
+  .mc-card-secondary {
+    flex: 1 1 100%;
+  }
+}

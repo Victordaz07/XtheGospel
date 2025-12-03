@@ -1,0 +1,95 @@
+.xtg-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 40;
+}
+
+.xtg-modal {
+  width: min(420px, 92vw);
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 20px 22px 18px;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.25);
+}
+
+.xtg-modal-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: #111827;
+}
+
+.xtg-modal-text {
+  font-size: 13px;
+  color: #4b5563;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.xtg-modal-list {
+  max-height: 220px;
+  overflow-y: auto;
+  padding-right: 2px;
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.xtg-modal-conflict {
+  border-radius: 12px;
+  padding: 8px 10px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+}
+
+.xtg-modal-conflict--hard {
+  border-color: #f97373;
+  background: #fef2f2;
+}
+
+.xtg-modal-conflict-title {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 2px;
+  color: #111827;
+}
+
+.xtg-modal-conflict-meta {
+  font-size: 12px;
+  color: #6b7280;
+  margin-bottom: 3px;
+}
+
+.xtg-modal-conflict-tag {
+  font-size: 11px;
+  color: #b91c1c;
+  font-weight: 500;
+}
+
+.xtg-modal-button {
+  width: 100%;
+  border-radius: 999px;
+  border: none;
+  padding: 9px 0;
+  font-size: 14px;
+  font-weight: 600;
+  background: linear-gradient(90deg, #4f46e5, #7c3aed);
+  color: #ffffff;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.xtg-modal-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4);
+}
+
+.xtg-modal-button:active {
+  transform: translateY(0);
+}
+

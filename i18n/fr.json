@@ -80,6 +80,7 @@
   "common.cancel": "Annuler",
   "common.back": "Retour",
   "common.close": "Fermer",
+  "common.other": "Autre",
   "auth.welcome": "Bienvenue",
   "auth.selectRole": "Sélectionnez votre rôle pour continuer",
   "auth.investigator": "Chercheur",
@@ -1254,6 +1255,125 @@
     "integrationMap": {
       "title": "Carte d'intégration (12 mois)",
       "subtitle": "Guide pour la première année du nouveau converti"
+    }
+  },
+  "agenda": {
+    "title": "Agenda",
+    "subtitle": "Gérez vos rendez-vous et activités.",
+    "views": {
+      "day": "Jour",
+      "week": "Semaine",
+      "month": "Mois",
+      "transfer": "Transfert (6 semaines)"
+    },
+    "scopeFilters": {
+      "all": "Tous",
+      "mission": "Mission",
+      "zone": "Zone",
+      "district": "District",
+      "companionship": "Compagnonnage",
+      "personal": "Personnel"
+    },
+    "rangeLabels": {
+      "today": "Aujourd'hui",
+      "day": "{{date}}",
+      "week": "Semaine du {{start}} au {{end}}",
+      "month": "{{month}} {{year}}",
+      "transfer": "Transfert : {{start}} – {{end}}"
+    },
+    "eventTypes": {
+      "study": "Étude",
+      "lesson": "Leçon",
+      "contact": "Contact",
+      "service": "Service",
+      "meeting": "Réunion",
+      "travel": "Transfert",
+      "pday": "Jour P"
+    },
+    "eventLabels": {
+      "required": "🔒 Requis",
+      "routineNotEditable": "Événement de routine (non modifiable)",
+      "clickToEdit": "Cliquer pour modifier",
+      "clickToView": "Cliquer pour voir"
+    },
+    "emptyStates": {
+      "noEvents": "Aucun événement",
+      "noEventsHint": "Aucune activité pour ce jour. Planifiez vos études, leçons et contacts pour mieux utiliser votre temps."
+    },
+    "actions": {
+      "addEvent": "Ajouter un événement",
+      "viewDetails": "Voir les détails",
+      "editEvent": "Modifier l'événement"
+    },
+    "alerts": {
+      "routineNotEditable": "Les événements de routine ne peuvent pas être modifiés. Créez un nouvel événement personnel.",
+      "eventUpdated": "Événement mis à jour (fonctionnalité en attente)",
+      "eventCreated": "Événement créé (fonctionnalité en attente)",
+      "routineCannotEdit": "Les événements de routine ne peuvent pas être modifiés"
+    }
+  },
+  "event": {
+    "modal": {
+      "editTitle": "Modifier l'événement",
+      "newTitle": "Nouvel événement",
+      "close": "Fermer",
+      "fields": {
+        "title": "Titre",
+        "type": "Type",
+        "districtCouncil": "Conseil de district",
+        "zoneCouncil": "Conseil de zone",
+        "date": "Date",
+        "startTime": "Heure de début",
+        "endTime": "Heure de fin",
+        "location": "Lieu",
+        "person": "Personne",
+        "description": "Description",
+        "required": "Événement requis (bloque l'horaire)"
+      },
+      "placeholders": {
+        "title": "Ex. : Leçon avec Ana",
+        "location": "Ex. : Chapelle, Maison, etc.",
+        "person": "Ex. : Ana Pérez",
+        "description": "Notes supplémentaires sur l'événement..."
+      },
+      "buttons": {
+        "cancel": "Annuler",
+        "save": "Enregistrer les modifications",
+        "create": "Créer l'événement"
+      },
+      "errors": {
+        "requiredFields": "Veuillez remplir tous les champs requis",
+        "endBeforeStart": "L'heure de fin doit être postérieure à l'heure de début"
+      }
+    },
+    "detail": {
+      "labels": {
+        "date": "📅 Date",
+        "startTime": "🕐 Heure de début",
+        "endTime": "🕐 Heure de fin",
+        "duration": "⏱️ Durée",
+        "location": "📍 Lieu",
+        "person": "👤 Personne",
+        "area": "🏢 Zone",
+        "description": "📝 Description"
+      },
+      "duration": {
+        "oneHour": "1 heure",
+        "hours": "{{hours}} heures"
+      },
+      "emptyDescription": "Aucune description pour cet événement",
+      "editButton": "✏️ Modifier l'événement",
+      "readonlyMessages": {
+        "routine": "Cet événement de routine ne peut pas être modifié",
+        "personalOnly": "Vous ne pouvez modifier que vos événements personnels"
+      },
+      "scopeLabels": {
+        "mission": "Mission",
+        "zone": "Zone",
+        "district": "District",
+        "companionship": "Compagnonnage",
+        "personal": "Personnel"
+      }
     }
   }
 }

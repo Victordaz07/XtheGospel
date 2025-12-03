@@ -80,6 +80,7 @@
   "common.cancel": "Cancelar",
   "common.back": "Voltar",
   "common.close": "Fechar",
+  "common.other": "Outro",
   "auth.welcome": "Bem-vindo",
   "auth.selectRole": "Selecione seu papel para continuar",
   "auth.investigator": "Investigador",
@@ -1320,6 +1321,125 @@
     "integrationMap": {
       "title": "Mapa de integração (12 meses)",
       "subtitle": "Guia do primeiro ano do novo converso"
+    }
+  },
+  "agenda": {
+    "title": "Agenda",
+    "subtitle": "Gerencie seus compromissos e atividades.",
+    "views": {
+      "day": "Dia",
+      "week": "Semana",
+      "month": "Mês",
+      "transfer": "Transferência (6 semanas)"
+    },
+    "scopeFilters": {
+      "all": "Todos",
+      "mission": "Missão",
+      "zone": "Zona",
+      "district": "Distrito",
+      "companionship": "Companheirismo",
+      "personal": "Pessoal"
+    },
+    "rangeLabels": {
+      "today": "Hoje",
+      "day": "{{date}}",
+      "week": "Semana de {{start}} a {{end}}",
+      "month": "{{month}} {{year}}",
+      "transfer": "Transferência: {{start}} – {{end}}"
+    },
+    "eventTypes": {
+      "study": "Estudo",
+      "lesson": "Lição",
+      "contact": "Contato",
+      "service": "Serviço",
+      "meeting": "Reunião",
+      "travel": "Transferência",
+      "pday": "Dia P"
+    },
+    "eventLabels": {
+      "required": "🔒 Obrigatório",
+      "routineNotEditable": "Evento de rotina (não editável)",
+      "clickToEdit": "Clique para editar",
+      "clickToView": "Clique para ver"
+    },
+    "emptyStates": {
+      "noEvents": "Sem eventos",
+      "noEventsHint": "Nenhuma atividade para este dia. Agende seus estudos, lições e contatos para aproveitar melhor seu tempo."
+    },
+    "actions": {
+      "addEvent": "Adicionar evento",
+      "viewDetails": "Ver detalhes",
+      "editEvent": "Editar evento"
+    },
+    "alerts": {
+      "routineNotEditable": "Eventos de rotina não podem ser editados. Crie um novo evento pessoal.",
+      "eventUpdated": "Evento atualizado (funcionalidade pendente)",
+      "eventCreated": "Evento criado (funcionalidade pendente)",
+      "routineCannotEdit": "Eventos de rotina não podem ser editados"
+    }
+  },
+  "event": {
+    "modal": {
+      "editTitle": "Editar evento",
+      "newTitle": "Novo evento",
+      "close": "Fechar",
+      "fields": {
+        "title": "Título",
+        "type": "Tipo",
+        "districtCouncil": "Conselho de Distrito",
+        "zoneCouncil": "Conselho de Zona",
+        "date": "Data",
+        "startTime": "Hora de início",
+        "endTime": "Hora de término",
+        "location": "Localização",
+        "person": "Pessoa",
+        "description": "Descrição",
+        "required": "Evento obrigatório (bloqueia o horário)"
+      },
+      "placeholders": {
+        "title": "Ex.: Lição com Ana",
+        "location": "Ex.: Capela, Casa, etc.",
+        "person": "Ex.: Ana Pérez",
+        "description": "Notas adicionais sobre o evento..."
+      },
+      "buttons": {
+        "cancel": "Cancelar",
+        "save": "Salvar alterações",
+        "create": "Criar evento"
+      },
+      "errors": {
+        "requiredFields": "Por favor, preencha todos os campos obrigatórios",
+        "endBeforeStart": "A hora de término deve ser posterior à hora de início"
+      }
+    },
+    "detail": {
+      "labels": {
+        "date": "📅 Data",
+        "startTime": "🕐 Hora de início",
+        "endTime": "🕐 Hora de término",
+        "duration": "⏱️ Duração",
+        "location": "📍 Localização",
+        "person": "👤 Pessoa",
+        "area": "🏢 Área",
+        "description": "📝 Descrição"
+      },
+      "duration": {
+        "oneHour": "1 hora",
+        "hours": "{{hours}} horas"
+      },
+      "emptyDescription": "Não há descrição para este evento",
+      "editButton": "✏️ Editar evento",
+      "readonlyMessages": {
+        "routine": "Este evento de rotina não pode ser editado",
+        "personalOnly": "Você só pode editar seus eventos pessoais"
+      },
+      "scopeLabels": {
+        "mission": "Missão",
+        "zone": "Zona",
+        "district": "Distrito",
+        "companionship": "Companheirismo",
+        "personal": "Pessoal"
+      }
     }
   }
 }

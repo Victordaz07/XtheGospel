@@ -6,6 +6,12 @@ import { ProgressProvider } from './context/ProgressContext';
 import AppRouter from './router/AppRouter';
 import ErrorBoundary from './components/ErrorBoundary';
 import { XtgAppLayout } from './layouts/XtgAppLayout';
+import { seedDemoCalendarEvents } from './services/calendarService';
+
+// Semilla de eventos demo (solo en desarrollo)
+if (import.meta.env.DEV) {
+  seedDemoCalendarEvents('MISSION_001', 'ZONE_001');
+}
 
 export default function App() {
   console.log('📱 Renderizando App...');

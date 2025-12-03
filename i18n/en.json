@@ -80,6 +80,7 @@
   "common.cancel": "Cancel",
   "common.back": "Back",
   "common.close": "Close",
+  "common.other": "Other",
   "auth.welcome": "Welcome",
   "auth.selectRole": "Select your role to continue",
   "auth.investigator": "Investigator",
@@ -1402,6 +1403,125 @@
     "integrationMap": {
       "title": "Integration map (12 months)",
       "subtitle": "Guide for the new convert's first year"
+    }
+  },
+  "agenda": {
+    "title": "Agenda",
+    "subtitle": "Manage your appointments and activities.",
+    "views": {
+      "day": "Day",
+      "week": "Week",
+      "month": "Month",
+      "transfer": "Transfer (6 weeks)"
+    },
+    "scopeFilters": {
+      "all": "All",
+      "mission": "Mission",
+      "zone": "Zone",
+      "district": "District",
+      "companionship": "Companionship",
+      "personal": "Personal"
+    },
+    "rangeLabels": {
+      "today": "Today",
+      "day": "{{date}}",
+      "week": "Week of {{start}} to {{end}}",
+      "month": "{{month}} {{year}}",
+      "transfer": "Transfer: {{start}} – {{end}}"
+    },
+    "eventTypes": {
+      "study": "Study",
+      "lesson": "Lesson",
+      "contact": "Contact",
+      "service": "Service",
+      "meeting": "Meeting",
+      "travel": "Transfer",
+      "pday": "P-Day"
+    },
+    "eventLabels": {
+      "required": "🔒 Required",
+      "routineNotEditable": "Routine event (not editable)",
+      "clickToEdit": "Click to edit",
+      "clickToView": "Click to view"
+    },
+    "emptyStates": {
+      "noEvents": "No events",
+      "noEventsHint": "No activities for this day. Schedule your studies, lessons, and contacts to make better use of your time."
+    },
+    "actions": {
+      "addEvent": "Add event",
+      "viewDetails": "View details",
+      "editEvent": "Edit event"
+    },
+    "alerts": {
+      "routineNotEditable": "Routine events cannot be edited. Create a new personal event.",
+      "eventUpdated": "Event updated (functionality pending)",
+      "eventCreated": "Event created (functionality pending)",
+      "routineCannotEdit": "Routine events cannot be edited"
+    }
+  },
+  "event": {
+    "modal": {
+      "editTitle": "Edit event",
+      "newTitle": "New event",
+      "close": "Close",
+      "fields": {
+        "title": "Title",
+        "type": "Type",
+        "districtCouncil": "District Council",
+        "zoneCouncil": "Zone Council",
+        "date": "Date",
+        "startTime": "Start time",
+        "endTime": "End time",
+        "location": "Location",
+        "person": "Person",
+        "description": "Description",
+        "required": "Required event (blocks schedule)"
+      },
+      "placeholders": {
+        "title": "E.g.: Lesson with Ana",
+        "location": "E.g.: Chapel, Home, etc.",
+        "person": "E.g.: Ana Pérez",
+        "description": "Additional notes about the event..."
+      },
+      "buttons": {
+        "cancel": "Cancel",
+        "save": "Save changes",
+        "create": "Create event"
+      },
+      "errors": {
+        "requiredFields": "Please complete all required fields",
+        "endBeforeStart": "End time must be after start time"
+      }
+    },
+    "detail": {
+      "labels": {
+        "date": "📅 Date",
+        "startTime": "🕐 Start time",
+        "endTime": "🕐 End time",
+        "duration": "⏱️ Duration",
+        "location": "📍 Location",
+        "person": "👤 Person",
+        "area": "🏢 Area",
+        "description": "📝 Description"
+      },
+      "duration": {
+        "oneHour": "1 hour",
+        "hours": "{{hours}} hours"
+      },
+      "emptyDescription": "No description for this event",
+      "editButton": "✏️ Edit event",
+      "readonlyMessages": {
+        "routine": "This routine event cannot be edited",
+        "personalOnly": "You can only edit your personal events"
+      },
+      "scopeLabels": {
+        "mission": "Mission",
+        "zone": "Zone",
+        "district": "District",
+        "companionship": "Companionship",
+        "personal": "Personal"
+      }
     }
   }
 }

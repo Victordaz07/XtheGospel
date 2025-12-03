@@ -14,7 +14,7 @@ import InvestigatorHome from '../pages/learning/InvestigatorHome';
 import InvestigatorLessons from '../pages/learning/InvestigatorLessons';
 import InvestigatorProgress from '../pages/learning/InvestigatorProgress';
 import InvestigatorBaptism from '../pages/learning/InvestigatorBaptism';
-import InvestigatorProfile from '../pages/learning/InvestigatorProfile';
+import { MissionaryProfileScreen } from '../pages/profile/MissionaryProfileScreen';
 import CommitmentsPage from '../pages/CommitmentsPage';
 import GodStoryPage from '../pages/learning/GodStoryPage';
 import DifficultQuestionsPage from '../pages/learning/DifficultQuestionsPage';
@@ -46,7 +46,7 @@ const InvestigatorLayout: React.FC = () => {
             <Route path="/tasks" element={<CommitmentsPage />} />
             <Route path="/progress" element={<InvestigatorProgress />} />
             <Route path="/baptism" element={<InvestigatorBaptism />} />
-            <Route path="/profile" element={<InvestigatorProfile />} />
+            <Route path="/profile" element={<MissionaryProfileScreen />} />
             <Route path="/god-story" element={<GodStoryPage />} />
             <Route path="/difficult-questions" element={<DifficultQuestionsPage />} />
             <Route path="/" element={<Navigate to="/home" replace />} />
