@@ -1,0 +1,50 @@
+/* Member Home Screen Styles */
+
+.member-daily-motivator {
+  margin-bottom: 24px;
+}
+
+.member-service-progress {
+  margin-top: 24px;
+}
+
+.service-progress-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0 0 16px 0;
+}
+
+.service-progress-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.service-progress-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.service-progress-item:hover {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.service-progress-item input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: var(--color-primary);
+}
+
+.service-progress-item span {
+  font-size: 15px;
+  color: var(--color-text);
+  flex: 1;
+}
+

@@ -1,14 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import { useI18n } from '../../context/I18nContext';
 import { GodStoryService, GodStoryEntry } from '../../services/godStoryService';
+import { INVESTIGATOR_LESSONS } from '../../data/investigatorLessons';
+import { MyStoryEntry } from '../../data/investigatorMyStory';
+import {
+  PageContainer,
+  TopBar,
+  Card,
+  ButtonPrimary,
+  ButtonSecondary,
+  IconButton,
+} from '../../ui/components';
+import { FaBell, FaPlus, FaPencil, FaTrash, FaXmark } from 'react-icons/fa6';
 import './Page.css';
 import './GodStoryPage.css';
 
 const GodStoryPage: React.FC = () => {
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
   const [entries, setEntries] = useState<GodStoryEntry[]>([]);
-  const [newEntryContent, setNewEntryContent] = useState('');
-  const [showAddForm, setShowAddForm] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [editingEntry, setEditingEntry] = useState<GodStoryEntry | null>(null);
+  const [draft, setDraft] = useState<Partial<MyStoryEntry>>({
+    title: '',
+    content: '',
+    lessonId: undefined,
+  });
 
   useEffect(() => {
     loadEntries();
@@ -19,16 +35,59 @@ const GodStoryPage: React.FC = () => {
     setEntries(loaded.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()));
   };
 
-  const addEntry = () => {
-    if (!newEntryContent.trim()) return;
-    GodStoryService.addEntry(newEntryContent);
-    setNewEntryContent('');
-    setShowAddForm(false);
+  const openNew = () => {
+    setDraft({
+      title: '',
+      content: '',
+      lessonId: undefined,
+    });
+    setEditingEntry(null);
+    setModalOpen(true);
+  };
+
+  const openEdit = (entry: GodStoryEntry) => {
+    setDraft({
+      title: entry.title || '',
+      content: entry.content,
+      lessonId: entry.lessonId,
+    });
+    setEditingEntry(entry);
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+    setEditingEntry(null);
+    setDraft({
+      title: '',
+      content: '',
+      lessonId: undefined,
+    });
+  };
+
+  const saveEntry = () => {
+    if (!draft.content?.trim()) return;
+
+    if (editingEntry) {
+      GodStoryService.updateEntry(editingEntry.id, {
+        title: draft.title || '',
+        content: draft.content,
+        lessonId: draft.lessonId,
+      });
+    } else {
+      GodStoryService.addEntry(
+        draft.content,
+        draft.title,
+        draft.lessonId
+      );
+    }
+    
+    closeModal();
     loadEntries();
   };
 
   const deleteEntry = (id: string) => {
-    if (window.confirm(t('godStory.deleteConfirm') || '¿Eliminar esta entrada?')) {
+    if (window.confirm(t('investigatorMyStory.entry.confirmDelete'))) {
       GodStoryService.deleteEntry(id);
       loadEntries();
     }
@@ -37,7 +96,7 @@ const GodStoryPage: React.FC = () => {
   const formatDate = (dateString: string): string => {
     try {
       const date = new Date(dateString);
-      return date.toLocaleDateString('es-ES', {
+      return date.toLocaleDateString(locale === 'es' ? 'es-ES' : locale === 'fr' ? 'fr-FR' : locale === 'pt' ? 'pt-BR' : 'en-US', {
         year: 'numeric',
         month: 'long',
         day: 'numeric',
@@ -47,74 +106,172 @@ const GodStoryPage: React.FC = () => {
     }
   };
 
-  return (
-    <div className="page">
-      <div className="page-header">
-        <h1>{t('godStory.title') || 'Mi Historia con Dios'}</h1>
-        <p>{t('godStory.subtitle') || 'Registra tus experiencias espirituales y momentos especiales'}</p>
-      </div>
-      <div className="page-content">
-        <button
-          onClick={() => setShowAddForm(!showAddForm)}
-          className="add-entry-button"
-        >
-          {showAddForm ? '✕' : '+'} {t('godStory.addExperience') || 'Agregar Experiencia'}
-        </button>
+  const getLessonTitle = (lessonId?: string): string | null => {
+    if (!lessonId) return null;
+    const lesson = INVESTIGATOR_LESSONS.find(l => l.id === lessonId || l.lessonId === lessonId);
+    return lesson ? t(`${lesson.translationKey}.title`) : null;
+  };
 
-        {showAddForm && (
-          <div className="add-entry-form">
-            <textarea
-              value={newEntryContent}
-              onChange={(e) => setNewEntryContent(e.target.value)}
-              placeholder={t('godStory.entryPlaceholder') || 'Escribe tu experiencia...'}
-              className="entry-textarea"
-              rows={6}
-            />
-            <div className="form-actions">
-              <button onClick={addEntry} className="save-entry-button">
-                {t('godStory.save') || 'Guardar'}
-              </button>
-              <button
-                onClick={() => {
-                  setShowAddForm(false);
-                  setNewEntryContent('');
-                }}
-                className="cancel-button"
-              >
-                {t('common.cancel')}
-              </button>
-            </div>
+  const getPreview = (content: string, maxLength: number = 100): string => {
+    if (content.length <= maxLength) return content;
+    return content.slice(0, maxLength) + '...';
+  };
+
+  return (
+    <PageContainer>
+      <TopBar
+        title={t('investigatorMyStory.header.title')}
+        subtitle={t('investigatorMyStory.header.subtitle')}
+        rightAction={<IconButton icon={<FaBell />} ariaLabel={t('common.notifications')} />}
+      />
+
+      <div className="page-content">
+        {/* Botón principal para agregar */}
+        {entries.length > 0 && (
+          <div className="ims-add-button-container">
+            <ButtonPrimary onClick={openNew} className="ims-add-button">
+              <FaPlus /> {t('investigatorMyStory.list.addButton')}
+            </ButtonPrimary>
           </div>
         )}
 
-        <div className="story-entries">
-          {entries.length === 0 ? (
-            <div className="empty-story">
-              <div className="empty-icon">📖</div>
-              <p>{t('godStory.empty') || 'Aún no has registrado experiencias. ¡Comienza a escribir tu historia!'}</p>
-            </div>
-          ) : (
-            entries.map((entry) => (
-              <div key={entry.id} className="story-entry">
-                <div className="entry-header">
-                  <div className="entry-date">{formatDate(entry.date)}</div>
-                  <button
-                    onClick={() => deleteEntry(entry.id)}
-                    className="entry-delete"
-                    title={t('common.delete') || 'Eliminar'}
-                  >
-                    🗑️
-                  </button>
-                </div>
-                <div className="entry-content">{entry.content}</div>
+        {/* Estado vacío */}
+        {entries.length === 0 ? (
+          <Card variant="gradient" className="ims-empty-state">
+            <div className="ims-empty-icon">📖</div>
+            <h2 className="ims-empty-title">{t('investigatorMyStory.empty.title')}</h2>
+            <p className="ims-empty-description">{t('investigatorMyStory.empty.description')}</p>
+            <ButtonPrimary onClick={openNew} className="ims-empty-button">
+              <FaPlus /> {t('investigatorMyStory.list.addButton')}
+            </ButtonPrimary>
+          </Card>
+        ) : (
+          <div className="ims-entries-list">
+            {entries.map((entry) => {
+              const lessonTitle = getLessonTitle(entry.lessonId);
+              
+              return (
+                <Card key={entry.id} variant="default" className="ims-entry-card">
+                  <div className="ims-entry-header">
+                    <div className="ims-entry-title-section">
+                      <h3 className="ims-entry-title">
+                        {entry.title || t('investigatorMyStory.entry.noTitle')}
+                      </h3>
+                      <div className="ims-entry-meta">
+                        <span className="ims-entry-date">{formatDate(entry.date)}</span>
+                        {lessonTitle && (
+                          <span className="ims-entry-lesson-badge">{lessonTitle}</span>
+                        )}
+                      </div>
+                    </div>
+                    <div className="ims-entry-actions">
+                      <IconButton
+                        icon={<FaPencil />}
+                        ariaLabel={t('investigatorMyStory.entry.editButton')}
+                        onClick={() => openEdit(entry)}
+                        className="ims-action-button"
+                      />
+                      <IconButton
+                        icon={<FaTrash />}
+                        ariaLabel={t('investigatorMyStory.entry.deleteButton')}
+                        onClick={() => deleteEntry(entry.id)}
+                        className="ims-action-button ims-action-button--danger"
+                      />
+                    </div>
+                  </div>
+                  <p className="ims-entry-preview">{getPreview(entry.content)}</p>
+                </Card>
+              );
+            })}
+          </div>
+        )}
+
+        {/* Modal de Crear/Editar */}
+        {modalOpen && (
+          <div className="ims-modal-overlay" onClick={closeModal}>
+            <Card variant="default" className="ims-modal" onClick={(e) => e.stopPropagation()}>
+              <div className="ims-modal-header">
+                <h2 className="ims-modal-title">
+                  {editingEntry 
+                    ? t('investigatorMyStory.entry.editButton')
+                    : t('investigatorMyStory.list.addButton')
+                  }
+                </h2>
+                <IconButton
+                  icon={<FaXmark />}
+                  ariaLabel={t('investigatorMyStory.entry.cancelButton')}
+                  onClick={closeModal}
+                />
               </div>
-            ))
-          )}
-        </div>
+
+              <div className="ims-modal-content">
+                {/* Título */}
+                <div className="ims-form-field">
+                  <label className="ims-form-label">
+                    {t('investigatorMyStory.entry.titleLabel')}
+                  </label>
+                  <input
+                    type="text"
+                    className="ims-form-input"
+                    value={draft.title || ''}
+                    onChange={(e) => setDraft({ ...draft, title: e.target.value })}
+                    placeholder={t('investigatorMyStory.entry.titleLabel')}
+                  />
+                </div>
+
+                {/* Contenido */}
+                <div className="ims-form-field">
+                  <label className="ims-form-label">
+                    {t('investigatorMyStory.entry.contentLabel')}
+                  </label>
+                  <textarea
+                    className="ims-form-textarea"
+                    value={draft.content || ''}
+                    onChange={(e) => setDraft({ ...draft, content: e.target.value })}
+                    placeholder={t('investigatorMyStory.entry.contentLabel')}
+                    rows={8}
+                  />
+                </div>
+
+                {/* Lección relacionada */}
+                <div className="ims-form-field">
+                  <label className="ims-form-label">
+                    {t('investigatorMyStory.entry.lessonLabel')}
+                  </label>
+                  <div className="ims-lesson-selector">
+                    <button
+                      className={`ims-lesson-option ${!draft.lessonId ? 'ims-lesson-option--selected' : ''}`}
+                      onClick={() => setDraft({ ...draft, lessonId: undefined })}
+                    >
+                      {t('investigatorMyStory.entry.lessonLabel').split('(')[0].trim()}
+                    </button>
+                    {INVESTIGATOR_LESSONS.map((lesson) => (
+                      <button
+                        key={lesson.id}
+                        className={`ims-lesson-option ${draft.lessonId === lesson.id ? 'ims-lesson-option--selected' : ''}`}
+                        onClick={() => setDraft({ ...draft, lessonId: lesson.id })}
+                      >
+                        {t(`${lesson.translationKey}.title`)}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <div className="ims-modal-footer">
+                <ButtonSecondary onClick={closeModal}>
+                  {t('investigatorMyStory.entry.cancelButton')}
+                </ButtonSecondary>
+                <ButtonPrimary onClick={saveEntry} disabled={!draft.content?.trim()}>
+                  {t('investigatorMyStory.entry.saveButton')}
+                </ButtonPrimary>
+              </div>
+            </Card>
+          </div>
+        )}
       </div>
-    </div>
+    </PageContainer>
   );
 };
 
 export default GodStoryPage;
-

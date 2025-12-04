@@ -8,6 +8,8 @@
   "tabs.agenda": "Agenda",
   "tabs.people": "People",
   "tabs.memberFriends": "Friends",
+  "tabs.memberTraining": "Training",
+  "tabs.memberHelpPanel": "Help",
   "tabs.memberSkills": "Skills",
   "tabs.memberResources": "Resources",
   "tabs.memberSupport": "Support",
@@ -81,6 +83,14 @@
   "common.back": "Back",
   "common.close": "Close",
   "common.other": "Other",
+  "common.retry": "Retry",
+  "common.reload": "Reload page",
+  "common.errorLoading": "Error loading",
+  "common.errorSaving": "Error saving",
+  "common.errorUpdating": "Error updating",
+  "common.errorDeleting": "Error deleting",
+  "common.confirmDelete": "Do you want to delete this?",
+  "common.notifications": "Notifications",
   "auth.welcome": "Welcome",
   "auth.selectRole": "Select your role to continue",
   "auth.investigator": "Investigator",
@@ -110,10 +120,21 @@
   "auth.roleHint": "Sign in as Investigator, Missionary, or Member",
   "auth.noAccount": "Don't have an account?",
   "auth.register": "Sign up",
+  "app.title": "Missionary App",
+  "roles.investigator": "Investigator",
   "home.welcome": "Welcome, Investigator",
+  "home.welcome.title": "Welcome to your spiritual journey!",
+  "home.welcome.subtitle": "We are here to walk with you as you learn about the gospel. Explore the lessons, complete commitments, and track your progress.",
   "home.progress": "Your Progress",
+  "home.progress.title": "Your Progress",
+  "home.progress.stats": "{{completed}} of {{total}} lessons completed",
+  "home.progress.hint": "Start whenever you feel ready. Each step brings you closer to Christ.",
+  "home.progress.percentLabel": "{{percent}}%",
   "home.lessonsCompleted": "of",
   "home.lessonsCompletedText": "lessons completed",
+  "home.startJourney.title": "Start here",
+  "home.startJourney.subtitle": "Begin with: The Restoration of the Gospel of Jesus Christ",
+  "home.startJourney.button": "Start my first lesson",
   "home.quickAccess": "Quick Access",
   "home.lessons": "Lessons",
   "home.lessonsDesc": "Continue learning",
@@ -131,12 +152,144 @@
   "home.startJourney": "Start your journey",
   "home.startWithLesson": "Start with",
   "home.dailyMessage": "Message of the day",
+  "home.dailyMessage.title": "Message for you today",
+  "home.dailyMessage.scriptureRef": "Matthew 11:28",
+  "home.dailyMessage.scriptureText": "Come unto me, all ye that labour and are heavy laden, and I will give you rest.",
+  "home.dailyMessage.reflection": "Jesus invites us to come unto Him when we feel burdened. He offers rest and relief in our struggles.",
+  "home.dailyMessage.todayActionTitle": "Today's action",
+  "home.dailyMessage.todayActionBody": "Think of a burden you are carrying and bring it to the Lord in prayer. You are not alone.",
+  "home.dailyMessage.buttonFeltSomething": "I felt something today",
+  "home.dailyMessage.buttonNeedHelp": "Help me understand better",
+  "home.dailyMessage.fromLessonLabel": "Based on the lesson: {{lessonTitle}}",
+  "home.dailyMessage.relatedCommitmentLabel": "This message relates to one of your commitments:",
+  "home.dailyMessage.goToCommitmentsButton": "View in my commitments",
+  "home.dailyMessage.createCommitmentFromMessage": "Create a commitment based on this message",
   "home.todayAction": "Today's action",
   "home.feltSomething": "I felt something today",
   "home.notUnderstood": "I didn't understand well",
   "home.nextCommitment": "Next commitment",
+  "home.nextCommitment.title": "Next commitment",
+  "home.nextCommitment.description": "You don't have any commitments yet. After you finish your first lesson, we will suggest simple invitations to keep learning.",
   "home.viewAllCommitments": "View all commitments",
   "home.noCommitmentsYet": "You don't have commitments yet. Complete your first lesson and we'll suggest some.",
+  "home.quickAccess.lessons.title": "My Lessons",
+  "home.quickAccess.lessons.subtitle": "Continue learning",
+  "home.quickAccess.progress.title": "My Progress",
+  "home.quickAccess.progress.subtitle": "See your progress",
+  "home.quickAccess.commitments.title": "My Commitments",
+  "home.quickAccess.commitments.subtitle": "Review what you've agreed to do",
+  "home.additionalResources.title": "Additional Resources",
+  "home.additionalResources.myStory.title": "My Story with God",
+  "home.additionalResources.myStory.subtitle": "Record your spiritual experiences and special moments",
+  "home.additionalResources.toughQuestions.title": "Important Questions",
+  "home.additionalResources.toughQuestions.subtitle": "Clear answers to common questions about the gospel",
+  "home.supportCard.title": "You are not alone on this path",
+  "home.supportCard.body": "You can always come back here to find guidance, peace, and inspiration. If you'd like, you can talk with missionaries who will help you move forward.",
+  "home.supportCard.button": "Talk to a missionary",
+  "investigatorLessons.header.title": "My Lessons",
+  "investigatorLessons.header.subtitle": "Move forward at your own pace. You can return to any lesson whenever you need.",
+  "investigatorLessons.summary.completedStats": "{{completed}} of {{total}} lessons completed",
+  "investigatorLessons.summary.recommended": "Recommended for you: {{lessonTitle}}",
+  "investigatorLessons.states.notStarted": "Not started",
+  "investigatorLessons.states.inProgress": "In progress",
+  "investigatorLessons.states.completed": "Completed",
+  "investigatorLessons.list.title": "All lessons",
+  "investigatorLessons.detail.whatYouWillLearn": "What you will learn",
+  "investigatorLessons.detail.buttonStart": "Start lesson",
+  "investigatorLessons.detail.buttonContinue": "Continue lesson",
+  "investigatorLessons.detail.buttonReview": "Review lesson",
+  "investigatorLessons.footer.encouragement": "Each lesson is one more step closer to Jesus Christ. You don't have to be perfect, just keep moving forward.",
+  "investigatorLessons.lessons.restoration.title": "The Restoration of the Gospel of Jesus Christ",
+  "investigatorLessons.lessons.restoration.tagline": "Learn why we have a living prophet and modern scripture on the earth again.",
+  "investigatorLessons.lessons.planOfSalvation.title": "The Plan of Salvation",
+  "investigatorLessons.lessons.planOfSalvation.tagline": "Discover where you came from, why you are here, and what God prepared for you after this life.",
+  "investigatorLessons.lessons.gospelOfChrist.title": "The Gospel of Jesus Christ",
+  "investigatorLessons.lessons.gospelOfChrist.tagline": "Learn about faith, repentance, baptism, and how to begin a new life in Christ.",
+  "investigatorLessons.lessons.commandments.title": "The Commandments",
+  "investigatorLessons.lessons.commandments.tagline": "See how the commandments are protection and guidance, not just a list of rules.",
+  "investigatorLessons.lessons.lawsAndOrdinances.title": "Laws and Ordinances",
+  "investigatorLessons.lessons.lawsAndOrdinances.tagline": "Get to know important ordinances such as confirmation, priesthood, and temple ordinances.",
+  "investigatorLessons.lessons.followingChrist.title": "Following Jesus Christ Every Day",
+  "investigatorLessons.lessons.followingChrist.tagline": "Explore how to pray, study the scriptures, and serve others in your daily life.",
+  "investigatorLessons.lessons.joiningTheChurch.title": "Preparing to Become a Member of the Church",
+  "investigatorLessons.lessons.joiningTheChurch.tagline": "Understand what it means to be baptized, join the Church, and keep growing after baptism.",
+  "investigatorMyStory.header.title": "My Story with God",
+  "investigatorMyStory.header.subtitle": "This is a place where you can record spiritual experiences, impressions, and special moments as you learn the gospel.",
+  "investigatorMyStory.empty.title": "You haven't written anything yet",
+  "investigatorMyStory.empty.description": "Whenever you have a spiritual thought, a prayer answered, or a moment of peace, you can save it here.",
+  "investigatorMyStory.list.addButton": "Add spiritual experience",
+  "investigatorMyStory.entry.titleLabel": "Title",
+  "investigatorMyStory.entry.contentLabel": "My experience",
+  "investigatorMyStory.entry.lessonLabel": "Related lesson (optional)",
+  "investigatorMyStory.entry.dateLabel": "Date",
+  "investigatorMyStory.entry.saveButton": "Save",
+  "investigatorMyStory.entry.cancelButton": "Cancel",
+  "investigatorMyStory.entry.editButton": "Edit",
+  "investigatorMyStory.entry.deleteButton": "Delete",
+  "investigatorMyStory.entry.confirmDelete": "Do you want to delete this entry?",
+  "investigatorMyStory.entry.noTitle": "(Untitled)",
+  "investigatorCommitments.header.title": "Your Commitments with the Lord",
+  "investigatorCommitments.header.subtitle": "Small steps to put into practice what you're learning from the gospel. It's not about doing a lot, but doing it with your heart.",
+  "investigatorCommitments.new.placeholder": "Write a simple commitment here... (e.g.: Pray tonight to know if this is true)",
+  "investigatorCommitments.new.typeLabel": "Commitment type",
+  "investigatorCommitments.new.typeStudy": "Study",
+  "investigatorCommitments.new.typeSpiritual": "Spiritual",
+  "investigatorCommitments.new.typeAttendance": "Attendance",
+  "investigatorCommitments.new.typeService": "Service",
+  "investigatorCommitments.new.helper": "Suggestion: simple and achievable commitments. For example: \"Read Matthew 11:28 tonight and think about what I feel\".",
+  "investigatorCommitments.new.buttonSave": "Save commitment of faith",
+  "investigatorCommitments.filters.title": "Filter commitments",
+  "investigatorCommitments.filters.all": "All",
+  "investigatorCommitments.filters.allDesc": "See every commitment you've created",
+  "investigatorCommitments.filters.study": "Study",
+  "investigatorCommitments.filters.studyDesc": "Reading Scriptures, manuals, or Church materials",
+  "investigatorCommitments.filters.spiritual": "Spiritual",
+  "investigatorCommitments.filters.spiritualDesc": "Prayer, reflection, repentance, testimonies",
+  "investigatorCommitments.filters.attendance": "Attendance",
+  "investigatorCommitments.filters.attendanceDesc": "Going to Church, lessons, activities, interviews",
+  "investigatorCommitments.empty.title": "You don't have commitments yet",
+  "investigatorCommitments.empty.description": "When you complete a lesson, we'll suggest simple steps for you to act on what you've learned. In the meantime, you can start with something small, like: \"Pray tonight to feel Christ's peace in my life\".",
+  "investigatorCommitments.empty.buttonGoToLessons": "View lessons",
+  "investigatorCommitments.entry.addedOn": "Added on {{date}}",
+  "investigatorCommitments.entry.fromLesson": "From lesson: {{lessonTitle}}",
+  "investigatorCommitments.states.pending": "Pending",
+  "investigatorCommitments.states.today": "For today",
+  "investigatorCommitments.states.completed": "Completed",
+  "investigatorCommitments.labels.fromLesson": "From lesson: {{lessonTitle}}",
+  "investigatorCommitments.labels.createdAt": "Added on {{date}}",
+  "investigatorCommitments.card.setToday": "Do it today",
+  "investigatorCommitments.card.markDone": "Mark as done",
+  "investigatorCommitments.card.undo": "Back to pending",
+  "investigatorCommitments.todaySuggestion.title": "Suggestion for today",
+  "investigatorCommitments.todaySuggestion.buttonSetToday": "Do it today",
+  "investigatorCommitments.samples.prayRestoration": "Pray to know if Joseph Smith was a prophet",
+  "investigatorCommitments.samples.readBookOfMormon": "Read in the Book of Mormon Moroni 10:3–5",
+  "investigatorCommitments.samples.attendChurch": "Attend Church on Sunday",
+  "investigatorCommitments.samples.prayMorningNight": "Pray morning and night",
+  "investigatorCommitments.samples.readScriptures": "Read the Scriptures for 10 minutes",
+  "investigatorCommitments.samples.keepCommandments": "Reflect on how I can better keep the commandments",
+  "investigatorCommitments.errors.loading": "Error loading commitments",
+  "investigatorCommitments.errors.adding": "Error adding commitment",
+  "investigatorCommitments.errors.updating": "Error updating commitment state",
+  "investigatorCommitments.errors.deleting": "Error deleting commitment",
+  "investigatorCommitments.errors.confirmDelete": "Delete this commitment?",
+  "investigatorCommitments.errors.renderError": "Error rendering",
+  "investigatorCommitments.errors.pageLoadError": "There was an error loading the page",
+  "dailyMessages.comfortBurdened.scriptureRef": "Matthew 11:28",
+  "dailyMessages.comfortBurdened.scriptureText": "Come unto me, all ye that labour and are heavy laden, and I will give you rest.",
+  "dailyMessages.comfortBurdened.reflection": "Jesus knows your personal burdens. He doesn't just invite you to believe in Him, but to come unto Him as you are.",
+  "dailyMessages.comfortBurdened.action": "Think of something that is worrying you today. Tell the Lord about it in prayer using your own words.",
+  "dailyMessages.comfortBurdened.lessonId": "gospelOfChrist",
+  "dailyMessages.seekWisdom.scriptureRef": "James 1:5",
+  "dailyMessages.seekWisdom.scriptureText": "If any of you lack wisdom, let him ask of God, that giveth to all men liberally, and upbraideth not; and it shall be given him.",
+  "dailyMessages.seekWisdom.reflection": "God is not bothered by your questions. He invites you to ask Him directly.",
+  "dailyMessages.seekWisdom.action": "Write down one question you have about God or the Church and ask Him in prayer to guide you to the answer.",
+  "dailyMessages.seekWisdom.lessonId": "restoration",
+  "dailyMessages.peaceThroughPrayer.scriptureRef": "Alma 37:37",
+  "dailyMessages.peaceThroughPrayer.scriptureText": "Counsel with the Lord in all thy doings, and he will direct thee for good.",
+  "dailyMessages.peaceThroughPrayer.reflection": "Prayer is not only for big problems; it is also for the small, everyday decisions.",
+  "dailyMessages.peaceThroughPrayer.action": "Before making a decision today, even a small one, say a short prayer asking for guidance.",
+  "dailyMessages.peaceThroughPrayer.lessonId": "followingChrist",
   "missionary.welcome": "Welcome, Missionary",
   "missionary.homeMessage": "This is the missionary home page.",
   "missionary.header": "Missionary Guide",
@@ -1522,6 +1675,182 @@
         "companionship": "Companionship",
         "personal": "Personal"
       }
+    }
+  },
+  "memberHome": {
+    "header": {
+      "title": "Member Home",
+      "subtitle": "Here you'll see how you can help missionaries, your friends, and new converts today."
+    },
+    "dailyMotivator": {
+      "title": "Message for you today",
+      "defaultScriptureRef": "Moroni 7:48",
+      "defaultScriptureText": "Wherefore, my beloved brethren, pray unto the Father with all the energy of heart, that ye may be filled with this love...",
+      "defaultReflection": "Think of someone you can bring a little closer to Jesus Christ today.",
+      "defaultAction": "Pray for a specific person and decide to do something small for them today."
+    },
+    "quickActions": {
+      "title": "Quick actions",
+      "helpMissionaries": "See how to help missionaries",
+      "friends": "See my friends who are learning",
+      "training": "Practice sharing the gospel",
+      "newConverts": "Care for new converts"
+    },
+    "serviceProgress": {
+      "title": "My service this week",
+      "accompaniedInvestigator": "Accompanied an investigator",
+      "boreTestimony": "Shared my testimony",
+      "helpedMissionaries": "Helped missionaries",
+      "extendedInvitation": "Extended an invitation"
+    }
+  },
+  "memberFriends": {
+    "header": {
+      "title": "My friends",
+      "subtitle": "People I'm helping to come closer to Jesus Christ."
+    },
+    "list": {
+      "emptyTitle": "You haven't added friends yet",
+      "emptyDescription": "When you help someone learn about the gospel, you can add them here to remember them in your prayers and service.",
+      "addFriendButton": "Add friend"
+    },
+    "friendStages": {
+      "gettingToKnowChurch": "Getting to know the Church",
+      "learningActively": "Learning actively",
+      "preparingForBaptism": "Preparing for baptism",
+      "attendingRegularly": "Attending regularly",
+      "recentConvert_0_3": "Recently baptized (0–3 months)",
+      "recentConvert_3_12": "New convert (3–12 months)"
+    },
+    "friendCard": {
+      "stageLabel": "Spiritual state",
+      "lastContact": "Last contact: {{date}}",
+      "noLastContact": "No recent contact recorded",
+      "seeSuggestions": "See suggestions to help",
+      "notesLabel": "Personal notes"
+    },
+    "suggestions": {
+      "title": "Suggestions for this stage",
+      "gettingToKnowChurch": "Invite them to a simple activity where they can feel love and belonging.",
+      "learningActively": "Offer to share your testimony and answer questions with humility.",
+      "preparingForBaptism": "Accompany them to Church and help them feel support in their decision.",
+      "attendingRegularly": "Help them integrate into their class and activities.",
+      "recentConvert_0_3": "Sit with them in sacrament meeting and stay close in their first months.",
+      "recentConvert_3_12": "Invite them to participate and serve; help them feel like a real part of the Church."
+    },
+    "detail": {
+      "title": "Friend details",
+      "editNotes": "Edit notes",
+      "saveNotes": "Save notes",
+      "cancel": "Cancel"
+    }
+  },
+  "memberTraining": {
+    "header": {
+      "title": "Missionary training center",
+      "subtitle": "Learn to share the gospel with love, simplicity, and spiritual power."
+    },
+    "modules": {
+      "teachLikeChrist": {
+        "title": "Teach like Christ",
+        "description": "Learn to teach from the heart, with simplicity and guided by the Spirit.",
+        "points": {
+          "fromHeart": "Speak from your experience, not just from memory.",
+          "simpleWords": "Use simple words that any friend can understand.",
+          "askInspired": "Ask questions that invite feeling, not just explanation.",
+          "leaveSilence": "Leave space in silence for the Spirit to speak."
+        }
+      },
+      "inviteWithLove": {
+        "title": "Invite without pressuring",
+        "description": "Extend clear, kind, and respectful invitations.",
+        "points": {
+          "clearInvitation": "Be clear about what you're inviting, without ambiguity.",
+          "respectNo": "Respect a 'no' with love and maintain the friendship.",
+          "rightTiming": "Discern the right moment to invite.",
+          "followUp": "Move forward without pressuring, maintain contact."
+        }
+      },
+      "explainLessonsSimply": {
+        "title": "Explain lessons in 2 minutes",
+        "description": "Learn to summarize the main teachings simply.",
+        "lessons": {
+          "restoration": "God called Joseph Smith as a prophet to restore His Church and His complete gospel.",
+          "planOfSalvation": "God has a plan for us to return to live with Him, thanks to Jesus Christ.",
+          "gospelOfChrist": "Faith, repentance, baptism, and receiving the Holy Ghost bring us closer to Christ.",
+          "commandments": "Commandments are protection and guidance, not just rules.",
+          "lawsAndOrdinances": "Ordinances like baptism and the temple help us follow Christ."
+        }
+      }
+    },
+    "rolePlay": {
+      "title": "Practice real situations",
+      "scenario1": {
+        "title": "Your friend says: All churches are good",
+        "question": "How do you respond with love and testimony?",
+        "hint": "Focus on Jesus Christ, instead of criticizing other churches.",
+        "goodAnswer": "You can say: 'You're right, there are many good churches. What has touched my heart is that Jesus Christ restored His Church with a living prophet today, and that has brought me much peace.'"
+      },
+      "scenario2": {
+        "title": "Your friend asks: Why do I need to be baptized again?",
+        "question": "How do you explain baptism with authority?",
+        "hint": "Talk about priesthood authority, not that other baptisms are invalid.",
+        "goodAnswer": "You can say: 'Baptism is important, and what makes ours special is that it's done with the authority of the priesthood that Jesus Christ restored. It's like having the right keys to open a door.'"
+      }
+    }
+  },
+  "memberHelpPanel": {
+    "header": {
+      "title": "Help missionaries",
+      "subtitle": "See concrete ways you can support this week."
+    },
+    "list": {
+      "emptyTitle": "No requests right now",
+      "emptyDescription": "When missionaries post needs, you'll see them here and can offer your help."
+    },
+    "taskTypes": {
+      "accompanyLesson": "Accompany a lesson",
+      "transport": "Help with transportation",
+      "welcomeAtChurch": "Welcome someone at the chapel",
+      "fellowship": "Make friends and accompany",
+      "activityInvite": "Invite to an activity",
+      "service": "Help with a service"
+    },
+    "statuses": {
+      "open": "Available",
+      "claimed": "In progress",
+      "completed": "Completed"
+    },
+    "taskCard": {
+      "labelInvestigator": "Supporting: {{alias}}",
+      "buttonOfferHelp": "I can help",
+      "buttonMaybe": "Maybe, I need to confirm",
+      "buttonMarkCompleted": "Mark as completed"
+    }
+  },
+  "newConvertCare": {
+    "header": {
+      "title": "New convert care",
+      "subtitle": "Help new converts take root in Christ and His Church."
+    },
+    "timeline": {
+      "baptism": "Baptism",
+      "confirmation": "Confirmation",
+      "firstCalling": "First calling",
+      "firstTemple": "First temple visit",
+      "stabilizing": "Strengthening in the gospel"
+    },
+    "plan": {
+      "stepsTitle": "Support steps",
+      "stepSitTogether": "Sit with them in sacrament meeting",
+      "stepIntroduceLeaders": "Introduce them to their leaders and teachers",
+      "stepInviteActivities": "Invite them to ward activities",
+      "stepScriptureHabits": "Help them create prayer and study habits",
+      "stepTempleGoal": "Help them prepare to go to the temple"
+    },
+    "list": {
+      "emptyTitle": "No new converts assigned",
+      "emptyDescription": "When you have the opportunity to care for a new convert, they will appear here."
     }
   }
 }

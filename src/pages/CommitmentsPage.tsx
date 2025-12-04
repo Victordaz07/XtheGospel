@@ -1,176 +1,161 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useI18n } from '../context/I18nContext';
-import { CommitmentsService, Commitment, CommitmentCategory } from '../services/commitmentsService';
-import { INVESTIGATOR_LESSONS } from '../data/investigatorLessons';
+import { InvestigatorCommitmentsService } from '../services/investigatorCommitmentsService';
+import { InvestigatorCommitment, CommitmentType, CommitmentState } from '../data/investigatorCommitments';
+import { pickCommitmentForToday } from '../utils/commitments';
+import { NewCommitmentCard } from '../components/investigator/NewCommitmentCard';
+import { CommitmentCard } from '../components/investigator/CommitmentCard';
 import {
   PageContainer,
   TopBar,
   Card,
-  ButtonPrimary,
   ButtonSecondary,
   IconButton,
 } from '../ui/components';
-import { FaBell, FaHeart, FaHandHeart } from 'react-icons/fa6';
+import { FaBell } from 'react-icons/fa6';
 import './Page.css';
 import './CommitmentsPage.css';
 
 const CommitmentsPage: React.FC = () => {
-  const { t, locale } = useI18n();
+  const { t } = useI18n();
   const navigate = useNavigate();
-  const [commitments, setCommitments] = useState<Commitment[]>([]);
-  const [filter, setFilter] = useState<CommitmentCategory | 'all'>('all');
-  const [newCommitmentText, setNewCommitmentText] = useState('');
-  const [newCommitmentCategory, setNewCommitmentCategory] = useState<CommitmentCategory>('spiritual');
+  const [commitments, setCommitments] = useState<InvestigatorCommitment[]>([]);
+  const [filter, setFilter] = useState<CommitmentType | 'all'>('all');
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     loadCommitments();
   }, []);
 
   const loadCommitments = async () => {
-    const loaded = await CommitmentsService.loadCommitments();
-    setCommitments(loaded);
+    try {
+      setError(null);
+      const loaded = await InvestigatorCommitmentsService.loadCommitments();
+      setCommitments(loaded || []);
+    } catch (error) {
+      console.error('Error loading commitments:', error);
+      setError(t('investigatorCommitments.errors.loading'));
+      setCommitments([]);
+    }
   };
 
-  const addCommitment = async () => {
-    if (!newCommitmentText.trim()) return;
-
+  const handleAddCommitment = async (payload: { text: string; type: CommitmentType }) => {
     try {
-      await CommitmentsService.addCommitment({
-        title: newCommitmentText,
-        category: newCommitmentCategory,
-        completed: false,
-        source: 'manual',
+      await InvestigatorCommitmentsService.addCommitment({
+        text: payload.text,
+        type: payload.type,
+        state: 'pending',
       });
-      setNewCommitmentText('');
       await loadCommitments();
     } catch (error) {
       console.error('Error agregando compromiso:', error);
+      // Error is logged, user can retry
     }
   };
 
-  const toggleCommitment = async (id: string) => {
-    const commitment = commitments.find(c => c.id === id);
-    if (commitment) {
-      await CommitmentsService.updateCommitment(id, { completed: !commitment.completed });
+  const handleChangeState = async (id: string, next: CommitmentState) => {
+    try {
+      await InvestigatorCommitmentsService.updateCommitmentState(id, next);
       await loadCommitments();
+    } catch (error) {
+      console.error('Error actualizando estado del compromiso:', error);
+      // Error is logged, user can retry
     }
   };
 
-  const deleteCommitment = async (id: string) => {
-    if (window.confirm(t('commitments.deleteConfirm') || '¿Eliminar este compromiso?')) {
-      await CommitmentsService.deleteCommitment(id);
-      await loadCommitments();
+  const handleDeleteCommitment = async (id: string) => {
+    if (window.confirm(t('investigatorCommitments.errors.confirmDelete'))) {
+      try {
+        await InvestigatorCommitmentsService.deleteCommitment(id);
+        await loadCommitments();
+      } catch (error) {
+        console.error('Error eliminando compromiso:', error);
+        // Error is logged, user can retry
+      }
     }
   };
 
-  const filteredCommitments = filter === 'all' 
-    ? commitments 
-    : commitments.filter(c => c.category === filter);
+  const filteredCommitments = useMemo(() => {
+    if (filter === 'all') return commitments;
+    return commitments.filter(c => c.type === filter);
+  }, [commitments, filter]);
 
-  const filterOptions: Array<{ key: CommitmentCategory | 'all'; label: string; description: string }> = [
+  const filterOptions: Array<{ key: CommitmentType | 'all'; label: string; description: string }> = [
     { key: 'all', label: t('investigatorCommitments.filters.all'), description: t('investigatorCommitments.filters.allDesc') },
     { key: 'study', label: t('investigatorCommitments.filters.study'), description: t('investigatorCommitments.filters.studyDesc') },
     { key: 'spiritual', label: t('investigatorCommitments.filters.spiritual'), description: t('investigatorCommitments.filters.spiritualDesc') },
     { key: 'attendance', label: t('investigatorCommitments.filters.attendance'), description: t('investigatorCommitments.filters.attendanceDesc') },
   ];
 
-  const getCategoryLabel = (category: CommitmentCategory): string => {
-    const map: Record<CommitmentCategory, string> = {
-      study: t('investigatorCommitments.new.typeStudy'),
-      spiritual: t('investigatorCommitments.new.typeSpiritual'),
-      attendance: t('investigatorCommitments.new.typeAttendance'),
-    };
-    return map[category];
-  };
-
-  const formatDate = (dateString?: string): string => {
-    if (!dateString) return '';
+  // Get suggestion for today (translate text if it's a key)
+  const todaySuggestion = useMemo(() => {
     try {
-      const date = new Date(dateString);
-      const localeMap: Record<string, string> = {
-        es: 'es-ES',
-        fr: 'fr-FR',
-        pt: 'pt-BR',
-        en: 'en-US',
-      };
-      return date.toLocaleDateString(localeMap[locale] || 'es-ES', { 
-        day: 'numeric', 
-        month: 'long',
-        year: 'numeric'
-      });
-    } catch {
-      return dateString;
+      const suggestion = pickCommitmentForToday(commitments);
+      if (suggestion && suggestion.text && suggestion.text.startsWith('investigatorCommitments.samples.')) {
+        try {
+          return {
+            ...suggestion,
+            text: t(suggestion.text as any),
+          };
+        } catch {
+          return suggestion;
+        }
+      }
+      return suggestion;
+    } catch (error) {
+      console.error('Error getting today suggestion:', error);
+      return null;
     }
-  };
+  }, [commitments, t]);
 
-  const getLessonTitle = (lessonId?: string): string | null => {
-    if (!lessonId) return null;
-    const lesson = INVESTIGATOR_LESSONS.find(l => l.id === lessonId || l.lessonId === lessonId);
-    return lesson ? t(`${lesson.translationKey}.title`) : null;
-  };
+  if (error) {
+    return (
+      <PageContainer>
+        <TopBar
+          title={t('investigatorCommitments.header.title')}
+          subtitle={t('investigatorCommitments.header.subtitle')}
+        />
+        <div className="page-content">
+          <Card variant="default">
+            <p>{t('common.error')}: {error}</p>
+            <button onClick={loadCommitments}>{t('common.retry')}</button>
+          </Card>
+        </div>
+      </PageContainer>
+    );
+  }
 
-  return (
-    <PageContainer>
-      <TopBar
-        title={t('investigatorCommitments.header.title')}
-        subtitle={t('investigatorCommitments.header.subtitle')}
-        rightAction={<IconButton icon={<FaBell />} ariaLabel="Notifications" />}
-      />
+  try {
+    return (
+      <PageContainer>
+        <TopBar
+          title={t('investigatorCommitments.header.title')}
+          subtitle={t('investigatorCommitments.header.subtitle')}
+          rightAction={<IconButton icon={<FaBell />} ariaLabel={t('common.notifications')} />}
+        />
 
-      <div className="page-content">
-        {/* Tarjeta de nuevo compromiso */}
-        <Card variant="default" className="ic-new-commitment-card">
-          <div className="ic-new-commitment-form">
-            <div className="ic-form-field">
-              <input
-                type="text"
-                value={newCommitmentText}
-                onChange={(e) => setNewCommitmentText(e.target.value)}
-                onKeyPress={(e) => e.key === 'Enter' && addCommitment()}
-                placeholder={t('investigatorCommitments.new.placeholder')}
-                className="ic-commitment-input"
-              />
-            </div>
+        <div className="page-content">
+          {/* Today Suggestion Card */}
+          {todaySuggestion && (
+            <Card variant="gradient" className="ic-today-suggestion">
+              <h3 className="ic-today-suggestion-title">
+                {t('investigatorCommitments.todaySuggestion.title')}
+              </h3>
+              <p className="ic-today-suggestion-text">{todaySuggestion.text}</p>
+              <ButtonSecondary
+                onClick={() => handleChangeState(todaySuggestion.id, 'today')}
+                className="ic-today-suggestion-button"
+              >
+                {t('investigatorCommitments.todaySuggestion.buttonSetToday')}
+              </ButtonSecondary>
+            </Card>
+          )}
 
-            <div className="ic-form-field">
-              <label className="ic-form-label">
-                {t('investigatorCommitments.new.typeLabel')}
-              </label>
-              <div className="ic-type-selector">
-                {(['spiritual', 'study', 'attendance'] as CommitmentCategory[]).map((cat) => {
-                  const labelKey = cat === 'spiritual' ? 'typeSpiritual' :
-                                   cat === 'study' ? 'typeStudy' :
-                                   cat === 'attendance' ? 'typeAttendance' : '';
-                  return (
-                    <button
-                      key={cat}
-                      type="button"
-                      onClick={() => setNewCommitmentCategory(cat)}
-                      className={`ic-type-option ${newCommitmentCategory === cat ? 'ic-type-option--selected' : ''}`}
-                    >
-                      {t(`investigatorCommitments.new.${labelKey}`)}
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
+          {/* New Commitment Card */}
+          <NewCommitmentCard onAdd={handleAddCommitment} />
 
-            <div className="ic-helper-text">
-              {t('investigatorCommitments.new.helper')}
-            </div>
-
-            <ButtonPrimary
-              onClick={addCommitment}
-              disabled={!newCommitmentText.trim()}
-              className="ic-save-button"
-            >
-              {t('investigatorCommitments.new.buttonSave')}
-            </ButtonPrimary>
-          </div>
-        </Card>
-
-        {/* Filtros */}
+        {/* Filters */}
         {commitments.length > 0 && (
           <div className="ic-filters-section">
             <h3 className="ic-filters-title">{t('investigatorCommitments.filters.title')}</h3>
@@ -189,7 +174,7 @@ const CommitmentsPage: React.FC = () => {
           </div>
         )}
 
-        {/* Lista de compromisos */}
+        {/* Commitments List */}
         <div className="ic-commitments-list">
           {filteredCommitments.length === 0 ? (
             <Card variant="gradient" className="ic-empty-state">
@@ -201,59 +186,36 @@ const CommitmentsPage: React.FC = () => {
               </ButtonSecondary>
             </Card>
           ) : (
-            filteredCommitments.map((commitment) => {
-              const lessonTitle = getLessonTitle(commitment.lessonId);
-              
-              return (
-                <Card
-                  key={commitment.id}
-                  variant="default"
-                  className={`ic-commitment-card ${commitment.completed ? 'ic-commitment-card--completed' : ''}`}
-                >
-                  <div className="ic-commitment-checkbox-wrapper">
-                    <input
-                      type="checkbox"
-                      checked={commitment.completed}
-                      onChange={() => toggleCommitment(commitment.id)}
-                      className="ic-commitment-checkbox"
-                    />
-                  </div>
-                  <div className="ic-commitment-content">
-                    <div className="ic-commitment-header">
-                      <h3 className="ic-commitment-title">{commitment.title}</h3>
-                      <span className={`ic-commitment-category ic-commitment-category--${commitment.category}`}>
-                        {getCategoryLabel(commitment.category)}
-                      </span>
-                    </div>
-                    {commitment.description && (
-                      <p className="ic-commitment-description">{commitment.description}</p>
-                    )}
-                    <div className="ic-commitment-meta">
-                      <span className="ic-commitment-date">
-                        {t('investigatorCommitments.entry.addedOn', { date: formatDate(commitment.createdAt) })}
-                      </span>
-                      {lessonTitle && (
-                        <span className="ic-commitment-lesson">
-                          {t('investigatorCommitments.entry.fromLesson', { lessonTitle })}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                  <button
-                    onClick={() => deleteCommitment(commitment.id)}
-                    className="ic-commitment-delete"
-                    title={t('common.delete') || 'Eliminar'}
-                  >
-                    🗑️
-                  </button>
-                </Card>
-              );
-            })
+            filteredCommitments.map((commitment) => (
+              <CommitmentCard
+                key={commitment.id}
+                item={commitment}
+                onChangeState={handleChangeState}
+                onDelete={handleDeleteCommitment}
+              />
+            ))
           )}
         </div>
       </div>
     </PageContainer>
-  );
+    );
+  } catch (renderError) {
+    console.error('Error rendering CommitmentsPage:', renderError);
+    return (
+      <PageContainer>
+        <TopBar
+          title={t('common.error')}
+          subtitle={t('investigatorCommitments.errors.pageLoadError')}
+        />
+        <div className="page-content">
+          <Card variant="default">
+            <p>{t('investigatorCommitments.errors.renderError')}: {String(renderError)}</p>
+            <button onClick={() => window.location.reload()}>{t('common.reload')}</button>
+          </Card>
+        </div>
+      </PageContainer>
+    );
+  }
 };
 
 export default CommitmentsPage;

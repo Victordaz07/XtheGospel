@@ -1,0 +1,81 @@
+/* Member Help Panel Screen Styles */
+
+.member-help-panel-empty {
+  text-align: center;
+  padding: 48px 24px;
+}
+
+.member-help-tasks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.member-help-task-card {
+  padding: 20px;
+}
+
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.task-type-badge {
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  background: #eef2ff;
+  color: var(--color-primary);
+}
+
+.task-status-badge {
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.task-status-open {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.task-status-claimed {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.task-status-completed {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.task-description {
+  font-size: 15px;
+  color: var(--color-text);
+  margin: 0 0 8px 0;
+  line-height: 1.6;
+}
+
+.task-investigator {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  margin: 0 0 8px 0;
+  font-weight: 600;
+}
+
+.task-scheduled {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  margin: 0 0 16px 0;
+}
+
+.task-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+

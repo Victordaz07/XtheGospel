@@ -2,11 +2,15 @@ import { StorageService } from '../utils/storage';
 
 const STORY_KEY = '@godStory';
 
+import { MyStoryEntry } from '../data/investigatorMyStory';
+
 export interface GodStoryEntry {
   id: string;
   date: string; // ISO string
   content: string;
   createdAt: string;
+  title?: string;
+  lessonId?: string;
 }
 
 export const GodStoryService = {
@@ -31,16 +35,26 @@ export const GodStoryService = {
     }
   },
 
-  addEntry: (content: string): GodStoryEntry => {
+  addEntry: (content: string, title?: string, lessonId?: string): GodStoryEntry => {
     const entries = GodStoryService.loadEntries();
     const newEntry: GodStoryEntry = {
-      id: Date.now().toString(),
+      id: crypto.randomUUID ? crypto.randomUUID() : Date.now().toString(),
       date: new Date().toISOString(),
       content,
+      title: title || '',
+      lessonId,
       createdAt: new Date().toISOString(),
     };
     GodStoryService.saveEntries([...entries, newEntry]);
     return newEntry;
+  },
+
+  updateEntry: (id: string, updates: Partial<MyStoryEntry>): void => {
+    const entries = GodStoryService.loadEntries();
+    const updated = entries.map(entry => 
+      entry.id === id ? { ...entry, ...updates } : entry
+    );
+    GodStoryService.saveEntries(updated);
   },
 
   deleteEntry: (id: string): void => {

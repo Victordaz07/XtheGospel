@@ -1,0 +1,101 @@
+.commitment-card {
+  margin-bottom: 12px;
+  transition: all 0.2s ease;
+}
+
+.commitment-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.commitment-card--completed {
+  opacity: 0.7;
+  background: #f8fafc;
+}
+
+.commitment-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.commitment-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.commitment-card-title {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0;
+  line-height: 1.4;
+  flex: 1;
+}
+
+.commitment-card--completed .commitment-card-title {
+  text-decoration: line-through;
+  color: var(--color-text-secondary);
+}
+
+.commitment-card-delete {
+  background: transparent;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  color: #94a3b8;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.commitment-card-delete:hover {
+  background: #fee2e2;
+  color: #ef4444;
+}
+
+.commitment-card-lesson {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  margin: 0;
+  font-style: italic;
+}
+
+.commitment-card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.commitment-card-date {
+  font-size: 12px;
+  color: var(--color-text-tertiary);
+  font-style: italic;
+}
+
+.commitment-card-state {
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+
+.commitment-card-action {
+  align-self: flex-start;
+  margin-top: 4px;
+}
+
+.commitment-card-action--completed {
+  background: #e5e7eb !important;
+  color: #374151 !important;
+}
+

@@ -1,0 +1,90 @@
+.new-commitment-card {
+  margin-bottom: 24px;
+}
+
+.new-commitment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.new-commitment-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.new-commitment-input {
+  width: 100%;
+  padding: 14px 18px;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  font-size: 15px;
+  font-family: inherit;
+  color: var(--color-text);
+  background: var(--color-surface);
+  transition: all 0.2s ease;
+}
+
+.new-commitment-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+}
+
+.new-commitment-input::placeholder {
+  color: var(--color-text-tertiary);
+  font-style: italic;
+}
+
+.new-commitment-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.new-commitment-type-selector {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.new-commitment-type-option {
+  padding: 10px 16px;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.new-commitment-type-option:hover {
+  border-color: var(--color-primary-light);
+  background: #f9fafb;
+}
+
+.new-commitment-type-option--active {
+  border-color: var(--color-primary);
+  background: #eef2ff;
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.new-commitment-helper {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  font-style: italic;
+  line-height: 1.5;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 12px;
+  border-left: 3px solid var(--color-primary-light);
+}
+
+.new-commitment-save-button {
+  align-self: flex-start;
+}
+

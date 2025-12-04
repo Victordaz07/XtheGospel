@@ -1,141 +1,195 @@
-.commitment-input-section {
-  margin-bottom: var(--perfect-margin-bottom, 10px);
+/* Investigator Commitments Styles */
+
+/* New Commitment Card */
+.ic-new-commitment-card {
+  padding: 24px;
+  border-radius: 20px;
+  margin-bottom: 24px;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.05) 0%, rgba(59, 130, 246, 0.05) 100%);
+  border: 2px solid rgba(139, 92, 246, 0.1);
 }
 
-.commitment-input-group {
+.ic-new-commitment-form {
   display: flex;
-  gap: var(--perfect-gap, 10px);
-  flex-wrap: wrap;
-  background: #fff;
-  padding: var(--perfect-padding-vertical, 12px) var(--perfect-padding-horizontal, 16px);
-  border-radius: 24px;
-  box-shadow: 0 18px 35px rgba(15, 23, 42, 0.08);
-  border: 1px solid rgba(226, 232, 240, 0.9);
-  width: 100%;
-  box-sizing: border-box;
+  flex-direction: column;
+  gap: 16px;
 }
 
-.commitment-input-field {
-  flex: 1;
-  min-width: 200px;
+.ic-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ic-form-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.ic-commitment-input {
+  width: 100%;
   padding: 14px 18px;
-  border: 1px solid #e2e8f0;
-  border-radius: 18px;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
   font-size: 15px;
   font-family: inherit;
+  color: var(--color-text);
+  background: var(--color-surface);
   transition: all 0.2s ease;
-  background: #f8fafc;
 }
 
-.commitment-input-field:focus {
+.ic-commitment-input:focus {
   outline: none;
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
 }
 
-
-.commitment-add-button {
-  padding: var(--perfect-padding-vertical, 12px) var(--perfect-padding-horizontal, 16px);
-  background: linear-gradient(135deg, #8b5cf6, #3b82f6);
-  color: white;
-  border: none;
-  border-radius: 20px;
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  white-space: nowrap;
-  box-shadow: 0 15px 30px rgba(79, 70, 229, 0.25);
+.ic-commitment-input::placeholder {
+  color: var(--color-text-tertiary);
+  font-style: italic;
 }
 
-.commitment-add-button:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-}
-
-.commitment-filters {
+.ic-type-selector {
   display: flex;
   gap: 8px;
-  margin-bottom: var(--perfect-margin-bottom, 10px);
   flex-wrap: wrap;
 }
 
-.filter-chip {
-  padding: 8px 16px;
+.ic-type-option {
+  padding: 10px 16px;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.ic-type-option:hover {
+  border-color: var(--color-primary-light);
+  background: #f9fafb;
+}
+
+.ic-type-option--selected {
+  border-color: var(--color-primary);
+  background: #eef2ff;
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.ic-helper-text {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  font-style: italic;
+  line-height: 1.5;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 12px;
+  border-left: 3px solid var(--color-primary-light);
+}
+
+.ic-save-button {
+  align-self: flex-start;
+  padding: 12px 24px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.ic-save-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Filters Section */
+.ic-filters-section {
+  margin-bottom: 24px;
+}
+
+.ic-filters-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0 0 12px 0;
+}
+
+.ic-filters-list {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.ic-filter-chip {
+  padding: 10px 18px;
   border: 2px solid var(--color-primary-light);
   background: var(--color-surface);
   color: var(--color-text);
-  border-radius: var(--border-radius-full);
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 500;
   cursor: pointer;
-  transition: all var(--transition-base);
+  transition: all 0.2s ease;
 }
 
-.filter-chip:hover {
+.ic-filter-chip:hover {
   border-color: var(--color-primary);
-  background: rgba(79, 70, 229, 0.05);
+  background: rgba(139, 92, 246, 0.05);
 }
 
-.filter-chip.active {
+.ic-filter-chip--active {
   background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
   color: white;
   border-color: var(--color-primary);
 }
 
-.commitments-list {
+/* Commitments List */
+.ic-commitments-list {
   display: flex;
   flex-direction: column;
-  gap: var(--perfect-gap, 10px);
-  width: 100%;
+  gap: 16px;
 }
 
-.commitment-item {
+.ic-commitment-card {
+  padding: 20px;
+  border-radius: 16px;
   display: flex;
   align-items: flex-start;
-  gap: var(--perfect-gap, 10px);
-  padding: var(--perfect-padding-vertical, 12px) var(--perfect-padding-horizontal, 16px);
-  background: #fff;
-  border-radius: 26px;
-  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
-  border: 1px solid rgba(226, 232, 240, 0.9);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  width: 100%;
-  box-sizing: border-box;
+  gap: 16px;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
 }
 
-.commitment-item:hover {
+.ic-commitment-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 25px 50px rgba(124, 58, 237, 0.15);
-  border-color: rgba(124, 58, 237, 0.4);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-primary-light);
 }
 
-.commitment-item.completed {
-  opacity: 0.8;
-  background: #f1f5f9;
+.ic-commitment-card--completed {
+  opacity: 0.7;
+  background: #f8fafc;
 }
 
-.commitment-item.completed .commitment-title {
-  text-decoration: line-through;
-  color: var(--color-text-secondary);
-}
-
-.commitment-checkbox-container {
+.ic-commitment-checkbox-wrapper {
   padding-top: 4px;
+  flex-shrink: 0;
 }
 
-.commitment-checkbox {
+.ic-commitment-checkbox {
   width: 20px;
   height: 20px;
   cursor: pointer;
   accent-color: var(--color-primary);
 }
 
-.commitment-content {
+.ic-commitment-content {
   flex: 1;
+  min-width: 0;
 }
 
-.commitment-header-row {
+.ic-commitment-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -144,111 +198,167 @@
   flex-wrap: wrap;
 }
 
-.commitment-title {
-  margin: 0;
-  font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-semibold);
+.ic-commitment-title {
+  font-size: 17px;
+  font-weight: 600;
   color: var(--color-text);
+  margin: 0;
+  line-height: 1.4;
   flex: 1;
 }
 
-.commitment-category-badge {
+.ic-commitment-card--completed .ic-commitment-title {
+  text-decoration: line-through;
+  color: var(--color-text-secondary);
+}
+
+.ic-commitment-category {
   padding: 4px 12px;
   border-radius: 999px;
   font-size: 11px;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.3px;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
-.category-study {
+.ic-commitment-category--study {
   background: rgba(59, 130, 246, 0.1);
   color: #3b82f6;
 }
 
-.category-spiritual {
+.ic-commitment-category--spiritual {
   background: rgba(139, 92, 246, 0.1);
   color: #8b5cf6;
 }
 
-.category-attendance {
+.ic-commitment-category--attendance {
   background: rgba(16, 185, 129, 0.1);
   color: #10b981;
 }
 
-.commitment-description {
-  margin: 8px 0;
-  font-size: var(--font-size-base);
+.ic-commitment-description {
+  font-size: 14px;
   color: var(--color-text-secondary);
+  margin: 8px 0;
   line-height: 1.6;
 }
 
-.commitment-due-date {
-  margin-top: 8px;
-  font-size: var(--font-size-sm);
+.ic-commitment-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.ic-commitment-date,
+.ic-commitment-lesson {
+  font-size: 12px;
   color: var(--color-text-tertiary);
   font-style: italic;
 }
 
-.commitment-delete {
-  background: #f1f5f9;
+.ic-commitment-delete {
+  background: transparent;
   border: none;
   font-size: 16px;
   cursor: pointer;
   padding: 8px;
-  border-radius: 12px;
+  border-radius: 8px;
   color: #94a3b8;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
   align-self: flex-start;
-  transition: background 0.2s ease, color 0.2s ease;
 }
 
-.commitment-delete:hover {
+.ic-commitment-delete:hover {
   background: #fee2e2;
   color: #ef4444;
 }
 
-.commitments-empty {
-  text-align: center;
-  padding: 50px 20px;
-  background: #fff;
-  border-radius: 28px;
-  border: 2px dashed rgba(124, 58, 237, 0.3);
-  box-shadow: 0 15px 30px rgba(15, 23, 42, 0.05);
+/* Today Suggestion Card */
+.ic-today-suggestion {
+  margin-bottom: 24px;
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border: 2px solid #fbbf24;
 }
 
-.empty-icon {
+.ic-today-suggestion-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0 0 12px 0;
+}
+
+.ic-today-suggestion-text {
+  font-size: 15px;
+  color: var(--color-text);
+  margin: 0 0 16px 0;
+  line-height: 1.6;
+}
+
+.ic-today-suggestion-button {
+  align-self: flex-start;
+}
+
+/* Empty State */
+.ic-empty-state {
+  text-align: center;
+  padding: 48px 24px;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.05) 0%, rgba(59, 130, 246, 0.05) 100%);
+  border: 2px dashed rgba(139, 92, 246, 0.3);
+}
+
+.ic-empty-icon {
   font-size: 64px;
   margin-bottom: 16px;
-  opacity: 0.5;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
 }
 
-.commitments-empty p {
-  font-size: var(--font-size-base);
+.ic-empty-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0 0 12px 0;
+}
+
+.ic-empty-description {
+  font-size: 15px;
   color: var(--color-text-secondary);
-  margin: 0;
-  max-width: 100%;
+  margin: 0 0 24px 0;
+  line-height: 1.6;
+  max-width: 600px;
   margin-left: auto;
   margin-right: auto;
 }
 
-@media (max-width: 768px) {
-  .commitment-input-group {
+.ic-empty-button {
+  display: inline-block;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .ic-new-commitment-card {
+    padding: 20px;
+  }
+
+  .ic-type-selector {
     flex-direction: column;
   }
-  
-  .commitment-input-field,
-  .commitment-category-select,
-  .commitment-add-button {
+
+  .ic-type-option {
     width: 100%;
   }
-  
-  .commitment-header-row {
+
+  .ic-commitment-header {
     flex-direction: column;
+    align-items: flex-start;
   }
-  
-  .commitment-category-badge {
+
+  .ic-commitment-category {
     align-self: flex-start;
   }
 }
-

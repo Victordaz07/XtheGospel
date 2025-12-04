@@ -6,6 +6,7 @@ import {
   FaChartLine,
   FaUser,
   FaUsers,
+  FaCircleQuestion,
 } from 'react-icons/fa6';
 import { useI18n } from '../../context/I18nContext';
 import { FloatingMenu } from '../../ui/components';
@@ -18,6 +19,12 @@ import { MemberConvertidosPage } from '../pages/MemberConvertidosPage';
 import { MemberConvertidosDetailPage } from '../pages/MemberConvertidosDetailPage';
 import MemberFriends from '../../pages/member/MemberFriends';
 import MemberMissionarySupport from '../../pages/member/MemberMissionarySupport';
+// Member Mode 2.0 screens
+import MemberHomeScreen from '../../pages/member/MemberHomeScreen';
+import MemberFriendsScreen from '../../pages/member/MemberFriendsScreen';
+import MemberTrainingCenterScreen from '../../pages/member/MemberTrainingCenterScreen';
+import MemberHelpPanelScreen from '../../pages/member/MemberHelpPanelScreen';
+import NewConvertCareScreen from '../../pages/member/NewConvertCareScreen';
 import { MissionaryProfileScreen } from '../../pages/profile/MissionaryProfileScreen';
 import { FeaturedContentPage } from '../../pages/member/FeaturedContentPage';
 import { LeaderTodayPanelScreen } from '../../pages/member/LeaderTodayPanelScreen';
@@ -35,10 +42,10 @@ import '../../layouts/Layout.css';
  * This configuration is ALWAYS used regardless of the current route.
  * 
  * Tabs are displayed in this exact order:
- * 1. Inicio (Home)
- * 2. Lecciones (Lessons)
- * 3. Mis Amigos (Friends)
- * 4. Progreso (Progress)
+ * 1. Inicio (Home) - Member Mode 2.0
+ * 2. Mis Amigos (Friends) - Member Mode 2.0
+ * 3. Entrenamiento (Training) - Member Mode 2.0
+ * 4. Ayuda (Help Panel) - Member Mode 2.0
  * 5. Perfil (Profile)
  */
 export const MEMBER_TABS_CONFIG = [
@@ -48,19 +55,19 @@ export const MEMBER_TABS_CONFIG = [
     icon: FaHouse,
   },
   {
-    path: '/member/study',
-    translationKey: 'tabs.lessons',
-    icon: FaBookOpen,
-  },
-  {
     path: '/member/friends',
     translationKey: 'tabs.memberFriends',
     icon: FaUsers,
   },
   {
-    path: '/member/progress',
-    translationKey: 'tabs.progress',
-    icon: FaChartLine,
+    path: '/member/training',
+    translationKey: 'tabs.memberTraining',
+    icon: FaBookOpen,
+  },
+  {
+    path: '/member/help-panel',
+    translationKey: 'tabs.memberHelpPanel',
+    icon: FaCircleQuestion,
   },
   {
     path: '/member/profile',
@@ -92,8 +99,15 @@ export const MemberLayout: React.FC = () => {
         <FloatingMenu tabs={bottomNavTabs} />
         <main className="layout-content">
           <Routes>
-            <Route path="/member" element={<MemberHome />} />
-            <Route path="/member/home" element={<MemberHome />} />
+            {/* Member Mode 2.0 - New screens */}
+            <Route path="/member" element={<MemberHomeScreen />} />
+            <Route path="/member/home" element={<MemberHomeScreen />} />
+            <Route path="/member/friends" element={<MemberFriendsScreen />} />
+            <Route path="/member/training" element={<MemberTrainingCenterScreen />} />
+            <Route path="/member/help-panel" element={<MemberHelpPanelScreen />} />
+            <Route path="/member/new-converts" element={<NewConvertCareScreen />} />
+            
+            {/* Legacy routes - keeping for backward compatibility */}
             <Route path="/member/study" element={<StudyModulesPage />} />
             <Route path="/member/study/:moduleId" element={<StudySectionView />} />
             <Route path="/member/study/:moduleId/:sectionId" element={<StudySectionView />} />
@@ -101,7 +115,6 @@ export const MemberLayout: React.FC = () => {
             <Route path="/member/convertidos/:sectionId" element={<MemberConvertidosDetailPage />} />
             <Route path="/member/activities" element={<ActivitiesPage />} />
             <Route path="/member/progress" element={<ProgressPage />} />
-            <Route path="/member/friends" element={<MemberFriends />} />
             <Route path="/member/support" element={<MemberMissionarySupport />} />
             <Route path="/member/profile" element={<MissionaryProfileScreen />} />
             <Route path="/member/featured" element={<FeaturedContentPage />} />

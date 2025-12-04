@@ -1,5 +1,8 @@
 import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 import { StorageService } from '../utils/storage';
+import { createCommitmentsFromLesson } from '../data/suggestedInvestigatorCommitments';
+import { InvestigatorCommitmentsService } from '../services/investigatorCommitmentsService';
+import { INVESTIGATOR_LESSONS, getRealLessonId } from '../data/investigatorLessons';
 
 // Tipos
 type LessonProgress = {
@@ -82,6 +85,41 @@ export const ProgressProvider: React.FC<ProgressProviderProps> = ({ children }) 
                 }];
 
             setProgress(updatedProgress);
+
+            // Create suggested commitments for investigator lessons
+            try {
+                // Find the investigator lesson ID from the real lesson ID
+                const investigatorLesson = INVESTIGATOR_LESSONS.find(
+                    l => l.lessonId === lessonId || l.id === lessonId || getRealLessonId(l.id) === lessonId
+                );
+                
+                if (investigatorLesson) {
+                    const existingCommitments = await InvestigatorCommitmentsService.loadCommitments();
+                    
+                    // Create a simple translate function that returns the key (UI will translate)
+                    // This is a workaround since we can't use useI18n here
+                    const translate = (key: string) => key;
+                    
+                    const newCommitments = createCommitmentsFromLesson(
+                        investigatorLesson.id,
+                        existingCommitments,
+                        translate
+                    );
+                    
+                    // Add each new commitment
+                    for (const commitment of newCommitments) {
+                        await InvestigatorCommitmentsService.addCommitment({
+                            text: commitment.text, // This is the textKey, UI will translate
+                            type: commitment.type,
+                            state: commitment.state,
+                            lessonId: commitment.lessonId,
+                        });
+                    }
+                }
+            } catch (commitmentError) {
+                // Don't fail lesson completion if commitment creation fails
+                console.error('Error creating suggested commitments:', commitmentError);
+            }
         } catch (error) {
             console.error('Error marking lesson completed:', error);
         }

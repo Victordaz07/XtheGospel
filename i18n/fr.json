@@ -8,6 +8,8 @@
   "tabs.agenda": "Agenda",
   "tabs.people": "Personnes",
   "tabs.memberFriends": "Amis",
+  "tabs.memberTraining": "Formation",
+  "tabs.memberHelpPanel": "Aide",
   "tabs.memberSkills": "Compétences",
   "tabs.memberResources": "Ressources",
   "tabs.memberSupport": "Soutien",
@@ -81,6 +83,14 @@
   "common.back": "Retour",
   "common.close": "Fermer",
   "common.other": "Autre",
+  "common.retry": "Réessayer",
+  "common.reload": "Recharger la page",
+  "common.errorLoading": "Erreur lors du chargement",
+  "common.errorSaving": "Erreur lors de l'enregistrement",
+  "common.errorUpdating": "Erreur lors de la mise à jour",
+  "common.errorDeleting": "Erreur lors de la suppression",
+  "common.confirmDelete": "Voulez-vous supprimer cela ?",
+  "common.notifications": "Notifications",
   "auth.welcome": "Bienvenue",
   "auth.selectRole": "Sélectionnez votre rôle pour continuer",
   "auth.investigator": "Chercheur",
@@ -110,10 +120,21 @@
   "auth.roleHint": "Connectez-vous en tant que Chercheur, Missionnaire ou Membre",
   "auth.noAccount": "Vous n'avez pas de compte ?",
   "auth.register": "S'inscrire",
+  "app.title": "Application Missionnaire",
+  "roles.investigator": "Investigateur",
   "home.welcome": "Bienvenue, Chercheur",
+  "home.welcome.title": "Bienvenue dans ton parcours spirituel !",
+  "home.welcome.subtitle": "Nous sommes là pour t'accompagner pendant que tu apprends l'Évangile. Explore les leçons, accomplis les engagements et suis tes progrès.",
   "home.progress": "Votre Progrès",
+  "home.progress.title": "Tes progrès",
+  "home.progress.stats": "{{completed}} leçons sur {{total}} terminées",
+  "home.progress.hint": "Commence quand tu te sens prêt. Chaque pas te rapproche du Christ.",
+  "home.progress.percentLabel": "{{percent}}%",
   "home.lessonsCompleted": "de",
   "home.lessonsCompletedText": "leçons terminées",
+  "home.startJourney.title": "Commence ici",
+  "home.startJourney.subtitle": "Commence par : La Restauration de l'Évangile de Jésus-Christ",
+  "home.startJourney.button": "Commencer ma première leçon",
   "home.quickAccess": "Accès Rapide",
   "home.lessons": "Leçons",
   "home.lessonsDesc": "Continuez à apprendre",
@@ -131,12 +152,144 @@
   "home.startJourney": "Commencer votre parcours",
   "home.startWithLesson": "Commencez par",
   "home.dailyMessage": "Message du jour",
+  "home.dailyMessage.title": "Message pour toi aujourd'hui",
+  "home.dailyMessage.scriptureRef": "Matthieu 11:28",
+  "home.dailyMessage.scriptureText": "Venez à moi, vous tous qui êtes fatigués et chargés, et je vous donnerai du repos.",
+  "home.dailyMessage.reflection": "Jésus nous invite à venir à Lui lorsque nous nous sentons accablés. Il offre le repos et le soulagement dans nos difficultés.",
+  "home.dailyMessage.todayActionTitle": "Action du jour",
+  "home.dailyMessage.todayActionBody": "Pense à un fardeau que tu portes et présente-le au Seigneur dans la prière. Tu n'es pas seul.",
+  "home.dailyMessage.buttonFeltSomething": "J'ai ressenti quelque chose aujourd'hui",
+  "home.dailyMessage.buttonNeedHelp": "J'aimerais mieux comprendre",
+  "home.dailyMessage.fromLessonLabel": "Basé sur la leçon : {{lessonTitle}}",
+  "home.dailyMessage.relatedCommitmentLabel": "Ce message est lié à l'un de tes engagements :",
+  "home.dailyMessage.goToCommitmentsButton": "Voir dans mes engagements",
+  "home.dailyMessage.createCommitmentFromMessage": "Créer un engagement basé sur ce message",
   "home.todayAction": "Action d'aujourd'hui",
   "home.feltSomething": "J'ai ressenti quelque chose aujourd'hui",
   "home.notUnderstood": "Je n'ai pas bien compris",
   "home.nextCommitment": "Prochain engagement",
+  "home.nextCommitment.title": "Prochain engagement",
+  "home.nextCommitment.description": "Tu n'as pas encore d'engagements. Lorsque tu auras terminé ta première leçon, nous te proposerons des invitations simples pour continuer à apprendre.",
   "home.viewAllCommitments": "Voir tous les engagements",
   "home.noCommitmentsYet": "Vous n'avez pas encore d'engagements. Terminez votre première leçon et nous vous en suggérerons.",
+  "home.quickAccess.lessons.title": "Mes leçons",
+  "home.quickAccess.lessons.subtitle": "Continue à apprendre",
+  "home.quickAccess.progress.title": "Mes progrès",
+  "home.quickAccess.progress.subtitle": "Voir ton avancement",
+  "home.quickAccess.commitments.title": "Mes engagements",
+  "home.quickAccess.commitments.subtitle": "Revoir ce que tu as accepté de faire",
+  "home.additionalResources.title": "Ressources supplémentaires",
+  "home.additionalResources.myStory.title": "Mon histoire avec Dieu",
+  "home.additionalResources.myStory.subtitle": "Note tes expériences spirituelles et tes moments spéciaux",
+  "home.additionalResources.toughQuestions.title": "Questions importantes",
+  "home.additionalResources.toughQuestions.subtitle": "Des réponses claires aux questions fréquentes sur l'Évangile",
+  "home.supportCard.title": "Tu n'es pas seul sur ce chemin",
+  "home.supportCard.body": "Tu peux toujours revenir ici pour trouver de la direction, de la paix et de l'inspiration. Si tu le souhaites, tu peux parler avec des missionnaires qui t'aideront à avancer.",
+  "home.supportCard.button": "Parler avec un missionnaire",
+  "investigatorLessons.header.title": "Mes leçons",
+  "investigatorLessons.header.subtitle": "Avance à ton propre rythme. Tu peux revenir à n'importe quelle leçon quand tu en as besoin.",
+  "investigatorLessons.summary.completedStats": "{{completed}} leçons sur {{total}} terminées",
+  "investigatorLessons.summary.recommended": "Recommandé pour toi : {{lessonTitle}}",
+  "investigatorLessons.states.notStarted": "Non commencée",
+  "investigatorLessons.states.inProgress": "En cours",
+  "investigatorLessons.states.completed": "Terminée",
+  "investigatorLessons.list.title": "Toutes les leçons",
+  "investigatorLessons.detail.whatYouWillLearn": "Ce que tu apprendras",
+  "investigatorLessons.detail.buttonStart": "Commencer la leçon",
+  "investigatorLessons.detail.buttonContinue": "Continuer la leçon",
+  "investigatorLessons.detail.buttonReview": "Revoir la leçon",
+  "investigatorLessons.footer.encouragement": "Chaque leçon est un pas de plus pour te rapprocher de Jésus-Christ. Tu n'as pas besoin d'être parfait, continue simplement d'avancer.",
+  "investigatorLessons.lessons.restoration.title": "La Restauration de l'Évangile de Jésus-Christ",
+  "investigatorLessons.lessons.restoration.tagline": "Découvre pourquoi nous avons de nouveau un prophète vivant et des Écritures modernes sur la terre.",
+  "investigatorLessons.lessons.planOfSalvation.title": "Le Plan de Salut",
+  "investigatorLessons.lessons.planOfSalvation.tagline": "Découvre d'où tu viens, pourquoi tu es ici et ce que Dieu a préparé pour toi après cette vie.",
+  "investigatorLessons.lessons.gospelOfChrist.title": "L'Évangile de Jésus-Christ",
+  "investigatorLessons.lessons.gospelOfChrist.tagline": "Apprends la foi, la repentance, le baptême et comment commencer une nouvelle vie en Christ.",
+  "investigatorLessons.lessons.commandments.title": "Les commandements",
+  "investigatorLessons.lessons.commandments.tagline": "Vois comment les commandements sont une protection et une direction, et pas seulement une liste de règles.",
+  "investigatorLessons.lessons.lawsAndOrdinances.title": "Lois et ordonnances",
+  "investigatorLessons.lessons.lawsAndOrdinances.tagline": "Fais connaissance avec des ordonnances importantes comme la confirmation, la prêtrise et les ordonnances du temple.",
+  "investigatorLessons.lessons.followingChrist.title": "Suivre Jésus-Christ chaque jour",
+  "investigatorLessons.lessons.followingChrist.tagline": "Explore comment prier, étudier les Écritures et servir les autres dans ta vie quotidienne.",
+  "investigatorLessons.lessons.joiningTheChurch.title": "Me préparer à devenir membre de l'Église",
+  "investigatorLessons.lessons.joiningTheChurch.tagline": "Comprends ce que signifie être baptisé, faire partie de l'Église et continuer à progresser après le baptême.",
+  "investigatorMyStory.header.title": "Mon histoire avec Dieu",
+  "investigatorMyStory.header.subtitle": "Ici, tu peux enregistrer tes expériences spirituelles, impressions et moments particuliers pendant que tu apprends l'Évangile.",
+  "investigatorMyStory.empty.title": "Tu n'as encore rien écrit",
+  "investigatorMyStory.empty.description": "Chaque fois que tu ressens une pensée spirituelle, une réponse à une prière ou un moment de paix, tu peux la sauvegarder ici.",
+  "investigatorMyStory.list.addButton": "Ajouter une expérience spirituelle",
+  "investigatorMyStory.entry.titleLabel": "Titre",
+  "investigatorMyStory.entry.contentLabel": "Mon expérience",
+  "investigatorMyStory.entry.lessonLabel": "Leçon liée (facultatif)",
+  "investigatorMyStory.entry.dateLabel": "Date",
+  "investigatorMyStory.entry.saveButton": "Enregistrer",
+  "investigatorMyStory.entry.cancelButton": "Annuler",
+  "investigatorMyStory.entry.editButton": "Modifier",
+  "investigatorMyStory.entry.deleteButton": "Supprimer",
+  "investigatorMyStory.entry.confirmDelete": "Voulez-vous supprimer cette expérience ?",
+  "investigatorMyStory.entry.noTitle": "(Sans titre)",
+  "investigatorCommitments.header.title": "Tes engagements avec le Seigneur",
+  "investigatorCommitments.header.subtitle": "De petits pas pour mettre en pratique ce que tu apprends de l'Évangile. Il ne s'agit pas de faire beaucoup, mais de le faire avec le cœur.",
+  "investigatorCommitments.new.placeholder": "Écris ici un engagement simple… (ex. : Prier ce soir pour savoir si c'est vrai)",
+  "investigatorCommitments.new.typeLabel": "Type d'engagement",
+  "investigatorCommitments.new.typeStudy": "Étude",
+  "investigatorCommitments.new.typeSpiritual": "Spirituel",
+  "investigatorCommitments.new.typeAttendance": "Assistance",
+  "investigatorCommitments.new.typeService": "Service",
+  "investigatorCommitments.new.helper": "Suggestion : des engagements simples et réalisables. Par exemple : \"Lire Matthieu 11:28 ce soir et réfléchir à ce que je ressens\".",
+  "investigatorCommitments.new.buttonSave": "Enregistrer l'engagement de foi",
+  "investigatorCommitments.filters.title": "Filtrer les engagements",
+  "investigatorCommitments.filters.all": "Tous",
+  "investigatorCommitments.filters.allDesc": "Voir chaque engagement que tu as créé",
+  "investigatorCommitments.filters.study": "Étude",
+  "investigatorCommitments.filters.studyDesc": "Lecture des Écritures, manuels ou matériel de l'Église",
+  "investigatorCommitments.filters.spiritual": "Spirituels",
+  "investigatorCommitments.filters.spiritualDesc": "Prière, réflexion, repentance, témoignages",
+  "investigatorCommitments.filters.attendance": "Assistance",
+  "investigatorCommitments.filters.attendanceDesc": "Aller à l'Église, leçons, activités, entretiens",
+  "investigatorCommitments.empty.title": "Tu n'as pas encore d'engagements",
+  "investigatorCommitments.empty.description": "Lorsque tu auras terminé une leçon, nous te suggérerons des étapes simples pour agir sur ce que tu as appris. En attendant, tu peux commencer par quelque chose de petit, comme : \"Prier ce soir pour ressentir la paix du Christ dans ma vie\".",
+  "investigatorCommitments.empty.buttonGoToLessons": "Voir les leçons",
+  "investigatorCommitments.entry.addedOn": "Ajouté le {{date}}",
+  "investigatorCommitments.entry.fromLesson": "De la leçon : {{lessonTitle}}",
+  "investigatorCommitments.states.pending": "En attente",
+  "investigatorCommitments.states.today": "Pour aujourd'hui",
+  "investigatorCommitments.states.completed": "Terminé",
+  "investigatorCommitments.labels.fromLesson": "De la leçon : {{lessonTitle}}",
+  "investigatorCommitments.labels.createdAt": "Ajouté le {{date}}",
+  "investigatorCommitments.card.setToday": "Le faire aujourd'hui",
+  "investigatorCommitments.card.markDone": "Marquer comme fait",
+  "investigatorCommitments.card.undo": "Retour en attente",
+  "investigatorCommitments.todaySuggestion.title": "Suggestion pour aujourd'hui",
+  "investigatorCommitments.todaySuggestion.buttonSetToday": "Le faire aujourd'hui",
+  "investigatorCommitments.samples.prayRestoration": "Prier pour savoir si Joseph Smith était un prophète",
+  "investigatorCommitments.samples.readBookOfMormon": "Lire dans le Livre de Mormon Moroni 10:3–5",
+  "investigatorCommitments.samples.attendChurch": "Assister à l'Église le dimanche",
+  "investigatorCommitments.samples.prayMorningNight": "Prier matin et soir",
+  "investigatorCommitments.samples.readScriptures": "Lire les Écritures pendant 10 minutes",
+  "investigatorCommitments.samples.keepCommandments": "Réfléchir à la façon dont je peux mieux garder les commandements",
+  "investigatorCommitments.errors.loading": "Erreur lors du chargement des engagements",
+  "investigatorCommitments.errors.adding": "Erreur lors de l'ajout d'un engagement",
+  "investigatorCommitments.errors.updating": "Erreur lors de la mise à jour de l'état de l'engagement",
+  "investigatorCommitments.errors.deleting": "Erreur lors de la suppression de l'engagement",
+  "investigatorCommitments.errors.confirmDelete": "Supprimer cet engagement ?",
+  "investigatorCommitments.errors.renderError": "Erreur de rendu",
+  "investigatorCommitments.errors.pageLoadError": "Une erreur s'est produite lors du chargement de la page",
+  "dailyMessages.comfortBurdened.scriptureRef": "Matthieu 11:28",
+  "dailyMessages.comfortBurdened.scriptureText": "Venez à moi, vous tous qui êtes fatigués et chargés, et je vous donnerai du repos.",
+  "dailyMessages.comfortBurdened.reflection": "Jésus connaît tes fardeaux personnels. Il ne t'invite pas seulement à croire en Lui, mais à venir à Lui tel que tu es.",
+  "dailyMessages.comfortBurdened.action": "Pense à quelque chose qui t'inquiète aujourd'hui. Parle-en au Seigneur dans la prière avec tes propres mots.",
+  "dailyMessages.comfortBurdened.lessonId": "gospelOfChrist",
+  "dailyMessages.seekWisdom.scriptureRef": "Jacques 1:5",
+  "dailyMessages.seekWisdom.scriptureText": "Si quelqu'un d'entre vous manque de sagesse, qu'il la demande à Dieu, qui donne à tous simplement et sans reproche, et elle lui sera donnée.",
+  "dailyMessages.seekWisdom.reflection": "Dieu n'est pas dérangé par tes questions. Il t'invite à les lui poser directement.",
+  "dailyMessages.seekWisdom.action": "Écris une question que tu as au sujet de Dieu ou de l'Église et demande en prière qu'Il te guide vers la réponse.",
+  "dailyMessages.seekWisdom.lessonId": "restoration",
+  "dailyMessages.peaceThroughPrayer.scriptureRef": "Alma 37:37",
+  "dailyMessages.peaceThroughPrayer.scriptureText": "Consulte le Seigneur dans toutes tes actions, et Il te dirigera pour ton bien.",
+  "dailyMessages.peaceThroughPrayer.reflection": "La prière n'est pas seulement pour les grands problèmes, mais aussi pour les petites décisions de chaque jour.",
+  "dailyMessages.peaceThroughPrayer.action": "Avant de prendre une décision aujourd'hui, même petite, fais une courte prière pour demander Sa direction.",
+  "dailyMessages.peaceThroughPrayer.lessonId": "followingChrist",
   "missionary.welcome": "Bienvenue, Missionnaire",
   "missionary.homeMessage": "Ceci est la page d'accueil du missionnaire.",
   "missionary.header": "Guide pour missionnaires",
@@ -1374,6 +1527,182 @@
         "companionship": "Compagnonnage",
         "personal": "Personnel"
       }
+    }
+  },
+  "memberHome": {
+    "header": {
+      "title": "Accueil membre",
+      "subtitle": "Ici tu verras comment tu peux aider aujourd'hui les missionnaires, tes amis et les nouveaux convertis."
+    },
+    "dailyMotivator": {
+      "title": "Message pour toi aujourd'hui",
+      "defaultScriptureRef": "Moroni 7:48",
+      "defaultScriptureText": "C'est pourquoi, mes frères bien-aimés, priez le Père de toute l'énergie de votre cœur, afin d'être remplis de cet amour...",
+      "defaultReflection": "Pense à quelqu'un que tu peux rapprocher un peu plus de Jésus-Christ aujourd'hui.",
+      "defaultAction": "Prie pour une personne spécifique et décide de faire quelque chose de petit pour elle aujourd'hui."
+    },
+    "quickActions": {
+      "title": "Actions rapides",
+      "helpMissionaries": "Voir comment aider les missionnaires",
+      "friends": "Voir mes amis qui apprennent",
+      "training": "Pratiquer le partage de l'Évangile",
+      "newConverts": "Prendre soin des nouveaux convertis"
+    },
+    "serviceProgress": {
+      "title": "Mon service cette semaine",
+      "accompaniedInvestigator": "J'ai accompagné un investigateur",
+      "boreTestimony": "J'ai partagé mon témoignage",
+      "helpedMissionaries": "J'ai aidé les missionnaires",
+      "extendedInvitation": "J'ai fait une invitation"
+    }
+  },
+  "memberFriends": {
+    "header": {
+      "title": "Mes amis",
+      "subtitle": "Personnes que j'aide à se rapprocher de Jésus-Christ."
+    },
+    "list": {
+      "emptyTitle": "Tu n'as pas encore ajouté d'amis",
+      "emptyDescription": "Quand tu aides quelqu'un à apprendre l'Évangile, tu peux l'ajouter ici pour te souvenir de lui dans tes prières et ton service.",
+      "addFriendButton": "Ajouter un ami"
+    },
+    "friendStages": {
+      "gettingToKnowChurch": "Découvrir l'Église",
+      "learningActively": "Apprendre activement",
+      "preparingForBaptism": "Se préparer au baptême",
+      "attendingRegularly": "Assister régulièrement",
+      "recentConvert_0_3": "Récemment baptisé (0–3 mois)",
+      "recentConvert_3_12": "Nouveau converti (3–12 mois)"
+    },
+    "friendCard": {
+      "stageLabel": "État spirituel",
+      "lastContact": "Dernier contact : {{date}}",
+      "noLastContact": "Aucun contact récent enregistré",
+      "seeSuggestions": "Voir les suggestions pour aider",
+      "notesLabel": "Notes personnelles"
+    },
+    "suggestions": {
+      "title": "Suggestions pour cette étape",
+      "gettingToKnowChurch": "Invite-le à une activité simple où il peut ressentir l'amour et l'appartenance.",
+      "learningActively": "Offre de partager ton témoignage et répondre aux questions avec humilité.",
+      "preparingForBaptism": "Accompagne-le à l'Église et aide-le à ressentir le soutien dans sa décision.",
+      "attendingRegularly": "Aide-le à s'intégrer dans sa classe et les activités.",
+      "recentConvert_0_3": "Assieds-toi avec lui à la réunion de Sainte-Cène et reste proche pendant ses premiers mois.",
+      "recentConvert_3_12": "Invite-le à participer et servir ; aide-le à se sentir vraiment partie de l'Église."
+    },
+    "detail": {
+      "title": "Détails de l'ami",
+      "editNotes": "Modifier les notes",
+      "saveNotes": "Enregistrer les notes",
+      "cancel": "Annuler"
+    }
+  },
+  "memberTraining": {
+    "header": {
+      "title": "Centre de formation missionnaire",
+      "subtitle": "Apprends à partager l'Évangile avec amour, simplicité et puissance spirituelle."
+    },
+    "modules": {
+      "teachLikeChrist": {
+        "title": "Enseigner comme le Christ",
+        "description": "Apprends à enseigner du cœur, avec simplicité et guidé par l'Esprit.",
+        "points": {
+          "fromHeart": "Parle de ton expérience, pas seulement de la mémoire.",
+          "simpleWords": "Utilise des mots simples que n'importe quel ami peut comprendre.",
+          "askInspired": "Pose des questions qui invitent à ressentir, pas seulement à expliquer.",
+          "leaveSilence": "Laisse de l'espace en silence pour que l'Esprit parle."
+        }
+      },
+      "inviteWithLove": {
+        "title": "Inviter sans presser",
+        "description": "Fais des invitations claires, bienveillantes et respectueuses.",
+        "points": {
+          "clearInvitation": "Sois clair sur ce que tu invites, sans ambiguïté.",
+          "respectNo": "Respecte un 'non' avec amour et maintient l'amitié.",
+          "rightTiming": "Discerne le bon moment pour inviter.",
+          "followUp": "Avance sans presser, maintient le contact."
+        }
+      },
+      "explainLessonsSimply": {
+        "title": "Expliquer les leçons en 2 minutes",
+        "description": "Apprends à résumer les enseignements principaux simplement.",
+        "lessons": {
+          "restoration": "Dieu a appelé Joseph Smith comme prophète pour restaurer Son Église et Son Évangile complet.",
+          "planOfSalvation": "Dieu a un plan pour que nous retournions vivre avec Lui, grâce à Jésus-Christ.",
+          "gospelOfChrist": "La foi, le repentir, le baptême et recevoir le Saint-Esprit nous rapprochent du Christ.",
+          "commandments": "Les commandements sont protection et guidance, pas seulement des règles.",
+          "lawsAndOrdinances": "Les ordonnances comme le baptême et le temple nous aident à suivre le Christ."
+        }
+      }
+    },
+    "rolePlay": {
+      "title": "Pratiquer des situations réelles",
+      "scenario1": {
+        "title": "Ton ami dit : Toutes les églises sont bonnes",
+        "question": "Comment réponds-tu avec amour et témoignage ?",
+        "hint": "Concentre-toi sur Jésus-Christ, au lieu de critiquer d'autres églises.",
+        "goodAnswer": "Tu peux dire : 'Tu as raison, il y a beaucoup de bonnes églises. Ce qui a touché mon cœur, c'est que Jésus-Christ a restauré Son Église avec un prophète vivant aujourd'hui, et cela m'a apporté beaucoup de paix.'"
+      },
+      "scenario2": {
+        "title": "Ton ami demande : Pourquoi dois-je être baptisé à nouveau ?",
+        "question": "Comment expliques-tu le baptême avec autorité ?",
+        "hint": "Parle de l'autorité de la prêtrise, pas que les autres baptêmes sont invalides.",
+        "goodAnswer": "Tu peux dire : 'Le baptême est important, et ce qui rend le nôtre spécial, c'est qu'il est fait avec l'autorité de la prêtrise que Jésus-Christ a restaurée. C'est comme avoir les bonnes clés pour ouvrir une porte.'"
+      }
+    }
+  },
+  "memberHelpPanel": {
+    "header": {
+      "title": "Aider les missionnaires",
+      "subtitle": "Vois les moyens concrets dont tu peux soutenir cette semaine."
+    },
+    "list": {
+      "emptyTitle": "Aucune demande pour le moment",
+      "emptyDescription": "Quand les missionnaires publieront des besoins, tu les verras ici et pourras offrir ton aide."
+    },
+    "taskTypes": {
+      "accompanyLesson": "Accompagner une leçon",
+      "transport": "Aider avec le transport",
+      "welcomeAtChurch": "Accueillir quelqu'un à la chapelle",
+      "fellowship": "Se faire des amis et accompagner",
+      "activityInvite": "Inviter à une activité",
+      "service": "Aider dans un service"
+    },
+    "statuses": {
+      "open": "Disponible",
+      "claimed": "En cours",
+      "completed": "Terminé"
+    },
+    "taskCard": {
+      "labelInvestigator": "Soutenir : {{alias}}",
+      "buttonOfferHelp": "Je peux aider",
+      "buttonMaybe": "Peut-être, je dois confirmer",
+      "buttonMarkCompleted": "Marquer comme terminé"
+    }
+  },
+  "newConvertCare": {
+    "header": {
+      "title": "Soin des nouveaux convertis",
+      "subtitle": "Aide les nouveaux convertis à s'enraciner dans le Christ et Son Église."
+    },
+    "timeline": {
+      "baptism": "Baptême",
+      "confirmation": "Confirmation",
+      "firstCalling": "Premier appel",
+      "firstTemple": "Première visite au temple",
+      "stabilizing": "Se renforcer dans l'Évangile"
+    },
+    "plan": {
+      "stepsTitle": "Étapes de soutien",
+      "stepSitTogether": "S'asseoir avec lui à la réunion de Sainte-Cène",
+      "stepIntroduceLeaders": "Le présenter à ses dirigeants et enseignants",
+      "stepInviteActivities": "L'inviter aux activités de paroisse",
+      "stepScriptureHabits": "L'aider à créer des habitudes de prière et d'étude",
+      "stepTempleGoal": "L'aider à se préparer à aller au temple"
+    },
+    "list": {
+      "emptyTitle": "Aucun nouveau converti assigné",
+      "emptyDescription": "Quand tu auras l'opportunité de prendre soin d'un nouveau converti, il apparaîtra ici."
     }
   }
 }

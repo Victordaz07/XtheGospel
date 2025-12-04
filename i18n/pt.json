@@ -8,6 +8,8 @@
   "tabs.agenda": "Agenda",
   "tabs.people": "Pessoas",
   "tabs.memberFriends": "Amigos",
+  "tabs.memberTraining": "Treinamento",
+  "tabs.memberHelpPanel": "Ajuda",
   "tabs.memberSkills": "Habilidades",
   "tabs.memberResources": "Recursos",
   "tabs.memberSupport": "Apoio",
@@ -81,6 +83,14 @@
   "common.back": "Voltar",
   "common.close": "Fechar",
   "common.other": "Outro",
+  "common.retry": "Tentar novamente",
+  "common.reload": "Recarregar página",
+  "common.errorLoading": "Erro ao carregar",
+  "common.errorSaving": "Erro ao salvar",
+  "common.errorUpdating": "Erro ao atualizar",
+  "common.errorDeleting": "Erro ao excluir",
+  "common.confirmDelete": "Deseja excluir isso?",
+  "common.notifications": "Notificações",
   "auth.welcome": "Bem-vindo",
   "auth.selectRole": "Selecione seu papel para continuar",
   "auth.investigator": "Investigador",
@@ -151,6 +161,9 @@
   "home.dailyMessage.buttonFeltSomething": "Hoje senti algo",
   "home.dailyMessage.buttonNeedHelp": "Quero entender melhor",
   "home.dailyMessage.fromLessonLabel": "Baseado na lição: {{lessonTitle}}",
+  "home.dailyMessage.relatedCommitmentLabel": "Esta mensagem se relaciona com um de seus compromissos:",
+  "home.dailyMessage.goToCommitmentsButton": "Ver em meus compromissos",
+  "home.dailyMessage.createCommitmentFromMessage": "Criar um compromisso baseado nesta mensagem",
   "home.todayAction": "Ação de hoje",
   "home.feltSomething": "Senti algo hoje",
   "home.notUnderstood": "Não entendi bem",
@@ -255,6 +268,13 @@
   "investigatorCommitments.samples.prayMorningNight": "Orar de manhã e à noite",
   "investigatorCommitments.samples.readScriptures": "Ler as Escrituras por 10 minutos",
   "investigatorCommitments.samples.keepCommandments": "Refletir sobre como posso guardar melhor os mandamentos",
+  "investigatorCommitments.errors.loading": "Erro ao carregar compromissos",
+  "investigatorCommitments.errors.adding": "Erro ao adicionar compromisso",
+  "investigatorCommitments.errors.updating": "Erro ao atualizar estado do compromisso",
+  "investigatorCommitments.errors.deleting": "Erro ao excluir compromisso",
+  "investigatorCommitments.errors.confirmDelete": "Excluir este compromisso?",
+  "investigatorCommitments.errors.renderError": "Erro ao renderizar",
+  "investigatorCommitments.errors.pageLoadError": "Houve um erro ao carregar a página",
   "dailyMessages.comfortBurdened.scriptureRef": "Mateus 11:28",
   "dailyMessages.comfortBurdened.scriptureText": "Vinde a mim, todos os que estais cansados e oprimidos, e eu vos aliviarei.",
   "dailyMessages.comfortBurdened.reflection": "Jesus conhece seus fardos pessoais. Ele não apenas convida você a crer nEle, mas a ir até Ele como você está.",
@@ -1573,6 +1593,182 @@
         "companionship": "Companheirismo",
         "personal": "Pessoal"
       }
+    }
+  },
+  "memberHome": {
+    "header": {
+      "title": "Início como membro",
+      "subtitle": "Aqui você verá como pode ajudar hoje os missionários, seus amigos e os novos conversos."
+    },
+    "dailyMotivator": {
+      "title": "Mensagem para você hoje",
+      "defaultScriptureRef": "Morôni 7:48",
+      "defaultScriptureText": "Portanto, meus amados irmãos, orai ao Pai com toda a energia do coração, para que sejais cheios deste amor...",
+      "defaultReflection": "Pense em alguém que você pode aproximar um pouco mais de Jesus Cristo hoje.",
+      "defaultAction": "Ore por uma pessoa específica e decida fazer algo pequeno por ela hoje."
+    },
+    "quickActions": {
+      "title": "Ações rápidas",
+      "helpMissionaries": "Ver como ajudar os missionários",
+      "friends": "Ver meus amigos que estão aprendendo",
+      "training": "Praticar como compartilhar o evangelho",
+      "newConverts": "Cuidar dos novos conversos"
+    },
+    "serviceProgress": {
+      "title": "Meu serviço esta semana",
+      "accompaniedInvestigator": "Acompanhei um investigador",
+      "boreTestimony": "Compartilhei meu testemunho",
+      "helpedMissionaries": "Ajudei os missionários",
+      "extendedInvitation": "Fiz um convite"
+    }
+  },
+  "memberFriends": {
+    "header": {
+      "title": "Meus amigos",
+      "subtitle": "Pessoas que estou ajudando a se aproximar de Jesus Cristo."
+    },
+    "list": {
+      "emptyTitle": "Você ainda não adicionou amigos",
+      "emptyDescription": "Quando você ajudar alguém a aprender sobre o evangelho, poderá adicioná-lo aqui para lembrá-lo em suas orações e serviço.",
+      "addFriendButton": "Adicionar amigo"
+    },
+    "friendStages": {
+      "gettingToKnowChurch": "Conhecendo a Igreja",
+      "learningActively": "Aprendendo ativamente",
+      "preparingForBaptism": "Preparando-se para o batismo",
+      "attendingRegularly": "Assistindo regularmente",
+      "recentConvert_0_3": "Recém-batizado (0–3 meses)",
+      "recentConvert_3_12": "Novo converso (3–12 meses)"
+    },
+    "friendCard": {
+      "stageLabel": "Estado espiritual",
+      "lastContact": "Último contato: {{date}}",
+      "noLastContact": "Nenhum contato recente registrado",
+      "seeSuggestions": "Ver sugestões para ajudar",
+      "notesLabel": "Notas pessoais"
+    },
+    "suggestions": {
+      "title": "Sugestões para esta etapa",
+      "gettingToKnowChurch": "Convide-o para uma atividade simples onde possa sentir amor e pertencimento.",
+      "learningActively": "Ofereça compartilhar seu testemunho e responder perguntas com humildade.",
+      "preparingForBaptism": "Acompanhe-o à Igreja e ajude-o a sentir apoio em sua decisão.",
+      "attendingRegularly": "Ajude-o a se integrar em sua classe e nas atividades.",
+      "recentConvert_0_3": "Sente-se com ele na reunião sacramental e mantenha-se próximo nos primeiros meses.",
+      "recentConvert_3_12": "Convide-o a participar e servir; ajude-o a se sentir parte real da Igreja."
+    },
+    "detail": {
+      "title": "Detalhes do amigo",
+      "editNotes": "Editar notas",
+      "saveNotes": "Salvar notas",
+      "cancel": "Cancelar"
+    }
+  },
+  "memberTraining": {
+    "header": {
+      "title": "Centro de treinamento missionário",
+      "subtitle": "Aprenda a compartilhar o evangelho com amor, simplicidade e poder espiritual."
+    },
+    "modules": {
+      "teachLikeChrist": {
+        "title": "Ensinar como Cristo",
+        "description": "Aprenda a ensinar do coração, com simplicidade e guiado pelo Espírito.",
+        "points": {
+          "fromHeart": "Fale de sua experiência, não apenas da memória.",
+          "simpleWords": "Use palavras simples que qualquer amigo possa entender.",
+          "askInspired": "Faça perguntas que convidem a sentir, não apenas a explicar.",
+          "leaveSilence": "Deixe espaço em silêncio para que o Espírito fale."
+        }
+      },
+      "inviteWithLove": {
+        "title": "Convidar sem pressionar",
+        "description": "Faça convites claros, gentis e respeitosos.",
+        "points": {
+          "clearInvitation": "Seja claro sobre o que está convidando, sem ambiguidade.",
+          "respectNo": "Respeite um 'não' com amor e mantenha a amizade.",
+          "rightTiming": "Discirna o momento certo para convidar.",
+          "followUp": "Siga em frente sem pressionar, mantenha o contato."
+        }
+      },
+      "explainLessonsSimply": {
+        "title": "Explicar as lições em 2 minutos",
+        "description": "Aprenda a resumir os principais ensinamentos de forma simples.",
+        "lessons": {
+          "restoration": "Deus chamou Joseph Smith como profeta para restaurar Sua Igreja e Seu evangelho completo.",
+          "planOfSalvation": "Deus tem um plano para que voltemos a viver com Ele, graças a Jesus Cristo.",
+          "gospelOfChrist": "Fé, arrependimento, batismo e receber o Espírito Santo nos aproximam de Cristo.",
+          "commandments": "Os mandamentos são proteção e orientação, não apenas regras.",
+          "lawsAndOrdinances": "Ordenanças como o batismo e o templo nos ajudam a seguir a Cristo."
+        }
+      }
+    },
+    "rolePlay": {
+      "title": "Praticar situações reais",
+      "scenario1": {
+        "title": "Seu amigo diz: Todas as igrejas são boas",
+        "question": "Como você responde com amor e testemunho?",
+        "hint": "Foque em Jesus Cristo, em vez de criticar outras igrejas.",
+        "goodAnswer": "Você pode dizer: 'Você tem razão, há muitas igrejas boas. O que tocou meu coração é que Jesus Cristo restaurou Sua Igreja com um profeta vivo hoje, e isso me trouxe muita paz.'"
+      },
+      "scenario2": {
+        "title": "Seu amigo pergunta: Por que preciso ser batizado novamente?",
+        "question": "Como você explica o batismo com autoridade?",
+        "hint": "Fale sobre a autoridade do sacerdócio, não que outros batismos sejam inválidos.",
+        "goodAnswer": "Você pode dizer: 'O batismo é importante, e o que torna o nosso especial é que é feito com a autoridade do sacerdócio que Jesus Cristo restaurou. É como ter as chaves certas para abrir uma porta.'"
+      }
+    }
+  },
+  "memberHelpPanel": {
+    "header": {
+      "title": "Ajudar os missionários",
+      "subtitle": "Veja formas concretas de apoiar esta semana."
+    },
+    "list": {
+      "emptyTitle": "Não há solicitações no momento",
+      "emptyDescription": "Quando os missionários publicarem necessidades, você as verá aqui e poderá oferecer sua ajuda."
+    },
+    "taskTypes": {
+      "accompanyLesson": "Acompanhar uma lição",
+      "transport": "Ajudar com transporte",
+      "welcomeAtChurch": "Receber alguém na capela",
+      "fellowship": "Fazer amizade e acompanhar",
+      "activityInvite": "Convidar para uma atividade",
+      "service": "Ajudar em um serviço"
+    },
+    "statuses": {
+      "open": "Disponível",
+      "claimed": "Em andamento",
+      "completed": "Concluído"
+    },
+    "taskCard": {
+      "labelInvestigator": "Apoiar: {{alias}}",
+      "buttonOfferHelp": "Posso ajudar",
+      "buttonMaybe": "Talvez, preciso confirmar",
+      "buttonMarkCompleted": "Marcar como concluído"
+    }
+  },
+  "newConvertCare": {
+    "header": {
+      "title": "Cuidado de novos conversos",
+      "subtitle": "Ajude os novos conversos a se enraizarem em Cristo e em Sua Igreja."
+    },
+    "timeline": {
+      "baptism": "Batismo",
+      "confirmation": "Confirmação",
+      "firstCalling": "Primeiro chamado",
+      "firstTemple": "Primeira visita ao templo",
+      "stabilizing": "Fortalecendo-se no evangelho"
+    },
+    "plan": {
+      "stepsTitle": "Passos de apoio",
+      "stepSitTogether": "Sentar-me com ele na reunião sacramental",
+      "stepIntroduceLeaders": "Apresentá-lo a seus líderes e professores",
+      "stepInviteActivities": "Convidá-lo para atividades da ala",
+      "stepScriptureHabits": "Ajudá-lo a criar hábitos de oração e estudo",
+      "stepTempleGoal": "Ajudá-lo a se preparar para ir ao templo"
+    },
+    "list": {
+      "emptyTitle": "Nenhum novo converso atribuído",
+      "emptyDescription": "Quando você tiver a oportunidade de cuidar de um novo converso, ele aparecerá aqui."
     }
   }
 }

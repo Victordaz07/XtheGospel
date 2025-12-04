@@ -1,0 +1,129 @@
+/* New Convert Care Screen Styles */
+
+.new-convert-care-empty {
+  text-align: center;
+  padding: 48px 24px;
+}
+
+.new-convert-care-plans {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.new-convert-care-plan {
+  padding: 20px;
+}
+
+.care-plan-name {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0 0 20px 0;
+}
+
+.care-plan-timeline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding: 16px 0;
+  position: relative;
+}
+
+.care-plan-timeline::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgba(0, 0, 0, 0.1);
+  z-index: 0;
+}
+
+.timeline-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  z-index: 1;
+  flex: 1;
+}
+
+.timeline-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.2);
+  border: 3px solid var(--color-surface);
+  transition: all 0.2s ease;
+}
+
+.timeline-item.completed .timeline-dot {
+  background: var(--color-primary);
+}
+
+.timeline-item.active .timeline-dot {
+  background: var(--color-primary);
+  transform: scale(1.2);
+  box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.2);
+}
+
+.timeline-label {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  text-align: center;
+  font-weight: 600;
+}
+
+.timeline-item.active .timeline-label {
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.care-plan-steps {
+  margin-top: 24px;
+}
+
+.care-plan-steps h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0 0 16px 0;
+}
+
+.care-step-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.care-step-item:hover {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.care-step-item input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: var(--color-primary);
+}
+
+.care-step-item span {
+  font-size: 15px;
+  color: var(--color-text);
+  flex: 1;
+}
+
+.care-step-item input[type="checkbox"]:checked + span {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
