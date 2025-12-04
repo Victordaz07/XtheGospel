@@ -1,12 +1,23 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useI18n } from '../context/I18nContext';
 import { CommitmentsService, Commitment, CommitmentCategory } from '../services/commitmentsService';
-import { CustomSelect } from '../vineyard/components/CustomSelect';
+import { INVESTIGATOR_LESSONS } from '../data/investigatorLessons';
+import {
+  PageContainer,
+  TopBar,
+  Card,
+  ButtonPrimary,
+  ButtonSecondary,
+  IconButton,
+} from '../ui/components';
+import { FaBell, FaHeart, FaHandHeart } from 'react-icons/fa6';
 import './Page.css';
 import './CommitmentsPage.css';
 
 const CommitmentsPage: React.FC = () => {
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
+  const navigate = useNavigate();
   const [commitments, setCommitments] = useState<Commitment[]>([]);
   const [filter, setFilter] = useState<CommitmentCategory | 'all'>('all');
   const [newCommitmentText, setNewCommitmentText] = useState('');
@@ -57,18 +68,18 @@ const CommitmentsPage: React.FC = () => {
     ? commitments 
     : commitments.filter(c => c.category === filter);
 
-  const categories: Array<{ key: CommitmentCategory | 'all'; label: string }> = [
-    { key: 'all', label: t('commitments.filterAll') || 'Todos' },
-    { key: 'study', label: t('commitments.filterStudy') || 'Estudio' },
-    { key: 'spiritual', label: t('commitments.filterSpiritual') || 'Espirituales' },
-    { key: 'attendance', label: t('commitments.filterAttendance') || 'Asistencia' },
+  const filterOptions: Array<{ key: CommitmentCategory | 'all'; label: string; description: string }> = [
+    { key: 'all', label: t('investigatorCommitments.filters.all'), description: t('investigatorCommitments.filters.allDesc') },
+    { key: 'study', label: t('investigatorCommitments.filters.study'), description: t('investigatorCommitments.filters.studyDesc') },
+    { key: 'spiritual', label: t('investigatorCommitments.filters.spiritual'), description: t('investigatorCommitments.filters.spiritualDesc') },
+    { key: 'attendance', label: t('investigatorCommitments.filters.attendance'), description: t('investigatorCommitments.filters.attendanceDesc') },
   ];
 
   const getCategoryLabel = (category: CommitmentCategory): string => {
     const map: Record<CommitmentCategory, string> = {
-      study: t('commitments.categoryStudy') || 'Estudio',
-      spiritual: t('commitments.categorySpiritual') || 'Espiritual',
-      attendance: t('commitments.categoryAttendance') || 'Asistencia',
+      study: t('investigatorCommitments.new.typeStudy'),
+      spiritual: t('investigatorCommitments.new.typeSpiritual'),
+      attendance: t('investigatorCommitments.new.typeAttendance'),
     };
     return map[category];
   };
@@ -77,110 +88,172 @@ const CommitmentsPage: React.FC = () => {
     if (!dateString) return '';
     try {
       const date = new Date(dateString);
-      return date.toLocaleDateString('es-ES', { day: 'numeric', month: 'short' });
+      const localeMap: Record<string, string> = {
+        es: 'es-ES',
+        fr: 'fr-FR',
+        pt: 'pt-BR',
+        en: 'en-US',
+      };
+      return date.toLocaleDateString(localeMap[locale] || 'es-ES', { 
+        day: 'numeric', 
+        month: 'long',
+        year: 'numeric'
+      });
     } catch {
       return dateString;
     }
   };
 
+  const getLessonTitle = (lessonId?: string): string | null => {
+    if (!lessonId) return null;
+    const lesson = INVESTIGATOR_LESSONS.find(l => l.id === lessonId || l.lessonId === lessonId);
+    return lesson ? t(`${lesson.translationKey}.title`) : null;
+  };
+
   return (
-    <div className="page">
-      <div className="page-header">
-        <h1>{t('tasks.title')}</h1>
-        <p>{t('commitments.description') || 'Gestiona tus compromisos espirituales'}</p>
-      </div>
+    <PageContainer>
+      <TopBar
+        title={t('investigatorCommitments.header.title')}
+        subtitle={t('investigatorCommitments.header.subtitle')}
+        rightAction={<IconButton icon={<FaBell />} ariaLabel="Notifications" />}
+      />
+
       <div className="page-content">
-        {/* Input para nuevo compromiso */}
-        <div className="commitment-input-section">
-          <div className="commitment-input-group">
-            <input
-              type="text"
-              value={newCommitmentText}
-              onChange={(e) => setNewCommitmentText(e.target.value)}
-              onKeyPress={(e) => e.key === 'Enter' && addCommitment()}
-              placeholder={t('tasks.newTask')}
-              className="commitment-input-field"
-            />
-            <CustomSelect
-              value={newCommitmentCategory}
-              onChange={(value) => setNewCommitmentCategory(value as CommitmentCategory)}
-              options={[
-                { value: 'spiritual', label: t('commitments.categorySpiritual') || 'Espiritual' },
-                { value: 'study', label: t('commitments.categoryStudy') || 'Estudio' },
-                { value: 'attendance', label: t('commitments.categoryAttendance') || 'Asistencia' },
-              ]}
-            />
-            <button onClick={addCommitment} className="commitment-add-button">
-              {t('tasks.add')}
-            </button>
+        {/* Tarjeta de nuevo compromiso */}
+        <Card variant="default" className="ic-new-commitment-card">
+          <div className="ic-new-commitment-form">
+            <div className="ic-form-field">
+              <input
+                type="text"
+                value={newCommitmentText}
+                onChange={(e) => setNewCommitmentText(e.target.value)}
+                onKeyPress={(e) => e.key === 'Enter' && addCommitment()}
+                placeholder={t('investigatorCommitments.new.placeholder')}
+                className="ic-commitment-input"
+              />
+            </div>
+
+            <div className="ic-form-field">
+              <label className="ic-form-label">
+                {t('investigatorCommitments.new.typeLabel')}
+              </label>
+              <div className="ic-type-selector">
+                {(['spiritual', 'study', 'attendance'] as CommitmentCategory[]).map((cat) => {
+                  const labelKey = cat === 'spiritual' ? 'typeSpiritual' :
+                                   cat === 'study' ? 'typeStudy' :
+                                   cat === 'attendance' ? 'typeAttendance' : '';
+                  return (
+                    <button
+                      key={cat}
+                      type="button"
+                      onClick={() => setNewCommitmentCategory(cat)}
+                      className={`ic-type-option ${newCommitmentCategory === cat ? 'ic-type-option--selected' : ''}`}
+                    >
+                      {t(`investigatorCommitments.new.${labelKey}`)}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="ic-helper-text">
+              {t('investigatorCommitments.new.helper')}
+            </div>
+
+            <ButtonPrimary
+              onClick={addCommitment}
+              disabled={!newCommitmentText.trim()}
+              className="ic-save-button"
+            >
+              {t('investigatorCommitments.new.buttonSave')}
+            </ButtonPrimary>
           </div>
-        </div>
+        </Card>
 
         {/* Filtros */}
-        <div className="commitment-filters">
-          {categories.map((cat) => (
-            <button
-              key={cat.key}
-              onClick={() => setFilter(cat.key)}
-              className={`filter-chip ${filter === cat.key ? 'active' : ''}`}
-            >
-              {cat.label}
-            </button>
-          ))}
-        </div>
+        {commitments.length > 0 && (
+          <div className="ic-filters-section">
+            <h3 className="ic-filters-title">{t('investigatorCommitments.filters.title')}</h3>
+            <div className="ic-filters-list">
+              {filterOptions.map((option) => (
+                <button
+                  key={option.key}
+                  onClick={() => setFilter(option.key)}
+                  className={`ic-filter-chip ${filter === option.key ? 'ic-filter-chip--active' : ''}`}
+                  title={option.description}
+                >
+                  {option.label}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Lista de compromisos */}
-        <div className="commitments-list">
+        <div className="ic-commitments-list">
           {filteredCommitments.length === 0 ? (
-            <div className="commitments-empty">
-              <div className="empty-icon">📝</div>
-              <p>{t('commitments.empty') || 'Aún no tienes compromisos. Termina un tema de las lecciones y agrega el primer compromiso.'}</p>
-            </div>
+            <Card variant="gradient" className="ic-empty-state">
+              <div className="ic-empty-icon">✨</div>
+              <h2 className="ic-empty-title">{t('investigatorCommitments.empty.title')}</h2>
+              <p className="ic-empty-description">{t('investigatorCommitments.empty.description')}</p>
+              <ButtonSecondary onClick={() => navigate('/lessons')} className="ic-empty-button">
+                {t('investigatorCommitments.empty.buttonGoToLessons')}
+              </ButtonSecondary>
+            </Card>
           ) : (
-            filteredCommitments.map((commitment) => (
-              <div
-                key={commitment.id}
-                className={`commitment-item ${commitment.completed ? 'completed' : ''}`}
-              >
-                <div className="commitment-checkbox-container">
-                  <input
-                    type="checkbox"
-                    checked={commitment.completed}
-                    onChange={() => toggleCommitment(commitment.id)}
-                    className="commitment-checkbox"
-                  />
-                </div>
-                <div className="commitment-content">
-                  <div className="commitment-header-row">
-                    <h3 className="commitment-title">{commitment.title}</h3>
-                    <span className={`commitment-category-badge category-${commitment.category}`}>
-                      {getCategoryLabel(commitment.category)}
-                    </span>
-                  </div>
-                  {commitment.description && (
-                    <p className="commitment-description">{commitment.description}</p>
-                  )}
-                  {commitment.dueDate && (
-                    <div className="commitment-due-date">
-                      {t('commitments.dueDate') || 'Para'}: {formatDate(commitment.dueDate)}
-                    </div>
-                  )}
-                </div>
-                <button
-                  onClick={() => deleteCommitment(commitment.id)}
-                  className="commitment-delete"
-                  title={t('common.delete') || 'Eliminar'}
+            filteredCommitments.map((commitment) => {
+              const lessonTitle = getLessonTitle(commitment.lessonId);
+              
+              return (
+                <Card
+                  key={commitment.id}
+                  variant="default"
+                  className={`ic-commitment-card ${commitment.completed ? 'ic-commitment-card--completed' : ''}`}
                 >
-                  🗑️
-                </button>
-              </div>
-            ))
+                  <div className="ic-commitment-checkbox-wrapper">
+                    <input
+                      type="checkbox"
+                      checked={commitment.completed}
+                      onChange={() => toggleCommitment(commitment.id)}
+                      className="ic-commitment-checkbox"
+                    />
+                  </div>
+                  <div className="ic-commitment-content">
+                    <div className="ic-commitment-header">
+                      <h3 className="ic-commitment-title">{commitment.title}</h3>
+                      <span className={`ic-commitment-category ic-commitment-category--${commitment.category}`}>
+                        {getCategoryLabel(commitment.category)}
+                      </span>
+                    </div>
+                    {commitment.description && (
+                      <p className="ic-commitment-description">{commitment.description}</p>
+                    )}
+                    <div className="ic-commitment-meta">
+                      <span className="ic-commitment-date">
+                        {t('investigatorCommitments.entry.addedOn', { date: formatDate(commitment.createdAt) })}
+                      </span>
+                      {lessonTitle && (
+                        <span className="ic-commitment-lesson">
+                          {t('investigatorCommitments.entry.fromLesson', { lessonTitle })}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                  <button
+                    onClick={() => deleteCommitment(commitment.id)}
+                    className="ic-commitment-delete"
+                    title={t('common.delete') || 'Eliminar'}
+                  >
+                    🗑️
+                  </button>
+                </Card>
+              );
+            })
           )}
         </div>
       </div>
-    </div>
+    </PageContainer>
   );
 };
 
 export default CommitmentsPage;
-
