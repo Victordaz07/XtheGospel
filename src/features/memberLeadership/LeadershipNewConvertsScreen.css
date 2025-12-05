@@ -1,0 +1,109 @@
+.new-converts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.new-convert-card {
+  padding: 20px;
+}
+
+.new-convert-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.new-convert-info {
+  flex: 1;
+}
+
+.new-convert-alias {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0 0 4px 0;
+}
+
+.new-convert-months {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}
+
+.risk-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+}
+
+.risk-icon {
+  font-size: 16px;
+}
+
+.risk-icon.risk-high {
+  color: #dc2626;
+}
+
+.risk-icon.risk-medium {
+  color: #d97706;
+}
+
+.risk-icon.risk-low {
+  color: #10b981;
+}
+
+.risk-text {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.risk-text.risk-high {
+  color: #dc2626;
+}
+
+.risk-text.risk-medium {
+  color: #d97706;
+}
+
+.risk-text.risk-low {
+  color: #10b981;
+}
+
+.new-convert-progress {
+  margin-bottom: 16px;
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: var(--color-text);
+}
+
+.progress-stage {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  text-transform: capitalize;
+}
+
+.new-convert-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.meta-item {
+  font-size: 13px;
+  color: var(--color-text);
+}
+
+.meta-item strong {
+  color: var(--color-text-secondary);
+  margin-right: 6px;
+}
+

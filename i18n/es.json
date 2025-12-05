@@ -2232,6 +2232,7 @@
     }
   },
   "common": {
-    "viewAll": "Ver todo"
+    "viewAll": "Ver todo",
+    "error": "Error"
   }
 }

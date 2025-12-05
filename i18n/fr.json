@@ -1704,5 +1704,120 @@
       "emptyTitle": "Aucun nouveau converti assigné",
       "emptyDescription": "Quand tu auras l'opportunité de prendre soin d'un nouveau converti, il apparaîtra ici."
     }
+  },
+  "leadershipDashboard": {
+    "header": {
+      "title": "Tableau de bord de leadership",
+      "subtitle": "Indicateurs agrégés pour soutenir l'œuvre missionnaire du pieu."
+    },
+    "sections": {
+      "overview": "Vue d'ensemble de la zone",
+      "kpis": "Indicateurs clés",
+      "trends": "Tendances",
+      "actions": "Actions recommandées",
+      "alerts": "Alertes importantes"
+    },
+    "trends": {
+      "note": "Tendances des 4 dernières semaines"
+    },
+    "recommendations": {
+      "familyLopez": "La famille López a besoin d'un couple pour les accueillir le dimanche.",
+      "carlosContact": "Carlos n'a pas été contacté depuis 10 jours, assigner une visite de soutien.",
+      "anaIntegration": "Les missionnaires rapportent qu'Ana veut rencontrer plus de sœurs de son âge."
+    },
+    "alerts": {
+      "viewAll": "Voir toutes les alertes"
+    }
+  },
+  "leadershipKPIs": {
+    "title": "Indicateurs clés",
+    "lessonsTotal": "Leçons totales",
+    "lessonsWithMember": "Leçons avec membre",
+    "investigatorsActive": "Chercheurs actifs",
+    "investigatorsAttending": "Chercheurs présents",
+    "investigatorsWithDate": "Chercheurs avec date",
+    "baptismsLast90Days": "Baptêmes 90 derniers jours",
+    "commitmentsCreated": "Engagements créés",
+    "commitmentsCompleted": "Engagements complétés",
+    "newConvertsActive": "Nouveaux convertis actifs",
+    "memberParticipation": "Participation des membres"
+  },
+  "leadershipInvestigators": {
+    "title": "Suivi des chercheurs",
+    "emptyTitle": "Aucun chercheur actif",
+    "emptyDescription": "Lorsqu'il y aura des chercheurs dans la zone, ils apparaîtront ici.",
+    "lastContact": "Dernier contact : il y a {{days}} jours",
+    "attendedSunday": "Présent dimanche",
+    "notAttendedSunday": "Absent dimanche",
+    "assignMember": "Assigner un membre",
+    "viewDetails": "Voir les détails",
+    "needs": {
+      "integration": "Intégration",
+      "transport": "Transport",
+      "accompaniment": "Accompagnement",
+      "teaching": "Enseignement",
+      "activities": "Activités"
+    }
+  },
+  "leadershipNewConverts": {
+    "title": "Suivi des nouveaux convertis",
+    "emptyTitle": "Aucun nouveau converti",
+    "emptyDescription": "Les nouveaux convertis de la zone apparaîtront ici.",
+    "monthsSinceBaptism": "{{months}} mois depuis le baptême",
+    "attendance": "Présence 4 derniers dimanches : {{count}}/4",
+    "risk": {
+      "high": "Risque élevé",
+      "medium": "Risque moyen",
+      "low": "Risque faible"
+    }
+  },
+  "leadershipMissionaryReport": {
+    "title": "Rapport hebdomadaire",
+    "lessonsTaught": "Leçons enseignées",
+    "lessonsWithMember": "Leçons avec membre",
+    "investigatorsAttending": "Chercheurs présents",
+    "newConvertsActive": "Nouveaux convertis actifs",
+    "memberParticipants": "Membres participants",
+    "keyNeeds": "Besoins clés",
+    "suggestions": "Suggestions"
+  },
+  "leadershipActivities": {
+    "title": "Activités et présence",
+    "emptyTitle": "Aucune activité programmée",
+    "emptyDescription": "Les activités du pieu apparaîtront ici."
+  },
+  "leadershipActionPlan": {
+    "title": "Plan d'action",
+    "objectives": "Objectifs mensuels",
+    "weeklyActions": "Actions hebdomadaires",
+    "addObjective": "Ajouter un objectif",
+    "addAction": "Ajouter une action",
+    "status": {
+      "onTrack": "Sur la bonne voie",
+      "atRisk": "À risque",
+      "completed": "Terminé",
+      "delayed": "Retardé"
+    }
+  },
+  "leadershipAlerts": {
+    "title": "Alertes de la zone",
+    "types": {
+      "high": "Élevé",
+      "medium": "Moyen",
+      "low": "Faible"
+    },
+    "noContact": {
+      "title": "Pas de contact récent",
+      "description": "{{alias}} n'a pas été contacté depuis {{days}} jours",
+      "action1": "Assigner une visite de soutien"
+    },
+    "missingSundays": {
+      "title": "Absent de l'Église",
+      "description": "{{alias}} a manqué {{weeks}} dimanches consécutifs",
+      "action1": "Appeler pour vérifier"
+    }
+  },
+  "common": {
+    "viewAll": "Voir tout"
   }
 }

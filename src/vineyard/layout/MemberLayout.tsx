@@ -25,6 +25,8 @@ import MemberFriendsScreen from '../../pages/member/MemberFriendsScreen';
 import MemberTrainingCenterScreen from '../../pages/member/MemberTrainingCenterScreen';
 import MemberHelpPanelScreen from '../../pages/member/MemberHelpPanelScreen';
 import NewConvertCareScreen from '../../pages/member/NewConvertCareScreen';
+// Member Leadership 2.0
+import { MemberLeadershipNavigator } from '../../navigation/memberLeadershipNavigator';
 import { MissionaryProfileScreen } from '../../pages/profile/MissionaryProfileScreen';
 import { FeaturedContentPage } from '../../pages/member/FeaturedContentPage';
 import { LeaderTodayPanelScreen } from '../../pages/member/LeaderTodayPanelScreen';
@@ -126,6 +128,8 @@ export const MemberLayout: React.FC = () => {
             <Route path="/member/leader/meetings" element={<LeaderMeetingsResourcesScreen />} />
             <Route path="/member/leader/meetings/convert-path" element={<ConvertPath12WeeksScreen />} />
             <Route path="/member/leader/guidelines/extended" element={<LeaderGuideExtendedScreen />} />
+            {/* Member Leadership 2.0 routes */}
+            <Route path="/member/leadership/*" element={<MemberLeadershipNavigator />} />
             <Route path="*" element={<Navigate to="/member/home" replace />} />
           </Routes>
         </main>

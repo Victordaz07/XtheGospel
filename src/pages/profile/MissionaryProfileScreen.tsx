@@ -255,7 +255,7 @@ export const MissionaryProfileScreen: React.FC = () => {
             </div>
           </XtgCard>
 
-          {/* Modo liderazgo */}
+          {/* Modo liderazgo - Missionary */}
           {userRole === 'missionary' && (
             <XtgCard title="🛡️ Mi llamamiento actual">
               <div>
@@ -283,6 +283,49 @@ export const MissionaryProfileScreen: React.FC = () => {
                   onClick={handleToggleLeadershipMode}
                 >
                   {isLeadershipMode ? 'Salir de modo liderazgo' : 'Activar modo liderazgo'}
+                </button>
+              </div>
+              </div>
+            </XtgCard>
+          )}
+
+          {/* Modo liderazgo - Member */}
+          {userRole === 'member' && (
+            <XtgCard title="🛡️ Modo de Liderazgo">
+              <div>
+                <p className="xtg-card-subtitle">
+                  Accede al panel de liderazgo para apoyar la obra misional del barrio.
+                </p>
+
+              <div className="xtg-profile-row">
+                <div>
+                  <p className="xtg-profile-row-title">
+                    {appRole === 'leader'
+                      ? 'Modo liderazgo activo'
+                      : 'Miembro regular (sin acceso a herramientas de liderazgo)'}
+                  </p>
+                  <p className="xtg-profile-row-text">
+                    {appRole === 'leader'
+                      ? 'Tienes acceso al panel de liderazgo con KPIs, seguimiento de investigadores y herramientas de coordinación.'
+                      : 'Si tienes un llamamiento de liderazgo (Líder Misional, Presidencia de Cuórum, etc.), puedes activar el modo liderazgo.'}
+                  </p>
+                </div>
+
+                <button
+                  type="button"
+                  className="xtg-button-ghost"
+                  onClick={() => {
+                    if (appRole === 'leader') {
+                      setRole('member');
+                      navigate('/member/home');
+                    } else {
+                      // TODO: Check permissions before enabling
+                      setRole('leader');
+                      navigate('/member/leadership/dashboard');
+                    }
+                  }}
+                >
+                  {appRole === 'leader' ? 'Salir de modo liderazgo' : 'Activar modo liderazgo'}
                 </button>
               </div>
               </div>

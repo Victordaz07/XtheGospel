@@ -1770,5 +1770,120 @@
       "emptyTitle": "Nenhum novo converso atribuído",
       "emptyDescription": "Quando você tiver a oportunidade de cuidar de um novo converso, ele aparecerá aqui."
     }
+  },
+  "leadershipDashboard": {
+    "header": {
+      "title": "Painel de Liderança",
+      "subtitle": "Indicadores agregados para apoiar a obra missionária da ala."
+    },
+    "sections": {
+      "overview": "Visão geral da área",
+      "kpis": "Indicadores-chave",
+      "trends": "Tendências",
+      "actions": "Ações recomendadas",
+      "alerts": "Alertas importantes"
+    },
+    "trends": {
+      "note": "Tendências das últimas 4 semanas"
+    },
+    "recommendations": {
+      "familyLopez": "A família López precisa de um casal para recebê-los no domingo.",
+      "carlosContact": "Carlos não foi contatado há 10 dias, atribuir visita de apoio.",
+      "anaIntegration": "Os missionários relatam que Ana quer conhecer mais irmãs da idade dela."
+    },
+    "alerts": {
+      "viewAll": "Ver todos os alertas"
+    }
+  },
+  "leadershipKPIs": {
+    "title": "Indicadores-chave",
+    "lessonsTotal": "Lições totais",
+    "lessonsWithMember": "Lições com membro",
+    "investigatorsActive": "Pesquisadores ativos",
+    "investigatorsAttending": "Pesquisadores presentes",
+    "investigatorsWithDate": "Pesquisadores com data",
+    "baptismsLast90Days": "Batismos últimos 90 dias",
+    "commitmentsCreated": "Compromissos criados",
+    "commitmentsCompleted": "Compromissos concluídos",
+    "newConvertsActive": "Novos convertidos ativos",
+    "memberParticipation": "Participação de membros"
+  },
+  "leadershipInvestigators": {
+    "title": "Acompanhamento de pesquisadores",
+    "emptyTitle": "Nenhum pesquisador ativo",
+    "emptyDescription": "Quando houver pesquisadores na área, eles aparecerão aqui.",
+    "lastContact": "Último contato: há {{days}} dias",
+    "attendedSunday": "Presente no domingo",
+    "notAttendedSunday": "Ausente no domingo",
+    "assignMember": "Atribuir membro",
+    "viewDetails": "Ver detalhes",
+    "needs": {
+      "integration": "Integração",
+      "transport": "Transporte",
+      "accompaniment": "Acompanhamento",
+      "teaching": "Ensino",
+      "activities": "Atividades"
+    }
+  },
+  "leadershipNewConverts": {
+    "title": "Acompanhamento de novos convertidos",
+    "emptyTitle": "Nenhum novo convertido",
+    "emptyDescription": "Os novos convertidos da área aparecerão aqui.",
+    "monthsSinceBaptism": "{{months}} meses desde o batismo",
+    "attendance": "Presença últimos 4 domingos: {{count}}/4",
+    "risk": {
+      "high": "Alto risco",
+      "medium": "Risco médio",
+      "low": "Baixo risco"
+    }
+  },
+  "leadershipMissionaryReport": {
+    "title": "Relatório semanal",
+    "lessonsTaught": "Lições ensinadas",
+    "lessonsWithMember": "Lições com membro",
+    "investigatorsAttending": "Pesquisadores presentes",
+    "newConvertsActive": "Novos convertidos ativos",
+    "memberParticipants": "Membros participantes",
+    "keyNeeds": "Necessidades-chave",
+    "suggestions": "Sugestões"
+  },
+  "leadershipActivities": {
+    "title": "Atividades e presença",
+    "emptyTitle": "Nenhuma atividade programada",
+    "emptyDescription": "As atividades da ala aparecerão aqui."
+  },
+  "leadershipActionPlan": {
+    "title": "Plano de ação",
+    "objectives": "Objetivos mensais",
+    "weeklyActions": "Ações semanais",
+    "addObjective": "Adicionar objetivo",
+    "addAction": "Adicionar ação",
+    "status": {
+      "onTrack": "No caminho certo",
+      "atRisk": "Em risco",
+      "completed": "Concluído",
+      "delayed": "Atrasado"
+    }
+  },
+  "leadershipAlerts": {
+    "title": "Alertas da área",
+    "types": {
+      "high": "Alto",
+      "medium": "Médio",
+      "low": "Baixo"
+    },
+    "noContact": {
+      "title": "Sem contato recente",
+      "description": "{{alias}} não foi contatado há {{days}} dias",
+      "action1": "Atribuir visita de apoio"
+    },
+    "missingSundays": {
+      "title": "Faltando à Igreja",
+      "description": "{{alias}} faltou {{weeks}} domingos consecutivos",
+      "action1": "Ligar para verificar"
+    }
+  },
+  "common": {
+    "viewAll": "Ver tudo"
   }
 }

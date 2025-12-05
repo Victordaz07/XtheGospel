@@ -10,8 +10,8 @@ import {
   ButtonSecondary,
   IconButton,
 } from '../../ui/components';
-import { FaBell, FaChartLine, FaExclamationTriangle } from 'react-icons/fa6';
-import '../learning/Page.css';
+import { FaBell, FaChartLine, FaTriangleExclamation } from 'react-icons/fa6';
+import '../../pages/learning/Page.css';
 import './LeadershipDashboardScreen.css';
 
 const LeadershipDashboardScreen: React.FC = () => {
@@ -169,15 +169,15 @@ const LeadershipDashboardScreen: React.FC = () => {
           <Card variant="default" className="ld-alerts-summary-card">
             <div className="ld-alerts-summary">
               <div className="ld-alert-badge ld-alert-badge--high">
-                <FaExclamationTriangle />
+                <FaTriangleExclamation />
                 <span>{highRiskAlerts} {t('leadershipAlerts.types.high')}</span>
               </div>
               <div className="ld-alert-badge ld-alert-badge--medium">
-                <FaExclamationTriangle />
+                <FaTriangleExclamation />
                 <span>{mediumRiskAlerts} {t('leadershipAlerts.types.medium')}</span>
               </div>
               <div className="ld-alert-badge ld-alert-badge--low">
-                <FaExclamationTriangle />
+                <FaTriangleExclamation />
                 <span>{lowRiskAlerts} {t('leadershipAlerts.types.low')}</span>
               </div>
             </div>

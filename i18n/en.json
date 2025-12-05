@@ -1852,5 +1852,120 @@
       "emptyTitle": "No new converts assigned",
       "emptyDescription": "When you have the opportunity to care for a new convert, they will appear here."
     }
+  },
+  "leadershipDashboard": {
+    "header": {
+      "title": "Leadership Dashboard",
+      "subtitle": "Aggregated indicators to support the ward's missionary work."
+    },
+    "sections": {
+      "overview": "Area overview",
+      "kpis": "Key indicators",
+      "trends": "Trends",
+      "actions": "Recommended actions",
+      "alerts": "Important alerts"
+    },
+    "trends": {
+      "note": "Trends for the last 4 weeks"
+    },
+    "recommendations": {
+      "familyLopez": "The López family needs a couple to welcome them on Sunday.",
+      "carlosContact": "Carlos has not been contacted in 10 days, assign a support visit.",
+      "anaIntegration": "Missionaries report that Ana wants to meet more sisters her age."
+    },
+    "alerts": {
+      "viewAll": "View all alerts"
+    }
+  },
+  "leadershipKPIs": {
+    "title": "Key Indicators",
+    "lessonsTotal": "Total lessons",
+    "lessonsWithMember": "Lessons with member",
+    "investigatorsActive": "Active investigators",
+    "investigatorsAttending": "Attending investigators",
+    "investigatorsWithDate": "Investigators with date",
+    "baptismsLast90Days": "Baptisms last 90 days",
+    "commitmentsCreated": "Commitments created",
+    "commitmentsCompleted": "Commitments completed",
+    "newConvertsActive": "Active new converts",
+    "memberParticipation": "Member participation"
+  },
+  "leadershipInvestigators": {
+    "title": "Investigator Tracking",
+    "emptyTitle": "No active investigators",
+    "emptyDescription": "When there are investigators in the area, they will appear here.",
+    "lastContact": "Last contact: {{days}} days ago",
+    "attendedSunday": "Attended Sunday",
+    "notAttendedSunday": "Did not attend Sunday",
+    "assignMember": "Assign member",
+    "viewDetails": "View details",
+    "needs": {
+      "integration": "Integration",
+      "transport": "Transport",
+      "accompaniment": "Accompaniment",
+      "teaching": "Teaching",
+      "activities": "Activities"
+    }
+  },
+  "leadershipNewConverts": {
+    "title": "New Convert Tracking",
+    "emptyTitle": "No new converts",
+    "emptyDescription": "New converts in the area will appear here.",
+    "monthsSinceBaptism": "{{months}} months since baptism",
+    "attendance": "Attendance last 4 Sundays: {{count}}/4",
+    "risk": {
+      "high": "High risk",
+      "medium": "Medium risk",
+      "low": "Low risk"
+    }
+  },
+  "leadershipMissionaryReport": {
+    "title": "Weekly Report",
+    "lessonsTaught": "Lessons taught",
+    "lessonsWithMember": "Lessons with member",
+    "investigatorsAttending": "Attending investigators",
+    "newConvertsActive": "Active new converts",
+    "memberParticipants": "Member participants",
+    "keyNeeds": "Key needs",
+    "suggestions": "Suggestions"
+  },
+  "leadershipActivities": {
+    "title": "Activities and Attendance",
+    "emptyTitle": "No scheduled activities",
+    "emptyDescription": "Ward activities will appear here."
+  },
+  "leadershipActionPlan": {
+    "title": "Action Plan",
+    "objectives": "Monthly objectives",
+    "weeklyActions": "Weekly actions",
+    "addObjective": "Add objective",
+    "addAction": "Add action",
+    "status": {
+      "onTrack": "On track",
+      "atRisk": "At risk",
+      "completed": "Completed",
+      "delayed": "Delayed"
+    }
+  },
+  "leadershipAlerts": {
+    "title": "Area Alerts",
+    "types": {
+      "high": "High",
+      "medium": "Medium",
+      "low": "Low"
+    },
+    "noContact": {
+      "title": "No recent contact",
+      "description": "{{alias}} has not been contacted in {{days}} days",
+      "action1": "Assign support visit"
+    },
+    "missingSundays": {
+      "title": "Missing Church",
+      "description": "{{alias}} has missed {{weeks}} consecutive Sundays",
+      "action1": "Call to verify"
+    }
+  },
+  "common": {
+    "viewAll": "View all"
   }
 }
