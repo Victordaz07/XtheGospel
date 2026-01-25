@@ -15,6 +15,9 @@ import { PrivacyPage } from '../pages/legal/PrivacyPage';
 import { TermsPage } from '../pages/legal/TermsPage';
 import { SupportPage } from '../pages/support/SupportPage';
 
+// Strangler Fig: New Investigator module (MVP)
+import InvestigatorRoutes from './InvestigatorRoutes';
+
 const AppRouter: React.FC = () => {
   const { userRole, isLoading } = useAuth();
   const location = useLocation();
@@ -124,6 +127,13 @@ const AppRouter: React.FC = () => {
 
   return (
     <Routes>
+      {/* Strangler Fig: Investigator MVP module - accessible without auth for development */}
+      <Route path="/investigator/*" element={<InvestigatorRoutes />} />
+      
+      {/* Root redirect to Investigator MVP (Strangler Fig entry point) */}
+      <Route path="/" element={<Navigate to="/investigator/home" replace />} />
+      <Route path="/home" element={<Navigate to="/investigator/home" replace />} />
+      
       {/* Legal pages - accessible to everyone */}
       <Route path="/privacy" element={<PrivacyPage />} />
       <Route path="/terms" element={<TermsPage />} />

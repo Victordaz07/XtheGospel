@@ -1,0 +1,208 @@
+/* Investigator Progress Page */
+
+.inv-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.inv-progress__header {
+  margin-bottom: 4px;
+}
+
+.inv-progress__title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #78350f;
+  margin: 0 0 4px 0;
+}
+
+.inv-progress__subtitle {
+  font-size: 14px;
+  color: #92400e;
+  margin: 0;
+}
+
+/* Milestones Section */
+.inv-progress__section {
+  margin-top: 4px;
+}
+
+.inv-progress__section-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #78350f;
+  margin: 0 0 14px 0;
+}
+
+.inv-progress__milestones {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.inv-progress__milestone {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 16px;
+  border: 1px solid rgba(251, 191, 36, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  transition: all 0.2s ease;
+}
+
+.inv-progress__milestone--locked {
+  opacity: 0.6;
+}
+
+.inv-progress__milestone--unlocked {
+  border-color: rgba(16, 185, 129, 0.3);
+  background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+}
+
+.inv-progress__milestone-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.inv-progress__milestone--locked .inv-progress__milestone-icon {
+  background: #f1f5f9;
+  filter: grayscale(1);
+}
+
+.inv-progress__milestone--unlocked .inv-progress__milestone-icon {
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+}
+
+.inv-progress__milestone-content {
+  flex: 1;
+}
+
+.inv-progress__milestone-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #78350f;
+  margin: 0 0 2px 0;
+}
+
+.inv-progress__milestone--unlocked .inv-progress__milestone-title {
+  color: #065f46;
+}
+
+.inv-progress__milestone-desc {
+  font-size: 13px;
+  color: #92400e;
+  margin: 0;
+}
+
+.inv-progress__milestone--unlocked .inv-progress__milestone-desc {
+  color: #047857;
+}
+
+.inv-progress__milestone-status {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 4px 10px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.inv-progress__milestone--locked .inv-progress__milestone-status {
+  background: #f1f5f9;
+  color: #64748b;
+}
+
+.inv-progress__milestone--unlocked .inv-progress__milestone-status {
+  background: #10b981;
+  color: #ffffff;
+}
+
+/* Lessons Overview */
+.inv-progress__lessons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.inv-progress__lesson {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 14px 16px;
+  border: 1px solid rgba(251, 191, 36, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.inv-progress__lesson-icon {
+  font-size: 20px;
+}
+
+.inv-progress__lesson-title {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 500;
+  color: #78350f;
+  margin: 0;
+}
+
+.inv-progress__lesson-status {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.inv-progress__lesson-status--not_started {
+  background: #f1f5f9;
+  color: #64748b;
+}
+
+.inv-progress__lesson-status--exploring {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.inv-progress__lesson-status--completed {
+  background: #d1fae5;
+  color: #059669;
+}
+
+/* Stats Summary */
+.inv-progress__stats {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-around;
+  border: 1px solid rgba(251, 191, 36, 0.3);
+}
+
+.inv-progress__stat {
+  text-align: center;
+}
+
+.inv-progress__stat-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: #d97706;
+  margin-bottom: 4px;
+}
+
+.inv-progress__stat-label {
+  font-size: 12px;
+  color: #92400e;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}

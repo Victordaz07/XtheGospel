@@ -11,7 +11,7 @@ import {
   EmptyState,
   ProgressBar,
 } from '../../ui/components';
-import { FaBell, FaBaptism, FaCheckCircle, FaTriangleExclamation } from 'react-icons/fa6';
+import { FaBell, FaDroplet, FaCircleCheck, FaTriangleExclamation } from 'react-icons/fa6';
 import '../../pages/learning/Page.css';
 import './LeadershipNewConvertsScreen.css';
 
@@ -45,7 +45,7 @@ const LeadershipNewConvertsScreen: React.FC = () => {
   const getRiskIcon = (risk: 'high' | 'medium' | 'low') => {
     if (risk === 'high') return <FaTriangleExclamation className="risk-icon risk-high" />;
     if (risk === 'medium') return <FaTriangleExclamation className="risk-icon risk-medium" />;
-    return <FaCheckCircle className="risk-icon risk-low" />;
+    return <FaCircleCheck className="risk-icon risk-low" />;
   };
 
   if (loading) {
@@ -76,7 +76,7 @@ const LeadershipNewConvertsScreen: React.FC = () => {
           <EmptyState
             title={t('leadershipNewConverts.emptyTitle')}
             description={t('leadershipNewConverts.emptyDescription')}
-            icon={<FaBaptism />}
+            icon={<FaDroplet />}
           />
         ) : (
           <Section title={t('leadershipNewConverts.title')}>

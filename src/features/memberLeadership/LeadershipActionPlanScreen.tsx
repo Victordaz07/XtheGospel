@@ -11,7 +11,7 @@ import {
   IconButton,
   ProgressBar,
 } from '../../ui/components';
-import { FaBell, FaPlus, FaCheckCircle } from 'react-icons/fa6';
+import { FaBell, FaPlus, FaCircleCheck } from 'react-icons/fa6';
 import '../../pages/learning/Page.css';
 import './LeadershipActionPlanScreen.css';
 
@@ -130,7 +130,7 @@ const LeadershipActionPlanScreen: React.FC = () => {
                     )}
                   </div>
                   {action.completed && (
-                    <FaCheckCircle className="action-completed-icon" />
+                    <FaCircleCheck className="action-completed-icon" />
                   )}
                 </div>
               </Card>

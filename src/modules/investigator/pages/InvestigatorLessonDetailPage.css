@@ -1,0 +1,231 @@
+/* Investigator Lesson Detail Page */
+
+.inv-lesson-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Back Button */
+.inv-lesson-detail__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  background: transparent;
+  border: none;
+  color: #92400e;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  margin: -8px 0 -8px -8px;
+  text-decoration: none;
+}
+
+.inv-lesson-detail__back:hover {
+  background: rgba(251, 191, 36, 0.1);
+}
+
+/* Header */
+.inv-lesson-detail__header {
+  text-align: center;
+  padding: 8px 0;
+}
+
+.inv-lesson-detail__icon {
+  font-size: 48px;
+  margin-bottom: 12px;
+}
+
+.inv-lesson-detail__title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #78350f;
+  margin: 0 0 4px 0;
+}
+
+.inv-lesson-detail__subtitle {
+  font-size: 14px;
+  color: #92400e;
+  margin: 0 0 12px 0;
+}
+
+.inv-lesson-detail__meta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  font-size: 13px;
+  color: #a16207;
+}
+
+.inv-lesson-detail__meta-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Sections */
+.inv-lesson-detail__sections {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.inv-lesson-detail__section {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 18px;
+  border: 1px solid rgba(251, 191, 36, 0.2);
+}
+
+.inv-lesson-detail__section-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #78350f;
+  margin: 0 0 10px 0;
+}
+
+.inv-lesson-detail__section-content {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #4a3728;
+  margin: 0 0 14px 0;
+}
+
+.inv-lesson-detail__section-scripture {
+  font-size: 12px;
+  color: #d97706;
+  font-weight: 500;
+  margin: 12px 0 0 0;
+  padding-top: 10px;
+  border-top: 1px solid rgba(251, 191, 36, 0.2);
+}
+
+/* Scripture Card in Detail */
+.inv-lesson-detail__scripture {
+  margin-top: 4px;
+}
+
+.inv-lesson-detail__scripture-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #92400e;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0 0 10px 0;
+}
+
+/* Reflection Prompt */
+.inv-lesson-detail__reflection {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border-radius: 16px;
+  padding: 18px;
+  border: 1px solid rgba(251, 191, 36, 0.3);
+}
+
+.inv-lesson-detail__reflection-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #92400e;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0 0 8px 0;
+}
+
+.inv-lesson-detail__reflection-text {
+  font-size: 15px;
+  font-style: italic;
+  color: #78350f;
+  margin: 0 0 14px 0;
+  line-height: 1.5;
+}
+
+.inv-lesson-detail__reflection-textarea {
+  width: 100%;
+  min-height: 80px;
+  padding: 12px;
+  border: 1px solid rgba(251, 191, 36, 0.4);
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: inherit;
+  resize: vertical;
+  background: #ffffff;
+  color: #4a3728;
+}
+
+.inv-lesson-detail__reflection-textarea::placeholder {
+  color: #a16207;
+}
+
+.inv-lesson-detail__reflection-textarea:focus {
+  outline: none;
+  border-color: #f59e0b;
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15);
+}
+
+/* Actions */
+.inv-lesson-detail__actions {
+  display: flex;
+  gap: 12px;
+  padding-top: 8px;
+}
+
+.inv-lesson-detail__btn {
+  flex: 1;
+  padding: 14px 20px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.inv-lesson-detail__btn--primary {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  color: #ffffff;
+}
+
+.inv-lesson-detail__btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.35);
+}
+
+.inv-lesson-detail__btn--secondary {
+  background: #ffffff;
+  color: #d97706;
+  border: 1px solid rgba(251, 191, 36, 0.4);
+}
+
+.inv-lesson-detail__btn--secondary:hover {
+  background: #fef3c7;
+  border-color: rgba(251, 191, 36, 0.6);
+}
+
+/* Not Found */
+.inv-lesson-detail__not-found {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.inv-lesson-detail__not-found-icon {
+  font-size: 64px;
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+
+.inv-lesson-detail__not-found-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #78350f;
+  margin: 0 0 8px 0;
+}
+
+.inv-lesson-detail__not-found-text {
+  font-size: 14px;
+  color: #92400e;
+  margin: 0;
+}

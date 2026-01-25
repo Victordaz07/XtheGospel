@@ -1,0 +1,262 @@
+/* Investigator Profile Page */
+
+.inv-profile {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Role Card */
+.inv-profile__role {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  border-radius: 20px;
+  padding: 24px 20px;
+  color: #ffffff;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.inv-profile__role::before {
+  content: '';
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 140px;
+  height: 140px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+}
+
+.inv-profile__role-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 0 auto 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+}
+
+.inv-profile__role-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 4px 0;
+}
+
+.inv-profile__role-label {
+  font-size: 13px;
+  opacity: 0.9;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Section */
+.inv-profile__section {
+  margin-top: 4px;
+}
+
+.inv-profile__section-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #92400e;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0 0 12px 0;
+}
+
+/* Contact Card */
+.inv-profile__contact {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 18px;
+  border: 1px solid rgba(251, 191, 36, 0.2);
+}
+
+.inv-profile__contact-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.inv-profile__contact-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: #d97706;
+}
+
+.inv-profile__contact-info {
+  flex: 1;
+}
+
+.inv-profile__contact-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: #78350f;
+  margin: 0 0 2px 0;
+}
+
+.inv-profile__contact-role {
+  font-size: 13px;
+  color: #92400e;
+  margin: 0;
+}
+
+.inv-profile__contact-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.inv-profile__contact-btn {
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.inv-profile__contact-btn--primary {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  color: #ffffff;
+}
+
+.inv-profile__contact-btn--secondary {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.inv-profile__contact-btn:hover {
+  transform: translateY(-1px);
+}
+
+/* Settings List */
+.inv-profile__settings {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid rgba(251, 191, 36, 0.2);
+  overflow: hidden;
+}
+
+.inv-profile__setting {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  border-bottom: 1px solid rgba(251, 191, 36, 0.1);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: transparent;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  width: 100%;
+  text-align: left;
+}
+
+.inv-profile__setting:last-child {
+  border-bottom: none;
+}
+
+.inv-profile__setting:hover {
+  background: rgba(251, 191, 36, 0.05);
+}
+
+.inv-profile__setting-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: #d97706;
+  flex-shrink: 0;
+}
+
+.inv-profile__setting-content {
+  flex: 1;
+}
+
+.inv-profile__setting-title {
+  font-size: 15px;
+  font-weight: 500;
+  color: #78350f;
+  margin: 0 0 2px 0;
+}
+
+.inv-profile__setting-desc {
+  font-size: 12px;
+  color: #92400e;
+  margin: 0;
+}
+
+.inv-profile__setting-arrow {
+  color: #d4a574;
+  font-size: 14px;
+}
+
+/* Support Section */
+.inv-profile__support {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.inv-profile__support-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid rgba(251, 191, 36, 0.2);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  color: inherit;
+}
+
+.inv-profile__support-btn:hover {
+  border-color: rgba(251, 191, 36, 0.4);
+  background: #fefce8;
+}
+
+.inv-profile__support-icon {
+  font-size: 18px;
+  color: #d97706;
+}
+
+.inv-profile__support-text {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 500;
+  color: #78350f;
+}
+
+/* Version */
+.inv-profile__version {
+  text-align: center;
+  padding: 16px;
+  color: #a16207;
+  font-size: 12px;
+}
+
+.inv-profile__version-label {
+  margin: 0;
+}

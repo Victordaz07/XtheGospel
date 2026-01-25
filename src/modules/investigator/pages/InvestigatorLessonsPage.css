@@ -1,0 +1,83 @@
+/* Investigator Lessons Page */
+
+.inv-lessons {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.inv-lessons__header {
+  margin-bottom: 4px;
+}
+
+.inv-lessons__title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #78350f;
+  margin: 0 0 4px 0;
+}
+
+.inv-lessons__subtitle {
+  font-size: 14px;
+  color: #92400e;
+  margin: 0;
+}
+
+.inv-lessons__progress {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 14px 16px;
+  border: 1px solid rgba(251, 191, 36, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.inv-lessons__progress-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.inv-lessons__progress-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: #d97706;
+}
+
+.inv-lessons__progress-label {
+  font-size: 11px;
+  color: #92400e;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.inv-lessons__progress-divider {
+  width: 1px;
+  height: 36px;
+  background: rgba(251, 191, 36, 0.3);
+}
+
+.inv-lessons__list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.inv-lessons__empty {
+  text-align: center;
+  padding: 40px 20px;
+  color: #92400e;
+}
+
+.inv-lessons__empty-icon {
+  font-size: 48px;
+  margin-bottom: 12px;
+  opacity: 0.5;
+}
+
+.inv-lessons__empty-text {
+  font-size: 15px;
+  margin: 0;
+}

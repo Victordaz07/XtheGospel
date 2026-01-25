@@ -1,0 +1,250 @@
+/* Investigator Home Page */
+
+.inv-home {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Welcome Card */
+.inv-home__welcome {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  border-radius: 20px;
+  padding: 24px 20px;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+.inv-home__welcome::before {
+  content: '';
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  width: 120px;
+  height: 120px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+}
+
+.inv-home__welcome-greeting {
+  font-size: 14px;
+  font-weight: 500;
+  opacity: 0.9;
+  margin: 0 0 4px 0;
+}
+
+.inv-home__welcome-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+}
+
+.inv-home__welcome-subtitle {
+  font-size: 14px;
+  opacity: 0.9;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Continue Learning Card */
+.inv-home__continue {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 16px;
+  border: 1px solid rgba(251, 191, 36, 0.2);
+}
+
+.inv-home__continue-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.inv-home__continue-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #92400e;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.inv-home__continue-link {
+  font-size: 12px;
+  color: #d97706;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.inv-home__continue-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px;
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  color: inherit;
+}
+
+.inv-home__continue-card:hover {
+  transform: translateX(4px);
+}
+
+.inv-home__continue-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.inv-home__continue-info {
+  flex: 1;
+}
+
+.inv-home__continue-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #78350f;
+  margin: 0 0 2px 0;
+}
+
+.inv-home__continue-meta {
+  font-size: 12px;
+  color: #92400e;
+  margin: 0;
+}
+
+.inv-home__continue-arrow {
+  color: #d97706;
+  font-size: 18px;
+}
+
+/* Up Next Section */
+.inv-home__section {
+  margin-top: 4px;
+}
+
+.inv-home__section-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #78350f;
+  margin: 0 0 12px 0;
+}
+
+.inv-home__upnext-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.inv-home__upnext-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid rgba(251, 191, 36, 0.15);
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s ease;
+}
+
+.inv-home__upnext-item:hover {
+  border-color: rgba(251, 191, 36, 0.4);
+  box-shadow: 0 4px 12px rgba(146, 64, 14, 0.08);
+}
+
+.inv-home__upnext-icon {
+  font-size: 20px;
+}
+
+.inv-home__upnext-title {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 500;
+  color: #78350f;
+  margin: 0;
+}
+
+.inv-home__upnext-time {
+  font-size: 12px;
+  color: #92400e;
+}
+
+/* Quick Actions */
+.inv-home__actions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.inv-home__action-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px 12px;
+  background: #ffffff;
+  border-radius: 14px;
+  border: 1px solid rgba(251, 191, 36, 0.2);
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s ease;
+}
+
+.inv-home__action-btn:hover {
+  background: #fef3c7;
+  border-color: rgba(251, 191, 36, 0.4);
+}
+
+.inv-home__action-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: #d97706;
+}
+
+.inv-home__action-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #78350f;
+}
+
+/* Scripture Section */
+.inv-home__scripture-section {
+  margin-top: 4px;
+}
+
+/* Empty state */
+.inv-home__empty {
+  text-align: center;
+  padding: 20px;
+  color: #92400e;
+}
+
+.inv-home__empty-icon {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.inv-home__empty-text {
+  font-size: 14px;
+  margin: 0;
+}
