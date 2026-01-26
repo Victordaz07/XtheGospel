@@ -1,0 +1,132 @@
+/* New Member Progress Page
+ * Sprint 4 – Semantic Cleanup
+ * Pastoral, reflective design without gamification elements
+ */
+
+.nm-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding-bottom: 24px;
+}
+
+/* Header */
+.nm-progress__header {
+  margin-bottom: 4px;
+}
+
+.nm-progress__title {
+  font-size: 26px;
+  font-weight: 700;
+  color: #065f46;
+  margin: 0 0 8px 0;
+  line-height: 1.2;
+}
+
+.nm-progress__subtitle {
+  font-size: 15px;
+  color: #047857;
+  margin: 0;
+  line-height: 1.55;
+}
+
+/* Section Titles */
+.nm-progress__section-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #065f46;
+  margin: 0 0 14px 0;
+}
+
+/* Recent Experiences Section */
+.nm-progress__experiences {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px solid rgba(52, 211, 153, 0.2);
+}
+
+.nm-progress__experience-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.nm-progress__experience-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.nm-progress__experience-dot {
+  width: 8px;
+  height: 8px;
+  min-width: 8px;
+  background: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+  border-radius: 50%;
+  margin-top: 6px;
+}
+
+.nm-progress__experience-text {
+  font-size: 15px;
+  color: #1e3a2f;
+  line-height: 1.5;
+}
+
+/* Gentle Steps Section */
+.nm-progress__gentle-steps {
+  background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px solid rgba(52, 211, 153, 0.25);
+}
+
+.nm-progress__gentle-intro {
+  font-size: 14px;
+  color: #047857;
+  margin: 0 0 16px 0;
+  line-height: 1.5;
+  font-style: italic;
+}
+
+.nm-progress__steps-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.nm-progress__step-item {
+  font-size: 15px;
+  color: #065f46;
+  line-height: 1.5;
+  padding-left: 20px;
+  position: relative;
+}
+
+.nm-progress__step-item::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: #10b981;
+  font-weight: 500;
+}
+
+/* Footer Reflection */
+.nm-progress__footer {
+  text-align: center;
+  padding: 16px 12px;
+}
+
+.nm-progress__footer-text {
+  font-size: 14px;
+  color: #059669;
+  margin: 0;
+  line-height: 1.6;
+  font-style: italic;
+}
