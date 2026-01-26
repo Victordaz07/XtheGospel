@@ -4,6 +4,7 @@ import { FaArrowLeft } from 'react-icons/fa6';
 import { getLessonById } from '../data/lessons';
 import { getLessonDetailScripture } from '../data/scriptures';
 import { useInvestigatorStore } from '../store/useInvestigatorStore';
+import { useSpiritualMemoryStore } from '../../../core/memory/useSpiritualMemoryStore';
 import { ScriptureCard } from '../components/ScriptureCard';
 import { AudioPlayer } from '../components/AudioPlayer';
 import './InvestigatorLessonDetailPage.css';
@@ -19,6 +20,7 @@ interface LessonParams {
 export default function InvestigatorLessonDetailPage(): JSX.Element {
   const { lessonId } = useParams<keyof LessonParams>() as LessonParams;
   const { setLastLessonId, addJournalEntry } = useInvestigatorStore();
+  const { setLastLesson, markSavedToJournal } = useSpiritualMemoryStore();
   
   const [reflection, setReflection] = useState('');
   const [saved, setSaved] = useState(false);
@@ -26,12 +28,13 @@ export default function InvestigatorLessonDetailPage(): JSX.Element {
   const lesson = getLessonById(lessonId);
   const scripture = getLessonDetailScripture();
 
-  // Remember last visited lesson
+  // Remember last visited lesson (both stores for compatibility)
   useEffect(() => {
     if (lesson) {
       setLastLessonId(lessonId);
+      setLastLesson({ id: lessonId, title: lesson.title });
     }
-  }, [lesson, lessonId, setLastLessonId]);
+  }, [lesson, lessonId, setLastLessonId, setLastLesson]);
 
   const handleSaveReflection = (): void => {
     if (reflection.trim()) {
@@ -40,6 +43,7 @@ export default function InvestigatorLessonDetailPage(): JSX.Element {
         content: reflection,
         lessonId: lessonId,
       });
+      markSavedToJournal();
       setReflection('');
       setSaved(true);
       setTimeout(() => setSaved(false), 3000);

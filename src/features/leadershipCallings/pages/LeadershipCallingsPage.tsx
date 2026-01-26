@@ -68,10 +68,10 @@ const LeadershipCallingsPage: React.FC = () => {
         {/* Status Filter */}
         <div className="status-filter">
           <label>Estado:</label>
-          <select 
-            value={selectedStatus} 
-            onChange={(e) => setSelectedStatus(e.target.value)}
-          >
+        <select 
+          value={selectedStatus} 
+          onChange={(e) => setSelectedStatus((e.target as any).value)}
+        >
             <option value="all">Todos</option>
             <option value="active">Activos</option>
             <option value="training">En capacitación</option>

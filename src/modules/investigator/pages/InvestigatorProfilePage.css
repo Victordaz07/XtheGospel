@@ -260,3 +260,50 @@
 .inv-profile__version-label {
   margin: 0;
 }
+
+/* Mode Switcher */
+.inv-profile__section-desc {
+  font-size: 13px;
+  color: #92400e;
+  margin: 0 0 12px 0;
+}
+
+.inv-profile__mode-switcher {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.inv-profile__mode-btn {
+  flex: 1;
+  min-width: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 14px 12px;
+  background: #ffffff;
+  border: 2px solid rgba(251, 191, 36, 0.2);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 13px;
+  font-weight: 500;
+  color: #78350f;
+}
+
+.inv-profile__mode-btn:hover {
+  border-color: rgba(251, 191, 36, 0.5);
+  background: #fefce8;
+}
+
+.inv-profile__mode-btn--active {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border-color: #f59e0b;
+  color: #92400e;
+}
+
+.inv-profile__mode-icon {
+  font-size: 20px;
+  color: #d97706;
+}

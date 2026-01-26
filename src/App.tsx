@@ -3,6 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { I18nProvider } from './context/I18nContext';
 import { AuthProvider } from './context/AuthContext';
 import { ProgressProvider } from './context/ProgressContext';
+import { ModeProvider } from './state/mode';
 import AppRouter from './router/AppRouter';
 import ErrorBoundary from './components/ErrorBoundary';
 import { XtgAppLayout } from './layouts/XtgAppLayout';
@@ -20,11 +21,13 @@ export default function App() {
       <I18nProvider>
         <AuthProvider>
           <ProgressProvider>
-            <BrowserRouter>
-              <XtgAppLayout>
-                <AppRouter />
-              </XtgAppLayout>
-            </BrowserRouter>
+            <ModeProvider>
+              <BrowserRouter>
+                <XtgAppLayout>
+                  <AppRouter />
+                </XtgAppLayout>
+              </BrowserRouter>
+            </ModeProvider>
           </ProgressProvider>
         </AuthProvider>
       </I18nProvider>

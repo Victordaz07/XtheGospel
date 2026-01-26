@@ -67,14 +67,14 @@ const ResponsibilitiesHubPage: React.FC = () => {
       <main className="leadership-content">
         {/* Filters */}
         <div className="filters-row">
-          <select value={filterStatus} onChange={(e) => setFilterStatus(e.target.value)}>
+          <select value={filterStatus} onChange={(e) => setFilterStatus((e.target as any).value)}>
             <option value="all">Todos los estados</option>
             <option value="pending">Pendientes</option>
             <option value="in_progress">En progreso</option>
             <option value="done">Completados</option>
           </select>
           
-          <select value={filterOrg} onChange={(e) => setFilterOrg(e.target.value)}>
+          <select value={filterOrg} onChange={(e) => setFilterOrg((e.target as any).value)}>
             <option value="all">Todas las organizaciones</option>
             {Object.entries(ORGANIZATION_LABELS).map(([key, label]) => (
               <option key={key} value={key}>{label}</option>

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaPenToSquare, FaTrash, FaBookOpen } from 'react-icons/fa6';
+import { FaTrash, FaBookOpen } from 'react-icons/fa6';
 import { useInvestigatorStore } from '../store/useInvestigatorStore';
+import { useSpiritualMemoryStore } from '../../../core/memory/useSpiritualMemoryStore';
 import { getLessonById } from '../data/lessons';
 import { getGuideTopicById } from '../../new-member/data/guideTopics';
 import './InvestigatorJournalPage.css';
@@ -14,6 +15,7 @@ import './InvestigatorJournalPage.css';
 export default function InvestigatorJournalPage(): JSX.Element {
   const [newEntry, setNewEntry] = useState('');
   const { journalEntries, addJournalEntry, deleteJournalEntry } = useInvestigatorStore();
+  const { markJournalEntry } = useSpiritualMemoryStore();
 
   const handleAddEntry = (): void => {
     if (newEntry.trim()) {
@@ -21,6 +23,7 @@ export default function InvestigatorJournalPage(): JSX.Element {
         type: 'text',
         content: newEntry.trim(),
       });
+      markJournalEntry();
       setNewEntry('');
     }
   };

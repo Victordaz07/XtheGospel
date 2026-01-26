@@ -12,6 +12,7 @@ export { TopBar } from './Navigation/TopBar';
 export { RoleBadge } from './Navigation/RoleBadge';
 export { FloatingMenu } from './Navigation/FloatingMenu';
 export type { FloatingMenuTab } from './Navigation/FloatingMenu';
+export { BottomNav } from './Navigation/BottomNav';
 
 // Controls components
 export { Button } from './Controls/Button';

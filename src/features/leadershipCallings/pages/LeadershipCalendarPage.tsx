@@ -8,7 +8,7 @@
 import React, { useState, useMemo } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useEventsStore } from '../state';
-import { EventKind, EVENT_KIND_LABELS, EVENT_KIND_ICONS, ORGANIZATION_LABELS, OrganizationType } from '../types';
+import { EventKind, EVENT_KIND_LABELS, EVENT_KIND_ICONS, ORGANIZATION_LABELS, OrganizationType, CallingEvent, CallingEventFormData } from '../types';
 
 type ViewMode = 'month' | 'week';
 
@@ -34,8 +34,8 @@ const LeadershipCalendarPage: React.FC = () => {
   
   // Conflict modal state
   const [showConflictModal, setShowConflictModal] = useState(false);
-  const [conflictEvents, setConflictEvents] = useState<any[]>([]);
-  const [pendingEvent, setPendingEvent] = useState<any>(null);
+  const [conflictEvents, setConflictEvents] = useState<CallingEvent[]>([]);
+  const [pendingEvent, setPendingEvent] = useState<CallingEventFormData | null>(null);
   
   // Handle deep link to specific event
   const eventIdParam = searchParams.get('eventId');
@@ -172,13 +172,13 @@ const LeadershipCalendarPage: React.FC = () => {
         
         {/* Filters */}
         <div className="calendar-filters">
-          <select value={filterOrg} onChange={(e) => setFilterOrg(e.target.value)}>
+          <select value={filterOrg} onChange={(e) => setFilterOrg((e.target as any).value)}>
             <option value="all">Todas las organizaciones</option>
             {Object.entries(ORGANIZATION_LABELS).map(([key, label]) => (
               <option key={key} value={key}>{label}</option>
             ))}
           </select>
-          <select value={filterKind} onChange={(e) => setFilterKind(e.target.value)}>
+          <select value={filterKind} onChange={(e) => setFilterKind((e.target as any).value)}>
             <option value="all">Todos los tipos</option>
             {Object.entries(EVENT_KIND_LABELS).map(([key, label]) => (
               <option key={key} value={key}>{label}</option>
@@ -192,12 +192,12 @@ const LeadershipCalendarPage: React.FC = () => {
             <input
               type="text"
               value={formTitle}
-              onChange={(e) => setFormTitle(e.target.value)}
+              onChange={(e) => setFormTitle((e.target as any).value)}
               placeholder="Título del evento"
               required
             />
             <div className="form-row">
-              <select value={formKind} onChange={(e) => setFormKind(e.target.value as EventKind)}>
+              <select value={formKind} onChange={(e) => setFormKind((e.target as any).value as EventKind)}>
                 {Object.entries(EVENT_KIND_LABELS).map(([k, label]) => (
                   <option key={k} value={k}>{label}</option>
                 ))}
@@ -205,19 +205,19 @@ const LeadershipCalendarPage: React.FC = () => {
               <input
                 type="date"
                 value={formDate}
-                onChange={(e) => setFormDate(e.target.value)}
+                onChange={(e) => setFormDate((e.target as any).value)}
                 required
               />
               <input
                 type="time"
                 value={formTime}
-                onChange={(e) => setFormTime(e.target.value)}
+                onChange={(e) => setFormTime((e.target as any).value)}
               />
             </div>
             <input
               type="text"
               value={formLocation}
-              onChange={(e) => setFormLocation(e.target.value)}
+              onChange={(e) => setFormLocation((e.target as any).value)}
               placeholder="Lugar (opcional)"
             />
             <button type="submit" className="action-button primary">

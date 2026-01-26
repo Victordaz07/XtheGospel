@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { 
   FaChevronRight, 
   FaUser, 
@@ -8,16 +9,38 @@ import {
   FaCircleQuestion,
   FaEnvelope,
   FaPhone,
-  FaComments
+  FaComments,
+  FaUserGear
 } from 'react-icons/fa6';
 import { OrdinanceDatesSection } from '../../../components/OrdinanceDatesSection';
 import DataPrivacySection from '../../../components/DataPrivacySection';
+import { useMode, AppMode } from '../../../state/mode';
 import '../../../components/DataPrivacySection.css';
 import './InvestigatorProfilePage.css';
 
 export default function InvestigatorProfilePage(): JSX.Element {
+  const navigate = useNavigate();
+  const { mode, setMode } = useMode();
+
   const handleSettingClick = (setting: string): void => {
     alert(`${setting} settings coming soon!`);
+  };
+
+  const handleModeChange = (newMode: AppMode): void => {
+    setMode(newMode);
+    // Navigate to the appropriate home for each mode
+    switch (newMode) {
+      case 'leadership':
+        navigate('/member/leadership/home');
+        break;
+      case 'member':
+        navigate('/home');
+        break;
+      case 'investigator':
+      default:
+        navigate('/home');
+        break;
+    }
   };
 
   return (
@@ -63,6 +86,37 @@ export default function InvestigatorProfilePage(): JSX.Element {
       <div className="inv-profile__section">
         <h2 className="inv-profile__section-title">Your Journey</h2>
         <OrdinanceDatesSection />
+      </div>
+
+      {/* Mode Switcher */}
+      <div className="inv-profile__section">
+        <h2 className="inv-profile__section-title">Cambiar modo</h2>
+        <p className="inv-profile__section-desc">
+          Selecciona cómo deseas usar la aplicación
+        </p>
+        <div className="inv-profile__mode-switcher">
+          <button
+            className={`inv-profile__mode-btn ${mode === 'investigator' ? 'inv-profile__mode-btn--active' : ''}`}
+            onClick={() => handleModeChange('investigator')}
+          >
+            <FaUser className="inv-profile__mode-icon" />
+            <span>Investigador</span>
+          </button>
+          <button
+            className={`inv-profile__mode-btn ${mode === 'member' ? 'inv-profile__mode-btn--active' : ''}`}
+            onClick={() => handleModeChange('member')}
+          >
+            <FaUser className="inv-profile__mode-icon" />
+            <span>Miembro</span>
+          </button>
+          <button
+            className={`inv-profile__mode-btn ${mode === 'leadership' ? 'inv-profile__mode-btn--active' : ''}`}
+            onClick={() => handleModeChange('leadership')}
+          >
+            <FaUserGear className="inv-profile__mode-icon" />
+            <span>Liderazgo</span>
+          </button>
+        </div>
       </div>
 
       {/* Preferences */}

@@ -1,20 +1,30 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaBookOpen, FaPenToSquare } from 'react-icons/fa6';
 import { useInvestigatorStore } from '../store/useInvestigatorStore';
+import { useSpiritualMemoryStore, useHasJournalActivity } from '../../../core/memory/useSpiritualMemoryStore';
 import './InvestigatorProgressPage.css';
 
 /**
  * Investigator Progress Page
- * Sprint 7 - Pastoral, reflective, no metrics
+ * Sprint 8 - Spiritual Memory: gentle reflection messages
  * 
  * "Progress is not measured; it is accompanied."
  */
 export default function InvestigatorProgressPage(): JSX.Element {
   const { journalEntries, lastLessonId } = useInvestigatorStore();
+  const { isHydrated, hydrate, lastLessonTitle } = useSpiritualMemoryStore();
+  const hasReflectionActivity = useHasJournalActivity();
+  
+  // Hydrate memory on mount
+  useEffect(() => {
+    if (!isHydrated) {
+      hydrate();
+    }
+  }, [isHydrated, hydrate]);
   
   const hasJournalEntries = journalEntries.length > 0;
-  const hasStartedLearning = lastLessonId !== null;
+  const hasStartedLearning = lastLessonId !== null || (isHydrated && lastLessonTitle);
 
   return (
     <div className="inv-progress">
@@ -39,7 +49,7 @@ export default function InvestigatorProgressPage(): JSX.Element {
       <section className="inv-progress__section">
         <h2 className="inv-progress__section-title">Recent moments</h2>
         
-        {hasJournalEntries || hasStartedLearning ? (
+        {hasJournalEntries || hasStartedLearning || hasReflectionActivity ? (
           <div className="inv-progress__moments">
             {hasStartedLearning && (
               <div className="inv-progress__moment">
@@ -49,9 +59,17 @@ export default function InvestigatorProgressPage(): JSX.Element {
                 </p>
               </div>
             )}
-            {hasJournalEntries && (
+            {hasReflectionActivity && (
               <div className="inv-progress__moment">
                 <span className="inv-progress__moment-icon">✍️</span>
+                <p className="inv-progress__moment-text">
+                  You've taken time to reflect
+                </p>
+              </div>
+            )}
+            {hasJournalEntries && !hasReflectionActivity && (
+              <div className="inv-progress__moment">
+                <span className="inv-progress__moment-icon">📝</span>
                 <p className="inv-progress__moment-text">
                   You've written reflections in your journal
                 </p>

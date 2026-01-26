@@ -31,8 +31,9 @@ const NewCallingPage: React.FC = () => {
   const [proposedDate, setProposedDate] = useState('');
   const [notes, setNotes] = useState('');
   
-  const handleMemberChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const selected = MOCK_MEMBERS.find(m => m.id === e.target.value);
+  const handleMemberChange = (e: any) => {
+    const value = e.target.value;
+    const selected = MOCK_MEMBERS.find(m => m.id === value);
     if (selected) {
       setMemberId(selected.id);
       setMemberName(selected.name);
@@ -89,7 +90,7 @@ const NewCallingPage: React.FC = () => {
             <select
               id="organization"
               value={organization}
-              onChange={(e) => setOrganization(e.target.value as OrganizationType)}
+              onChange={(e) => setOrganization((e.target as any).value as OrganizationType)}
               required
             >
               <option value="">Seleccionar...</option>
@@ -105,7 +106,7 @@ const NewCallingPage: React.FC = () => {
               id="position"
               type="text"
               value={position}
-              onChange={(e) => setPosition(e.target.value)}
+              onChange={(e) => setPosition((e.target as any).value)}
               placeholder="Ej: Presidente, Consejero, Maestro..."
               required
             />
@@ -117,7 +118,7 @@ const NewCallingPage: React.FC = () => {
               id="date"
               type="date"
               value={proposedDate}
-              onChange={(e) => setProposedDate(e.target.value)}
+              onChange={(e) => setProposedDate((e.target as any).value)}
             />
           </div>
           
@@ -126,7 +127,7 @@ const NewCallingPage: React.FC = () => {
             <textarea
               id="notes"
               value={notes}
-              onChange={(e) => setNotes(e.target.value)}
+              onChange={(e) => setNotes((e.target as any).value)}
               placeholder="Notas adicionales..."
               rows={3}
             />

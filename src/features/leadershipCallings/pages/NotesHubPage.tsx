@@ -75,20 +75,20 @@ const NotesHubPage: React.FC = () => {
           <input
             type="text"
             value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
+            onChange={(e) => setSearchQuery((e.target as any).value)}
             placeholder="🔍 Buscar en notas..."
           />
         </div>
         
         {/* Filters */}
         <div className="filters-row">
-          <select value={filterScope} onChange={(e) => setFilterScope(e.target.value)}>
+          <select value={filterScope} onChange={(e) => setFilterScope((e.target as any).value)}>
             <option value="all">Todos los contextos</option>
             <option value="calling">Llamamientos</option>
             <option value="member">Miembros</option>
           </select>
           
-          <select value={filterType} onChange={(e) => setFilterType(e.target.value)}>
+          <select value={filterType} onChange={(e) => setFilterType((e.target as any).value)}>
             <option value="all">Todos los tipos</option>
             {Object.entries(NOTE_TYPE_LABELS).map(([key, label]) => (
               <option key={key} value={key}>{label}</option>

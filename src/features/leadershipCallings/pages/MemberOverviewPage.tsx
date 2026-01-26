@@ -141,14 +141,14 @@ const MemberOverviewPage: React.FC = () => {
             <form className="add-form" onSubmit={handleAddNote}>
               <textarea
                 value={noteContent}
-                onChange={(e) => setNoteContent(e.target.value)}
+                onChange={(e) => setNoteContent((e.target as any).value)}
                 placeholder="Añadir nota..."
                 rows={3}
                 required
               />
               <select 
                 value={noteType}
-                onChange={(e) => setNoteType(e.target.value as NoteType)}
+                onChange={(e) => setNoteType((e.target as any).value as NoteType)}
               >
                 <option value="followup">{NOTE_TYPE_LABELS.followup}</option>
                 <option value="administrative">{NOTE_TYPE_LABELS.administrative}</option>

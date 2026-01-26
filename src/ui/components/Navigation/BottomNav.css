@@ -1,0 +1,73 @@
+/**
+ * BottomNav Styles
+ * Matches golden UI design system
+ */
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 8px 16px 20px;
+  background: rgba(248, 250, 252, 0.95);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(148, 163, 184, 0.3);
+  z-index: 1000;
+  /* Safe area for iOS */
+  padding-bottom: max(20px, env(safe-area-inset-bottom));
+}
+
+.bottom-nav-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 6px;
+  border-radius: var(--am-radius-pill, 999px);
+  text-decoration: none;
+  color: var(--am-color-text-soft, #94a3b8);
+  font-size: 11px;
+  transition: all 0.2s ease;
+}
+
+.bottom-nav-item.active {
+  background: linear-gradient(
+    135deg,
+    rgba(99, 102, 241, 0.15),
+    rgba(59, 130, 246, 0.20)
+  );
+  color: var(--am-color-primary-strong, #4f46e5);
+  font-weight: 600;
+}
+
+.bottom-nav-item:hover:not(.active) {
+  color: var(--am-color-text-muted, #64748b);
+}
+
+.bottom-nav-icon {
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bottom-nav-label {
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+/* Tablet/Desktop: center and limit width */
+@media (min-width: 768px) {
+  .bottom-nav {
+    max-width: 500px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: var(--am-radius-lg, 22px) var(--am-radius-lg, 22px) 0 0;
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    border-bottom: none;
+  }
+}
