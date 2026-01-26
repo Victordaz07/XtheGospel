@@ -88,8 +88,9 @@
   flex: 1;
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 20px 16px 16px;
+  padding: 20px 16px 24px;
   background: transparent;
+  /* Safe-area: extra bottom padding ensures content never hides behind nav */
 }
 
 .unified-layout-content::-webkit-scrollbar {
