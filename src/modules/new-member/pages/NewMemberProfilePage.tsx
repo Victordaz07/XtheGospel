@@ -1,6 +1,8 @@
 import React from 'react';
 import { FaChevronRight, FaUser, FaBell, FaGlobe, FaCircleQuestion } from 'react-icons/fa6';
 import { OrdinanceDatesSection } from '../../../components/OrdinanceDatesSection';
+import DataPrivacySection from '../../../components/DataPrivacySection';
+import '../../../components/DataPrivacySection.css';
 import './NewMemberProfilePage.css';
 
 /**
@@ -86,6 +88,12 @@ export default function NewMemberProfilePage(): JSX.Element {
             <FaChevronRight className="nm-profile__setting-arrow" />
           </button>
         </div>
+      </section>
+
+      {/* Data & Privacy */}
+      <section className="nm-profile__section">
+        <h2 className="nm-profile__section-title">Data & Privacy</h2>
+        <DataPrivacySection classPrefix="nm-profile" />
       </section>
 
       {/* Version */}

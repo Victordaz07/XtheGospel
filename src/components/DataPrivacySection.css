@@ -1,0 +1,372 @@
+/**
+ * Data Privacy Section Styles
+ * Sprint 10 - Data Ownership & Export
+ * 
+ * Pastoral tone, trust-building aesthetic.
+ * Uses CSS custom properties for easy theming.
+ */
+
+/* Base Container */
+.data-privacy__data-privacy,
+.inv-profile__data-privacy,
+.nm-profile__data-privacy {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* Trust Intro */
+.data-privacy__privacy-intro,
+.inv-profile__privacy-intro,
+.nm-profile__privacy-intro {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px;
+  background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+  border-radius: 12px;
+  margin-bottom: 18px;
+}
+
+.data-privacy__privacy-icon,
+.inv-profile__privacy-icon,
+.nm-profile__privacy-icon {
+  font-size: 24px;
+  color: #059669;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.data-privacy__privacy-message,
+.inv-profile__privacy-message,
+.nm-profile__privacy-message {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #065f46;
+}
+
+.data-privacy__privacy-emphasis,
+.inv-profile__privacy-emphasis,
+.nm-profile__privacy-emphasis {
+  font-weight: 600;
+  color: #047857;
+}
+
+/* Data Summary */
+.data-privacy__data-summary,
+.inv-profile__data-summary,
+.nm-profile__data-summary {
+  margin-bottom: 16px;
+}
+
+.data-privacy__data-summary-title,
+.inv-profile__data-summary-title,
+.nm-profile__data-summary-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+  margin: 0 0 10px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.data-privacy__data-list,
+.inv-profile__data-list,
+.nm-profile__data-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.data-privacy__data-list li,
+.inv-profile__data-list li,
+.nm-profile__data-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #f3f4f6;
+  font-size: 14px;
+  color: #374151;
+}
+
+.data-privacy__data-list li:last-child,
+.inv-profile__data-list li:last-child,
+.nm-profile__data-list li:last-child {
+  border-bottom: none;
+}
+
+.data-privacy__data-empty,
+.inv-profile__data-empty,
+.nm-profile__data-empty {
+  color: #9ca3af !important;
+}
+
+/* No Tracking Note */
+.data-privacy__no-tracking,
+.inv-profile__no-tracking,
+.nm-profile__no-tracking {
+  background: #fefce8;
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin-bottom: 18px;
+}
+
+.data-privacy__no-tracking-text,
+.inv-profile__no-tracking-text,
+.nm-profile__no-tracking-text {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #854d0e;
+}
+
+.data-privacy__no-tracking-text strong,
+.inv-profile__no-tracking-text strong,
+.nm-profile__no-tracking-text strong {
+  color: #713f12;
+}
+
+/* Action Buttons */
+.data-privacy__data-actions,
+.inv-profile__data-actions,
+.nm-profile__data-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.data-privacy__data-btn,
+.inv-profile__data-btn,
+.nm-profile__data-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 18px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.data-privacy__data-btn--export,
+.inv-profile__data-btn--export,
+.nm-profile__data-btn--export {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  color: #ffffff;
+}
+
+.data-privacy__data-btn--export:hover,
+.inv-profile__data-btn--export:hover,
+.nm-profile__data-btn--export:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
+}
+
+.data-privacy__data-btn--export:disabled,
+.inv-profile__data-btn--export:disabled,
+.nm-profile__data-btn--export:disabled {
+  background: #10b981;
+  cursor: default;
+  transform: none;
+  box-shadow: none;
+}
+
+.data-privacy__data-btn--clear,
+.inv-profile__data-btn--clear,
+.nm-profile__data-btn--clear {
+  background: #ffffff;
+  color: #6b7280;
+  border: 1px solid #e5e7eb;
+}
+
+.data-privacy__data-btn--clear:hover,
+.inv-profile__data-btn--clear:hover,
+.nm-profile__data-btn--clear:hover {
+  background: #fef2f2;
+  border-color: #fecaca;
+  color: #dc2626;
+}
+
+/* Confirmation Modal Overlay */
+.data-privacy__confirm-overlay,
+.inv-profile__confirm-overlay,
+.nm-profile__confirm-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Confirmation Modal */
+.data-privacy__confirm-modal,
+.inv-profile__confirm-modal,
+.nm-profile__confirm-modal {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 28px;
+  max-width: 340px;
+  width: 100%;
+  text-align: center;
+  animation: slideUp 0.25s ease;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.data-privacy__confirm-title,
+.inv-profile__confirm-title,
+.nm-profile__confirm-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0 0 12px 0;
+}
+
+.data-privacy__confirm-text,
+.inv-profile__confirm-text,
+.nm-profile__confirm-text {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #6b7280;
+  margin: 0 0 24px 0;
+}
+
+.data-privacy__confirm-actions,
+.inv-profile__confirm-actions,
+.nm-profile__confirm-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.data-privacy__confirm-btn,
+.inv-profile__confirm-btn,
+.nm-profile__confirm-btn {
+  padding: 14px 20px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.data-privacy__confirm-btn--cancel,
+.inv-profile__confirm-btn--cancel,
+.nm-profile__confirm-btn--cancel {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  color: #ffffff;
+}
+
+.data-privacy__confirm-btn--cancel:hover,
+.inv-profile__confirm-btn--cancel:hover,
+.nm-profile__confirm-btn--cancel:hover {
+  transform: translateY(-1px);
+}
+
+.data-privacy__confirm-btn--confirm,
+.inv-profile__confirm-btn--confirm,
+.nm-profile__confirm-btn--confirm {
+  background: #ffffff;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+}
+
+.data-privacy__confirm-btn--confirm:hover,
+.inv-profile__confirm-btn--confirm:hover,
+.nm-profile__confirm-btn--confirm:hover {
+  background: #fef2f2;
+}
+
+/* Investigator Theme Overrides */
+.inv-profile__data-privacy {
+  border-color: rgba(251, 191, 36, 0.2);
+}
+
+.inv-profile__privacy-intro {
+  background: linear-gradient(135deg, #fef3c7 0%, #fef9c3 100%);
+}
+
+.inv-profile__privacy-icon {
+  color: #d97706;
+}
+
+.inv-profile__privacy-message {
+  color: #92400e;
+}
+
+.inv-profile__privacy-emphasis {
+  color: #b45309;
+}
+
+.inv-profile__data-btn--export {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+}
+
+.inv-profile__data-btn--export:hover {
+  box-shadow: 0 4px 12px rgba(251, 191, 36, 0.4);
+}
+
+.inv-profile__confirm-btn--cancel {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+}
+
+/* New Member Theme Overrides */
+.nm-profile__data-privacy {
+  border-color: rgba(99, 102, 241, 0.15);
+}
+
+.nm-profile__privacy-intro {
+  background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+}
+
+.nm-profile__privacy-icon {
+  color: #6366f1;
+}
+
+.nm-profile__privacy-message {
+  color: #3730a3;
+}
+
+.nm-profile__privacy-emphasis {
+  color: #4338ca;
+}
+
+.nm-profile__data-btn--export {
+  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+}
+
+.nm-profile__data-btn--export:hover {
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+}
+
+.nm-profile__confirm-btn--cancel {
+  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+}

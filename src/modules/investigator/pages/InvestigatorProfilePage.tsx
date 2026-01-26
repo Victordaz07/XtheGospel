@@ -11,6 +11,8 @@ import {
   FaComments
 } from 'react-icons/fa6';
 import { OrdinanceDatesSection } from '../../../components/OrdinanceDatesSection';
+import DataPrivacySection from '../../../components/DataPrivacySection';
+import '../../../components/DataPrivacySection.css';
 import './InvestigatorProfilePage.css';
 
 export default function InvestigatorProfilePage(): JSX.Element {
@@ -109,6 +111,12 @@ export default function InvestigatorProfilePage(): JSX.Element {
             <FaChevronRight className="inv-profile__setting-arrow" />
           </button>
         </div>
+      </div>
+
+      {/* Data & Privacy */}
+      <div className="inv-profile__section">
+        <h2 className="inv-profile__section-title">Data & Privacy</h2>
+        <DataPrivacySection classPrefix="inv-profile" />
       </div>
 
       {/* Support */}
