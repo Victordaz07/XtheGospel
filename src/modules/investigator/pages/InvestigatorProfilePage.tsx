@@ -10,6 +10,7 @@ import {
   FaPhone,
   FaComments
 } from 'react-icons/fa6';
+import { OrdinanceDatesSection } from '../../../components/OrdinanceDatesSection';
 import './InvestigatorProfilePage.css';
 
 export default function InvestigatorProfilePage(): JSX.Element {
@@ -54,6 +55,12 @@ export default function InvestigatorProfilePage(): JSX.Element {
             </button>
           </div>
         </div>
+      </div>
+
+      {/* Ordinance Dates */}
+      <div className="inv-profile__section">
+        <h2 className="inv-profile__section-title">Your Journey</h2>
+        <OrdinanceDatesSection />
       </div>
 
       {/* Preferences */}

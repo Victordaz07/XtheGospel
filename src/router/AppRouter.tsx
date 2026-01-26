@@ -18,6 +18,12 @@ import { SupportPage } from '../pages/support/SupportPage';
 // Strangler Fig: New Investigator module (MVP)
 import InvestigatorRoutes from './InvestigatorRoutes';
 
+// Strangler Fig: New Member (Vineyard) module (MVP)
+import NewMemberRoutes from './NewMemberRoutes';
+
+// Unified Routes: Journey-aware routing (stage-based content switching)
+import UnifiedRoutes from './UnifiedRoutes';
+
 const AppRouter: React.FC = () => {
   const { userRole, isLoading } = useAuth();
   const location = useLocation();
@@ -38,30 +44,33 @@ const AppRouter: React.FC = () => {
     return <LoadingScreen />;
   }
 
-  // Si hay userRole y está en /auth, redirigir a la sección correcta según el rol usando rutas centralizadas
-  if (userRole && location.pathname === '/auth') {
-    return <Navigate to={getRoleDefaultRoute(userRole)} replace />;
-  }
+  // Check if user is on a unified route (these are always accessible regardless of userRole)
+  const isOnUnifiedRoute = 
+    location.pathname === '/' ||
+    location.pathname.startsWith('/home') ||
+    location.pathname.startsWith('/lessons') ||
+    location.pathname.startsWith('/journal') ||
+    location.pathname.startsWith('/progress') ||
+    location.pathname.startsWith('/profile');
 
-  // Route protection: redirect to appropriate default route based on role
-  if (userRole) {
-    const defaultRoute = getRoleDefaultRoute(userRole);
+  // Skip role-based redirects for unified routes - let them pass through
+  if (isOnUnifiedRoute) {
+    // Unified routes are handled directly by the Routes below
+    // No role-based protection needed
+  } else if (userRole) {
+    // LEGACY ROUTE PROTECTION: Only applies to legacy routes (/member, /leader, /missionary, etc.)
+    const defaultRoute = '/home'; // New default is unified home
     const isOnMemberRoute = location.pathname.startsWith('/member');
     const isOnLeaderRoute = location.pathname.startsWith('/leader');
+    const isOnMissionaryRoute = location.pathname.startsWith('/missionary');
     const isOnMemberRole = userRole === 'member';
 
-    // For member role users, check appRole to decide between member or leader layout
-    if (isOnMemberRole) {
-      if (appRole === 'leader') {
-        // User is in leader mode, redirect to leader routes
-        if (!isOnLeaderRoute) {
-          return <Navigate to="/leader/home" replace />;
-        }
-      } else {
-        // User is in member mode, redirect to member routes
-        if (!isOnMemberRoute) {
-          return <Navigate to={defaultRoute} replace />;
-        }
+    // For member role users accessing legacy routes
+    if (isOnMemberRole && (isOnMemberRoute || isOnLeaderRoute)) {
+      if (appRole === 'leader' && !isOnLeaderRoute) {
+        return <Navigate to="/leader/home" replace />;
+      } else if (appRole !== 'leader' && !isOnMemberRoute) {
+        return <Navigate to="/member/home" replace />;
       }
     }
 
@@ -70,41 +79,31 @@ const AppRouter: React.FC = () => {
       return <Navigate to={defaultRoute} replace />;
     }
 
-    // Redirect missionary users away from investigator-only routes
-    if (userRole === 'missionary' && (location.pathname.startsWith('/baptism') || location.pathname.startsWith('/progress'))) {
+    // Redirect non-missionary users away from missionary routes
+    if (userRole !== 'missionary' && isOnMissionaryRoute) {
       return <Navigate to={defaultRoute} replace />;
     }
 
     // Check if missionary has leadership role and should be in leadership layout
-    if (userRole === 'missionary') {
+    if (userRole === 'missionary' && isOnMissionaryRoute) {
       try {
         const leadershipRole = LeadershipRoleService.getCurrentRole();
         const hasLeadershipRole = leadershipRole !== 'none';
         const isOnLeadershipRoute = location.pathname.startsWith('/missionary/leadership');
         
         if (hasLeadershipRole && !isOnLeadershipRoute && location.pathname !== '/missionary/profile') {
-          // Allow access to leadership center screen for regular missionaries
-          // This is the "Centro de Liderazgo" screen within MissionaryLayout
-          if (location.pathname === '/leadership') {
-            // Let it through to MissionaryLayout - don't redirect
-          } else {
-            // Redirect to leadership dashboard
+          if (location.pathname !== '/leadership') {
             return <Navigate to={`/missionary/leadership/${leadershipRole}/dashboard`} replace />;
           }
         }
         
         if (!hasLeadershipRole && isOnLeadershipRoute) {
-          // Allow identity reminder screen when transitioning from leadership to regular
-          if (location.pathname === '/identity-reminder') {
-            // Let it through to MissionaryLayout - don't redirect
-          } else {
-            // Redirect away from leadership routes if no role active
-            return <Navigate to={defaultRoute} replace />;
+          if (location.pathname !== '/identity-reminder') {
+            return <Navigate to="/missionary/home" replace />;
           }
         }
       } catch (error) {
         console.error('Error checking leadership role:', error);
-        // Continue with normal flow if there's an error
       }
     }
   }
@@ -127,42 +126,54 @@ const AppRouter: React.FC = () => {
 
   return (
     <Routes>
-      {/* Strangler Fig: Investigator MVP module - accessible without auth for development */}
-      <Route path="/investigator/*" element={<InvestigatorRoutes />} />
+      {/* ROOT: Redirect to unified home */}
+      <Route path="/" element={<Navigate to="/home" replace />} />
       
-      {/* Root redirect to Investigator MVP (Strangler Fig entry point) */}
-      <Route path="/" element={<Navigate to="/investigator/home" replace />} />
-      <Route path="/home" element={<Navigate to="/investigator/home" replace />} />
+      {/* UNIFIED ROUTES: Main app flow - stage-based content switching */}
+      {/* These are always accessible regardless of userRole */}
+      <Route path="/home/*" element={<UnifiedRoutes />} />
+      <Route path="/lessons/*" element={<UnifiedRoutes />} />
+      <Route path="/journal/*" element={<UnifiedRoutes />} />
+      <Route path="/progress/*" element={<UnifiedRoutes />} />
+      <Route path="/profile/*" element={<UnifiedRoutes />} />
+      
+      {/* LEGACY: Auth/Role selection - moved to /legacy/auth */}
+      <Route path="/legacy/auth" element={<RoleSelectionScreen />} />
+      {/* Compatibility redirect: /auth -> /legacy/auth */}
+      <Route path="/auth" element={<Navigate to="/legacy/auth" replace />} />
+      
+      {/* DEV-ONLY: Direct module access (keep for testing) */}
+      <Route path="/investigator/*" element={<InvestigatorRoutes />} />
+      <Route path="/new-member/*" element={<NewMemberRoutes />} />
       
       {/* Legal pages - accessible to everyone */}
       <Route path="/privacy" element={<PrivacyPage />} />
       <Route path="/terms" element={<TermsPage />} />
       <Route path="/support" element={<SupportPage />} />
       
+      {/* LEGACY ROLE-BASED LAYOUTS: Only used when userRole is set and navigating to legacy routes */}
       {userRole ? (
         userRole === 'investigator' ? (
-          <Route path="/*" element={<InvestigatorLayout />} />
+          <Route path="/legacy/*" element={<InvestigatorLayout />} />
         ) : userRole === 'missionary' ? (
           hasLeadershipRole ? (
             // Missionary with active leadership role
-            <Route path="/*" element={<MissionaryLeadershipLayout />} />
+            <Route path="/missionary/*" element={<MissionaryLeadershipLayout />} />
           ) : (
             // Regular missionary
-            <Route path="/*" element={<MissionaryLayout />} />
+            <Route path="/missionary/*" element={<MissionaryLayout />} />
           )
         ) : appRole === 'leader' ? (
           // Member role but in leader app mode
-          <Route path="/*" element={<LeaderLayout />} />
+          <Route path="/leader/*" element={<LeaderLayout />} />
         ) : (
           // Member role in member app mode
-          <Route path="/*" element={<MemberLayout />} />
+          <Route path="/member/*" element={<MemberLayout />} />
         )
-      ) : (
-        <>
-          <Route path="/auth" element={<RoleSelectionScreen />} />
-          <Route path="*" element={<Navigate to="/auth" replace />} />
-        </>
-      )}
+      ) : null}
+      
+      {/* Catch-all: redirect unknown routes to unified home */}
+      <Route path="*" element={<Navigate to="/home" replace />} />
     </Routes>
   );
 };
