@@ -3,6 +3,10 @@ import { FaChevronRight, FaUser, FaBell, FaGlobe, FaCircleQuestion } from 'react
 import { OrdinanceDatesSection } from '../../../components/OrdinanceDatesSection';
 import './NewMemberProfilePage.css';
 
+/**
+ * New Member Profile Page
+ * Sprint 7 - Pastoral tone, no placeholders
+ */
 export default function NewMemberProfilePage(): JSX.Element {
   const handleSettingClick = (setting: string): void => {
     alert(`${setting} coming soon!`);
@@ -15,31 +19,29 @@ export default function NewMemberProfilePage(): JSX.Element {
         <div className="nm-profile__role-avatar">
           <FaUser />
         </div>
-        <h1 className="nm-profile__role-title">Welcome, New Member</h1>
-        <p className="nm-profile__role-label">Vineyard Member</p>
+        <h1 className="nm-profile__role-title">Welcome, Friend</h1>
+        <p className="nm-profile__role-label">Member</p>
       </div>
 
       {/* Ward Family */}
-      <div className="nm-profile__section">
+      <section className="nm-profile__section">
         <h2 className="nm-profile__section-title">My Ward Family</h2>
-        <div className="nm-profile__placeholder">
-          <div className="nm-profile__placeholder-icon">👥</div>
-          <h3 className="nm-profile__placeholder-title">Ward Connections</h3>
-          <p className="nm-profile__placeholder-text">
-            Connect with your bishop, ministering brothers/sisters, and ward friends.
+        <div className="nm-profile__ward-info">
+          <p className="nm-profile__ward-text">
+            Your ward is your spiritual family. As you attend meetings and activities, 
+            you'll build meaningful friendships and find support.
           </p>
-          <span className="nm-profile__placeholder-badge">Coming Soon</span>
         </div>
-      </div>
+      </section>
 
       {/* Ordinance Dates */}
-      <div className="nm-profile__section">
+      <section className="nm-profile__section">
         <h2 className="nm-profile__section-title">Your Journey</h2>
         <OrdinanceDatesSection />
-      </div>
+      </section>
 
       {/* Settings */}
-      <div className="nm-profile__section">
+      <section className="nm-profile__section">
         <h2 className="nm-profile__section-title">Settings</h2>
         <div className="nm-profile__settings">
           <button 
@@ -84,12 +86,12 @@ export default function NewMemberProfilePage(): JSX.Element {
             <FaChevronRight className="nm-profile__setting-arrow" />
           </button>
         </div>
-      </div>
+      </section>
 
       {/* Version */}
-      <div className="nm-profile__version">
-        <p className="nm-profile__version-label">xTheGospel v1.0.0 (New Member MVP)</p>
-      </div>
+      <footer className="nm-profile__version">
+        <p className="nm-profile__version-label">xTheGospel v1.0.0</p>
+      </footer>
     </div>
   );
 }

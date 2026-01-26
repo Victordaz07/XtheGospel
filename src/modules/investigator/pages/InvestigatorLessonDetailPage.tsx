@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
-import { FaArrowLeft, FaClock, FaLayerGroup } from 'react-icons/fa6';
+import { useParams, Link } from 'react-router-dom';
+import { FaArrowLeft } from 'react-icons/fa6';
 import { getLessonById } from '../data/lessons';
 import { getLessonDetailScripture } from '../data/scriptures';
 import { useInvestigatorStore } from '../store/useInvestigatorStore';
@@ -12,25 +12,26 @@ interface LessonParams {
   lessonId: string;
 }
 
+/**
+ * Investigator Lesson Detail Page
+ * Sprint 7 - Pastoral tone, no completion tracking
+ */
 export default function InvestigatorLessonDetailPage(): JSX.Element {
   const { lessonId } = useParams<keyof LessonParams>() as LessonParams;
-  const navigate = useNavigate();
-  const { setLessonStatus, setLastLessonId, getLessonStatus, addJournalEntry } = useInvestigatorStore();
+  const { setLastLessonId, addJournalEntry } = useInvestigatorStore();
   
   const [reflection, setReflection] = useState('');
+  const [saved, setSaved] = useState(false);
+  
   const lesson = getLessonById(lessonId);
   const scripture = getLessonDetailScripture();
-  const status = getLessonStatus(lessonId);
 
-  // Mark as exploring when entering
+  // Remember last visited lesson
   useEffect(() => {
-    if (lesson && status === 'not_started') {
-      setLessonStatus(lessonId, 'exploring');
-    }
     if (lesson) {
       setLastLessonId(lessonId);
     }
-  }, [lesson, lessonId, status, setLessonStatus, setLastLessonId]);
+  }, [lesson, lessonId, setLastLessonId]);
 
   const handleSaveReflection = (): void => {
     if (reflection.trim()) {
@@ -40,26 +41,22 @@ export default function InvestigatorLessonDetailPage(): JSX.Element {
         lessonId: lessonId,
       });
       setReflection('');
-      alert('Reflection saved to your journal!');
+      setSaved(true);
+      setTimeout(() => setSaved(false), 3000);
     }
-  };
-
-  const handleMarkComplete = (): void => {
-    setLessonStatus(lessonId, 'completed');
-    navigate('/investigator/lessons');
   };
 
   if (!lesson) {
     return (
       <div className="inv-lesson-detail">
-        <Link to="/investigator/lessons" className="inv-lesson-detail__back">
-          <FaArrowLeft /> Back to Lessons
+        <Link to="/lessons" className="inv-lesson-detail__back">
+          <FaArrowLeft /> Back to Topics
         </Link>
         <div className="inv-lesson-detail__not-found">
           <div className="inv-lesson-detail__not-found-icon">📚</div>
-          <h2 className="inv-lesson-detail__not-found-title">Lesson Not Found</h2>
+          <h2 className="inv-lesson-detail__not-found-title">Topic Not Found</h2>
           <p className="inv-lesson-detail__not-found-text">
-            The lesson you're looking for doesn't exist.
+            The topic you're looking for doesn't exist.
           </p>
         </div>
       </div>
@@ -69,36 +66,28 @@ export default function InvestigatorLessonDetailPage(): JSX.Element {
   return (
     <div className="inv-lesson-detail">
       {/* Back Button */}
-      <Link to="/investigator/lessons" className="inv-lesson-detail__back">
-        <FaArrowLeft /> Back to Lessons
+      <Link to="/lessons" className="inv-lesson-detail__back">
+        <FaArrowLeft /> Back to Topics
       </Link>
 
       {/* Header */}
-      <div className="inv-lesson-detail__header">
+      <header className="inv-lesson-detail__header">
         <div className="inv-lesson-detail__icon">{lesson.icon}</div>
         <h1 className="inv-lesson-detail__title">{lesson.title}</h1>
         <p className="inv-lesson-detail__subtitle">{lesson.subtitle}</p>
-        <div className="inv-lesson-detail__meta">
-          <span className="inv-lesson-detail__meta-item">
-            <FaClock /> {lesson.estimatedMinutes} min
-          </span>
-          <span className="inv-lesson-detail__meta-item">
-            <FaLayerGroup /> {lesson.sections.length} sections
-          </span>
-        </div>
-      </div>
+      </header>
 
       {/* Sections */}
       <div className="inv-lesson-detail__sections">
-        {lesson.sections.map((section, index) => (
-          <div key={section.id} className="inv-lesson-detail__section">
-            <h3 className="inv-lesson-detail__section-title">
-              {index + 1}. {section.title}
-            </h3>
+        {lesson.sections.map((section) => (
+          <article key={section.id} className="inv-lesson-detail__section">
+            <h2 className="inv-lesson-detail__section-title">
+              {section.title}
+            </h2>
             <p className="inv-lesson-detail__section-content">{section.content}</p>
             
             {section.hasAudio && (
-              <AudioPlayer label={`Listen to "${section.title}"`} />
+              <AudioPlayer label={`Listen: ${section.title}`} />
             )}
             
             {section.scriptureRef && (
@@ -106,7 +95,7 @@ export default function InvestigatorLessonDetailPage(): JSX.Element {
                 📖 {section.scriptureRef}
               </p>
             )}
-          </div>
+          </article>
         ))}
       </div>
 
@@ -116,34 +105,36 @@ export default function InvestigatorLessonDetailPage(): JSX.Element {
         <ScriptureCard scripture={scripture} />
       </div>
 
-      {/* Reflection Prompt */}
+      {/* Reflection */}
       <div className="inv-lesson-detail__reflection">
-        <p className="inv-lesson-detail__reflection-label">Reflection</p>
-        <p className="inv-lesson-detail__reflection-text">{lesson.reflectionPrompt}</p>
+        <h3 className="inv-lesson-detail__reflection-label">Reflection</h3>
+        <p className="inv-lesson-detail__reflection-prompt">{lesson.reflectionPrompt}</p>
         <textarea
           className="inv-lesson-detail__reflection-textarea"
-          placeholder="Write your thoughts here..."
+          placeholder="What thoughts or feelings come to mind?"
           value={reflection}
           onChange={(e) => setReflection(e.target.value)}
         />
-      </div>
-
-      {/* Actions */}
-      <div className="inv-lesson-detail__actions">
         <button 
-          className="inv-lesson-detail__btn inv-lesson-detail__btn--secondary"
+          className="inv-lesson-detail__btn"
           onClick={handleSaveReflection}
           disabled={!reflection.trim()}
         >
-          Save Reflection
+          {saved ? 'Saved to Journal ✓' : 'Save to Journal'}
         </button>
-        <button 
-          className="inv-lesson-detail__btn inv-lesson-detail__btn--primary"
-          onClick={handleMarkComplete}
-        >
-          {status === 'completed' ? 'Completed ✓' : 'Mark Complete'}
-        </button>
+        {saved && (
+          <p className="inv-lesson-detail__saved-message">
+            Your reflection has been saved. View it in your Journal.
+          </p>
+        )}
       </div>
+
+      {/* Footer */}
+      <footer className="inv-lesson-detail__footer">
+        <p className="inv-lesson-detail__footer-text">
+          Take your time. Return whenever you'd like.
+        </p>
+      </footer>
     </div>
   );
 }

@@ -1,4 +1,6 @@
-/* Lesson List Card Component */
+/* Lesson List Card Component
+ * Sprint 7 - No status labels
+ */
 
 .lesson-list-card {
   background: #ffffff;
@@ -25,14 +27,14 @@
 }
 
 .lesson-list-card__icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
   background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 24px;
+  font-size: 26px;
   flex-shrink: 0;
 }
 
@@ -46,46 +48,24 @@
   font-weight: 600;
   color: #78350f;
   margin: 0 0 4px 0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .lesson-list-card__subtitle {
-  font-size: 13px;
+  font-size: 14px;
   color: #92400e;
   margin: 0;
-}
-
-.lesson-list-card__status {
-  display: inline-flex;
-  align-items: center;
-  padding: 4px 10px;
-  border-radius: 20px;
-  font-size: 11px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-  flex-shrink: 0;
-}
-
-.lesson-list-card__status--not_started {
-  background: #f1f5f9;
-  color: #64748b;
-}
-
-.lesson-list-card__status--exploring {
-  background: #fef3c7;
-  color: #d97706;
-}
-
-.lesson-list-card__status--completed {
-  background: #d1fae5;
-  color: #059669;
+  line-height: 1.4;
 }
 
 .lesson-list-card__arrow {
-  color: #d4a574;
-  font-size: 18px;
+  color: #d97706;
+  font-size: 16px;
   flex-shrink: 0;
+  opacity: 0.6;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.lesson-list-card:hover .lesson-list-card__arrow {
+  opacity: 1;
+  transform: translateX(2px);
 }

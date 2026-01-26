@@ -1,87 +1,111 @@
 import React from 'react';
-import { lessons, getStatusLabel } from '../data/lessons';
+import { Link } from 'react-router-dom';
+import { FaBookOpen, FaPenToSquare } from 'react-icons/fa6';
 import { useInvestigatorStore } from '../store/useInvestigatorStore';
 import './InvestigatorProgressPage.css';
 
+/**
+ * Investigator Progress Page
+ * Sprint 7 - Pastoral, reflective, no metrics
+ * 
+ * "Progress is not measured; it is accompanied."
+ */
 export default function InvestigatorProgressPage(): JSX.Element {
-  const { milestones, getLessonStatus, getCompletedLessonsCount, journalEntries } = useInvestigatorStore();
+  const { journalEntries, lastLessonId } = useInvestigatorStore();
   
-  const completedCount = getCompletedLessonsCount();
-  const totalLessons = lessons.length;
-  const entriesCount = journalEntries.length;
-  const unlockedMilestones = milestones.filter((m) => m.unlockedAt !== null).length;
+  const hasJournalEntries = journalEntries.length > 0;
+  const hasStartedLearning = lastLessonId !== null;
 
   return (
     <div className="inv-progress">
       {/* Header */}
-      <div className="inv-progress__header">
-        <h1 className="inv-progress__title">My Progress</h1>
+      <header className="inv-progress__header">
+        <h1 className="inv-progress__title">Your Journey</h1>
         <p className="inv-progress__subtitle">
-          Track your spiritual journey milestones
+          A quiet place to reflect on your spiritual path
         </p>
-      </div>
+      </header>
 
-      {/* Stats Summary */}
-      <div className="inv-progress__stats">
-        <div className="inv-progress__stat">
-          <div className="inv-progress__stat-value">{completedCount}/{totalLessons}</div>
-          <div className="inv-progress__stat-label">Lessons</div>
-        </div>
-        <div className="inv-progress__stat">
-          <div className="inv-progress__stat-value">{entriesCount}</div>
-          <div className="inv-progress__stat-label">Journal</div>
-        </div>
-        <div className="inv-progress__stat">
-          <div className="inv-progress__stat-value">{unlockedMilestones}/{milestones.length}</div>
-          <div className="inv-progress__stat-label">Milestones</div>
-        </div>
-      </div>
+      {/* Reflection Card */}
+      <section className="inv-progress__reflection">
+        <p className="inv-progress__reflection-text">
+          Growth happens in small moments—a question that lingers, 
+          a feeling of peace, a new understanding. This space is for you 
+          to pause and notice how far you've come.
+        </p>
+      </section>
 
-      {/* Milestones */}
-      <div className="inv-progress__section">
-        <h2 className="inv-progress__section-title">Milestones</h2>
-        <div className="inv-progress__milestones">
-          {milestones.map((milestone) => {
-            const isUnlocked = milestone.unlockedAt !== null;
-            return (
-              <div
-                key={milestone.key}
-                className={`inv-progress__milestone ${
-                  isUnlocked ? 'inv-progress__milestone--unlocked' : 'inv-progress__milestone--locked'
-                }`}
-              >
-                <div className="inv-progress__milestone-icon">{milestone.icon}</div>
-                <div className="inv-progress__milestone-content">
-                  <h3 className="inv-progress__milestone-title">{milestone.title}</h3>
-                  <p className="inv-progress__milestone-desc">{milestone.description}</p>
-                </div>
-                <span className="inv-progress__milestone-status">
-                  {isUnlocked ? 'Unlocked' : 'Locked'}
-                </span>
+      {/* Recent Activity */}
+      <section className="inv-progress__section">
+        <h2 className="inv-progress__section-title">Recent moments</h2>
+        
+        {hasJournalEntries || hasStartedLearning ? (
+          <div className="inv-progress__moments">
+            {hasStartedLearning && (
+              <div className="inv-progress__moment">
+                <span className="inv-progress__moment-icon">📖</span>
+                <p className="inv-progress__moment-text">
+                  You've been exploring the gospel
+                </p>
               </div>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* Lessons Overview */}
-      <div className="inv-progress__section">
-        <h2 className="inv-progress__section-title">Lessons Overview</h2>
-        <div className="inv-progress__lessons">
-          {lessons.map((lesson) => {
-            const status = getLessonStatus(lesson.id);
-            return (
-              <div key={lesson.id} className="inv-progress__lesson">
-                <span className="inv-progress__lesson-icon">{lesson.icon}</span>
-                <h3 className="inv-progress__lesson-title">{lesson.title}</h3>
-                <span className={`inv-progress__lesson-status inv-progress__lesson-status--${status}`}>
-                  {getStatusLabel(status)}
-                </span>
+            )}
+            {hasJournalEntries && (
+              <div className="inv-progress__moment">
+                <span className="inv-progress__moment-icon">✍️</span>
+                <p className="inv-progress__moment-text">
+                  You've written reflections in your journal
+                </p>
               </div>
-            );
-          })}
+            )}
+          </div>
+        ) : (
+          <div className="inv-progress__empty">
+            <p className="inv-progress__empty-text">
+              Your journey is just beginning. Every step matters, 
+              even the small ones.
+            </p>
+          </div>
+        )}
+      </section>
+
+      {/* Gentle Next Steps */}
+      <section className="inv-progress__section">
+        <h2 className="inv-progress__section-title">Gentle invitations</h2>
+        <p className="inv-progress__intro-text">
+          When you feel ready, consider these next steps:
+        </p>
+        <div className="inv-progress__actions">
+          <Link to="/lessons" className="inv-progress__action">
+            <span className="inv-progress__action-icon">
+              <FaBookOpen />
+            </span>
+            <div className="inv-progress__action-content">
+              <h3 className="inv-progress__action-title">Explore a topic</h3>
+              <p className="inv-progress__action-desc">
+                Discover something new about the gospel
+              </p>
+            </div>
+          </Link>
+          <Link to="/journal" className="inv-progress__action">
+            <span className="inv-progress__action-icon">
+              <FaPenToSquare />
+            </span>
+            <div className="inv-progress__action-content">
+              <h3 className="inv-progress__action-title">Write a reflection</h3>
+              <p className="inv-progress__action-desc">
+                Capture your thoughts and questions
+              </p>
+            </div>
+          </Link>
         </div>
-      </div>
+      </section>
+
+      {/* Closing */}
+      <footer className="inv-progress__footer">
+        <p className="inv-progress__footer-text">
+          There's no finish line here—just a path walked with the Savior.
+        </p>
+      </footer>
     </div>
   );
 }

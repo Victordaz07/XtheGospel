@@ -1,9 +1,12 @@
-/* Investigator Home Page */
+/* Investigator Home Page
+ * Sprint 7 - Pastoral tone
+ */
 
 .inv-home {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 24px;
+  padding-bottom: 24px;
 }
 
 /* Welcome Card */
@@ -35,16 +38,17 @@
 }
 
 .inv-home__welcome-title {
-  font-size: 24px;
+  font-size: 26px;
   font-weight: 700;
-  margin: 0 0 8px 0;
+  margin: 0 0 10px 0;
+  line-height: 1.2;
 }
 
 .inv-home__welcome-subtitle {
-  font-size: 14px;
-  opacity: 0.9;
+  font-size: 15px;
+  opacity: 0.95;
   margin: 0;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 /* Continue Learning Card */
@@ -63,25 +67,27 @@
 }
 
 .inv-home__continue-label {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
   color: #92400e;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
 }
 
 .inv-home__continue-link {
-  font-size: 12px;
+  font-size: 13px;
   color: #d97706;
   text-decoration: none;
   font-weight: 500;
+}
+
+.inv-home__continue-link:hover {
+  text-decoration: underline;
 }
 
 .inv-home__continue-card {
   display: flex;
   align-items: center;
   gap: 14px;
-  padding: 12px;
+  padding: 14px;
   background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
   border-radius: 12px;
   cursor: pointer;
@@ -92,17 +98,18 @@
 
 .inv-home__continue-card:hover {
   transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(217, 119, 6, 0.15);
 }
 
 .inv-home__continue-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 10px;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
   background: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 22px;
+  font-size: 24px;
   flex-shrink: 0;
 }
 
@@ -111,14 +118,14 @@
 }
 
 .inv-home__continue-title {
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
   color: #78350f;
-  margin: 0 0 2px 0;
+  margin: 0 0 4px 0;
 }
 
 .inv-home__continue-meta {
-  font-size: 12px;
+  font-size: 13px;
   color: #92400e;
   margin: 0;
 }
@@ -128,18 +135,21 @@
   font-size: 18px;
 }
 
-/* Up Next Section */
+/* Section */
 .inv-home__section {
-  margin-top: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
 .inv-home__section-title {
   font-size: 16px;
   font-weight: 600;
   color: #78350f;
-  margin: 0 0 12px 0;
+  margin: 0;
 }
 
+/* Up Next / Suggestions */
 .inv-home__upnext-list {
   display: flex;
   flex-direction: column;
@@ -150,7 +160,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 12px;
+  padding: 14px;
   background: #ffffff;
   border-radius: 12px;
   border: 1px solid rgba(251, 191, 36, 0.15);
@@ -162,39 +172,35 @@
 .inv-home__upnext-item:hover {
   border-color: rgba(251, 191, 36, 0.4);
   box-shadow: 0 4px 12px rgba(146, 64, 14, 0.08);
+  transform: translateY(-1px);
 }
 
 .inv-home__upnext-icon {
-  font-size: 20px;
+  font-size: 22px;
 }
 
 .inv-home__upnext-title {
   flex: 1;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 500;
   color: #78350f;
   margin: 0;
 }
 
-.inv-home__upnext-time {
-  font-size: 12px;
-  color: #92400e;
-}
-
 /* Quick Actions */
 .inv-home__actions {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+  display: flex;
+  gap: 12px;
 }
 
 .inv-home__action-btn {
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 16px 12px;
+  gap: 10px;
+  padding: 18px 12px;
   background: #ffffff;
   border-radius: 14px;
   border: 1px solid rgba(251, 191, 36, 0.2);
@@ -207,12 +213,13 @@
 .inv-home__action-btn:hover {
   background: #fef3c7;
   border-color: rgba(251, 191, 36, 0.4);
+  transform: translateY(-1px);
 }
 
 .inv-home__action-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
   background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
   display: flex;
   align-items: center;
@@ -223,28 +230,11 @@
 
 .inv-home__action-label {
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 600;
   color: #78350f;
 }
 
 /* Scripture Section */
 .inv-home__scripture-section {
   margin-top: 4px;
-}
-
-/* Empty state */
-.inv-home__empty {
-  text-align: center;
-  padding: 20px;
-  color: #92400e;
-}
-
-.inv-home__empty-icon {
-  font-size: 32px;
-  margin-bottom: 8px;
-}
-
-.inv-home__empty-text {
-  font-size: 14px;
-  margin: 0;
 }

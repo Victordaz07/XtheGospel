@@ -1,9 +1,12 @@
-/* New Member Home Page */
+/* New Member Home Page
+ * Sprint 7 - Pastoral tone, no placeholders
+ */
 
 .nm-home {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 24px;
+  padding-bottom: 24px;
 }
 
 /* Welcome Card */
@@ -35,53 +38,144 @@
 }
 
 .nm-home__welcome-title {
-  font-size: 24px;
+  font-size: 26px;
   font-weight: 700;
-  margin: 0 0 8px 0;
+  margin: 0 0 10px 0;
+  line-height: 1.2;
 }
 
 .nm-home__welcome-subtitle {
-  font-size: 14px;
-  opacity: 0.9;
+  font-size: 15px;
+  opacity: 0.95;
   margin: 0;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
-/* Placeholder Card */
-.nm-home__placeholder {
+/* Featured Card */
+.nm-home__featured {
+  margin-top: -8px;
+}
+
+.nm-home__featured-card {
   background: #ffffff;
   border-radius: 16px;
-  padding: 32px 20px;
+  padding: 20px;
   border: 1px solid rgba(52, 211, 153, 0.2);
-  text-align: center;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  text-decoration: none;
+  transition: all 0.2s ease;
 }
 
-.nm-home__placeholder-icon {
-  font-size: 48px;
-  margin-bottom: 16px;
+.nm-home__featured-card:hover {
+  border-color: rgba(52, 211, 153, 0.4);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);
+  transform: translateY(-2px);
 }
 
-.nm-home__placeholder-title {
+.nm-home__featured-content {
+  flex: 1;
+}
+
+.nm-home__featured-title {
   font-size: 18px;
   font-weight: 600;
   color: #065f46;
-  margin: 0 0 8px 0;
+  margin: 0 0 6px 0;
 }
 
-.nm-home__placeholder-text {
+.nm-home__featured-desc {
   font-size: 14px;
   color: #047857;
   margin: 0;
   line-height: 1.5;
 }
 
-.nm-home__placeholder-badge {
-  display: inline-block;
-  margin-top: 16px;
-  padding: 6px 12px;
-  background: #d1fae5;
-  color: #059669;
-  border-radius: 20px;
-  font-size: 12px;
+.nm-home__featured-arrow {
+  color: #10b981;
+  font-size: 16px;
+  opacity: 0.6;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.nm-home__featured-card:hover .nm-home__featured-arrow {
+  opacity: 1;
+  transform: translateX(2px);
+}
+
+/* Section */
+.nm-home__section {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.nm-home__section-title {
+  font-size: 16px;
   font-weight: 600;
+  color: #065f46;
+  margin: 0;
+}
+
+/* Quick Actions */
+.nm-home__actions {
+  display: flex;
+  gap: 12px;
+}
+
+.nm-home__action-btn {
+  flex: 1;
+  background: #ffffff;
+  border: 1px solid rgba(52, 211, 153, 0.2);
+  border-radius: 14px;
+  padding: 18px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.nm-home__action-btn:hover {
+  border-color: rgba(52, 211, 153, 0.4);
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.1);
+  transform: translateY(-1px);
+}
+
+.nm-home__action-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: #059669;
+}
+
+.nm-home__action-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #065f46;
+}
+
+/* Encouragement */
+.nm-home__encouragement {
+  background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+  border-radius: 14px;
+  padding: 20px;
+  border: 1px solid rgba(52, 211, 153, 0.2);
+  text-align: center;
+}
+
+.nm-home__encouragement-text {
+  font-size: 14px;
+  color: #047857;
+  margin: 0;
+  line-height: 1.6;
+  font-style: italic;
 }

@@ -1,49 +1,83 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { FaChevronRight } from 'react-icons/fa6';
+import { getAllGuideTopics, categoryLabels, GuideTopic } from '../data/guideTopics';
 import './NewMemberGuidePage.css';
 
+/**
+ * New Member Guide Page
+ * Sprint 5 - Real content, no gamification
+ * 
+ * Displays guide topics grouped by category.
+ * Each topic links to /lessons/<topicId> for detail view.
+ */
 export default function NewMemberGuidePage(): JSX.Element {
-  const guideTopics = [
-    { icon: '⛪', title: 'Your New Ward Family', desc: 'Getting to know your congregation' },
-    { icon: '🙏', title: 'Personal Prayer', desc: 'Building your relationship with God' },
-    { icon: '📖', title: 'Scripture Study', desc: 'Daily habits for spiritual growth' },
-    { icon: '🤝', title: 'Service Opportunities', desc: 'Ways to serve in your ward' },
-    { icon: '👨‍👩‍👧‍👦', title: 'Family & Home', desc: 'Strengthening family bonds' },
+  const topics = getAllGuideTopics();
+
+  // Group topics by category
+  const topicsByCategory = topics.reduce<Record<string, GuideTopic[]>>((acc, topic) => {
+    if (!acc[topic.category]) {
+      acc[topic.category] = [];
+    }
+    acc[topic.category].push(topic);
+    return acc;
+  }, {});
+
+  // Order of categories
+  const categoryOrder: GuideTopic['category'][] = [
+    'worship',
+    'covenant-living',
+    'ordinances',
+    'belonging',
   ];
 
   return (
     <div className="nm-guide">
       {/* Header */}
-      <div className="nm-guide__header">
-        <h1 className="nm-guide__title">New Member Guide</h1>
+      <header className="nm-guide__header">
+        <h1 className="nm-guide__title">Your Guide</h1>
         <p className="nm-guide__subtitle">
-          Essential topics for your journey as a new member
+          Resources to help you grow in your new life as a member of the Church
         </p>
-      </div>
+      </header>
 
-      {/* Placeholder */}
-      <div className="nm-guide__placeholder">
-        <div className="nm-guide__placeholder-icon">📚</div>
-        <h2 className="nm-guide__placeholder-title">Growth Resources</h2>
-        <p className="nm-guide__placeholder-text">
-          A curated guide to help you navigate your first months as a member 
-          of The Church of Jesus Christ of Latter-day Saints.
-        </p>
-        <span className="nm-guide__placeholder-badge">Sprint 3 - Placeholder</span>
-      </div>
+      {/* Topics by Category */}
+      {categoryOrder.map((category) => {
+        const categoryTopics = topicsByCategory[category];
+        if (!categoryTopics || categoryTopics.length === 0) return null;
 
-      {/* Topics Preview */}
-      <div className="nm-guide__topics">
-        {guideTopics.map((topic, index) => (
-          <div key={index} className="nm-guide__topic">
-            <span className="nm-guide__topic-icon">{topic.icon}</span>
-            <div className="nm-guide__topic-content">
-              <h3 className="nm-guide__topic-title">{topic.title}</h3>
-              <p className="nm-guide__topic-desc">{topic.desc}</p>
+        return (
+          <section key={category} className="nm-guide__category">
+            <h2 className="nm-guide__category-title">
+              {categoryLabels[category]}
+            </h2>
+            <div className="nm-guide__topics">
+              {categoryTopics.map((topic) => (
+                <Link
+                  key={topic.id}
+                  to={`/lessons/${topic.id}`}
+                  className="nm-guide__topic"
+                >
+                  <div className="nm-guide__topic-content">
+                    <h3 className="nm-guide__topic-title">{topic.title}</h3>
+                    <p className="nm-guide__topic-desc">{topic.subtitle}</p>
+                  </div>
+                  <span className="nm-guide__topic-arrow">
+                    <FaChevronRight />
+                  </span>
+                </Link>
+              ))}
             </div>
-            <span className="nm-guide__topic-status">Soon</span>
-          </div>
-        ))}
-      </div>
+          </section>
+        );
+      })}
+
+      {/* Closing encouragement */}
+      <footer className="nm-guide__footer">
+        <p className="nm-guide__footer-text">
+          Take your time exploring these topics. There's no rush—your journey is personal and the Savior walks with you.
+        </p>
+      </footer>
     </div>
   );
 }
