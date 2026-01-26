@@ -1,73 +1,121 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { FaBookOpen } from 'react-icons/fa6';
+import { useSpiritualMemoryStore, useHasJournalActivity } from '../../../core/memory/useSpiritualMemoryStore';
+import { useInvestigatorStore } from '../../investigator/store/useInvestigatorStore';
+import { usePastoralPhase, getPastoralMessage } from '../../../core/pastoral/usePastoralPhaseStore';
 import './NewMemberProgressPage.css';
 
 /**
  * New Member Progress Page
  * 
- * Sprint 4 – Semantic Cleanup
- * Removed all numeric metrics and gamification elements.
- * Focuses on pastoral, reflective language that honors the
- * continuous, non-measured nature of spiritual growth.
+ * Sprint 8 – Spiritual Memory: gentle reflection messages
+ * Sprint 12 – Pastoral Phase: adapts tone and silence based on phase
+ * 
+ * ═══════════════════════════════════════════════════════════════════════════
+ * PASTORAL UX PRINCIPLES (Sprint 12)
+ * ═══════════════════════════════════════════════════════════════════════════
+ * 
+ * This page is NOT about measuring progress.
+ * It's about honoring presence and affirming the journey.
+ * 
+ * ❌ NO numeric metrics or percentages
+ * ❌ NO "you've completed X of Y"
+ * ❌ NO comparison language
+ * ❌ NO achievement framing
+ * 
+ * ✅ Language of presence ("you've been here")
+ * ✅ Language of process ("your journey is unfolding")
+ * ✅ More visual silence in 'stabilizing' phase
+ * ✅ Fewer elements, more breathing room
+ * 
+ * The user should feel: "I'm not being measured. I'm being seen."
+ * ═══════════════════════════════════════════════════════════════════════════
  */
 export default function NewMemberProgressPage(): JSX.Element {
-  // Reflective experiences - no counts, no status, just moments
-  const recentExperiences = [
-    'You attended your first sacrament meeting',
-    'You began a habit of personal prayer',
-    'You studied the scriptures independently',
-    'You felt the Spirit guide you in a decision',
-    'You connected with members in your ward',
-  ];
+  const { isHydrated, hydrate, lastLessonTitle } = useSpiritualMemoryStore();
+  const { journalEntries } = useInvestigatorStore();
+  const hasReflectionActivity = useHasJournalActivity();
+  const phase = usePastoralPhase();
 
-  // Gentle suggestions - static, no tracking
-  const gentleSteps = [
-    'Continue attending Sunday meetings',
-    'Set aside time for personal prayer',
-    'Stay connected with your ward family',
-  ];
+  // Hydrate memory on mount
+  useEffect(() => {
+    if (!isHydrated) {
+      hydrate();
+    }
+  }, [isHydrated, hydrate]);
+
+  const hasJournalEntries = journalEntries.length > 0;
+  const hasExploredGuide = isHydrated && lastLessonTitle;
+
+  // Check if there's any activity to show
+  const hasActivity = hasReflectionActivity || hasExploredGuide || hasJournalEntries;
 
   return (
-    <div className="nm-progress">
-      {/* Header */}
+    <div className={`nm-progress nm-progress--${phase}`}>
+      {/* Header — Phase-aware language */}
       <header className="nm-progress__header">
-        <h1 className="nm-progress__title">Your Journey So Far</h1>
+        <h1 className="nm-progress__title">
+          {getPastoralMessage('progressHeader', phase)}
+        </h1>
         <p className="nm-progress__subtitle">
-          This space reflects moments of growth and devotion as you continue your discipleship.
+          This is not a checklist. It's a quiet reflection of your presence.
         </p>
       </header>
 
       {/* Recent Experiences */}
       <section className="nm-progress__experiences">
-        <h2 className="nm-progress__section-title">Recent Experiences</h2>
-        <ul className="nm-progress__experience-list">
-          {recentExperiences.map((experience, index) => (
-            <li key={index} className="nm-progress__experience-item">
-              <span className="nm-progress__experience-dot" aria-hidden="true" />
-              <span className="nm-progress__experience-text">{experience}</span>
-            </li>
-          ))}
-        </ul>
+        {hasActivity ? (
+          <div className="nm-progress__moments">
+            {hasExploredGuide && (
+              <div className="nm-progress__moment">
+                <span className="nm-progress__moment-icon">📖</span>
+                <p className="nm-progress__moment-text">
+                  You've spent time with the guide
+                </p>
+              </div>
+            )}
+            {(hasReflectionActivity || hasJournalEntries) && (
+              <div className="nm-progress__moment">
+                <span className="nm-progress__moment-icon">✍️</span>
+                <p className="nm-progress__moment-text">
+                  You've taken time to reflect
+                </p>
+              </div>
+            )}
+          </div>
+        ) : (
+          <div className="nm-progress__empty">
+            <p className="nm-progress__empty-text">
+              {getPastoralMessage('progressEmpty', phase).split('\n')[0]}
+            </p>
+            <p className="nm-progress__empty-text nm-progress__empty-text--secondary">
+              {getPastoralMessage('progressEmpty', phase).split('\n')[1]}
+            </p>
+            <Link to="/lessons" className="nm-progress__empty-action">
+              <FaBookOpen /> When you're ready
+            </Link>
+          </div>
+        )}
       </section>
 
-      {/* Gentle Steps */}
-      <section className="nm-progress__gentle-steps">
-        <h2 className="nm-progress__section-title">Next gentle steps</h2>
-        <p className="nm-progress__gentle-intro">
-          There is no rush. Consider these invitations when you feel ready:
-        </p>
-        <ul className="nm-progress__steps-list">
-          {gentleSteps.map((step, index) => (
-            <li key={index} className="nm-progress__step-item">
-              {step}
-            </li>
-          ))}
-        </ul>
-      </section>
+      {/* 
+        Sprint 12: Removed "Next gentle steps" section
+        
+        Rationale: Even "gentle steps" can feel like expectations.
+        In 'stabilizing' phase especially, we want to remove
+        any sense of "what you should do next."
+        
+        The footer provides enough reassurance.
+      */}
 
       {/* Closing reflection */}
       <footer className="nm-progress__footer">
         <p className="nm-progress__footer-text">
-          Your journey is personal and sacred. The Savior walks with you at every step.
+          You don't need to do anything right now.
+        </p>
+        <p className="nm-progress__footer-text nm-progress__footer-text--secondary">
+          The Savior walks with you, always.
         </p>
       </footer>
     </div>

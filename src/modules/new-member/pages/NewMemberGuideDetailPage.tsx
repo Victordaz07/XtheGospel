@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useParams, Link } from 'react-router-dom';
 import { FaArrowLeft } from 'react-icons/fa6';
 import { getGuideTopicById } from '../data/guideTopics';
 import { useInvestigatorStore } from '../../investigator/store/useInvestigatorStore';
+import { useSpiritualMemoryStore } from '../../../core/memory/useSpiritualMemoryStore';
 import './NewMemberGuideDetailPage.css';
 
 interface TopicParams {
@@ -17,13 +18,20 @@ interface TopicParams {
  */
 export default function NewMemberGuideDetailPage(): JSX.Element {
   const { topicId } = useParams<keyof TopicParams>() as TopicParams;
-  const navigate = useNavigate();
   const { addJournalEntry } = useInvestigatorStore();
+  const { setLastLesson, markSavedToJournal } = useSpiritualMemoryStore();
   
   const [reflection, setReflection] = useState('');
   const [saved, setSaved] = useState(false);
   
   const topic = getGuideTopicById(topicId);
+
+  // Remember last visited topic
+  useEffect(() => {
+    if (topic) {
+      setLastLesson({ id: topicId, title: topic.title });
+    }
+  }, [topic, topicId, setLastLesson]);
 
   const handleSaveReflection = (): void => {
     if (reflection.trim()) {
@@ -32,6 +40,7 @@ export default function NewMemberGuideDetailPage(): JSX.Element {
         content: reflection,
         lessonId: topicId, // Reuse lessonId field for topic reference
       });
+      markSavedToJournal();
       setReflection('');
       setSaved(true);
       setTimeout(() => setSaved(false), 3000);

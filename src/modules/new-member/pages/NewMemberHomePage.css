@@ -1,181 +1,288 @@
 /* New Member Home Page
- * Sprint 7 - Pastoral tone, no placeholders
+ * Sprint 8 - Spiritual Memory: continue card
+ * Sprint 12 - Pastoral Phase: calmer UX, more breathing room
+ *
+ * ═══════════════════════════════════════════════════════════════════════════
+ * DESIGN PHILOSOPHY
+ * ═══════════════════════════════════════════════════════════════════════════
+ * 
+ * This page should feel like a quiet sanctuary, not a task list.
+ * More white space = less pressure.
+ * The user should feel welcome, not evaluated.
+ * 
+ * Phase-specific adjustments:
+ *   - stabilizing: Maximum calm, generous spacing, soft transitions
+ *   - rhythm: Slightly more compact as user finds their pace
+ * ═══════════════════════════════════════════════════════════════════════════
  */
 
 .nm-home {
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  padding-bottom: 24px;
+  gap: 28px;
+  padding-bottom: 32px;
+  transition: gap 0.4s ease;
 }
 
-/* Welcome Card */
+/* Stabilizing phase: more breathing room */
+.nm-home--stabilizing {
+  gap: 36px;
+}
+
+/* Rhythm phase: comfortable but slightly tighter */
+.nm-home--rhythm {
+  gap: 28px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+ * Welcome Card — The heart of the page
+ * ═══════════════════════════════════════════════════════════════════════════ */
+
 .nm-home__welcome {
   background: linear-gradient(135deg, #34d399 0%, #10b981 100%);
-  border-radius: 20px;
-  padding: 24px 20px;
+  border-radius: 24px;
+  padding: 32px 24px;
   color: #ffffff;
   position: relative;
   overflow: hidden;
+  transition: padding 0.4s ease;
+}
+
+.nm-home--stabilizing .nm-home__welcome {
+  padding: 40px 28px;
 }
 
 .nm-home__welcome::before {
   content: '';
   position: absolute;
-  top: -30px;
-  right: -30px;
-  width: 120px;
-  height: 120px;
-  background: rgba(255, 255, 255, 0.1);
+  top: -40px;
+  right: -40px;
+  width: 140px;
+  height: 140px;
+  background: rgba(255, 255, 255, 0.08);
   border-radius: 50%;
 }
 
 .nm-home__welcome-greeting {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
-  opacity: 0.9;
-  margin: 0 0 4px 0;
+  opacity: 0.85;
+  margin: 0 0 8px 0;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
 }
 
 .nm-home__welcome-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0 0 12px 0;
+  line-height: 1.3;
+}
+
+.nm-home--stabilizing .nm-home__welcome-title {
   font-size: 26px;
-  font-weight: 700;
-  margin: 0 0 10px 0;
-  line-height: 1.2;
+  margin: 0 0 16px 0;
 }
 
 .nm-home__welcome-subtitle {
-  font-size: 15px;
-  opacity: 0.95;
+  font-size: 16px;
+  opacity: 0.92;
   margin: 0;
-  line-height: 1.6;
+  line-height: 1.7;
+  font-weight: 400;
 }
 
-/* Featured Card */
-.nm-home__featured {
-  margin-top: -8px;
+.nm-home--stabilizing .nm-home__welcome-subtitle {
+  font-size: 17px;
+  line-height: 1.8;
 }
 
-.nm-home__featured-card {
-  background: #ffffff;
+/* ═══════════════════════════════════════════════════════════════════════════
+ * Continue Card — Gentle invitation, not a task
+ * ═══════════════════════════════════════════════════════════════════════════ */
+
+.nm-home__continue {
+  margin-top: 0;
+}
+
+.nm-home__continue-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #047857;
+  margin: 0 0 12px 0;
+  opacity: 0.8;
+}
+
+.nm-home--stabilizing .nm-home__continue-label {
+  font-size: 14px;
+  margin: 0 0 14px 0;
+}
+
+.nm-home__continue-card {
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 16px;
   padding: 20px;
-  border: 1px solid rgba(52, 211, 153, 0.2);
+  border: 1px solid rgba(52, 211, 153, 0.15);
   display: flex;
   align-items: center;
   gap: 16px;
   text-decoration: none;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.08);
 }
 
-.nm-home__featured-card:hover {
-  border-color: rgba(52, 211, 153, 0.4);
-  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);
-  transform: translateY(-2px);
+.nm-home--stabilizing .nm-home__continue-card {
+  padding: 24px;
+  border-radius: 20px;
 }
 
-.nm-home__featured-content {
+.nm-home__continue-card:hover {
+  transform: translateX(4px);
+  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.15);
+  border-color: rgba(52, 211, 153, 0.3);
+}
+
+.nm-home__continue-content {
   flex: 1;
 }
 
-.nm-home__featured-title {
-  font-size: 18px;
+.nm-home__continue-title {
+  font-size: 17px;
   font-weight: 600;
   color: #065f46;
-  margin: 0 0 6px 0;
-}
-
-.nm-home__featured-desc {
-  font-size: 14px;
-  color: #047857;
   margin: 0;
-  line-height: 1.5;
 }
 
-.nm-home__featured-arrow {
+.nm-home--stabilizing .nm-home__continue-title {
+  font-size: 18px;
+}
+
+/* Removed: .nm-home__continue-desc
+ * Sprint 12: Less text = less pressure
+ * The title alone is sufficient invitation
+ */
+
+.nm-home__continue-arrow {
   color: #10b981;
   font-size: 16px;
-  opacity: 0.6;
+  opacity: 0.5;
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-.nm-home__featured-card:hover .nm-home__featured-arrow {
-  opacity: 1;
+.nm-home__continue-card:hover .nm-home__continue-arrow {
+  opacity: 0.8;
   transform: translateX(2px);
 }
 
-/* Section */
-.nm-home__section {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
+/* ═══════════════════════════════════════════════════════════════════════════
+ * Encouragement — Closing reassurance
+ * ═══════════════════════════════════════════════════════════════════════════ */
 
-.nm-home__section-title {
-  font-size: 16px;
-  font-weight: 600;
-  color: #065f46;
-  margin: 0;
-}
-
-/* Quick Actions */
-.nm-home__actions {
-  display: flex;
-  gap: 12px;
-}
-
-.nm-home__action-btn {
-  flex: 1;
-  background: #ffffff;
-  border: 1px solid rgba(52, 211, 153, 0.2);
-  border-radius: 14px;
-  padding: 18px 12px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-  transition: all 0.2s ease;
-  cursor: pointer;
-}
-
-.nm-home__action-btn:hover {
-  border-color: rgba(52, 211, 153, 0.4);
-  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.1);
-  transform: translateY(-1px);
-}
-
-.nm-home__action-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  color: #059669;
-}
-
-.nm-home__action-label {
-  font-size: 13px;
-  font-weight: 600;
-  color: #065f46;
-}
-
-/* Encouragement */
 .nm-home__encouragement {
-  background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
-  border-radius: 14px;
-  padding: 20px;
-  border: 1px solid rgba(52, 211, 153, 0.2);
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 20px;
+  padding: 28px 24px;
+  border: 1px solid rgba(52, 211, 153, 0.1);
   text-align: center;
+  transition: padding 0.4s ease;
+}
+
+.nm-home--stabilizing .nm-home__encouragement {
+  padding: 36px 28px;
+  background: rgba(255, 255, 255, 0.8);
 }
 
 .nm-home__encouragement-text {
-  font-size: 14px;
+  font-size: 15px;
   color: #047857;
   margin: 0;
-  line-height: 1.6;
-  font-style: italic;
+  line-height: 1.7;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.nm-home--stabilizing .nm-home__encouragement-text {
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.nm-home__encouragement-text--secondary {
+  margin-top: 12px;
+  opacity: 0.85;
+  font-size: 14px;
+}
+
+.nm-home--stabilizing .nm-home__encouragement-text--secondary {
+  margin-top: 16px;
+  font-size: 15px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+ * REMOVED SECTIONS (Sprint 12)
+ * ═══════════════════════════════════════════════════════════════════════════
+ * 
+ * The following sections were intentionally removed to reduce visual pressure:
+ *   - Featured Card (Your Guide)
+ *   - Quick Actions section
+ * 
+ * These are still accessible via bottom navigation.
+ * Fewer cards = calmer experience.
+ * 
+ * Original CSS preserved below (commented) for reference if needed later.
+ */
+
+/* Featured Card - REMOVED Sprint 12
+.nm-home__featured { ... }
+.nm-home__featured-card { ... }
+*/
+
+/* Section - REMOVED Sprint 12
+.nm-home__section { ... }
+.nm-home__section-title { ... }
+*/
+
+/* Quick Actions - REMOVED Sprint 12
+.nm-home__actions { ... }
+.nm-home__action-btn { ... }
+.nm-home__action-icon { ... }
+.nm-home__action-label { ... }
+*/
+
+/* ═══════════════════════════════════════════════════════════════════════════
+ * Mobile adjustments
+ * ═══════════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 375px) {
+  .nm-home {
+    gap: 24px;
+  }
+
+  .nm-home--stabilizing {
+    gap: 28px;
+  }
+
+  .nm-home__welcome {
+    padding: 24px 20px;
+    border-radius: 20px;
+  }
+
+  .nm-home--stabilizing .nm-home__welcome {
+    padding: 28px 22px;
+  }
+
+  .nm-home__welcome-title {
+    font-size: 22px;
+  }
+
+  .nm-home--stabilizing .nm-home__welcome-title {
+    font-size: 24px;
+  }
+
+  .nm-home__encouragement {
+    padding: 24px 20px;
+  }
+
+  .nm-home--stabilizing .nm-home__encouragement {
+    padding: 28px 22px;
+  }
 }
