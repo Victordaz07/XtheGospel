@@ -2,6 +2,28 @@
  * Journey Store
  * Tracks ordinance dates and derives journey stage
  * No gamification - just quiet stage transitions
+ * 
+ * ═══════════════════════════════════════════════════════════════════════════
+ * BOUNDARY DECLARATION (Sprint 9)
+ * ═══════════════════════════════════════════════════════════════════════════
+ * 
+ * This store manages SPIRITUAL JOURNEY STATE:
+ *   - Ordinance dates (baptism, confirmation)
+ *   - Journey stage derivation (seeking → covenanted)
+ * 
+ * This store does NOT:
+ *   - Track identity (see /core/identity/)
+ *   - Store usage patterns or frequency
+ *   - Evaluate spiritual "progress" or "worthiness"
+ *   - Connect to identity or auth systems
+ * 
+ * ISOLATION RULES:
+ *   - DO NOT import from /core/identity/
+ *   - DO NOT import from /core/memory/
+ *   - These domains must remain independent
+ * 
+ * @see /docs/ETHICAL_BOUNDARIES.md
+ * ═══════════════════════════════════════════════════════════════════════════
  */
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
