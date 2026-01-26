@@ -1,0 +1,123 @@
+/* Ordinance Dates Section - Discreet, no gamification */
+
+.ordinance-dates {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 18px;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.ordinance-dates__header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.ordinance-dates__icon {
+  font-size: 18px;
+  color: #64748b;
+}
+
+.ordinance-dates__title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #475569;
+  margin: 0;
+}
+
+.ordinance-dates__helper {
+  font-size: 12px;
+  color: #94a3b8;
+  margin: 0 0 16px 0;
+  line-height: 1.4;
+}
+
+.ordinance-dates__fields {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.ordinance-dates__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ordinance-dates__label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #64748b;
+}
+
+.ordinance-dates__input {
+  padding: 10px 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  color: #334155;
+  background: #f8fafc;
+  transition: all 0.2s ease;
+}
+
+.ordinance-dates__input:focus {
+  outline: none;
+  border-color: #94a3b8;
+  background: #ffffff;
+}
+
+.ordinance-dates__input::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+/* Status line - subtle, no celebration */
+.ordinance-dates__status {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ordinance-dates__status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.ordinance-dates__status-dot--seeking {
+  background: #fbbf24;
+}
+
+.ordinance-dates__status-dot--covenanted {
+  background: #10b981;
+}
+
+.ordinance-dates__status-text {
+  font-size: 13px;
+  color: #64748b;
+  margin: 0;
+}
+
+/* Clear button */
+.ordinance-dates__clear {
+  margin-top: 12px;
+  padding: 8px 12px;
+  background: transparent;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 12px;
+  color: #94a3b8;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.ordinance-dates__clear:hover {
+  border-color: #cbd5e1;
+  color: #64748b;
+}

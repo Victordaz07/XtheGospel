@@ -1,0 +1,87 @@
+/* New Member Home Page */
+
+.nm-home {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Welcome Card */
+.nm-home__welcome {
+  background: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+  border-radius: 20px;
+  padding: 24px 20px;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+.nm-home__welcome::before {
+  content: '';
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  width: 120px;
+  height: 120px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+}
+
+.nm-home__welcome-greeting {
+  font-size: 14px;
+  font-weight: 500;
+  opacity: 0.9;
+  margin: 0 0 4px 0;
+}
+
+.nm-home__welcome-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+}
+
+.nm-home__welcome-subtitle {
+  font-size: 14px;
+  opacity: 0.9;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Placeholder Card */
+.nm-home__placeholder {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 32px 20px;
+  border: 1px solid rgba(52, 211, 153, 0.2);
+  text-align: center;
+}
+
+.nm-home__placeholder-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.nm-home__placeholder-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #065f46;
+  margin: 0 0 8px 0;
+}
+
+.nm-home__placeholder-text {
+  font-size: 14px;
+  color: #047857;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.nm-home__placeholder-badge {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 6px 12px;
+  background: #d1fae5;
+  color: #059669;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}

@@ -1,0 +1,231 @@
+/* Unified Layout - Adapts colors based on journey stage */
+
+.unified-layout {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  position: relative;
+  transition: background 0.5s ease;
+}
+
+/* Seeking stage - warm amber/gold */
+.unified-layout--seeking {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 25%, #fcd34d 50%, #fbbf24 75%, #f59e0b 100%);
+}
+
+/* Covenanted stage - growth green */
+.unified-layout--covenanted {
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 25%, #6ee7b7 50%, #34d399 75%, #10b981 100%);
+}
+
+.unified-layout-shell {
+  width: 100%;
+  max-width: 428px;
+  min-height: 640px;
+  max-height: 90vh;
+  border-radius: 36px;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: background 0.5s ease, box-shadow 0.5s ease;
+}
+
+.unified-layout--seeking .unified-layout-shell {
+  background: #fffbeb;
+  box-shadow: 0 30px 70px rgba(146, 64, 14, 0.25);
+}
+
+.unified-layout--covenanted .unified-layout-shell {
+  background: #f0fdf4;
+  box-shadow: 0 30px 70px rgba(5, 150, 105, 0.25);
+}
+
+.unified-layout-deco {
+  position: absolute;
+  border-radius: 999px;
+  opacity: 0.3;
+  pointer-events: none;
+  transition: background 0.5s ease;
+}
+
+.unified-layout-deco-top {
+  width: 200px;
+  height: 200px;
+  top: -80px;
+  right: -60px;
+}
+
+.unified-layout--seeking .unified-layout-deco-top {
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.5), transparent);
+}
+
+.unified-layout--covenanted .unified-layout-deco-top {
+  background: linear-gradient(135deg, rgba(52, 211, 153, 0.5), transparent);
+}
+
+.unified-layout-deco-bottom {
+  width: 160px;
+  height: 160px;
+  bottom: 60px;
+  left: -70px;
+}
+
+.unified-layout--seeking .unified-layout-deco-bottom {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.4), transparent);
+}
+
+.unified-layout--covenanted .unified-layout-deco-bottom {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.4), transparent);
+}
+
+.unified-layout-content {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 20px 16px 16px;
+  background: transparent;
+}
+
+.unified-layout-content::-webkit-scrollbar {
+  width: 4px;
+}
+
+.unified-layout-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.unified-layout-content::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+.unified-layout--seeking .unified-layout-content::-webkit-scrollbar-thumb {
+  background: rgba(245, 158, 11, 0.3);
+}
+
+.unified-layout--covenanted .unified-layout-content::-webkit-scrollbar-thumb {
+  background: rgba(16, 185, 129, 0.3);
+}
+
+/* Bottom Navigation */
+.unified-bottom-nav {
+  position: relative;
+  width: 100%;
+  background: #ffffff;
+  border-radius: 0 0 36px 36px;
+  padding: 8px 8px 12px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 10;
+  flex-shrink: 0;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.unified-layout--seeking .unified-bottom-nav {
+  box-shadow: 0 -4px 20px rgba(146, 64, 14, 0.1);
+  border-top: 1px solid rgba(251, 191, 36, 0.2);
+}
+
+.unified-layout--covenanted .unified-bottom-nav {
+  box-shadow: 0 -4px 20px rgba(5, 150, 105, 0.1);
+  border-top: 1px solid rgba(52, 211, 153, 0.2);
+}
+
+.unified-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 8px 12px;
+  text-decoration: none;
+  border-radius: 16px;
+  transition: all 0.2s ease;
+  min-width: 56px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+/* Seeking colors */
+.unified-layout--seeking .unified-nav-item {
+  color: #92400e;
+}
+
+.unified-layout--seeking .unified-nav-item:hover {
+  background: rgba(251, 191, 36, 0.1);
+}
+
+.unified-layout--seeking .unified-nav-item.active {
+  color: #d97706;
+  background: rgba(251, 191, 36, 0.2);
+}
+
+/* Covenanted colors */
+.unified-layout--covenanted .unified-nav-item {
+  color: #065f46;
+}
+
+.unified-layout--covenanted .unified-nav-item:hover {
+  background: rgba(52, 211, 153, 0.1);
+}
+
+.unified-layout--covenanted .unified-nav-item.active {
+  color: #059669;
+  background: rgba(52, 211, 153, 0.2);
+}
+
+.unified-nav-icon {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.unified-nav-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* Mobile adjustments */
+@media (max-width: 375px) {
+  .unified-layout {
+    padding: 8px;
+  }
+
+  .unified-layout-shell {
+    border-radius: 28px;
+    min-height: 580px;
+  }
+
+  .unified-bottom-nav {
+    border-radius: 0 0 28px 28px;
+    padding: 6px 4px 10px;
+  }
+
+  .unified-nav-item {
+    padding: 6px 8px;
+    min-width: 48px;
+  }
+
+  .unified-nav-icon {
+    font-size: 20px;
+  }
+
+  .unified-nav-label {
+    font-size: 9px;
+  }
+}
+
+@media (min-width: 429px) {
+  .unified-layout-shell {
+    max-width: 428px;
+  }
+}

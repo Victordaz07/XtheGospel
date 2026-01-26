@@ -1,0 +1,186 @@
+/* New Member Profile Page */
+
+.nm-profile {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Role Card */
+.nm-profile__role {
+  background: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+  border-radius: 20px;
+  padding: 24px 20px;
+  color: #ffffff;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.nm-profile__role::before {
+  content: '';
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 140px;
+  height: 140px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+}
+
+.nm-profile__role-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 0 auto 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+}
+
+.nm-profile__role-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 4px 0;
+}
+
+.nm-profile__role-label {
+  font-size: 13px;
+  opacity: 0.9;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Section */
+.nm-profile__section {
+  margin-top: 4px;
+}
+
+.nm-profile__section-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #047857;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0 0 12px 0;
+}
+
+/* Placeholder Card */
+.nm-profile__placeholder {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px 20px;
+  border: 1px solid rgba(52, 211, 153, 0.2);
+  text-align: center;
+}
+
+.nm-profile__placeholder-icon {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+.nm-profile__placeholder-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #065f46;
+  margin: 0 0 6px 0;
+}
+
+.nm-profile__placeholder-text {
+  font-size: 13px;
+  color: #047857;
+  margin: 0;
+}
+
+.nm-profile__placeholder-badge {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 4px 10px;
+  background: #d1fae5;
+  color: #059669;
+  border-radius: 16px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* Settings List */
+.nm-profile__settings {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid rgba(52, 211, 153, 0.2);
+  overflow: hidden;
+}
+
+.nm-profile__setting {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  border-bottom: 1px solid rgba(52, 211, 153, 0.1);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: transparent;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  width: 100%;
+  text-align: left;
+}
+
+.nm-profile__setting:last-child {
+  border-bottom: none;
+}
+
+.nm-profile__setting:hover {
+  background: rgba(52, 211, 153, 0.05);
+}
+
+.nm-profile__setting-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: #059669;
+  flex-shrink: 0;
+}
+
+.nm-profile__setting-content {
+  flex: 1;
+}
+
+.nm-profile__setting-title {
+  font-size: 15px;
+  font-weight: 500;
+  color: #065f46;
+  margin: 0 0 2px 0;
+}
+
+.nm-profile__setting-desc {
+  font-size: 12px;
+  color: #047857;
+  margin: 0;
+}
+
+.nm-profile__setting-arrow {
+  color: #6ee7b7;
+  font-size: 14px;
+}
+
+/* Version */
+.nm-profile__version {
+  text-align: center;
+  padding: 16px;
+  color: #047857;
+  font-size: 12px;
+}
+
+.nm-profile__version-label {
+  margin: 0;
+}
