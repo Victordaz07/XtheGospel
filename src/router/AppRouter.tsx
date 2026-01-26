@@ -24,6 +24,9 @@ import NewMemberRoutes from './NewMemberRoutes';
 // Unified Routes: Journey-aware routing (stage-based content switching)
 import UnifiedRoutes from './UnifiedRoutes';
 
+// Leadership Callings Routes (ward/stake leadership - callings management)
+import LeadershipCallingsRoutes from './LeadershipCallingsRoutes';
+
 const AppRouter: React.FC = () => {
   const { userRole, isLoading } = useAuth();
   const location = useLocation();
@@ -150,6 +153,9 @@ const AppRouter: React.FC = () => {
       <Route path="/privacy" element={<PrivacyPage />} />
       <Route path="/terms" element={<TermsPage />} />
       <Route path="/support" element={<SupportPage />} />
+      
+      {/* LEADERSHIP CALLINGS: Ward/Stake leadership routes */}
+      <Route path="/member/leadership/*" element={<LeadershipCallingsRoutes />} />
       
       {/* LEGACY ROLE-BASED LAYOUTS: Only used when userRole is set and navigating to legacy routes */}
       {userRole ? (

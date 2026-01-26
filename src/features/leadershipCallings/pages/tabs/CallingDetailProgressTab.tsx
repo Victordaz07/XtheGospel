@@ -61,7 +61,7 @@ const CallingDetailProgressTab: React.FC<Props> = ({ callingId }) => {
           <div className="form-group">
             <textarea
               value={content}
-              onChange={(e) => setContent(e.target.value)}
+              onChange={(e) => setContent((e.target as any).value)}
               placeholder="¿Cómo va el llamamiento? Describe lo que observas..."
               rows={3}
               required
@@ -70,7 +70,7 @@ const CallingDetailProgressTab: React.FC<Props> = ({ callingId }) => {
           
           <div className="form-group">
             <label>Hito (opcional)</label>
-            <select value={milestone} onChange={(e) => setMilestone(e.target.value)}>
+            <select value={milestone} onChange={(e) => setMilestone((e.target as any).value)}>
               <option value="">Sin hito específico</option>
               {COMMON_MILESTONES.map(m => (
                 <option key={m} value={m}>{m}</option>

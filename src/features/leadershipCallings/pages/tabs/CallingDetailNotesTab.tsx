@@ -53,7 +53,7 @@ const CallingDetailNotesTab: React.FC<Props> = ({ callingId }) => {
         <div className="form-group">
           <textarea
             value={content}
-            onChange={(e) => setContent(e.target.value)}
+            onChange={(e) => setContent((e.target as any).value)}
             placeholder="Escribe una nota..."
             rows={3}
           />
@@ -70,7 +70,7 @@ const CallingDetailNotesTab: React.FC<Props> = ({ callingId }) => {
           
           <select 
             value={noteType} 
-            onChange={(e) => setNoteType(e.target.value as NoteType)}
+            onChange={(e) => setNoteType((e.target as any).value as NoteType)}
           >
             <option value="followup">{NOTE_TYPE_LABELS.followup}</option>
             <option value="administrative">{NOTE_TYPE_LABELS.administrative}</option>

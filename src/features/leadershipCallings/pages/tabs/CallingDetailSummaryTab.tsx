@@ -167,7 +167,7 @@ const CallingDetailSummaryTab: React.FC<Props> = ({ calling }) => {
               <input
                 type="date"
                 value={releaseDate}
-                onChange={(e) => setReleaseDate(e.target.value)}
+                onChange={(e) => setReleaseDate((e.target as any).value)}
                 required
               />
             </div>
@@ -176,7 +176,7 @@ const CallingDetailSummaryTab: React.FC<Props> = ({ calling }) => {
               <label>📝 Nota final (opcional)</label>
               <textarea
                 value={releaseNote}
-                onChange={(e) => setReleaseNote(e.target.value)}
+                onChange={(e) => setReleaseNote((e.target as any).value)}
                 placeholder="Agradecimiento o nota de cierre..."
                 rows={3}
               />

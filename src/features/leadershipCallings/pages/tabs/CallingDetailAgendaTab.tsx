@@ -70,7 +70,7 @@ const CallingDetailAgendaTab: React.FC<Props> = ({ callingId }) => {
             <input
               type="text"
               value={title}
-              onChange={(e) => setTitle(e.target.value)}
+              onChange={(e) => setTitle((e.target as any).value)}
               placeholder="Título del evento"
               required
             />
@@ -78,7 +78,7 @@ const CallingDetailAgendaTab: React.FC<Props> = ({ callingId }) => {
           <div className="form-row">
             <div className="form-group">
               <label>Tipo</label>
-              <select value={kind} onChange={(e) => setKind(e.target.value as EventKind)}>
+              <select value={kind} onChange={(e) => setKind((e.target as any).value as EventKind)}>
                 {Object.entries(EVENT_KIND_LABELS).map(([k, label]) => (
                   <option key={k} value={k}>{EVENT_KIND_ICONS[k as EventKind]} {label}</option>
                 ))}
@@ -91,7 +91,7 @@ const CallingDetailAgendaTab: React.FC<Props> = ({ callingId }) => {
               <input
                 type="date"
                 value={date}
-                onChange={(e) => setDate(e.target.value)}
+                onChange={(e) => setDate((e.target as any).value)}
                 required
               />
             </div>
@@ -100,7 +100,7 @@ const CallingDetailAgendaTab: React.FC<Props> = ({ callingId }) => {
               <input
                 type="time"
                 value={time}
-                onChange={(e) => setTime(e.target.value)}
+                onChange={(e) => setTime((e.target as any).value)}
               />
             </div>
           </div>
@@ -108,7 +108,7 @@ const CallingDetailAgendaTab: React.FC<Props> = ({ callingId }) => {
             <input
               type="text"
               value={location}
-              onChange={(e) => setLocation(e.target.value)}
+              onChange={(e) => setLocation((e.target as any).value)}
               placeholder="Lugar (opcional)"
             />
           </div>

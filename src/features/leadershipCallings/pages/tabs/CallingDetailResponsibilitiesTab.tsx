@@ -80,7 +80,7 @@ const CallingDetailResponsibilitiesTab: React.FC<Props> = ({ callingId }) => {
             <input
               type="text"
               value={title}
-              onChange={(e) => setTitle(e.target.value)}
+              onChange={(e) => setTitle((e.target as any).value)}
               placeholder="Título de la responsabilidad"
               required
             />
@@ -88,7 +88,7 @@ const CallingDetailResponsibilitiesTab: React.FC<Props> = ({ callingId }) => {
           <div className="form-group">
             <textarea
               value={description}
-              onChange={(e) => setDescription(e.target.value)}
+              onChange={(e) => setDescription((e.target as any).value)}
               placeholder="Descripción (opcional)"
               rows={2}
             />
@@ -96,7 +96,7 @@ const CallingDetailResponsibilitiesTab: React.FC<Props> = ({ callingId }) => {
           <div className="form-row">
             <div className="form-group">
               <label>Prioridad</label>
-              <select value={priority} onChange={(e) => setPriority(e.target.value as ResponsibilityPriority)}>
+              <select value={priority} onChange={(e) => setPriority((e.target as any).value as ResponsibilityPriority)}>
                 <option value="low">Baja</option>
                 <option value="medium">Media</option>
               </select>
@@ -106,7 +106,7 @@ const CallingDetailResponsibilitiesTab: React.FC<Props> = ({ callingId }) => {
               <input
                 type="date"
                 value={suggestedDate}
-                onChange={(e) => setSuggestedDate(e.target.value)}
+                onChange={(e) => setSuggestedDate((e.target as any).value)}
               />
             </div>
           </div>
