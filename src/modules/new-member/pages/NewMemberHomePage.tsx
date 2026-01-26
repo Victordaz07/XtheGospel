@@ -6,7 +6,10 @@ import {
   usePastoralPhase, 
   getPastoralMessage, 
   isHomeContentQuestion,
-  useIsReflectivePhase 
+  isHomeMinimal,
+  useIsReflectivePhase,
+  useIsWithdrawalPhase,
+  useIsAbidingPhase
 } from '../../../core/pastoral/usePastoralPhaseStore';
 import './NewMemberHomePage.css';
 
@@ -22,6 +25,7 @@ const FIRST_TOPIC = {
  * Sprint 8 - Spiritual Memory: shows Continue card when available
  * Sprint 12 - Pastoral Phase: adapts tone based on internal phase
  * Sprint 13 - Understanding/Belonging: questions over statements, Journal priority
+ * Sprint 14 - Integration/Abiding: intentional withdrawal, minimal presence
  * 
  * ═══════════════════════════════════════════════════════════════════════════
  * PASTORAL UX PRINCIPLES
@@ -33,28 +37,41 @@ const FIRST_TOPIC = {
  * ❌ NO streak mechanics or daily goals
  * ❌ NO comparison to others
  * ❌ NO guilt-inducing copy
- * ❌ NO tasks or assignments (Sprint 13)
+ * ❌ NO tasks or assignments
  * 
  * ✅ Permission-based language ("When you're ready", "There's no rush")
  * ✅ Calmer visual density (fewer cards, more breathing room)
  * ✅ Reassurance over instruction
  * ✅ Grace over achievement
- * ✅ Questions over statements in deeper phases (Sprint 13)
- * ✅ Journal as central invitation, not obligation (Sprint 13)
+ * ✅ Questions over statements in deeper phases
+ * ✅ Journal as central invitation, not obligation
+ * ✅ Intentional withdrawal in final phases (Sprint 14)
  * 
  * Phase behavior:
  *   - stabilizing/rhythm: Declarative messages of reassurance
  *   - understanding/belonging: Open-ended questions that invite reflection
+ *   - integration/abiding: Minimal presence, the app steps back
  * 
- * The user should feel: "This doesn't demand anything from me...
- * but I want to come back."
+ * ═══════════════════════════════════════════════════════════════════════════
+ * SPRINT 14: INTENTIONAL WITHDRAWAL
+ * ═══════════════════════════════════════════════════════════════════════════
+ * 
+ * In 'integration' and 'abiding' phases, this page becomes deliberately
+ * sparse. This is NOT missing content — it is a design decision.
+ * 
+ * The app learns to step back without disappearing.
+ * The user should feel: "I don't need this app... but it's here."
+ * 
  * ═══════════════════════════════════════════════════════════════════════════
  */
 export default function NewMemberHomePage(): JSX.Element {
   const { lastLessonId, lastLessonTitle, isHydrated, hydrate } = useSpiritualMemoryStore();
   const phase = usePastoralPhase();
   const isReflective = useIsReflectivePhase();
+  const isWithdrawal = useIsWithdrawalPhase();
+  const isAbiding = useIsAbidingPhase();
   const isQuestion = isHomeContentQuestion(phase);
+  const isMinimal = isHomeMinimal(phase);
 
   // Hydrate memory on mount
   useEffect(() => {
@@ -68,11 +85,75 @@ export default function NewMemberHomePage(): JSX.Element {
   const continueId = hasContinue ? lastLessonId : FIRST_TOPIC.id;
   const continueTitle = hasContinue ? lastLessonTitle : FIRST_TOPIC.title;
   
-  // Phase-aware labels
+  // Phase-aware content
   const continueLabel = getPastoralMessage('continueStudy', phase);
   const homeContent = getPastoralMessage('homeWelcome', phase);
   const journalInvite = getPastoralMessage('journalInvite', phase);
+  const encouragement = getPastoralMessage('encouragement', phase);
 
+  // In withdrawal phases, show minimal content
+  if (isWithdrawal) {
+    return (
+      <div className={`nm-home nm-home--${phase}`}>
+        {/* 
+          SPRINT 14: MINIMAL HOME
+          
+          In integration/abiding phases, the home is deliberately sparse.
+          One message (or almost nothing in abiding).
+          No CTAs, no prompts, no guidance.
+          
+          This is intentional design, not missing content.
+          The app steps back to let faith be lived.
+        */}
+        
+        {/* Single message card — minimal and quiet */}
+        <div className="nm-home__minimal">
+          <p className="nm-home__minimal-text">
+            {homeContent}
+          </p>
+        </div>
+
+        {/* 
+          Journal — quietly available
+          
+          In withdrawal phases, Journal is still accessible
+          but doesn't push the user to write.
+          
+          "This space is here when you need it."
+          "You don't have to return often."
+        */}
+        {!isAbiding && (
+          <div className="nm-home__journal nm-home__journal--quiet">
+            <Link to="/journal" className="nm-home__journal-link">
+              <FaPenToSquare className="nm-home__journal-link-icon" />
+              <span className="nm-home__journal-link-text">
+                {journalInvite}
+              </span>
+            </Link>
+          </div>
+        )}
+
+        {/* 
+          In abiding phase, even the Journal link becomes
+          very subtle — just an icon, almost hidden.
+        */}
+        {isAbiding && (
+          <div className="nm-home__abiding-journal">
+            <Link to="/journal" className="nm-home__abiding-journal-link" aria-label="Journal">
+              <FaPenToSquare />
+            </Link>
+          </div>
+        )}
+
+        {/* 
+          No encouragement section in withdrawal phases.
+          Silence is the message.
+        */}
+      </div>
+    );
+  }
+
+  // Earlier phases: full content
   return (
     <div className={`nm-home nm-home--${phase}`}>
       {/* 
@@ -110,7 +191,7 @@ export default function NewMemberHomePage(): JSX.Element {
       </div>
 
       {/* 
-        Journal Card — Sprint 13: Increased visual priority
+        Journal Card — Increased visual priority in reflective phases
         
         In reflective phases (understanding/belonging), Journal moves up
         and becomes more prominent than the continue card.
@@ -159,11 +240,13 @@ export default function NewMemberHomePage(): JSX.Element {
         In belonging phase, this becomes an affirmation of presence:
         "You belong here, even on quiet weeks."
       */}
-      <div className="nm-home__encouragement">
-        <p className="nm-home__encouragement-text">
-          {getPastoralMessage('encouragement', phase)}
-        </p>
-      </div>
+      {encouragement && (
+        <div className="nm-home__encouragement">
+          <p className="nm-home__encouragement-text">
+            {encouragement}
+          </p>
+        </div>
+      )}
     </div>
   );
 }

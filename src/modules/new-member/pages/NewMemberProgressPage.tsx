@@ -6,7 +6,9 @@ import { useInvestigatorStore } from '../../investigator/store/useInvestigatorSt
 import { 
   usePastoralPhase, 
   getPastoralMessage,
-  useIsReflectivePhase 
+  useIsReflectivePhase,
+  useIsWithdrawalPhase,
+  useIsAbidingPhase
 } from '../../../core/pastoral/usePastoralPhaseStore';
 import './NewMemberProgressPage.css';
 
@@ -16,6 +18,7 @@ import './NewMemberProgressPage.css';
  * Sprint 8 – Spiritual Memory: gentle reflection messages
  * Sprint 12 – Pastoral Phase: adapts tone and silence based on phase
  * Sprint 13 – Understanding/Belonging: presence over activity, no performance
+ * Sprint 14 – Integration/Abiding: permanence message, intentional withdrawal
  * 
  * ═══════════════════════════════════════════════════════════════════════════
  * PASTORAL UX PRINCIPLES
@@ -28,19 +31,33 @@ import './NewMemberProgressPage.css';
  * ❌ NO "you've completed X of Y"
  * ❌ NO comparison language
  * ❌ NO achievement framing
- * ❌ NO performance evaluation (Sprint 13)
+ * ❌ NO performance evaluation
  * 
  * ✅ Language of presence ("you've been here")
  * ✅ Language of process ("your journey is unfolding")
- * ✅ More visual silence in 'stabilizing' phase
+ * ✅ More visual silence in earlier phases
  * ✅ Fewer elements, more breathing room
- * ✅ Belonging affirmation in deeper phases (Sprint 13)
+ * ✅ Belonging affirmation in deeper phases
+ * ✅ Single permanence message in final phases (Sprint 14)
  * 
  * Phase behavior:
  *   - stabilizing/rhythm: Gentle acknowledgment of activity
  *   - understanding/belonging: Affirmation of presence, not doing
+ *   - integration/abiding: Single message of permanence
  * 
- * The user should feel: "I'm not being measured. I'm being seen."
+ * ═══════════════════════════════════════════════════════════════════════════
+ * SPRINT 14: INTENTIONAL WITHDRAWAL
+ * ═══════════════════════════════════════════════════════════════════════════
+ * 
+ * In 'integration' and 'abiding' phases, this page becomes almost empty.
+ * A single message affirms that faith is lived, not finished.
+ * 
+ * "Faith isn't something you finish. It's something you live."
+ * "You're living it."
+ * 
+ * This is NOT missing content — it is a design decision.
+ * The app steps back because the user has integrated their faith.
+ * 
  * ═══════════════════════════════════════════════════════════════════════════
  */
 export default function NewMemberProgressPage(): JSX.Element {
@@ -49,6 +66,8 @@ export default function NewMemberProgressPage(): JSX.Element {
   const hasReflectionActivity = useHasJournalActivity();
   const phase = usePastoralPhase();
   const isReflective = useIsReflectivePhase();
+  const isWithdrawal = useIsWithdrawalPhase();
+  const isAbiding = useIsAbidingPhase();
 
   // Hydrate memory on mount
   useEffect(() => {
@@ -63,6 +82,52 @@ export default function NewMemberProgressPage(): JSX.Element {
   // Check if there's any activity to show
   const hasActivity = hasReflectionActivity || hasExploredGuide || hasJournalEntries;
 
+  // In withdrawal phases, show minimal content
+  if (isWithdrawal) {
+    const permanenceMessage = getPastoralMessage('progressPermanence', phase);
+    const header = getPastoralMessage('progressHeader', phase);
+    
+    return (
+      <div className={`nm-progress nm-progress--${phase}`}>
+        {/* 
+          SPRINT 14: PERMANENCE PAGE
+          
+          In integration/abiding phases, this page shows only
+          a single message affirming that faith is lived, not measured.
+          
+          This is intentional design, not missing content.
+        */}
+        
+        {/* Header — minimal or absent */}
+        {header && (
+          <header className="nm-progress__header nm-progress__header--minimal">
+            <h1 className="nm-progress__title nm-progress__title--minimal">
+              {header}
+            </h1>
+          </header>
+        )}
+        
+        {/* Single permanence message */}
+        <section className="nm-progress__permanence">
+          <p className="nm-progress__permanence-text">
+            {permanenceMessage.split('\n')[0]}
+          </p>
+          {permanenceMessage.includes('\n') && (
+            <p className="nm-progress__permanence-text nm-progress__permanence-text--secondary">
+              {permanenceMessage.split('\n')[1]}
+            </p>
+          )}
+        </section>
+        
+        {/* 
+          No activity tracking in withdrawal phases.
+          The user's faith is lived, not logged.
+        */}
+      </div>
+    );
+  }
+
+  // Earlier phases: full content
   // Phase-aware subtitle
   const getSubtitle = () => {
     if (phase === 'belonging') {

@@ -2,6 +2,7 @@
  * Sprint 8 - Spiritual Memory: continue card
  * Sprint 12 - Pastoral Phase: calmer UX, more breathing room
  * Sprint 13 - Understanding/Belonging: questions, Journal priority, more silence
+ * Sprint 14 - Integration/Abiding: intentional withdrawal, minimal presence
  *
  * ═══════════════════════════════════════════════════════════════════════════
  * DESIGN PHILOSOPHY
@@ -14,8 +15,21 @@
  * Phase-specific adjustments:
  *   - stabilizing: Maximum calm, generous spacing, soft transitions
  *   - rhythm: Slightly more compact as user finds their pace
- *   - understanding: Questions replace statements, Journal priority (Sprint 13)
- *   - belonging: Maximum silence, minimal prompts, presence over doing (Sprint 13)
+ *   - understanding: Questions replace statements, Journal priority
+ *   - belonging: Maximum silence, minimal prompts, presence over doing
+ *   - integration: Intentional withdrawal — the app steps back (Sprint 14)
+ *   - abiding: Near-invisible — only a whisper remains (Sprint 14)
+ * 
+ * ═══════════════════════════════════════════════════════════════════════════
+ * SPRINT 14: INTENTIONAL WITHDRAWAL
+ * ═══════════════════════════════════════════════════════════════════════════
+ * 
+ * In 'integration' and 'abiding' phases, the page becomes deliberately
+ * sparse. This is NOT missing content — it is a design decision.
+ * 
+ * The app learns to step back without disappearing.
+ * The user should feel: "I don't need this app... but it's here."
+ * 
  * ═══════════════════════════════════════════════════════════════════════════
  */
 
@@ -47,11 +61,27 @@
   gap: 48px;
 }
 
+/* Integration phase: sparse, withdrawn */
+.nm-home--integration {
+  gap: 60px;
+  padding-top: 20px;
+  padding-bottom: 40px;
+  min-height: 100%;
+  justify-content: center;
+}
+
+/* Abiding phase: almost empty, maximum silence */
+.nm-home--abiding {
+  gap: 80px;
+  padding-top: 40px;
+  padding-bottom: 60px;
+  min-height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
 /* ═══════════════════════════════════════════════════════════════════════════
- * Welcome Card — The heart of the page
- * 
- * Sprint 13: In understanding/belonging phases, this becomes a question card.
- * Questions use different typography: italic, larger, more contemplative.
+ * Welcome Card — The heart of the page (earlier phases)
  * ═══════════════════════════════════════════════════════════════════════════ */
 
 .nm-home__welcome {
@@ -131,15 +161,6 @@
 
 /* ═══════════════════════════════════════════════════════════════════════════
  * Question Typography (Sprint 13)
- * 
- * Understanding/Belonging phases show a reflective question instead
- * of a declarative statement.
- * 
- * Typography choices:
- *   - Italic to signal "this is for you to ponder"
- *   - Larger font for contemplative presence
- *   - More line height for breathing room
- *   - No expected response, no CTA
  * ═══════════════════════════════════════════════════════════════════════════ */
 
 .nm-home__welcome-question {
@@ -162,12 +183,115 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
- * Journal Card (Sprint 13)
+ * SPRINT 14: MINIMAL HOME (Integration/Abiding)
  * 
- * In understanding/belonging phases, Journal moves above Continue
- * and becomes visually more prominent.
- * 
- * Design: Soft, inviting, removes pressure to "write well"
+ * In these phases, the home becomes almost empty.
+ * A single message (or one word in abiding) sits in silence.
+ * This is intentional design, not missing content.
+ * ═══════════════════════════════════════════════════════════════════════════ */
+
+.nm-home__minimal {
+  text-align: center;
+  padding: 40px 24px;
+}
+
+.nm-home--integration .nm-home__minimal {
+  padding: 48px 28px;
+}
+
+.nm-home--abiding .nm-home__minimal {
+  padding: 60px 32px;
+}
+
+.nm-home__minimal-text {
+  font-size: 18px;
+  font-weight: 400;
+  color: #065f46;
+  margin: 0;
+  line-height: 1.7;
+  opacity: 0.85;
+}
+
+.nm-home--integration .nm-home__minimal-text {
+  font-size: 19px;
+  color: #047857;
+}
+
+/* Abiding: One word, maximum presence */
+.nm-home--abiding .nm-home__minimal-text {
+  font-size: 28px;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+  opacity: 0.7;
+  color: #059669;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+ * Journal — Quiet availability in withdrawal phases (Sprint 14)
+ * ═══════════════════════════════════════════════════════════════════════════ */
+
+.nm-home__journal--quiet {
+  text-align: center;
+}
+
+.nm-home__journal-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 24px;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(52, 211, 153, 0.12);
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.nm-home__journal-link:hover {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(52, 211, 153, 0.2);
+}
+
+.nm-home__journal-link-icon {
+  font-size: 16px;
+  color: #059669;
+  opacity: 0.7;
+}
+
+.nm-home__journal-link-text {
+  font-size: 14px;
+  color: #047857;
+  opacity: 0.8;
+}
+
+/* Abiding: Journal becomes almost hidden — just an icon */
+.nm-home__abiding-journal {
+  text-align: center;
+}
+
+.nm-home__abiding-journal-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(52, 211, 153, 0.08);
+  border-radius: 50%;
+  text-decoration: none;
+  color: #059669;
+  font-size: 16px;
+  opacity: 0.5;
+  transition: all 0.3s ease;
+}
+
+.nm-home__abiding-journal-link:hover {
+  opacity: 0.8;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+ * Journal Card (Sprint 13) — Earlier phases
  * ═══════════════════════════════════════════════════════════════════════════ */
 
 .nm-home__journal {
@@ -248,10 +372,7 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
- * Continue Card — Gentle invitation, not a task
- * 
- * Sprint 13: In understanding/belonging phases, this becomes secondary
- * to the Journal card. Slightly less prominent.
+ * Continue Card — Earlier phases only
  * ═══════════════════════════════════════════════════════════════════════════ */
 
 .nm-home__continue {
@@ -337,10 +458,8 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
- * Encouragement — Closing reassurance
- * 
- * Sprint 13: In understanding/belonging phases, this becomes even simpler.
- * Single line, more silence.
+ * Encouragement — Earlier phases only
+ * (Not shown in integration/abiding — silence is the message)
  * ═══════════════════════════════════════════════════════════════════════════ */
 
 .nm-home__encouragement {
@@ -423,6 +542,14 @@
     gap: 36px;
   }
 
+  .nm-home--integration {
+    gap: 48px;
+  }
+
+  .nm-home--abiding {
+    gap: 60px;
+  }
+
   .nm-home__welcome {
     padding: 24px 20px;
     border-radius: 20px;
@@ -451,6 +578,14 @@
 
   .nm-home--belonging .nm-home__welcome-question {
     font-size: 22px;
+  }
+
+  .nm-home__minimal-text {
+    font-size: 17px;
+  }
+
+  .nm-home--abiding .nm-home__minimal-text {
+    font-size: 24px;
   }
 
   .nm-home__journal-card {
