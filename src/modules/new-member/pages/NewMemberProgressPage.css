@@ -1,6 +1,7 @@
 /* New Member Progress Page
  * Sprint 8 – Spiritual Memory: gentle reflection messages
  * Sprint 12 – Pastoral Phase: more silence, less structure
+ * Sprint 13 – Understanding/Belonging: presence over performance, belonging affirmation
  *
  * ═══════════════════════════════════════════════════════════════════════════
  * DESIGN PHILOSOPHY
@@ -12,6 +13,8 @@
  * Phase-specific adjustments:
  *   - stabilizing: Maximum silence, minimal structure, soft presence
  *   - rhythm: Gentle acknowledgment, still no pressure
+ *   - understanding: Reflection emphasis, Journal priority (Sprint 13)
+ *   - belonging: Presence affirmation, no performance evaluation (Sprint 13)
  * ═══════════════════════════════════════════════════════════════════════════
  */
 
@@ -33,6 +36,16 @@
   gap: 32px;
 }
 
+/* Understanding phase: generous space for reflection */
+.nm-progress--understanding {
+  gap: 44px;
+}
+
+/* Belonging phase: maximum silence */
+.nm-progress--belonging {
+  gap: 52px;
+}
+
 /* ═══════════════════════════════════════════════════════════════════════════
  * Header — Sets the tone
  * ═══════════════════════════════════════════════════════════════════════════ */
@@ -44,6 +57,11 @@
 
 .nm-progress--stabilizing .nm-progress__header {
   padding-bottom: 8px;
+}
+
+.nm-progress--understanding .nm-progress__header,
+.nm-progress--belonging .nm-progress__header {
+  padding-bottom: 12px;
 }
 
 .nm-progress__title {
@@ -59,6 +77,14 @@
   margin: 0 0 16px 0;
 }
 
+/* Understanding/Belonging: Softer, more contemplative title */
+.nm-progress--understanding .nm-progress__title,
+.nm-progress--belonging .nm-progress__title {
+  font-size: 24px;
+  font-weight: 500;
+  margin: 0 0 14px 0;
+}
+
 .nm-progress__subtitle {
   font-size: 15px;
   color: #047857;
@@ -72,6 +98,14 @@
   line-height: 1.8;
 }
 
+/* Understanding/Belonging: Quieter subtitle */
+.nm-progress--understanding .nm-progress__subtitle,
+.nm-progress--belonging .nm-progress__subtitle {
+  font-size: 15px;
+  opacity: 0.8;
+  line-height: 1.8;
+}
+
 /* ═══════════════════════════════════════════════════════════════════════════
  * Recent Experiences Section
  * ═══════════════════════════════════════════════════════════════════════════ */
@@ -81,7 +115,7 @@
   border-radius: 20px;
   padding: 24px;
   border: 1px solid rgba(52, 211, 153, 0.12);
-  transition: padding 0.4s ease;
+  transition: padding 0.4s ease, background 0.4s ease;
 }
 
 .nm-progress--stabilizing .nm-progress__experiences {
@@ -89,9 +123,20 @@
   border-radius: 24px;
 }
 
-/* Section Titles — REMOVED Sprint 12
- * No need for "Recent moments" label — it adds visual noise
- */
+/* Understanding/Belonging: Softer container */
+.nm-progress--understanding .nm-progress__experiences,
+.nm-progress--belonging .nm-progress__experiences {
+  padding: 28px 24px;
+  background: rgba(255, 255, 255, 0.75);
+  border-color: rgba(52, 211, 153, 0.08);
+}
+
+.nm-progress--belonging .nm-progress__experiences {
+  padding: 32px 28px;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+/* Section Titles — REMOVED Sprint 12 */
 .nm-progress__section-title {
   display: none;
 }
@@ -105,6 +150,11 @@
 
 .nm-progress--stabilizing .nm-progress__moments {
   gap: 24px;
+}
+
+.nm-progress--understanding .nm-progress__moments,
+.nm-progress--belonging .nm-progress__moments {
+  gap: 22px;
 }
 
 .nm-progress__moment {
@@ -135,6 +185,14 @@
   line-height: 1.7;
 }
 
+/* Understanding/Belonging: Softer moment text */
+.nm-progress--understanding .nm-progress__moment-text,
+.nm-progress--belonging .nm-progress__moment-text {
+  font-size: 16px;
+  color: #065f46;
+  opacity: 0.9;
+}
+
 /* ═══════════════════════════════════════════════════════════════════════════
  * Empty State — When there's no activity yet
  * ═══════════════════════════════════════════════════════════════════════════ */
@@ -146,6 +204,11 @@
 
 .nm-progress--stabilizing .nm-progress__empty {
   padding: 24px 12px;
+}
+
+.nm-progress--understanding .nm-progress__empty,
+.nm-progress--belonging .nm-progress__empty {
+  padding: 28px 16px;
 }
 
 .nm-progress__empty-text {
@@ -160,6 +223,12 @@
   line-height: 1.8;
 }
 
+.nm-progress--understanding .nm-progress__empty-text,
+.nm-progress--belonging .nm-progress__empty-text {
+  font-size: 17px;
+  line-height: 1.8;
+}
+
 .nm-progress__empty-text--secondary {
   margin-top: 12px;
   opacity: 0.8;
@@ -169,6 +238,13 @@
 .nm-progress--stabilizing .nm-progress__empty-text--secondary {
   margin-top: 16px;
   font-size: 16px;
+}
+
+.nm-progress--understanding .nm-progress__empty-text--secondary,
+.nm-progress--belonging .nm-progress__empty-text--secondary {
+  margin-top: 14px;
+  font-size: 16px;
+  opacity: 0.75;
 }
 
 .nm-progress__empty-action {
@@ -197,22 +273,50 @@
   border-color: rgba(52, 211, 153, 0.35);
 }
 
-/* ═══════════════════════════════════════════════════════════════════════════
- * REMOVED SECTIONS (Sprint 12)
- * ═══════════════════════════════════════════════════════════════════════════
- * 
- * The "Next gentle steps" section was removed.
- * Even "gentle" suggestions can feel like expectations.
- * 
- * Original CSS preserved below (commented) for reference.
- */
+/* Journal action variant (Sprint 13) */
+.nm-progress__empty-action--journal {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(52, 211, 153, 0.15);
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.08);
+}
 
-/* Gentle Steps Section - REMOVED Sprint 12
-.nm-progress__gentle-steps { ... }
-.nm-progress__gentle-intro { ... }
-.nm-progress__steps-list { ... }
-.nm-progress__step-item { ... }
-*/
+.nm-progress__empty-action--journal:hover {
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.12);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+ * Belonging Affirmation Section (Sprint 13)
+ * 
+ * Appears in understanding/belonging phases when there IS activity.
+ * Reinforces belonging without any implication of performance.
+ * ═══════════════════════════════════════════════════════════════════════════ */
+
+.nm-progress__belonging {
+  text-align: center;
+  padding: 24px 20px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  border: 1px solid rgba(52, 211, 153, 0.08);
+}
+
+.nm-progress--belonging .nm-progress__belonging {
+  padding: 32px 24px;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.nm-progress__belonging-text {
+  font-size: 15px;
+  color: #047857;
+  margin: 0;
+  line-height: 1.8;
+  font-weight: 400;
+}
+
+.nm-progress--belonging .nm-progress__belonging-text {
+  font-size: 16px;
+  line-height: 1.9;
+}
 
 /* ═══════════════════════════════════════════════════════════════════════════
  * Footer Reflection — Closing reassurance
@@ -228,6 +332,11 @@
   padding: 28px 20px;
 }
 
+.nm-progress--understanding .nm-progress__footer,
+.nm-progress--belonging .nm-progress__footer {
+  padding: 24px 20px;
+}
+
 .nm-progress__footer-text {
   font-size: 15px;
   color: #059669;
@@ -239,6 +348,13 @@
 .nm-progress--stabilizing .nm-progress__footer-text {
   font-size: 16px;
   line-height: 1.8;
+}
+
+/* Understanding/Belonging: Quieter footer */
+.nm-progress--understanding .nm-progress__footer-text,
+.nm-progress--belonging .nm-progress__footer-text {
+  font-size: 15px;
+  opacity: 0.85;
 }
 
 .nm-progress__footer-text--secondary {
@@ -265,6 +381,14 @@
     gap: 32px;
   }
 
+  .nm-progress--understanding {
+    gap: 36px;
+  }
+
+  .nm-progress--belonging {
+    gap: 40px;
+  }
+
   .nm-progress__title {
     font-size: 22px;
   }
@@ -279,5 +403,18 @@
 
   .nm-progress--stabilizing .nm-progress__experiences {
     padding: 24px 20px;
+  }
+
+  .nm-progress--understanding .nm-progress__experiences,
+  .nm-progress--belonging .nm-progress__experiences {
+    padding: 24px 18px;
+  }
+
+  .nm-progress__belonging {
+    padding: 20px 16px;
+  }
+
+  .nm-progress--belonging .nm-progress__belonging {
+    padding: 24px 18px;
   }
 }

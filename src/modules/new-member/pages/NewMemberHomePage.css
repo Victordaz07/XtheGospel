@@ -1,6 +1,7 @@
 /* New Member Home Page
  * Sprint 8 - Spiritual Memory: continue card
  * Sprint 12 - Pastoral Phase: calmer UX, more breathing room
+ * Sprint 13 - Understanding/Belonging: questions, Journal priority, more silence
  *
  * ═══════════════════════════════════════════════════════════════════════════
  * DESIGN PHILOSOPHY
@@ -13,6 +14,8 @@
  * Phase-specific adjustments:
  *   - stabilizing: Maximum calm, generous spacing, soft transitions
  *   - rhythm: Slightly more compact as user finds their pace
+ *   - understanding: Questions replace statements, Journal priority (Sprint 13)
+ *   - belonging: Maximum silence, minimal prompts, presence over doing (Sprint 13)
  * ═══════════════════════════════════════════════════════════════════════════
  */
 
@@ -34,8 +37,21 @@
   gap: 28px;
 }
 
+/* Understanding phase: generous space for reflection */
+.nm-home--understanding {
+  gap: 40px;
+}
+
+/* Belonging phase: maximum silence, maximum space */
+.nm-home--belonging {
+  gap: 48px;
+}
+
 /* ═══════════════════════════════════════════════════════════════════════════
  * Welcome Card — The heart of the page
+ * 
+ * Sprint 13: In understanding/belonging phases, this becomes a question card.
+ * Questions use different typography: italic, larger, more contemplative.
  * ═══════════════════════════════════════════════════════════════════════════ */
 
 .nm-home__welcome {
@@ -45,11 +61,18 @@
   color: #ffffff;
   position: relative;
   overflow: hidden;
-  transition: padding 0.4s ease;
+  transition: padding 0.4s ease, background 0.4s ease;
 }
 
 .nm-home--stabilizing .nm-home__welcome {
   padding: 40px 28px;
+}
+
+/* Understanding/Belonging: Softer gradient for contemplation */
+.nm-home--understanding .nm-home__welcome,
+.nm-home--belonging .nm-home__welcome {
+  background: linear-gradient(135deg, #6ee7b7 0%, #34d399 50%, #10b981 100%);
+  padding: 48px 28px;
 }
 
 .nm-home__welcome::before {
@@ -61,6 +84,15 @@
   height: 140px;
   background: rgba(255, 255, 255, 0.08);
   border-radius: 50%;
+}
+
+/* Question mode: softer, more ethereal decoration */
+.nm-home__welcome--question::before {
+  width: 180px;
+  height: 180px;
+  top: -60px;
+  right: -60px;
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .nm-home__welcome-greeting {
@@ -98,7 +130,128 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
+ * Question Typography (Sprint 13)
+ * 
+ * Understanding/Belonging phases show a reflective question instead
+ * of a declarative statement.
+ * 
+ * Typography choices:
+ *   - Italic to signal "this is for you to ponder"
+ *   - Larger font for contemplative presence
+ *   - More line height for breathing room
+ *   - No expected response, no CTA
+ * ═══════════════════════════════════════════════════════════════════════════ */
+
+.nm-home__welcome-question {
+  font-size: 22px;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.6;
+  margin: 0;
+  opacity: 0.95;
+  letter-spacing: -0.01em;
+}
+
+.nm-home--understanding .nm-home__welcome-question {
+  font-size: 22px;
+}
+
+.nm-home--belonging .nm-home__welcome-question {
+  font-size: 24px;
+  line-height: 1.5;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+ * Journal Card (Sprint 13)
+ * 
+ * In understanding/belonging phases, Journal moves above Continue
+ * and becomes visually more prominent.
+ * 
+ * Design: Soft, inviting, removes pressure to "write well"
+ * ═══════════════════════════════════════════════════════════════════════════ */
+
+.nm-home__journal {
+  margin-top: -8px;
+}
+
+.nm-home__journal-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 24px;
+  border: 1px solid rgba(52, 211, 153, 0.2);
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.1);
+}
+
+.nm-home--belonging .nm-home__journal-card {
+  padding: 28px;
+  border-radius: 24px;
+}
+
+.nm-home__journal-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.15);
+  border-color: rgba(52, 211, 153, 0.3);
+}
+
+.nm-home__journal-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: #059669;
+  flex-shrink: 0;
+}
+
+.nm-home--belonging .nm-home__journal-icon {
+  width: 52px;
+  height: 52px;
+  font-size: 22px;
+}
+
+.nm-home__journal-content {
+  flex: 1;
+  padding-top: 2px;
+}
+
+.nm-home__journal-text {
+  font-size: 17px;
+  font-weight: 500;
+  color: #065f46;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.nm-home--belonging .nm-home__journal-text {
+  font-size: 18px;
+}
+
+.nm-home__journal-subtext {
+  font-size: 14px;
+  color: #047857;
+  margin: 8px 0 0 0;
+  line-height: 1.6;
+  opacity: 0.85;
+}
+
+.nm-home--belonging .nm-home__journal-subtext {
+  font-size: 15px;
+  margin-top: 10px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
  * Continue Card — Gentle invitation, not a task
+ * 
+ * Sprint 13: In understanding/belonging phases, this becomes secondary
+ * to the Journal card. Slightly less prominent.
  * ═══════════════════════════════════════════════════════════════════════════ */
 
 .nm-home__continue {
@@ -118,6 +271,13 @@
   margin: 0 0 14px 0;
 }
 
+/* Understanding/Belonging: Subtler label */
+.nm-home--understanding .nm-home__continue-label,
+.nm-home--belonging .nm-home__continue-label {
+  font-size: 13px;
+  opacity: 0.7;
+}
+
 .nm-home__continue-card {
   background: rgba(255, 255, 255, 0.9);
   border-radius: 16px;
@@ -134,6 +294,13 @@
 .nm-home--stabilizing .nm-home__continue-card {
   padding: 24px;
   border-radius: 20px;
+}
+
+/* Understanding/Belonging: Slightly more subtle */
+.nm-home--understanding .nm-home__continue-card,
+.nm-home--belonging .nm-home__continue-card {
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 2px 6px rgba(16, 185, 129, 0.06);
 }
 
 .nm-home__continue-card:hover {
@@ -157,11 +324,6 @@
   font-size: 18px;
 }
 
-/* Removed: .nm-home__continue-desc
- * Sprint 12: Less text = less pressure
- * The title alone is sufficient invitation
- */
-
 .nm-home__continue-arrow {
   color: #10b981;
   font-size: 16px;
@@ -176,6 +338,9 @@
 
 /* ═══════════════════════════════════════════════════════════════════════════
  * Encouragement — Closing reassurance
+ * 
+ * Sprint 13: In understanding/belonging phases, this becomes even simpler.
+ * Single line, more silence.
  * ═══════════════════════════════════════════════════════════════════════════ */
 
 .nm-home__encouragement {
@@ -184,12 +349,25 @@
   padding: 28px 24px;
   border: 1px solid rgba(52, 211, 153, 0.1);
   text-align: center;
-  transition: padding 0.4s ease;
+  transition: padding 0.4s ease, background 0.4s ease;
 }
 
 .nm-home--stabilizing .nm-home__encouragement {
   padding: 36px 28px;
   background: rgba(255, 255, 255, 0.8);
+}
+
+/* Understanding: Balanced */
+.nm-home--understanding .nm-home__encouragement {
+  padding: 32px 28px;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+/* Belonging: Maximum silence, minimal container */
+.nm-home--belonging .nm-home__encouragement {
+  padding: 36px 32px;
+  background: rgba(255, 255, 255, 0.5);
+  border-color: rgba(52, 211, 153, 0.08);
 }
 
 .nm-home__encouragement-text {
@@ -206,6 +384,13 @@
   line-height: 1.8;
 }
 
+/* Understanding/Belonging: Quieter text */
+.nm-home--understanding .nm-home__encouragement-text,
+.nm-home--belonging .nm-home__encouragement-text {
+  font-size: 15px;
+  opacity: 0.9;
+}
+
 .nm-home__encouragement-text--secondary {
   margin-top: 12px;
   opacity: 0.85;
@@ -216,37 +401,6 @@
   margin-top: 16px;
   font-size: 15px;
 }
-
-/* ═══════════════════════════════════════════════════════════════════════════
- * REMOVED SECTIONS (Sprint 12)
- * ═══════════════════════════════════════════════════════════════════════════
- * 
- * The following sections were intentionally removed to reduce visual pressure:
- *   - Featured Card (Your Guide)
- *   - Quick Actions section
- * 
- * These are still accessible via bottom navigation.
- * Fewer cards = calmer experience.
- * 
- * Original CSS preserved below (commented) for reference if needed later.
- */
-
-/* Featured Card - REMOVED Sprint 12
-.nm-home__featured { ... }
-.nm-home__featured-card { ... }
-*/
-
-/* Section - REMOVED Sprint 12
-.nm-home__section { ... }
-.nm-home__section-title { ... }
-*/
-
-/* Quick Actions - REMOVED Sprint 12
-.nm-home__actions { ... }
-.nm-home__action-btn { ... }
-.nm-home__action-icon { ... }
-.nm-home__action-label { ... }
-*/
 
 /* ═══════════════════════════════════════════════════════════════════════════
  * Mobile adjustments
@@ -261,6 +415,14 @@
     gap: 28px;
   }
 
+  .nm-home--understanding {
+    gap: 32px;
+  }
+
+  .nm-home--belonging {
+    gap: 36px;
+  }
+
   .nm-home__welcome {
     padding: 24px 20px;
     border-radius: 20px;
@@ -268,6 +430,11 @@
 
   .nm-home--stabilizing .nm-home__welcome {
     padding: 28px 22px;
+  }
+
+  .nm-home--understanding .nm-home__welcome,
+  .nm-home--belonging .nm-home__welcome {
+    padding: 36px 22px;
   }
 
   .nm-home__welcome-title {
@@ -278,11 +445,38 @@
     font-size: 24px;
   }
 
+  .nm-home__welcome-question {
+    font-size: 20px;
+  }
+
+  .nm-home--belonging .nm-home__welcome-question {
+    font-size: 22px;
+  }
+
+  .nm-home__journal-card {
+    padding: 20px;
+    gap: 14px;
+  }
+
+  .nm-home__journal-icon {
+    width: 44px;
+    height: 44px;
+    font-size: 18px;
+  }
+
+  .nm-home__journal-text {
+    font-size: 16px;
+  }
+
   .nm-home__encouragement {
     padding: 24px 20px;
   }
 
   .nm-home--stabilizing .nm-home__encouragement {
     padding: 28px 22px;
+  }
+
+  .nm-home--belonging .nm-home__encouragement {
+    padding: 28px 24px;
   }
 }
