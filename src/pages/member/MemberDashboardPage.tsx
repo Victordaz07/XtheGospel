@@ -38,12 +38,6 @@ export function MemberDashboardPage() {
             {t('member.dashboard.missionarySupportDesc') || "Discover practical ways to help full-time missionaries in your ward or branch."}
           </p>
         </XtgCard>
-
-        <XtgCard title={t('member.dashboard.progressXP') || "Progress & XP"}>
-          <p className="xtg-text-muted">
-            {t('member.dashboard.progressXPDesc') || "See your learning streaks, XP, and achievements as you study and serve."}
-          </p>
-        </XtgCard>
       </div>
     </XtgPage>
   );
