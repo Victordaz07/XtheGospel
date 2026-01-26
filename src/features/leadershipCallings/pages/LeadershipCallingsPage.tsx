@@ -14,6 +14,7 @@ import {
   STATUS_LABELS, 
   ORGANIZATION_LABELS 
 } from '../types';
+import { PageShell, Card, Button } from '../../../ui';
 import './LeadershipPages.css';
 
 const LeadershipCallingsPage: React.FC = () => {
@@ -43,87 +44,104 @@ const LeadershipCallingsPage: React.FC = () => {
   ];
   
   return (
-    <div className="leadership-page">
-      <header className="leadership-header">
-        <button className="back-button" onClick={() => navigate('/member/leadership/home')}>
-          ← Volver
-        </button>
-        <h1>Llamamientos</h1>
-      </header>
-      
-      <main className="leadership-content">
+    <PageShell
+      title="Llamamientos"
+      onBack={() => navigate('/member/leadership/home')}
+      variant="gradient"
+      headerActions={
+        <Button
+          variant="primary"
+          size="sm"
+          onClick={() => navigate('/member/leadership/callings/new')}
+        >
+          ➕ Nuevo
+        </Button>
+      }
+    >
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
         {/* Organization Filter */}
-        <div className="filter-tabs">
+        <div style={{ display: 'flex', gap: '8px', overflowX: 'auto', paddingBottom: '8px' }}>
           {organizations.map(org => (
-            <button
+            <Button
               key={org}
-              className={`filter-tab ${selectedOrg === org ? 'active' : ''}`}
+              variant={selectedOrg === org ? 'primary' : 'ghost'}
+              size="sm"
               onClick={() => setSelectedOrg(org)}
             >
               {org === 'all' ? 'Todos' : ORGANIZATION_LABELS[org as OrganizationType]}
-            </button>
+            </Button>
           ))}
         </div>
         
         {/* Status Filter */}
-        <div className="status-filter">
-          <label>Estado:</label>
-        <select 
-          value={selectedStatus} 
-          onChange={(e) => setSelectedStatus((e.target as any).value)}
-        >
-            <option value="all">Todos</option>
-            <option value="active">Activos</option>
-            <option value="training">En capacitación</option>
-            <option value="proposed">Propuestos</option>
-            <option value="released">Relevados</option>
-          </select>
-        </div>
+        <Card variant="default" padding="sm">
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <label style={{ fontSize: '14px', color: 'var(--am-color-text-main, #0f172a)' }}>Estado:</label>
+            <select 
+              value={selectedStatus} 
+              onChange={(e) => setSelectedStatus((e.target as any).value)}
+              style={{
+                flex: 1,
+                padding: '8px 12px',
+                borderRadius: 'var(--am-radius-sm, 10px)',
+                border: '1px solid var(--am-color-border, #e2e8f0)',
+                fontSize: '14px',
+                background: 'white',
+              }}
+            >
+              <option value="all">Todos</option>
+              <option value="active">Activos</option>
+              <option value="training">En capacitación</option>
+              <option value="proposed">Propuestos</option>
+              <option value="released">Relevados</option>
+            </select>
+          </div>
+        </Card>
         
         {/* Callings List */}
-        <div className="callings-list">
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
           {filteredCallings.length === 0 ? (
-            <div className="empty-state">
-              <p>No hay llamamientos que coincidan con los filtros.</p>
-            </div>
+            <Card variant="default" padding="md">
+              <p style={{ textAlign: 'center', color: 'var(--am-color-text-muted, #64748b)', margin: 0 }}>
+                No hay llamamientos que coincidan con los filtros.
+              </p>
+            </Card>
           ) : (
             filteredCallings.map(calling => (
-              <div 
+              <Card
                 key={calling.id}
-                className="calling-card"
+                variant="default"
+                padding="md"
                 onClick={() => navigate(`/member/leadership/callings/${calling.id}`)}
+                className="calling-card-clickable"
               >
-                <div className="calling-card-header">
-                  <span className="calling-member-name">{calling.memberName}</span>
-                  <span className={`status-badge status-${calling.status}`}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '8px' }}>
+                  <span style={{ fontSize: '15px', fontWeight: 600, color: 'var(--am-color-text-main, #0f172a)' }}>
+                    {calling.memberName}
+                  </span>
+                  <span className={`status-badge status-${calling.status}`} style={{ fontSize: '11px', padding: '4px 8px', borderRadius: '999px' }}>
                     {STATUS_LABELS[calling.status]}
                   </span>
                 </div>
-                <div className="calling-card-body">
-                  <p className="calling-position">{calling.position}</p>
-                  <p className="calling-org">{ORGANIZATION_LABELS[calling.organization]}</p>
+                <div style={{ marginBottom: '8px' }}>
+                  <p style={{ fontSize: '14px', fontWeight: 500, color: 'var(--am-color-text-main, #0f172a)', margin: '0 0 4px 0' }}>
+                    {calling.position}
+                  </p>
+                  <p style={{ fontSize: '13px', color: 'var(--am-color-text-muted, #64748b)', margin: 0 }}>
+                    {ORGANIZATION_LABELS[calling.organization]}
+                  </p>
                 </div>
                 {calling.timeline.proposedAt && (
-                  <div className="calling-card-footer">
-                    <span className="calling-date">
-                      Desde: {new Date(calling.timeline.proposedAt).toLocaleDateString()}
-                    </span>
+                  <div style={{ fontSize: '12px', color: 'var(--am-color-text-muted, #64748b)' }}>
+                    Desde: {new Date(calling.timeline.proposedAt).toLocaleDateString()}
                   </div>
                 )}
-              </div>
+              </Card>
             ))
           )}
         </div>
-        
-        {/* FAB */}
-        <button 
-          className="fab"
-          onClick={() => navigate('/member/leadership/callings/new')}
-        >
-          ➕
-        </button>
-      </main>
-    </div>
+      </div>
+    </PageShell>
   );
 };
 

@@ -8,6 +8,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCallingsStore } from '../state';
+import { PageShell, Card } from '../../../ui';
 
 // Mock members for development
 const MOCK_MEMBERS = [
@@ -29,46 +30,58 @@ const LeadershipMembersPage: React.FC = () => {
   };
   
   return (
-    <div className="leadership-page">
-      <header className="leadership-header">
-        <button className="back-button" onClick={() => navigate('/member/leadership/home')}>
-          ← Volver
-        </button>
-        <h1>Miembros</h1>
-      </header>
-      
-      <main className="leadership-content">
-        <div className="members-list">
-          {MOCK_MEMBERS.map(member => {
-            const memberCallings = getMemberCallings(member.id);
-            
-            return (
-              <div 
-                key={member.id}
-                className="member-card"
-                onClick={() => navigate(`/member/leadership/members/${member.id}`)}
-              >
-                <div className="member-avatar">👤</div>
-                <div className="member-info">
-                  <span className="member-name">{member.name}</span>
-                  <span className="member-since">Miembro desde {member.since}</span>
+    <PageShell
+      title="Miembros"
+      onBack={() => navigate('/member/leadership/home')}
+      variant="gradient"
+    >
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+        {MOCK_MEMBERS.map(member => {
+          const memberCallings = getMemberCallings(member.id);
+          
+          return (
+            <Card
+              key={member.id}
+              variant="default"
+              padding="md"
+              onClick={() => navigate(`/member/leadership/members/${member.id}`)}
+              className="member-card-clickable"
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <div style={{ fontSize: '32px' }}>👤</div>
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontSize: '15px', fontWeight: 600, color: 'var(--am-color-text-main, #0f172a)', marginBottom: '4px' }}>
+                    {member.name}
+                  </div>
+                  <div style={{ fontSize: '13px', color: 'var(--am-color-text-muted, #64748b)', marginBottom: '8px' }}>
+                    Miembro desde {member.since}
+                  </div>
                   {memberCallings.length > 0 && (
-                    <div className="member-callings">
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
                       {memberCallings.map(c => (
-                        <span key={c.id} className="calling-badge">
+                        <span 
+                          key={c.id} 
+                          style={{
+                            fontSize: '11px',
+                            padding: '4px 8px',
+                            borderRadius: '999px',
+                            background: 'var(--am-color-primary-soft, #eef2ff)',
+                            color: 'var(--am-color-primary-strong, #4f46e5)',
+                          }}
+                        >
                           {c.position}
                         </span>
                       ))}
                     </div>
                   )}
                 </div>
-                <span className="arrow">→</span>
+                <span style={{ fontSize: '18px', color: 'var(--am-color-text-muted, #64748b)' }}>→</span>
               </div>
-            );
-          })}
-        </div>
-      </main>
-    </div>
+            </Card>
+          );
+        })}
+      </div>
+    </PageShell>
   );
 };
 

@@ -3,7 +3,29 @@
  * 
  * Wireframe aesthetic: clean, calm, structured.
  * NO gamification, NO urgency colors.
+ * 
+ * Note: Most styles are now handled by UI components (PageShell, Card, Button).
+ * These are legacy styles and clickable card helpers.
  */
+
+/* Clickable Card Helpers */
+.summary-card-clickable,
+.calling-card-clickable,
+.calling-preview-card-clickable,
+.calling-mini-card-clickable,
+.member-card-clickable {
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.summary-card-clickable:hover,
+.calling-card-clickable:hover,
+.calling-preview-card-clickable:hover,
+.calling-mini-card-clickable:hover,
+.member-card-clickable:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--am-shadow-lg, 0 8px 24px rgba(15, 23, 42, 0.14));
+}
 
 /* Base Layout */
 .leadership-page {

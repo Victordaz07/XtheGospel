@@ -10,6 +10,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCallingsStore } from '../state';
 import { STATUS_LABELS, ORGANIZATION_LABELS } from '../types';
+import { PageShell, SectionTitle, Card, Button } from '../../../ui';
 import './LeadershipPages.css';
 
 const LeadershipDashboardPage: React.FC = () => {
@@ -29,89 +30,128 @@ const LeadershipDashboardPage: React.FC = () => {
   const callingsWithoutRecentFollowup = activeCallings.slice(0, 2); // Mock for now
   
   return (
-    <div className="leadership-page">
-      <header className="leadership-header">
-        <h1>Liderazgo</h1>
-        <p className="leadership-subtitle">Gestión de llamamientos del barrio</p>
-      </header>
-      
-      <main className="leadership-content">
+    <PageShell
+      title="Liderazgo"
+      variant="gradient"
+    >
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
         {/* Summary Cards */}
-        <section className="dashboard-summary">
-          <div className="summary-card" onClick={() => navigate('/member/leadership/callings?status=active')}>
-            <span className="summary-value">{activeCallings.length}</span>
-            <span className="summary-label">Activos</span>
-          </div>
-          <div className="summary-card" onClick={() => navigate('/member/leadership/callings?status=training')}>
-            <span className="summary-value">{inTraining.length}</span>
-            <span className="summary-label">En capacitación</span>
-          </div>
-          <div className="summary-card" onClick={() => navigate('/member/leadership/callings?status=proposed')}>
-            <span className="summary-value">{pending.length}</span>
-            <span className="summary-label">Pendientes</span>
-          </div>
-        </section>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '12px' }}>
+          <Card 
+            variant="default" 
+            padding="md"
+            onClick={() => navigate('/member/leadership/callings?status=active')}
+            className="summary-card-clickable"
+          >
+            <div style={{ textAlign: 'center' }}>
+              <div style={{ fontSize: '28px', fontWeight: 700, color: 'var(--am-color-primary, #6366f1)' }}>
+                {activeCallings.length}
+              </div>
+              <div style={{ fontSize: '12px', color: 'var(--am-color-text-muted, #64748b)', marginTop: '4px' }}>
+                Activos
+              </div>
+            </div>
+          </Card>
+          <Card 
+            variant="default" 
+            padding="md"
+            onClick={() => navigate('/member/leadership/callings?status=training')}
+            className="summary-card-clickable"
+          >
+            <div style={{ textAlign: 'center' }}>
+              <div style={{ fontSize: '28px', fontWeight: 700, color: 'var(--am-color-primary, #6366f1)' }}>
+                {inTraining.length}
+              </div>
+              <div style={{ fontSize: '12px', color: 'var(--am-color-text-muted, #64748b)', marginTop: '4px' }}>
+                En capacitación
+              </div>
+            </div>
+          </Card>
+          <Card 
+            variant="default" 
+            padding="md"
+            onClick={() => navigate('/member/leadership/callings?status=proposed')}
+            className="summary-card-clickable"
+          >
+            <div style={{ textAlign: 'center' }}>
+              <div style={{ fontSize: '28px', fontWeight: 700, color: 'var(--am-color-primary, #6366f1)' }}>
+                {pending.length}
+              </div>
+              <div style={{ fontSize: '12px', color: 'var(--am-color-text-muted, #64748b)', marginTop: '4px' }}>
+                Pendientes
+              </div>
+            </div>
+          </Card>
+        </div>
         
         {/* Soft Reminders */}
         {callingsWithoutRecentFollowup.length > 0 && (
-          <section className="soft-reminders">
-            <h2>💡 Recordatorios</h2>
-            <div className="reminder-card">
-              <p>
-                {callingsWithoutRecentFollowup.length} llamamiento(s) sin seguimiento reciente.
-              </p>
-              <span className="reminder-note">No urgente — solo un recordatorio amable.</span>
-            </div>
-          </section>
+          <Card variant="default" padding="md">
+            <SectionTitle>💡 Recordatorios</SectionTitle>
+            <p style={{ fontSize: '14px', color: 'var(--am-color-text-main, #0f172a)', margin: '0 0 8px 0' }}>
+              {callingsWithoutRecentFollowup.length} llamamiento(s) sin seguimiento reciente.
+            </p>
+            <span style={{ fontSize: '12px', color: 'var(--am-color-text-muted, #64748b)' }}>
+              No urgente — solo un recordatorio amable.
+            </span>
+          </Card>
         )}
         
         {/* Quick Actions */}
-        <section className="quick-actions">
-          <h2>Acciones rápidas</h2>
-          <button 
-            className="action-button primary"
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+          <SectionTitle>Acciones rápidas</SectionTitle>
+          <Button 
+            variant="primary"
+            fullWidth
             onClick={() => navigate('/member/leadership/callings/new')}
           >
             ➕ Nuevo llamamiento
-          </button>
-          <button 
-            className="action-button secondary"
+          </Button>
+          <Button 
+            variant="secondary"
+            fullWidth
             onClick={() => navigate('/member/leadership/callings')}
           >
             📋 Ver todos los llamamientos
-          </button>
-          <button 
-            className="action-button secondary"
+          </Button>
+          <Button 
+            variant="secondary"
+            fullWidth
             onClick={() => navigate('/member/leadership/members')}
           >
             👥 Ver miembros
-          </button>
-        </section>
+          </Button>
+        </div>
         
         {/* Recent Activity */}
-        <section className="recent-callings">
-          <h2>Llamamientos recientes</h2>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+          <SectionTitle>Llamamientos recientes</SectionTitle>
           {callings.slice(0, 3).map(calling => (
-            <div 
-              key={calling.id} 
-              className="calling-preview-card"
+            <Card 
+              key={calling.id}
+              variant="default"
+              padding="md"
               onClick={() => navigate(`/member/leadership/callings/${calling.id}`)}
+              className="calling-preview-card-clickable"
             >
-              <div className="calling-preview-header">
-                <span className="calling-member-name">{calling.memberName}</span>
-                <span className={`status-badge status-${calling.status}`}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '8px' }}>
+                <span style={{ fontSize: '15px', fontWeight: 600, color: 'var(--am-color-text-main, #0f172a)' }}>
+                  {calling.memberName}
+                </span>
+                <span className={`status-badge status-${calling.status}`} style={{ fontSize: '11px', padding: '4px 8px', borderRadius: '999px' }}>
                   {STATUS_LABELS[calling.status]}
                 </span>
               </div>
-              <div className="calling-preview-details">
-                <span className="calling-position">{calling.position}</span>
-                <span className="calling-org">{ORGANIZATION_LABELS[calling.organization]}</span>
+              <div style={{ display: 'flex', gap: '8px', fontSize: '13px', color: 'var(--am-color-text-muted, #64748b)' }}>
+                <span>{calling.position}</span>
+                <span>•</span>
+                <span>{ORGANIZATION_LABELS[calling.organization]}</span>
               </div>
-            </div>
+            </Card>
           ))}
-        </section>
-      </main>
-    </div>
+        </div>
+      </div>
+    </PageShell>
   );
 };
 

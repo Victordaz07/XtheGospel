@@ -9,6 +9,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCallingsStore } from '../state';
 import { OrganizationType, ORGANIZATION_LABELS } from '../types';
+import { PageShell, Card, Button } from '../../../ui';
 import './LeadershipPages.css';
 
 // Mock members for development
@@ -59,24 +60,41 @@ const NewCallingPage: React.FC = () => {
     navigate(`/member/leadership/callings/${newCalling.id}`);
   };
   
+  const inputStyle: React.CSSProperties = {
+    width: '100%',
+    padding: '12px 16px',
+    borderRadius: 'var(--am-radius-sm, 10px)',
+    border: '1px solid var(--am-color-border, #e2e8f0)',
+    fontSize: '14px',
+    fontFamily: 'inherit',
+    background: 'white',
+    boxSizing: 'border-box',
+  };
+
+  const labelStyle: React.CSSProperties = {
+    display: 'block',
+    fontSize: '14px',
+    fontWeight: 600,
+    color: 'var(--am-color-text-main, #0f172a)',
+    marginBottom: '8px',
+  };
+
   return (
-    <div className="leadership-page">
-      <header className="leadership-header">
-        <button className="back-button" onClick={() => navigate(-1)}>
-          ← Cancelar
-        </button>
-        <h1>Nuevo Llamamiento</h1>
-      </header>
-      
-      <main className="leadership-content">
-        <form className="calling-form" onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="member">👤 Miembro</label>
+    <PageShell
+      title="Nuevo Llamamiento"
+      onBack={() => navigate(-1)}
+      variant="gradient"
+    >
+      <Card variant="default" padding="lg">
+        <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          <div>
+            <label htmlFor="member" style={labelStyle}>👤 Miembro</label>
             <select 
               id="member"
               value={memberId}
               onChange={handleMemberChange}
               required
+              style={inputStyle}
             >
               <option value="">Seleccionar miembro...</option>
               {MOCK_MEMBERS.map(m => (
@@ -85,13 +103,14 @@ const NewCallingPage: React.FC = () => {
             </select>
           </div>
           
-          <div className="form-group">
-            <label htmlFor="organization">🏛️ Organización</label>
+          <div>
+            <label htmlFor="organization" style={labelStyle}>🏛️ Organización</label>
             <select
               id="organization"
               value={organization}
               onChange={(e) => setOrganization((e.target as any).value as OrganizationType)}
               required
+              style={inputStyle}
             >
               <option value="">Seleccionar...</option>
               {Object.entries(ORGANIZATION_LABELS).map(([key, label]) => (
@@ -100,8 +119,8 @@ const NewCallingPage: React.FC = () => {
             </select>
           </div>
           
-          <div className="form-group">
-            <label htmlFor="position">📋 Rol / Posición</label>
+          <div>
+            <label htmlFor="position" style={labelStyle}>📋 Rol / Posición</label>
             <input
               id="position"
               type="text"
@@ -109,45 +128,49 @@ const NewCallingPage: React.FC = () => {
               onChange={(e) => setPosition((e.target as any).value)}
               placeholder="Ej: Presidente, Consejero, Maestro..."
               required
+              style={inputStyle}
             />
           </div>
           
-          <div className="form-group">
-            <label htmlFor="date">📅 Fecha propuesta (opcional)</label>
+          <div>
+            <label htmlFor="date" style={labelStyle}>📅 Fecha propuesta (opcional)</label>
             <input
               id="date"
               type="date"
               value={proposedDate}
               onChange={(e) => setProposedDate((e.target as any).value)}
+              style={inputStyle}
             />
           </div>
           
-          <div className="form-group">
-            <label htmlFor="notes">📝 Notas (opcional)</label>
+          <div>
+            <label htmlFor="notes" style={labelStyle}>📝 Notas (opcional)</label>
             <textarea
               id="notes"
               value={notes}
               onChange={(e) => setNotes((e.target as any).value)}
               placeholder="Notas adicionales..."
               rows={3}
+              style={{ ...inputStyle, resize: 'vertical' }}
             />
           </div>
           
-          <div className="form-actions">
-            <button type="submit" className="action-button primary">
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginTop: '8px' }}>
+            <Button type="submit" variant="primary" fullWidth>
               Guardar como Propuesto
-            </button>
-            <button 
+            </Button>
+            <Button 
               type="button" 
-              className="action-button secondary"
+              variant="ghost"
+              fullWidth
               onClick={() => navigate(-1)}
             >
               Cancelar
-            </button>
+            </Button>
           </div>
         </form>
-      </main>
-    </div>
+      </Card>
+    </PageShell>
   );
 };
 
