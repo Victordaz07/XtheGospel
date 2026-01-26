@@ -1,0 +1,32 @@
+/**
+ * SectionTitle Styles
+ */
+
+.section-title-wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--am-space-md, 16px);
+  margin-bottom: var(--am-space-md, 16px);
+}
+
+.section-title-left {
+  flex: 1;
+}
+
+.section-title {
+  font-size: var(--am-font-lg, 20px);
+  font-weight: 700;
+  color: var(--am-color-text-main, #0f172a);
+  margin: 0 0 var(--am-space-xs, 4px) 0;
+}
+
+.section-subtitle {
+  font-size: var(--am-font-sm, 14px);
+  color: var(--am-color-text-muted, #64748b);
+  margin: 0;
+}
+
+.section-title-action {
+  flex-shrink: 0;
+}

@@ -1,0 +1,119 @@
+/**
+ * PageShell Styles
+ * Matches the golden UI design system
+ */
+
+.page-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--am-font-family, system-ui, -apple-system, BlinkMacSystemFont, sans-serif);
+}
+
+/* Variants */
+.page-shell--default {
+  background: radial-gradient(circle at top left, #eef2ff 0, #f5f7fb 40%, #f5f7fb 100%);
+  color: var(--am-color-text-main, #0f172a);
+}
+
+.page-shell--gradient {
+  background: linear-gradient(135deg, #f5f7fb 0%, #eef2ff 50%, #f0f4ff 100%);
+  color: var(--am-color-text-main, #0f172a);
+}
+
+.page-shell--plain {
+  background: var(--am-color-bg, #f5f7fb);
+  color: var(--am-color-text-main, #0f172a);
+}
+
+/* Header */
+.page-shell-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--am-space-md, 16px) var(--am-space-lg, 24px);
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(18px);
+  border-radius: 0 0 var(--am-radius-lg, 22px) var(--am-radius-lg, 22px);
+  box-shadow: var(--am-shadow-sm, 0 1px 3px rgba(15, 23, 42, 0.08));
+}
+
+.page-shell-header--custom {
+  padding: 0;
+  background: transparent;
+  backdrop-filter: none;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.page-shell-header-left {
+  display: flex;
+  align-items: center;
+  gap: var(--am-space-sm, 8px);
+}
+
+.page-shell-header-right {
+  display: flex;
+  align-items: center;
+  gap: var(--am-space-sm, 8px);
+}
+
+.page-shell-back-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: var(--am-color-surface-alt, #f0f4ff);
+  color: var(--am-color-text-main, #0f172a);
+  border-radius: var(--am-radius-pill, 999px);
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.15s, transform 0.1s;
+}
+
+.page-shell-back-btn:hover {
+  background: var(--am-color-primary-soft, #eef2ff);
+  transform: translateX(-2px);
+}
+
+.page-shell-title {
+  font-size: var(--am-font-lg, 20px);
+  font-weight: 700;
+  margin: 0;
+  color: var(--am-color-text-main, #0f172a);
+}
+
+/* Content */
+.page-shell-content {
+  flex: 1;
+  padding: var(--am-space-lg, 24px);
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.page-shell-content--with-nav {
+  padding-bottom: calc(var(--am-space-xxl, 48px) + 70px); /* Space for bottom nav */
+}
+
+/* Mobile adjustments */
+@media (max-width: 480px) {
+  .page-shell-header {
+    padding: var(--am-space-sm, 8px) var(--am-space-md, 16px);
+    border-radius: 0;
+  }
+
+  .page-shell-content {
+    padding: var(--am-space-md, 16px);
+  }
+
+  .page-shell-title {
+    font-size: var(--am-font-md, 16px);
+  }
+}

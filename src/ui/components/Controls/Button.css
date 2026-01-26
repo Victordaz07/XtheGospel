@@ -1,0 +1,107 @@
+/**
+ * Button Styles
+ * Matches the golden UI design system
+ */
+
+.ui-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: none;
+  border-radius: var(--am-radius-pill, 999px);
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease, background-color 0.15s ease;
+}
+
+/* Sizes */
+.ui-button--sm {
+  padding: 8px 14px;
+  font-size: var(--am-font-xs, 12px);
+}
+
+.ui-button--md {
+  padding: 10px 18px;
+  font-size: var(--am-font-sm, 14px);
+}
+
+.ui-button--lg {
+  padding: 14px 24px;
+  font-size: var(--am-font-md, 16px);
+}
+
+/* Variants */
+.ui-button--primary {
+  background: linear-gradient(
+    135deg,
+    var(--am-color-primary-gradient-start, #6366f1),
+    var(--am-color-primary-gradient-end, #3b82f6)
+  );
+  color: white;
+  box-shadow: var(--am-shadow-md, 0 4px 12px rgba(15, 23, 42, 0.10));
+}
+
+.ui-button--primary:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: var(--am-shadow-lg, 0 8px 24px rgba(15, 23, 42, 0.14));
+}
+
+.ui-button--secondary {
+  background: var(--am-color-secondary-soft, #ecfdf3);
+  color: var(--am-color-secondary, #22c55e);
+  box-shadow: none;
+}
+
+.ui-button--secondary:hover:not(:disabled) {
+  background: #d1fae5;
+  transform: translateY(-1px);
+}
+
+.ui-button--ghost {
+  background: transparent;
+  color: var(--am-color-text-main, #0f172a);
+  border: 1px solid var(--am-color-border, #e2e8f0);
+}
+
+.ui-button--ghost:hover:not(:disabled) {
+  background: var(--am-color-surface-alt, #f0f4ff);
+  transform: translateY(-1px);
+}
+
+.ui-button--destructive {
+  /* Calm destructive - not alarming red */
+  background: #fef2f2;
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+}
+
+.ui-button--destructive:hover:not(:disabled) {
+  background: #fee2e2;
+  transform: translateY(-1px);
+}
+
+/* Full width */
+.ui-button--full-width {
+  width: 100%;
+}
+
+/* Disabled */
+.ui-button--disabled,
+.ui-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* Icon */
+.ui-button-icon {
+  display: flex;
+  align-items: center;
+  font-size: 1.1em;
+}
+
+.ui-button-label {
+  white-space: nowrap;
+}

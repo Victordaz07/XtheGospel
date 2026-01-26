@@ -1,6 +1,8 @@
 // Layout components
 export { PageContainer } from './Layout/PageContainer';
+export { PageShell } from './Layout/PageShell';
 export { Section } from './Layout/Section';
+export { SectionTitle } from './Layout/SectionTitle';
 export { Card } from './Layout/Card';
 export { TwoColumnLayout } from './Layout/TwoColumnLayout';
 
@@ -12,6 +14,7 @@ export { FloatingMenu } from './Navigation/FloatingMenu';
 export type { FloatingMenuTab } from './Navigation/FloatingMenu';
 
 // Controls components
+export { Button } from './Controls/Button';
 export { ButtonPrimary } from './Controls/ButtonPrimary';
 export { ButtonSecondary } from './Controls/ButtonSecondary';
 export { IconButton } from './Controls/IconButton';
