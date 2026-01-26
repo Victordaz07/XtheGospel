@@ -89,6 +89,10 @@ export default function DataPrivacySection({
             <span>Continuity memory</span>
             <span>{dataInfo?.hasSpiritualMemory ? '✓' : '—'}</span>
           </li>
+          <li className={dataInfo?.hasLeadershipData ? '' : `${classPrefix}__data-empty`}>
+            <span>Leadership data</span>
+            <span>{dataInfo?.hasLeadershipData ? '✓' : '—'}</span>
+          </li>
         </ul>
       </div>
 
@@ -132,7 +136,19 @@ export default function DataPrivacySection({
           <div className={`${classPrefix}__confirm-modal`}>
             <h3 className={`${classPrefix}__confirm-title`}>Clear all data?</h3>
             <p className={`${classPrefix}__confirm-text`}>
-              This will remove everything stored on this device.
+              This will remove everything stored on this device:
+              <br />
+              <br />
+              • Journey dates
+              <br />
+              • Journal entries
+              <br />
+              • Leadership data (callings, notes, calendar)
+              <br />
+              • App preferences
+              <br />
+              <br />
+              <strong>We recommend exporting your data first.</strong>
               <br />
               You can start fresh at any time.
             </p>

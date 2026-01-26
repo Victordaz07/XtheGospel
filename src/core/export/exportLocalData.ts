@@ -47,11 +47,23 @@ export interface SpiritualMemoryExport {
   lastSavedToJournalAt?: string;
 }
 
+/** Leadership data exports */
+export interface LeadershipExport {
+  callings?: unknown;
+  responsibilities?: unknown;
+  notes?: unknown;
+  events?: unknown;
+  observations?: unknown;
+  mode?: string;
+  role?: string;
+}
+
 /** Complete export payload */
 export interface ExportPayload {
   journey: JourneyExport;
   journal: GodStoryEntry[];
   spiritualMemory: SpiritualMemoryExport;
+  leadership?: LeadershipExport;
   exportedAt: string;
   appVersion: string;
 }
@@ -71,6 +83,14 @@ const USER_DATA_KEYS = {
   journal: '@godStory',
   lessonNotes: '@lessonNotes',
   commitments: '@investigatorCommitments',
+  // Leadership data
+  leadershipCallings: 'xtg_leadership_callings_v1',
+  leadershipResponsibilities: 'xtg_leadership_responsibilities_v1',
+  leadershipNotes: 'xtg_leadership_notes_v1',
+  leadershipEvents: 'xtg_leadership_events_v1',
+  leadershipObservations: 'xtg_leadership_observations_v1',
+  mode: 'xtg_mode_v1',
+  role: 'app.currentRole',
 } as const;
 
 // ============================================================================
@@ -121,10 +141,25 @@ export function gatherExportData(): ExportPayload {
     {}
   );
 
+  // Leadership data
+  const leadership: LeadershipExport = {
+    callings: safeReadJSON(USER_DATA_KEYS.leadershipCallings, null),
+    responsibilities: safeReadJSON(USER_DATA_KEYS.leadershipResponsibilities, null),
+    notes: safeReadJSON(USER_DATA_KEYS.leadershipNotes, null),
+    events: safeReadJSON(USER_DATA_KEYS.leadershipEvents, null),
+    observations: safeReadJSON(USER_DATA_KEYS.leadershipObservations, null),
+    mode: safeReadJSON<string>(USER_DATA_KEYS.mode, null),
+    role: safeReadJSON<string>(USER_DATA_KEYS.role, null),
+  };
+
+  // Only include leadership if it has any data
+  const hasLeadershipData = Object.values(leadership).some(v => v !== null && v !== undefined);
+
   return {
     journey,
     journal,
     spiritualMemory,
+    ...(hasLeadershipData && { leadership }),
     exportedAt: new Date().toISOString(),
     appVersion: '1.0.0', // From package.json
   };
@@ -174,6 +209,35 @@ export function exportLocalData(): void {
 // ============================================================================
 
 /**
+ * Get all localStorage keys that belong to the app (prefixed with xtg_ or in allowed list).
+ * Used for comprehensive cleanup.
+ */
+export function getAllLocalKeys(): string[] {
+  if (typeof window === 'undefined' || !window.localStorage) {
+    return [];
+  }
+  
+  const keys: string[] = [];
+  const knownKeys = Object.values(USER_DATA_KEYS) as string[];
+  
+  try {
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (key) {
+        // Include keys that start with xtg_ or are in our known list
+        if (key.startsWith('xtg_') || knownKeys.includes(key)) {
+          keys.push(key);
+        }
+      }
+    }
+  } catch (error) {
+    console.warn('Error reading localStorage keys:', error);
+  }
+  
+  return keys;
+}
+
+/**
  * Clear all user data from localStorage.
  * App will return to initial state.
  */
@@ -189,6 +253,16 @@ export function clearAllLocalData(): void {
         localStorage.removeItem(key);
       } catch {
         // Individual key removal failure - continue with others
+      }
+    });
+    
+    // Also remove any other xtg_ prefixed keys (catch-all for safety)
+    const allKeys = getAllLocalKeys();
+    allKeys.forEach((key) => {
+      try {
+        localStorage.removeItem(key);
+      } catch {
+        // Continue with others
       }
     });
     
@@ -208,6 +282,7 @@ export interface DataInfo {
   hasJourneyData: boolean;
   hasJournalEntries: boolean;
   hasSpiritualMemory: boolean;
+  hasLeadershipData: boolean;
   journalEntryCount: number;
 }
 
@@ -226,6 +301,24 @@ export function getDataInfo(): DataInfo {
     {}
   );
 
+  // Check if any leadership data exists
+  const hasLeadershipData = [
+    USER_DATA_KEYS.leadershipCallings,
+    USER_DATA_KEYS.leadershipResponsibilities,
+    USER_DATA_KEYS.leadershipNotes,
+    USER_DATA_KEYS.leadershipEvents,
+    USER_DATA_KEYS.leadershipObservations,
+    USER_DATA_KEYS.mode,
+    USER_DATA_KEYS.role,
+  ].some(key => {
+    try {
+      const value = localStorage.getItem(key);
+      return value !== null && value !== undefined && value !== 'null';
+    } catch {
+      return false;
+    }
+  });
+
   return {
     hasJourneyData: Boolean(
       journey?.state?.ordinanceDates &&
@@ -233,6 +326,7 @@ export function getDataInfo(): DataInfo {
     ),
     hasJournalEntries: journal.length > 0,
     hasSpiritualMemory: Boolean(memory.lastLessonId || memory.lastVisitedAt),
+    hasLeadershipData,
     journalEntryCount: journal.length,
   };
 }
