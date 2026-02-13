@@ -1,97 +1,51 @@
 .ui-person-card {
   display: flex;
   align-items: center;
-  gap: var(--spacing-md, 16px);
-  background: var(--color-surface, #FFFFFF);
-  border-radius: var(--border-radius-lg, 16px);
-  padding: var(--spacing-md, 16px);
-  box-shadow: var(--shadow-sm, 0 1px 3px 0 rgba(0, 0, 0, 0.1));
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  text-decoration: none;
-  color: inherit;
-  transition: all var(--transition-base, 200ms ease);
+  gap: var(--spacing-3);
+  background: var(--color-background-card);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-3);
+  border: 1px solid var(--color-border-subtle);
+  transition: all var(--transition-base);
+}
+
+.ui-person-card--clickable { cursor: pointer; }
+.ui-person-card--clickable:hover { box-shadow: var(--shadow-sm); border-color: var(--color-primary-light); }
+
+.ui-person-card__avatar {
   position: relative;
-}
-
-.ui-person-card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md, 0 4px 6px -1px rgba(0, 0, 0, 0.1));
-}
-
-.ui-person-card__avatar,
-.ui-person-card__avatar-placeholder {
   width: 48px;
   height: 48px;
-  border-radius: 50%;
-  flex-shrink: 0;
-  object-fit: cover;
-}
-
-.ui-person-card__avatar-placeholder {
-  background: linear-gradient(135deg, var(--color-primary, #4F46E5), var(--color-primary-light, #6366F1));
-  color: var(--color-text-on-primary, #FFFFFF);
+  border-radius: var(--radius-full);
+  background: var(--color-primary-100);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: var(--font-size-lg, 18px);
-  font-weight: var(--font-weight-bold, 700);
+  flex-shrink: 0;
+  overflow: hidden;
 }
 
-.ui-person-card__content {
-  flex: 1;
-  min-width: 0;
+.ui-person-card__avatar--active::after,
+.ui-person-card__avatar--inactive::after,
+.ui-person-card__avatar--pending::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 12px;
+  height: 12px;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--color-background-card);
 }
 
-.ui-person-card__header {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-sm, 8px);
-  margin-bottom: var(--spacing-xs, 4px);
-}
+.ui-person-card__avatar--active::after { background: var(--color-semantic-success-default); }
+.ui-person-card__avatar--inactive::after { background: var(--color-neutral-400); }
+.ui-person-card__avatar--pending::after { background: var(--color-accent-default); }
 
-.ui-person-card__name {
-  font-size: var(--font-size-md, 16px);
-  font-weight: var(--font-weight-semibold, 600);
-  color: var(--color-text, #0F172A);
-  margin: 0;
-}
+.ui-person-card__avatar-img { width: 100%; height: 100%; object-fit: cover; }
+.ui-person-card__avatar-initials { font-size: var(--font-font-size-lg); font-weight: var(--font-font-weight-semibold); color: var(--color-primary-default); }
 
-.ui-person-card__status {
-  font-size: var(--font-size-xs, 12px);
-  padding: var(--spacing-xs, 4px) var(--spacing-sm, 8px);
-  border-radius: var(--border-radius-full, 9999px);
-  font-weight: var(--font-weight-semibold, 600);
-}
-
-.ui-person-card__status--active {
-  background: var(--color-success-light, #D1FAE5);
-  color: var(--color-success, #10B981);
-}
-
-.ui-person-card__status--new {
-  background: var(--color-info-light, #DBEAFE);
-  color: var(--color-info, #3B82F6);
-}
-
-.ui-person-card__status--inactive {
-  background: var(--color-background-alt, #F1F5F9);
-  color: var(--color-text-secondary, #64748B);
-}
-
-.ui-person-card__meta {
-  font-size: var(--font-size-sm, 14px);
-  color: var(--color-text-secondary, #64748B);
-  margin: 0;
-}
-
-.ui-person-card__arrow {
-  font-size: var(--font-size-xl, 20px);
-  color: var(--color-primary, #4F46E5);
-  font-weight: var(--font-weight-bold, 700);
-  transition: transform var(--transition-base, 200ms ease);
-}
-
-.ui-person-card:hover .ui-person-card__arrow {
-  transform: translateX(4px);
-}
-
+.ui-person-card__info { flex: 1; min-width: 0; }
+.ui-person-card__name { margin: 0; font-size: var(--font-font-size-base); font-weight: var(--font-font-weight-medium); color: var(--color-text-primary); }
+.ui-person-card__subtitle { margin: var(--spacing-1) 0 0; font-size: var(--font-font-size-sm); color: var(--color-text-secondary); }
+.ui-person-card__action { flex-shrink: 0; }

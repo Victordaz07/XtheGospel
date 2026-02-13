@@ -1,59 +1,40 @@
+/**
+ * ActivityCard - Display an activity item
+ */
+
 import React, { ReactNode } from 'react';
-import { Link } from 'react-router-dom';
-import { theme } from '../../theme/tokens';
 import './ActivityCard.css';
 
-interface ActivityCardProps {
-  id: string;
+export interface ActivityCardProps {
   title: string;
   description?: string;
   icon?: ReactNode;
-  xp?: number;
-  completed?: boolean;
-  to?: string;
+  timestamp?: string;
+  variant?: 'default' | 'completed' | 'pending';
   onClick?: () => void;
   className?: string;
 }
 
 export const ActivityCard: React.FC<ActivityCardProps> = ({
-  id,
   title,
   description,
   icon,
-  xp,
-  completed = false,
-  to,
+  timestamp,
+  variant = 'default',
   onClick,
   className = '',
 }) => {
-  const content = (
-    <div className={`ui-activity-card ${completed ? 'ui-activity-card--completed' : ''} ${className}`}>
+  return (
+    <div 
+      className={`ui-activity-card ui-activity-card--${variant} ${onClick ? 'ui-activity-card--clickable' : ''} ${className}`}
+      onClick={onClick}
+    >
       {icon && <div className="ui-activity-card__icon">{icon}</div>}
       <div className="ui-activity-card__content">
-        <h3 className="ui-activity-card__title">{title}</h3>
-        {description && (
-          <p className="ui-activity-card__description">{description}</p>
-        )}
+        <h4 className="ui-activity-card__title">{title}</h4>
+        {description && <p className="ui-activity-card__description">{description}</p>}
       </div>
-      {xp !== undefined && (
-        <div className="ui-activity-card__xp">
-          <span>+{xp} XP</span>
-        </div>
-      )}
-      {completed && (
-        <span className="ui-activity-card__badge">✓</span>
-      )}
+      {timestamp && <span className="ui-activity-card__time">{timestamp}</span>}
     </div>
   );
-
-  if (to) {
-    return <Link to={to}>{content}</Link>;
-  }
-
-  if (onClick) {
-    return <div onClick={onClick} style={{ cursor: 'pointer' }}>{content}</div>;
-  }
-
-  return content;
 };
-

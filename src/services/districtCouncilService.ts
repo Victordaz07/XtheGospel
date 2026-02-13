@@ -15,21 +15,21 @@ export interface DistrictCouncil {
   time: string;
   location: string;
   status: CouncilStatus;
-  
+
   // Resumen rápido
   summary: {
     spiritualFocus: string;
     trainingTopic: string;
     mainGoal: string;
   };
-  
+
   // Bloques de contenido
   spiritualStart: {
     scripture: string;
     ideaCentral: string;
     application: string;
   };
-  
+
   progress: {
     personasConFecha: string;
     personasEnRiesgo: string;
@@ -37,9 +37,9 @@ export interface DistrictCouncil {
     investigadoresEnIglesia: string;
     comentarios: string;
   };
-  
+
   experiences: string;
-  
+
   training: {
     tema: string;
     escritura: string;
@@ -47,7 +47,7 @@ export interface DistrictCouncil {
     habilidad: string;
     compromiso: string;
   };
-  
+
   roleplays: {
     escenario: string;
     objetivo: string;
@@ -55,7 +55,7 @@ export interface DistrictCouncil {
     aspectosMejorar: string;
     compromiso: string;
   };
-  
+
   goals: {
     personas: string;
     compromisos: string;
@@ -64,13 +64,13 @@ export interface DistrictCouncil {
     seguimiento: string;
     resumen: string;
   };
-  
+
   closing: {
     personas: string;
     misioneros: string;
     unidad: string;
   };
-  
+
   createdAt: string;
   updatedAt: string;
   publishedAt?: string;
@@ -93,29 +93,29 @@ const COUNCIL_COMMENTS_KEY = '@councilComments';
 
 export const DistrictCouncilService = {
   // Guardar/actualizar reunión
-  saveCouncil: (council: Omit<DistrictCouncil, 'id' | 'createdAt' | 'updatedAt'>): DistrictCouncil => {
+  saveCouncil: (council: Omit<DistrictCouncil, 'id' | 'createdAt' | 'updatedAt'> & { id?: string }): DistrictCouncil => {
     try {
       const councils = DistrictCouncilService.getAllCouncils();
       const now = new Date().toISOString();
-      
+      const id = council.id ?? `council_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
       const newCouncil: DistrictCouncil = {
         ...council,
-        id: council.id || `council_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
-        createdAt: council.id ? councils.find(c => c.id === council.id)?.createdAt || now : now,
+        id,
+        createdAt: council.id ? councils.find(c => c.id === council.id)?.createdAt ?? now : now,
         updatedAt: now
       };
-      
+
       const index = councils.findIndex(c => c.id === newCouncil.id);
       if (index >= 0) {
         councils[index] = newCouncil;
       } else {
         councils.push(newCouncil);
       }
-      
+
       if (typeof window !== 'undefined' && window.localStorage) {
         localStorage.setItem(DISTRICT_COUNCILS_KEY, JSON.stringify(councils));
       }
-      
+
       return newCouncil;
     } catch (e) {
       console.error('Error guardando reunión:', e);
@@ -128,13 +128,13 @@ export const DistrictCouncilService = {
     try {
       const councils = DistrictCouncilService.getAllCouncils();
       const council = councils.find(c => c.id === councilId);
-      
+
       if (!council) return null;
-      
+
       council.status = 'published';
       council.publishedAt = new Date().toISOString();
       council.updatedAt = new Date().toISOString();
-      
+
       // Crear evento de liderazgo
       DistrictCouncilService.createLeadershipEvent({
         type: 'district_council',
@@ -149,11 +149,11 @@ export const DistrictCouncilService = {
         status: 'upcoming',
         districtId: council.districtId
       });
-      
+
       if (typeof window !== 'undefined' && window.localStorage) {
         localStorage.setItem(DISTRICT_COUNCILS_KEY, JSON.stringify(councils));
       }
-      
+
       return council;
     } catch (e) {
       console.error('Error publicando reunión:', e);
@@ -223,9 +223,9 @@ export const DistrictCouncilService = {
         id: `event_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
         createdAt: new Date().toISOString()
       };
-      
+
       events.push(newEvent);
-      
+
       if (typeof window !== 'undefined' && window.localStorage) {
         localStorage.setItem(LEADERSHIP_EVENTS_KEY, JSON.stringify(events));
       }
@@ -270,15 +270,15 @@ export const DistrictCouncilService = {
         id: `comment_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
         createdAt: new Date().toISOString()
       };
-      
+
       comments.push(newComment);
-      
+
       if (typeof window !== 'undefined' && window.localStorage) {
         const allComments = DistrictCouncilService.getAllComments();
         const otherComments = allComments.filter(c => c.councilId !== comment.councilId);
         localStorage.setItem(COUNCIL_COMMENTS_KEY, JSON.stringify([...otherComments, ...comments]));
       }
-      
+
       return newComment;
     } catch (e) {
       console.error('Error agregando comentario:', e);
@@ -345,13 +345,13 @@ export const DistrictCouncilService = {
     try {
       const councils = DistrictCouncilService.getAllCouncils();
       const council = councils.find(c => c.id === councilId);
-      
+
       if (!council) return null;
-      
+
       council.status = 'completed';
       council.completedAt = new Date().toISOString();
       council.updatedAt = new Date().toISOString();
-      
+
       // Actualizar evento de liderazgo
       const events = DistrictCouncilService.getAllLeadershipEvents();
       const eventIndex = events.findIndex(e => e.sourceId === councilId && e.type === 'district_council');
@@ -361,11 +361,11 @@ export const DistrictCouncilService = {
           localStorage.setItem(LEADERSHIP_EVENTS_KEY, JSON.stringify(events));
         }
       }
-      
+
       if (typeof window !== 'undefined' && window.localStorage) {
         localStorage.setItem(DISTRICT_COUNCILS_KEY, JSON.stringify(councils));
       }
-      
+
       return council;
     } catch (e) {
       console.error('Error completando reunión:', e);

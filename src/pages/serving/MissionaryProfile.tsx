@@ -1,6 +1,7 @@
 import React from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { useI18n } from '../../context/I18nContext';
+import type { UserRoleKey } from '../../config/roles';
 import { LanguagePicker } from '../../components/LanguagePicker';
 import { Button } from '../../components/Button';
 import { RoleSettingsCard } from '../../components/RoleSettingsCard';
@@ -15,8 +16,13 @@ const MissionaryProfile: React.FC = () => {
   };
 
   const handleRoleChange = async (newRole: string) => {
-    if (window.confirm(t('profile.changeRoleConfirm') || '¿Cambiar tu rol? Esto cambiará las funciones disponibles.')) {
-      await login(newRole);
+    if (
+      window.confirm(
+        t('profile.changeRoleConfirm') ||
+          '¿Cambiar tu rol? Esto cambiará las funciones disponibles.',
+      )
+    ) {
+      await login(newRole as UserRoleKey);
       if (newRole === 'member') {
         window.location.href = '/member/home';
       } else {
@@ -33,17 +39,23 @@ const MissionaryProfile: React.FC = () => {
       <div className="page-content">
         <div className="profile-section">
           <h2>{t('profile.currentRole') || 'Tu Rol Actual'}</h2>
-          <p>{t('profile.roleDescription') || 'Estás usando la app como: Misionero'}</p>
+          <p>
+            {t('profile.roleDescription') ||
+              'Estás usando la app como: Misionero'}
+          </p>
           <div className="profile-role-actions">
-            <Button 
-              title={t('profile.switchToInvestigator') || 'Cambiar a modo Investigador'} 
-              onClick={() => handleRoleChange('investigator')} 
-              variant="outline" 
+            <Button
+              title={
+                t('profile.switchToFriend') ||
+                'Cambiar a modo Amigo'
+              }
+              onClick={() => handleRoleChange('investigator')}
+              variant="outline"
             />
-            <Button 
-              title={t('profile.switchToMember') || 'Cambiar a modo Miembro'} 
-              onClick={() => handleRoleChange('member')} 
-              variant="outline" 
+            <Button
+              title={t('profile.switchToMember') || 'Cambiar a modo Miembro'}
+              onClick={() => handleRoleChange('member')}
+              variant="outline"
             />
           </div>
         </div>
@@ -51,7 +63,11 @@ const MissionaryProfile: React.FC = () => {
           <LanguagePicker />
         </div>
         <div className="profile-section">
-          <Button title={t('profile.logout')} onClick={handleLogout} variant="outline" />
+          <Button
+            title={t('profile.logout')}
+            onClick={handleLogout}
+            variant="outline"
+          />
         </div>
       </div>
     </div>
@@ -59,4 +75,3 @@ const MissionaryProfile: React.FC = () => {
 };
 
 export default MissionaryProfile;
-

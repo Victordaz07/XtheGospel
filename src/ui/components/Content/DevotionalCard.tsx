@@ -1,51 +1,45 @@
+/**
+ * DevotionalCard - Display daily devotional content
+ */
+
 import React, { ReactNode } from 'react';
-import { theme } from '../../theme/tokens';
-import { Card } from '../Layout/Card';
 import './DevotionalCard.css';
 
-interface DevotionalCardProps {
-  scripture: {
-    ref: string;
-    text: string;
-  };
-  application?: string;
-  action?: string;
-  feedback?: ReactNode;
+export interface DevotionalCardProps {
+  title: string;
+  scripture?: string;
+  reference?: string;
+  date?: string;
+  icon?: ReactNode;
+  onClick?: () => void;
   className?: string;
 }
 
 export const DevotionalCard: React.FC<DevotionalCardProps> = ({
+  title,
   scripture,
-  application,
-  action,
-  feedback,
+  reference,
+  date,
+  icon,
+  onClick,
   className = '',
 }) => {
   return (
-    <Card variant="gradient" className={`ui-devotional-card ${className}`}>
+    <div 
+      className={`ui-devotional-card ${onClick ? 'ui-devotional-card--clickable' : ''} ${className}`}
+      onClick={onClick}
+    >
       <div className="ui-devotional-card__header">
-        <h3 className="ui-devotional-card__title">✨ Mensaje Diario</h3>
+        {icon && <div className="ui-devotional-card__icon">{icon}</div>}
+        {date && <span className="ui-devotional-card__date">{date}</span>}
       </div>
-      <div className="ui-devotional-card__content">
-        <div className="ui-devotional-card__scripture">
-          <div className="ui-devotional-card__scripture-ref">{scripture.ref}</div>
-          <div className="ui-devotional-card__scripture-text">{scripture.text}</div>
-        </div>
-        {application && (
-          <div className="ui-devotional-card__application">
-            <p>{application}</p>
-          </div>
-        )}
-        {action && (
-          <div className="ui-devotional-card__action">
-            <strong>Acción de hoy:</strong> {action}
-          </div>
-        )}
-        {feedback && (
-          <div className="ui-devotional-card__feedback">{feedback}</div>
-        )}
-      </div>
-    </Card>
+      <h3 className="ui-devotional-card__title">{title}</h3>
+      {scripture && (
+        <blockquote className="ui-devotional-card__scripture">
+          "{scripture}"
+          {reference && <cite className="ui-devotional-card__reference">— {reference}</cite>}
+        </blockquote>
+      )}
+    </div>
   );
 };
-

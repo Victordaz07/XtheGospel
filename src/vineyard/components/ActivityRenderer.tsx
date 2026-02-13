@@ -42,7 +42,7 @@ const renderQuiz = (
   disabled: boolean,
 ) => (
   <div className="activity-options-list">
-    {activity.options.map((option) => (
+    {activity.options.map(option => (
       <OptionButton
         key={option.id}
         option={option}
@@ -61,7 +61,7 @@ const renderScriptureMatch = (
   disabled: boolean,
 ) => (
   <div className="activity-options-list">
-    {activity.scriptures.map((scripture) => {
+    {activity.scriptures.map(scripture => {
       const isSelected = scripture.id === selectedId;
       return (
         <button
@@ -71,7 +71,9 @@ const renderScriptureMatch = (
           onClick={() => setSelectedId(scripture.id)}
           className={`activity-option-button activity-option-scripture ${isSelected ? 'selected' : ''} ${disabled ? 'disabled' : ''}`}
         >
-          <p className="activity-option-text activity-option-reference">{scripture.reference}</p>
+          <p className="activity-option-text activity-option-reference">
+            {scripture.reference}
+          </p>
           <p className="activity-option-description">{scripture.text}</p>
           {isSelected && scripture.explanation && (
             <p className="activity-option-feedback">{scripture.explanation}</p>
@@ -89,7 +91,7 @@ const renderCharacterGuess = (
   disabled: boolean,
 ) => (
   <div className="activity-options-list">
-    {activity.options.map((option) => (
+    {activity.options.map(option => (
       <button
         key={option}
         type="button"
@@ -102,7 +104,9 @@ const renderCharacterGuess = (
     ))}
     {selected && (
       <div className="activity-feedback-message">
-        {selected === activity.correctName ? 'Respuesta correcta.' : 'Sigue intentándolo; revisa las pistas.'}
+        {selected === activity.correctName
+          ? 'Respuesta correcta.'
+          : 'Sigue intentándolo; revisa las pistas.'}
       </div>
     )}
   </div>
@@ -127,7 +131,7 @@ const renderRealWorldMission = (
           rows={4}
           placeholder="Escribe tus impresiones..."
           value={reflection}
-          onChange={(event) => setReflection(event.target.value)}
+          onChange={event => setReflection(event.target.value)}
           disabled={disabled}
         />
       </div>
@@ -142,18 +146,18 @@ const renderReadingBlock = (
   disabled: boolean,
 ) => (
   <div className="activity-content-wrapper">
-    <div className="activity-reading-card">
-      {activity.content}
-    </div>
+    <div className="activity-reading-card">{activity.content}</div>
     {activity.reflectionQuestion && (
       <div className="activity-reflection-section">
-        <p className="activity-reflection-label">{activity.reflectionQuestion}</p>
+        <p className="activity-reflection-label">
+          {activity.reflectionQuestion}
+        </p>
         <textarea
           className="activity-textarea"
           rows={3}
           placeholder="Registra tu reflexión..."
           value={reflection}
-          onChange={(event) => setReflection(event.target.value)}
+          onChange={event => setReflection(event.target.value)}
           disabled={disabled}
         />
       </div>
@@ -161,18 +165,32 @@ const renderReadingBlock = (
   </div>
 );
 
-export const ActivityRenderer: React.FC<ActivityRendererProps> = ({ activity }) => {
+export const ActivityRenderer: React.FC<ActivityRendererProps> = ({
+  activity,
+}) => {
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [reflection, setReflection] = useState('');
-  const [completionMessage, setCompletionMessage] = useState<string | null>(null);
+  const [completionMessage, setCompletionMessage] = useState<string | null>(
+    null,
+  );
 
-  const progress = useMemberProgressStore((state) => state.progress);
-  const completeActivity = useMemberProgressStore((state) => state.completeActivity);
+  const progress = useMemberProgressStore(state => state.progress);
+  const completeActivity = useMemberProgressStore(
+    state => state.completeActivity,
+  );
 
-  const isAlreadyCompleted = progress.completedActivityIds.includes(activity.id);
+  const isAlreadyCompleted = progress.completedActivityIds.includes(
+    activity.id,
+  );
 
   const requiresChoice = useMemo(
-    () => ['QUIZ_SINGLE', 'SCENARIO', 'QUIZ_SCRIPTURE_MATCH', 'CHARACTER_GUESS'].includes(activity.type),
+    () =>
+      [
+        'QUIZ_SINGLE',
+        'SCENARIO',
+        'QUIZ_SCRIPTURE_MATCH',
+        'CHARACTER_GUESS',
+      ].includes(activity.type),
     [activity.type],
   );
 
@@ -185,7 +203,9 @@ export const ActivityRenderer: React.FC<ActivityRendererProps> = ({ activity }) 
   const handleFinalize = () => {
     const { xpAwarded } = completeActivity(activity.id, activity.xp);
     setCompletionMessage(
-      xpAwarded ? `¡Actividad completada! +${activity.xp} XP añadidos.` : 'Actividad ya completada anteriormente.',
+      xpAwarded
+        ? `¡Actividad completada! +${activity.xp} XP añadidos.`
+        : 'Actividad ya completada anteriormente.',
     );
   };
 
@@ -194,8 +214,14 @@ export const ActivityRenderer: React.FC<ActivityRendererProps> = ({ activity }) 
       <header className="activity-renderer-header">
         <p className="activity-renderer-type">Actividad</p>
         <h2 className="activity-renderer-title">{activity.title}</h2>
-        {activity.description && (
-          <p className="activity-renderer-description">{activity.description}</p>
+        {('description' in activity
+          ? activity.description
+          : activity.shortDescription) && (
+          <p className="activity-renderer-description">
+            {'description' in activity
+              ? activity.description
+              : activity.shortDescription}
+          </p>
         )}
         <div className="activity-renderer-meta">
           <span>XP: {activity.xp}</span>
@@ -204,23 +230,48 @@ export const ActivityRenderer: React.FC<ActivityRendererProps> = ({ activity }) 
       </header>
 
       {activity.type === 'QUIZ_SINGLE' || activity.type === 'SCENARIO'
-        ? renderQuiz(activity, selectedOption, setSelectedOption, isAlreadyCompleted)
+        ? renderQuiz(
+            activity,
+            selectedOption,
+            setSelectedOption,
+            isAlreadyCompleted,
+          )
         : null}
 
       {activity.type === 'QUIZ_SCRIPTURE_MATCH'
-        ? renderScriptureMatch(activity, selectedOption, setSelectedOption, isAlreadyCompleted)
+        ? renderScriptureMatch(
+            activity,
+            selectedOption,
+            setSelectedOption,
+            isAlreadyCompleted,
+          )
         : null}
 
       {activity.type === 'CHARACTER_GUESS'
-        ? renderCharacterGuess(activity, selectedOption, setSelectedOption, isAlreadyCompleted)
+        ? renderCharacterGuess(
+            activity,
+            selectedOption,
+            setSelectedOption,
+            isAlreadyCompleted,
+          )
         : null}
 
       {activity.type === 'REAL_WORLD_MISSION'
-        ? renderRealWorldMission(activity, reflection, setReflection, isAlreadyCompleted)
+        ? renderRealWorldMission(
+            activity,
+            reflection,
+            setReflection,
+            isAlreadyCompleted,
+          )
         : null}
 
       {activity.type === 'READING_BLOCK'
-        ? renderReadingBlock(activity, reflection, setReflection, isAlreadyCompleted)
+        ? renderReadingBlock(
+            activity,
+            reflection,
+            setReflection,
+            isAlreadyCompleted,
+          )
         : null}
 
       <footer className="activity-renderer-footer">
@@ -233,10 +284,14 @@ export const ActivityRenderer: React.FC<ActivityRendererProps> = ({ activity }) 
           disabled={!canFinish}
           className={`activity-finish-button ${isAlreadyCompleted ? 'completed' : canFinish ? 'enabled' : 'disabled'}`}
         >
-          {isAlreadyCompleted ? 'Actividad completada' : `Finalizar actividad (+${activity.xp} XP)`}
+          {isAlreadyCompleted
+            ? 'Actividad completada'
+            : `Finalizar actividad (+${activity.xp} XP)`}
         </button>
         {!isAlreadyCompleted && requiresChoice && !selectedOption && (
-          <p className="activity-finish-hint">Selecciona una respuesta antes de finalizar.</p>
+          <p className="activity-finish-hint">
+            Selecciona una respuesta antes de finalizar.
+          </p>
         )}
       </footer>
     </section>

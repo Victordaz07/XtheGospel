@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { FaChevronRight, FaPenToSquare } from 'react-icons/fa6';
+import { FaChevronRight, FaPenToSquare, FaGraduationCap } from 'react-icons/fa6';
 import { useSpiritualMemoryStore } from '../../../core/memory/useSpiritualMemoryStore';
 import { 
   usePastoralPhase, 
@@ -228,6 +228,22 @@ export default function NewMemberHomePage(): JSX.Element {
             <h3 className="nm-home__continue-title">{continueTitle}</h3>
           </div>
           <FaChevronRight className="nm-home__continue-arrow" />
+        </Link>
+      </div>
+
+      {/* Training Card — Capacitación (covenanted only) */}
+      <div className="nm-home__training">
+        <Link to="/training" className="nm-home__training-card">
+          <div className="nm-home__training-icon">
+            <FaGraduationCap />
+          </div>
+          <div className="nm-home__training-content">
+            <h3 className="nm-home__training-title">Capacitación</h3>
+            <p className="nm-home__training-subtitle">
+              Prepara tu progreso en el sacerdocio
+            </p>
+          </div>
+          <FaChevronRight className="nm-home__training-arrow" />
         </Link>
       </div>
 

@@ -10,13 +10,17 @@ const MissionaryLessonDetail: React.FC = () => {
   const { lessonId } = useParams<{ lessonId: string }>();
   const { t } = useI18n();
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState<'overview' | 'scriptures' | 'quotes' | 'questions' | 'commitments'>('overview');
+  const [activeTab, setActiveTab] = useState<
+    'overview' | 'scriptures' | 'quotes' | 'questions' | 'commitments'
+  >('overview');
 
   if (!lessonId) {
     return (
       <div className="page">
         <div className="page-header">
-          <Link to="/lessons" className="back-button">← {t('back')}</Link>
+          <Link to="/lessons" className="back-button">
+            ← {t('back')}
+          </Link>
           <h1>{t('common.error')}</h1>
         </div>
       </div>
@@ -30,10 +34,10 @@ const MissionaryLessonDetail: React.FC = () => {
   } else if (lessonId.startsWith('Lesson')) {
     normalizedLessonId = lessonId.toLowerCase();
   }
-  
+
   console.log('🔍 Buscando lección:', { lessonId, normalizedLessonId });
   const lessonData = getMissionaryLessonData(normalizedLessonId, t);
-  
+
   if (!lessonData) {
     console.warn('❌ No se encontró lessonData para:', normalizedLessonId);
   } else {
@@ -44,7 +48,9 @@ const MissionaryLessonDetail: React.FC = () => {
     return (
       <div className="page">
         <div className="page-header">
-          <Link to="/lessons" className="back-button">← {t('back')}</Link>
+          <Link to="/lessons" className="back-button">
+            ← {t('back')}
+          </Link>
           <h1>{t('common.lessonNotFound')}</h1>
         </div>
       </div>
@@ -57,7 +63,7 @@ const MissionaryLessonDetail: React.FC = () => {
         title: commitmentText,
         category: 'spiritual',
         completed: false,
-        source: 'missionary-lesson',
+        source: 'lesson',
       });
       alert(t('lesson.commitmentAdded') || 'Compromiso agregado exitosamente');
     } catch (error) {
@@ -68,7 +74,9 @@ const MissionaryLessonDetail: React.FC = () => {
   return (
     <div className="page">
       <div className="missionary-lesson-header">
-        <Link to="/lessons" className="back-button">← {t('back')}</Link>
+        <Link to="/lessons" className="back-button">
+          ← {t('back')}
+        </Link>
         <h1>{lessonData.title}</h1>
       </div>
 
@@ -157,7 +165,9 @@ const MissionaryLessonDetail: React.FC = () => {
 
           {activeTab === 'questions' && (
             <section className="study-section">
-              <h2 className="section-title">❓ Preguntas para el Investigador</h2>
+              <h2 className="section-title">
+                ❓ Preguntas para el Investigador
+              </h2>
               <ul className="questions-list">
                 {lessonData.questions.map((question, index) => (
                   <li key={index} className="question-item">
@@ -209,4 +219,3 @@ const MissionaryLessonDetail: React.FC = () => {
 };
 
 export default MissionaryLessonDetail;
-

@@ -1,21 +1,32 @@
-import React, { ReactNode } from 'react';
+/**
+ * PageContainer - Page-level content wrapper
+ * 
+ * Centers content with consistent max-width and padding.
+ * Designed for main page content areas.
+ * 
+ * @example
+ * <PageContainer>
+ *   <h1>Page Title</h1>
+ *   <p>Page content...</p>
+ * </PageContainer>
+ */
+
+import React, { ReactNode, CSSProperties } from 'react';
 import './PageContainer.css';
 
-type CSSVarStyle = React.CSSProperties & {
-  [key: `--${string}`]: string | number | undefined;
-};
-
-interface PageContainerProps {
+export interface PageContainerProps {
+  /** Content to render */
   children: ReactNode;
+  /** Additional CSS classes */
   className?: string;
-  /**
-   * Optional max width override (number interpreted as px)
-   */
+  /** Max width override (number = px, string = CSS value) */
   maxWidth?: number | string;
-  /**
-   * Removes the default padding when set to true
-   */
+  /** Remove default padding */
   noPadding?: boolean;
+  /** Disable entrance animation */
+  noAnimation?: boolean;
+  /** Additional inline styles */
+  style?: CSSProperties;
 }
 
 export const PageContainer: React.FC<PageContainerProps> = ({
@@ -23,24 +34,28 @@ export const PageContainer: React.FC<PageContainerProps> = ({
   className = '',
   maxWidth,
   noPadding = false,
+  noAnimation = false,
+  style,
 }) => {
-  const style: CSSVarStyle = {};
+  const containerStyle: CSSProperties = {
+    ...(maxWidth && {
+      maxWidth: typeof maxWidth === 'number' ? `${maxWidth}px` : maxWidth,
+    }),
+    ...(noPadding && {
+      padding: 0,
+    }),
+    ...style,
+  };
 
-  if (maxWidth) {
-    style['--ui-page-container-max-width'] =
-      typeof maxWidth === 'number' ? `${maxWidth}px` : maxWidth;
-  }
-
-  if (noPadding) {
-    style['--ui-page-container-padding-x'] = '0px';
-    style['--ui-page-container-padding-top'] = '0px';
-    style['--ui-page-container-padding-bottom'] = '0px';
-  }
+  const classes = [
+    'ui-page-container',
+    noAnimation ? '' : 'ui-page-container--animate',
+    className,
+  ].filter(Boolean).join(' ');
 
   return (
-    <div className={`ui-page-container ${className}`} style={style}>
+    <div className={classes} style={containerStyle}>
       {children}
     </div>
   );
 };
-

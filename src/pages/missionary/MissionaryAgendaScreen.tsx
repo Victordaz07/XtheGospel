@@ -3,7 +3,10 @@ import { FaEye, FaPencil } from 'react-icons/fa6';
 import { XtgPage } from '../../components/layout/XtgPage';
 import { XtgCard } from '../../components/ui/XtgCard';
 import { useMissionaryCalendar } from '../../hooks/useMissionaryCalendar';
-import { MissionCalendarEvent, CalendarScope } from '../../data/calendar/calendarTypes';
+import {
+  MissionCalendarEvent,
+  CalendarScope,
+} from '../../data/calendar/calendarTypes';
 import { useAuth } from '../../context/AuthContext';
 import { LeadershipRoleService } from '../../services/leadershipRoleService';
 import { EventModal, EventFormData } from './EventModal';
@@ -438,7 +441,7 @@ export const MissionaryAgendaScreen: React.FC = () => {
   const weekEvents = useMemo(() => {
     const start = startOfWeek(currentDate);
     const end = addDays(start, 7);
-    return events.filter((e) => {
+    return events.filter(e => {
       const s = new Date(e.start);
       if (s < start || s >= end) return false;
       if (scopeFilter !== 'ALL' && e.scope !== scopeFilter) return false;
@@ -449,7 +452,7 @@ export const MissionaryAgendaScreen: React.FC = () => {
   const monthEvents = useMemo(() => {
     const start = startOfMonth(currentDate);
     const end = endOfMonth(currentDate);
-    return events.filter((e) => {
+    return events.filter(e => {
       const s = new Date(e.start);
       if (s < start || s > end) return false;
       if (scopeFilter !== 'ALL' && e.scope !== scopeFilter) return false;
@@ -460,7 +463,7 @@ export const MissionaryAgendaScreen: React.FC = () => {
   const transferEvents = useMemo(() => {
     const start = startOfWeek(currentDate);
     const end = addWeeks(start, 6);
-    return events.filter((e) => {
+    return events.filter(e => {
       const s = new Date(e.start);
       if (s < start || s >= end) return false;
       if (scopeFilter !== 'ALL' && e.scope !== scopeFilter) return false;
@@ -474,15 +477,23 @@ export const MissionaryAgendaScreen: React.FC = () => {
     } else if (viewMode === 'week') {
       const start = startOfWeek(current);
       const end = addDays(start, 6);
-      return t('agenda.rangeLabels.week', { start: formatShortDate(start), end: formatShortDate(end) });
+      return t('agenda.rangeLabels.week', {
+        start: formatShortDate(start),
+        end: formatShortDate(end),
+      });
     } else if (viewMode === 'month') {
-      const monthName = current.toLocaleDateString(undefined, { month: 'long' });
+      const monthName = current.toLocaleDateString(undefined, {
+        month: 'long',
+      });
       const year = current.getFullYear().toString();
       return t('agenda.rangeLabels.month', { month: monthName, year });
     } else if (viewMode === 'transfer') {
       const weekStart = startOfWeek(current);
       const weekEnd = addWeeks(weekStart, 5);
-      return t('agenda.rangeLabels.transfer', { start: formatShortDate(weekStart), end: formatShortDate(weekEnd) });
+      return t('agenda.rangeLabels.transfer', {
+        start: formatShortDate(weekStart),
+        end: formatShortDate(weekEnd),
+      });
     }
     return '';
   };
@@ -735,6 +746,7 @@ export const MissionaryAgendaScreen: React.FC = () => {
               onEventClick={handleEventClick}
               onEditEvent={handleEditEvent}
               t={t}
+              eventTypeLabels={EVENT_TYPE_LABEL}
             />
           )}
 
@@ -814,6 +826,7 @@ interface DayViewProps {
   onEventClick: (event: MissionaryEvent) => void;
   onEditEvent: (event: MissionaryEvent) => void;
   t: (key: string, vars?: Record<string, string | number>) => string;
+  eventTypeLabels: Record<EventType, string>;
 }
 
 const DayView: React.FC<DayViewProps> = ({
@@ -822,6 +835,7 @@ const DayView: React.FC<DayViewProps> = ({
   onEventClick,
   onEditEvent,
   t,
+  eventTypeLabels,
 }) => {
   // Extender a 24 horas (6 AM - 11:59 PM) con intervalos de 30 minutos
   const startHour = 6;
@@ -892,18 +906,24 @@ const DayView: React.FC<DayViewProps> = ({
               >
                 <div className="ma-day-event-header">
                   <div className="ma-day-event-type">
-                    {EVENT_TYPE_LABEL[ev.type]}
+                    {eventTypeLabels[ev.type]}
                     {ev.required && (
-                      <span className="ma-required-badge">{t('agenda.eventLabels.required')}</span>
+                      <span className="ma-required-badge">
+                        {t('agenda.eventLabels.required')}
+                      </span>
                     )}
                   </div>
                   {ev.scope && ev.scope !== 'PERSONAL' && (
                     <span className="ma-scope-badge">
-                      {ev.scope === 'MISSION' ? t('agenda.scopeFilters.mission') :
-                       ev.scope === 'ZONE' ? t('agenda.scopeFilters.zone') :
-                       ev.scope === 'DISTRICT' ? t('agenda.scopeFilters.district') :
-                       ev.scope === 'COMPANIONSHIP' ? t('agenda.scopeFilters.companionship') :
-                       ev.scope}
+                      {ev.scope === 'MISSION'
+                        ? t('agenda.scopeFilters.mission')
+                        : ev.scope === 'ZONE'
+                          ? t('agenda.scopeFilters.zone')
+                          : ev.scope === 'DISTRICT'
+                            ? t('agenda.scopeFilters.district')
+                            : ev.scope === 'COMPANIONSHIP'
+                              ? t('agenda.scopeFilters.companionship')
+                              : ev.scope}
                     </span>
                   )}
                 </div>
@@ -992,7 +1012,9 @@ const WeekView: React.FC<WeekViewProps> = ({
 
           <div className="ma-week-events">
             {eventsByDay(d).length === 0 ? (
-              <div className="ma-week-empty">{t('agenda.emptyStates.noEvents')}</div>
+              <div className="ma-week-empty">
+                {t('agenda.emptyStates.noEvents')}
+              </div>
             ) : (
               eventsByDay(d).map(ev => {
                 const startEv = new Date(ev.start);
@@ -1019,11 +1041,15 @@ const WeekView: React.FC<WeekViewProps> = ({
                       </div>
                       {ev.scope && ev.scope !== 'PERSONAL' && (
                         <span className="ma-scope-badge ma-scope-badge--tiny">
-                          {ev.scope === 'MISSION' ? t('agenda.scopeFilters.mission') :
-                           ev.scope === 'ZONE' ? t('agenda.scopeFilters.zone') :
-                           ev.scope === 'DISTRICT' ? t('agenda.scopeFilters.district') :
-                           ev.scope === 'COMPANIONSHIP' ? t('agenda.scopeFilters.companionship') :
-                           ev.scope}
+                          {ev.scope === 'MISSION'
+                            ? t('agenda.scopeFilters.mission')
+                            : ev.scope === 'ZONE'
+                              ? t('agenda.scopeFilters.zone')
+                              : ev.scope === 'DISTRICT'
+                                ? t('agenda.scopeFilters.district')
+                                : ev.scope === 'COMPANIONSHIP'
+                                  ? t('agenda.scopeFilters.companionship')
+                                  : ev.scope}
                         </span>
                       )}
                     </div>

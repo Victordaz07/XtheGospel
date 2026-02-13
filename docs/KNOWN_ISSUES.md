@@ -5,24 +5,16 @@ List of known issues with severity levels.
 ## TypeScript Configuration
 
 **Severity:** Low  
-**Status:** Pre-existing  
-**Issue:** `tsconfig.json` missing `"dom"` in `lib` array  
-**Impact:** TypeScript errors for `window`, `document`, `alert`, etc.  
-**Runtime:** No impact - code runs correctly in browser  
-**Fix:** Add `"dom"` to `tsconfig.json` compilerOptions.lib (deferred to final cleanup)
-
-**Files Affected:**
-- `src/core/export/exportLocalData.ts`
-- `src/components/DataPrivacySection.tsx`
-- Various other files using DOM APIs
+**Status:** Fixed  
+**Issue:** `tsconfig.json` was missing `"dom"` in `lib` array.  
+**Fix:** `"dom"` added to `compilerOptions.lib`. Resolved.
 
 ## Visual Issues
 
 **Severity:** Low  
-**Status:** Minor  
-**Issue:** Some Leadership pages may have minor spacing inconsistencies  
-**Impact:** Visual polish, not functional  
-**Fix:** Incremental UI refinement (not blocking)
+**Status:** Fixed (Jan 2026)  
+**Issue:** Some Leadership pages had minor spacing/responsive gaps.  
+**Fix:** UI/UX refinement completed: Leadership theme mapped to design-system (Golden UI); all pages use tokens (spacing, typography, radius); responsive breakpoints 480px/640px; EmptyState component used consistently; layout and BottomNav padding use design tokens.
 
 ## Performance
 

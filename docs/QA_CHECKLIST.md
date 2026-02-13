@@ -80,10 +80,9 @@ Manual testing checklist for Leadership Callings module.
   - Verify it appears in callings list
   - Verify status is "Propuesto"
 
-- [ ] **Update Calling Status**
-  - Open calling detail → Summary tab
-  - Change status (e.g., "Sustained" → "Active")
-  - Verify status updates in list view
+- [ ] **Update Calling Status** _(N/A — by design)_
+  - Status is updated implicitly via timeline actions (sustain, release, etc.); there is no explicit "change status" control in the Summary tab.
+  - To verify: perform sustain/release or other timeline actions and confirm status reflects in list view.
 
 - [ ] **Add Responsibility**
   - Open calling detail → Responsibilities tab

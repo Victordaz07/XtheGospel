@@ -29,29 +29,29 @@ const TRANSFER_PLANS_KEY = '@transferPlans';
 
 export const TransferPlanService = {
   // Guardar/actualizar plan
-  savePlan: (plan: Omit<TransferPlan, 'id' | 'createdAt' | 'updatedAt'>): TransferPlan => {
+  savePlan: (plan: Omit<TransferPlan, 'id' | 'createdAt' | 'updatedAt'> & { id?: string }): TransferPlan => {
     try {
       const plans = TransferPlanService.getAllPlans();
       const now = new Date().toISOString();
-      
+      const id = plan.id ?? `transfer_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
       const newPlan: TransferPlan = {
         ...plan,
-        id: plan.id || `transfer_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
-        createdAt: plan.id ? plans.find(p => p.id === plan.id)?.createdAt || now : now,
+        id,
+        createdAt: plan.id ? plans.find(p => p.id === plan.id)?.createdAt ?? now : now,
         updatedAt: now
       };
-      
+
       const index = plans.findIndex(p => p.id === newPlan.id);
       if (index >= 0) {
         plans[index] = newPlan;
       } else {
         plans.push(newPlan);
       }
-      
+
       if (typeof window !== 'undefined' && window.localStorage) {
         localStorage.setItem(TRANSFER_PLANS_KEY, JSON.stringify(plans));
       }
-      
+
       return newPlan;
     } catch (e) {
       console.error('Error guardando plan de transfers:', e);
@@ -123,15 +123,15 @@ export const TransferPlanService = {
     try {
       const plans = TransferPlanService.getAllPlans();
       const filtered = plans.filter(p => p.id !== planId);
-      
+
       if (filtered.length === plans.length) {
         return false; // No se encontró el plan
       }
-      
+
       if (typeof window !== 'undefined' && window.localStorage) {
         localStorage.setItem(TRANSFER_PLANS_KEY, JSON.stringify(filtered));
       }
-      
+
       return true;
     } catch (e) {
       console.error('Error eliminando plan:', e);
@@ -143,7 +143,7 @@ export const TransferPlanService = {
   getNextTransferNumber: (missionId: string): number => {
     const plans = TransferPlanService.getPlansByMission(missionId);
     if (plans.length === 0) return 1;
-    
+
     const maxNumber = Math.max(...plans.map(p => p.transferNumber || 0));
     return maxNumber + 1;
   }

@@ -10,22 +10,22 @@
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+  background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary-default) 100%);
   border: none;
-  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4);
+  box-shadow: 0 4px 12px rgba(13, 148, 136, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: all 0.3s ease;
-  color: #ffffff;
+  color: var(--color-text-inverse);
   font-size: 18px;
   z-index: 101;
 }
 
 .floating-menu-button:hover {
   transform: scale(1.1);
-  box-shadow: 0 6px 20px rgba(79, 70, 229, 0.5);
+  box-shadow: 0 6px 20px rgba(13, 148, 136, 0.5);
 }
 
 .floating-menu-button:active {
@@ -83,13 +83,13 @@
 }
 
 .floating-menu-item:hover {
-  background: rgba(79, 70, 229, 0.1);
-  color: #4f46e5;
+  background: var(--color-primary-100);
+  color: var(--color-primary-dark);
 }
 
 .floating-menu-item.active {
-  background: rgba(79, 70, 229, 0.15);
-  color: #4f46e5;
+  background: var(--color-primary-100);
+  color: var(--color-primary-dark);
   font-weight: 600;
 }
 
@@ -145,4 +145,3 @@
 .floating-menu-dropdown {
   z-index: 52;
 }
-

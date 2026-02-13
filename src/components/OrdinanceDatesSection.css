@@ -1,4 +1,454 @@
-/* Ordinance Dates Section - Discreet, no gamification */
+/* Ordinance Dates Section - Enhanced with Verification */
+
+.ord-dates {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid rgba(166, 124, 82, 0.15);
+  overflow: hidden;
+}
+
+/* ============================================
+   Header (Clickable)
+   ============================================ */
+
+.ord-dates__header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 18px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.ord-dates__header:hover {
+  background: rgba(166, 124, 82, 0.05);
+}
+
+.ord-dates__header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ord-dates__icon {
+  font-size: 20px;
+  color: #A67C52;
+}
+
+.ord-dates__title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #523826;
+  margin: 0;
+  text-align: left;
+}
+
+.ord-dates__subtitle {
+  font-size: 12px;
+  color: #8B7355;
+  margin: 2px 0 0 0;
+  text-align: left;
+}
+
+.ord-dates__header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #A67C52;
+  font-size: 14px;
+}
+
+/* ============================================
+   Verification Badge
+   ============================================ */
+
+.ord-dates__badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  font-size: 14px;
+}
+
+.ord-dates__badge--pending {
+  background: #FEF3C7;
+  color: #D97706;
+}
+
+.ord-dates__badge--verified {
+  background: #D1FAE5;
+  color: #059669;
+}
+
+.ord-dates__badge--rejected {
+  background: #FEE2E2;
+  color: #DC2626;
+}
+
+/* ============================================
+   Content
+   ============================================ */
+
+.ord-dates__content {
+  padding: 0 18px 18px;
+}
+
+/* ============================================
+   Info Banner
+   ============================================ */
+
+.ord-dates__info {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 14px;
+  background: #F0F9FF;
+  border: 1px solid #BAE6FD;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.ord-dates__info-icon {
+  font-size: 16px;
+  color: #0369A1;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.ord-dates__info p {
+  font-size: 12px;
+  color: #0C4A6E;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ============================================
+   Sections
+   ============================================ */
+
+.ord-dates__section {
+  margin-bottom: 20px;
+}
+
+.ord-dates__section-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #6F4D32;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin: 0 0 12px 0;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(166, 124, 82, 0.15);
+}
+
+/* ============================================
+   Fields
+   ============================================ */
+
+.ord-dates__field {
+  margin-bottom: 14px;
+}
+
+.ord-dates__field:last-child {
+  margin-bottom: 0;
+}
+
+.ord-dates__label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #6F4D32;
+  margin-bottom: 6px;
+}
+
+.ord-dates__field-icon {
+  font-size: 12px;
+  color: #A67C52;
+}
+
+.ord-dates__input {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1px solid rgba(166, 124, 82, 0.25);
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: inherit;
+  color: #523826;
+  background: #FAF8F5;
+  transition: all 0.2s ease;
+}
+
+.ord-dates__input:focus {
+  outline: none;
+  border-color: #A67C52;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(166, 124, 82, 0.1);
+}
+
+.ord-dates__input:disabled {
+  background: #F1F5F9;
+  color: #64748B;
+  cursor: not-allowed;
+}
+
+.ord-dates__input::placeholder {
+  color: #94A3B8;
+}
+
+.ord-dates__input::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+/* ============================================
+   Verification Status Box
+   ============================================ */
+
+.ord-dates__verification {
+  padding: 14px 16px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
+
+.ord-dates__verification--none {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+}
+
+.ord-dates__verification--pending {
+  background: #FFFBEB;
+  border: 1px solid #FCD34D;
+}
+
+.ord-dates__verification--verified {
+  background: #ECFDF5;
+  border: 1px solid #6EE7B7;
+}
+
+.ord-dates__verification--rejected {
+  background: #FEF2F2;
+  border: 1px solid #FECACA;
+}
+
+.ord-dates__ver-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.ord-dates__ver-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.ord-dates__verification--none .ord-dates__ver-icon {
+  color: #94A3B8;
+}
+
+.ord-dates__verification--pending .ord-dates__ver-icon {
+  color: #D97706;
+}
+
+.ord-dates__verification--verified .ord-dates__ver-icon {
+  color: #059669;
+}
+
+.ord-dates__verification--rejected .ord-dates__ver-icon {
+  color: #DC2626;
+}
+
+.ord-dates__ver-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0 0 4px 0;
+}
+
+.ord-dates__verification--none .ord-dates__ver-title {
+  color: #64748B;
+}
+
+.ord-dates__verification--pending .ord-dates__ver-title {
+  color: #92400E;
+}
+
+.ord-dates__verification--verified .ord-dates__ver-title {
+  color: #065F46;
+}
+
+.ord-dates__verification--rejected .ord-dates__ver-title {
+  color: #991B1B;
+}
+
+.ord-dates__ver-desc {
+  font-size: 13px;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.ord-dates__verification--none .ord-dates__ver-desc {
+  color: #94A3B8;
+}
+
+.ord-dates__verification--pending .ord-dates__ver-desc {
+  color: #A16207;
+}
+
+.ord-dates__verification--verified .ord-dates__ver-desc {
+  color: #047857;
+}
+
+.ord-dates__verification--rejected .ord-dates__ver-desc {
+  color: #B91C1C;
+}
+
+.ord-dates__dev-bypass {
+  margin-top: 10px;
+  padding: 6px 12px;
+  font-size: 12px;
+  color: #A67C52;
+  background: rgba(166, 124, 82, 0.1);
+  border: 1px dashed #A67C52;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.ord-dates__dev-bypass:hover {
+  background: rgba(166, 124, 82, 0.2);
+}
+
+.ord-dates__dev-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 12px;
+  margin-bottom: 12px;
+  background: rgba(166, 124, 82, 0.08);
+  border: 1px dashed #A67C52;
+  border-radius: 8px;
+  font-size: 12px;
+  color: #523826;
+}
+
+.ord-dates__dev-bypass--small {
+  margin-top: 0;
+  padding: 4px 10px;
+}
+
+.ord-dates__ver-date {
+  color: inherit;
+  opacity: 0.8;
+}
+
+.ord-dates__ver-by {
+  font-size: 12px;
+  color: inherit;
+  opacity: 0.7;
+  margin: 6px 0 0 0;
+}
+
+/* ============================================
+   Submit Button
+   ============================================ */
+
+.ord-dates__submit {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 20px;
+  background: linear-gradient(135deg, #3A5F8A 0%, #2A4A6B 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: 16px;
+}
+
+.ord-dates__submit:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(58, 95, 138, 0.3);
+}
+
+.ord-dates__submit:active {
+  transform: translateY(0);
+}
+
+/* ============================================
+   Journey Status
+   ============================================ */
+
+.ord-dates__status {
+  padding-top: 14px;
+  border-top: 1px solid rgba(166, 124, 82, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ord-dates__status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.ord-dates__status-dot--seeking {
+  background: #F59E0B;
+}
+
+.ord-dates__status-dot--covenanted {
+  background: #10B981;
+}
+
+.ord-dates__status-dot--member {
+  background: #3B82F6;
+}
+
+.ord-dates__status-text {
+  font-size: 13px;
+  color: #6F4D32;
+  margin: 0;
+}
+
+/* ============================================
+   Clear Button
+   ============================================ */
+
+.ord-dates__clear {
+  margin-top: 12px;
+  padding: 8px 14px;
+  background: transparent;
+  border: 1px solid rgba(166, 124, 82, 0.2);
+  border-radius: 8px;
+  font-size: 12px;
+  color: #8B7355;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.ord-dates__clear:hover {
+  border-color: rgba(166, 124, 82, 0.4);
+  color: #6F4D32;
+}
+
+/* ============================================
+   Legacy classes (for backward compatibility)
+   ============================================ */
 
 .ordinance-dates {
   background: #ffffff;
@@ -68,12 +518,6 @@
   background: #ffffff;
 }
 
-.ordinance-dates__input::-webkit-calendar-picker-indicator {
-  cursor: pointer;
-  opacity: 0.6;
-}
-
-/* Status line - subtle, no celebration */
 .ordinance-dates__status {
   margin-top: 16px;
   padding-top: 14px;
@@ -87,7 +531,6 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  flex-shrink: 0;
 }
 
 .ordinance-dates__status-dot--seeking {
@@ -104,7 +547,6 @@
   margin: 0;
 }
 
-/* Clear button */
 .ordinance-dates__clear {
   margin-top: 12px;
   padding: 8px 12px;
@@ -114,10 +556,4 @@
   font-size: 12px;
   color: #94a3b8;
   cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.ordinance-dates__clear:hover {
-  border-color: #cbd5e1;
-  color: #64748b;
 }

@@ -1,46 +1,117 @@
-/* Investigator Progress Page
- * Sprint 7 - Pastoral, reflective, no metrics
+/* Investigator Progress Page - "Mi Camino"
+ * Sprint 10 - Migrated to design-system CSS variables
+ * Brass/Cream elegant palette
  */
+
+/* Fade up animation */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.anim-fade-up {
+  animation: fadeUp 0.4s ease-out forwards;
+}
 
 .inv-progress {
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  padding-bottom: 24px;
+  gap: var(--space-6);
+  padding-bottom: var(--space-6);
 }
 
 .inv-progress__header {
-  margin-bottom: 4px;
+  margin-bottom: var(--space-1);
+}
+
+/* Stats Grid - Visual Statistics */
+.inv-progress__stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+}
+
+.inv-progress__stat {
+  background: var(--background-card);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4) var(--space-3);
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-2);
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+}
+
+.inv-progress__stat:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--border-strong);
+}
+
+.inv-progress__stat-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  background: var(--theme-gradient-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-base);
+  color: var(--text-inverse);
+  margin-bottom: var(--space-1);
+}
+
+.inv-progress__stat-value {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  color: var(--color-accent-800);
+  line-height: var(--leading-none);
+}
+
+.inv-progress__stat-label {
+  font-size: var(--text-xs);
+  font-weight: var(--font-medium);
+  color: var(--color-accent-700);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
 }
 
 .inv-progress__title {
-  font-size: 26px;
-  font-weight: 700;
-  color: #78350f;
-  margin: 0 0 8px 0;
-  line-height: 1.2;
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  color: var(--color-accent-800);
+  margin: 0 0 var(--space-2) 0;
+  line-height: var(--leading-tight);
 }
 
 .inv-progress__subtitle {
-  font-size: 15px;
-  color: #92400e;
+  font-size: var(--text-base);
+  color: var(--color-accent-700);
   margin: 0;
-  line-height: 1.5;
+  line-height: var(--leading-normal);
 }
 
-/* Reflection Card */
+/* Reflection Card - Inspirational Quote */
 .inv-progress__reflection {
-  background: linear-gradient(135deg, #fefce8 0%, #fef3c7 100%);
-  border-radius: 16px;
-  padding: 20px;
-  border: 1px solid rgba(251, 191, 36, 0.2);
+  background: var(--background-muted);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  border: 1px solid var(--border-subtle);
 }
 
 .inv-progress__reflection-text {
-  font-size: 15px;
-  color: #92400e;
+  font-size: var(--text-base);
+  color: var(--color-accent-700);
   margin: 0;
-  line-height: 1.7;
+  line-height: var(--leading-relaxed);
   font-style: italic;
 }
 
@@ -48,102 +119,135 @@
 .inv-progress__section {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: var(--space-4);
 }
 
 .inv-progress__section-title {
-  font-size: 16px;
-  font-weight: 600;
-  color: #78350f;
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  color: var(--color-accent-800);
   margin: 0;
 }
 
 .inv-progress__intro-text {
-  font-size: 14px;
-  color: #92400e;
+  font-size: var(--text-sm);
+  color: var(--color-accent-700);
   margin: 0;
-  line-height: 1.5;
+  line-height: var(--leading-normal);
 }
 
-/* Moments */
+/* Moments - Recent Activity */
 .inv-progress__moments {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: var(--space-3);
 }
 
 .inv-progress__moment {
-  background: #ffffff;
-  border-radius: 12px;
-  padding: 16px;
-  border: 1px solid rgba(251, 191, 36, 0.2);
+  background: var(--background-card);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  border: 1px solid var(--border-subtle);
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: var(--space-4);
 }
 
 .inv-progress__moment-icon {
-  font-size: 24px;
+  font-size: var(--text-2xl);
 }
 
 .inv-progress__moment-text {
-  font-size: 15px;
-  color: #78350f;
+  font-size: var(--text-base);
+  color: var(--color-accent-800);
   margin: 0;
-  line-height: 1.4;
+  line-height: var(--leading-snug);
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 /* Empty State */
 .inv-progress__empty {
-  background: #ffffff;
-  border-radius: 12px;
-  padding: 24px 20px;
-  border: 1px solid rgba(251, 191, 36, 0.15);
+  background: var(--background-card);
+  border-radius: var(--radius-md);
+  padding: var(--space-8) var(--space-5);
+  border: 1px solid var(--border-subtle);
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.inv-progress__empty-title {
+  font-size: var(--text-lg);
+  font-weight: var(--font-semibold);
+  color: var(--color-accent-800);
+  margin: 0;
 }
 
 .inv-progress__empty-text {
-  font-size: 14px;
-  color: #92400e;
+  font-size: var(--text-sm);
+  color: var(--color-accent-700);
   margin: 0;
-  line-height: 1.6;
+  line-height: var(--leading-relaxed);
 }
 
-/* Actions */
+.inv-progress__empty-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+  padding: var(--space-3) var(--space-5);
+  background: var(--theme-gradient-accent);
+  color: var(--text-inverse);
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.inv-progress__empty-cta:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-accent);
+}
+
+/* Actions - Next Steps */
 .inv-progress__actions {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: var(--space-3);
 }
 
 .inv-progress__action {
-  background: #ffffff;
-  border-radius: 12px;
-  padding: 16px;
-  border: 1px solid rgba(251, 191, 36, 0.2);
+  background: var(--background-card);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  border: 1px solid var(--border-subtle);
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: var(--space-4);
   text-decoration: none;
-  transition: all 0.2s ease;
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
 }
 
 .inv-progress__action:hover {
-  border-color: rgba(251, 191, 36, 0.4);
-  box-shadow: 0 2px 8px rgba(217, 119, 6, 0.1);
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-sm);
   transform: translateY(-1px);
 }
 
 .inv-progress__action-icon {
   width: 44px;
   height: 44px;
-  border-radius: 12px;
-  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border-radius: var(--radius-md);
+  background: var(--background-muted);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 18px;
-  color: #d97706;
+  font-size: var(--text-lg);
+  color: var(--accent);
   flex-shrink: 0;
 }
 
@@ -152,29 +256,29 @@
 }
 
 .inv-progress__action-title {
-  font-size: 15px;
-  font-weight: 600;
-  color: #78350f;
-  margin: 0 0 4px 0;
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  color: var(--color-accent-800);
+  margin: 0 0 var(--space-1) 0;
 }
 
 .inv-progress__action-desc {
-  font-size: 13px;
-  color: #92400e;
+  font-size: var(--text-sm);
+  color: var(--color-accent-700);
   margin: 0;
 }
 
-/* Footer */
+/* Footer - Inspirational Closing */
 .inv-progress__footer {
   text-align: center;
-  padding: 16px 12px;
-  margin-top: 8px;
+  padding: var(--space-4) var(--space-3);
+  margin-top: var(--space-2);
 }
 
 .inv-progress__footer-text {
-  font-size: 14px;
-  color: #b45309;
+  font-size: var(--text-sm);
+  color: var(--color-accent-600);
   margin: 0;
-  line-height: 1.6;
+  line-height: var(--leading-relaxed);
   font-style: italic;
 }

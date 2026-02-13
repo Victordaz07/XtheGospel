@@ -18,12 +18,12 @@ SIN convertir la fe en métricas ni el liderazgo en vigilancia espiritual.
 
 ### Claves NO Negociables
 
-| ✅ SÍ | ❌ NO |
-|-------|-------|
-| Acompaña personas y procesos | No mide worthiness |
-| Gestiona llamamientos y responsabilidades | No compara espiritualmente |
-| Permite notas, agendas, diarios, dictado | No gamifica la fe |
-| Facilita seguimiento humano | No convierte progreso espiritual en KPI |
+| ✅ SÍ                                     | ❌ NO                                   |
+| ----------------------------------------- | --------------------------------------- |
+| Acompaña personas y procesos              | No mide worthiness                      |
+| Gestiona llamamientos y responsabilidades | No compara espiritualmente              |
+| Permite notas, agendas, diarios, dictado  | No gamifica la fe                       |
+| Facilita seguimiento humano               | No convierte progreso espiritual en KPI |
 
 ### Identidad del Producto
 
@@ -39,6 +39,7 @@ NO solo una app espiritual silenciosa
 ### 🧠 Modelo Mental del Usuario
 
 El mismo usuario puede ser:
+
 - Investigador
 - Miembro
 - Líder
@@ -54,11 +55,11 @@ Por eso el UX se basa en **MODOS**, no en apps separadas.
 
 ### 🔍 Modo Investigador
 
-| Acciones | UX |
-|----------|-----|
-| Aprender | Guiado |
-| Reflexionar | Cálido |
-| Prepararse | Explicativo |
+| Acciones          | UX          |
+| ----------------- | ----------- |
+| Aprender          | Guiado      |
+| Reflexionar       | Cálido      |
+| Prepararse        | Explicativo |
 | Diario espiritual | Acompañante |
 
 **Tono:** Acogedor, sin presión, educativo
@@ -67,12 +68,12 @@ Por eso el UX se basa en **MODOS**, no en apps separadas.
 
 ### 🌱 Modo Miembro
 
-| Acciones | UX |
-|----------|-----|
-| Vivir el evangelio | Acompañante |
-| Estudiar | No prescriptivo |
-| Servir | Facilitador |
-| Registrar experiencias | Personal |
+| Acciones               | UX              |
+| ---------------------- | --------------- |
+| Vivir el evangelio     | Acompañante     |
+| Estudiar               | No prescriptivo |
+| Servir                 | Facilitador     |
+| Registrar experiencias | Personal        |
 
 **Tono:** Respetuoso, no impone ritmos
 
@@ -80,15 +81,16 @@ Por eso el UX se basa en **MODOS**, no en apps separadas.
 
 ### 🧑‍🤝‍🧑 Modo Liderazgo (CORE de lo nuevo)
 
-| Acciones | UX |
-|----------|-----|
-| Gestionar llamamientos | Claro |
-| Asignar responsabilidades | Operativo |
-| Dar seguimiento humano | Humano |
-| Tomar notas | Práctico |
+| Acciones                         | UX        |
+| -------------------------------- | --------- |
+| Gestionar llamamientos           | Claro     |
+| Asignar responsabilidades        | Operativo |
+| Dar seguimiento humano           | Humano    |
+| Tomar notas                      | Práctico  |
 | Agendar entrevistas/seguimientos | Eficiente |
 
 **Reglas críticas:**
+
 - ❌ NO espiritualiza tareas administrativas
 - ❌ NO convierte personas en métricas
 - ❌ NO crea presión artificial
@@ -100,12 +102,12 @@ Por eso el UX se basa en **MODOS**, no en apps separadas.
 
 ### 🧠 Modo Personal (siempre presente)
 
-| Acciones | UX |
-|----------|-----|
-| Diario espiritual | Íntimo |
-| Notas privadas | Seguro |
-| Dictado | Accesible |
-| Reflexión | Sagrado |
+| Acciones          | UX        |
+| ----------------- | --------- |
+| Diario espiritual | Íntimo    |
+| Notas privadas    | Seguro    |
+| Dictado           | Accesible |
+| Reflexión         | Sagrado   |
 
 **Este modo NUNCA desaparece**, incluso para obispos.
 
@@ -188,18 +190,18 @@ flowchart TB
 
     subgraph Leadership["🧑‍🤝‍🧑 Leadership Mode"]
         RoleDetect -->|Leader| LDash[Leadership Dashboard]
-        
+
         LDash --> LCallings[Callings]
         LCallings --> LCallingsList[Callings List]
         LCallings --> LCreateCalling[Create/Propose Calling]
         LCallings --> LCallingDetail[Calling Detail]
-        
+
         LCallingDetail --> LCSummary[Summary]
         LCallingDetail --> LCResponsibilities[Responsibilities]
         LCallingDetail --> LCNotes[Notes + Dictation]
         LCallingDetail --> LCAgenda[Agenda]
         LCallingDetail --> LCProgress[Progress - Descriptive]
-        
+
         LDash --> LMembers[Members Overview]
         LDash --> LCalendar[Calendar]
         LDash --> LProfile[Profile]
@@ -239,48 +241,52 @@ flowchart TB
 ## 6️⃣ PANTALLAS REQUERIDAS (INVENTARIO COMPLETO)
 
 ### Investigator Flow (7 pantallas)
-| # | Pantalla | Propósito |
-|---|----------|-----------|
-| 1 | Investigator Home | Dashboard personal de bienvenida |
-| 2 | Lessons List | Catálogo de lecciones disponibles |
-| 3 | Lesson Detail | Contenido de lección individual |
-| 4 | Baptism Preparation | Preparación para el bautismo |
-| 5 | Journal | Diario con texto + dictado |
-| 6 | Progress | Progreso narrativo (no numérico) |
-| 7 | Profile | Configuración personal |
+
+| #   | Pantalla            | Propósito                         |
+| --- | ------------------- | --------------------------------- |
+| 1   | Investigator Home   | Dashboard personal de bienvenida  |
+| 2   | Lessons List        | Catálogo de lecciones disponibles |
+| 3   | Lesson Detail       | Contenido de lección individual   |
+| 4   | Baptism Preparation | Preparación para el bautismo      |
+| 5   | Journal             | Diario con texto + dictado        |
+| 6   | Progress            | Progreso narrativo (no numérico)  |
+| 7   | Profile             | Configuración personal            |
 
 ### Member Flow (6 pantallas)
-| # | Pantalla | Propósito |
-|---|----------|-----------|
-| 1 | Member Home | Dashboard de miembro |
-| 2 | Study Modules | Módulos de estudio |
-| 3 | Activities | Actividades y servicio |
-| 4 | Journal | Diario espiritual |
-| 5 | Progress | Progreso personal |
-| 6 | Profile | Configuración |
+
+| #   | Pantalla      | Propósito              |
+| --- | ------------- | ---------------------- |
+| 1   | Member Home   | Dashboard de miembro   |
+| 2   | Study Modules | Módulos de estudio     |
+| 3   | Activities    | Actividades y servicio |
+| 4   | Journal       | Diario espiritual      |
+| 5   | Progress      | Progreso personal      |
+| 6   | Profile       | Configuración          |
 
 ### Leadership Flow (12 pantallas)
-| # | Pantalla | Propósito |
-|---|----------|-----------|
-| 1 | Leadership Dashboard | Vista general de liderazgo |
-| 2 | Callings List | Lista filtrable de llamamientos |
-| 3 | Create/Propose Calling | Crear nuevo llamamiento |
-| 4 | Calling Detail - Summary | Resumen del llamamiento |
-| 5 | Calling Detail - Responsibilities | Responsabilidades asignadas |
-| 6 | Calling Detail - Notes | Notas con dictado |
-| 7 | Calling Detail - Agenda | Calendario del llamamiento |
-| 8 | Calling Detail - Progress | Progreso descriptivo |
-| 9 | Responsibilities List | Lista de responsabilidades |
-| 10 | Create Responsibility | Crear responsabilidad |
-| 11 | Member Overview | Vista de miembro (llamamientos, notas, historial) |
-| 12 | Leadership Calendar | Calendario mensual/semanal |
+
+| #   | Pantalla                          | Propósito                                         |
+| --- | --------------------------------- | ------------------------------------------------- |
+| 1   | Leadership Dashboard              | Vista general de liderazgo                        |
+| 2   | Callings List                     | Lista filtrable de llamamientos                   |
+| 3   | Create/Propose Calling            | Crear nuevo llamamiento                           |
+| 4   | Calling Detail - Summary          | Resumen del llamamiento                           |
+| 5   | Calling Detail - Responsibilities | Responsabilidades asignadas                       |
+| 6   | Calling Detail - Notes            | Notas con dictado                                 |
+| 7   | Calling Detail - Agenda           | Calendario del llamamiento                        |
+| 8   | Calling Detail - Progress         | Progreso descriptivo                              |
+| 9   | Responsibilities List             | Lista de responsabilidades                        |
+| 10  | Create Responsibility             | Crear responsabilidad                             |
+| 11  | Member Overview                   | Vista de miembro (llamamientos, notas, historial) |
+| 12  | Leadership Calendar               | Calendario mensual/semanal                        |
 
 ### Shared (3 pantallas)
-| # | Pantalla | Propósito |
-|---|----------|-----------|
-| 1 | Profile | Perfil unificado |
-| 2 | Data & Privacy | Configuración de privacidad |
-| 3 | Export/Clear Data | Exportar o limpiar datos |
+
+| #   | Pantalla          | Propósito                   |
+| --- | ----------------- | --------------------------- |
+| 1   | Profile           | Perfil unificado            |
+| 2   | Data & Privacy    | Configuración de privacidad |
+| 3   | Export/Clear Data | Exportar o limpiar datos    |
 
 **Total: 28 pantallas únicas**
 
@@ -339,34 +345,34 @@ SCREENS TO DESIGN (ALL REQUIRED):
   - Continue where you left off
   - Quick access to lessons
   - Journal entry point
-  
+
 - Lessons List
   - Categorized lessons
   - Visual progress indicators (non-numeric)
   - Search/filter
-  
+
 - Lesson Detail
   - Rich content display
   - Scripture references
   - Reflection prompts
   - Save to journal action
-  
+
 - Baptism Preparation
   - Covenant understanding
   - Interview preparation
   - Questions section
-  
+
 - Journal (text + voice dictation)
   - Text entry
   - Voice dictation button
   - Date organization
   - Private by default
-  
+
 - Progress (non-numeric, narrative)
   - Journey milestones (not percentages)
   - Personal reflections
   - Key moments recorded
-  
+
 - Profile
   - Personal settings
   - Language preference
@@ -378,27 +384,27 @@ SCREENS TO DESIGN (ALL REQUIRED):
   - Current callings summary
   - Study suggestions
   - Service opportunities
-  
+
 - Study Modules
   - Scripture study
   - Gospel topics
   - Personal study plans
-  
+
 - Activities
   - Ward activities
   - Service opportunities
   - Personal commitments
-  
+
 - Journal
   - Personal spiritual journal
   - Voice dictation
   - Tagging system
-  
+
 - Progress
   - Personal growth narrative
   - Goals and reflections
   - No comparisons
-  
+
 - Profile
   - Settings
   - Callings history
@@ -427,7 +433,7 @@ SCREENS TO DESIGN (ALL REQUIRED):
   - Submit for approval
 
 - Calling Detail (Tabbed View with 5 tabs)
-  
+
   Tab 1: Summary
   - Member name and photo
   - Calling title
@@ -435,25 +441,25 @@ SCREENS TO DESIGN (ALL REQUIRED):
   - Start date
   - Status
   - Quick actions
-  
+
   Tab 2: Responsibilities / Assignments
   - List of responsibilities
   - Add new responsibility
   - Mark as discussed
   - Due dates (optional)
-  
+
   Tab 3: Notes (with voice dictation)
   - Chronological notes
   - Voice dictation input
   - Private to leader
   - Timestamps
-  
+
   Tab 4: Agenda / Calendar
   - Scheduled meetings
   - Training sessions
   - Follow-up dates
   - Add new event
-  
+
   Tab 5: Progress (descriptive, not numeric)
   - Narrative updates
   - Key milestones
@@ -491,12 +497,12 @@ SCREENS TO DESIGN (ALL REQUIRED):
   - Personal information
   - Role/mode switcher
   - Preferences
-  
+
 - Data & Privacy
   - What data is stored
   - Local vs synced
   - Consent management
-  
+
 - Export / Clear Data
   - Export personal data
   - Clear local data
@@ -574,19 +580,22 @@ Start with the workflow diagram, then proceed to wireframes for each flow.
 El proyecto ya tiene implementaciones parciales que se alinean con este modelo:
 
 ### Investigator (existente)
+
 - `src/modules/investigator/` - Módulo completo
 - `src/pages/learning/` - Páginas de aprendizaje
 - `src/pages/investigator/` - Home y Profile
 
 ### Member (existente)
+
 - `src/pages/member/` - 37 archivos
 - `src/member/` - Componentes y datos
 
-### Leadership (parcialmente existente)
-- `src/features/memberLeadership/` - Dashboard y pantallas
-- **Falta:** Sistema completo de Callings con tabs
+### Leadership (implementado)
+
+- `src/features/leadershipCallings/` - Módulo completo: dashboard, llamamientos, calendario, miembros, responsabilidades, notas, tabs en detalle de llamamiento
 
 ### Shared (existente)
+
 - `src/components/DataPrivacySection.tsx`
 - `src/core/export/` - Exportación de datos
 
@@ -597,10 +606,11 @@ El proyecto ya tiene implementaciones parciales que se alinean con este modelo:
 Este documento UX debe leerse junto con `docs/ETHICAL_BOUNDARIES.md`.
 
 **Regla de oro:**
+
 > "Un usuario en un momento espiritual vulnerable  
 > debe sentirse **servido**, no **vigilado**,  
 > por esta aplicación."
 
 ---
 
-*Documento creado para xTheGospel — Enero 2026*
+_Documento creado para xTheGospel — Enero 2026_

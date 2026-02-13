@@ -1,7 +1,14 @@
 /**
- * Investigator Scriptures Data
- * MVP: Daily scriptures for spiritual uplift
+ * Investigator Scriptures Data - Bilingual Wrapper
+ * PME+ Support Scriptures included
  */
+
+import { scripturesEs } from './scriptures.es';
+import { scripturesEn } from './scriptures.en';
+
+// ===============================
+// TYPES
+// ===============================
 
 export interface Scripture {
   id: string;
@@ -10,59 +17,80 @@ export interface Scripture {
   context?: string;
 }
 
-export const scriptures: Scripture[] = [
-  {
-    id: 'matthew-7-7',
-    reference: 'Matthew 7:7',
-    text: 'Ask, and it shall be given you; seek, and ye shall find; knock, and it shall be opened unto you.',
-    context: 'Jesus teaching about prayer',
-  },
-  {
-    id: 'john-3-16',
-    reference: 'John 3:16',
-    text: 'For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.',
-    context: 'Jesus speaking to Nicodemus',
-  },
-  {
-    id: 'james-1-5',
-    reference: 'James 1:5',
-    text: 'If any of you lack wisdom, let him ask of God, that giveth to all men liberally, and upbraideth not; and it shall be given him.',
-    context: 'James on seeking wisdom',
-  },
-  {
-    id: 'moroni-10-4',
-    reference: 'Moroni 10:4',
-    text: 'And when ye shall receive these things, I would exhort you that ye would ask God, the Eternal Father, in the name of Christ, if these things are not true.',
-    context: "Moroni's promise",
-  },
-  {
-    id: 'john-14-6',
-    reference: 'John 14:6',
-    text: 'Jesus saith unto him, I am the way, the truth, and the life: no man cometh unto the Father, but by me.',
-    context: 'Jesus teaching the way to the Father',
-  },
-];
+export type Locale = 'es' | 'en';
 
-export function getScriptureById(id: string): Scripture | undefined {
-  return scriptures.find((s) => s.id === id);
+// ===============================
+// LOCALE-AWARE ACCESS
+// ===============================
+
+/**
+ * Get all scriptures for a specific locale
+ */
+export function getScripturesForLocale(locale: Locale = 'es'): Scripture[] {
+  return locale === 'en' ? scripturesEn : scripturesEs;
 }
 
-export function getScriptureByReference(reference: string): Scripture | undefined {
-  return scriptures.find((s) => s.reference.toLowerCase() === reference.toLowerCase());
+// Backward compatible default export (Spanish)
+export const scriptures: Scripture[] = scripturesEs;
+
+/**
+ * Get scripture by ID with optional locale
+ */
+export function getScriptureById(id: string, locale: Locale = 'es'): Scripture | undefined {
+  const allScriptures = getScripturesForLocale(locale);
+  return allScriptures.find((s) => s.id === id);
 }
 
-export function getDailyScripture(): Scripture {
-  // Simple daily rotation based on day of year
+/**
+ * Get scripture by reference with optional locale
+ */
+export function getScriptureByReference(reference: string, locale: Locale = 'es'): Scripture | undefined {
+  const allScriptures = getScripturesForLocale(locale);
+  return allScriptures.find((s) => s.reference.toLowerCase() === reference.toLowerCase());
+}
+
+/**
+ * Get daily scripture (rotates based on day of year)
+ */
+export function getDailyScripture(locale: Locale = 'es'): Scripture {
+  const allScriptures = getScripturesForLocale(locale);
   const dayOfYear = Math.floor(
     (Date.now() - new Date(new Date().getFullYear(), 0, 0).getTime()) / 86400000
   );
-  return scriptures[dayOfYear % scriptures.length];
+  return allScriptures[dayOfYear % allScriptures.length];
 }
 
-export function getHomeScripture(): Scripture {
-  return getScriptureByReference('Matthew 7:7') || scriptures[0];
+/**
+ * Get home page scripture
+ */
+export function getHomeScripture(locale: Locale = 'es'): Scripture {
+  const allScriptures = getScripturesForLocale(locale);
+  return (
+    getScriptureById('matthew-7-7', locale) ||
+    allScriptures[0]
+  );
 }
 
-export function getLessonDetailScripture(): Scripture {
-  return getScriptureByReference('John 3:16') || scriptures[1];
+/**
+ * Get lesson detail scripture
+ */
+export function getLessonDetailScripture(locale: Locale = 'es'): Scripture {
+  return (
+    getScriptureById('john-3-16', locale) ||
+    getScripturesForLocale(locale)[1]
+  );
+}
+
+/**
+ * Search scriptures by text content
+ */
+export function searchScriptures(query: string, locale: Locale = 'es'): Scripture[] {
+  const allScriptures = getScripturesForLocale(locale);
+  const lowerQuery = query.toLowerCase();
+  return allScriptures.filter(
+    (s) =>
+      s.text.toLowerCase().includes(lowerQuery) ||
+      s.reference.toLowerCase().includes(lowerQuery) ||
+      (s.context && s.context.toLowerCase().includes(lowerQuery))
+  );
 }

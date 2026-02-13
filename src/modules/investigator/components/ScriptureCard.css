@@ -1,10 +1,12 @@
-/* Scripture Card Component */
+/* Scripture Card Component
+ * Sprint 10 - Migrated to design-system CSS variables
+ */
 
 .scripture-card {
-  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-  border-radius: 16px;
-  padding: 20px;
-  border: 1px solid rgba(251, 191, 36, 0.3);
+  background: var(--color-accent-50);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  border: 1px solid var(--border-subtle);
   position: relative;
   overflow: hidden;
 }
@@ -12,35 +14,36 @@
 .scripture-card::before {
   content: '"';
   position: absolute;
-  top: 8px;
-  left: 12px;
-  font-size: 48px;
-  color: rgba(217, 119, 6, 0.15);
-  font-family: Georgia, serif;
-  line-height: 1;
+  top: var(--space-2);
+  left: var(--space-3);
+  font-size: var(--text-5xl);
+  color: rgba(var(--accent-rgb), 0.18);
+  font-family: var(--font-family);
+  line-height: var(--leading-none);
 }
 
 .scripture-card__text {
-  font-size: 15px;
-  line-height: 1.6;
-  color: #78350f;
+  font-size: var(--text-base);
+  line-height: 1.85;
+  color: var(--text-primary);
   font-style: italic;
-  margin: 0 0 12px 0;
+  margin: 0 0 var(--space-3) 0;
   position: relative;
   z-index: 1;
+  font-family: var(--font-family);
 }
 
 .scripture-card__reference {
-  font-size: 13px;
-  font-weight: 600;
-  color: #92400e;
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: var(--color-accent-700);
   text-align: right;
   margin: 0;
 }
 
 .scripture-card__context {
-  font-size: 11px;
-  color: #a16207;
+  font-size: var(--text-xs);
+  color: var(--text-tertiary);
   text-align: right;
-  margin: 4px 0 0 0;
+  margin: var(--space-1) 0 0 0;
 }

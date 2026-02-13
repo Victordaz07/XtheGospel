@@ -64,9 +64,9 @@ export const CommitmentCard: React.FC<CommitmentCardProps> = ({
   const getStatePillStyle = () => {
     switch (item.state) {
       case 'today':
-        return { bg: '#FEF3C7', text: '#92400E' }; // yellow
+        return { bg: '#F5EDE3', text: '#6F4D32' }; // warm brass
       case 'completed':
-        return { bg: '#DCFCE7', text: '#166534' }; // green
+        return { bg: '#E5EEF0', text: '#2F5A66' }; // sage/teal
       default:
         return { bg: '#E5E7EB', text: '#374151' }; // grey
     }

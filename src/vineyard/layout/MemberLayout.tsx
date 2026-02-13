@@ -27,20 +27,18 @@ import MemberHelpPanelScreen from '../../pages/member/MemberHelpPanelScreen';
 import NewConvertCareScreen from '../../pages/member/NewConvertCareScreen';
 import { MissionaryProfileScreen } from '../../pages/profile/MissionaryProfileScreen';
 import { FeaturedContentPage } from '../../pages/member/FeaturedContentPage';
-import { LeaderTodayPanelScreen } from '../../pages/member/LeaderTodayPanelScreen';
-import { LeaderNewConvertsScreen } from '../../pages/member/LeaderNewConvertsScreen';
-import { LeaderFriendsTeachingScreen } from '../../pages/member/LeaderFriendsTeachingScreen';
-import { LeaderMeetingsResourcesScreen } from '../../pages/member/LeaderMeetingsResourcesScreen';
-import { ConvertPath12WeeksScreen } from '../../pages/member/ConvertPath12WeeksScreen';
-import { LeaderNewConvertsExtendedScreen } from '../../pages/member/LeaderNewConvertsExtendedScreen';
-import { LeaderFriendsExtendedScreen } from '../../pages/member/LeaderFriendsExtendedScreen';
-import { LeaderGuideExtendedScreen } from '../../pages/member/LeaderGuideExtendedScreen';
+// Member Mode - Diary, Transfers, Photos, Resources, Missionary Guide
+import MemberDiary from '../../pages/member/MemberDiary';
+import MemberTransfers from '../../pages/member/MemberTransfers';
+import MemberPhotos from '../../pages/member/MemberPhotos';
+import MemberResources from '../../pages/member/MemberResources';
+import MemberMissionaryGuide from '../../pages/member/MemberMissionaryGuide';
 import '../../layouts/Layout.css';
 
 /**
  * Single source of truth for MEMBER role bottom navigation tabs.
  * This configuration is ALWAYS used regardless of the current route.
- * 
+ *
  * Tabs are displayed in this exact order:
  * 1. Inicio (Home) - Member Mode 2.0
  * 2. Mis Amigos (Friends) - Member Mode 2.0
@@ -82,7 +80,7 @@ export const MemberLayout: React.FC = () => {
 
   // Create stable tab configuration - NEVER changes based on route
   const bottomNavTabs = useMemo(() => {
-    return MEMBER_TABS_CONFIG.map((tab) => ({
+    return MEMBER_TABS_CONFIG.map(tab => ({
       path: tab.path,
       label: t(tab.translationKey),
       icon: React.createElement(tab.icon),
@@ -93,7 +91,9 @@ export const MemberLayout: React.FC = () => {
 
   return (
     <div className="layout">
-      <div className={`layout-shell ${isProfilePage ? 'layout-shell-profile' : ''}`}>
+      <div
+        className={`layout-shell ${isProfilePage ? 'layout-shell-profile' : ''}`}
+      >
         <div className="layout-deco layout-deco-top" />
         <div className="layout-deco layout-deco-bottom" />
         <FloatingMenu tabs={bottomNavTabs} />
@@ -103,46 +103,71 @@ export const MemberLayout: React.FC = () => {
             <Route path="/member" element={<MemberHomeScreen />} />
             <Route path="/member/home" element={<MemberHomeScreen />} />
             <Route path="/member/friends" element={<MemberFriendsScreen />} />
-            <Route path="/member/training" element={<MemberTrainingCenterScreen />} />
-            <Route path="/member/help-panel" element={<MemberHelpPanelScreen />} />
-            <Route path="/member/new-converts" element={<NewConvertCareScreen />} />
-            
+            <Route
+              path="/member/training"
+              element={<MemberTrainingCenterScreen />}
+            />
+            <Route
+              path="/member/help-panel"
+              element={<MemberHelpPanelScreen />}
+            />
+            <Route
+              path="/member/new-converts"
+              element={<NewConvertCareScreen />}
+            />
+
+            {/* Member Mode - Diary, Transfers, Photos, Resources, Missionary Guide */}
+            <Route path="/member/diary" element={<MemberDiary />} />
+            <Route path="/member/transfers" element={<MemberTransfers />} />
+            <Route path="/member/photos" element={<MemberPhotos />} />
+            <Route path="/member/resources" element={<MemberResources />} />
+            <Route
+              path="/member/missionary-guide"
+              element={<MemberMissionaryGuide />}
+            />
+
             {/* Legacy routes - keeping for backward compatibility */}
             <Route path="/member/study" element={<StudyModulesPage />} />
-            <Route path="/member/study/:moduleId" element={<StudySectionView />} />
-            <Route path="/member/study/:moduleId/:sectionId" element={<StudySectionView />} />
-            <Route path="/member/convertidos" element={<MemberConvertidosPage />} />
-            <Route path="/member/convertidos/:sectionId" element={<MemberConvertidosDetailPage />} />
+            <Route
+              path="/member/study/:moduleId"
+              element={<StudySectionView />}
+            />
+            <Route
+              path="/member/study/:moduleId/:sectionId"
+              element={<StudySectionView />}
+            />
+            <Route
+              path="/member/convertidos"
+              element={<MemberConvertidosPage />}
+            />
+            <Route
+              path="/member/convertidos/:sectionId"
+              element={<MemberConvertidosDetailPage />}
+            />
             <Route path="/member/activities" element={<ActivitiesPage />} />
             <Route path="/member/progress" element={<ProgressPage />} />
-            <Route path="/member/support" element={<MemberMissionarySupport />} />
-            <Route path="/member/profile" element={<MissionaryProfileScreen />} />
+            <Route
+              path="/member/support"
+              element={<MemberMissionarySupport />}
+            />
+            <Route
+              path="/member/profile"
+              element={<MissionaryProfileScreen />}
+            />
             <Route path="/member/featured" element={<FeaturedContentPage />} />
-            <Route path="/member/leader/today" element={<LeaderTodayPanelScreen />} />
-            <Route path="/member/leader/converts" element={<LeaderNewConvertsScreen />} />
-            <Route path="/member/leader/converts/extended" element={<LeaderNewConvertsExtendedScreen />} />
-            <Route path="/member/leader/friends" element={<LeaderFriendsTeachingScreen />} />
-            <Route path="/member/leader/friends/extended" element={<LeaderFriendsExtendedScreen />} />
-            <Route path="/member/leader/meetings" element={<LeaderMeetingsResourcesScreen />} />
-            <Route path="/member/leader/meetings/convert-path" element={<ConvertPath12WeeksScreen />} />
-            <Route path="/member/leader/guidelines/extended" element={<LeaderGuideExtendedScreen />} />
             <Route path="*" element={<Navigate to="/member/home" replace />} />
           </Routes>
         </main>
         <nav className="bottom-nav">
-          {bottomNavTabs.map((tab) => {
+          {bottomNavTabs.map(tab => {
             // Determine if this tab is active
             // Handle exact matches and nested routes (e.g., /member/study/:moduleId)
-            // Also handle leader routes within member layout
-            const isActive = 
+            const isActive =
               location.pathname === tab.path ||
-              (tab.path === '/member/home' && location.pathname === '/member') ||
-              (tab.path !== '/member/home' && location.pathname.startsWith(tab.path)) ||
-              // Para rutas de leader dentro de member, mantener el tab activo según el contexto
-              (location.pathname.startsWith('/member/leader/converts') && tab.path === '/member/home') ||
-              (location.pathname.startsWith('/member/leader/friends') && tab.path === '/member/home') ||
-              (location.pathname.startsWith('/member/leader/meetings') && tab.path === '/member/home') ||
-              (location.pathname.startsWith('/member/leader/guidelines') && tab.path === '/member/home');
+              (tab.path === '/member/home' &&
+                location.pathname === '/member') ||
+              (tab.path !== '/member/home' &&
+                location.pathname.startsWith(tab.path));
             return (
               <Link
                 key={tab.path}
@@ -159,4 +184,3 @@ export const MemberLayout: React.FC = () => {
     </div>
   );
 };
-

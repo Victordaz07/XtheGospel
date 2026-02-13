@@ -1,38 +1,47 @@
-import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { theme } from '../../theme/tokens';
+/**
+ * TabBar - Horizontal tab navigation
+ */
+
+import React, { ReactNode } from 'react';
 import './TabBar.css';
 
-interface TabItem {
-  path: string;
+export interface TabItem {
+  id: string;
   label: string;
-  icon?: React.ReactNode;
+  icon?: ReactNode;
 }
 
-interface TabBarProps {
-  items: TabItem[];
+export interface TabBarProps {
+  tabs: TabItem[];
+  activeId: string;
+  onSelect: (id: string) => void;
+  variant?: 'default' | 'pills' | 'underline';
+  fullWidth?: boolean;
   className?: string;
 }
 
-export const TabBar: React.FC<TabBarProps> = ({ items, className = '' }) => {
-  const location = useLocation();
-
+export const TabBar: React.FC<TabBarProps> = ({
+  tabs,
+  activeId,
+  onSelect,
+  variant = 'default',
+  fullWidth = false,
+  className = '',
+}) => {
   return (
-    <nav className={`ui-tab-bar ${className}`}>
-      {items.map((item) => {
-        const isActive = location.pathname === item.path || location.pathname.startsWith(item.path + '/');
-        return (
-          <Link
-            key={item.path}
-            to={item.path}
-            className={`ui-tab-item ${isActive ? 'ui-tab-item--active' : ''}`}
-          >
-            {item.icon && <span className="ui-tab-icon">{item.icon}</span>}
-            <span className="ui-tab-label">{item.label}</span>
-          </Link>
-        );
-      })}
-    </nav>
+    <div className={`ui-tab-bar ui-tab-bar--${variant} ${fullWidth ? 'ui-tab-bar--full-width' : ''} ${className}`}>
+      {tabs.map(tab => (
+        <button
+          key={tab.id}
+          className={`ui-tab-bar__tab ${activeId === tab.id ? 'ui-tab-bar__tab--active' : ''}`}
+          onClick={() => onSelect(tab.id)}
+          role="tab"
+          aria-selected={activeId === tab.id}
+        >
+          {tab.icon && <span className="ui-tab-bar__icon">{tab.icon}</span>}
+          <span className="ui-tab-bar__label">{tab.label}</span>
+        </button>
+      ))}
+    </div>
   );
 };
-

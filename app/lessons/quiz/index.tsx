@@ -6,7 +6,10 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
-import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
+import {
+  SafeAreaView,
+  useSafeAreaInsets,
+} from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import { useI18n } from '../../../context/I18nContext';
 import QuizLevelSelector from './QuizLevelSelector';
@@ -21,43 +24,43 @@ export default function QuizIndex() {
   const lessons = [
     {
       id: 1,
-      title: t("lesson1.title"),
-      subtitle: t("quiz.lesson1.subtitle"),
-      description: t("quiz.lesson1.description"),
+      title: t('lesson1.title'),
+      subtitle: t('quiz.lesson1.subtitle'),
+      description: t('quiz.lesson1.description'),
       questions: 3,
-      color: "#3b82f6",
+      color: '#3b82f6',
     },
     {
       id: 2,
-      title: t("lesson2.title"),
-      subtitle: t("quiz.lesson2.subtitle"),
-      description: t("quiz.lesson2.description"),
+      title: t('lesson2.title'),
+      subtitle: t('quiz.lesson2.subtitle'),
+      description: t('quiz.lesson2.description'),
       questions: 3,
-      color: "#10b981",
+      color: '#10b981',
     },
     {
       id: 3,
-      title: t("lesson3.title"),
-      subtitle: t("quiz.lesson3.subtitle"),
-      description: t("quiz.lesson3.description"),
+      title: t('lesson3.title'),
+      subtitle: t('quiz.lesson3.subtitle'),
+      description: t('quiz.lesson3.description'),
       questions: 3,
-      color: "#f59e0b",
+      color: '#f59e0b',
     },
     {
       id: 4,
-      title: t("lesson4.title"),
-      subtitle: t("quiz.lesson4.subtitle"),
-      description: t("quiz.lesson4.description"),
+      title: t('lesson4.title'),
+      subtitle: t('quiz.lesson4.subtitle'),
+      description: t('quiz.lesson4.description'),
       questions: 3,
-      color: "#ef4444",
+      color: '#ef4444',
     },
     {
       id: 5,
-      title: t("lesson5.title"),
-      subtitle: t("quiz.lesson5.subtitle"),
-      description: t("quiz.lesson5.description"),
+      title: t('lesson5.title'),
+      subtitle: t('quiz.lesson5.subtitle'),
+      description: t('quiz.lesson5.description'),
       questions: 3,
-      color: "#8b5cf6",
+      color: '#8b5cf6',
     },
   ];
 
@@ -68,7 +71,12 @@ export default function QuizIndex() {
 
   const handleLevelSelect = (level: 'easy' | 'medium' | 'hard') => {
     if (selectedLesson) {
-      navigation.navigate(`QuizLesson${selectedLesson}` as never, { level } as never);
+      (
+        navigation.navigate as unknown as (
+          name: string,
+          params?: object,
+        ) => void
+      )(`QuizLesson${selectedLesson}`, { level });
     }
   };
 
@@ -81,19 +89,24 @@ export default function QuizIndex() {
           contentContainerStyle={styles.scrollContent}
         >
           <View style={styles.header}>
-            <Text style={styles.headerTitle}>{t("quiz.title")}</Text>
-            <Text style={styles.headerSubtitle}>{t("quiz.subtitle")}</Text>
+            <Text style={styles.headerTitle}>{t('quiz.title')}</Text>
+            <Text style={styles.headerSubtitle}>{t('quiz.subtitle')}</Text>
           </View>
 
           <View style={styles.lessonsContainer}>
-            {lessons.map((lesson) => (
+            {lessons.map(lesson => (
               <TouchableOpacity
                 key={lesson.id}
                 style={[styles.lessonCard, { borderLeftColor: lesson.color }]}
                 onPress={() => handleLessonPress(lesson.id)}
               >
                 <View style={styles.lessonHeader}>
-                  <View style={[styles.lessonIcon, { backgroundColor: lesson.color }]}>
+                  <View
+                    style={[
+                      styles.lessonIcon,
+                      { backgroundColor: lesson.color },
+                    ]}
+                  >
                     <Text style={styles.lessonNumber}>{lesson.id}</Text>
                   </View>
                   <View style={styles.lessonInfo}>
@@ -101,18 +114,22 @@ export default function QuizIndex() {
                     <Text style={styles.lessonSubtitle}>{lesson.subtitle}</Text>
                   </View>
                 </View>
-                <Text style={styles.lessonDescription}>{lesson.description}</Text>
+                <Text style={styles.lessonDescription}>
+                  {lesson.description}
+                </Text>
                 <View style={styles.lessonFooter}>
-                  <Text style={styles.questionCount}>{lesson.questions} {t("quiz.questions")}</Text>
-                  <Text style={styles.startQuiz}>{t("quiz.start")}</Text>
+                  <Text style={styles.questionCount}>
+                    {lesson.questions} {t('quiz.questions')}
+                  </Text>
+                  <Text style={styles.startQuiz}>{t('quiz.start')}</Text>
                 </View>
               </TouchableOpacity>
             ))}
           </View>
 
           <View style={styles.infoContainer}>
-            <Text style={styles.infoTitle}>{t("quiz.tips.title")}</Text>
-            <Text style={styles.infoText}>{t("quiz.tips.text")}</Text>
+            <Text style={styles.infoTitle}>{t('quiz.tips.title')}</Text>
+            <Text style={styles.infoText}>{t('quiz.tips.text')}</Text>
           </View>
         </ScrollView>
       </View>

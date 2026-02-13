@@ -54,8 +54,8 @@ export interface LeadershipExport {
   notes?: unknown;
   events?: unknown;
   observations?: unknown;
-  mode?: string;
-  role?: string;
+  mode?: string | null;
+  role?: string | null;
 }
 
 /** Complete export payload */
@@ -148,8 +148,8 @@ export function gatherExportData(): ExportPayload {
     notes: safeReadJSON(USER_DATA_KEYS.leadershipNotes, null),
     events: safeReadJSON(USER_DATA_KEYS.leadershipEvents, null),
     observations: safeReadJSON(USER_DATA_KEYS.leadershipObservations, null),
-    mode: safeReadJSON<string>(USER_DATA_KEYS.mode, null),
-    role: safeReadJSON<string>(USER_DATA_KEYS.role, null),
+    mode: safeReadJSON<string | null>(USER_DATA_KEYS.mode, null),
+    role: safeReadJSON<string | null>(USER_DATA_KEYS.role, null),
   };
 
   // Only include leadership if it has any data
@@ -174,11 +174,11 @@ export function downloadExportFile(payload: ExportPayload): void {
     const json = JSON.stringify(payload, null, 2);
     const blob = new Blob([json], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
-    
+
     // Generate filename with date
     const date = new Date().toISOString().split('T')[0];
     const filename = `xthegospel-export-${date}.json`;
-    
+
     // Create temporary link and trigger download
     const link = document.createElement('a');
     link.href = url;
@@ -186,7 +186,7 @@ export function downloadExportFile(payload: ExportPayload): void {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-    
+
     // Clean up
     URL.revokeObjectURL(url);
   } catch (error) {
@@ -216,10 +216,10 @@ export function getAllLocalKeys(): string[] {
   if (typeof window === 'undefined' || !window.localStorage) {
     return [];
   }
-  
+
   const keys: string[] = [];
   const knownKeys = Object.values(USER_DATA_KEYS) as string[];
-  
+
   try {
     for (let i = 0; i < localStorage.length; i++) {
       const key = localStorage.key(i);
@@ -233,7 +233,7 @@ export function getAllLocalKeys(): string[] {
   } catch (error) {
     console.warn('Error reading localStorage keys:', error);
   }
-  
+
   return keys;
 }
 
@@ -246,7 +246,7 @@ export function clearAllLocalData(): void {
     if (typeof window === 'undefined' || !window.localStorage) {
       return;
     }
-    
+
     // Remove each known user data key
     Object.values(USER_DATA_KEYS).forEach((key) => {
       try {
@@ -255,7 +255,7 @@ export function clearAllLocalData(): void {
         // Individual key removal failure - continue with others
       }
     });
-    
+
     // Also remove any other xtg_ prefixed keys (catch-all for safety)
     const allKeys = getAllLocalKeys();
     allKeys.forEach((key) => {
@@ -265,7 +265,7 @@ export function clearAllLocalData(): void {
         // Continue with others
       }
     });
-    
+
     // Force page reload to reset app state
     window.location.reload();
   } catch (error) {

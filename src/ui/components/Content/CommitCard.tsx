@@ -1,57 +1,48 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { theme } from '../../theme/tokens';
+/**
+ * CommitCard - Display a commitment item
+ */
+
+import React, { ReactNode } from 'react';
 import './CommitCard.css';
 
-interface CommitCardProps {
-  id: string;
+export interface CommitCardProps {
   title: string;
   description?: string;
-  dueDate?: Date | string;
+  icon?: ReactNode;
   completed?: boolean;
-  to?: string;
+  dueDate?: string;
+  onToggle?: () => void;
+  onClick?: () => void;
   className?: string;
 }
 
 export const CommitCard: React.FC<CommitCardProps> = ({
-  id,
   title,
   description,
-  dueDate,
+  icon,
   completed = false,
-  to,
+  dueDate,
+  onToggle,
+  onClick,
   className = '',
 }) => {
-  const formattedDate = dueDate
-    ? new Date(dueDate).toLocaleDateString('es-ES', {
-        day: 'numeric',
-        month: 'short',
-        year: 'numeric',
-      })
-    : null;
-
-  const content = (
+  return (
     <div className={`ui-commit-card ${completed ? 'ui-commit-card--completed' : ''} ${className}`}>
-      <div className="ui-commit-card__header">
-        <h3 className="ui-commit-card__title">{title}</h3>
-        {completed && <span className="ui-commit-card__badge">✓</span>}
-      </div>
-      {description && (
-        <p className="ui-commit-card__description">{description}</p>
-      )}
-      {formattedDate && (
-        <div className="ui-commit-card__date">
-          📅 {formattedDate}
+      <button 
+        className={`ui-commit-card__checkbox ${completed ? 'ui-commit-card__checkbox--checked' : ''}`}
+        onClick={onToggle}
+        aria-label={completed ? 'Mark incomplete' : 'Mark complete'}
+      >
+        {completed && '✓'}
+      </button>
+      <div className="ui-commit-card__content" onClick={onClick}>
+        {icon && <div className="ui-commit-card__icon">{icon}</div>}
+        <div className="ui-commit-card__text">
+          <h4 className="ui-commit-card__title">{title}</h4>
+          {description && <p className="ui-commit-card__description">{description}</p>}
         </div>
-      )}
-      {to && (
-        <Link to={to} className="ui-commit-card__link">
-          Ver detalles →
-        </Link>
-      )}
+      </div>
+      {dueDate && <span className="ui-commit-card__due">{dueDate}</span>}
     </div>
   );
-
-  return content;
 };
-

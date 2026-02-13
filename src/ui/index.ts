@@ -6,9 +6,15 @@
  * import { Card, Button, PageShell, theme } from '@/ui';
  */
 
-// Theme tokens
-export { theme, colors, typography, spacing, radius, shadows } from './theme/tokens';
-export type { Theme } from './theme/tokens';
+// Design system tokens
+export { designTokens, getToken, theme } from './design-system';
+export type {
+  DesignTokens,
+  ColorToken,
+  SpacingToken,
+  RadiusToken,
+  ShadowToken,
+} from './design-system';
 
 // Components
 export * from './components';

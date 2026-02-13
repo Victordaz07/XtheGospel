@@ -4,7 +4,7 @@ export const memberActivitiesPt: MemberActivity[] = [
   {
     id: 'quiz-doctrina-de-cristo-basico',
     title: 'Quiz: A doutrina de Cristo em ação',
-    type: 'scripture-quiz',
+    type: 'QUIZ_SINGLE',
     difficulty: 'easy',
     recommendedAfterModules: ['member_doctrine_of_christ'],
     estimatedMinutes: 8,
@@ -64,7 +64,7 @@ export const memberActivitiesPt: MemberActivity[] = [
   {
     id: 'escenarios-vida-real-misioneros',
     title: 'O que você faria? (com os missionários)',
-    type: 'scenario-quiz',
+    type: 'SCENARIO',
     difficulty: 'medium',
     recommendedAfterModules: ['member_working_with_missionaries'],
     estimatedMinutes: 12,
@@ -110,7 +110,7 @@ export const memberActivitiesPt: MemberActivity[] = [
   {
     id: 'adivina-el-personaje-misional',
     title: 'Adivinhe o herói missionário',
-    type: 'character-guess',
+    type: 'CHARACTER_GUESS',
     difficulty: 'easy',
     recommendedAfterModules: ['member_doctrine_of_christ'],
     estimatedMinutes: 7,
@@ -146,7 +146,7 @@ export const memberActivitiesPt: MemberActivity[] = [
   {
     id: 'practica-companero-misional',
     title: 'Prática: Ser o companheiro dos missionários',
-    type: 'companion-practice',
+    type: 'REAL_WORLD_MISSION',
     difficulty: 'medium',
     recommendedAfterModules: ['member_working_with_missionaries'],
     estimatedMinutes: 15,
@@ -192,7 +192,7 @@ export const memberActivitiesPt: MemberActivity[] = [
   {
     id: 'desafios-de-servicio-misional',
     title: 'Desafios de serviço missionário',
-    type: 'service-challenge',
+    type: 'REAL_WORLD_MISSION',
     difficulty: 'medium',
     recommendedAfterModules: [
       'member_doctrine_of_christ',
@@ -226,7 +226,7 @@ export const memberActivitiesPt: MemberActivity[] = [
   {
     id: 'reflexion-diario-misional-miembro',
     title: 'Reflexão: Meu diário missionário como membro',
-    type: 'reflection-journal',
+    type: 'READING_BLOCK',
     difficulty: 'easy',
     recommendedAfterModules: [
       'member_doctrine_of_christ',
@@ -259,5 +259,5 @@ export const memberActivitiesPt: MemberActivity[] = [
       },
     ],
   },
-];
+] as unknown as MemberActivity[];
 

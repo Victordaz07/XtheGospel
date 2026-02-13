@@ -1,5 +1,4 @@
 import React from 'react';
-import { theme } from '../constants/theme';
 import './RoleButton.css';
 
 interface RoleButtonProps {
@@ -16,4 +15,3 @@ const RoleButton: React.FC<RoleButtonProps> = ({ title, onClick }) => {
 };
 
 export default RoleButton;
-

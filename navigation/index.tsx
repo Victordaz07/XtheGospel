@@ -7,19 +7,19 @@ import { useAuth } from '../context/AuthContext';
 import { useI18n } from '../context/I18nContext';
 import AuthScreen from '../app/(auth)/AuthScreen';
 
-// Importar pantallas del investigador
-import InvestigatorHome from '../app/(tabs)/investigator/index';
-import InvestigatorLessons from '../app/(tabs)/investigator/lessons';
-import InvestigatorProgress from '../app/(tabs)/investigator/progress';
-import InvestigatorBaptism from '../app/(tabs)/investigator/baptism';
-import InvestigatorProfile from '../app/(tabs)/investigator/profile';
+// Importar pantallas del investigador (learning = investigator)
+import InvestigatorHome from '../app/(tabs)/learning/index';
+import InvestigatorLessons from '../app/(tabs)/learning/lessons';
+import InvestigatorProgress from '../app/(tabs)/learning/progress';
+import InvestigatorBaptism from '../app/(tabs)/learning/baptism';
+import InvestigatorProfile from '../app/(tabs)/learning/profile';
 
-// Importar pantallas del misionero
+// Importar pantallas del misionero (serving = missionary)
 import MissionaryHomeScreen from '../src/screens/MissionaryHomeScreen';
-import MissionaryAgenda from '../app/(tabs)/missionary/agenda';
-import MissionaryLessons from '../app/(tabs)/missionary/lessons';
-import MissionaryPeople from '../app/(tabs)/missionary/people';
-import MissionaryProfile from '../app/(tabs)/missionary/profile';
+import MissionaryAgenda from '../app/(tabs)/serving/agenda';
+import MissionaryLessons from '../app/(tabs)/serving/lessons';
+import MissionaryPeople from '../app/(tabs)/serving/people';
+import MissionaryProfile from '../app/(tabs)/serving/profile';
 import { LeadershipCenterFeedScreen } from '../src/screens/LeadershipCenterFeedScreen';
 
 // Importar pantallas del Asistente del Presidente
@@ -77,7 +77,11 @@ const InvestigatorTabs = () => {
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
-        tabBarStyle: { backgroundColor: '#fff', paddingBottom: 5, paddingTop: 5 },
+        tabBarStyle: {
+          backgroundColor: '#fff',
+          paddingBottom: 5,
+          paddingTop: 5,
+        },
         tabBarActiveTintColor: '#007AFF',
         tabBarInactiveTintColor: '#8E8E93',
       }}
@@ -108,7 +112,11 @@ const InvestigatorTabs = () => {
         options={{
           title: t('tabs.tasks'),
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="format-list-checks" color={color} size={size} />
+            <MaterialCommunityIcons
+              name="format-list-checks"
+              color={color}
+              size={size}
+            />
           ),
         }}
       />
@@ -118,7 +126,11 @@ const InvestigatorTabs = () => {
         options={{
           title: t('tabs.progress'),
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="chart-line" color={color} size={size} />
+            <MaterialCommunityIcons
+              name="chart-line"
+              color={color}
+              size={size}
+            />
           ),
         }}
       />
@@ -154,7 +166,11 @@ const MissionaryTabs = () => {
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
-        tabBarStyle: { backgroundColor: '#fff', paddingBottom: 5, paddingTop: 5 },
+        tabBarStyle: {
+          backgroundColor: '#fff',
+          paddingBottom: 5,
+          paddingTop: 5,
+        },
         tabBarActiveTintColor: '#007AFF',
         tabBarInactiveTintColor: '#8E8E93',
       }}
@@ -185,7 +201,11 @@ const MissionaryTabs = () => {
         options={{
           title: t('tabs.people'),
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="account-group" color={color} size={size} />
+            <MaterialCommunityIcons
+              name="account-group"
+              color={color}
+              size={size}
+            />
           ),
         }}
       />
@@ -195,7 +215,11 @@ const MissionaryTabs = () => {
         options={{
           title: t('tabs.tasks'),
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="format-list-checks" color={color} size={size} />
+            <MaterialCommunityIcons
+              name="format-list-checks"
+              color={color}
+              size={size}
+            />
           ),
         }}
       />
@@ -215,7 +239,11 @@ const MissionaryTabs = () => {
         options={{
           title: 'Liderazgo',
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="account-group" color={color} size={size} />
+            <MaterialCommunityIcons
+              name="account-group"
+              color={color}
+              size={size}
+            />
           ),
         }}
       />
@@ -239,7 +267,11 @@ const APTabs = () => {
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
-        tabBarStyle: { backgroundColor: '#fff', paddingBottom: 5, paddingTop: 5 },
+        tabBarStyle: {
+          backgroundColor: '#fff',
+          paddingBottom: 5,
+          paddingTop: 5,
+        },
         tabBarActiveTintColor: '#007AFF',
         tabBarInactiveTintColor: '#8E8E93',
       }}
@@ -250,7 +282,11 @@ const APTabs = () => {
         options={{
           title: 'Dashboard',
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="view-dashboard" color={color} size={size} />
+            <MaterialCommunityIcons
+              name="view-dashboard"
+              color={color}
+              size={size}
+            />
           ),
         }}
       />
@@ -260,7 +296,11 @@ const APTabs = () => {
         options={{
           title: 'Consejo',
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="account-group" color={color} size={size} />
+            <MaterialCommunityIcons
+              name="account-group"
+              color={color}
+              size={size}
+            />
           ),
         }}
       />
@@ -270,7 +310,11 @@ const APTabs = () => {
         options={{
           title: 'Transfers',
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="swap-horizontal" color={color} size={size} />
+            <MaterialCommunityIcons
+              name="swap-horizontal"
+              color={color}
+              size={size}
+            />
           ),
         }}
       />
@@ -280,7 +324,11 @@ const APTabs = () => {
         options={{
           title: 'Oficina',
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="office-building" color={color} size={size} />
+            <MaterialCommunityIcons
+              name="office-building"
+              color={color}
+              size={size}
+            />
           ),
         }}
       />
@@ -290,7 +338,11 @@ const APTabs = () => {
         options={{
           title: 'Giras',
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="map-marker-path" color={color} size={size} />
+            <MaterialCommunityIcons
+              name="map-marker-path"
+              color={color}
+              size={size}
+            />
           ),
         }}
       />
@@ -300,7 +352,11 @@ const APTabs = () => {
         options={{
           title: 'Compañerismo',
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="handshake" color={color} size={size} />
+            <MaterialCommunityIcons
+              name="handshake"
+              color={color}
+              size={size}
+            />
           ),
         }}
       />
@@ -320,14 +376,18 @@ const APTabs = () => {
 
 // Componente de carga
 const LoadingScreen = () => (
-  <View style={{
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#fff'
-  }}>
+  <View
+    style={{
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: '#fff',
+    }}
+  >
     <ActivityIndicator size="large" color="#007AFF" />
-    <Text style={{ marginTop: 10, color: '#007AFF', fontSize: 16 }}>Cargando aplicación...</Text>
+    <Text style={{ marginTop: 10, color: '#007AFF', fontSize: 16 }}>
+      Cargando aplicación...
+    </Text>
   </View>
 );
 

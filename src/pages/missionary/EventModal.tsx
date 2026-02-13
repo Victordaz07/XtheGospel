@@ -62,9 +62,12 @@ export const EventModal: React.FC<EventModalProps> = ({
     { value: 'LESSON', label: t('agenda.eventTypes.lesson') },
     { value: 'CONTACT', label: t('agenda.eventTypes.contact') },
     { value: 'SERVICE', label: t('agenda.eventTypes.service') },
-    { value: 'DISTRICT_COUNCIL', label: t('event.modal.fields.districtCouncil') },
+    {
+      value: 'DISTRICT_COUNCIL',
+      label: t('event.modal.fields.districtCouncil'),
+    },
     { value: 'ZONE_COUNCIL', label: t('event.modal.fields.zoneCouncil') },
-    { value: 'P_DAY', label: t('agenda.eventTypes.pday') },
+    { value: 'PDAY', label: t('agenda.eventTypes.pday') },
     { value: 'OTHER', label: t('common.other') },
   ];
 
@@ -138,7 +141,7 @@ export const EventModal: React.FC<EventModalProps> = ({
 
   return (
     <div className="event-modal-overlay" onClick={onClose}>
-      <div className="event-modal-content" onClick={(e) => e.stopPropagation()}>
+      <div className="event-modal-content" onClick={e => e.stopPropagation()}>
         <div className="event-modal-header">
           <h2 className="event-modal-title">
             {event ? t('event.modal.editTitle') : t('event.modal.newTitle')}
@@ -156,13 +159,14 @@ export const EventModal: React.FC<EventModalProps> = ({
         <form className="event-modal-form" onSubmit={handleSubmit}>
           <div className="event-form-group">
             <label className="event-form-label">
-              {t('event.modal.fields.title')} <span className="event-form-required">*</span>
+              {t('event.modal.fields.title')}{' '}
+              <span className="event-form-required">*</span>
             </label>
             <input
               type="text"
               className="event-form-input"
               value={title}
-              onChange={(e) => setTitle(e.target.value)}
+              onChange={e => setTitle(e.target.value)}
               placeholder={t('event.modal.placeholders.title')}
               required
             />
@@ -170,15 +174,16 @@ export const EventModal: React.FC<EventModalProps> = ({
 
           <div className="event-form-group">
             <label className="event-form-label">
-              {t('event.modal.fields.type')} <span className="event-form-required">*</span>
+              {t('event.modal.fields.type')}{' '}
+              <span className="event-form-required">*</span>
             </label>
             <select
               className="event-form-select"
               value={type}
-              onChange={(e) => setType(e.target.value as CalendarEventType)}
+              onChange={e => setType(e.target.value as CalendarEventType)}
               required
             >
-              {EVENT_TYPE_OPTIONS.map((opt) => (
+              {EVENT_TYPE_OPTIONS.map(opt => (
                 <option key={opt.value} value={opt.value}>
                   {opt.label}
                 </option>
@@ -189,13 +194,14 @@ export const EventModal: React.FC<EventModalProps> = ({
           <div className="event-form-row">
             <div className="event-form-group">
               <label className="event-form-label">
-                {t('event.modal.fields.date')} <span className="event-form-required">*</span>
+                {t('event.modal.fields.date')}{' '}
+                <span className="event-form-required">*</span>
               </label>
               <input
                 type="date"
                 className="event-form-input"
                 value={date}
-                onChange={(e) => setDate(e.target.value)}
+                onChange={e => setDate(e.target.value)}
                 required
               />
             </div>
@@ -204,59 +210,67 @@ export const EventModal: React.FC<EventModalProps> = ({
           <div className="event-form-row">
             <div className="event-form-group">
               <label className="event-form-label">
-                {t('event.modal.fields.startTime')} <span className="event-form-required">*</span>
+                {t('event.modal.fields.startTime')}{' '}
+                <span className="event-form-required">*</span>
               </label>
               <input
                 type="time"
                 className="event-form-input"
                 value={startTime}
-                onChange={(e) => setStartTime(e.target.value)}
+                onChange={e => setStartTime(e.target.value)}
                 required
               />
             </div>
 
             <div className="event-form-group">
               <label className="event-form-label">
-                {t('event.modal.fields.endTime')} <span className="event-form-required">*</span>
+                {t('event.modal.fields.endTime')}{' '}
+                <span className="event-form-required">*</span>
               </label>
               <input
                 type="time"
                 className="event-form-input"
                 value={endTime}
-                onChange={(e) => setEndTime(e.target.value)}
+                onChange={e => setEndTime(e.target.value)}
                 required
               />
             </div>
           </div>
 
           <div className="event-form-group">
-            <label className="event-form-label">{t('event.modal.fields.location')}</label>
+            <label className="event-form-label">
+              {t('event.modal.fields.location')}
+            </label>
             <input
               type="text"
               className="event-form-input"
               value={location}
-              onChange={(e) => setLocation(e.target.value)}
+              onChange={e => setLocation(e.target.value)}
               placeholder={t('event.modal.placeholders.location')}
             />
           </div>
 
           <div className="event-form-group">
-            <label className="event-form-label">{t('event.modal.fields.person')}</label>
+            <label className="event-form-label">
+              {t('event.modal.fields.person')}
+            </label>
             <input
               type="text"
               className="event-form-input"
               value={personName}
-              onChange={(e) => setPersonName(e.target.value)}
+              onChange={e => setPersonName(e.target.value)}
               placeholder={t('event.modal.placeholders.person')}
             />
           </div>
 
           <div className="event-form-group">
-            <label className="event-form-label">{t('event.modal.fields.description')}</label>
+            <label className="event-form-label">
+              {t('event.modal.fields.description')}
+            </label>
             <textarea
               className="event-form-textarea"
               value={description}
-              onChange={(e) => setDescription(e.target.value)}
+              onChange={e => setDescription(e.target.value)}
               placeholder={t('event.modal.placeholders.description')}
               rows={3}
             />
@@ -268,7 +282,7 @@ export const EventModal: React.FC<EventModalProps> = ({
                 type="checkbox"
                 className="event-form-checkbox"
                 checked={required}
-                onChange={(e) => setRequired(e.target.checked)}
+                onChange={e => setRequired(e.target.checked)}
               />
               <span>{t('event.modal.fields.required')}</span>
             </label>
@@ -286,7 +300,9 @@ export const EventModal: React.FC<EventModalProps> = ({
               type="submit"
               className="event-modal-button event-modal-button--primary"
             >
-              {event ? t('event.modal.buttons.save') : t('event.modal.buttons.create')}
+              {event
+                ? t('event.modal.buttons.save')
+                : t('event.modal.buttons.create')}
             </button>
           </div>
         </form>
@@ -294,4 +310,3 @@ export const EventModal: React.FC<EventModalProps> = ({
     </div>
   );
 };
-

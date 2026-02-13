@@ -1,42 +1,19 @@
-import React, { ReactNode } from 'react';
-import { theme } from '../../theme/tokens';
-import './ButtonSecondary.css';
+/**
+ * ButtonSecondary - Convenience wrapper for secondary variant Button
+ * 
+ * @deprecated Consider using <Button variant="secondary"> directly
+ * 
+ * @example
+ * <ButtonSecondary onClick={handleCancel}>Cancel</ButtonSecondary>
+ */
 
-interface ButtonSecondaryProps {
-  children: ReactNode;
-  onClick?: () => void;
-  className?: string;
-  disabled?: boolean;
-  fullWidth?: boolean;
-  size?: 'sm' | 'md' | 'lg';
-  type?: 'button' | 'submit' | 'reset';
-}
+import React, { forwardRef } from 'react';
+import { Button, ButtonProps } from './Button';
 
-export const ButtonSecondary: React.FC<ButtonSecondaryProps> = ({
-  children,
-  onClick,
-  className = '',
-  disabled = false,
-  fullWidth = false,
-  size = 'md',
-  type = 'button',
-}) => {
-  const sizeMap = {
-    sm: { padding: `${theme.spacing.sm}px ${theme.spacing.md}px`, fontSize: theme.typography.fontSize.sm },
-    md: { padding: `${theme.spacing.md}px ${theme.spacing.lg}px`, fontSize: theme.typography.fontSize.md },
-    lg: { padding: `${theme.spacing.lg}px ${theme.spacing.xl}px`, fontSize: theme.typography.fontSize.lg },
-  };
+export type ButtonSecondaryProps = Omit<ButtonProps, 'variant'>;
 
-  return (
-    <button
-      type={type}
-      className={`ui-button-secondary ui-button-secondary--${size} ${fullWidth ? 'ui-button-secondary--full-width' : ''} ${className}`}
-      onClick={onClick}
-      disabled={disabled}
-      style={sizeMap[size]}
-    >
-      {children}
-    </button>
-  );
-};
+export const ButtonSecondary = forwardRef<HTMLButtonElement, ButtonSecondaryProps>((props, ref) => (
+  <Button ref={ref} variant="secondary" {...props} />
+));
 
+ButtonSecondary.displayName = 'ButtonSecondary';

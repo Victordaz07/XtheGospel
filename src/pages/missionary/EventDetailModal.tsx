@@ -33,7 +33,27 @@ export const EventDetailModal: React.FC<EventDetailModalProps> = ({
   onEdit,
   event,
 }) => {
+  const { t } = useI18n();
   if (!isOpen || !event) return null;
+
+  const EVENT_TYPE_LABEL: Record<string, string> = {
+    STUDY: t('agenda.eventTypes.study') || 'Estudio',
+    LESSON: t('agenda.eventTypes.lesson') || 'Lección',
+    CONTACT: t('agenda.eventTypes.contact') || 'Contacto',
+    SERVICE: t('agenda.eventTypes.service') || 'Servicio',
+    DISTRICT_COUNCIL:
+      t('event.modal.fields.districtCouncil') || 'Consejo de distrito',
+    ZONE_COUNCIL: t('event.modal.fields.zoneCouncil') || 'Consejo de zona',
+    PDAY: t('agenda.eventTypes.pday') || 'Día P',
+    OTHER: t('common.other') || 'Otro',
+  };
+  const SCOPE_LABEL: Record<string, string> = {
+    MISSION: t('agenda.scope.mission') || 'Misión',
+    ZONE: t('agenda.scope.zone') || 'Zona',
+    DISTRICT: t('agenda.scope.district') || 'Distrito',
+    COMPANIONSHIP: t('agenda.scope.companionship') || 'Compañerismo',
+    PERSONAL: t('agenda.scope.personal') || 'Personal',
+  };
 
   const startDate = new Date(event.start);
   const endDate = new Date(event.end);
@@ -49,24 +69,31 @@ export const EventDetailModal: React.FC<EventDetailModalProps> = ({
     });
   };
 
-  const canEdit = !event.id.startsWith('mockup-') && 
+  const canEdit =
+    !event.id.startsWith('mockup-') &&
     (event.source === 'PERSONAL' || event.scope === 'PERSONAL');
 
   return (
     <div className="event-detail-overlay" onClick={onClose}>
-      <div className="event-detail-modal" onClick={(e) => e.stopPropagation()}>
+      <div className="event-detail-modal" onClick={e => e.stopPropagation()}>
         <div className="event-detail-header">
           <div className="event-detail-header-content">
-            <span className={`event-detail-type event-detail-type--${event.type}`}>
+            <span
+              className={`event-detail-type event-detail-type--${event.type}`}
+            >
               {EVENT_TYPE_LABEL[event.type] || event.type}
             </span>
             {event.scope && event.scope !== 'PERSONAL' && (
-              <span className={`event-detail-scope event-detail-scope--${event.scope.toLowerCase()}`}>
+              <span
+                className={`event-detail-scope event-detail-scope--${event.scope.toLowerCase()}`}
+              >
                 {SCOPE_LABEL[event.scope]}
               </span>
             )}
             {event.required && (
-              <span className="event-detail-required">{t('agenda.eventLabels.required')}</span>
+              <span className="event-detail-required">
+                {t('agenda.eventLabels.required')}
+              </span>
             )}
           </div>
           <button
@@ -85,29 +112,45 @@ export const EventDetailModal: React.FC<EventDetailModalProps> = ({
           <div className="event-detail-section">
             <div className="event-detail-row">
               <div className="event-detail-info-item">
-                <span className="event-detail-label">{t('event.detail.labels.date')}</span>
-                <span className="event-detail-value">{formatFullDate(startDate)}</span>
-              </div>
-            </div>
-
-            <div className="event-detail-row">
-              <div className="event-detail-info-item">
-                <span className="event-detail-label">{t('event.detail.labels.startTime')}</span>
-                <span className="event-detail-value">{formatHourMinute(startDate)}</span>
-              </div>
-              <div className="event-detail-info-item">
-                <span className="event-detail-label">{t('event.detail.labels.endTime')}</span>
-                <span className="event-detail-value">{formatHourMinute(endDate)}</span>
-              </div>
-            </div>
-
-            <div className="event-detail-row">
-              <div className="event-detail-info-item">
-                <span className="event-detail-label">{t('event.detail.labels.duration')}</span>
+                <span className="event-detail-label">
+                  {t('event.detail.labels.date')}
+                </span>
                 <span className="event-detail-value">
-                  {durationHours === 1 
+                  {formatFullDate(startDate)}
+                </span>
+              </div>
+            </div>
+
+            <div className="event-detail-row">
+              <div className="event-detail-info-item">
+                <span className="event-detail-label">
+                  {t('event.detail.labels.startTime')}
+                </span>
+                <span className="event-detail-value">
+                  {formatHourMinute(startDate)}
+                </span>
+              </div>
+              <div className="event-detail-info-item">
+                <span className="event-detail-label">
+                  {t('event.detail.labels.endTime')}
+                </span>
+                <span className="event-detail-value">
+                  {formatHourMinute(endDate)}
+                </span>
+              </div>
+            </div>
+
+            <div className="event-detail-row">
+              <div className="event-detail-info-item">
+                <span className="event-detail-label">
+                  {t('event.detail.labels.duration')}
+                </span>
+                <span className="event-detail-value">
+                  {durationHours === 1
                     ? t('event.detail.duration.oneHour')
-                    : t('event.detail.duration.hours', { hours: durationHours.toString() })}
+                    : t('event.detail.duration.hours', {
+                        hours: durationHours.toString(),
+                      })}
                 </span>
               </div>
             </div>
@@ -115,7 +158,9 @@ export const EventDetailModal: React.FC<EventDetailModalProps> = ({
             {event.location && (
               <div className="event-detail-row">
                 <div className="event-detail-info-item">
-                  <span className="event-detail-label">{t('event.detail.labels.location')}</span>
+                  <span className="event-detail-label">
+                    {t('event.detail.labels.location')}
+                  </span>
                   <span className="event-detail-value">{event.location}</span>
                 </div>
               </div>
@@ -124,7 +169,9 @@ export const EventDetailModal: React.FC<EventDetailModalProps> = ({
             {event.personName && (
               <div className="event-detail-row">
                 <div className="event-detail-info-item">
-                  <span className="event-detail-label">{t('event.detail.labels.person')}</span>
+                  <span className="event-detail-label">
+                    {t('event.detail.labels.person')}
+                  </span>
                   <span className="event-detail-value">{event.personName}</span>
                 </div>
               </div>
@@ -133,7 +180,9 @@ export const EventDetailModal: React.FC<EventDetailModalProps> = ({
             {event.areaName && (
               <div className="event-detail-row">
                 <div className="event-detail-info-item">
-                  <span className="event-detail-label">{t('event.detail.labels.area')}</span>
+                  <span className="event-detail-label">
+                    {t('event.detail.labels.area')}
+                  </span>
                   <span className="event-detail-value">{event.areaName}</span>
                 </div>
               </div>
@@ -142,7 +191,9 @@ export const EventDetailModal: React.FC<EventDetailModalProps> = ({
 
           {event.description && (
             <div className="event-detail-section">
-              <h3 className="event-detail-section-title">{t('event.detail.labels.description')}</h3>
+              <h3 className="event-detail-section-title">
+                {t('event.detail.labels.description')}
+              </h3>
               <div className="event-detail-description">
                 {event.description.split('\n').map((line, i) => (
                   <p key={i}>{line || '\u00A0'}</p>
@@ -172,7 +223,7 @@ export const EventDetailModal: React.FC<EventDetailModalProps> = ({
             </button>
           ) : (
             <div className="event-detail-readonly-message">
-              {event.id.startsWith('mockup-') 
+              {event.id.startsWith('mockup-')
                 ? t('event.detail.readonlyMessages.routine')
                 : t('event.detail.readonlyMessages.personalOnly')}
             </div>
@@ -182,4 +233,3 @@ export const EventDetailModal: React.FC<EventDetailModalProps> = ({
     </div>
   );
 };
-

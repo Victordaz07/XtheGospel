@@ -1,5 +1,5 @@
 import React from 'react';
-import type { NewConvertSection } from '../member/data/memberTypes';
+import type { NewConvertSection } from '../vineyard/data/memberTypes';
 import './NewConvertSectionCard.css';
 
 interface BadgeLabels {
@@ -39,7 +39,7 @@ export const NewConvertSectionCard: React.FC<NewConvertSectionCardProps> = ({
       onClick={onOpen}
       role="button"
       tabIndex={0}
-      onKeyDown={(e) => {
+      onKeyDown={e => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
           onOpen();
@@ -57,18 +57,22 @@ export const NewConvertSectionCard: React.FC<NewConvertSectionCardProps> = ({
         </div>
       </div>
 
-      <p className="new-convert-section-card-content">{truncateContent(section.content)}</p>
+      <p className="new-convert-section-card-content">
+        {truncateContent(section.content)}
+      </p>
 
       <div className="new-convert-section-card-badges">
         <span className="new-convert-section-card-badge">{badges.bullets}</span>
-        <span className="new-convert-section-card-badge">{badges.scriptures}</span>
+        <span className="new-convert-section-card-badge">
+          {badges.scriptures}
+        </span>
         <span className="new-convert-section-card-badge">{badges.tips}</span>
       </div>
 
       <div className="new-convert-section-card-actions">
         <button
           type="button"
-          onClick={(e) => {
+          onClick={e => {
             e.stopPropagation();
             onOpen();
           }}
@@ -80,5 +84,3 @@ export const NewConvertSectionCard: React.FC<NewConvertSectionCardProps> = ({
     </article>
   );
 };
-
-

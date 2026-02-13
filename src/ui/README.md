@@ -6,8 +6,9 @@ This directory contains the unified UI Kit and Design System for the entire appl
 
 ```
 src/ui/
-├── theme/          # Design tokens (colors, typography, spacing, etc.)
+├── design-system/  # Design tokens and CSS variable generator
 ├── components/     # Reusable UI components
+│   ├── primitives/ # Box, Flex, Stack, Text, Heading, etc.
 │   ├── Layout/     # Page structure components
 │   ├── Navigation/ # Navigation components
 │   ├── Controls/   # Interactive controls
@@ -16,31 +17,34 @@ src/ui/
 └── README.md       # This file
 ```
 
-## Theme Tokens
+## Design System Tokens
 
-All design tokens are defined in `src/ui/theme/`:
+All design tokens are in `src/ui/design-system/` and exposed as CSS variables in `src/styles/design-system.css`:
 
-- **colors.ts**: Color palette (primary, secondary, backgrounds, text, status colors)
-- **typography.ts**: Font families, sizes, weights, line heights
-- **spacing.ts**: Spacing scale (xs, sm, md, lg, xl, xxl, xxxl)
-- **radius.ts**: Border radius values (small, medium, large, xl, xxl, full)
-- **shadows.ts**: Shadow definitions (subtle, card, floating, elevated, prominent, dramatic)
-- **tokens.ts**: Central export of all theme tokens
+- **tokens.ts**: Single source of truth (colors, typography, spacing, radius, shadows)
+- **generate-css-variables.ts**: Generates CSS from tokens
 
 ### Usage
 
 ```typescript
-import { theme } from '../../ui/theme/tokens';
+import { theme, designTokens } from '@/ui';
 
-// Access colors
-const primaryColor = theme.colors.primary;
+// Access tokens (theme is alias of designTokens)
+const primaryColor = theme.colors.primary.DEFAULT;
+const padding = theme.spacing[4];
 
-// Access spacing
-const padding = theme.spacing.md;
-
-// Access typography
-const fontSize = theme.typography.fontSize.lg;
+// Prefer CSS variables in components
+style={{ color: 'var(--color-primary-default)', padding: 'var(--spacing-4)' }}
 ```
+
+### Cambiar la paleta de colores
+
+Para usar otro estilo manteniendo el mismo diseño (esquinas redondeadas, sombras, tipografía):
+
+1. **Edita** `src/ui/design-system/tokens.ts`: en `colors.primary`, `colors.secondary` y `colors.accent` cambia los valores hex (50, 100, 500, 600, 900, DEFAULT, light, dark).
+2. **Sincroniza** `src/styles/design-system.css`: actualiza el bloque `:root` con los mismos hex para `--color-primary-*`, `--color-secondary-*` y `--color-accent-*`.
+
+Los componentes que usan `var(--color-primary-default)` y similares tomarán la nueva paleta. La actual usa **teal** como primario y **ámbar** como acento.
 
 ## Components
 
@@ -95,7 +99,7 @@ export const MyPage: React.FC = () => {
   return (
     <PageContainer>
       <TopBar title="My Page" subtitle="Subtitle" />
-      
+
       <Section title="Lessons">
         <LessonCard
           id="1"
@@ -105,12 +109,12 @@ export const MyPage: React.FC = () => {
           to="/lessons/1"
         />
       </Section>
-      
+
       <Card variant="gradient">
         <h2>Progress</h2>
         <ProgressBar value={75} variant="primary" />
       </Card>
-      
+
       <ButtonPrimary onClick={() => console.log('Clicked')}>
         Start Learning
       </ButtonPrimary>
@@ -122,6 +126,7 @@ export const MyPage: React.FC = () => {
 ## Component Props
 
 All components accept:
+
 - `className?: string` - Additional CSS classes
 - Standard HTML attributes where applicable
 
@@ -156,4 +161,3 @@ When refactoring existing pages:
 5. Replace custom progress bars with `ProgressBar`
 6. Use `Section` for content sections
 7. Use appropriate content components (`LessonCard`, `ActivityCard`, etc.)
-

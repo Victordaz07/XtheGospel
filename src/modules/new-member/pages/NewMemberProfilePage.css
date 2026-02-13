@@ -68,6 +68,53 @@
   margin: 0 0 12px 0;
 }
 
+.nm-profile__section-desc {
+  font-size: 13px;
+  color: #047857;
+  margin: 0 0 12px 0;
+}
+
+/* Mode Switcher */
+.nm-profile__mode-switcher {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.nm-profile__mode-btn {
+  flex: 1;
+  min-width: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 14px 12px;
+  border-radius: 12px;
+  border: 2px solid rgba(52, 211, 153, 0.3);
+  background: #ffffff;
+  color: #065f46;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.nm-profile__mode-btn:hover {
+  border-color: rgba(52, 211, 153, 0.5);
+  background: #f0fdf4;
+}
+
+.nm-profile__mode-btn--active {
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+  border-color: #10b981;
+  color: #065f46;
+}
+
+.nm-profile__mode-icon {
+  font-size: 20px;
+  color: #059669;
+}
+
 /* Placeholder Card */
 .nm-profile__placeholder {
   background: #ffffff;

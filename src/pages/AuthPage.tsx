@@ -20,7 +20,7 @@ import './AuthPage.css';
 type AuthView = 'welcome' | 'login' | 'register';
 
 const AuthPage: React.FC = () => {
-  const { login, isLoading, userRole } = useAuth();
+  const { login, isLoading, userRole, signUpWithEmail, signInWithEmail, profile } = useAuth();
   const { t } = useI18n();
   const navigate = useNavigate();
 
@@ -30,6 +30,7 @@ const AuthPage: React.FC = () => {
   const [password, setPassword] = useState('');
   const [fullName, setFullName] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     if (userRole) {
@@ -38,8 +39,16 @@ const AuthPage: React.FC = () => {
     }
   }, [userRole, navigate]);
 
+  // Show success message if we have a new profile
+  useEffect(() => {
+    if (profile && view === 'register') {
+      console.log('🎉 New xTheGospel ID created:', profile.xthegospelId);
+    }
+  }, [profile, view]);
+
   const handleRoleSelection = (role: UserRoleKey) => {
     setSelectedRole(role);
+    setError(null);
   };
 
   const confirmLogin = async () => {
@@ -58,9 +67,48 @@ const AuthPage: React.FC = () => {
     }
   };
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    confirmLogin();
+    setError(null);
+
+    if (!selectedRole) {
+      setError('Por favor selecciona un rol');
+      return;
+    }
+
+    if (!email || !password) {
+      setError('Por favor completa todos los campos');
+      return;
+    }
+
+    try {
+      if (view === 'register') {
+        // Register with Firebase and create xTheGospel profile
+        await signUpWithEmail(email, password, fullName || undefined);
+        await login(selectedRole);
+        navigate(getRoleDefaultRoute(selectedRole), { replace: true });
+      } else {
+        // Login with Firebase
+        await signInWithEmail(email, password);
+        await login(selectedRole);
+        navigate(getRoleDefaultRoute(selectedRole), { replace: true });
+      }
+    } catch (err: any) {
+      console.error('Auth error:', err);
+      
+      // User-friendly error messages
+      if (err.code === 'auth/email-already-in-use') {
+        setError('Este email ya está registrado. Intenta iniciar sesión.');
+      } else if (err.code === 'auth/invalid-email') {
+        setError('Email inválido');
+      } else if (err.code === 'auth/weak-password') {
+        setError('La contraseña debe tener al menos 6 caracteres');
+      } else if (err.code === 'auth/user-not-found' || err.code === 'auth/wrong-password') {
+        setError('Email o contraseña incorrectos');
+      } else {
+        setError(err.message || 'Error de autenticación');
+      }
+    }
   };
 
   // Use centralized role definitions with i18n labels
@@ -141,8 +189,11 @@ const AuthPage: React.FC = () => {
       </section>
 
       <footer className="auth-footer">
+        <button type="button" onClick={() => setView('register')} className="auth-footer-primary">
+          ¿Nuevo usuario? <span>Crear Cuenta</span>
+        </button>
         <button type="button" onClick={() => setView('login')}>
-          {t('auth.haveAccount') || 'Already have an account?'} <span>{t('auth.signIn') || 'Sign In'}</span>
+          ¿Ya tienes cuenta? <span>Iniciar Sesión</span>
         </button>
         <div className="auth-links">
           <span>Privacy</span>
@@ -226,19 +277,31 @@ const AuthPage: React.FC = () => {
 
         <div className="auth-form-note">
           <span>
-            {t('auth.roleHint') || 'Sign in as Investigator, Missionary, or Member'}
+            {t('auth.roleHint') || 'Selecciona tu rol para continuar'}
           </span>
         </div>
 
         {renderRoleSelector('radio')}
 
+        {error && (
+          <div className="auth-error">
+            {error}
+          </div>
+        )}
+
         <button type="submit" className="auth-primary-btn" disabled={!selectedRole || isLoading}>
           {isLoading
-            ? t('auth.loading') || 'Loading...'
+            ? t('auth.loading') || 'Cargando...'
             : mode === 'login'
-            ? t('auth.signIn') || 'Sign In'
-            : t('auth.register') || 'Create Account'}
+            ? t('auth.signIn') || 'Iniciar Sesión'
+            : t('auth.register') || 'Crear Cuenta'}
         </button>
+
+        {mode === 'register' && (
+          <p className="auth-note">
+            Al registrarte recibirás tu <strong>xTheGospel ID</strong> único
+          </p>
+        )}
       </form>
 
       <div className="auth-switch">

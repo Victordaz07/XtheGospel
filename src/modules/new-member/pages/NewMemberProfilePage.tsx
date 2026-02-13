@@ -1,17 +1,44 @@
 import React from 'react';
-import { FaChevronRight, FaUser, FaBell, FaGlobe, FaCircleQuestion } from 'react-icons/fa6';
+import { useNavigate } from 'react-router-dom';
+import {
+  FaChevronRight,
+  FaUser,
+  FaBell,
+  FaGlobe,
+  FaCircleQuestion,
+  FaUserGear,
+} from 'react-icons/fa6';
 import { OrdinanceDatesSection } from '../../../components/OrdinanceDatesSection';
 import DataPrivacySection from '../../../components/DataPrivacySection';
+import { useMode, type AppMode } from '../../../state/mode';
 import '../../../components/DataPrivacySection.css';
 import './NewMemberProfilePage.css';
 
 /**
  * New Member Profile Page
  * Sprint 7 - Pastoral tone, no placeholders
+ * Includes mode switcher (Investigador / Miembro / Liderazgo) to switch from Leadership back to Member.
  */
 export default function NewMemberProfilePage(): JSX.Element {
+  const navigate = useNavigate();
+  const { mode, setMode } = useMode();
+
   const handleSettingClick = (setting: string): void => {
     alert(`${setting} coming soon!`);
+  };
+
+  const handleModeChange = (newMode: AppMode): void => {
+    setMode(newMode);
+    switch (newMode) {
+      case 'leadership':
+        navigate('/member/leadership/home');
+        break;
+      case 'member':
+      case 'investigator':
+      default:
+        navigate('/home');
+        break;
+    }
   };
 
   return (
@@ -30,8 +57,8 @@ export default function NewMemberProfilePage(): JSX.Element {
         <h2 className="nm-profile__section-title">My Ward Family</h2>
         <div className="nm-profile__ward-info">
           <p className="nm-profile__ward-text">
-            Your ward is your spiritual family. As you attend meetings and activities, 
-            you'll build meaningful friendships and find support.
+            Your ward is your spiritual family. As you attend meetings and
+            activities, you'll build meaningful friendships and find support.
           </p>
         </div>
       </section>
@@ -42,11 +69,46 @@ export default function NewMemberProfilePage(): JSX.Element {
         <OrdinanceDatesSection />
       </section>
 
+      {/* Mode Switcher - switch between Investigator / Member / Leadership */}
+      <section className="nm-profile__section">
+        <h2 className="nm-profile__section-title">Cambiar modo</h2>
+        <p className="nm-profile__section-desc">
+          Selecciona cómo deseas usar la aplicación. Para volver al modo miembro
+          normal, elige &quot;Miembro&quot;.
+        </p>
+        <div className="nm-profile__mode-switcher">
+          <button
+            type="button"
+            className={`nm-profile__mode-btn ${mode === 'investigator' ? 'nm-profile__mode-btn--active' : ''}`}
+            onClick={() => handleModeChange('investigator')}
+          >
+            <FaUser className="nm-profile__mode-icon" />
+            <span>Amigo</span>
+          </button>
+          <button
+            type="button"
+            className={`nm-profile__mode-btn ${mode === 'member' ? 'nm-profile__mode-btn--active' : ''}`}
+            onClick={() => handleModeChange('member')}
+          >
+            <FaUser className="nm-profile__mode-icon" />
+            <span>Miembro</span>
+          </button>
+          <button
+            type="button"
+            className={`nm-profile__mode-btn ${mode === 'leadership' ? 'nm-profile__mode-btn--active' : ''}`}
+            onClick={() => handleModeChange('leadership')}
+          >
+            <FaUserGear className="nm-profile__mode-icon" />
+            <span>Liderazgo</span>
+          </button>
+        </div>
+      </section>
+
       {/* Settings */}
       <section className="nm-profile__section">
         <h2 className="nm-profile__section-title">Settings</h2>
         <div className="nm-profile__settings">
-          <button 
+          <button
             className="nm-profile__setting"
             onClick={() => handleSettingClick('Notifications')}
           >
@@ -59,8 +121,8 @@ export default function NewMemberProfilePage(): JSX.Element {
             </div>
             <FaChevronRight className="nm-profile__setting-arrow" />
           </button>
-          
-          <button 
+
+          <button
             className="nm-profile__setting"
             onClick={() => handleSettingClick('Language')}
           >
@@ -73,8 +135,8 @@ export default function NewMemberProfilePage(): JSX.Element {
             </div>
             <FaChevronRight className="nm-profile__setting-arrow" />
           </button>
-          
-          <button 
+
+          <button
             className="nm-profile__setting"
             onClick={() => handleSettingClick('Help')}
           >

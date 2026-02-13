@@ -1,0 +1,114 @@
+.tr-training-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.tr-training-card--locked {
+  cursor: not-allowed;
+  opacity: 0.85;
+}
+
+.tr-training-card--locked .tr-training-card__inner {
+  pointer-events: none;
+}
+
+.tr-training-card__inner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4, 16px);
+  transition: all var(--transition-base, 200ms ease);
+}
+
+.tr-training-card:not(.tr-training-card--locked):hover .tr-training-card__inner {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md, 0 4px 6px -1px rgba(0, 0, 0, 0.1));
+}
+
+.tr-training-card__content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--space-4, 16px);
+}
+
+.tr-training-card__main {
+  flex: 1;
+  min-width: 0;
+}
+
+.tr-training-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-2, 8px);
+  flex-wrap: wrap;
+}
+
+.tr-training-card__title-wrap {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-2, 8px);
+  min-width: 0;
+  flex: 1;
+}
+
+.tr-training-card__lock {
+  display: inline-flex;
+  flex-shrink: 0;
+  color: var(--text-tertiary, #7B8796);
+  font-size: var(--text-sm, 14px);
+}
+
+.tr-training-card__badge {
+  flex-shrink: 0;
+  padding: var(--space-1, 4px) var(--space-2, 8px);
+  font-size: var(--text-xs, 12px);
+  font-weight: var(--font-semibold, 600);
+  border-radius: var(--radius-sm, 6px);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.tr-training-card__badge--success {
+  background: var(--color-semantic-success-50, #ECFDF5);
+  color: var(--color-semantic-success-700, #047857);
+  border: 1px solid var(--color-semantic-success-200, #A7F3D0);
+}
+
+.tr-training-card__badge--neutral {
+  background: var(--color-primary-50, #EEF3FA);
+  color: var(--primary, #1F3A5F);
+  border: 1px solid var(--color-primary-200, #B8CAE9);
+}
+
+.tr-training-card__title {
+  font-size: var(--text-base, 16px);
+  font-weight: var(--font-semibold, 600);
+  color: var(--text-primary, #1C2430);
+  margin: 0 0 var(--space-1, 4px) 0;
+}
+
+.tr-training-card__desc {
+  font-size: var(--text-sm, 14px);
+  color: var(--text-secondary, #465365);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.tr-training-card__progress {
+  flex-shrink: 0;
+}
+
+.tr-training-card__arrow {
+  flex-shrink: 0;
+  color: var(--accent, #A67C52);
+  font-size: var(--text-base, 16px);
+  opacity: 0.6;
+}
+
+.tr-training-card:not(.tr-training-card--locked):hover .tr-training-card__arrow {
+  opacity: 1;
+}

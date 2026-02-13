@@ -24,6 +24,12 @@ export type Lesson = {
   quiz: LocalizedQuiz[];
 };
 
+/** Get localized string from LocalizedText by locale (en, es, fr, pt). Falls back to en. */
+export function getLocalized(text: LocalizedText, locale: string): string {
+  const key = (locale in text ? locale : 'en') as keyof LocalizedText;
+  return text[key] ?? text.en;
+}
+
 export const LESSONS: Lesson[] = [
   {
     id: "L1",

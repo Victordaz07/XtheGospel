@@ -1,7 +1,15 @@
 /**
- * Investigator Lessons Data
- * MVP: 4 core lessons for spiritual journey
+ * Investigator Lessons Data - Bilingual Wrapper
+ * Exports types, constants, and locale-aware helper functions
+ * PME+ Core Lessons v2.0
  */
+
+import { coreLessonsEs, libraryLessonsEs } from './lessons.es';
+import { coreLessonsEn, libraryLessonsEn } from './lessons.en';
+
+// ===============================
+// TYPES & INTERFACES
+// ===============================
 
 export type LessonStatus = 'not_started' | 'exploring' | 'completed';
 
@@ -13,148 +21,151 @@ export interface LessonSection {
   scriptureRef?: string;
 }
 
+export interface LessonFaqItem {
+  id: string;
+  question: string;
+  answer: string;
+}
+
 export interface Lesson {
   id: string;
+  /** Si existe, esta lección es un sub-topic y no aparece en la lista principal. */
+  parentId?: string;
   title: string;
   subtitle: string;
   description: string;
   icon: string;
   estimatedMinutes: number;
+  /** Párrafo introductorio (opcional). Estándar: Lección 1. */
+  introParagraph?: string;
+  /** FAQ expand/collapse (opcional). Ideal para "Antes de decidir". */
+  faqItems?: LessonFaqItem[];
   sections: LessonSection[];
+  /** Escritura destacada por ID (opcional). Si no hay, se usa una por defecto. */
+  featuredScriptureId?: string;
+  /** Preguntas doctrinales para reflexionar (opcional). */
+  reflectionQuestions?: string[];
   reflectionPrompt: string;
+  /** Mensaje final de cierre (opcional). */
+  finalMessage?: string;
+  /** ID del siguiente tema recomendado (opcional). */
+  recommendedNext?: string;
 }
 
-export const lessons: Lesson[] = [
-  {
-    id: 'jesus-christ',
-    title: 'Jesus Christ',
-    subtitle: 'Our Savior and Redeemer',
-    description: 'Learn about the central figure of our faith and His mission of love.',
-    icon: '✝️',
-    estimatedMinutes: 15,
-    sections: [
-      {
-        id: 'jc-1',
-        title: 'Who is Jesus Christ?',
-        content: 'Jesus Christ is the Son of God and the Savior of the world. He lived a perfect life, taught the gospel, and showed us how to return to our Heavenly Father.',
-        hasAudio: true,
-      },
-      {
-        id: 'jc-2',
-        title: 'His Mission of Love',
-        content: 'Through His Atonement, Jesus Christ made it possible for us to be forgiven of our sins and to live again after we die. His love is infinite and personal.',
-        hasAudio: true,
-        scriptureRef: 'John 3:16',
-      },
-      {
-        id: 'jc-3',
-        title: 'Following His Example',
-        content: 'Jesus invites us to come unto Him, learn of Him, and follow His example. As we do, we find peace, purpose, and lasting joy.',
-        hasAudio: true,
-      },
-    ],
-    reflectionPrompt: 'How has learning about Jesus Christ touched your heart today?',
-  },
-  {
-    id: 'plan-of-salvation',
-    title: 'Plan of Salvation',
-    subtitle: "God's Plan for You",
-    description: "Discover God's loving plan for your eternal happiness and progression.",
-    icon: '🌟',
-    estimatedMinutes: 20,
-    sections: [
-      {
-        id: 'pos-1',
-        title: 'Before We Were Born',
-        content: 'We lived with God as His spirit children before coming to earth. We chose to follow His plan and come to earth to gain a body and learn.',
-        hasAudio: true,
-      },
-      {
-        id: 'pos-2',
-        title: 'Life on Earth',
-        content: 'Earth life is a time to learn, grow, and prepare to return to God. We experience joy and challenges that help us become more like Him.',
-        hasAudio: true,
-      },
-      {
-        id: 'pos-3',
-        title: 'Life After Death',
-        content: 'Death is not the end. Through Jesus Christ, we will all be resurrected and can live forever with our families and God.',
-        hasAudio: true,
-      },
-    ],
-    reflectionPrompt: 'What part of God\'s plan brings you the most hope?',
-  },
-  {
-    id: 'restoration',
-    title: 'The Restoration',
-    subtitle: 'Truth Restored',
-    description: "Learn how God restored His Church and gospel in our day.",
-    icon: '🌅',
-    estimatedMinutes: 18,
-    sections: [
-      {
-        id: 'res-1',
-        title: 'The Great Apostasy',
-        content: 'After Christ and His apostles died, the fullness of the gospel was lost from the earth. People changed many teachings and practices.',
-        hasAudio: true,
-      },
-      {
-        id: 'res-2',
-        title: 'Joseph Smith\'s Prayer',
-        content: 'In 1820, a young man named Joseph Smith wanted to know which church was true. He prayed and received a remarkable answer from God.',
-        hasAudio: true,
-      },
-      {
-        id: 'res-3',
-        title: 'The Church Restored',
-        content: 'Through Joseph Smith, God restored the true Church of Jesus Christ, including priesthood authority, scriptures, and sacred ordinances.',
-        hasAudio: true,
-      },
-    ],
-    reflectionPrompt: 'How do you feel about the idea that God still speaks to us today?',
-  },
-  {
-    id: 'commandments',
-    title: 'Living the Gospel',
-    subtitle: 'Commandments and Blessings',
-    description: 'Understand how living God\'s commandments brings happiness and peace.',
-    icon: '💫',
-    estimatedMinutes: 15,
-    sections: [
-      {
-        id: 'cmd-1',
-        title: 'Commandments Show Love',
-        content: 'God gives us commandments because He loves us. They are like guardrails that keep us safe and guide us to happiness.',
-        hasAudio: true,
-      },
-      {
-        id: 'cmd-2',
-        title: 'Faith and Repentance',
-        content: 'Having faith in Jesus Christ and repenting of our sins are the first steps toward receiving God\'s blessings. Repentance brings peace and a fresh start.',
-        hasAudio: true,
-      },
-      {
-        id: 'cmd-3',
-        title: 'Baptism and the Holy Ghost',
-        content: 'Baptism is the gate to the path leading to eternal life. After baptism, we receive the gift of the Holy Ghost to guide and comfort us.',
-        hasAudio: true,
-      },
-    ],
-    reflectionPrompt: 'Which commandment or principle would you like to learn more about?',
-  },
-];
+export type Locale = 'es' | 'en';
 
-export function getLessonById(id: string): Lesson | undefined {
-  return lessons.find((lesson) => lesson.id === id);
+// ===============================
+// CONSTANTS
+// ===============================
+
+/**
+ * Camino Misional (Investigador): 5 lecciones fundamentales (PME - estructura oficial).
+ * Todo lo demás se considera biblioteca/"profundizar" (Miembro Nuevo).
+ */
+export const INVESTIGATOR_CORE_TOPIC_IDS = [
+  'restoration-overview',
+  'plan-of-salvation',
+  'gospel-of-jesus-christ',
+  'commandments',
+  'laws-and-ordinances',
+] as const;
+
+export type InvestigatorCoreTopicId = (typeof INVESTIGATOR_CORE_TOPIC_IDS)[number];
+
+export function isInvestigatorCoreTopicId(id: string): id is InvestigatorCoreTopicId {
+  return (INVESTIGATOR_CORE_TOPIC_IDS as readonly string[]).includes(id);
 }
 
-export function getStatusLabel(status: LessonStatus): string {
-  const labels: Record<LessonStatus, string> = {
-    not_started: 'Not started',
-    exploring: 'Exploring',
-    completed: 'Completed',
+// ===============================
+// LOCALE-AWARE LESSON ACCESS
+// ===============================
+
+/**
+ * Get core lessons for a specific locale
+ */
+export function getCoreLessonsForLocale(locale: Locale = 'es'): Lesson[] {
+  return locale === 'en' ? coreLessonsEn : coreLessonsEs;
+}
+
+/**
+ * Get library lessons for a specific locale
+ * Note: English library lessons are still being translated, falls back to Spanish
+ */
+export function getLibraryLessonsForLocale(locale: Locale = 'es'): Lesson[] {
+  if (locale === 'en' && libraryLessonsEn.length > 0) {
+    return libraryLessonsEn;
+  }
+  return libraryLessonsEs;
+}
+
+/**
+ * Get all lessons for a specific locale
+ */
+export function getLessonsForLocale(locale: Locale = 'es'): Lesson[] {
+  const coreLessons = getCoreLessonsForLocale(locale);
+  const libraryLessons = getLibraryLessonsForLocale(locale);
+  return [...coreLessons, ...libraryLessons];
+}
+
+// ===============================
+// BACKWARD-COMPATIBLE EXPORTS
+// ===============================
+
+// Default to Spanish for backward compatibility
+export const lessons: Lesson[] = getLessonsForLocale('es');
+
+/**
+ * Get a lesson by ID with optional locale
+ */
+export function getLessonById(id: string, locale: Locale = 'es'): Lesson | undefined {
+  const allLessons = getLessonsForLocale(locale);
+  return allLessons.find((lesson) => lesson.id === id);
+}
+
+/**
+ * Get investigator core lessons (PME path)
+ */
+export function getInvestigatorCoreLessons(locale: Locale = 'es'): Lesson[] {
+  return INVESTIGATOR_CORE_TOPIC_IDS
+    .map((id) => getLessonById(id, locale))
+    .filter((l): l is Lesson => Boolean(l));
+}
+
+/**
+ * Biblioteca para Miembro Nuevo: todo lo que no sea "Camino Misional".
+ * Nota: devolvemos solo topics raíz (sin parentId) para no saturar la UI.
+ */
+export function getNewMemberLibraryLessons(locale: Locale = 'es'): Lesson[] {
+  const allLessons = getLessonsForLocale(locale);
+  return allLessons.filter((lesson) => !lesson.parentId && !isInvestigatorCoreTopicId(lesson.id));
+}
+
+/**
+ * Get child lessons by parent ID
+ */
+export function getChildLessonsByParentId(parentId: string, locale: Locale = 'es'): Lesson[] {
+  const allLessons = getLessonsForLocale(locale);
+  return allLessons.filter((lesson) => lesson.parentId === parentId);
+}
+
+// ===============================
+// STATUS HELPERS (Language-independent)
+// ===============================
+
+export function getStatusLabel(status: LessonStatus, locale: Locale = 'es'): string {
+  const labels: Record<Locale, Record<LessonStatus, string>> = {
+    es: {
+      not_started: 'Sin comenzar',
+      exploring: 'Explorando',
+      completed: 'Completada',
+    },
+    en: {
+      not_started: 'Not started',
+      exploring: 'Exploring',
+      completed: 'Completed',
+    },
   };
-  return labels[status];
+  return labels[locale][status];
 }
 
 export function getStatusColor(status: LessonStatus): string {

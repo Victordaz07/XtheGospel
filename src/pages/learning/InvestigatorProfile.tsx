@@ -189,7 +189,7 @@ const InvestigatorProfile: React.FC = () => {
           <div className="profile-hero-text">
             <h2 className="profile-hero-name">{profileData.name}</h2>
             <span className="profile-role-pill">
-              {t('auth.investigator') || 'Investigador'}
+              {t('auth.friend') || 'Amigo'}
             </span>
             <p className="profile-hero-meta">
               {t('memberProfile.personalInfo.memberSince') || 'Member since'} {formattedMemberSince}
@@ -362,7 +362,7 @@ const InvestigatorProfile: React.FC = () => {
             <div>
               <h2 className="profile-section-title">{t('profile.settings') || 'Configuración de Rol'}</h2>
               <p className="profile-section-subtitle">
-                {t('profile.roleDescription') || 'Estás usando la app como: Investigador'}
+                {t('profile.roleDescription') || 'Estás conociendo la iglesia'}
               </p>
             </div>
           </div>
@@ -375,10 +375,10 @@ const InvestigatorProfile: React.FC = () => {
               <span className="profile-role-button-icon">📖</span>
               <div>
                 <p className="profile-role-button-title">
-                  {t('auth.investigator') || 'Investigador'}
+                  {t('auth.friend') || 'Amigo'}
                 </p>
                 <p className="profile-role-button-subtitle">
-                  {t('profile.roleDescription') || 'Aprendiendo el Evangelio'}
+                  {t('profile.roleDescription') || 'Conociendo la iglesia'}
                 </p>
               </div>
             </div>
@@ -457,7 +457,7 @@ const InvestigatorProfile: React.FC = () => {
           <div className="sheet-backdrop" onClick={closeAllOverlays}>
             <div className="sheet-panel" onClick={(e) => e.stopPropagation()}>
               <h3 className="sheet-title">{t('profile.settings') || 'Configuración de Rol'}</h3>
-              <p className="sheet-subtitle">{t('profile.roleDescription') || 'Estás usando la app como: Investigador'}</p>
+              <p className="sheet-subtitle">{t('profile.roleDescription') || 'Estás conociendo la iglesia'}</p>
               <div className="sheet-content">
                 <RoleSettingsCard currentRole="investigator" />
               </div>

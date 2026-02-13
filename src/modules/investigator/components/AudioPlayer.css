@@ -1,34 +1,37 @@
-/* Audio Player Mock Component */
+/* Audio Player Mock Component
+ * Sprint 10 - Migrated to design-system CSS variables
+ */
 
 .audio-player {
-  background: #ffffff;
-  border-radius: 12px;
-  padding: 12px 16px;
-  border: 1px solid rgba(251, 191, 36, 0.2);
+  background: var(--background-card);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--border-subtle);
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: var(--space-3);
 }
 
 .audio-player__button {
   width: 40px;
   height: 40px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  border-radius: var(--radius-full);
+  background: var(--primary);
   border: none;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #ffffff;
-  font-size: 16px;
-  transition: all 0.2s ease;
+  color: var(--text-inverse);
+  font-size: var(--text-base);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
   flex-shrink: 0;
 }
 
 .audio-player__button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+  transform: scale(1.03);
+  background: var(--primary-dark);
+  box-shadow: var(--shadow-primary);
 }
 
 .audio-player__button:active {
@@ -39,32 +42,32 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: var(--space-1);
 }
 
 .audio-player__bar {
   height: 4px;
-  background: #f1f5f9;
+  background: rgba(var(--primary-rgb), 0.12);
   border-radius: 2px;
   overflow: hidden;
 }
 
 .audio-player__bar-fill {
   height: 100%;
-  background: linear-gradient(90deg, #fbbf24 0%, #f59e0b 100%);
+  background: var(--primary);
   border-radius: 2px;
-  transition: width 0.3s ease;
+  transition: width var(--transition-slow);
 }
 
 .audio-player__time {
-  font-size: 11px;
-  color: #92400e;
+  font-size: var(--text-xs);
+  color: var(--text-tertiary);
   display: flex;
   justify-content: space-between;
 }
 
 .audio-player__label {
-  font-size: 12px;
-  color: #a16207;
-  font-weight: 500;
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  font-weight: var(--font-medium);
 }

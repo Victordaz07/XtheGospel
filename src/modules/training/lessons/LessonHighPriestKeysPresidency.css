@@ -1,0 +1,30 @@
+.tr-lesson-hp-keys { display: flex; flex-direction: column; gap: var(--space-6, 24px); }
+.tr-lesson-hp-keys__section { display: flex; flex-direction: column; gap: var(--space-3, 12px); }
+.tr-lesson-hp-keys__heading { margin: 0; color: var(--text-primary, #1C2430); }
+.tr-lesson-hp-keys__intro { margin: 0; line-height: 1.6; }
+.tr-lesson-hp-keys__list { margin: 0; padding-left: var(--space-5, 20px); list-style: disc; }
+.tr-lesson-hp-keys__list-item { margin-bottom: var(--space-2, 8px); }
+.tr-lesson-hp-keys__list-item:last-child { margin-bottom: 0; }
+.tr-lesson-hp-keys__scriptures { display: flex; flex-direction: column; gap: var(--space-3, 12px); }
+.tr-lesson-hp-keys__scripture-card { border-left: 4px solid var(--primary, #1F3A5F); }
+.tr-lesson-hp-keys__scripture-text { margin: 0 0 var(--space-2, 8px); font-style: italic; }
+.tr-lesson-hp-keys__scripture-ref { margin: 0; }
+.tr-lesson-hp-keys__callout { padding: var(--space-4, 16px); background: var(--color-primary-50, #EEF3FA); border-radius: var(--radius-md, 10px); border: 1px solid var(--color-primary-200, #B8CAE9); }
+.tr-lesson-hp-keys__callout-title { margin: 0 0 var(--space-2, 8px); color: var(--primary, #1F3A5F); }
+.tr-lesson-hp-keys__callout-list { margin: 0; padding-left: var(--space-5, 20px); list-style: disc; }
+.tr-lesson-hp-keys__callout-list li { margin-bottom: var(--space-2, 8px); }
+.tr-lesson-hp-keys__hint { margin: 0; font-size: var(--text-sm, 14px); color: var(--text-tertiary, #7B8796); }
+.tr-lesson-hp-keys__checklist { margin: 0; padding: 0; list-style: none; }
+.tr-lesson-hp-keys__checklist-item-wrapper { list-style: none; }
+.tr-lesson-hp-keys__checklist-item { display: flex; width: 100%; text-align: left; background: none; border: none; font: inherit; align-items: flex-start; gap: var(--space-3, 12px); padding: var(--space-3, 12px); border-radius: var(--radius-md, 10px); cursor: pointer; transition: background var(--transition-base, 200ms ease); }
+.tr-lesson-hp-keys__checklist-item:hover { background: var(--background-page, #FAFAF7); }
+.tr-lesson-hp-keys__checklist-item--done .tr-lesson-hp-keys__checklist-icon { color: var(--color-semantic-success-default, #10B981); }
+.tr-lesson-hp-keys__checklist-icon { flex-shrink: 0; color: var(--text-tertiary, #7B8796); font-size: 1rem; }
+.tr-lesson-hp-keys__reflections { display: flex; flex-direction: column; gap: var(--space-4, 16px); }
+.tr-lesson-hp-keys__reflection-item { display: flex; flex-direction: column; gap: var(--space-2, 8px); }
+.tr-lesson-hp-keys__reflection-label { display: block; font-size: var(--text-sm, 14px); font-weight: var(--font-medium, 500); color: var(--text-primary, #1C2430); }
+.tr-lesson-hp-keys__textarea { width: 100%; padding: var(--space-3, 12px); font-size: var(--text-base, 16px); font-family: inherit; border: 1px solid var(--border-subtle, #e5e7eb); border-radius: var(--radius-md, 10px); resize: vertical; min-height: 72px; }
+.tr-lesson-hp-keys__textarea:focus { outline: none; border-color: var(--primary, #1F3A5F); box-shadow: 0 0 0 2px rgba(31, 58, 95, 0.2); }
+.tr-lesson-hp-keys__action-card { border-left: 4px solid var(--accent, #A67C52); }
+.tr-lesson-hp-keys__action-title { margin: 0 0 var(--space-2, 8px); }
+.tr-lesson-hp-keys__action-text { margin: 0; }

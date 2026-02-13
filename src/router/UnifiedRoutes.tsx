@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 import UnifiedLayout from '../layouts/UnifiedLayout';
 import {
@@ -9,23 +9,34 @@ import {
   ProgressEntryPage,
   ProfileEntryPage,
 } from '../pages/entry';
+import TrainingDashboard from '../modules/training/pages/TrainingDashboard';
+import TrainingPathScreen from '../modules/training/pages/TrainingPathScreen';
+import LessonPlaceholderScreen from '../modules/training/pages/LessonPlaceholderScreen';
 
 /**
  * Unified Routes
- * Same 5 tabs, content switches based on journey stage.
- * 
- * Mounted at: /home/*, /lessons/*, /journal/*, /progress/*, /profile/*
- * Uses relative routing to render the appropriate page based on the parent path.
+ * Same 5 tabs + training, content switches based on journey stage.
+ *
+ * Mounted at: /home/*, /lessons/*, /journal/*, /progress/*, /profile/*, /training/*
  */
 export default function UnifiedRoutes(): JSX.Element {
   const location = useLocation();
-  
-  // Determine which page to render based on the current path
+
   const getPageForPath = (): JSX.Element => {
     const path = location.pathname;
-    
+
+    if (path.startsWith('/training/')) {
+      const parts = path.replace(/^\/training\/?/, '').split('/').filter(Boolean);
+      if (parts.length >= 2) {
+        return <LessonPlaceholderScreen key={path} />;
+      }
+      if (parts.length === 1) {
+        return <TrainingPathScreen key={path} />;
+      }
+    }
+    if (path.startsWith('/training')) return <TrainingDashboard />;
+
     if (path.startsWith('/lessons/') && path !== '/lessons/') {
-      // Lesson detail: /lessons/:lessonId
       const lessonId = path.split('/lessons/')[1]?.split('/')[0];
       return <LessonDetailEntryPage key={lessonId} />;
     }
@@ -34,14 +45,9 @@ export default function UnifiedRoutes(): JSX.Element {
     if (path.startsWith('/progress')) return <ProgressEntryPage />;
     if (path.startsWith('/profile')) return <ProfileEntryPage />;
     if (path.startsWith('/home') || path === '/') return <HomeEntryPage />;
-    
-    // Default to home
+
     return <HomeEntryPage />;
   };
 
-  return (
-    <UnifiedLayout>
-      {getPageForPath()}
-    </UnifiedLayout>
-  );
+  return <UnifiedLayout>{getPageForPath()}</UnifiedLayout>;
 }

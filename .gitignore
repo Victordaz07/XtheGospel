@@ -6,3 +6,5 @@ build
 .vscode
 .cache
 .DS_Store
+.temp-floating-menu
+*.zip

@@ -1,16 +1,16 @@
 :root {
   /* Colors */
-  --xtg-bg: #f3f4f6;
+  --xtg-bg: #FAFAF7;
   --xtg-surface: #ffffff;
-  --xtg-border: #e5e7eb;
-  --xtg-text: #111827;
-  --xtg-text-muted: #6b7280;
-  --xtg-primary: #1d4ed8;
-  --xtg-primary-soft: #e0ecff;
-  --xtg-accent: #16a34a;
+  --xtg-border: #ECECEC;
+  --xtg-text: #1C2430;
+  --xtg-text-muted: #465365;
+  --xtg-primary: #1F3A5F;
+  --xtg-primary-soft: rgba(31, 58, 95, 0.08);
+  --xtg-accent: #A67C52;
   --xtg-radius-lg: 16px;
   --xtg-radius-md: 12px;
-  --xtg-shadow-soft: 0 1px 3px rgba(15, 23, 42, 0.08);
+  --xtg-shadow-soft: 0 1px 3px rgba(28, 36, 48, 0.06);
 
   /* Spacing */
   --xtg-space-xs: 4px;

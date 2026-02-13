@@ -58,10 +58,10 @@ export const FloatingMenu: React.FC<FloatingMenuProps> = ({ tabs }) => {
       >
         {isOpen ? <FaTimes /> : <FaBars />}
       </button>
-      
+
       {isOpen && (
         <div className="floating-menu-dropdown">
-          {tabs.map((tab) => (
+          {tabs.map(tab => (
             <Link
               key={tab.path}
               to={tab.path}
@@ -78,4 +78,3 @@ export const FloatingMenu: React.FC<FloatingMenuProps> = ({ tabs }) => {
     </div>
   );
 };
-

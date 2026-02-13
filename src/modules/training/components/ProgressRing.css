@@ -1,0 +1,42 @@
+.tr-progress-ring {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tr-progress-ring__svg {
+  transform: rotate(-90deg);
+}
+
+.tr-progress-ring__bg {
+  fill: none;
+  stroke: var(--border-subtle, #e5e7eb);
+  stroke-width: 6;
+}
+
+.tr-progress-ring__fill {
+  fill: none;
+  stroke-width: 6;
+  stroke-linecap: round;
+  transition: stroke-dashoffset var(--transition-base, 200ms ease);
+}
+
+.tr-progress-ring--primary .tr-progress-ring__fill {
+  stroke: var(--primary, #1F3A5F);
+}
+
+.tr-progress-ring--success .tr-progress-ring__fill {
+  stroke: var(--success, #10B981);
+}
+
+.tr-progress-ring--secondary .tr-progress-ring__fill {
+  stroke: var(--secondary, #3A4F7A);
+}
+
+.tr-progress-ring__label {
+  position: absolute;
+  font-size: var(--text-sm, 14px);
+  font-weight: var(--font-semibold, 600);
+  color: var(--text-primary, #1C2430);
+}

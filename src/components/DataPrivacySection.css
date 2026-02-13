@@ -1,6 +1,7 @@
 /**
  * Data Privacy Section Styles
  * Sprint 10 - Data Ownership & Export
+ * Updated: Brass/Cream palette for investigator theme (no yellow)
  * 
  * Pastoral tone, trust-building aesthetic.
  * Uses CSS custom properties for easy theming.
@@ -108,7 +109,7 @@
 .data-privacy__no-tracking,
 .inv-profile__no-tracking,
 .nm-profile__no-tracking {
-  background: #fefce8;
+  background: #FAF8F5;
   border-radius: 10px;
   padding: 12px 14px;
   margin-bottom: 18px;
@@ -120,13 +121,13 @@
   margin: 0;
   font-size: 13px;
   line-height: 1.5;
-  color: #854d0e;
+  color: #6F4D32;
 }
 
 .data-privacy__no-tracking-text strong,
 .inv-profile__no-tracking-text strong,
 .nm-profile__no-tracking-text strong {
-  color: #713f12;
+  color: #523826;
 }
 
 /* Action Buttons */
@@ -188,9 +189,9 @@
 .data-privacy__data-btn--clear:hover,
 .inv-profile__data-btn--clear:hover,
 .nm-profile__data-btn--clear:hover {
-  background: #fef2f2;
-  border-color: #fecaca;
-  color: #dc2626;
+  background: #F5E8E6;
+  border-color: #D4A59A;
+  color: #C45C4A;
 }
 
 /* Confirmation Modal Overlay */
@@ -295,47 +296,47 @@
 .inv-profile__confirm-btn--confirm,
 .nm-profile__confirm-btn--confirm {
   background: #ffffff;
-  color: #dc2626;
-  border: 1px solid #fecaca;
+  color: #C45C4A;
+  border: 1px solid #D4A59A;
 }
 
 .data-privacy__confirm-btn--confirm:hover,
 .inv-profile__confirm-btn--confirm:hover,
 .nm-profile__confirm-btn--confirm:hover {
-  background: #fef2f2;
+  background: #F5E8E6;
 }
 
-/* Investigator Theme Overrides */
+/* Investigator Theme Overrides - Brass palette */
 .inv-profile__data-privacy {
-  border-color: rgba(251, 191, 36, 0.2);
+  border-color: rgba(166, 124, 82, 0.15);
 }
 
 .inv-profile__privacy-intro {
-  background: linear-gradient(135deg, #fef3c7 0%, #fef9c3 100%);
+  background: linear-gradient(135deg, #F5EDE3 0%, #EDE5D8 100%);
 }
 
 .inv-profile__privacy-icon {
-  color: #d97706;
+  color: #A67C52;
 }
 
 .inv-profile__privacy-message {
-  color: #92400e;
+  color: #6F4D32;
 }
 
 .inv-profile__privacy-emphasis {
-  color: #b45309;
+  color: #8C6340;
 }
 
 .inv-profile__data-btn--export {
-  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  background: linear-gradient(135deg, #C9A882 0%, #A67C52 100%);
 }
 
 .inv-profile__data-btn--export:hover {
-  box-shadow: 0 4px 12px rgba(251, 191, 36, 0.4);
+  box-shadow: 0 4px 12px rgba(166, 124, 82, 0.4);
 }
 
 .inv-profile__confirm-btn--cancel {
-  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  background: linear-gradient(135deg, #C9A882 0%, #A67C52 100%);
 }
 
 /* New Member Theme Overrides */

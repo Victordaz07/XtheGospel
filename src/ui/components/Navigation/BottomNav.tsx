@@ -1,92 +1,49 @@
 /**
- * BottomNav - Mode-aware bottom navigation
- * 
- * Shows different tabs based on current app mode:
- * - investigator: Home, Lessons, Journal, Progress, Profile
- * - member: Home, Study, Journal, Progress, Profile
- * - leadership: Panel, Llamamientos, Calendario, Perfil
+ * BottomNav - Mobile bottom navigation
  */
 
-import React from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
-import { FaHouse, FaBookOpen, FaBookBookmark, FaChartLine, FaUser, FaListCheck, FaCalendar } from 'react-icons/fa6';
-import { useMode, AppMode } from '../../../state/mode';
+import React, { ReactNode } from 'react';
 import './BottomNav.css';
 
-interface NavTab {
-  path: string;
+export interface BottomNavItem {
+  id: string;
   label: string;
-  icon: React.ReactNode;
+  icon: ReactNode;
+  badge?: number;
 }
 
-const INVESTIGATOR_TABS: NavTab[] = [
-  { path: '/home', label: 'Inicio', icon: <FaHouse /> },
-  { path: '/lessons', label: 'Lecciones', icon: <FaBookOpen /> },
-  { path: '/journal', label: 'Diario', icon: <FaBookBookmark /> },
-  { path: '/progress', label: 'Progreso', icon: <FaChartLine /> },
-  { path: '/profile', label: 'Perfil', icon: <FaUser /> },
-];
-
-const MEMBER_TABS: NavTab[] = [
-  { path: '/home', label: 'Inicio', icon: <FaHouse /> },
-  { path: '/lessons', label: 'Estudio', icon: <FaBookOpen /> },
-  { path: '/journal', label: 'Diario', icon: <FaBookBookmark /> },
-  { path: '/progress', label: 'Progreso', icon: <FaChartLine /> },
-  { path: '/profile', label: 'Perfil', icon: <FaUser /> },
-];
-
-const LEADERSHIP_TABS: NavTab[] = [
-  { path: '/member/leadership/home', label: 'Panel', icon: <FaHouse /> },
-  { path: '/member/leadership/callings', label: 'Llamamientos', icon: <FaListCheck /> },
-  { path: '/member/leadership/calendar', label: 'Calendario', icon: <FaCalendar /> },
-  { path: '/profile', label: 'Perfil', icon: <FaUser /> },
-];
-
-const TABS_BY_MODE: Record<AppMode, NavTab[]> = {
-  investigator: INVESTIGATOR_TABS,
-  member: MEMBER_TABS,
-  leadership: LEADERSHIP_TABS,
-};
-
-interface BottomNavProps {
+export interface BottomNavProps {
+  items: BottomNavItem[];
+  activeId: string;
+  onSelect: (id: string) => void;
   className?: string;
 }
 
-export const BottomNav: React.FC<BottomNavProps> = ({ className = '' }) => {
-  const { mode } = useMode();
-  const location = useLocation();
-  const tabs = TABS_BY_MODE[mode];
-
-  const isActive = (path: string): boolean => {
-    // Special handling for nested routes
-    if (path === '/lessons') {
-      return location.pathname.startsWith('/lessons');
-    }
-    if (path === '/member/leadership/callings') {
-      return location.pathname.startsWith('/member/leadership/callings');
-    }
-    if (path === '/member/leadership/home') {
-      return location.pathname === '/member/leadership/home' ||
-             location.pathname === '/member/leadership/' ||
-             location.pathname === '/member/leadership';
-    }
-    return location.pathname === path || location.pathname.startsWith(path + '/');
-  };
-
+export const BottomNav: React.FC<BottomNavProps> = ({
+  items,
+  activeId,
+  onSelect,
+  className = '',
+}) => {
   return (
-    <nav className={`bottom-nav ${className}`}>
-      {tabs.map((tab) => (
-        <NavLink
-          key={tab.path}
-          to={tab.path}
-          className={`bottom-nav-item ${isActive(tab.path) ? 'active' : ''}`}
+    <nav className={`ui-bottom-nav ${className}`}>
+      {items.map(item => (
+        <button
+          key={item.id}
+          className={`ui-bottom-nav__item ${activeId === item.id ? 'ui-bottom-nav__item--active' : ''}`}
+          onClick={() => onSelect(item.id)}
+          aria-label={item.label}
+          aria-current={activeId === item.id ? 'page' : undefined}
         >
-          <span className="bottom-nav-icon">{tab.icon}</span>
-          <span className="bottom-nav-label">{tab.label}</span>
-        </NavLink>
+          <span className="ui-bottom-nav__icon">
+            {item.icon}
+            {item.badge !== undefined && item.badge > 0 && (
+              <span className="ui-bottom-nav__badge">{item.badge > 99 ? '99+' : item.badge}</span>
+            )}
+          </span>
+          <span className="ui-bottom-nav__label">{item.label}</span>
+        </button>
       ))}
     </nav>
   );
 };
-
-export default BottomNav;

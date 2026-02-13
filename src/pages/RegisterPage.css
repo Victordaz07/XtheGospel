@@ -1,0 +1,606 @@
+/**
+ * RegisterPage Styles
+ * Modern, clean registration flow
+ */
+
+.reg-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 100%);
+}
+
+.reg-container {
+  width: 100%;
+  max-width: 420px;
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 32px 28px;
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06),
+    0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.reg-container--success {
+  text-align: center;
+}
+
+/* Back Button */
+.reg-back {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  color: #64748B;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 8px 0;
+  margin-bottom: 16px;
+  transition: color 0.2s ease;
+}
+
+.reg-back:hover {
+  color: #3A5F8A;
+}
+
+/* Header */
+.reg-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.reg-header--compact {
+  margin-bottom: 24px;
+}
+
+.reg-logo {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 16px;
+  background: linear-gradient(135deg, #3A5F8A 0%, #2A4A6B 100%);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 16px rgba(58, 95, 138, 0.3);
+}
+
+.reg-logo--small {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+}
+
+.reg-logo-icon {
+  font-size: 32px;
+  color: #ffffff;
+}
+
+.reg-logo--small .reg-logo-icon {
+  font-size: 24px;
+}
+
+.reg-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #0F172A;
+  margin: 0 0 8px 0;
+}
+
+.reg-header--compact .reg-title {
+  font-size: 24px;
+}
+
+.reg-subtitle {
+  font-size: 15px;
+  color: #64748B;
+  margin: 0;
+}
+
+/* Type Selection Options */
+.reg-type-options {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.reg-type-option {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  background: #F8FAFC;
+  border: 2px solid transparent;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+
+.reg-type-option:hover {
+  background: #F1F5F9;
+  border-color: #3A5F8A;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(58, 95, 138, 0.15);
+}
+
+.reg-type-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.reg-type-icon--friend {
+  background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+  color: #ffffff;
+}
+
+.reg-type-icon--member {
+  background: linear-gradient(135deg, #3A5F8A 0%, #2A4A6B 100%);
+  color: #ffffff;
+}
+
+.reg-type-content {
+  flex: 1;
+}
+
+.reg-type-content h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #0F172A;
+  margin: 0 0 6px 0;
+}
+
+.reg-type-content p {
+  font-size: 13px;
+  color: #64748B;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.reg-type-arrow {
+  font-size: 20px;
+  color: #94A3B8;
+  transition: transform 0.2s ease;
+}
+
+.reg-type-option:hover .reg-type-arrow {
+  transform: translateX(4px);
+  color: #3A5F8A;
+}
+
+/* Type Badge */
+.reg-type-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.reg-type-badge--friend {
+  background: linear-gradient(135deg, #D1FAE5 0%, #A7F3D0 100%);
+  color: #065F46;
+}
+
+.reg-type-badge--member {
+  background: linear-gradient(135deg, #DBEAFE 0%, #BFDBFE 100%);
+  color: #1E40AF;
+}
+
+/* Field Hint */
+.reg-field-hint {
+  font-size: 12px;
+  color: #64748B;
+  margin: 4px 0 0 0;
+}
+
+/* Optional Label */
+.reg-optional {
+  font-weight: 400;
+  color: #94A3B8;
+}
+
+/* Pending Notice */
+.reg-pending-notice {
+  background: #FEF3C7;
+  border: 1px solid #FCD34D;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.reg-pending-notice span {
+  font-size: 14px;
+  font-weight: 600;
+  color: #92400E;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.reg-pending-notice p {
+  font-size: 13px;
+  color: #A16207;
+  margin: 0;
+}
+
+/* Legacy Options - keeping for backward compatibility */
+.reg-options {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.reg-option {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  background: #F8FAFC;
+  border: 2px solid transparent;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+
+.reg-option:hover {
+  background: #F1F5F9;
+  border-color: #3A5F8A;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(58, 95, 138, 0.15);
+}
+
+.reg-option-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.reg-option-icon--primary {
+  background: linear-gradient(135deg, #3A5F8A 0%, #2A4A6B 100%);
+  color: #ffffff;
+}
+
+.reg-option-icon--secondary {
+  background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+  color: #ffffff;
+}
+
+.reg-option-content {
+  flex: 1;
+}
+
+.reg-option-content h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #0F172A;
+  margin: 0 0 4px 0;
+}
+
+.reg-option-content p {
+  font-size: 13px;
+  color: #64748B;
+  margin: 0;
+}
+
+.reg-option-arrow {
+  font-size: 20px;
+  color: #94A3B8;
+  transition: transform 0.2s ease;
+}
+
+.reg-option:hover .reg-option-arrow {
+  transform: translateX(4px);
+  color: #3A5F8A;
+}
+
+/* Form */
+.reg-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.reg-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.reg-field label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #334155;
+}
+
+.reg-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.reg-input-icon {
+  position: absolute;
+  left: 16px;
+  font-size: 16px;
+  color: #94A3B8;
+  pointer-events: none;
+}
+
+.reg-input-wrapper input {
+  width: 100%;
+  padding: 14px 16px 14px 48px;
+  font-size: 15px;
+  border: 2px solid #E2E8F0;
+  border-radius: 12px;
+  background: #F8FAFC;
+  color: #0F172A;
+  transition: all 0.2s ease;
+}
+
+.reg-input-wrapper input:focus {
+  outline: none;
+  border-color: #3A5F8A;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(58, 95, 138, 0.1);
+}
+
+.reg-input-wrapper input::placeholder {
+  color: #94A3B8;
+}
+
+.reg-toggle-password {
+  position: absolute;
+  right: 16px;
+  background: none;
+  border: none;
+  color: #94A3B8;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reg-toggle-password:hover {
+  color: #3A5F8A;
+}
+
+/* Forgot Password */
+.reg-forgot {
+  align-self: flex-end;
+  background: none;
+  border: none;
+  color: #3A5F8A;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+  margin-top: -8px;
+}
+
+.reg-forgot:hover {
+  text-decoration: underline;
+}
+
+/* Error */
+.reg-error {
+  padding: 12px 16px;
+  background: #FEF2F2;
+  border: 1px solid #FECACA;
+  border-radius: 12px;
+  color: #DC2626;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Submit Button */
+.reg-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 16px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  background: linear-gradient(135deg, #3A5F8A 0%, #2A4A6B 100%);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 8px;
+}
+
+.reg-submit:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(58, 95, 138, 0.35);
+}
+
+.reg-submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.reg-spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Footer */
+.reg-footer {
+  text-align: center;
+}
+
+.reg-footer-note {
+  font-size: 13px;
+  color: #64748B;
+  line-height: 1.6;
+  margin: 0;
+  padding: 16px;
+  background: #F1F5F9;
+  border-radius: 12px;
+}
+
+.reg-footer-note strong {
+  color: #3A5F8A;
+  font-weight: 600;
+}
+
+/* Terms */
+.reg-terms {
+  font-size: 12px;
+  color: #94A3B8;
+  text-align: center;
+  margin: 20px 0 0 0;
+}
+
+.reg-terms a {
+  color: #3A5F8A;
+  text-decoration: none;
+}
+
+.reg-terms a:hover {
+  text-decoration: underline;
+}
+
+/* Switch */
+.reg-switch {
+  font-size: 14px;
+  color: #64748B;
+  text-align: center;
+  margin: 24px 0 0 0;
+}
+
+.reg-switch button {
+  background: none;
+  border: none;
+  color: #3A5F8A;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+}
+
+.reg-switch button:hover {
+  text-decoration: underline;
+}
+
+/* Success */
+.reg-success-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 24px;
+  background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  color: #ffffff;
+  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.35);
+}
+
+.reg-success-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #0F172A;
+  margin: 0 0 8px 0;
+}
+
+.reg-success-subtitle {
+  font-size: 16px;
+  color: #64748B;
+  margin: 0 0 32px 0;
+}
+
+/* ID Card */
+.reg-id-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 24px;
+  background: linear-gradient(135deg, #F0F9FF 0%, #E0F2FE 100%);
+  border: 2px solid #BAE6FD;
+  border-radius: 16px;
+  margin-bottom: 24px;
+}
+
+.reg-id-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #0369A1;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.reg-id-value {
+  font-size: 24px;
+  font-weight: 700;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  color: #0C4A6E;
+}
+
+.reg-id-hint {
+  font-size: 13px;
+  color: #0369A1;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .reg-page {
+    padding: 16px;
+    align-items: flex-start;
+    padding-top: 32px;
+  }
+  
+  .reg-container {
+    padding: 24px 20px;
+    border-radius: 20px;
+  }
+  
+  .reg-logo {
+    width: 64px;
+    height: 64px;
+  }
+  
+  .reg-title {
+    font-size: 24px;
+  }
+  
+  .reg-option {
+    padding: 16px;
+  }
+  
+  .reg-option-icon {
+    width: 44px;
+    height: 44px;
+    font-size: 18px;
+  }
+}

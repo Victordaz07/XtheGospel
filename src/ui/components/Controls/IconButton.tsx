@@ -1,18 +1,39 @@
-import React, { ReactNode } from 'react';
-import { theme } from '../../theme/tokens';
+/**
+ * IconButton - Button containing only an icon
+ * 
+ * Square button for icon-only interactions.
+ * Uses design system tokens exclusively.
+ * 
+ * @example
+ * <IconButton icon={<MenuIcon />} ariaLabel="Open menu" />
+ * <IconButton icon={<CloseIcon />} variant="ghost" size="sm" />
+ */
+
+import React, { ReactNode, forwardRef } from 'react';
 import './IconButton.css';
 
-interface IconButtonProps {
+export interface IconButtonProps {
+  /** Icon element to display */
   icon: ReactNode;
-  onClick?: () => void;
+  /** Click handler */
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  /** Additional CSS classes */
   className?: string;
+  /** Disable the button */
   disabled?: boolean;
+  /** Button size */
   size?: 'sm' | 'md' | 'lg';
-  variant?: 'default' | 'primary' | 'ghost';
-  ariaLabel?: string;
+  /** Visual variant */
+  variant?: 'default' | 'primary' | 'ghost' | 'destructive';
+  /** Aria label (required for accessibility) */
+  ariaLabel: string;
+  /** HTML button type */
+  type?: 'button' | 'submit' | 'reset';
+  /** Show loading state */
+  loading?: boolean;
 }
 
-export const IconButton: React.FC<IconButtonProps> = ({
+export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(({
   icon,
   onClick,
   className = '',
@@ -20,23 +41,41 @@ export const IconButton: React.FC<IconButtonProps> = ({
   size = 'md',
   variant = 'default',
   ariaLabel,
-}) => {
-  const sizeMap = {
-    sm: { width: '32px', height: '32px', fontSize: '14px' },
-    md: { width: '42px', height: '42px', fontSize: '16px' },
-    lg: { width: '52px', height: '52px', fontSize: '20px' },
-  };
+  type = 'button',
+  loading = false,
+}, ref) => {
+  const isDisabled = disabled || loading;
+  
+  const classes = [
+    'ui-icon-button',
+    `ui-icon-button--${size}`,
+    `ui-icon-button--${variant}`,
+    isDisabled ? 'ui-icon-button--disabled' : '',
+    loading ? 'ui-icon-button--loading' : '',
+    className,
+  ].filter(Boolean).join(' ');
 
   return (
     <button
-      className={`ui-icon-button ui-icon-button--${size} ui-icon-button--${variant} ${className}`}
+      ref={ref}
+      type={type}
+      className={classes}
       onClick={onClick}
-      disabled={disabled}
+      disabled={isDisabled}
       aria-label={ariaLabel}
-      style={sizeMap[size]}
+      aria-busy={loading}
     >
-      {icon}
+      {loading ? (
+        <span className="ui-icon-button-spinner" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" className="ui-icon-button-spinner-icon">
+            <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeDasharray="32" strokeDashoffset="12" />
+          </svg>
+        </span>
+      ) : (
+        icon
+      )}
     </button>
   );
-};
+});
 
+IconButton.displayName = 'IconButton';

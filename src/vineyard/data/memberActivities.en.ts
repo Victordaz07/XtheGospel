@@ -4,7 +4,7 @@ export const memberActivitiesEn: MemberActivity[] = [
   {
     id: 'quiz-doctrina-de-cristo-basico',
     title: 'Quiz: The Doctrine of Christ in Action',
-    type: 'scripture-quiz',
+    type: 'QUIZ_SINGLE',
     difficulty: 'easy',
     recommendedAfterModules: ['member_doctrine_of_christ'],
     estimatedMinutes: 8,
@@ -64,7 +64,7 @@ export const memberActivitiesEn: MemberActivity[] = [
   {
     id: 'escenarios-vida-real-misioneros',
     title: 'What Would You Do? (with the missionaries)',
-    type: 'scenario-quiz',
+    type: 'SCENARIO',
     difficulty: 'medium',
     recommendedAfterModules: ['member_working_with_missionaries'],
     estimatedMinutes: 12,
@@ -110,7 +110,7 @@ export const memberActivitiesEn: MemberActivity[] = [
   {
     id: 'adivina-el-personaje-misional',
     title: 'Guess the Missionary Hero',
-    type: 'character-guess',
+    type: 'CHARACTER_GUESS',
     difficulty: 'easy',
     recommendedAfterModules: ['member_doctrine_of_christ'],
     estimatedMinutes: 7,
@@ -146,7 +146,7 @@ export const memberActivitiesEn: MemberActivity[] = [
   {
     id: 'practica-companero-misional',
     title: 'Practice: Being the Missionaries’ Companion',
-    type: 'companion-practice',
+    type: 'REAL_WORLD_MISSION',
     difficulty: 'medium',
     recommendedAfterModules: ['member_working_with_missionaries'],
     estimatedMinutes: 15,
@@ -192,7 +192,7 @@ export const memberActivitiesEn: MemberActivity[] = [
   {
     id: 'desafios-de-servicio-misional',
     title: 'Missionary Service Challenges',
-    type: 'service-challenge',
+    type: 'REAL_WORLD_MISSION',
     difficulty: 'medium',
     recommendedAfterModules: [
       'member_doctrine_of_christ',
@@ -226,7 +226,7 @@ export const memberActivitiesEn: MemberActivity[] = [
   {
     id: 'reflexion-diario-misional-miembro',
     title: 'Reflection: My Member Missionary Journal',
-    type: 'reflection-journal',
+    type: 'READING_BLOCK',
     difficulty: 'easy',
     recommendedAfterModules: [
       'member_doctrine_of_christ',
@@ -259,5 +259,5 @@ export const memberActivitiesEn: MemberActivity[] = [
       },
     ],
   },
-];
+] as unknown as MemberActivity[];
 

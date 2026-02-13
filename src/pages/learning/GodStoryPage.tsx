@@ -32,7 +32,11 @@ const GodStoryPage: React.FC = () => {
 
   const loadEntries = () => {
     const loaded = GodStoryService.loadEntries();
-    setEntries(loaded.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()));
+    setEntries(
+      loaded.sort(
+        (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+      ),
+    );
   };
 
   const openNew = () => {
@@ -75,13 +79,9 @@ const GodStoryPage: React.FC = () => {
         lessonId: draft.lessonId,
       });
     } else {
-      GodStoryService.addEntry(
-        draft.content,
-        draft.title,
-        draft.lessonId
-      );
+      GodStoryService.addEntry(draft.content, draft.title, draft.lessonId);
     }
-    
+
     closeModal();
     loadEntries();
   };
@@ -96,11 +96,20 @@ const GodStoryPage: React.FC = () => {
   const formatDate = (dateString: string): string => {
     try {
       const date = new Date(dateString);
-      return date.toLocaleDateString(locale === 'es' ? 'es-ES' : locale === 'fr' ? 'fr-FR' : locale === 'pt' ? 'pt-BR' : 'en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-      });
+      return date.toLocaleDateString(
+        locale === 'es'
+          ? 'es-ES'
+          : locale === 'fr'
+            ? 'fr-FR'
+            : locale === 'pt'
+              ? 'pt-BR'
+              : 'en-US',
+        {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        },
+      );
     } catch {
       return dateString;
     }
@@ -108,7 +117,9 @@ const GodStoryPage: React.FC = () => {
 
   const getLessonTitle = (lessonId?: string): string | null => {
     if (!lessonId) return null;
-    const lesson = INVESTIGATOR_LESSONS.find(l => l.id === lessonId || l.lessonId === lessonId);
+    const lesson = INVESTIGATOR_LESSONS.find(
+      l => l.id === lessonId || l.lessonId === lessonId,
+    );
     return lesson ? t(`${lesson.translationKey}.title`) : null;
   };
 
@@ -122,7 +133,9 @@ const GodStoryPage: React.FC = () => {
       <TopBar
         title={t('investigatorMyStory.header.title')}
         subtitle={t('investigatorMyStory.header.subtitle')}
-        rightAction={<IconButton icon={<FaBell />} ariaLabel={t('common.notifications')} />}
+        rightAction={
+          <IconButton icon={<FaBell />} ariaLabel={t('common.notifications')} />
+        }
       />
 
       <div className="page-content">
@@ -139,28 +152,40 @@ const GodStoryPage: React.FC = () => {
         {entries.length === 0 ? (
           <Card variant="gradient" className="ims-empty-state">
             <div className="ims-empty-icon">📖</div>
-            <h2 className="ims-empty-title">{t('investigatorMyStory.empty.title')}</h2>
-            <p className="ims-empty-description">{t('investigatorMyStory.empty.description')}</p>
+            <h2 className="ims-empty-title">
+              {t('investigatorMyStory.empty.title')}
+            </h2>
+            <p className="ims-empty-description">
+              {t('investigatorMyStory.empty.description')}
+            </p>
             <ButtonPrimary onClick={openNew} className="ims-empty-button">
               <FaPlus /> {t('investigatorMyStory.list.addButton')}
             </ButtonPrimary>
           </Card>
         ) : (
           <div className="ims-entries-list">
-            {entries.map((entry) => {
+            {entries.map(entry => {
               const lessonTitle = getLessonTitle(entry.lessonId);
-              
+
               return (
-                <Card key={entry.id} variant="default" className="ims-entry-card">
+                <Card
+                  key={entry.id}
+                  variant="default"
+                  className="ims-entry-card"
+                >
                   <div className="ims-entry-header">
                     <div className="ims-entry-title-section">
                       <h3 className="ims-entry-title">
                         {entry.title || t('investigatorMyStory.entry.noTitle')}
                       </h3>
                       <div className="ims-entry-meta">
-                        <span className="ims-entry-date">{formatDate(entry.date)}</span>
+                        <span className="ims-entry-date">
+                          {formatDate(entry.date)}
+                        </span>
                         {lessonTitle && (
-                          <span className="ims-entry-lesson-badge">{lessonTitle}</span>
+                          <span className="ims-entry-lesson-badge">
+                            {lessonTitle}
+                          </span>
                         )}
                       </div>
                     </div>
@@ -179,7 +204,9 @@ const GodStoryPage: React.FC = () => {
                       />
                     </div>
                   </div>
-                  <p className="ims-entry-preview">{getPreview(entry.content)}</p>
+                  <p className="ims-entry-preview">
+                    {getPreview(entry.content)}
+                  </p>
                 </Card>
               );
             })}
@@ -189,84 +216,98 @@ const GodStoryPage: React.FC = () => {
         {/* Modal de Crear/Editar */}
         {modalOpen && (
           <div className="ims-modal-overlay" onClick={closeModal}>
-            <Card variant="default" className="ims-modal" onClick={(e) => e.stopPropagation()}>
-              <div className="ims-modal-header">
-                <h2 className="ims-modal-title">
-                  {editingEntry 
-                    ? t('investigatorMyStory.entry.editButton')
-                    : t('investigatorMyStory.list.addButton')
-                  }
-                </h2>
-                <IconButton
-                  icon={<FaXmark />}
-                  ariaLabel={t('investigatorMyStory.entry.cancelButton')}
-                  onClick={closeModal}
-                />
-              </div>
-
-              <div className="ims-modal-content">
-                {/* Título */}
-                <div className="ims-form-field">
-                  <label className="ims-form-label">
-                    {t('investigatorMyStory.entry.titleLabel')}
-                  </label>
-                  <input
-                    type="text"
-                    className="ims-form-input"
-                    value={draft.title || ''}
-                    onChange={(e) => setDraft({ ...draft, title: e.target.value })}
-                    placeholder={t('investigatorMyStory.entry.titleLabel')}
+            <div onClick={(e: React.MouseEvent) => e.stopPropagation()}>
+              <Card variant="default" className="ims-modal">
+                <div className="ims-modal-header">
+                  <h2 className="ims-modal-title">
+                    {editingEntry
+                      ? t('investigatorMyStory.entry.editButton')
+                      : t('investigatorMyStory.list.addButton')}
+                  </h2>
+                  <IconButton
+                    icon={<FaXmark />}
+                    ariaLabel={t('investigatorMyStory.entry.cancelButton')}
+                    onClick={closeModal}
                   />
                 </div>
 
-                {/* Contenido */}
-                <div className="ims-form-field">
-                  <label className="ims-form-label">
-                    {t('investigatorMyStory.entry.contentLabel')}
-                  </label>
-                  <textarea
-                    className="ims-form-textarea"
-                    value={draft.content || ''}
-                    onChange={(e) => setDraft({ ...draft, content: e.target.value })}
-                    placeholder={t('investigatorMyStory.entry.contentLabel')}
-                    rows={8}
-                  />
-                </div>
+                <div className="ims-modal-content">
+                  {/* Título */}
+                  <div className="ims-form-field">
+                    <label className="ims-form-label">
+                      {t('investigatorMyStory.entry.titleLabel')}
+                    </label>
+                    <input
+                      type="text"
+                      className="ims-form-input"
+                      value={draft.title || ''}
+                      onChange={e =>
+                        setDraft({ ...draft, title: e.target.value })
+                      }
+                      placeholder={t('investigatorMyStory.entry.titleLabel')}
+                    />
+                  </div>
 
-                {/* Lección relacionada */}
-                <div className="ims-form-field">
-                  <label className="ims-form-label">
-                    {t('investigatorMyStory.entry.lessonLabel')}
-                  </label>
-                  <div className="ims-lesson-selector">
-                    <button
-                      className={`ims-lesson-option ${!draft.lessonId ? 'ims-lesson-option--selected' : ''}`}
-                      onClick={() => setDraft({ ...draft, lessonId: undefined })}
-                    >
-                      {t('investigatorMyStory.entry.lessonLabel').split('(')[0].trim()}
-                    </button>
-                    {INVESTIGATOR_LESSONS.map((lesson) => (
+                  {/* Contenido */}
+                  <div className="ims-form-field">
+                    <label className="ims-form-label">
+                      {t('investigatorMyStory.entry.contentLabel')}
+                    </label>
+                    <textarea
+                      className="ims-form-textarea"
+                      value={draft.content || ''}
+                      onChange={e =>
+                        setDraft({ ...draft, content: e.target.value })
+                      }
+                      placeholder={t('investigatorMyStory.entry.contentLabel')}
+                      rows={8}
+                    />
+                  </div>
+
+                  {/* Lección relacionada */}
+                  <div className="ims-form-field">
+                    <label className="ims-form-label">
+                      {t('investigatorMyStory.entry.lessonLabel')}
+                    </label>
+                    <div className="ims-lesson-selector">
                       <button
-                        key={lesson.id}
-                        className={`ims-lesson-option ${draft.lessonId === lesson.id ? 'ims-lesson-option--selected' : ''}`}
-                        onClick={() => setDraft({ ...draft, lessonId: lesson.id })}
+                        className={`ims-lesson-option ${!draft.lessonId ? 'ims-lesson-option--selected' : ''}`}
+                        onClick={() =>
+                          setDraft({ ...draft, lessonId: undefined })
+                        }
                       >
-                        {t(`${lesson.translationKey}.title`)}
+                        {t('investigatorMyStory.entry.lessonLabel')
+                          .split('(')[0]
+                          .trim()}
                       </button>
-                    ))}
+                      {INVESTIGATOR_LESSONS.map(lesson => (
+                        <button
+                          key={lesson.id}
+                          className={`ims-lesson-option ${draft.lessonId === lesson.id ? 'ims-lesson-option--selected' : ''}`}
+                          onClick={() =>
+                            setDraft({ ...draft, lessonId: lesson.id })
+                          }
+                        >
+                          {t(`${lesson.translationKey}.title`)}
+                        </button>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="ims-modal-footer">
-                <ButtonSecondary onClick={closeModal}>
-                  {t('investigatorMyStory.entry.cancelButton')}
-                </ButtonSecondary>
-                <ButtonPrimary onClick={saveEntry} disabled={!draft.content?.trim()}>
-                  {t('investigatorMyStory.entry.saveButton')}
-                </ButtonPrimary>
-              </div>
-            </Card>
+                <div className="ims-modal-footer">
+                  <ButtonSecondary onClick={closeModal}>
+                    {t('investigatorMyStory.entry.cancelButton')}
+                  </ButtonSecondary>
+                  <ButtonPrimary
+                    onClick={saveEntry}
+                    disabled={!draft.content?.trim()}
+                  >
+                    {t('investigatorMyStory.entry.saveButton')}
+                  </ButtonPrimary>
+                </div>
+              </Card>
+            </div>
           </div>
         )}
       </div>

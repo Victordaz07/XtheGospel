@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { FaArrowLeft } from 'react-icons/fa6';
 import { getGuideTopicById } from '../data/guideTopics';
+import { getLessonById } from '../../investigator/data/lessons';
 import { useInvestigatorStore } from '../../investigator/store/useInvestigatorStore';
 import { useSpiritualMemoryStore } from '../../../core/memory/useSpiritualMemoryStore';
 import './NewMemberGuideDetailPage.css';
@@ -13,25 +14,28 @@ interface TopicParams {
 /**
  * New Member Guide Detail Page
  * Sprint 5 - Shows topic content with reflection saving
- * 
+ *
  * Reuses the investigator journal store for continuity.
  */
 export default function NewMemberGuideDetailPage(): JSX.Element {
   const { topicId } = useParams<keyof TopicParams>() as TopicParams;
   const { addJournalEntry } = useInvestigatorStore();
   const { setLastLesson, markSavedToJournal } = useSpiritualMemoryStore();
-  
+
   const [reflection, setReflection] = useState('');
   const [saved, setSaved] = useState(false);
-  
+
   const topic = getGuideTopicById(topicId);
+  const lesson = topic ? null : getLessonById(topicId);
 
   // Remember last visited topic
   useEffect(() => {
     if (topic) {
       setLastLesson({ id: topicId, title: topic.title });
+    } else if (lesson) {
+      setLastLesson({ id: topicId, title: lesson.title });
     }
-  }, [topic, topicId, setLastLesson]);
+  }, [topic, lesson, topicId, setLastLesson]);
 
   const handleSaveReflection = (): void => {
     if (reflection.trim()) {
@@ -47,7 +51,7 @@ export default function NewMemberGuideDetailPage(): JSX.Element {
     }
   };
 
-  if (!topic) {
+  if (!topic && !lesson) {
     return (
       <div className="nm-guide-detail">
         <Link to="/lessons" className="nm-guide-detail__back">
@@ -73,35 +77,50 @@ export default function NewMemberGuideDetailPage(): JSX.Element {
 
       {/* Header */}
       <header className="nm-guide-detail__header">
-        <h1 className="nm-guide-detail__title">{topic.title}</h1>
-        <p className="nm-guide-detail__subtitle">{topic.subtitle}</p>
+        <h1 className="nm-guide-detail__title">{(topic ?? lesson)!.title}</h1>
+        <p className="nm-guide-detail__subtitle">
+          {(topic ?? lesson)!.subtitle}
+        </p>
       </header>
 
       {/* Sections */}
       <div className="nm-guide-detail__sections">
-        {topic.sections.map((section, index) => (
-          <article key={index} className="nm-guide-detail__section">
-            <h2 className="nm-guide-detail__section-title">
-              {section.title}
-            </h2>
-            <p className="nm-guide-detail__section-content">
-              {section.content}
-            </p>
-          </article>
-        ))}
+        {topic
+          ? topic.sections.map((section, index) => (
+              <article key={index} className="nm-guide-detail__section">
+                <h2 className="nm-guide-detail__section-title">
+                  {section.title}
+                </h2>
+                <p className="nm-guide-detail__section-content">
+                  {section.content}
+                </p>
+              </article>
+            ))
+          : lesson!.sections.map(section => (
+              <article key={section.id} className="nm-guide-detail__section">
+                <h2 className="nm-guide-detail__section-title">
+                  {section.title}
+                </h2>
+                <div className="nm-guide-detail__section-content">
+                  {section.content.split(/\n\n+/).map((para, i) => (
+                    <p key={i}>{para.trim()}</p>
+                  ))}
+                </div>
+              </article>
+            ))}
       </div>
 
       {/* Reflection */}
       <div className="nm-guide-detail__reflection">
         <h3 className="nm-guide-detail__reflection-label">Reflection</h3>
         <p className="nm-guide-detail__reflection-prompt">
-          {topic.reflectionPrompt}
+          {topic ? topic.reflectionPrompt : lesson!.reflectionPrompt}
         </p>
         <textarea
           className="nm-guide-detail__reflection-textarea"
           placeholder="Write your thoughts here..."
           value={reflection}
-          onChange={(e) => setReflection(e.target.value)}
+          onChange={e => setReflection(e.target.value)}
         />
         <div className="nm-guide-detail__reflection-actions">
           <button
@@ -122,7 +141,8 @@ export default function NewMemberGuideDetailPage(): JSX.Element {
       {/* Footer encouragement */}
       <footer className="nm-guide-detail__footer">
         <p className="nm-guide-detail__footer-text">
-          Take your time with these principles. Growth happens one day at a time.
+          Take your time with these principles. Growth happens one day at a
+          time.
         </p>
       </footer>
     </div>

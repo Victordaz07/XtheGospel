@@ -1,68 +1,133 @@
 /* Lesson List Card Component
- * Sprint 7 - No status labels
+ * Sprint 10 - Added visual status indicators
  */
 
 .lesson-list-card {
-  background: #ffffff;
-  border-radius: 16px;
-  padding: 16px;
-  border: 1px solid rgba(251, 191, 36, 0.2);
+  background: var(--background-card);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  border: 1px solid var(--border-subtle);
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: var(--space-4);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: transform var(--transition-base), background var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
   text-decoration: none;
   color: inherit;
 }
 
 .lesson-list-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(146, 64, 14, 0.12);
-  border-color: rgba(251, 191, 36, 0.4);
+  transform: translateY(-1px);
+  background: var(--background-muted);
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-md);
 }
 
 .lesson-list-card:active {
   transform: translateY(0);
 }
 
+/* Status variations */
+.lesson-list-card--completed {
+  border-color: var(--success);
+  background: var(--success-light);
+}
+
+.lesson-list-card--completed:hover {
+  border-color: var(--success-dark);
+  background: var(--success-light);
+}
+
+.lesson-list-card--exploring {
+  border-color: var(--warning);
+  background: var(--warning-light);
+}
+
+.lesson-list-card--exploring:hover {
+  border-color: var(--warning-dark);
+  background: var(--warning-light);
+}
+
+/* Icon */
 .lesson-list-card__icon {
   width: 52px;
   height: 52px;
-  border-radius: 14px;
-  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border-radius: var(--radius-lg);
+  background: var(--background-muted);
+  border: 1px solid var(--border-subtle);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 26px;
+  font-size: var(--text-2xl);
   flex-shrink: 0;
+  transition: background var(--transition-base), border-color var(--transition-base);
 }
 
+.lesson-list-card__icon--completed {
+  background: var(--success);
+  border-color: var(--success);
+}
+
+.lesson-list-card__icon--exploring {
+  background: var(--warning);
+  border-color: var(--warning);
+}
+
+/* Content */
 .lesson-list-card__content {
   flex: 1;
   min-width: 0;
 }
 
 .lesson-list-card__title {
-  font-size: 16px;
-  font-weight: 600;
-  color: #78350f;
-  margin: 0 0 4px 0;
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  color: var(--text-primary);
+  margin: 0 0 var(--space-1) 0;
 }
 
 .lesson-list-card__subtitle {
-  font-size: 14px;
-  color: #92400e;
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
   margin: 0;
-  line-height: 1.4;
+  line-height: var(--leading-snug);
+}
+
+/* Status area */
+.lesson-list-card__status {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-shrink: 0;
+}
+
+.lesson-list-card__status-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+}
+
+.lesson-list-card__status-badge--completed {
+  background: var(--success);
+  color: var(--text-inverse);
+}
+
+.lesson-list-card__status-badge--exploring {
+  background: var(--warning);
+  color: var(--text-inverse);
+  font-size: 8px;
 }
 
 .lesson-list-card__arrow {
-  color: #d97706;
-  font-size: 16px;
+  color: var(--accent);
+  font-size: var(--text-base);
   flex-shrink: 0;
   opacity: 0.6;
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition: opacity var(--transition-base), transform var(--transition-base);
 }
 
 .lesson-list-card:hover .lesson-list-card__arrow {

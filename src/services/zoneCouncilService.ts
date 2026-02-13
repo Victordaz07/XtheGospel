@@ -14,25 +14,25 @@ export interface ZoneCouncil {
   time: string;
   location: string;
   status: ZoneCouncilStatus;
-  
+
   // Resumen rápido
   summary: {
     spiritualFocus: string;
     trainingTopic: string;
     mainGoal: string;
   };
-  
+
   // Bloques de contenido
   spiritualStart: {
     scripture: string;
     ideaCentral: string;
     application: string;
   };
-  
+
   progressByDistrict: string; // Resumen de distritos
-  
+
   experiences: string;
-  
+
   training: {
     tema: string;
     escritura: string;
@@ -40,19 +40,19 @@ export interface ZoneCouncil {
     habilidad: string;
     compromiso: string;
   };
-  
+
   goals: {
     metasZona: string;
     accionesPorDistrito: string;
     seguimiento: string;
   };
-  
+
   closing: {
     personas: string;
     misioneros: string;
     unidad: string;
   };
-  
+
   createdAt: string;
   updatedAt: string;
   publishedAt?: string;
@@ -75,29 +75,29 @@ const ZONE_COUNCIL_COMMENTS_KEY = '@zoneCouncilComments';
 
 export const ZoneCouncilService = {
   // Guardar/actualizar reunión
-  saveCouncil: (council: Omit<ZoneCouncil, 'id' | 'createdAt' | 'updatedAt'>): ZoneCouncil => {
+  saveCouncil: (council: Omit<ZoneCouncil, 'id' | 'createdAt' | 'updatedAt'> & { id?: string }): ZoneCouncil => {
     try {
       const councils = ZoneCouncilService.getAllCouncils();
       const now = new Date().toISOString();
-      
+      const id = council.id ?? `zone_council_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
       const newCouncil: ZoneCouncil = {
         ...council,
-        id: council.id || `zone_council_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
-        createdAt: council.id ? councils.find(c => c.id === council.id)?.createdAt || now : now,
+        id,
+        createdAt: council.id ? councils.find(c => c.id === council.id)?.createdAt ?? now : now,
         updatedAt: now
       };
-      
+
       const index = councils.findIndex(c => c.id === newCouncil.id);
       if (index >= 0) {
         councils[index] = newCouncil;
       } else {
         councils.push(newCouncil);
       }
-      
+
       if (typeof window !== 'undefined' && window.localStorage) {
         localStorage.setItem(ZONE_COUNCILS_KEY, JSON.stringify(councils));
       }
-      
+
       return newCouncil;
     } catch (e) {
       console.error('Error guardando reunión de zona:', e);
@@ -110,13 +110,13 @@ export const ZoneCouncilService = {
     try {
       const councils = ZoneCouncilService.getAllCouncils();
       const council = councils.find(c => c.id === councilId);
-      
+
       if (!council) return null;
-      
+
       council.status = 'published';
       council.publishedAt = new Date().toISOString();
       council.updatedAt = new Date().toISOString();
-      
+
       // Crear evento de liderazgo
       ZoneCouncilService.createLeadershipEvent({
         type: 'zone_council',
@@ -131,11 +131,11 @@ export const ZoneCouncilService = {
         status: 'upcoming',
         zoneId: council.zoneId
       });
-      
+
       if (typeof window !== 'undefined' && window.localStorage) {
         localStorage.setItem(ZONE_COUNCILS_KEY, JSON.stringify(councils));
       }
-      
+
       return council;
     } catch (e) {
       console.error('Error publicando reunión de zona:', e);
@@ -204,9 +204,9 @@ export const ZoneCouncilService = {
         id: `event_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
         createdAt: new Date().toISOString()
       };
-      
+
       events.push(newEvent);
-      
+
       if (typeof window !== 'undefined' && window.localStorage) {
         localStorage.setItem(LEADERSHIP_EVENTS_KEY, JSON.stringify(events));
       }
@@ -251,15 +251,15 @@ export const ZoneCouncilService = {
         id: `comment_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
         createdAt: new Date().toISOString()
       };
-      
+
       comments.push(newComment);
-      
+
       if (typeof window !== 'undefined' && window.localStorage) {
         const allComments = ZoneCouncilService.getAllComments();
         const otherComments = allComments.filter(c => c.councilId !== comment.councilId);
         localStorage.setItem(ZONE_COUNCIL_COMMENTS_KEY, JSON.stringify([...otherComments, ...comments]));
       }
-      
+
       return newComment;
     } catch (e) {
       console.error('Error agregando comentario:', e);
@@ -326,13 +326,13 @@ export const ZoneCouncilService = {
     try {
       const councils = ZoneCouncilService.getAllCouncils();
       const council = councils.find(c => c.id === councilId);
-      
+
       if (!council) return null;
-      
+
       council.status = 'completed';
       council.completedAt = new Date().toISOString();
       council.updatedAt = new Date().toISOString();
-      
+
       // Actualizar evento de liderazgo
       const events = ZoneCouncilService.getAllLeadershipEvents();
       const eventIndex = events.findIndex(e => e.sourceId === councilId && e.type === 'zone_council');
@@ -342,11 +342,11 @@ export const ZoneCouncilService = {
           localStorage.setItem(LEADERSHIP_EVENTS_KEY, JSON.stringify(events));
         }
       }
-      
+
       if (typeof window !== 'undefined' && window.localStorage) {
         localStorage.setItem(ZONE_COUNCILS_KEY, JSON.stringify(councils));
       }
-      
+
       return council;
     } catch (e) {
       console.error('Error completando reunión de zona:', e);

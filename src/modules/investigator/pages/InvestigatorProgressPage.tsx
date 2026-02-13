@@ -1,17 +1,18 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { FaBookOpen, FaPenToSquare } from 'react-icons/fa6';
+import { FaBookOpen, FaPenToSquare, FaCalendarDays, FaGraduationCap, FaFeather } from 'react-icons/fa6';
 import { useInvestigatorStore } from '../store/useInvestigatorStore';
 import { useSpiritualMemoryStore, useHasJournalActivity } from '../../../core/memory/useSpiritualMemoryStore';
+import { useI18n } from '../../../context/I18nContext';
 import './InvestigatorProgressPage.css';
 
 /**
  * Investigator Progress Page
- * Sprint 8 - Spiritual Memory: gentle reflection messages
- * 
- * "Progress is not measured; it is accompanied."
+ * Sprint 9 - Enhanced visual design with stats and animations
+ * Now with i18n support
  */
 export default function InvestigatorProgressPage(): JSX.Element {
+  const { t } = useI18n();
   const { journalEntries, lastLessonId } = useInvestigatorStore();
   const { isHydrated, hydrate, lastLessonTitle } = useSpiritualMemoryStore();
   const hasReflectionActivity = useHasJournalActivity();
@@ -23,31 +24,66 @@ export default function InvestigatorProgressPage(): JSX.Element {
     }
   }, [isHydrated, hydrate]);
   
+  // Calculate stats
+  const stats = useMemo(() => {
+    const uniqueDays = new Set(
+      journalEntries.map(e => new Date(e.timestamp).toDateString())
+    ).size;
+    
+    const lessonsExplored = lastLessonId ? 1 : 0; // Simplified for now
+    const reflections = journalEntries.length;
+    
+    return { daysActive: Math.max(uniqueDays, 1), lessonsExplored, reflections };
+  }, [journalEntries, lastLessonId]);
+  
   const hasJournalEntries = journalEntries.length > 0;
   const hasStartedLearning = lastLessonId !== null || (isHydrated && lastLessonTitle);
 
   return (
-    <div className="inv-progress">
+    <div className="inv-progress anim-fade-up">
       {/* Header */}
       <header className="inv-progress__header">
-        <h1 className="inv-progress__title">Your Journey</h1>
+        <h1 className="inv-progress__title">{t('app.progress.title')}</h1>
         <p className="inv-progress__subtitle">
-          A quiet place to reflect on your spiritual path
+          {t('app.progress.subtitle')}
         </p>
       </header>
+
+      {/* Visual Stats */}
+      <section className="inv-progress__stats" aria-label={t('app.progress.subtitle')}>
+        <div className="inv-progress__stat anim-fade-up" style={{ animationDelay: '0.1s' }}>
+          <div className="inv-progress__stat-icon" aria-hidden="true">
+            <FaCalendarDays />
+          </div>
+          <span className="inv-progress__stat-value">{stats.daysActive}</span>
+          <span className="inv-progress__stat-label">{t('app.progress.stats.daysActive')}</span>
+        </div>
+        <div className="inv-progress__stat anim-fade-up" style={{ animationDelay: '0.2s' }}>
+          <div className="inv-progress__stat-icon" aria-hidden="true">
+            <FaGraduationCap />
+          </div>
+          <span className="inv-progress__stat-value">{stats.lessonsExplored}</span>
+          <span className="inv-progress__stat-label">{t('app.progress.stats.lessonsCompleted')}</span>
+        </div>
+        <div className="inv-progress__stat anim-fade-up" style={{ animationDelay: '0.3s' }}>
+          <div className="inv-progress__stat-icon" aria-hidden="true">
+            <FaFeather />
+          </div>
+          <span className="inv-progress__stat-value">{stats.reflections}</span>
+          <span className="inv-progress__stat-label">{t('app.progress.stats.reflections')}</span>
+        </div>
+      </section>
 
       {/* Reflection Card */}
       <section className="inv-progress__reflection">
         <p className="inv-progress__reflection-text">
-          Growth happens in small moments—a question that lingers, 
-          a feeling of peace, a new understanding. This space is for you 
-          to pause and notice how far you've come.
+          {t('app.progress.reflectionText')}
         </p>
       </section>
 
       {/* Recent Activity */}
       <section className="inv-progress__section">
-        <h2 className="inv-progress__section-title">Recent moments</h2>
+        <h2 className="inv-progress__section-title">{t('app.progress.recentMoments')}</h2>
         
         {hasJournalEntries || hasStartedLearning || hasReflectionActivity ? (
           <div className="inv-progress__moments">
@@ -55,7 +91,7 @@ export default function InvestigatorProgressPage(): JSX.Element {
               <div className="inv-progress__moment">
                 <span className="inv-progress__moment-icon">📖</span>
                 <p className="inv-progress__moment-text">
-                  You've been exploring the gospel
+                  {t('app.progress.exploringGospel')}
                 </p>
               </div>
             )}
@@ -63,7 +99,7 @@ export default function InvestigatorProgressPage(): JSX.Element {
               <div className="inv-progress__moment">
                 <span className="inv-progress__moment-icon">✍️</span>
                 <p className="inv-progress__moment-text">
-                  You've taken time to reflect
+                  {t('app.progress.timeToReflect')}
                 </p>
               </div>
             )}
@@ -71,26 +107,30 @@ export default function InvestigatorProgressPage(): JSX.Element {
               <div className="inv-progress__moment">
                 <span className="inv-progress__moment-icon">📝</span>
                 <p className="inv-progress__moment-text">
-                  You've written reflections in your journal
+                  {t('app.progress.journalReflections')}
                 </p>
               </div>
             )}
           </div>
         ) : (
           <div className="inv-progress__empty">
+            <p className="inv-progress__empty-title">{t('app.progress.emptyTitle')}</p>
             <p className="inv-progress__empty-text">
-              Your journey is just beginning. Every step matters, 
-              even the small ones.
+              {t('app.progress.emptyText')}
             </p>
+            <Link to="/lessons" className="inv-progress__empty-cta">
+              <FaBookOpen aria-hidden="true" />
+              {t('app.progress.exploreLesson')}
+            </Link>
           </div>
         )}
       </section>
 
       {/* Gentle Next Steps */}
       <section className="inv-progress__section">
-        <h2 className="inv-progress__section-title">Gentle invitations</h2>
+        <h2 className="inv-progress__section-title">{t('app.progress.nextSteps')}</h2>
         <p className="inv-progress__intro-text">
-          When you feel ready, consider these next steps:
+          {t('app.progress.nextStepsIntro')}
         </p>
         <div className="inv-progress__actions">
           <Link to="/lessons" className="inv-progress__action">
@@ -98,9 +138,9 @@ export default function InvestigatorProgressPage(): JSX.Element {
               <FaBookOpen />
             </span>
             <div className="inv-progress__action-content">
-              <h3 className="inv-progress__action-title">Explore a topic</h3>
+              <h3 className="inv-progress__action-title">{t('app.progress.exploreLesson')}</h3>
               <p className="inv-progress__action-desc">
-                Discover something new about the gospel
+                {t('app.progress.exploreLessonDesc')}
               </p>
             </div>
           </Link>
@@ -109,9 +149,9 @@ export default function InvestigatorProgressPage(): JSX.Element {
               <FaPenToSquare />
             </span>
             <div className="inv-progress__action-content">
-              <h3 className="inv-progress__action-title">Write a reflection</h3>
+              <h3 className="inv-progress__action-title">{t('app.progress.writeReflection')}</h3>
               <p className="inv-progress__action-desc">
-                Capture your thoughts and questions
+                {t('app.progress.writeReflectionDesc')}
               </p>
             </div>
           </Link>
@@ -121,7 +161,7 @@ export default function InvestigatorProgressPage(): JSX.Element {
       {/* Closing */}
       <footer className="inv-progress__footer">
         <p className="inv-progress__footer-text">
-          There's no finish line here—just a path walked with the Savior.
+          {t('app.progress.footerText')}
         </p>
       </footer>
     </div>

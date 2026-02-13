@@ -1,73 +1,50 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { theme } from '../../theme/tokens';
+/**
+ * PersonCard - Display person information
+ */
+
+import React, { ReactNode } from 'react';
 import './PersonCard.css';
 
-interface PersonCardProps {
-  id: string;
+export interface PersonCardProps {
   name: string;
-  avatar?: string;
-  status?: 'active' | 'inactive' | 'new';
-  lastContact?: Date | string;
-  nextLesson?: string;
-  to?: string;
+  subtitle?: string;
+  avatar?: string | ReactNode;
+  status?: 'active' | 'inactive' | 'pending';
+  action?: ReactNode;
   onClick?: () => void;
   className?: string;
 }
 
 export const PersonCard: React.FC<PersonCardProps> = ({
-  id,
   name,
+  subtitle,
   avatar,
   status,
-  lastContact,
-  nextLesson,
-  to,
+  action,
   onClick,
   className = '',
 }) => {
-  const content = (
-    <div
-      className={`ui-person-card ${className}`}
+  const renderAvatar = () => {
+    if (typeof avatar === 'string') {
+      return <img src={avatar} alt={name} className="ui-person-card__avatar-img" />;
+    }
+    if (avatar) return avatar;
+    return <span className="ui-person-card__avatar-initials">{name.charAt(0)}</span>;
+  };
+
+  return (
+    <div 
+      className={`ui-person-card ${onClick ? 'ui-person-card--clickable' : ''} ${className}`}
       onClick={onClick}
     >
-      {avatar ? (
-        <img src={avatar} alt={name} className="ui-person-card__avatar" />
-      ) : (
-        <div className="ui-person-card__avatar-placeholder">
-          {name.charAt(0).toUpperCase()}
-        </div>
-      )}
-      <div className="ui-person-card__content">
-        <div className="ui-person-card__header">
-          <h3 className="ui-person-card__name">{name}</h3>
-          {status && (
-            <span className={`ui-person-card__status ui-person-card__status--${status}`}>
-              {status === 'active' ? '●' : status === 'new' ? 'NEW' : '○'}
-            </span>
-          )}
-        </div>
-        {lastContact && (
-          <p className="ui-person-card__meta">
-            Último contacto: {new Date(lastContact).toLocaleDateString('es-ES')}
-          </p>
-        )}
-        {nextLesson && (
-          <p className="ui-person-card__meta">
-            Próxima lección: {nextLesson}
-          </p>
-        )}
+      <div className={`ui-person-card__avatar ${status ? `ui-person-card__avatar--${status}` : ''}`}>
+        {renderAvatar()}
       </div>
-      {to && (
-        <div className="ui-person-card__arrow">→</div>
-      )}
+      <div className="ui-person-card__info">
+        <h4 className="ui-person-card__name">{name}</h4>
+        {subtitle && <p className="ui-person-card__subtitle">{subtitle}</p>}
+      </div>
+      {action && <div className="ui-person-card__action">{action}</div>}
     </div>
   );
-
-  if (to) {
-    return <Link to={to}>{content}</Link>;
-  }
-
-  return content;
 };
-

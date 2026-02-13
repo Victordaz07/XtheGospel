@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import type { NewConvertSection } from '../member/data/memberTypes';
+import type { NewConvertSection } from '../vineyard/data/memberTypes';
 import { StorageService } from '../utils/storage';
 
 type ProgressState = {

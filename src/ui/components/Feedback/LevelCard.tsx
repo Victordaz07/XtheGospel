@@ -1,49 +1,64 @@
-import React from 'react';
-import { theme } from '../../theme/tokens';
+/**
+ * LevelCard - Display user level/achievement progress
+ * 
+ * Shows level, progress bar, and optional stats.
+ * 
+ * @example
+ * <LevelCard
+ *   level={5}
+ *   currentXP={750}
+ *   nextLevelXP={1000}
+ *   title="Disciple"
+ * />
+ */
+
+import React, { ReactNode } from 'react';
 import { ProgressBar } from './ProgressBar';
 import './LevelCard.css';
 
-interface LevelCardProps {
+export interface LevelCardProps {
+  /** Current level number */
   level: number;
-  levelLabel: string;
-  currentXp: number;
-  nextLevelXp: number;
-  totalXp: number;
+  /** Current experience/points */
+  currentXP: number;
+  /** Experience needed for next level */
+  nextLevelXP: number;
+  /** Level title/name */
+  title?: string;
+  /** Icon for the level */
+  icon?: ReactNode;
+  /** Additional CSS classes */
   className?: string;
 }
 
 export const LevelCard: React.FC<LevelCardProps> = ({
   level,
-  levelLabel,
-  currentXp,
-  nextLevelXp,
-  totalXp,
+  currentXP,
+  nextLevelXP,
+  title,
+  icon,
   className = '',
 }) => {
-  const progressPercent = (currentXp / nextLevelXp) * 100;
+  const progress = (currentXP / nextLevelXP) * 100;
+  const remaining = nextLevelXP - currentXP;
 
   return (
     <div className={`ui-level-card ${className}`}>
       <div className="ui-level-card__header">
-        <div className="ui-level-card__icon">
-          <span>📊</span>
-        </div>
+        {icon && <div className="ui-level-card__icon">{icon}</div>}
         <div className="ui-level-card__info">
-          <p className="ui-level-card__label">Nivel {level}</p>
-          <h3 className="ui-level-card__title">{levelLabel}</h3>
-        </div>
-        <div className="ui-level-card__xp">
-          <span className="ui-level-card__xp-value">{totalXp}</span>
-          <span className="ui-level-card__xp-label">XP</span>
+          <span className="ui-level-card__level">Level {level}</span>
+          {title && <span className="ui-level-card__title">{title}</span>}
         </div>
       </div>
+      
       <div className="ui-level-card__progress">
-        <ProgressBar value={progressPercent} variant="primary" size="md" />
-        <div className="ui-level-card__progress-text">
-          <span>{currentXp} / {nextLevelXp} XP</span>
+        <ProgressBar value={currentXP} max={nextLevelXP} variant="primary" size="md" />
+        <div className="ui-level-card__stats">
+          <span className="ui-level-card__current">{currentXP.toLocaleString()} XP</span>
+          <span className="ui-level-card__remaining">{remaining.toLocaleString()} to next</span>
         </div>
       </div>
     </div>
   );
 };
-

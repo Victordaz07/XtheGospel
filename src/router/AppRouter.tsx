@@ -3,10 +3,11 @@ import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useRoleStore } from '../store/useRoleStore';
 import { RoleSelectionScreen } from '../pages/auth/RoleSelectionScreen';
+import AuthPage from '../pages/AuthPage';
+import RegisterPage from '../pages/RegisterPage';
 import InvestigatorLayout from '../layouts/LearningLayout';
 import MissionaryLayout from '../layouts/MissionaryLayout';
 import MemberLayout from '../layouts/MemberLayout';
-import { LeaderLayout } from '../vineyard/layout/LeaderLayout';
 import { MissionaryLeadershipLayout } from '../layouts/MissionaryLeadershipLayout';
 import LoadingScreen from '../components/LoadingScreen';
 import { getRoleDefaultRoute, UserRoleKey } from '../config/roles';
@@ -23,9 +24,6 @@ import NewMemberRoutes from './NewMemberRoutes';
 
 // Unified Routes: Journey-aware routing (stage-based content switching)
 import UnifiedRoutes from './UnifiedRoutes';
-
-// Leadership Callings Routes (ward/stake leadership - callings management)
-import LeadershipCallingsRoutes from './LeadershipCallingsRoutes';
 
 const AppRouter: React.FC = () => {
   const { userRole, isLoading } = useAuth();
@@ -54,31 +52,22 @@ const AppRouter: React.FC = () => {
     location.pathname.startsWith('/lessons') ||
     location.pathname.startsWith('/journal') ||
     location.pathname.startsWith('/progress') ||
-    location.pathname.startsWith('/profile');
+    location.pathname.startsWith('/profile') ||
+    location.pathname.startsWith('/training');
 
   // Skip role-based redirects for unified routes - let them pass through
   if (isOnUnifiedRoute) {
     // Unified routes are handled directly by the Routes below
     // No role-based protection needed
   } else if (userRole) {
-    // LEGACY ROUTE PROTECTION: Only applies to legacy routes (/member, /leader, /missionary, etc.)
+    // LEGACY ROUTE PROTECTION: Only applies to legacy routes (/member, /missionary, etc.)
     const defaultRoute = '/home'; // New default is unified home
     const isOnMemberRoute = location.pathname.startsWith('/member');
-    const isOnLeaderRoute = location.pathname.startsWith('/leader');
     const isOnMissionaryRoute = location.pathname.startsWith('/missionary');
     const isOnMemberRole = userRole === 'member';
 
-    // For member role users accessing legacy routes
-    if (isOnMemberRole && (isOnMemberRoute || isOnLeaderRoute)) {
-      if (appRole === 'leader' && !isOnLeaderRoute) {
-        return <Navigate to="/leader/home" replace />;
-      } else if (appRole !== 'leader' && !isOnMemberRoute) {
-        return <Navigate to="/member/home" replace />;
-      }
-    }
-
-    // Redirect non-member users away from member/leader routes
-    if (!isOnMemberRole && (isOnMemberRoute || isOnLeaderRoute)) {
+    // Redirect non-member users away from member routes
+    if (!isOnMemberRole && isOnMemberRoute) {
       return <Navigate to={defaultRoute} replace />;
     }
 
@@ -139,11 +128,16 @@ const AppRouter: React.FC = () => {
       <Route path="/journal/*" element={<UnifiedRoutes />} />
       <Route path="/progress/*" element={<UnifiedRoutes />} />
       <Route path="/profile/*" element={<UnifiedRoutes />} />
+      <Route path="/training/*" element={<UnifiedRoutes />} />
+      
+      {/* Auth: Registration and Login with Firebase */}
+      <Route path="/register" element={<RegisterPage />} />
+      <Route path="/login" element={<RegisterPage />} />
       
       {/* LEGACY: Auth/Role selection - moved to /legacy/auth */}
       <Route path="/legacy/auth" element={<RoleSelectionScreen />} />
-      {/* Compatibility redirect: /auth -> /legacy/auth */}
-      <Route path="/auth" element={<Navigate to="/legacy/auth" replace />} />
+      {/* Compatibility redirect: /auth -> new register page */}
+      <Route path="/auth" element={<Navigate to="/register" replace />} />
       
       {/* DEV-ONLY: Direct module access (keep for testing) */}
       <Route path="/investigator/*" element={<InvestigatorRoutes />} />
@@ -153,9 +147,6 @@ const AppRouter: React.FC = () => {
       <Route path="/privacy" element={<PrivacyPage />} />
       <Route path="/terms" element={<TermsPage />} />
       <Route path="/support" element={<SupportPage />} />
-      
-      {/* LEADERSHIP CALLINGS: Ward/Stake leadership routes */}
-      <Route path="/member/leadership/*" element={<LeadershipCallingsRoutes />} />
       
       {/* LEGACY ROLE-BASED LAYOUTS: Only used when userRole is set and navigating to legacy routes */}
       {userRole ? (
@@ -169,11 +160,8 @@ const AppRouter: React.FC = () => {
             // Regular missionary
             <Route path="/missionary/*" element={<MissionaryLayout />} />
           )
-        ) : appRole === 'leader' ? (
-          // Member role but in leader app mode
-          <Route path="/leader/*" element={<LeaderLayout />} />
         ) : (
-          // Member role in member app mode
+          // Member role
           <Route path="/member/*" element={<MemberLayout />} />
         )
       ) : null}
