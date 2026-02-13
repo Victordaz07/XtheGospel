@@ -69,7 +69,7 @@ Ver `docs/ui-snapshots/investigator/` para:
 
 - **Local**: `npm run dev` → `http://localhost:3000` → modo Investigador
 - **Ruta directa**: `/investigator/home`
-- **Producción**: [Añadir link tras `firebase deploy --only hosting` — ver `DEPLOY-FIREBASE.md`]
+- **Producción**: https://xthegospel.web.app (modo Investigador/Miembro/Misionero)
 
 ---
 
