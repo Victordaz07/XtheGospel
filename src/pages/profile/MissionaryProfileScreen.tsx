@@ -343,11 +343,11 @@ export const MissionaryProfileScreen: React.FC = () => {
                     onClick={() => {
                       if (appRole === 'leader') {
                         setRole('member');
-                        navigate('/member/home');
+                        navigate('/missionary/home');
                       } else {
                         // TODO: Check permissions before enabling
                         setRole('leader');
-                        navigate('/member/leadership/dashboard');
+                        navigate('/missionary/home');
                       }
                     }}
                   >

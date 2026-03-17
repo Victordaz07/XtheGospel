@@ -14,7 +14,7 @@ export const RoleSwitcher: React.FC = () => {
     if (typeof globalThis !== 'undefined' && 'window' in globalThis) {
       (globalThis as any).window.location.href = isLeader
         ? '/member/home'
-        : '/leader/home';
+        : '/home';
     }
   };
 

@@ -39,6 +39,7 @@ type IdTab = 'card' | 'qr';
 const LANGUAGES: { code: Locale; label: string; flag: string }[] = LANGUAGE_OPTIONS;
 
 type Theme = 'light' | 'dark' | 'system';
+type SettingAction = 'notifications' | 'language' | 'appearance';
 
 const THEME_OPTIONS: { value: Theme; icon: React.ReactNode; labelKey: string }[] = [
   { value: 'light', icon: <FaSun />, labelKey: 'app.settings.themeLight' },
@@ -78,10 +79,10 @@ export default function InvestigatorProfilePage(): JSX.Element {
   const currentLanguage = LANGUAGES.find(l => l.code === locale) || LANGUAGES[0];
   const currentThemeOption = THEME_OPTIONS.find(o => o.value === theme) || THEME_OPTIONS[0];
 
-  const handleSettingClick = (setting: string): void => {
-    if (setting === 'Idioma') {
+  const handleSettingClick = (setting: SettingAction): void => {
+    if (setting === 'language') {
       setShowLanguageModal(true);
-    } else if (setting === 'Apariencia') {
+    } else if (setting === 'appearance') {
       setShowThemeModal(true);
     } else {
       alert(`${setting} settings coming soon!`);
@@ -186,7 +187,7 @@ export default function InvestigatorProfilePage(): JSX.Element {
         <div className="inv-profile__settings">
           <button 
             className="inv-profile__setting"
-            onClick={() => handleSettingClick('Notificaciones')}
+            onClick={() => handleSettingClick('notifications')}
           >
             <div className="inv-profile__setting-icon">
               <FaBell />
@@ -200,7 +201,7 @@ export default function InvestigatorProfilePage(): JSX.Element {
           
           <button 
             className="inv-profile__setting"
-            onClick={() => handleSettingClick('Idioma')}
+            onClick={() => handleSettingClick('language')}
           >
             <div className="inv-profile__setting-icon">
               <FaGlobe />
@@ -214,7 +215,7 @@ export default function InvestigatorProfilePage(): JSX.Element {
           
           <button 
             className="inv-profile__setting"
-            onClick={() => handleSettingClick('Apariencia')}
+            onClick={() => handleSettingClick('appearance')}
           >
             <div className="inv-profile__setting-icon">
               <FaPalette />

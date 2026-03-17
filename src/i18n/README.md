@@ -1,7 +1,7 @@
 ## Locales objetivo
 
-- `es` (default)
-- `en` (fallback)
+- `en` (default/fallback)
+- `es`
 - `fr`
 - `pt`
 

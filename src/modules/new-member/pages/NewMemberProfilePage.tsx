@@ -3,15 +3,17 @@ import { useNavigate } from 'react-router-dom';
 import {
   FaChevronRight,
   FaUser,
-  FaBell,
   FaGlobe,
   FaCircleQuestion,
   FaUserGear,
+  FaPalette,
 } from 'react-icons/fa6';
 import { OrdinanceDatesSection } from '../../../components/OrdinanceDatesSection';
 import DataPrivacySection from '../../../components/DataPrivacySection';
 import { useMode, type AppMode } from '../../../state/mode';
 import { useI18n } from '../../../context/I18nContext';
+import { useTheme } from '../../../context/ThemeContext';
+import { LANGUAGE_OPTIONS, type Locale } from '../../../i18n/locales';
 import '../../../components/DataPrivacySection.css';
 import './NewMemberProfilePage.css';
 
@@ -23,17 +25,27 @@ import './NewMemberProfilePage.css';
 export default function NewMemberProfilePage(): JSX.Element {
   const navigate = useNavigate();
   const { mode, setMode } = useMode();
-  const { t, locale } = useI18n();
+  const { t, locale, setLocale } = useI18n();
+  const { theme, setTheme } = useTheme();
 
-  const handleSettingClick = (setting: string): void => {
-    alert(`${setting} ${t('app.common.comingSoon')}`);
+  const cycleLocale = async (): Promise<void> => {
+    const idx = LANGUAGE_OPTIONS.findIndex((l) => l.code === locale);
+    const next = LANGUAGE_OPTIONS[(idx + 1) % LANGUAGE_OPTIONS.length];
+    await setLocale(next.code as Locale);
+  };
+
+  const cycleTheme = (): void => {
+    const order: Array<'light' | 'dark' | 'system'> = ['light', 'dark', 'system'];
+    const idx = order.indexOf(theme);
+    const next = order[(idx + 1) % order.length];
+    setTheme(next);
   };
 
   const handleModeChange = (newMode: AppMode): void => {
     setMode(newMode);
     switch (newMode) {
       case 'leadership':
-        navigate('/member/leadership/home');
+        navigate('/home');
         break;
       case 'member':
       case 'investigator':
@@ -110,21 +122,7 @@ export default function NewMemberProfilePage(): JSX.Element {
         <div className="nm-profile__settings">
           <button
             className="nm-profile__setting"
-            onClick={() => handleSettingClick(t('app.profile.notifications'))}
-          >
-            <div className="nm-profile__setting-icon">
-              <FaBell />
-            </div>
-            <div className="nm-profile__setting-content">
-              <h3 className="nm-profile__setting-title">{t('app.profile.notifications')}</h3>
-              <p className="nm-profile__setting-desc">{t('app.profile.notificationsDesc')}</p>
-            </div>
-            <FaChevronRight className="nm-profile__setting-arrow" />
-          </button>
-
-          <button
-            className="nm-profile__setting"
-            onClick={() => handleSettingClick(t('app.profile.language'))}
+            onClick={cycleLocale}
           >
             <div className="nm-profile__setting-icon">
               <FaGlobe />
@@ -138,7 +136,21 @@ export default function NewMemberProfilePage(): JSX.Element {
 
           <button
             className="nm-profile__setting"
-            onClick={() => handleSettingClick(t('app.profile.help'))}
+            onClick={cycleTheme}
+          >
+            <div className="nm-profile__setting-icon">
+              <FaPalette />
+            </div>
+            <div className="nm-profile__setting-content">
+              <h3 className="nm-profile__setting-title">{t('app.profile.appearance')}</h3>
+              <p className="nm-profile__setting-desc">{t(`app.settings.theme${theme === 'light' ? 'Light' : theme === 'dark' ? 'Dark' : 'System'}`)}</p>
+            </div>
+            <FaChevronRight className="nm-profile__setting-arrow" />
+          </button>
+
+          <button
+            className="nm-profile__setting"
+            onClick={() => navigate('/support')}
           >
             <div className="nm-profile__setting-icon">
               <FaCircleQuestion />
