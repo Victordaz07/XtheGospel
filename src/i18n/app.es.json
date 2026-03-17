@@ -41,7 +41,10 @@
       "missionaryPath": "Camino misional",
       "myJournal": "Mi diario",
       "myProgress": "Mi camino",
-      "pray": "Orar"
+      "pray": "Orar",
+      "chatWithMissionaries": "Chatear con misioneros",
+      "noMissionariesAssigned": "Aún no tienes misioneros asignados",
+      "chatError": "No se pudo abrir el chat. Intenta más tarde."
     },
     "progress": {
       "title": "Mi Camino",
@@ -65,6 +68,44 @@
       "writeReflection": "Escribir una reflexión",
       "writeReflectionDesc": "Captura tus pensamientos y preguntas",
       "footerText": "No hay línea de meta aquí, solo un camino que se recorre con el Salvador."
+    },
+    "baptism": {
+      "sectionTitle": "Preparación para el Bautismo",
+      "sectionDesc": "El bautismo es el primer convenio con Dios. Prepara tu corazón paso a paso.",
+      "ctaTitle": "Preparándome para el Bautismo",
+      "ctaDesc": "Contenido doctrinal, checklist y fecha programada",
+      "progressTitle": "Tu progreso hacia el bautismo",
+      "myBaptismDate": "Mi Fecha de Bautismo",
+      "placeholder": "Lugar (ej. Capilla Central)",
+      "whoBaptizes": "¿Quién me bautizará?",
+      "guests": "Invitados",
+      "myCommitment": "Mi Compromiso Personal",
+      "commitmentPrompt": "Yo decido bautizarme porque…",
+      "commitmentPlaceholder": "Escribe con sinceridad qué significa para ti este paso.",
+      "readyForBaptism": "Estoy listo para bautizarme",
+      "keepPreparing": "Sigue avanzando en tu preparación espiritual.",
+      "agenda": {
+        "agendaTitle": "Preparación para la agenda bautismal",
+        "agendaSubtitle": "Personaliza tu día especial. El líder misional verá estas preferencias.",
+        "confirmImmediately": "¿Deseas confirmación inmediata después del bautismo?",
+        "speakerLabel": "¿Quién te gustaría que hable?",
+        "openingPrayerLabel": "Oración de apertura (nombre)",
+        "closingPrayerLabel": "Oración de cierre (nombre)",
+        "hymn1Label": "Himno 1",
+        "hymn2Label": "Himno 2",
+        "hymn3Label": "Himno 3 (opcional)",
+        "exportAgenda": "Imprimir / Exportar Agenda",
+        "exportAgendaDesc": "Descarga la agenda en JSON para compartir con el líder o imprimir.",
+        "suggestHymn1": "Sugerencia: agrega un himno de apertura para completar la agenda.",
+        "suggestSpeaker": "Sugerencia: indica quién te gustaría que hable.",
+        "suggestOpeningPrayer": "Sugerencia: agrega el nombre para la oración de apertura.",
+        "suggestClosingPrayer": "Sugerencia: agrega el nombre para la oración de cierre."
+      }
+    },
+    "scripture": {
+      "modalTitle": "Escritura",
+      "close": "Cerrar",
+      "notFound": "No se encontró el texto de esta escritura."
     },
     "journal": {
       "title": "Mi Diario",
@@ -104,6 +145,7 @@
       "saveToJournal": "Guardar en Diario",
       "savedToJournal": "Guardado en Diario ✓",
       "savedMessage": "Tu reflexión se ha guardado. Puedes verla en tu Diario.",
+      "markCompleted": "He completado esta lección",
       "finalMessage": "Mensaje final",
       "subTopics": "Sub-temas",
       "recommendedNext": "Siguiente tema recomendado",
@@ -132,7 +174,73 @@
       "version": "Versión {{version}}",
       "dataPrivacy": "Datos y Privacidad",
       "welcome": "Bienvenido",
-      "friend": "Amigo"
+      "friend": "Amigo",
+      "member": "Miembro",
+      "leadership": "Liderazgo",
+      "switchModeTitle": "Cambiar modo",
+      "switchModeDesc": "Selecciona cómo deseas usar la aplicación. Para volver al modo miembro normal, elige \"Miembro\"."
+    },
+    "profileCard": {
+      "status": {
+        "investigator": "Amigo",
+        "new_convert": "Nuevo converso",
+        "active": "Miembro activo",
+        "less_active": "Miembro",
+        "returned": "Misionero retornado"
+      },
+      "myXtgId": "xTheGospel ID",
+      "shareWithLeader": "Compartir con líder",
+      "copyId": "Copiar ID",
+      "copied": "Copiado",
+      "verifiedByLeader": "Verificado por líder",
+      "useThisId": "Usa este ID para registrarte en tu barrio",
+      "shareTitle": "Mi xTheGospel ID",
+      "shareText": "{{displayName}}\nxTheGospel ID: {{xtgId}}"
+    },
+    "ordinances": {
+      "title": "Fechas de ordenanzas",
+      "subtitle": "Bautismo y Confirmación",
+      "devModeActive": "Modo prueba activo",
+      "deactivate": "Desactivar",
+      "infoText": "Esta información debe ser verificada por un miembro del obispado o secretario de barrio para confirmar tu membresía.",
+      "baptismSection": "Bautismo",
+      "baptismDate": "Fecha de bautismo",
+      "baptizedByQuestion": "¿Quién te bautizó?",
+      "confirmationSection": "Confirmación",
+      "confirmationDate": "Fecha de confirmación",
+      "confirmedByQuestion": "¿Quién te confirmó?",
+      "priesthoodHolderPlaceholder": "Nombre del poseedor del sacerdocio",
+      "submitForVerification": "Enviar para verificación",
+      "stateLabel": "Estado",
+      "clearData": "Borrar datos",
+      "testSwitchText": "Pruebas: cambia entre vista de investigador y nuevo miembro.",
+      "switchToInvestigator": "Volver a investigador",
+      "switchToMember": "Pasar a miembro (pruebas)",
+      "stage": {
+        "seeking": "Aprendiendo y preparándose",
+        "covenanted": "Creciendo como nuevo miembro",
+        "member": "Creciendo en el evangelio"
+      },
+      "status": {
+        "none": {
+          "title": "Sin verificar",
+          "desc": "Completa los datos y envíalos para verificación"
+        },
+        "pending": {
+          "title": "Pendiente de verificación",
+          "desc": "Un líder de tu barrio revisará esta información",
+          "devBypass": "Modo prueba: pasar directo al perfil de miembro"
+        },
+        "verified": {
+          "title": "Verificado",
+          "by": "Por {{verifiedBy}} ({{verifiedByRole}})"
+        },
+        "rejected": {
+          "title": "Datos rechazados",
+          "defaultReason": "Por favor revisa y corrige la información",
+          "reviewedBy": "Revisado por: {{verifiedBy}}"
+        }
+      }
     },
     "onboarding": {
       "screen1Title": "Bienvenido a xTheGospel",
@@ -142,6 +250,29 @@
       "screen3Title": "Reflexiona y crece",
       "screen3Text": "Tu diario personal es un espacio sagrado para tus pensamientos y preguntas.",
       "startButton": "Comenzar"
+    },
+    "welcome": {
+      "eyebrow": "Bienvenida",
+      "title": "Bienvenido a xTheGospel",
+      "subtitle": "Una guía corta para empezar con claridad y paz.",
+      "progressLabel": "Progreso de bienvenida",
+      "slides": [
+        {
+          "title": "¿De qué se trata esta app?",
+          "description": "xTheGospel es un acompañante para tu camino espiritual: aprender, reflexionar y crecer paso a paso."
+        },
+        {
+          "title": "¿Qué puedes encontrar aquí?",
+          "description": "Encontrarás lecciones, diario personal, seguimiento de progreso y recursos pensados para acercarte más a Jesucristo."
+        },
+        {
+          "title": "Tutorial breve",
+          "description": "Empieza en Inicio, abre una lección y guarda una reflexión corta en tu diario. En pocos minutos estarás listo."
+        }
+      ],
+      "skip": "Saltar",
+      "next": "Siguiente",
+      "start": "Comenzar"
     },
     "emptyStates": {
       "journalTitle": "Tu diario está esperando",

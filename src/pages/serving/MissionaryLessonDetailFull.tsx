@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useI18n } from '../../context/I18nContext';
+import { ScriptureReferenceCard } from '../../ui/components';
 import { missionarySectionsByLesson } from '../../../data/missionaryGuideSections';
 import type { LessonId } from '../../../data/missionaryGuideLessons';
 import './Page.css';
@@ -207,7 +208,7 @@ const MissionaryLessonDetailFull: React.FC = () => {
               {scriptureRef && scriptureMain && (
                 <div className="scripture-block">
                   <h3 className="scripture-title">📖 Escritura Principal</h3>
-                  <div className="scripture-reference">{scriptureRef}</div>
+                  <div className="scripture-reference"><ScriptureReferenceCard reference={scriptureRef} /></div>
                   <div className="scripture-text">"{scriptureMain}"</div>
                   {scriptureExplanation && (
                     <div className="scripture-explanation">
@@ -231,7 +232,7 @@ const MissionaryLessonDetailFull: React.FC = () => {
                     <div className="expandable-content">
                       {moreScriptures.map((scripture, idx) => (
                         <div key={idx} className="scripture-block">
-                          <div className="scripture-reference">{scripture.ref}</div>
+                          <div className="scripture-reference"><ScriptureReferenceCard reference={scripture.ref} /></div>
                           {scripture.text && <div className="scripture-text">"{scripture.text}"</div>}
                           {scripture.explanation && (
                             <div className="scripture-explanation">

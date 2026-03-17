@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { getLeadershipRoleEnhanced } from '../../../data/missionary/leadershipModeEnhanced';
+import { ScriptureReferenceCard } from '../../../ui/components';
 import { DistrictCouncilService } from '../../../services/districtCouncilService';
 import { ExchangeService } from '../../../services/exchangeService';
 import { LeaderMessageService } from '../../../services/leaderMessageService';
@@ -72,7 +73,7 @@ export const DistrictLeaderDashboard: React.FC = () => {
           <div className="leadership-scriptures-list">
             {role.coreScriptures.map((scripture, idx) => (
               <div key={idx} className="leadership-scripture-item">
-                <span className="leadership-scripture-ref">{scripture.ref}</span>
+                <ScriptureReferenceCard reference={scripture.ref} />
                 <p className="leadership-scripture-focus">{scripture.focus}</p>
               </div>
             ))}

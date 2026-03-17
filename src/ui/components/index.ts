@@ -101,6 +101,9 @@ export type { PersonCardProps } from './Content/PersonCard';
 export { DevotionalCard } from './Content/DevotionalCard';
 export type { DevotionalCardProps } from './Content/DevotionalCard';
 
+export { ScriptureReferenceCard } from './Content/ScriptureReferenceCard';
+export type { ScriptureReferenceCardProps } from './Content/ScriptureReferenceCard';
+
 // ===========================================
 // NAVIGATION - Navigation components
 // ===========================================

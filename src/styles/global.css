@@ -99,8 +99,9 @@
 }
 
 html {
-  font-size: 16px;
+  font-size: clamp(14px, 2.5vw, 16px);
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -116,12 +117,18 @@ body {
   line-height: var(--leading-normal);
   font-size: var(--text-base);
   font-weight: var(--font-normal);
+  min-height: 100dvh;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 #root {
   min-height: 100vh;
+  min-height: 100dvh;
+  width: 100%;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
 }
 
 /* Element resets */
@@ -266,4 +273,48 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+/* Responsive: overflow-wrap para contenido de usuario */
+p, span, div, h1, h2, h3, h4, h5, h6, li, td, th {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+/* Override: números, porcentajes, badges y labels cortos no deben partirse */
+.tr-progress-ring__label,
+.tr-path__summary-count,
+.tr-path__summary-percent,
+.tr-training-card__badge,
+.ui-bottom-nav__label,
+.nav-label,
+.inv-nav-label,
+.nm-nav-label,
+.leadership-nav-label,
+.member-nav-label,
+[class*="badge"],
+[class*="__count"],
+[class*="__percent"],
+[class*="-count"],
+[class*="-percent"],
+.progress-percentage,
+.inv-lessons__progress-count,
+.inv-lessons__progress-label,
+.inv-progress__stat-label,
+.inv-progress__stat-value,
+.inv-home__action-label,
+.inv-home__continue-label,
+.progress-skills-stat-value,
+.progress-xp-stat-value,
+.spiritual-card__stat-value,
+.stat-number {
+  white-space: nowrap !important;
+  word-break: normal !important;
+}
+
+/* Contenedores fluidos */
+img, video, iframe {
+  max-width: 100%;
+  height: auto;
 }

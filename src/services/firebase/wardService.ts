@@ -10,6 +10,7 @@ import {
   getDoc,
   updateDoc,
   setDoc,
+  arrayUnion,
 } from 'firebase/firestore';
 import { getFirebaseDb } from './firebaseApp';
 import {
@@ -154,8 +155,9 @@ export async function joinWardByCode(
       currentUses: codeData.currentUses + 1,
     });
 
-    // Update ward member count
+    // Update ward: add uid to memberIds (para reglas Firestore v2) y memberCount
     await updateDoc(doc(getDb(), WARDS_COLLECTION, codeData.wardId), {
+      memberIds: arrayUnion(uid),
       memberCount: (ward.memberCount || 0) + 1,
       updatedAt: now,
     });

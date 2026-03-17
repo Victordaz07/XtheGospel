@@ -10,7 +10,6 @@ import {
 } from 'react-icons/fa6';
 import { useI18n } from '../context/I18nContext';
 import { FloatingMenu } from '../ui/components';
-import InvestigatorHome from '../pages/learning/InvestigatorHome';
 import InvestigatorLessons from '../pages/learning/InvestigatorLessons';
 import InvestigatorProgress from '../pages/learning/InvestigatorProgress';
 import InvestigatorBaptism from '../pages/learning/InvestigatorBaptism';
@@ -41,7 +40,7 @@ const InvestigatorLayout: React.FC = () => {
         <FloatingMenu tabs={tabs} />
         <main className="layout-content">
           <Routes>
-            <Route path="/home" element={<InvestigatorHome />} />
+            <Route path="/home" element={<Navigate to="/home" replace />} />
             <Route path="/lessons/*" element={<InvestigatorLessons />} />
             <Route path="/tasks" element={<CommitmentsPage />} />
             <Route path="/progress" element={<InvestigatorProgress />} />

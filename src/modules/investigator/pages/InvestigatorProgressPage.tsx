@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { FaBookOpen, FaPenToSquare, FaCalendarDays, FaGraduationCap, FaFeather } from 'react-icons/fa6';
+import { FaBookOpen, FaPenToSquare, FaCalendarDays, FaGraduationCap, FaFeather, FaDroplet } from 'react-icons/fa6';
 import { useInvestigatorStore } from '../store/useInvestigatorStore';
 import { useSpiritualMemoryStore, useHasJournalActivity } from '../../../core/memory/useSpiritualMemoryStore';
 import { useI18n } from '../../../context/I18nContext';
@@ -124,6 +124,25 @@ export default function InvestigatorProgressPage(): JSX.Element {
             </Link>
           </div>
         )}
+      </section>
+
+      {/* Baptism Preparation - Key milestone for investigators */}
+      <section className="inv-progress__section">
+        <h2 className="inv-progress__section-title">{t('app.baptism.sectionTitle')}</h2>
+        <p className="inv-progress__intro-text">
+          {t('app.baptism.sectionDesc')}
+        </p>
+        <Link to="/progress/baptism-preparation" className="inv-progress__action inv-progress__action--baptism">
+          <span className="inv-progress__action-icon inv-progress__action-icon--baptism">
+            <FaDroplet />
+          </span>
+          <div className="inv-progress__action-content">
+            <h3 className="inv-progress__action-title">{t('app.baptism.ctaTitle')}</h3>
+            <p className="inv-progress__action-desc">
+              {t('app.baptism.ctaDesc')}
+            </p>
+          </div>
+        </Link>
       </section>
 
       {/* Gentle Next Steps */}

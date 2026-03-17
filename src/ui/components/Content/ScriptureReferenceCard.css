@@ -1,0 +1,40 @@
+/* ScriptureReferenceCard - Unified style for scripture references across the app */
+
+.scripture-ref-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--color-primary-700);
+  background: var(--color-primary-50);
+  border: 1px solid var(--color-primary-100);
+  border-left: 3px solid var(--primary);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.scripture-ref-card:hover {
+  background: var(--color-primary-100);
+  border-color: var(--color-primary-200);
+  color: var(--color-primary-800);
+}
+
+.scripture-ref-card:active {
+  background: var(--color-primary-200);
+}
+
+.scripture-ref-card__icon {
+  color: var(--primary);
+  font-size: var(--text-base);
+  flex-shrink: 0;
+  opacity: 0.9;
+}
+
+.scripture-ref-card__ref {
+  flex: 1;
+}

@@ -46,31 +46,34 @@
   background: linear-gradient(135deg, rgba(var(--accent-rgb), 0.4), transparent);
 }
 
-/* Main content area */
+/* Main content area - fluido con el espacio disponible */
 .inv-layout-content {
   position: relative;
   z-index: 1;
   flex: 1;
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 20px 16px;
-  padding-bottom: calc(20px + env(safe-area-inset-bottom));
+  padding: clamp(12px, 4vw, 20px) clamp(12px, 4vw, 16px);
+  padding-bottom: calc(clamp(12px, 4vw, 20px) + 80px + env(safe-area-inset-bottom));
   background: transparent;
   -webkit-overflow-scrolling: touch;
+  width: 100%;
+  max-width: 100%;
 }
 
 /* Responsive padding */
 @media (min-width: 640px) {
   .inv-layout-content {
-    padding: 24px 32px;
-    padding-bottom: calc(24px + env(safe-area-inset-bottom));
+    padding: clamp(20px, 4vw, 24px) clamp(24px, 5vw, 32px);
+    padding-bottom: calc(clamp(20px, 4vw, 24px) + 90px + env(safe-area-inset-bottom));
   }
 }
 
 @media (min-width: 1024px) {
   .inv-layout-content {
-    padding: 32px 48px;
-    max-width: 800px;
+    padding: clamp(24px, 3vw, 32px) clamp(32px, 5vw, 48px);
+    padding-bottom: calc(clamp(24px, 3vw, 32px) + 90px + env(safe-area-inset-bottom));
+    max-width: min(800px, 100%);
     margin: 0 auto;
   }
 }
@@ -97,8 +100,8 @@
   width: 100%;
   background: var(--background-card);
   box-shadow: 0 -2px 20px rgba(var(--accent-rgb), 0.1);
-  padding: 8px 16px;
-  padding-bottom: calc(8px + env(safe-area-inset-bottom));
+  padding: clamp(6px, 2vw, 8px) clamp(8px, 3vw, 16px);
+  padding-bottom: calc(clamp(6px, 2vw, 8px) + env(safe-area-inset-bottom));
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -116,7 +119,7 @@
 
 @media (min-width: 1024px) {
   .inv-bottom-nav {
-    max-width: 600px;
+    max-width: min(600px, 100%);
     left: 50%;
     transform: translateX(-50%);
     border-radius: 20px 20px 0 0;
@@ -129,12 +132,14 @@
   align-items: center;
   justify-content: center;
   gap: 4px;
-  padding: 8px 16px;
+  padding: clamp(6px, 2vw, 8px) clamp(10px, 3vw, 16px);
   color: var(--color-accent-600);
   text-decoration: none;
   border-radius: 12px;
   transition: color 0.2s ease, background 0.2s ease;
-  min-width: 60px;
+  min-width: 0;
+  flex: 1;
+  max-width: 80px;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -143,7 +148,9 @@
 @media (min-width: 640px) {
   .inv-nav-item {
     padding: 10px 20px;
-    min-width: 80px;
+    min-width: 60px;
+    max-width: none;
+    flex: 0;
   }
 }
 
@@ -168,10 +175,14 @@
 }
 
 .inv-nav-label {
-  font-size: 10px;
+  font-size: clamp(9px, 2.5vw, 10px);
   font-weight: 600;
   letter-spacing: 0.02em;
   text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
 @media (min-width: 640px) {
@@ -180,13 +191,3 @@
   }
 }
 
-/* Add bottom padding to content to account for fixed nav */
-.inv-layout-content {
-  padding-bottom: calc(80px + env(safe-area-inset-bottom));
-}
-
-@media (min-width: 640px) {
-  .inv-layout-content {
-    padding-bottom: calc(90px + env(safe-area-inset-bottom));
-  }
-}

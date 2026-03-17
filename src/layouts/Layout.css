@@ -54,23 +54,25 @@
   overflow-y: auto;
   overflow-x: hidden;
   background: transparent;
-  padding: 20px 16px;
+  padding: clamp(12px, 4vw, 20px) clamp(12px, 4vw, 16px);
   padding-bottom: calc(80px + env(safe-area-inset-bottom));
   -webkit-overflow-scrolling: touch;
+  width: 100%;
+  max-width: 100%;
 }
 
 @media (min-width: 640px) {
   .layout-content {
-    padding: 24px 32px;
+    padding: clamp(20px, 4vw, 24px) clamp(24px, 5vw, 32px);
     padding-bottom: calc(90px + env(safe-area-inset-bottom));
   }
 }
 
 @media (min-width: 1024px) {
   .layout-content {
-    padding: 32px 48px;
+    padding: clamp(24px, 3vw, 32px) clamp(32px, 5vw, 48px);
     padding-bottom: calc(100px + env(safe-area-inset-bottom));
-    max-width: 900px;
+    max-width: min(900px, 100%);
     margin: 0 auto;
   }
 }
@@ -169,6 +171,7 @@
   font-weight: 600;
   letter-spacing: 0.02em;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 @media (min-width: 640px) {

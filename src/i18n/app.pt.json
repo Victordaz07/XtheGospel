@@ -174,7 +174,73 @@
       "version": "Versão {{version}}",
       "dataPrivacy": "Dados e privacidade",
       "welcome": "Bem-vindo",
-      "friend": "Amigo"
+      "friend": "Amigo",
+      "member": "Membro",
+      "leadership": "Liderança",
+      "switchModeTitle": "Trocar modo",
+      "switchModeDesc": "Selecione como deseja usar o aplicativo. Para voltar ao modo membro normal, escolha \"Membro\"."
+    },
+    "profileCard": {
+      "status": {
+        "investigator": "Amigo",
+        "new_convert": "Novo converso",
+        "active": "Membro ativo",
+        "less_active": "Membro",
+        "returned": "Missionário retornado"
+      },
+      "myXtgId": "xTheGospel ID",
+      "shareWithLeader": "Compartilhar com líder",
+      "copyId": "Copiar ID",
+      "copied": "Copiado",
+      "verifiedByLeader": "Verificado por líder",
+      "useThisId": "Use este ID para se registrar em sua ala",
+      "shareTitle": "Meu xTheGospel ID",
+      "shareText": "{{displayName}}\nxTheGospel ID: {{xtgId}}"
+    },
+    "ordinances": {
+      "title": "Datas das ordenanças",
+      "subtitle": "Batismo e Confirmação",
+      "devModeActive": "Modo de teste ativo",
+      "deactivate": "Desativar",
+      "infoText": "Estas informações devem ser verificadas por um membro do bispado ou secretário da ala para confirmar sua condição de membro.",
+      "baptismSection": "Batismo",
+      "baptismDate": "Data do batismo",
+      "baptizedByQuestion": "Quem te batizou?",
+      "confirmationSection": "Confirmação",
+      "confirmationDate": "Data da confirmação",
+      "confirmedByQuestion": "Quem te confirmou?",
+      "priesthoodHolderPlaceholder": "Nome do portador do sacerdócio",
+      "submitForVerification": "Enviar para verificação",
+      "stateLabel": "Estado",
+      "clearData": "Apagar dados",
+      "testSwitchText": "Testes: alterne entre as visões de investigador e novo membro.",
+      "switchToInvestigator": "Voltar para investigador",
+      "switchToMember": "Mudar para membro (testes)",
+      "stage": {
+        "seeking": "Aprendendo e se preparando",
+        "covenanted": "Crescendo como novo membro",
+        "member": "Crescendo no evangelho"
+      },
+      "status": {
+        "none": {
+          "title": "Não verificado",
+          "desc": "Complete as informações e envie para verificação"
+        },
+        "pending": {
+          "title": "Pendente de verificação",
+          "desc": "Um líder da sua ala revisará estas informações",
+          "devBypass": "Modo teste: ir direto ao perfil de membro"
+        },
+        "verified": {
+          "title": "Verificado",
+          "by": "Por {{verifiedBy}} ({{verifiedByRole}})"
+        },
+        "rejected": {
+          "title": "Informações rejeitadas",
+          "defaultReason": "Revise e corrija as informações",
+          "reviewedBy": "Revisado por: {{verifiedBy}}"
+        }
+      }
     },
     "onboarding": {
       "screen1Title": "Bem-vindo ao xTheGospel",
@@ -184,6 +250,29 @@
       "screen3Title": "Reflita e cresça",
       "screen3Text": "Seu diário pessoal é um espaço sagrado para seus pensamentos e perguntas.",
       "startButton": "Começar"
+    },
+    "welcome": {
+      "eyebrow": "Boas-vindas",
+      "title": "Bem-vindo ao xTheGospel",
+      "subtitle": "Um guia curto para começar com clareza e paz.",
+      "progressLabel": "Progresso das boas-vindas",
+      "slides": [
+        {
+          "title": "Sobre o que é este app?",
+          "description": "xTheGospel é um companheiro para sua jornada espiritual: aprender, refletir e crescer passo a passo."
+        },
+        {
+          "title": "O que você encontra aqui?",
+          "description": "Você encontrará lições, diário pessoal, acompanhamento de progresso e recursos pensados para aproximar você de Jesus Cristo."
+        },
+        {
+          "title": "Tutorial rápido",
+          "description": "Comece em Início, abra uma lição e salve uma reflexão breve no diário. Em poucos minutos você estará pronto."
+        }
+      ],
+      "skip": "Pular",
+      "next": "Próximo",
+      "start": "Começar"
     },
     "emptyStates": {
       "journalTitle": "Seu diário está esperando",

@@ -3,7 +3,8 @@
  */
 
 .inv-lesson-detail {
-  max-width: 780px;
+  width: 100%;
+  max-width: min(780px, 100%);
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -196,9 +197,6 @@
 }
 
 .inv-lesson-detail__section-scripture {
-  font-size: 13px;
-  color: var(--color-accent-600);
-  font-weight: 600;
   margin: 14px 0 0 0;
   padding-top: 12px;
   border-top: 1px solid var(--color-border-subtle);
@@ -432,6 +430,17 @@
   opacity: 0.45;
   cursor: not-allowed;
   box-shadow: none;
+}
+
+.inv-lesson-detail__btn--secondary {
+  margin-top: 12px;
+  background: var(--background-muted, #f1f5f9);
+  color: var(--color-accent-800, #1e293b);
+  box-shadow: none;
+}
+
+.inv-lesson-detail__btn--secondary:hover {
+  background: var(--border-subtle, #e2e8f0);
 }
 
 .inv-lesson-detail__saved-message {

@@ -174,7 +174,73 @@
       "version": "Version {{version}}",
       "dataPrivacy": "Données et confidentialité",
       "welcome": "Accueillir",
-      "friend": "Ami"
+      "friend": "Ami",
+      "member": "Membre",
+      "leadership": "Direction",
+      "switchModeTitle": "Changer de mode",
+      "switchModeDesc": "Sélectionnez comment vous souhaitez utiliser l'application. Pour revenir au mode membre normal, choisissez \"Membre\"."
+    },
+    "profileCard": {
+      "status": {
+        "investigator": "Ami",
+        "new_convert": "Nouveau converti",
+        "active": "Membre actif",
+        "less_active": "Membre",
+        "returned": "Missionnaire de retour"
+      },
+      "myXtgId": "xTheGospel ID",
+      "shareWithLeader": "Partager avec le dirigeant",
+      "copyId": "Copier l'ID",
+      "copied": "Copié",
+      "verifiedByLeader": "Vérifié par un dirigeant",
+      "useThisId": "Utilisez cet ID pour vous enregistrer dans votre paroisse",
+      "shareTitle": "Mon xTheGospel ID",
+      "shareText": "{{displayName}}\nxTheGospel ID: {{xtgId}}"
+    },
+    "ordinances": {
+      "title": "Dates des ordonnances",
+      "subtitle": "Baptême et Confirmation",
+      "devModeActive": "Mode test actif",
+      "deactivate": "Désactiver",
+      "infoText": "Ces informations doivent être vérifiées par un membre de l'évêché ou un greffier de paroisse pour confirmer votre statut de membre.",
+      "baptismSection": "Baptême",
+      "baptismDate": "Date du baptême",
+      "baptizedByQuestion": "Qui vous a baptisé ?",
+      "confirmationSection": "Confirmation",
+      "confirmationDate": "Date de confirmation",
+      "confirmedByQuestion": "Qui vous a confirmé ?",
+      "priesthoodHolderPlaceholder": "Nom du détenteur de la prêtrise",
+      "submitForVerification": "Envoyer pour vérification",
+      "stateLabel": "État",
+      "clearData": "Effacer les données",
+      "testSwitchText": "Tests : passez entre les vues enquêteur et nouveau membre.",
+      "switchToInvestigator": "Revenir à enquêteur",
+      "switchToMember": "Passer à membre (tests)",
+      "stage": {
+        "seeking": "Apprend et se prépare",
+        "covenanted": "Grandit comme nouveau membre",
+        "member": "Grandit dans l'Évangile"
+      },
+      "status": {
+        "none": {
+          "title": "Non vérifié",
+          "desc": "Complétez les informations et envoyez-les pour vérification"
+        },
+        "pending": {
+          "title": "En attente de vérification",
+          "desc": "Un dirigeant de votre paroisse examinera ces informations",
+          "devBypass": "Mode test : aller directement au profil membre"
+        },
+        "verified": {
+          "title": "Vérifié",
+          "by": "Par {{verifiedBy}} ({{verifiedByRole}})"
+        },
+        "rejected": {
+          "title": "Informations rejetées",
+          "defaultReason": "Veuillez vérifier et corriger les informations",
+          "reviewedBy": "Vérifié par : {{verifiedBy}}"
+        }
+      }
     },
     "onboarding": {
       "screen1Title": "Bienvenue sur xTheGospel",
@@ -184,6 +250,29 @@
       "screen3Title": "Réfléchir et grandir",
       "screen3Text": "Votre journal personnel est un espace sacré pour vos pensées et vos questions.",
       "startButton": "Commencer"
+    },
+    "welcome": {
+      "eyebrow": "Bienvenue",
+      "title": "Bienvenue sur xTheGospel",
+      "subtitle": "Un guide court pour commencer avec clarté et paix.",
+      "progressLabel": "Progression de bienvenue",
+      "slides": [
+        {
+          "title": "À quoi sert cette application ?",
+          "description": "xTheGospel est un compagnon pour votre parcours spirituel : apprendre, réfléchir et progresser pas à pas."
+        },
+        {
+          "title": "Que trouverez-vous ici ?",
+          "description": "Vous trouverez des leçons, un journal personnel, un suivi de progression et des ressources pour vous rapprocher de Jésus-Christ."
+        },
+        {
+          "title": "Tutoriel rapide",
+          "description": "Commencez par Accueil, ouvrez une leçon et enregistrez une courte réflexion dans votre journal. En quelques minutes, tout sera prêt."
+        }
+      ],
+      "skip": "Passer",
+      "next": "Suivant",
+      "start": "Commencer"
     },
     "emptyStates": {
       "journalTitle": "Votre agenda vous attend",

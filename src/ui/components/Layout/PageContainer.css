@@ -5,11 +5,11 @@
 
 .ui-page-container {
   width: 100%;
-  max-width: 460px;
+  max-width: min(460px, 100%);
   margin-left: auto;
   margin-right: auto;
-  padding-left: var(--spacing-4);
-  padding-right: var(--spacing-4);
+  padding-left: clamp(var(--spacing-3), 4vw, var(--spacing-4));
+  padding-right: clamp(var(--spacing-3), 4vw, var(--spacing-4));
   padding-top: var(--spacing-6);
   padding-bottom: var(--spacing-10);
   box-sizing: border-box;

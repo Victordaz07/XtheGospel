@@ -47,6 +47,25 @@ export interface SpiritualMemoryExport {
   lastSavedToJournalAt?: string;
 }
 
+/** Baptism preparation (investigator) */
+export interface BaptismPreparationExport {
+  completedChecklist?: Record<string, boolean>;
+  baptismDate?: string;
+  location?: string;
+  performedBy?: string;
+  guests?: string;
+  personalTestimony?: string;
+  agendaProgram?: {
+    confirmImmediately: boolean;
+    speakerName?: string;
+    openingPrayerBy?: string;
+    closingPrayerBy?: string;
+    hymn1?: string;
+    hymn2?: string;
+    hymn3?: string;
+  };
+}
+
 /** Leadership data exports */
 export interface LeadershipExport {
   callings?: unknown;
@@ -63,9 +82,11 @@ export interface ExportPayload {
   journey: JourneyExport;
   journal: GodStoryEntry[];
   spiritualMemory: SpiritualMemoryExport;
+  baptismPreparation?: BaptismPreparationExport;
   leadership?: LeadershipExport;
   exportedAt: string;
   appVersion: string;
+  schemaVersion?: string; // bp-v1 para preparación bautismal
 }
 
 // ============================================================================
@@ -83,6 +104,7 @@ const USER_DATA_KEYS = {
   journal: '@godStory',
   lessonNotes: '@lessonNotes',
   commitments: '@investigatorCommitments',
+  baptismPreparation: 'baptism-preparation-storage',
   // Leadership data
   leadershipCallings: 'xtg_leadership_callings_v1',
   leadershipResponsibilities: 'xtg_leadership_responsibilities_v1',
@@ -141,6 +163,13 @@ export function gatherExportData(): ExportPayload {
     {}
   );
 
+  // Baptism preparation (Zustand persist format: { state: {...} })
+  const baptismRaw = safeReadJSON<{ state?: BaptismPreparationExport }>(
+    USER_DATA_KEYS.baptismPreparation,
+    {}
+  );
+  const baptismPreparation = baptismRaw?.state;
+
   // Leadership data
   const leadership: LeadershipExport = {
     callings: safeReadJSON(USER_DATA_KEYS.leadershipCallings, null),
@@ -159,9 +188,11 @@ export function gatherExportData(): ExportPayload {
     journey,
     journal,
     spiritualMemory,
+    ...(baptismPreparation && { baptismPreparation }),
     ...(hasLeadershipData && { leadership }),
     exportedAt: new Date().toISOString(),
     appVersion: '1.0.0', // From package.json
+    ...(baptismPreparation && { schemaVersion: 'bp-v1' }),
   };
 }
 
@@ -202,6 +233,49 @@ export function downloadExportFile(payload: ExportPayload): void {
 export function exportLocalData(): void {
   const payload = gatherExportData();
   downloadExportFile(payload);
+}
+
+// ============================================================================
+// BAPTISM AGENDA EXPORT (standalone for leader / print)
+// ============================================================================
+
+export interface BaptismAgendaExportPayload {
+  baptismDate?: string;
+  location?: string;
+  agenda: BaptismPreparationExport['agendaProgram'];
+  exportedAt: string;
+  schemaVersion?: string;
+}
+
+/**
+ * Export baptism agenda as standalone JSON.
+ * For sharing with leader, printing, or album.
+ */
+export function exportBaptismAgenda(): void {
+  const baptismRaw = safeReadJSON<{ state?: BaptismPreparationExport }>(
+    USER_DATA_KEYS.baptismPreparation,
+    {}
+  );
+  const state = baptismRaw?.state;
+  const payload: BaptismAgendaExportPayload = {
+    baptismDate: state?.baptismDate,
+    location: state?.location,
+    agenda: state?.agendaProgram,
+    exportedAt: new Date().toISOString(),
+    schemaVersion: 'bp-v1',
+  };
+  const json = JSON.stringify(payload, null, 2);
+  const blob = new Blob([json], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const date = state?.baptismDate?.split('T')[0] ?? new Date().toISOString().split('T')[0];
+  const filename = `agenda-bautismo-${date}.json`;
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
 }
 
 // ============================================================================

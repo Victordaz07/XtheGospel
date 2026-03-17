@@ -41,7 +41,10 @@
       "missionaryPath": "Missionary path",
       "myJournal": "My journal",
       "myProgress": "My progress",
-      "pray": "Pray"
+      "pray": "Pray",
+      "chatWithMissionaries": "Chat with missionaries",
+      "noMissionariesAssigned": "You don't have missionaries assigned yet",
+      "chatError": "Could not open chat. Try again later."
     },
     "progress": {
       "title": "My Journey",
@@ -65,6 +68,44 @@
       "writeReflection": "Write a reflection",
       "writeReflectionDesc": "Capture your thoughts and questions",
       "footerText": "There's no finish line here—just a path walked with the Savior."
+    },
+    "baptism": {
+      "sectionTitle": "Baptism Preparation",
+      "sectionDesc": "Baptism is the first covenant with God. Prepare your heart step by step.",
+      "ctaTitle": "Preparing for Baptism",
+      "ctaDesc": "Doctrinal content, checklist, and scheduled date",
+      "progressTitle": "Your progress toward baptism",
+      "myBaptismDate": "My Baptism Date",
+      "placeholder": "Location (e.g. Central Chapel)",
+      "whoBaptizes": "Who will baptize me?",
+      "guests": "Guests",
+      "myCommitment": "My Personal Commitment",
+      "commitmentPrompt": "I choose to be baptized because…",
+      "commitmentPlaceholder": "Write sincerely what this step means to you.",
+      "readyForBaptism": "I am ready for baptism",
+      "keepPreparing": "Keep advancing in your spiritual preparation.",
+      "agenda": {
+        "agendaTitle": "Baptismal Program Preparation",
+        "agendaSubtitle": "Personalize your special day. The missionary leader will see these preferences.",
+        "confirmImmediately": "Do you want immediate confirmation after baptism?",
+        "speakerLabel": "Who would you like to speak?",
+        "openingPrayerLabel": "Opening prayer (name)",
+        "closingPrayerLabel": "Closing prayer (name)",
+        "hymn1Label": "Hymn 1",
+        "hymn2Label": "Hymn 2",
+        "hymn3Label": "Hymn 3 (optional)",
+        "exportAgenda": "Print / Export Agenda",
+        "exportAgendaDesc": "Download the agenda as JSON to share with the leader or print.",
+        "suggestHymn1": "Suggestion: add an opening hymn to complete the program.",
+        "suggestSpeaker": "Suggestion: indicate who you would like to speak.",
+        "suggestOpeningPrayer": "Suggestion: add the name for the opening prayer.",
+        "suggestClosingPrayer": "Suggestion: add the name for the closing prayer."
+      }
+    },
+    "scripture": {
+      "modalTitle": "Scripture",
+      "close": "Close",
+      "notFound": "Scripture text not found."
     },
     "journal": {
       "title": "My Journal",
@@ -104,6 +145,7 @@
       "saveToJournal": "Save to Journal",
       "savedToJournal": "Saved to Journal ✓",
       "savedMessage": "Your reflection has been saved. You can see it in your Journal.",
+      "markCompleted": "I have completed this lesson",
       "finalMessage": "Final Message",
       "subTopics": "Sub-topics",
       "recommendedNext": "Recommended next topic",
@@ -132,7 +174,73 @@
       "version": "Version {{version}}",
       "dataPrivacy": "Data & Privacy",
       "welcome": "Welcome",
-      "friend": "Friend"
+      "friend": "Friend",
+      "member": "Member",
+      "leadership": "Leadership",
+      "switchModeTitle": "Switch mode",
+      "switchModeDesc": "Select how you want to use the app. To return to normal member mode, choose \"Member\"."
+    },
+    "profileCard": {
+      "status": {
+        "investigator": "Friend",
+        "new_convert": "New convert",
+        "active": "Active member",
+        "less_active": "Member",
+        "returned": "Returned missionary"
+      },
+      "myXtgId": "xTheGospel ID",
+      "shareWithLeader": "Share with leader",
+      "copyId": "Copy ID",
+      "copied": "Copied!",
+      "verifiedByLeader": "Verified by leader",
+      "useThisId": "Use this ID to register in your ward",
+      "shareTitle": "My xTheGospel ID",
+      "shareText": "{{displayName}}\nxTheGospel ID: {{xtgId}}"
+    },
+    "ordinances": {
+      "title": "Ordinance dates",
+      "subtitle": "Baptism and Confirmation",
+      "devModeActive": "Test mode active",
+      "deactivate": "Deactivate",
+      "infoText": "This information must be verified by a bishopric member or ward clerk to confirm your membership.",
+      "baptismSection": "Baptism",
+      "baptismDate": "Baptism date",
+      "baptizedByQuestion": "Who baptized you?",
+      "confirmationSection": "Confirmation",
+      "confirmationDate": "Confirmation date",
+      "confirmedByQuestion": "Who confirmed you?",
+      "priesthoodHolderPlaceholder": "Name of the priesthood holder",
+      "submitForVerification": "Submit for verification",
+      "stateLabel": "Status",
+      "clearData": "Clear data",
+      "testSwitchText": "Testing: switch between investigator and new member views.",
+      "switchToInvestigator": "Back to investigator",
+      "switchToMember": "Switch to member (testing)",
+      "stage": {
+        "seeking": "Learning and preparing",
+        "covenanted": "Growing as a new member",
+        "member": "Growing in the gospel"
+      },
+      "status": {
+        "none": {
+          "title": "Not verified",
+          "desc": "Complete the information and submit it for verification"
+        },
+        "pending": {
+          "title": "Pending verification",
+          "desc": "A ward leader will review this information",
+          "devBypass": "Test mode: go directly to member profile"
+        },
+        "verified": {
+          "title": "Verified",
+          "by": "By {{verifiedBy}} ({{verifiedByRole}})"
+        },
+        "rejected": {
+          "title": "Information rejected",
+          "defaultReason": "Please review and correct the information",
+          "reviewedBy": "Reviewed by: {{verifiedBy}}"
+        }
+      }
     },
     "onboarding": {
       "screen1Title": "Welcome to xTheGospel",
@@ -142,6 +250,29 @@
       "screen3Title": "Reflect and grow",
       "screen3Text": "Your personal journal is a sacred space for your thoughts and questions.",
       "startButton": "Get Started"
+    },
+    "welcome": {
+      "eyebrow": "Welcome",
+      "title": "Welcome to xTheGospel",
+      "subtitle": "A simple guide so you can begin with clarity and peace.",
+      "progressLabel": "Welcome progress",
+      "slides": [
+        {
+          "title": "What is this app?",
+          "description": "xTheGospel is a companion for your spiritual journey: learn, reflect, and grow step by step."
+        },
+        {
+          "title": "What can you find here?",
+          "description": "You will find lessons, personal journal, progress tracking, and resources designed to help you come closer to Jesus Christ."
+        },
+        {
+          "title": "Quick tutorial",
+          "description": "Start with Home, open one lesson, and save a brief reflection in your journal. In a few minutes you will be fully set."
+        }
+      ],
+      "skip": "Skip",
+      "next": "Next",
+      "start": "Start"
     },
     "emptyStates": {
       "journalTitle": "Your journal is waiting",

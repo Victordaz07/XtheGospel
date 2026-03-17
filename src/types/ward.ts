@@ -36,6 +36,11 @@ export interface Ward {
   // Stats (optional, updated periodically)
   memberCount?: number;
   leaderCount?: number;
+
+  /** UIDs de miembros (para reglas Firestore v2). Incluye líderes. */
+  memberIds?: string[];
+  /** UIDs de líderes (obispado, etc.) con permisos de escritura en ward. */
+  leaderIds?: string[];
 }
 
 // ============================================================================

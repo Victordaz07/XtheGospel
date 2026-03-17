@@ -8,6 +8,7 @@
 import React, { useState } from 'react';
 import { FaShareNodes, FaCopy, FaCheck, FaChurch, FaUser } from 'react-icons/fa6';
 import { UniversalUserProfile, MemberStatus } from '../../types/user';
+import { useI18n } from '../../context/I18nContext';
 import './XtgProfileCard.css';
 
 interface XtgProfileCardProps {
@@ -15,14 +16,6 @@ interface XtgProfileCardProps {
   compact?: boolean;
   onShare?: () => void;
 }
-
-const STATUS_LABELS: Record<MemberStatus, string> = {
-  investigator: 'Amigo',
-  new_convert: 'Nuevo Converso',
-  active: 'Miembro Activo',
-  less_active: 'Miembro',
-  returned: 'Misionero Retornado',
-};
 
 const STATUS_COLORS: Record<MemberStatus, string> = {
   investigator: 'friend',
@@ -33,7 +26,9 @@ const STATUS_COLORS: Record<MemberStatus, string> = {
 };
 
 export function XtgProfileCard({ profile, compact = false, onShare }: XtgProfileCardProps): JSX.Element {
+  const { t } = useI18n();
   const [copied, setCopied] = useState(false);
+  const statusLabel = t(`app.profileCard.status.${profile.memberStatus}`);
 
   const handleCopyId = async () => {
     try {
@@ -55,8 +50,11 @@ export function XtgProfileCard({ profile, compact = false, onShare }: XtgProfile
     if (navigator.share) {
       try {
         await navigator.share({
-          title: 'Mi xTheGospel ID',
-          text: `${profile.displayName}\nxTheGospel ID: ${profile.xthegospelId}`,
+          title: t('app.profileCard.shareTitle'),
+          text: t('app.profileCard.shareText', {
+            displayName: profile.displayName,
+            xtgId: profile.xthegospelId,
+          }),
           url: `https://xthegospel.app/profile/${profile.xthegospelId}`,
         });
       } catch (error) {
@@ -90,14 +88,14 @@ export function XtgProfileCard({ profile, compact = false, onShare }: XtgProfile
           <div className="xtg-card__compact-info">
             <span className="xtg-card__name-compact">{profile.displayName}</span>
             <span className="xtg-card__badge-compact" data-status={STATUS_COLORS[profile.memberStatus]}>
-              {STATUS_LABELS[profile.memberStatus]}
+              {statusLabel}
             </span>
           </div>
         </div>
 
         {/* ID Box */}
         <div className="xtg-card__compact-id">
-          <span className="xtg-card__id-label-compact">xTheGospel ID</span>
+          <span className="xtg-card__id-label-compact">{t('app.profileCard.myXtgId')}</span>
           <div className="xtg-card__id-row">
             <span className="xtg-card__id-compact">{profile.xthegospelId}</span>
             <button className="xtg-card__copy-btn" onClick={handleCopyId}>
@@ -109,7 +107,7 @@ export function XtgProfileCard({ profile, compact = false, onShare }: XtgProfile
         {/* Share Button */}
         <button className="xtg-card__share-compact" onClick={handleShare}>
           <FaShareNodes />
-          Compartir con Líder
+          {t('app.profileCard.shareWithLeader')}
         </button>
       </div>
     );
@@ -121,7 +119,7 @@ export function XtgProfileCard({ profile, compact = false, onShare }: XtgProfile
       <div className="xtg-card__header">
         <div className="xtg-card__logo">xTheGospel</div>
         <div className="xtg-card__badge" data-status={STATUS_COLORS[profile.memberStatus]}>
-          {STATUS_LABELS[profile.memberStatus]}
+          {statusLabel}
         </div>
       </div>
 
@@ -147,13 +145,13 @@ export function XtgProfileCard({ profile, compact = false, onShare }: XtgProfile
 
       {/* ID Section */}
       <div className="xtg-card__id-section">
-        <span className="xtg-card__id-label">xTheGospel ID</span>
+        <span className="xtg-card__id-label">{t('app.profileCard.myXtgId')}</span>
         <div className="xtg-card__id-box">
           <span className="xtg-card__id">{profile.xthegospelId}</span>
           <button 
             className="xtg-card__id-copy" 
             onClick={handleCopyId}
-            title={copied ? 'Copiado!' : 'Copiar ID'}
+            title={copied ? t('app.profileCard.copied') : t('app.profileCard.copyId')}
           >
             {copied ? <FaCheck /> : <FaCopy />}
           </button>
@@ -163,19 +161,19 @@ export function XtgProfileCard({ profile, compact = false, onShare }: XtgProfile
       {/* Verification badge */}
       {profile.verifiedByLeader && (
         <div className="xtg-card__verified">
-          <FaCheck /> Verificado por líder
+          <FaCheck /> {t('app.profileCard.verifiedByLeader')}
         </div>
       )}
 
       {/* Share button */}
       <button className="xtg-card__share-btn" onClick={handleShare}>
         <FaShareNodes />
-        Compartir con Líder
+        {t('app.profileCard.shareWithLeader')}
       </button>
 
       {/* Footer */}
       <div className="xtg-card__footer">
-        <span>Usa este ID para registrarte en tu barrio</span>
+        <span>{t('app.profileCard.useThisId')}</span>
       </div>
     </div>
   );

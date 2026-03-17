@@ -22,19 +22,27 @@
 .inv-progress {
   display: flex;
   flex-direction: column;
-  gap: var(--space-6);
+  gap: clamp(var(--space-4), 4vw, var(--space-6));
   padding-bottom: var(--space-6);
+  width: 100%;
+  max-width: 100%;
 }
 
 .inv-progress__header {
   margin-bottom: var(--space-1);
 }
 
-/* Stats Grid - Visual Statistics */
+/* Stats Grid - Visual Statistics (3 cols en móvil grande, 2 en muy pequeño) */
 .inv-progress__stats {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-3);
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(var(--space-2), 2vw, var(--space-3));
+}
+
+@media (min-width: 360px) {
+  .inv-progress__stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .inv-progress__stat {
@@ -238,6 +246,16 @@
   transform: translateY(-1px);
 }
 
+.inv-progress__action--baptism {
+  border-color: var(--accent);
+  background: linear-gradient(135deg, rgba(var(--accent-rgb, 99, 102, 241), 0.06), transparent);
+}
+
+.inv-progress__action-icon--baptism {
+  background: var(--theme-gradient-accent);
+  color: var(--text-inverse);
+}
+
 .inv-progress__action-icon {
   width: 44px;
   height: 44px;
@@ -281,4 +299,25 @@
   margin: 0;
   line-height: var(--leading-relaxed);
   font-style: italic;
+}
+
+/* Móvil muy pequeño (320px) */
+@media (max-width: 359px) {
+  .inv-progress__stat {
+    padding: var(--space-3) var(--space-2);
+  }
+
+  .inv-progress__stat-icon {
+    width: 36px;
+    height: 36px;
+    font-size: var(--text-sm);
+  }
+
+  .inv-progress__stat-value {
+    font-size: var(--text-xl);
+  }
+
+  .inv-progress__stat-label {
+    font-size: 0.65rem;
+  }
 }

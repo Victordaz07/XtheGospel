@@ -1,0 +1,431 @@
+/* Baptism Preparation Screen
+ * Preparación para el Bautismo - Estilo coherente con inv-progress
+ */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.anim-fade-up {
+  animation: fadeUp 0.4s ease-out forwards;
+}
+
+.baptism-prep {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(var(--space-4), 4vw, var(--space-6));
+  padding-bottom: var(--space-8);
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Sync status (EPIC 2.2) */
+.baptism-prep__sync-status {
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--text-sm);
+  border-radius: var(--radius-md);
+}
+
+.baptism-prep__sync-status--loading {
+  background: var(--background-muted);
+  color: var(--color-accent-700);
+}
+
+.baptism-prep__sync-status--offline {
+  background: #F59E0B;
+  color: #1F2937;
+}
+
+.baptism-prep__sync-status--error {
+  background: #FEE2E2;
+  color: #991B1B;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.baptism-prep__sync-status--stale {
+  background: #FEF3C7;
+  color: #92400E;
+}
+
+.baptism-prep__retry-btn {
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  border-radius: var(--radius-md);
+  border: none;
+  background: #991B1B;
+  color: white;
+  cursor: pointer;
+}
+
+.baptism-prep__retry-btn:hover {
+  background: #B91C1C;
+}
+
+.baptism-prep__sync-meta {
+  font-size: var(--text-xs);
+  color: var(--color-accent-600);
+}
+
+.baptism-prep__header {
+  margin-bottom: var(--space-1);
+}
+
+.baptism-prep__back {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--color-accent-700);
+  text-decoration: none;
+  margin-bottom: var(--space-3);
+  transition: color var(--transition-base);
+}
+
+.baptism-prep__back:hover {
+  color: var(--color-accent-800);
+}
+
+.baptism-prep__title {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  color: var(--color-accent-800);
+  margin: 0 0 var(--space-2) 0;
+  line-height: var(--leading-tight);
+}
+
+.baptism-prep__subtitle {
+  font-size: var(--text-base);
+  color: var(--color-accent-700);
+  margin: 0;
+  line-height: var(--leading-normal);
+}
+
+/* Progress section */
+.baptism-prep__progress-section {
+  background: var(--background-card);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  border: 1px solid var(--border-subtle);
+}
+
+.baptism-prep__progress-title {
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  color: var(--color-accent-800);
+  margin: 0 0 var(--space-3) 0;
+}
+
+.baptism-prep__progress-bar-wrap {
+  height: 8px;
+  background: var(--background-muted);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  margin-bottom: var(--space-4);
+}
+
+.baptism-prep__progress-bar-fill {
+  height: 100%;
+  background: var(--theme-gradient-accent);
+  border-radius: var(--radius-full);
+  transition: width var(--transition-base);
+}
+
+.baptism-prep__milestones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.baptism-prep__milestone {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--color-accent-600);
+}
+
+.baptism-prep__milestone--done {
+  color: var(--color-accent-800);
+}
+
+.baptism-prep__milestone-icon {
+  color: var(--accent);
+  font-size: var(--text-sm);
+  flex-shrink: 0;
+}
+
+.baptism-prep__milestone-icon--pending {
+  color: var(--color-accent-400);
+  opacity: 0.6;
+}
+
+.baptism-prep__milestone-check {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  cursor: pointer;
+}
+
+.baptism-prep__milestone-input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Sections */
+.baptism-prep__sections {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.baptism-prep__section {
+  background: var(--background-card);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  border: 1px solid var(--border-subtle);
+}
+
+.baptism-prep__section--highlight {
+  border-color: var(--border-strong);
+  background: var(--background-muted);
+}
+
+.baptism-prep__section--agenda {
+  border-color: var(--accent);
+  background: linear-gradient(135deg, rgba(var(--primary-rgb, 99, 102, 241), 0.04), transparent);
+}
+
+.baptism-prep__agenda-subtitle {
+  font-size: var(--text-sm);
+  color: var(--color-accent-600);
+  margin: 0 0 var(--space-4) 0;
+  line-height: var(--leading-normal);
+}
+
+.baptism-prep__field--checkbox {
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+
+.baptism-prep__field--checkbox .baptism-prep__check-text {
+  margin-left: var(--space-2);
+}
+
+.baptism-prep__field-icon--text {
+  font-size: var(--text-lg);
+  width: 1.5em;
+  text-align: center;
+}
+
+.baptism-prep__section-title {
+  font-size: var(--text-lg);
+  font-weight: var(--font-semibold);
+  color: var(--color-accent-800);
+  margin: 0 0 var(--space-3) 0;
+}
+
+.baptism-prep__section-text {
+  font-size: var(--text-base);
+  color: var(--color-accent-700);
+  margin: 0 0 var(--space-2) 0;
+  line-height: var(--leading-relaxed);
+}
+
+.baptism-prep__section-text:last-of-type {
+  margin-bottom: var(--space-3);
+}
+
+/* Contenedor de referencias de escrituras (usa ScriptureReferenceCard) */
+.baptism-prep__scriptures {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin: var(--space-3) 0;
+}
+
+.baptism-prep__check {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-3) 0;
+  cursor: pointer;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.baptism-prep__check:last-child {
+  border-bottom: none;
+}
+
+.baptism-prep__check-input {
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+  flex-shrink: 0;
+  accent-color: var(--accent);
+}
+
+.baptism-prep__check-text {
+  font-size: var(--text-base);
+  color: var(--color-accent-800);
+  line-height: var(--leading-snug);
+}
+
+/* Form - Mi Fecha de Bautismo */
+.baptism-prep__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.baptism-prep__field {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.baptism-prep__field-icon {
+  color: var(--accent);
+  font-size: var(--text-lg);
+  flex-shrink: 0;
+}
+
+.baptism-prep__input {
+  flex: 1;
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--text-base);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  background: var(--background-card);
+  color: var(--color-accent-800);
+}
+
+.baptism-prep__input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.baptism-prep__input::placeholder {
+  color: var(--color-accent-500);
+}
+
+/* Commitment textarea */
+.baptism-prep__commitment-prompt {
+  font-size: var(--text-sm);
+  color: var(--color-accent-700);
+  margin: 0 0 var(--space-3) 0;
+  line-height: var(--leading-normal);
+}
+
+.baptism-prep__textarea {
+  width: 100%;
+  padding: var(--space-4);
+  font-size: var(--text-base);
+  font-family: inherit;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  background: var(--background-card);
+  color: var(--color-accent-800);
+  resize: vertical;
+  min-height: 100px;
+}
+
+.baptism-prep__textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.baptism-prep__textarea::placeholder {
+  color: var(--color-accent-500);
+}
+
+/* Agenda hints (validación suave) */
+.baptism-prep__agenda-hints {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  background: rgba(245, 158, 11, 0.08);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+}
+
+.baptism-prep__hint {
+  font-size: var(--text-sm);
+  color: var(--color-accent-700);
+  margin: 0;
+  line-height: var(--leading-snug);
+}
+
+/* Export agenda button */
+.baptism-prep__export-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--text-base);
+  font-weight: var(--font-medium);
+  color: var(--accent);
+  background: transparent;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background var(--transition-base), color var(--transition-base);
+}
+
+.baptism-prep__export-btn:hover {
+  background: var(--accent);
+  color: white;
+}
+
+.baptism-prep__export-icon {
+  font-size: var(--text-lg);
+}
+
+/* Footer - Ready state */
+.baptism-prep__footer {
+  margin-top: var(--space-4);
+}
+
+.baptism-prep__ready {
+  background: var(--background-muted);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  border: 1px solid var(--border-subtle);
+  text-align: center;
+}
+
+.baptism-prep__ready--active {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(5, 150, 105, 0.05));
+  border-color: var(--accent);
+}
+
+.baptism-prep__ready-icon {
+  font-size: var(--text-2xl);
+  display: block;
+  margin-bottom: var(--space-2);
+}
+
+.baptism-prep__ready-text {
+  font-size: var(--text-lg);
+  font-weight: var(--font-semibold);
+  color: var(--color-accent-800);
+  margin: 0;
+}
+
+.baptism-prep__ready-text--muted {
+  font-weight: var(--font-medium);
+  color: var(--color-accent-600);
+}

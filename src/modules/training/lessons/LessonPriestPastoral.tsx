@@ -4,7 +4,7 @@
  */
 
 import React, { useState, useEffect, useCallback } from 'react';
-import { Card, Heading, Text } from '../../../ui/components';
+import { Card, Heading, Text, ScriptureReferenceCard } from '../../../ui/components';
 import { FaCheck, FaCircle } from 'react-icons/fa6';
 import { getLessonStorage, setLessonStorage, setLessonStorageDebounced, flushLessonStorageDebounced } from './lessonStorage';
 import './LessonPriestPastoral.css';
@@ -105,7 +105,7 @@ export function LessonPriestPastoral({ onPracticeProgress }: LessonPriestPastora
           {SCRIPTURES.map((s, i) => (
             <Card key={i} variant="outlined" padding="md" className="tr-lesson-priest-pastoral__scripture-card">
               <Text as="p" size="base" className="tr-lesson-priest-pastoral__scripture-text">{s.text}</Text>
-              <Text as="p" size="sm" color="secondary" className="tr-lesson-priest-pastoral__scripture-ref">— {s.ref}</Text>
+              <div className="tr-lesson-priest-pastoral__scripture-ref"><ScriptureReferenceCard reference={s.ref} /></div>
             </Card>
           ))}
         </div>

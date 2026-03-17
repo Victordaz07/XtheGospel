@@ -11,6 +11,7 @@ import { XtgAppLayout } from './layouts/XtgAppLayout';
 import { ScrollToTop } from './components/ScrollToTop';
 import { seedDemoCalendarEvents } from './services/calendarService';
 import { useAuthStore } from './state/auth/useAuthStore';
+import TrainingProgressSyncBridge from './modules/training/components/TrainingProgressSyncBridge';
 
 // Semilla de eventos demo (solo en desarrollo)
 if (import.meta.env.DEV) {
@@ -43,6 +44,7 @@ export default function App() {
                 <BrowserRouter>
                   <ScrollToTop />
                   <FirebaseAuthInitializer />
+                  <TrainingProgressSyncBridge />
                   <XtgAppLayout>
                     <AppRouter />
                   </XtgAppLayout>

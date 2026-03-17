@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { LESSONS } from '../data/lessonsData';
 import { useI18n } from '../context/I18nContext';
+import { ScriptureReferenceCard } from '../ui/components';
 import { useProgress } from '../context/ProgressContext';
 import { NotesService } from '../services/notesService';
 import { CommitmentsService } from '../services/commitmentsService';
@@ -216,7 +217,7 @@ const LessonDetail: React.FC = () => {
                     <div className="topic-section scripture-section">
                       <h3>{t('lesson.mainScripture') || 'Escritura Principal'}</h3>
                       <div className="scripture-block">
-                        <div className="scripture-ref">{topic.scriptureRef}</div>
+                        <div className="scripture-ref"><ScriptureReferenceCard reference={topic.scriptureRef} /></div>
                         <div className="scripture-text">{topic.scriptureMain}</div>
                       </div>
                       {topic.moreScriptures.length > 0 && (

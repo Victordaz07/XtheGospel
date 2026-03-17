@@ -20,6 +20,8 @@ const dictionaries = {
   pt: ptTranslations,
 };
 
+const LOCALE_STORAGE_KEY = 'appLang';
+
 export type Locale = 'es' | 'en' | 'fr' | 'pt';
 
 interface I18nContextType {
@@ -43,7 +45,7 @@ export const I18nProvider: React.FC<I18nProviderProps> = ({ children }) => {
 
   const loadLocale = async () => {
     try {
-      const storedLocale = await AsyncStorage.getItem('appLang');
+      const storedLocale = await AsyncStorage.getItem(LOCALE_STORAGE_KEY);
       if (storedLocale && ['es', 'en', 'fr', 'pt'].includes(storedLocale)) {
         setLocaleState(storedLocale as Locale);
       } else {
@@ -51,7 +53,7 @@ export const I18nProvider: React.FC<I18nProviderProps> = ({ children }) => {
         const systemLocale = Intl.DateTimeFormat().resolvedOptions().locale;
         const detectedLocale = systemLocale.includes('es') ? 'es' : 'en';
         setLocaleState(detectedLocale);
-        await AsyncStorage.setItem('appLang', detectedLocale);
+        await AsyncStorage.setItem(LOCALE_STORAGE_KEY, detectedLocale);
       }
     } catch (error) {
       console.error('Error loading locale:', error);
@@ -61,7 +63,7 @@ export const I18nProvider: React.FC<I18nProviderProps> = ({ children }) => {
 
   const setLocale = async (newLocale: Locale) => {
     try {
-      await AsyncStorage.setItem('appLang', newLocale);
+      await AsyncStorage.setItem(LOCALE_STORAGE_KEY, newLocale);
       setLocaleState(newLocale);
     } catch (error) {
       console.error('Error saving locale:', error);

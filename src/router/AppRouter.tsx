@@ -24,6 +24,11 @@ import NewMemberRoutes from './NewMemberRoutes';
 
 // Unified Routes: Journey-aware routing (stage-based content switching)
 import UnifiedRoutes from './UnifiedRoutes';
+import { ProtectedRoute } from './ProtectedRoute';
+import ChatScreen from '../modules/investigator/pages/ChatScreen';
+import { StorageService } from '../utils/storage';
+import { FIRST_OPEN_WELCOME_KEY } from '../config/welcome';
+import FirstOpenWelcome from '../components/FirstOpenWelcome';
 
 const AppRouter: React.FC = () => {
   const { userRole, isLoading } = useAuth();
@@ -43,6 +48,14 @@ const AppRouter: React.FC = () => {
   if (isLoading || !isHydrated) {
     console.log('⏳ Mostrando pantalla de carga...');
     return <LoadingScreen />;
+  }
+
+  const hasSeenWelcome = StorageService.getItem(FIRST_OPEN_WELCOME_KEY) === 'true';
+  if (!hasSeenWelcome && location.pathname !== '/welcome') {
+    return <Navigate to="/welcome" replace />;
+  }
+  if (hasSeenWelcome && location.pathname === '/welcome') {
+    return <Navigate to="/register" replace />;
   }
 
   // Check if user is on a unified route (these are always accessible regardless of userRole)
@@ -120,15 +133,20 @@ const AppRouter: React.FC = () => {
     <Routes>
       {/* ROOT: Redirect to unified home */}
       <Route path="/" element={<Navigate to="/home" replace />} />
+
+      {/* First open welcome */}
+      <Route path="/welcome" element={<FirstOpenWelcome />} />
       
       {/* UNIFIED ROUTES: Main app flow - stage-based content switching */}
-      {/* These are always accessible regardless of userRole */}
+      {/* Públicas: /home, /lessons (investigador entra sin fricción) */}
       <Route path="/home/*" element={<UnifiedRoutes />} />
       <Route path="/lessons/*" element={<UnifiedRoutes />} />
-      <Route path="/journal/*" element={<UnifiedRoutes />} />
-      <Route path="/progress/*" element={<UnifiedRoutes />} />
-      <Route path="/profile/*" element={<UnifiedRoutes />} />
-      <Route path="/training/*" element={<UnifiedRoutes />} />
+      {/* Privadas: requieren auth - redirigen a /login?redirect=... si no hay user */}
+      <Route path="/journal/*" element={<ProtectedRoute><UnifiedRoutes /></ProtectedRoute>} />
+      <Route path="/progress/*" element={<ProtectedRoute><UnifiedRoutes /></ProtectedRoute>} />
+      <Route path="/profile/*" element={<ProtectedRoute><UnifiedRoutes /></ProtectedRoute>} />
+      <Route path="/training/*" element={<ProtectedRoute><UnifiedRoutes /></ProtectedRoute>} />
+      <Route path="/chat/:conversationId" element={<ProtectedRoute><ChatScreen /></ProtectedRoute>} />
       
       {/* Auth: Registration and Login with Firebase */}
       <Route path="/register" element={<RegisterPage />} />

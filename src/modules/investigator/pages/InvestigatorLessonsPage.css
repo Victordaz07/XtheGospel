@@ -24,7 +24,8 @@
   flex-direction: column;
   gap: var(--space-5);
   padding-bottom: var(--space-6);
-  max-width: 780px;
+  width: 100%;
+  max-width: min(780px, 100%);
   margin: 0 auto;
 }
 

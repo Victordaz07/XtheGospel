@@ -9,7 +9,7 @@
  */
 
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import {
   FaUser,
   FaEnvelope,
@@ -28,8 +28,21 @@ import './RegisterPage.css';
 
 type RegisterMode = 'login' | 'select-type' | 'signup-friend' | 'signup-member' | 'success';
 
+/** Rutas internas válidas para redirect post-login (evita open redirect) */
+const VALID_REDIRECT_PATHS = ['/home', '/journal', '/progress', '/profile', '/training', '/lessons'];
+
+function getPostLoginDestination(searchParams: URLSearchParams): string {
+  const redirect = searchParams.get('redirect');
+  if (!redirect) return '/home';
+  const decoded = decodeURIComponent(redirect);
+  // Solo rutas internas que empiecen con path válido
+  const isValid = VALID_REDIRECT_PATHS.some((p) => decoded === p || decoded.startsWith(p + '/'));
+  return isValid ? decoded : '/home';
+}
+
 const RegisterPage: React.FC = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const { signUpWithEmail, signInWithEmail, login, profile } = useAuth();
   
   const [mode, setMode] = useState<RegisterMode>('login');
@@ -63,9 +76,8 @@ const RegisterPage: React.FC = () => {
     try {
       setLoading(true);
       await signInWithEmail(email, password);
-      // Don't set role here - the profile already has memberStatus
-      // The app will read it from the profile
-      navigate('/home', { replace: true });
+      const destination = getPostLoginDestination(searchParams);
+      navigate(destination, { replace: true });
     } catch (err: any) {
       console.error('Login error:', err);
       if (err.code === 'auth/user-not-found') {
@@ -133,7 +145,8 @@ const RegisterPage: React.FC = () => {
   };
 
   const handleContinue = () => {
-    navigate('/home', { replace: true });
+    const destination = getPostLoginDestination(searchParams);
+    navigate(destination, { replace: true });
   };
 
   const handleSelectType = (memberType: boolean) => {

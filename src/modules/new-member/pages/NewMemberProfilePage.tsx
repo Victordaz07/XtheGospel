@@ -11,6 +11,7 @@ import {
 import { OrdinanceDatesSection } from '../../../components/OrdinanceDatesSection';
 import DataPrivacySection from '../../../components/DataPrivacySection';
 import { useMode, type AppMode } from '../../../state/mode';
+import { useI18n } from '../../../context/I18nContext';
 import '../../../components/DataPrivacySection.css';
 import './NewMemberProfilePage.css';
 
@@ -22,6 +23,7 @@ import './NewMemberProfilePage.css';
 export default function NewMemberProfilePage(): JSX.Element {
   const navigate = useNavigate();
   const { mode, setMode } = useMode();
+  const { t } = useI18n();
 
   const handleSettingClick = (setting: string): void => {
     alert(`${setting} coming soon!`);
@@ -71,10 +73,9 @@ export default function NewMemberProfilePage(): JSX.Element {
 
       {/* Mode Switcher - switch between Investigator / Member / Leadership */}
       <section className="nm-profile__section">
-        <h2 className="nm-profile__section-title">Cambiar modo</h2>
+        <h2 className="nm-profile__section-title">{t('app.profile.switchModeTitle')}</h2>
         <p className="nm-profile__section-desc">
-          Selecciona cómo deseas usar la aplicación. Para volver al modo miembro
-          normal, elige &quot;Miembro&quot;.
+          {t('app.profile.switchModeDesc')}
         </p>
         <div className="nm-profile__mode-switcher">
           <button
@@ -83,7 +84,7 @@ export default function NewMemberProfilePage(): JSX.Element {
             onClick={() => handleModeChange('investigator')}
           >
             <FaUser className="nm-profile__mode-icon" />
-            <span>Amigo</span>
+            <span>{t('app.profile.friend')}</span>
           </button>
           <button
             type="button"
@@ -91,7 +92,7 @@ export default function NewMemberProfilePage(): JSX.Element {
             onClick={() => handleModeChange('member')}
           >
             <FaUser className="nm-profile__mode-icon" />
-            <span>Miembro</span>
+            <span>{t('app.profile.member')}</span>
           </button>
           <button
             type="button"
@@ -99,7 +100,7 @@ export default function NewMemberProfilePage(): JSX.Element {
             onClick={() => handleModeChange('leadership')}
           >
             <FaUserGear className="nm-profile__mode-icon" />
-            <span>Liderazgo</span>
+            <span>{t('app.profile.leadership')}</span>
           </button>
         </div>
       </section>

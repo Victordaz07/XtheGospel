@@ -14,12 +14,11 @@ import {
 import { 
   useJourneyStore, 
   useJourneyStage, 
-  getStageLabel,
-  getVerificationLabel,
   setDevBypass,
   isDevBypassActive,
   type VerificationStatus 
 } from '../core/journey/useJourneyStore';
+import { useI18n } from '../context/I18nContext';
 import './OrdinanceDatesSection.css';
 
 /**
@@ -28,6 +27,7 @@ import './OrdinanceDatesSection.css';
  * Requires authorization by bishopric/clerk for validity
  */
 export function OrdinanceDatesSection(): JSX.Element {
+  const { t, locale } = useI18n();
   const { 
     ordinanceDates, 
     setBaptismDate, 
@@ -90,8 +90,8 @@ export function OrdinanceDatesSection(): JSX.Element {
         <div className="ord-dates__header-left">
           <FaCalendarDays className="ord-dates__icon" />
           <div>
-            <h3 className="ord-dates__title">Fechas de Ordenanzas</h3>
-            <p className="ord-dates__subtitle">Bautismo y Confirmación</p>
+            <h3 className="ord-dates__title">{t('app.ordinances.title')}</h3>
+            <p className="ord-dates__subtitle">{t('app.ordinances.subtitle')}</p>
           </div>
         </div>
         <div className="ord-dates__header-right">
@@ -105,7 +105,7 @@ export function OrdinanceDatesSection(): JSX.Element {
         <div className="ord-dates__content">
           {isDevBypassActive() && (
             <div className="ord-dates__dev-banner">
-              <span>Modo prueba activo</span>
+              <span>{t('app.ordinances.devModeActive')}</span>
               <button
                 type="button"
                 className="ord-dates__dev-bypass ord-dates__dev-bypass--small"
@@ -114,7 +114,7 @@ export function OrdinanceDatesSection(): JSX.Element {
                   window.location.reload();
                 }}
               >
-                Desactivar
+                {t('app.ordinances.deactivate')}
               </button>
             </div>
           )}
@@ -122,19 +122,18 @@ export function OrdinanceDatesSection(): JSX.Element {
           <div className="ord-dates__info">
             <FaShieldHalved className="ord-dates__info-icon" />
             <p>
-              Esta información debe ser verificada por un miembro del obispado 
-              o secretario de barrio para confirmar tu membresía.
+              {t('app.ordinances.infoText')}
             </p>
           </div>
 
           {/* Baptism Section */}
           <div className="ord-dates__section">
-            <h4 className="ord-dates__section-title">Bautismo</h4>
+            <h4 className="ord-dates__section-title">{t('app.ordinances.baptismSection')}</h4>
             
             <div className="ord-dates__field">
               <label className="ord-dates__label">
                 <FaCalendarDays className="ord-dates__field-icon" />
-                Fecha de Bautismo
+                {t('app.ordinances.baptismDate')}
               </label>
               <input
                 type="date"
@@ -148,14 +147,14 @@ export function OrdinanceDatesSection(): JSX.Element {
             <div className="ord-dates__field">
               <label className="ord-dates__label">
                 <FaUser className="ord-dates__field-icon" />
-                ¿Quién te bautizó?
+                {t('app.ordinances.baptizedByQuestion')}
               </label>
               <input
                 type="text"
                 className="ord-dates__input"
                 value={ordinanceDates.baptizedBy || ''}
                 onChange={handleBaptizedByChange}
-                placeholder="Nombre del poseedor del sacerdocio"
+                placeholder={t('app.ordinances.priesthoodHolderPlaceholder')}
                 disabled={status === 'verified'}
               />
             </div>
@@ -163,12 +162,12 @@ export function OrdinanceDatesSection(): JSX.Element {
 
           {/* Confirmation Section */}
           <div className="ord-dates__section">
-            <h4 className="ord-dates__section-title">Confirmación</h4>
+            <h4 className="ord-dates__section-title">{t('app.ordinances.confirmationSection')}</h4>
             
             <div className="ord-dates__field">
               <label className="ord-dates__label">
                 <FaCalendarDays className="ord-dates__field-icon" />
-                Fecha de Confirmación
+                {t('app.ordinances.confirmationDate')}
               </label>
               <input
                 type="date"
@@ -182,14 +181,14 @@ export function OrdinanceDatesSection(): JSX.Element {
             <div className="ord-dates__field">
               <label className="ord-dates__label">
                 <FaUser className="ord-dates__field-icon" />
-                ¿Quién te confirmó?
+                {t('app.ordinances.confirmedByQuestion')}
               </label>
               <input
                 type="text"
                 className="ord-dates__input"
                 value={ordinanceDates.confirmedBy || ''}
                 onChange={handleConfirmedByChange}
-                placeholder="Nombre del poseedor del sacerdocio"
+                placeholder={t('app.ordinances.priesthoodHolderPlaceholder')}
                 disabled={status === 'verified'}
               />
             </div>
@@ -213,7 +212,7 @@ export function OrdinanceDatesSection(): JSX.Element {
               onClick={handleSubmitForVerification}
             >
               <FaPaperPlane />
-              Enviar para Verificación
+              {t('app.ordinances.submitForVerification')}
             </button>
           )}
 
@@ -221,13 +220,13 @@ export function OrdinanceDatesSection(): JSX.Element {
           <div className="ord-dates__status">
             <span className={`ord-dates__status-dot ord-dates__status-dot--${stage}`} />
             <p className="ord-dates__status-text">
-              Estado: {getStageLabel(stage)}
+              {t('app.ordinances.stateLabel')}: {t(`app.ordinances.stage.${stage}`)}
             </p>
           </div>
 
           <div className="ord-dates__test-switch">
             <p className="ord-dates__test-switch-text">
-              Pruebas: cambia entre vista de investigador y nuevo miembro.
+              {t('app.ordinances.testSwitchText')}
             </p>
             {isDevBypassActive() ? (
               <button
@@ -235,7 +234,7 @@ export function OrdinanceDatesSection(): JSX.Element {
                 className="ord-dates__test-switch-btn ord-dates__test-switch-btn--secondary"
                 onClick={handleSwitchToInvestigatorTest}
               >
-                Volver a investigador
+                {t('app.ordinances.switchToInvestigator')}
               </button>
             ) : (
               <button
@@ -243,7 +242,7 @@ export function OrdinanceDatesSection(): JSX.Element {
                 className="ord-dates__test-switch-btn"
                 onClick={handleSwitchToMemberTest}
               >
-                Pasar a miembro (pruebas)
+                {t('app.ordinances.switchToMember')}
               </button>
             )}
           </div>
@@ -251,7 +250,7 @@ export function OrdinanceDatesSection(): JSX.Element {
           {/* Clear Button */}
           {hasAnyData && status !== 'verified' && (
             <button className="ord-dates__clear" onClick={clearDates}>
-              Borrar datos
+              {t('app.ordinances.clearData')}
             </button>
           )}
         </div>
@@ -302,14 +301,16 @@ function VerificationStatusDisplay({
   verifiedAt,
   rejectionReason 
 }: VerificationStatusDisplayProps): JSX.Element {
+  const { t, locale } = useI18n();
+
   if (status === 'none') {
     return (
       <div className="ord-dates__ver-info">
         <FaShieldHalved className="ord-dates__ver-icon" />
         <div>
-          <p className="ord-dates__ver-title">Sin verificar</p>
+          <p className="ord-dates__ver-title">{t('app.ordinances.status.none.title')}</p>
           <p className="ord-dates__ver-desc">
-            Completa los datos y envíalos para verificación
+            {t('app.ordinances.status.none.desc')}
           </p>
         </div>
       </div>
@@ -321,9 +322,9 @@ function VerificationStatusDisplay({
       <div className="ord-dates__ver-info">
         <FaClock className="ord-dates__ver-icon" />
         <div>
-          <p className="ord-dates__ver-title">Pendiente de Verificación</p>
+          <p className="ord-dates__ver-title">{t('app.ordinances.status.pending.title')}</p>
           <p className="ord-dates__ver-desc">
-            Un líder de tu barrio revisará esta información
+            {t('app.ordinances.status.pending.desc')}
           </p>
           <button
             type="button"
@@ -333,7 +334,7 @@ function VerificationStatusDisplay({
               window.location.reload();
             }}
           >
-            Modo prueba: pasar directo al perfil
+            {t('app.ordinances.status.pending.devBypass')}
           </button>
         </div>
       </div>
@@ -341,7 +342,7 @@ function VerificationStatusDisplay({
   }
 
   if (status === 'verified') {
-    const date = verifiedAt ? new Date(verifiedAt).toLocaleDateString('es', {
+    const date = verifiedAt ? new Date(verifiedAt).toLocaleDateString(locale, {
       year: 'numeric',
       month: 'long',
       day: 'numeric'
@@ -351,9 +352,12 @@ function VerificationStatusDisplay({
       <div className="ord-dates__ver-info">
         <FaCircleCheck className="ord-dates__ver-icon" />
         <div>
-          <p className="ord-dates__ver-title">Verificado</p>
+          <p className="ord-dates__ver-title">{t('app.ordinances.status.verified.title')}</p>
           <p className="ord-dates__ver-desc">
-            Por {verifiedBy} ({verifiedByRole})
+            {t('app.ordinances.status.verified.by', {
+              verifiedBy: verifiedBy || '',
+              verifiedByRole: verifiedByRole || '',
+            })}
             {date && <span className="ord-dates__ver-date"> • {date}</span>}
           </p>
         </div>
@@ -366,12 +370,14 @@ function VerificationStatusDisplay({
       <div className="ord-dates__ver-info">
         <FaCircleXmark className="ord-dates__ver-icon" />
         <div>
-          <p className="ord-dates__ver-title">Datos Rechazados</p>
+          <p className="ord-dates__ver-title">{t('app.ordinances.status.rejected.title')}</p>
           <p className="ord-dates__ver-desc">
-            {rejectionReason || 'Por favor revisa y corrige la información'}
+            {rejectionReason || t('app.ordinances.status.rejected.defaultReason')}
           </p>
           {verifiedBy && (
-            <p className="ord-dates__ver-by">Revisado por: {verifiedBy}</p>
+            <p className="ord-dates__ver-by">
+              {t('app.ordinances.status.rejected.reviewedBy', { verifiedBy })}
+            </p>
           )}
         </div>
       </div>

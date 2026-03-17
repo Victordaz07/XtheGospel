@@ -22,8 +22,10 @@
 .inv-home {
   display: flex;
   flex-direction: column;
-  gap: var(--space-6);
+  gap: clamp(var(--space-4), 4vw, var(--space-6));
   padding-bottom: var(--space-6);
+  width: 100%;
+  max-width: 100%;
 }
 
 /* Welcome Card - Hero */
@@ -157,6 +159,7 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
+  width: 100%;
 }
 
 .inv-home__section-title {
@@ -204,14 +207,15 @@
   margin: 0;
 }
 
-/* Quick Actions - Grid of 4 (2x2 on very small screens) */
+/* Quick Actions - Grid que ocupa todo el ancho disponible (como Scripture arriba) */
 .inv-home__actions {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-3);
+  gap: clamp(var(--space-2), 2vw, var(--space-3));
+  width: 100%;
 }
 
-@media (min-width: 375px) {
+@media (min-width: 360px) {
   .inv-home__actions {
     grid-template-columns: repeat(4, 1fr);
   }
@@ -230,7 +234,15 @@
   cursor: pointer;
   text-decoration: none;
   color: inherit;
+  min-width: 0;
+  font-family: inherit;
+  font-size: inherit;
   transition: transform var(--transition-base), box-shadow var(--transition-base), background var(--transition-base), border-color var(--transition-base);
+}
+
+.inv-home__action-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
 }
 
 .inv-home__action-btn:hover {
@@ -326,10 +338,6 @@
     font-size: var(--text-4xl);
   }
 
-  .inv-home__actions {
-    max-width: 500px;
-  }
-
   .inv-home__action-btn {
     padding: var(--space-5) var(--space-4);
   }
@@ -343,4 +351,40 @@
   .inv-home__action-label {
     font-size: var(--text-sm);
   }
+}
+
+/* Móvil muy pequeño (320px) */
+@media (max-width: 359px) {
+  .inv-home__action-btn {
+    padding: var(--space-3) var(--space-2);
+  }
+
+  .inv-home__action-icon {
+    width: 36px;
+    height: 36px;
+    font-size: var(--text-sm);
+  }
+
+.inv-home__action-label {
+  font-size: 0.65rem;
+  }
+}
+
+/* Toast (chat / no missionaries / error) */
+.inv-home__toast {
+  position: fixed;
+  bottom: var(--space-6);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-accent-800);
+  color: var(--text-inverse);
+  border-radius: var(--radius-lg);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  box-shadow: var(--shadow-lg);
+  z-index: 1000;
+  max-width: calc(100vw - var(--space-8));
+  text-align: center;
+  animation: fadeUp 0.3s ease-out;
 }

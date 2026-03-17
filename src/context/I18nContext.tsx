@@ -13,7 +13,6 @@ import {
   LOCALE_STORAGE_KEY,
   SUPPORTED_LOCALES,
   isSupportedLocale,
-  mapSystemLocale,
   type Locale,
 } from '../i18n/locales';
 
@@ -165,10 +164,8 @@ export const I18nProvider: React.FC<I18nProviderProps> = ({ children }) => {
       if (isSupportedLocale(storedLocale)) {
         setLocaleState(storedLocale);
       } else {
-        const systemLocale = Intl.DateTimeFormat().resolvedOptions().locale;
-        const detectedLocale = mapSystemLocale(systemLocale);
-        setLocaleState(detectedLocale);
-        StorageService.setItem(LOCALE_STORAGE_KEY, detectedLocale);
+        setLocaleState(DEFAULT_LOCALE);
+        StorageService.setItem(LOCALE_STORAGE_KEY, DEFAULT_LOCALE);
       }
     } catch (error) {
       console.error('Error loading locale:', error);

@@ -20,7 +20,7 @@
   --xtg-space-xl: 24px;
 
   /* Layout */
-  --xtg-max-width: 1120px;
+  --xtg-max-width: min(1120px, 100%);
 }
 
 /* App background */

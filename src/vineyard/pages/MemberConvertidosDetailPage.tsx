@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { FaArrowLeft } from 'react-icons/fa6';
+import { ScriptureReferenceCard } from '../../ui/components';
 import type { NewConvertSection } from '../data/memberTypes';
 import { useNewConvertProgress } from '../../hooks/useNewConvertProgress';
 import { useI18n, Locale } from '../../context/I18nContext';
@@ -93,7 +94,7 @@ export const MemberConvertidosDetailPage: React.FC = () => {
                 <ul className="convertidos-detail-list">
                   {section.scriptures.map((scripture, index) => (
                     <li key={`${section.id}-scripture-${index}`}>
-                      <span className="convertidos-detail-scripture-ref">{scripture.ref}</span>
+                      <ScriptureReferenceCard reference={scripture.ref} />
                       {scripture.note && (
                         <p className="convertidos-detail-scripture-note">{scripture.note}</p>
                       )}

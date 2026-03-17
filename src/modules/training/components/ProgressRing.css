@@ -3,6 +3,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
+  min-width: 48px;
 }
 
 .tr-progress-ring__svg {
@@ -36,7 +38,11 @@
 
 .tr-progress-ring__label {
   position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   font-size: var(--text-sm, 14px);
   font-weight: var(--font-semibold, 600);
   color: var(--text-primary, #1C2430);
+  white-space: nowrap;
 }

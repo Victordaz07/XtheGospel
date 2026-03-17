@@ -5,7 +5,7 @@
  */
 
 import React, { useState, useEffect, useCallback } from 'react';
-import { Card, Heading, Text } from '../../../ui/components';
+import { Card, Heading, Text, ScriptureReferenceCard } from '../../../ui/components';
 import { FaCheck, FaCircle } from 'react-icons/fa6';
 import { getLessonStorage, setLessonStorage, setLessonStorageDebounced, flushLessonStorageDebounced } from './lessonStorage';
 import './LessonTeacherDuties.css';
@@ -119,9 +119,9 @@ export function LessonTeacherDuties({ onPracticeProgress }: LessonTeacherDutiesP
               <Text as="p" size="base" className="tr-lesson-teacher-duties__scripture-text">
                 {s.text}
               </Text>
-              <Text as="p" size="sm" color="secondary" className="tr-lesson-teacher-duties__scripture-ref">
-                — {s.ref}
-              </Text>
+              <div className="tr-lesson-teacher-duties__scripture-ref">
+                <ScriptureReferenceCard reference={s.ref} />
+              </div>
             </Card>
           ))}
         </div>

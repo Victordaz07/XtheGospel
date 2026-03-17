@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 import '../Page.css';
 import './MemberConversionCare.css';
 import { useI18n } from '../../context/I18nContext';
+import { ScriptureReferenceCard } from '../../ui/components';
 import { getMemberConversionCareDeepData } from '../../utils/memberData';
 
 const MemberConversionCare: React.FC = () => {
@@ -30,7 +31,7 @@ const MemberConversionCare: React.FC = () => {
             <div className="scripture-grid">
               {care.intro.scriptures.map((scripture, index) => (
                 <div key={index} className="scripture-card">
-                  <strong>{scripture.ref}</strong>
+                  <ScriptureReferenceCard reference={scripture.ref} />
                   <p>{scripture.note}</p>
                 </div>
               ))}

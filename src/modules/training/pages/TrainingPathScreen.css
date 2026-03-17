@@ -63,11 +63,13 @@
   font-size: var(--text-lg, 18px);
   font-weight: var(--font-semibold, 600);
   color: var(--text-primary, #1C2430);
+  white-space: nowrap;
 }
 
 .tr-path__summary-percent {
   font-size: var(--text-sm, 14px);
   color: var(--text-secondary, #465365);
+  white-space: nowrap;
 }
 
 .tr-path__summary-status {

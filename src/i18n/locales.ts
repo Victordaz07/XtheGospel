@@ -1,7 +1,7 @@
 export const SUPPORTED_LOCALES = ['es', 'en', 'fr', 'pt'] as const;
 export type Locale = (typeof SUPPORTED_LOCALES)[number];
 
-export const DEFAULT_LOCALE: Locale = 'es';
+export const DEFAULT_LOCALE: Locale = 'en';
 export const FALLBACK_LOCALE: Locale = 'en';
 
 export const LOCALE_STORAGE_KEY = 'appLang';
@@ -20,8 +20,9 @@ export function isSupportedLocale(value: string | null | undefined): value is Lo
 
 export function mapSystemLocale(systemLocale: string): Locale {
   const normalized = systemLocale.toLowerCase();
+  if (normalized.startsWith('en')) return 'en';
   if (normalized.startsWith('es')) return 'es';
   if (normalized.startsWith('fr')) return 'fr';
   if (normalized.startsWith('pt')) return 'pt';
-  return 'en';
+  return DEFAULT_LOCALE;
 }

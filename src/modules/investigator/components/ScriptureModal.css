@@ -1,0 +1,149 @@
+/* Scripture Modal - Estilo Iglesia (Church of Jesus Christ)
+ * Fuente serif, texto completo, overlay suave, diseño limpio y legible
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap');
+
+@keyframes scripture-modal-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scripture-modal-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Overlay más suave - no pantalla oscura */
+.scripture-modal__overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-modal-backdrop);
+  padding: var(--space-4);
+  animation: scripture-modal-fade-in 180ms ease-out;
+}
+
+/* Modal - Estilo Iglesia: fondo blanco, borde sutil, sombra suave */
+.scripture-modal {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  width: 100%;
+  max-width: 480px;
+  max-height: 90vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  animation: scripture-modal-scale-in 200ms ease-out;
+}
+
+.scripture-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) var(--space-5);
+  border-bottom: 1px solid var(--border-subtle);
+  flex-shrink: 0;
+  background: #ffffff;
+}
+
+.scripture-modal__title {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0;
+  font-family: var(--font-family);
+}
+
+.scripture-modal__close {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-full);
+  color: var(--color-accent-600);
+  font-size: var(--text-lg);
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.scripture-modal__close:hover {
+  background: var(--background-muted);
+  color: var(--color-accent-800);
+}
+
+/* Cuerpo: scroll para escritura completa, fuente serif estilo Iglesia */
+.scripture-modal__body {
+  padding: var(--space-5) var(--space-6);
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  flex: 1;
+  min-height: 120px;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Texto de escritura - Fuente serif, negro, interlineado amplio */
+.scripture-modal__text {
+  font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+  font-size: 1.0625rem;
+  line-height: 1.9;
+  color: #1a1a1a;
+  margin: 0 0 var(--space-4) 0;
+}
+
+/* Versos numerados - Estilo Iglesia */
+.scripture-modal__verses {
+  margin: 0 0 var(--space-4) 0;
+}
+
+.scripture-modal__verse {
+  font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+  font-size: 1.0625rem;
+  line-height: 1.9;
+  color: #1a1a1a;
+  margin: 0 0 var(--space-3) 0;
+}
+
+.scripture-modal__verse:last-of-type {
+  margin-bottom: 0;
+}
+
+.scripture-modal__verse-num {
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-right: 0.25em;
+}
+
+/* Contexto doctrinal - más pequeño, gris */
+.scripture-modal__context {
+  font-size: var(--text-sm);
+  color: var(--text-tertiary);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+  font-family: var(--font-family);
+}
+
+.scripture-modal__empty {
+  font-size: var(--text-base);
+  color: var(--color-accent-600);
+  margin: 0;
+}
