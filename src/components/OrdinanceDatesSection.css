@@ -425,6 +425,42 @@
   margin: 0;
 }
 
+.ord-dates__test-switch {
+  margin-top: 12px;
+  padding: 10px 12px;
+  border: 1px dashed rgba(166, 124, 82, 0.45);
+  border-radius: 10px;
+  background: rgba(166, 124, 82, 0.06);
+}
+
+.ord-dates__test-switch-text {
+  margin: 0 0 8px 0;
+  font-size: 12px;
+  color: #6F4D32;
+}
+
+.ord-dates__test-switch-btn {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #A67C52;
+  background: #ffffff;
+  color: #6F4D32;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.ord-dates__test-switch-btn:hover {
+  background: #A67C52;
+  color: #ffffff;
+}
+
+.ord-dates__test-switch-btn--secondary {
+  border-color: rgba(111, 77, 50, 0.5);
+  color: #6F4D32;
+}
+
 /* ============================================
    Clear Button
    ============================================ */

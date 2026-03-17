@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { FaChevronRight, FaBookOpen, FaPenToSquare, FaChartLine, FaHandsPraying } from 'react-icons/fa6';
+import { FaChevronRight, FaBookOpen, FaPenToSquare, FaChartLine, FaHandsPraying, FaComments } from 'react-icons/fa6';
 import {
   getInvestigatorCoreLessons,
   getLessonById,
@@ -10,6 +10,7 @@ import { getHomeScripture } from '../data/scriptures';
 import { useInvestigatorStore } from '../store/useInvestigatorStore';
 import { ScriptureCard } from '../components/ScriptureCard';
 import { useI18n } from '../../../context/I18nContext';
+import { useChatNavigation } from '../hooks/useChatNavigation';
 import './InvestigatorHomePage.css';
 
 /**
@@ -18,10 +19,18 @@ import './InvestigatorHomePage.css';
  * Now with i18n support and dynamic greeting
  */
 export default function InvestigatorHomePage(): JSX.Element {
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
   const { lastLessonId } = useInvestigatorStore();
-  const homeScripture = getHomeScripture();
-  const coreLessons = getInvestigatorCoreLessons();
+  const { openChat, status, clearStatus } = useChatNavigation();
+  const homeScripture = getHomeScripture(locale);
+  const coreLessons = getInvestigatorCoreLessons(locale);
+
+  useEffect(() => {
+    if (status === 'no-missionaries' || status === 'error') {
+      const timer = setTimeout(clearStatus, 4000);
+      return () => clearTimeout(timer);
+    }
+  }, [status, clearStatus]);
 
   // Get time-based greeting
   const getGreeting = (): string => {
@@ -34,7 +43,7 @@ export default function InvestigatorHomePage(): JSX.Element {
   // Get current lesson to continue or first lesson
   const currentLesson =
     lastLessonId && isInvestigatorCoreTopicId(lastLessonId)
-      ? getLessonById(lastLessonId)
+      ? getLessonById(lastLessonId, locale)
       : coreLessons[0];
 
   return (
@@ -111,8 +120,30 @@ export default function InvestigatorHomePage(): JSX.Element {
             </div>
             <span className="inv-home__action-label">{t('app.home.pray')}</span>
           </Link>
+          <button
+            type="button"
+            className="inv-home__action-btn"
+            role="listitem"
+            onClick={openChat}
+            disabled={status === 'loading'}
+            aria-label={t('app.home.chatWithMissionaries')}
+          >
+            <div className="inv-home__action-icon" aria-hidden="true">
+              <FaComments />
+            </div>
+            <span className="inv-home__action-label">
+              {status === 'loading' ? t('app.common.loading') : t('app.home.chatWithMissionaries')}
+            </span>
+          </button>
         </div>
       </nav>
+      {(status === 'no-missionaries' || status === 'error') && (
+        <div className="inv-home__toast" role="status">
+          {status === 'no-missionaries'
+            ? t('app.home.noMissionariesAssigned')
+            : t('app.home.chatError')}
+        </div>
+      )}
     </div>
   );
 }

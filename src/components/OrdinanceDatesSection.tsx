@@ -60,6 +60,16 @@ export function OrdinanceDatesSection(): JSX.Element {
     submitForVerification();
   };
 
+  const handleSwitchToMemberTest = (): void => {
+    setDevBypass(true);
+    window.location.reload();
+  };
+
+  const handleSwitchToInvestigatorTest = (): void => {
+    setDevBypass(false);
+    window.location.reload();
+  };
+
   const hasAnyData = ordinanceDates.baptismDate || ordinanceDates.baptizedBy || 
                      ordinanceDates.confirmationDate || ordinanceDates.confirmedBy;
 
@@ -213,6 +223,29 @@ export function OrdinanceDatesSection(): JSX.Element {
             <p className="ord-dates__status-text">
               Estado: {getStageLabel(stage)}
             </p>
+          </div>
+
+          <div className="ord-dates__test-switch">
+            <p className="ord-dates__test-switch-text">
+              Pruebas: cambia entre vista de investigador y nuevo miembro.
+            </p>
+            {isDevBypassActive() ? (
+              <button
+                type="button"
+                className="ord-dates__test-switch-btn ord-dates__test-switch-btn--secondary"
+                onClick={handleSwitchToInvestigatorTest}
+              >
+                Volver a investigador
+              </button>
+            ) : (
+              <button
+                type="button"
+                className="ord-dates__test-switch-btn"
+                onClick={handleSwitchToMemberTest}
+              >
+                Pasar a miembro (pruebas)
+              </button>
+            )}
           </div>
 
           {/* Clear Button */}
