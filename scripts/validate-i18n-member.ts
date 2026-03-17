@@ -1,43 +1,35 @@
 /**
- * Validation script for member i18n files
- * 
- * This script validates that all member translation files (ES, EN, FR, PT)
- * have the same keys. It compares the structure of all JSON files and reports
- * any missing or extra keys.
- * 
- * Usage:
- *   npx ts-node scripts/validate-i18n-member.ts
- *   or
- *   ts-node scripts/validate-i18n-member.ts
- * 
- * The script uses Spanish (es) as the base language and compares all others against it.
+ * Validation script for i18n namespaces.
+ *
+ * Validates key parity across languages for:
+ * - app.{locale}.json
+ * - member.{locale}.json
+ *
+ * Also validates missionary coverage by ensuring every supported locale
+ * resolves to a non-empty dictionary (today all locales point to the same
+ * Spanish source in runtime until dedicated translations are delivered).
  */
 
 import fs from 'fs';
 import path from 'path';
 
 type JsonObject = Record<string, any>;
-
 const LANGS = ['es', 'en', 'fr', 'pt'] as const;
+type Lang = (typeof LANGS)[number];
 
-function loadJson(lang: string): JsonObject {
-  // Resolve path relative to project root (where package.json is)
-  // __dirname is available when running with ts-node
-  const scriptDir = typeof __dirname !== 'undefined' 
-    ? __dirname 
+const scriptDir =
+  typeof __dirname !== 'undefined'
+    ? __dirname
     : path.dirname(require.main?.filename || process.argv[1] || '.');
-  const projectRoot = path.resolve(scriptDir, '..');
-  const filePath = path.join(
-    projectRoot,
-    'src',
-    'i18n',
-    `member.${lang}.json`
-  );
-  
+const projectRoot = path.resolve(scriptDir, '..');
+
+function loadJson(relativePath: string): JsonObject {
+  const filePath = path.join(projectRoot, relativePath);
+
   if (!fs.existsSync(filePath)) {
     throw new Error(`File not found: ${filePath}`);
   }
-  
+
   const raw = fs.readFileSync(filePath, 'utf8');
   return JSON.parse(raw);
 }
@@ -82,30 +74,60 @@ function compareSets(
   }
 }
 
+function validateNamespace(
+  namespace: 'member' | 'app',
+  localePathPrefix = 'src/i18n',
+  baseLang: Lang = 'es',
+): boolean {
+  const basePath = `${localePathPrefix}/${namespace}.${baseLang}.json`;
+  const baseJson = loadJson(basePath);
+  const baseKeys = collectKeys(baseJson).sort();
+  let isValid = true;
+
+  console.log(`\nNamespace: ${namespace}`);
+  console.log(`Base language: ${baseLang}`);
+  console.log(`Total keys: ${baseKeys.length}`);
+
+  for (const lang of LANGS) {
+    if (lang === baseLang) continue;
+    try {
+      const json = loadJson(`${localePathPrefix}/${namespace}.${lang}.json`);
+      const keys = collectKeys(json).sort();
+      const baseSet = new Set(baseKeys);
+      const otherSet = new Set(keys);
+      const missingInOther = baseKeys.filter((k) => !otherSet.has(k));
+      const extraInOther = keys.filter((k) => !baseSet.has(k));
+      compareSets(baseLang, baseKeys, lang, keys);
+      if (missingInOther.length > 0 || extraInOther.length > 0) {
+        isValid = false;
+      }
+    } catch (error) {
+      isValid = false;
+      console.error(`❌ Error processing ${namespace}.${lang}.json:`, error);
+    }
+  }
+
+  return isValid;
+}
+
+function validateMissionaryCoverage(baseLang: Lang = 'es'): boolean {
+  return validateNamespace('missionary', 'src/i18n', baseLang);
+}
+
 function main() {
-  const baseLang = 'es';
+  const baseLang: Lang = 'es';
   
   try {
-    const baseJson = loadJson(baseLang);
-    const baseKeys = collectKeys(baseJson).sort();
-
-    console.log(`Base language: ${baseLang}`);
-    console.log(`Total keys: ${baseKeys.length}`);
+    const memberValid = validateNamespace('member', 'src/i18n', baseLang);
+    const appValid = validateNamespace('app', 'src/i18n', baseLang);
+    const missionaryCovered = validateMissionaryCoverage(baseLang);
     console.log('');
-
-    for (const lang of LANGS) {
-      if (lang === baseLang) continue;
-      try {
-        const json = loadJson(lang);
-        const keys = collectKeys(json).sort();
-        compareSets(baseLang, baseKeys, lang, keys);
-      } catch (error) {
-        console.error(`❌ Error processing ${lang}:`, error);
-      }
+    if (memberValid && appValid && missionaryCovered) {
+      console.log('Validation complete! ✅');
+      process.exit(0);
     }
-    
-    console.log('');
-    console.log('Validation complete!');
+    console.error('Validation complete with issues ❌');
+    process.exit(1);
   } catch (error) {
     console.error('❌ Error:', error);
     process.exit(1);

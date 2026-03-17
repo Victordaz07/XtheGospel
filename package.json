@@ -11,6 +11,8 @@
     "dev:tunnel": "vite & lt --port 3001",
     "build": "vite build",
     "preview": "vite preview",
+    "translate:i18n": "python -u scripts/translate_i18n.py app member missionary",
+    "validate:i18n": "node scripts/validate-i18n.mjs",
     "postinstall": "patch-package",
     "test": "vitest run"
   },

@@ -30,17 +30,13 @@ import { useUserProfile } from '../../../hooks/useUserProfile';
 import { useAuth } from '../../../context/AuthContext';
 import { useI18n, type Locale } from '../../../context/I18nContext';
 import { useTheme } from '../../../context/ThemeContext';
+import { LANGUAGE_OPTIONS } from '../../../i18n/locales';
 import '../../../components/DataPrivacySection.css';
 import './InvestigatorProfilePage.css';
 
 type IdTab = 'card' | 'qr';
 
-const LANGUAGES: { code: Locale; label: string; flag: string }[] = [
-  { code: 'es', label: 'Español', flag: '🇪🇸' },
-  { code: 'en', label: 'English', flag: '🇺🇸' },
-  { code: 'pt', label: 'Português', flag: '🇧🇷' },
-  { code: 'fr', label: 'Français', flag: '🇫🇷' },
-];
+const LANGUAGES: { code: Locale; label: string; flag: string }[] = LANGUAGE_OPTIONS;
 
 type Theme = 'light' | 'dark' | 'system';
 

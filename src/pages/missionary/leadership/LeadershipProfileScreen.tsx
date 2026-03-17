@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../../context/AuthContext';
 import { useI18n, Locale } from '../../../context/I18nContext';
+import { LANGUAGE_OPTIONS } from '../../../i18n/locales';
 import { LeadershipRoleService } from '../../../services/leadershipRoleService';
 import {
   getLeadershipRoleEnhanced,
@@ -16,10 +17,7 @@ declare const confirm: (message?: string) => boolean;
 declare const alert: (message?: string) => void;
 
 const languageOptions: { code: Locale; name: string; flag: string }[] = [
-  { code: 'es', name: 'Español', flag: '🇪🇸' },
-  { code: 'en', name: 'English', flag: '🇺🇸' },
-  { code: 'fr', name: 'Français', flag: '🇫🇷' },
-  { code: 'pt', name: 'Português', flag: '🇧🇷' },
+  ...LANGUAGE_OPTIONS.map((option) => ({ code: option.code, name: option.label, flag: option.flag })),
 ];
 
 export const LeadershipProfileScreen: React.FC = () => {

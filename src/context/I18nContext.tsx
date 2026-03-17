@@ -7,6 +7,15 @@ import React, {
 } from 'react';
 import { StorageService } from '../utils/storage';
 import { normalizeStoredRole } from '../config/roles';
+import {
+  DEFAULT_LOCALE,
+  FALLBACK_LOCALE,
+  LOCALE_STORAGE_KEY,
+  SUPPORTED_LOCALES,
+  isSupportedLocale,
+  mapSystemLocale,
+  type Locale,
+} from '../i18n/locales';
 
 // Import JSON translation files
 import esTranslations from '../../i18n/es.json';
@@ -14,6 +23,9 @@ import enTranslations from '../../i18n/en.json';
 import frTranslations from '../../i18n/fr.json';
 import ptTranslations from '../../i18n/pt.json';
 import missionaryEsTranslations from '../i18n/missionary.es.json';
+import missionaryEnTranslations from '../i18n/missionary.en.json';
+import missionaryFrTranslations from '../i18n/missionary.fr.json';
+import missionaryPtTranslations from '../i18n/missionary.pt.json';
 import memberEsTranslations from '../i18n/member.es.json';
 import memberEnTranslations from '../i18n/member.en.json';
 import memberFrTranslations from '../i18n/member.fr.json';
@@ -21,6 +33,10 @@ import memberPtTranslations from '../i18n/member.pt.json';
 // App UI translations (shared across all roles)
 import appEsTranslations from '../i18n/app.es.json';
 import appEnTranslations from '../i18n/app.en.json';
+import appFrTranslations from '../i18n/app.fr.json';
+import appPtTranslations from '../i18n/app.pt.json';
+
+export type { Locale } from '../i18n/locales';
 
 const dictionaries = {
   es: esTranslations,
@@ -29,12 +45,11 @@ const dictionaries = {
   pt: ptTranslations,
 };
 
-// Diccionario de misioneros (solo español por ahora)
 const missionaryDictionaries = {
   es: missionaryEsTranslations,
-  en: {}, // TODO: Agregar cuando tengamos las traducciones
-  fr: {},
-  pt: {},
+  en: missionaryEnTranslations,
+  fr: missionaryFrTranslations,
+  pt: missionaryPtTranslations,
 };
 
 const memberDictionaries = {
@@ -48,11 +63,9 @@ const memberDictionaries = {
 const appDictionaries = {
   es: appEsTranslations,
   en: appEnTranslations,
-  fr: appEnTranslations, // Fallback to English for now
-  pt: appEnTranslations, // Fallback to English for now
+  fr: appFrTranslations,
+  pt: appPtTranslations,
 };
-
-export type Locale = 'es' | 'en' | 'fr' | 'pt';
 
 interface I18nContextType {
   locale: Locale;
@@ -107,7 +120,7 @@ interface I18nProviderProps {
 }
 
 export const I18nProvider: React.FC<I18nProviderProps> = ({ children }) => {
-  const [locale, setLocaleState] = useState<Locale>('es');
+  const [locale, setLocaleState] = useState<Locale>(DEFAULT_LOCALE);
   const [userRole, setUserRoleState] = useState<string | null>(null);
 
   useEffect(() => {
@@ -148,25 +161,25 @@ export const I18nProvider: React.FC<I18nProviderProps> = ({ children }) => {
 
   const loadLocale = async () => {
     try {
-      const storedLocale = StorageService.getItem('appLang');
-      if (storedLocale && ['es', 'en', 'fr', 'pt'].includes(storedLocale)) {
-        setLocaleState(storedLocale as Locale);
+      const storedLocale = StorageService.getItem(LOCALE_STORAGE_KEY);
+      if (isSupportedLocale(storedLocale)) {
+        setLocaleState(storedLocale);
       } else {
-        // Detectar idioma del sistema
         const systemLocale = Intl.DateTimeFormat().resolvedOptions().locale;
-        const detectedLocale = systemLocale.includes('es') ? 'es' : 'en';
+        const detectedLocale = mapSystemLocale(systemLocale);
         setLocaleState(detectedLocale);
-        StorageService.setItem('appLang', detectedLocale);
+        StorageService.setItem(LOCALE_STORAGE_KEY, detectedLocale);
       }
     } catch (error) {
       console.error('Error loading locale:', error);
-      setLocaleState('es');
+      setLocaleState(DEFAULT_LOCALE);
     }
   };
 
   const setLocale = async (newLocale: Locale) => {
     try {
-      StorageService.setItem('appLang', newLocale);
+      if (!SUPPORTED_LOCALES.includes(newLocale)) return;
+      StorageService.setItem(LOCALE_STORAGE_KEY, newLocale);
       setLocaleState(newLocale);
     } catch (error) {
       console.error('Error saving locale:', error);
@@ -199,7 +212,7 @@ export const I18nProvider: React.FC<I18nProviderProps> = ({ children }) => {
     if (path.startsWith('app.')) {
       const appTranslations = appDictionaries[locale] as Record<string, any>;
       const appValue = getNestedValue(appTranslations, path);
-      const fallbackAppTranslations = appDictionaries.en as Record<string, any>;
+      const fallbackAppTranslations = appDictionaries[FALLBACK_LOCALE] as Record<string, any>;
       const fallbackAppValue = getNestedValue(fallbackAppTranslations, path);
       
       const resolvedAppValue = appValue ?? fallbackAppValue;
@@ -237,7 +250,7 @@ export const I18nProvider: React.FC<I18nProviderProps> = ({ children }) => {
         any
       >;
       const memberValue = getNestedValue(memberTranslations, path);
-      const fallbackMemberTranslations = memberDictionaries.en as Record<
+      const fallbackMemberTranslations = memberDictionaries[FALLBACK_LOCALE] as Record<
         string,
         any
       >;
@@ -264,7 +277,7 @@ export const I18nProvider: React.FC<I18nProviderProps> = ({ children }) => {
 
     // Si no se encuentra en el idioma actual, buscar en inglés como fallback
     if (value === undefined) {
-      const englishTranslations = dictionaries.en as Record<string, any>;
+      const englishTranslations = dictionaries[FALLBACK_LOCALE] as Record<string, any>;
       const englishValue = getNestedValue(englishTranslations, path);
       if (englishValue === undefined) {
         return path; // Devolver la clave si no se encuentra en ningún idioma

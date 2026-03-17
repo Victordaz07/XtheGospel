@@ -52,7 +52,12 @@ export interface Lesson {
   recommendedNext?: string;
 }
 
-export type Locale = 'es' | 'en';
+export type Locale = 'es' | 'en' | 'fr' | 'pt';
+type LessonsContentLocale = 'es' | 'en';
+
+function normalizeLessonsLocale(locale: Locale): LessonsContentLocale {
+  return locale === 'es' ? 'es' : 'en';
+}
 
 // ===============================
 // CONSTANTS
@@ -84,7 +89,8 @@ export function isInvestigatorCoreTopicId(id: string): id is InvestigatorCoreTop
  * Get core lessons for a specific locale
  */
 export function getCoreLessonsForLocale(locale: Locale = 'es'): Lesson[] {
-  return locale === 'en' ? coreLessonsEn : coreLessonsEs;
+  const normalizedLocale = normalizeLessonsLocale(locale);
+  return normalizedLocale === 'en' ? coreLessonsEn : coreLessonsEs;
 }
 
 /**
@@ -92,7 +98,8 @@ export function getCoreLessonsForLocale(locale: Locale = 'es'): Lesson[] {
  * Note: English library lessons are still being translated, falls back to Spanish
  */
 export function getLibraryLessonsForLocale(locale: Locale = 'es'): Lesson[] {
-  if (locale === 'en' && libraryLessonsEn.length > 0) {
+  const normalizedLocale = normalizeLessonsLocale(locale);
+  if (normalizedLocale === 'en' && libraryLessonsEn.length > 0) {
     return libraryLessonsEn;
   }
   return libraryLessonsEs;
@@ -160,6 +167,16 @@ export function getStatusLabel(status: LessonStatus, locale: Locale = 'es'): str
       completed: 'Completada',
     },
     en: {
+      not_started: 'Not started',
+      exploring: 'Exploring',
+      completed: 'Completed',
+    },
+    fr: {
+      not_started: 'Not started',
+      exploring: 'Exploring',
+      completed: 'Completed',
+    },
+    pt: {
       not_started: 'Not started',
       exploring: 'Exploring',
       completed: 'Completed',

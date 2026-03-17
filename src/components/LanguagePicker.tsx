@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useI18n } from '../context/I18nContext';
 import type { Locale } from '../context/I18nContext';
+import { LANGUAGE_OPTIONS } from '../i18n/locales';
 import './LanguagePicker.css';
 
 interface LanguagePickerProps {
@@ -8,10 +9,7 @@ interface LanguagePickerProps {
 }
 
 const languageOptions: { code: Locale; name: string; flag: string }[] = [
-    { code: 'es', name: 'Español', flag: '🇪🇸' },
-    { code: 'en', name: 'English', flag: '🇺🇸' },
-    { code: 'fr', name: 'Français', flag: '🇫🇷' },
-    { code: 'pt', name: 'Português', flag: '🇧🇷' },
+    ...LANGUAGE_OPTIONS.map((option) => ({ code: option.code, name: option.label, flag: option.flag })),
 ];
 
 export const LanguagePicker: React.FC<LanguagePickerProps> = ({ compact = false }) => {

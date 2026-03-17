@@ -1,18 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useLocation, Link } from 'react-router-dom';
 import { FaArrowLeft, FaChevronRight } from 'react-icons/fa6';
-import {
-  getChildLessonsByParentId,
-  getLessonById,
-  isInvestigatorCoreTopicId,
-  type Locale,
-} from '../data/lessons';
+import { getChildLessonsByParentId, getLessonById, isInvestigatorCoreTopicId } from '../data/lessons';
 import { getLessonDetailScripture, getScriptureById } from '../data/scriptures';
 import { useInvestigatorStore } from '../store/useInvestigatorStore';
 import { useSpiritualMemoryStore } from '../../../core/memory/useSpiritualMemoryStore';
 import { useI18n } from '../../../context/I18nContext';
 import { ScriptureCard } from '../components/ScriptureCard';
 import { AudioPlayer } from '../components/AudioPlayer';
+import { ScriptureReferenceCard } from '../../../ui/components';
 import './InvestigatorLessonDetailPage.css';
 
 /**
@@ -24,9 +20,7 @@ export default function InvestigatorLessonDetailPage(): JSX.Element {
   const params = useParams();
   const location = useLocation();
   const { locale: i18nLocale, t } = useI18n();
-  
-  // Map i18n locale to lessons/scriptures locale (only es/en supported)
-  const contentLocale: Locale = i18nLocale === 'en' ? 'en' : 'es';
+  const contentLocale = i18nLocale;
   
   // Support both nested Route (:lessonId) and parent /lessons/* splat
   const lessonId: string =
@@ -35,7 +29,7 @@ export default function InvestigatorLessonDetailPage(): JSX.Element {
     (location.pathname.startsWith('/lessons/')
       ? location.pathname.replace(/^\/lessons\/?/, '').split('/')[0] || ''
       : '');
-  const { setLastLessonId, addJournalEntry } = useInvestigatorStore();
+  const { setLastLessonId, addJournalEntry, setLessonStatus } = useInvestigatorStore();
   const { setLastLesson, markSavedToJournal } = useSpiritualMemoryStore();
 
   // Start exploring immediately - no intermediate screen
@@ -65,6 +59,12 @@ export default function InvestigatorLessonDetailPage(): JSX.Element {
       setLastLesson({ id: lessonId, title: lesson.title });
     }
   }, [lesson, lessonId, setLastLessonId, setLastLesson]);
+
+  // Mark lesson as exploring when opened
+  useEffect(() => {
+    if (!lessonId) return;
+    setLessonStatus(lessonId, 'exploring');
+  }, [lessonId, setLessonStatus]);
 
   const handleSaveReflection = (): void => {
     if (reflection.trim()) {
@@ -173,9 +173,9 @@ export default function InvestigatorLessonDetailPage(): JSX.Element {
                       )}
 
                       {section.scriptureRef && (
-                        <p className="inv-lesson-detail__section-scripture">
-                          📖 {section.scriptureRef}
-                        </p>
+                        <div className="inv-lesson-detail__section-scripture">
+                          <ScriptureReferenceCard reference={section.scriptureRef} />
+                        </div>
                       )}
                     </div>
                   )}
@@ -306,6 +306,13 @@ export default function InvestigatorLessonDetailPage(): JSX.Element {
                 {t('app.lessons.savedMessage')}
               </p>
             )}
+            <button
+              type="button"
+              onClick={() => lessonId && setLessonStatus(lessonId, 'completed')}
+              className="inv-lesson-detail__btn inv-lesson-detail__btn--secondary"
+            >
+              {t('app.lessons.markCompleted')}
+            </button>
           </div>
 
           {/* Mensaje final (collapsed by default) */}

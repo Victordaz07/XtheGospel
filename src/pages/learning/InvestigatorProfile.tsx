@@ -2,6 +2,7 @@ import React, { useState, useEffect, ChangeEvent, FormEvent, useMemo, useRef } f
 import { FaChevronRight, FaGlobe, FaSignOutAlt, FaBullseye, FaStickyNote, FaCog, FaCamera, FaUser } from 'react-icons/fa';
 import { useAuth } from '../../context/AuthContext';
 import { useI18n, Locale } from '../../context/I18nContext';
+import { LANGUAGE_OPTIONS } from '../../i18n/locales';
 import { ProfileService, MainGoal } from '../../services/profileService';
 import { RoleSettingsCard } from '../../components/RoleSettingsCard';
 import { PageContainer, Card } from '../../ui/components';
@@ -24,17 +25,14 @@ interface ProfileFormState {
 }
 
 const languageOptions: { code: Locale; name: string; flag: string }[] = [
-  { code: 'es', name: 'Español', flag: '🇪🇸' },
-  { code: 'en', name: 'English', flag: '🇺🇸' },
-  { code: 'fr', name: 'Français', flag: '🇫🇷' },
-  { code: 'pt', name: 'Português', flag: '🇧🇷' },
+  ...LANGUAGE_OPTIONS.map((option) => ({ code: option.code, name: option.label, flag: option.flag })),
 ];
 
 const localeLabels: Record<Locale, string> = {
-  es: 'Español',
-  en: 'English',
-  fr: 'Français',
-  pt: 'Português',
+  es: LANGUAGE_OPTIONS.find((option) => option.code === 'es')?.label ?? 'Español',
+  en: LANGUAGE_OPTIONS.find((option) => option.code === 'en')?.label ?? 'English',
+  fr: LANGUAGE_OPTIONS.find((option) => option.code === 'fr')?.label ?? 'Français',
+  pt: LANGUAGE_OPTIONS.find((option) => option.code === 'pt')?.label ?? 'Português',
 };
 
 const InvestigatorProfile: React.FC = () => {

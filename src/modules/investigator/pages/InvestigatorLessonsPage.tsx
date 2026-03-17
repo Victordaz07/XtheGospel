@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   getInvestigatorCoreLessons,
-  type Locale,
   INVESTIGATOR_CORE_TOPIC_IDS,
 } from '../data/lessons';
 import { LessonListCard } from '../components/LessonListCard';
@@ -18,9 +17,7 @@ export default function InvestigatorLessonsPage(): JSX.Element {
   const { t, locale } = useI18n();
   const { getLessonStatus } = useInvestigatorStore();
 
-  // Map i18n locale to lessons locale (only es/en supported)
-  const lessonsLocale: Locale = locale === 'en' ? 'en' : 'es';
-  const coreLessons = getInvestigatorCoreLessons(lessonsLocale);
+  const coreLessons = getInvestigatorCoreLessons(locale);
 
   // Calculate progress
   const totalLessons = INVESTIGATOR_CORE_TOPIC_IDS.length;

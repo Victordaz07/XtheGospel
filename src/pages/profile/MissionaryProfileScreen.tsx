@@ -8,6 +8,7 @@ import { useRoleStore } from '../../store/useRoleStore';
 import { XtgPage } from '../../components/layout/XtgPage';
 import { XtgCard } from '../../components/ui/XtgCard';
 import { DataPrivacySection } from '../../components/profile/DataPrivacySection';
+import { LANGUAGE_OPTIONS } from '../../i18n/locales';
 import '../../styles/xthegospel-ui.css';
 import './MissionaryProfileScreen.css';
 
@@ -17,10 +18,7 @@ const DEFAULT_AVATAR =
   'https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg';
 
 const languageOptions: { code: Locale; name: string; flag: string }[] = [
-  { code: 'es', name: 'Español', flag: '🇪🇸' },
-  { code: 'en', name: 'English', flag: '🇺🇸' },
-  { code: 'fr', name: 'Français', flag: '🇫🇷' },
-  { code: 'pt', name: 'Português', flag: '🇧🇷' },
+  ...LANGUAGE_OPTIONS.map((option) => ({ code: option.code, name: option.label, flag: option.flag })),
 ];
 
 export const MissionaryProfileScreen: React.FC = () => {
