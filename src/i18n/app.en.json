@@ -85,6 +85,24 @@
       "commitmentPlaceholder": "Write sincerely what this step means to you.",
       "readyForBaptism": "I am ready for baptism",
       "keepPreparing": "Keep advancing in your spiritual preparation.",
+      "milestones": {
+        "restoration": "Restoration",
+        "planOfSalvation": "Plan of Salvation",
+        "gospelOfJesusChrist": "Gospel of Jesus Christ",
+        "commandments": "Commandments",
+        "churchAttendance": "Attend Church",
+        "interview": "Interview",
+        "dateScheduled": "Scheduled date"
+      },
+      "sync": {
+        "loading": "Loading preparation...",
+        "offline": "Offline. Connect to view your preparation.",
+        "retry": "Retry",
+        "mayBeStale": "May be out of date",
+        "lastSynced": "Last sync",
+        "justNow": "Just now",
+        "minutesAgo": "{{count}} min ago"
+      },
       "agenda": {
         "agendaTitle": "Baptismal Program Preparation",
         "agendaSubtitle": "Personalize your special day. The missionary leader will see these preferences.",

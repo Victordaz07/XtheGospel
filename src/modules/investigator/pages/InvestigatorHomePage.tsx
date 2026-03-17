@@ -22,8 +22,10 @@ export default function InvestigatorHomePage(): JSX.Element {
   const { t, locale } = useI18n();
   const { lastLessonId } = useInvestigatorStore();
   const { openChat, status, clearStatus } = useChatNavigation();
-  const homeScripture = getHomeScripture(locale);
-  const coreLessons = getInvestigatorCoreLessons(locale);
+  const contentLocale: 'es' | 'en' =
+    locale === 'es' || t('app.nav.home').toLowerCase() === 'inicio' ? 'es' : 'en';
+  const homeScripture = getHomeScripture(contentLocale);
+  const coreLessons = getInvestigatorCoreLessons(contentLocale);
 
   useEffect(() => {
     if (status === 'no-missionaries' || status === 'error') {
@@ -43,7 +45,7 @@ export default function InvestigatorHomePage(): JSX.Element {
   // Get current lesson to continue or first lesson
   const currentLesson =
     lastLessonId && isInvestigatorCoreTopicId(lastLessonId)
-      ? getLessonById(lastLessonId, locale)
+      ? getLessonById(lastLessonId, contentLocale)
       : coreLessons[0];
 
   return (

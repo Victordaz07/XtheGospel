@@ -35,22 +35,26 @@ const LESSON_TO_MILESTONE: Record<string, keyof ReturnType<typeof useBaptismProg
   'laws-and-ordinances': 'commandments', // Mandamientos incluye leyes y ordenanzas
 };
 
-const MILESTONE_LABELS: Record<string, string> = {
-  restoration: 'Restauración',
-  planOfSalvation: 'Plan de Salvación',
-  gospelOfJesusChrist: 'Evangelio de Jesucristo',
-  commandments: 'Mandamientos',
-  churchAttendance: 'Asistir a la Iglesia',
-  interview: 'Entrevista',
-  dateScheduled: 'Fecha Programada',
+const MILESTONE_LABEL_KEYS: Record<string, string> = {
+  restoration: 'app.baptism.milestones.restoration',
+  planOfSalvation: 'app.baptism.milestones.planOfSalvation',
+  gospelOfJesusChrist: 'app.baptism.milestones.gospelOfJesusChrist',
+  commandments: 'app.baptism.milestones.commandments',
+  churchAttendance: 'app.baptism.milestones.churchAttendance',
+  interview: 'app.baptism.milestones.interview',
+  dateScheduled: 'app.baptism.milestones.dateScheduled',
 };
 
-function formatLastSynced(ts: number | null): string {
+function formatLastSynced(
+  ts: number | null,
+  locale: string,
+  t: (path: string, vars?: Record<string, string | number>) => string,
+): string {
   if (!ts) return '';
   const diff = Math.floor((Date.now() - ts) / 60000);
-  if (diff < 1) return 'Hace un momento';
-  if (diff < 60) return `Hace ${diff} min`;
-  return new Date(ts).toLocaleDateString();
+  if (diff < 1) return t('app.baptism.sync.justNow');
+  if (diff < 60) return t('app.baptism.sync.minutesAgo', { count: diff });
+  return new Date(ts).toLocaleDateString(locale);
 }
 
 export default function BaptismPreparationScreen(): JSX.Element {
@@ -133,12 +137,12 @@ export default function BaptismPreparationScreen(): JSX.Element {
 
       {FLAGS.CLOUD_SYNC_ENABLED && status === 'loading' && (
         <div className="baptism-prep__sync-status baptism-prep__sync-status--loading" role="status">
-          Cargando preparación…
+          {t('app.baptism.sync.loading')}
         </div>
       )}
       {FLAGS.CLOUD_SYNC_ENABLED && status === 'offline' && (
         <div className="baptism-prep__sync-status baptism-prep__sync-status--offline" role="status">
-          Sin conexión. Conéctate para ver tu preparación.
+          {t('app.baptism.sync.offline')}
         </div>
       )}
       {FLAGS.CLOUD_SYNC_ENABLED && status === 'error' && (
@@ -149,18 +153,18 @@ export default function BaptismPreparationScreen(): JSX.Element {
             className="baptism-prep__retry-btn"
             onClick={() => retry()}
           >
-            Reintentar
+            {t('app.baptism.sync.retry')}
           </button>
         </div>
       )}
       {FLAGS.CLOUD_SYNC_ENABLED && useBaptismPrepStore((s) => s.isStale) && (
         <div className="baptism-prep__sync-status baptism-prep__sync-status--stale" role="status">
-          Puede estar desactualizado
+          {t('app.baptism.sync.mayBeStale')}
         </div>
       )}
       {FLAGS.CLOUD_SYNC_ENABLED && lastSyncedAt && status !== 'loading' && (
         <div className="baptism-prep__sync-meta">
-          Última sincronización: {formatLastSynced(lastSyncedAt)}
+          {t('app.baptism.sync.lastSynced')}: {formatLastSynced(lastSyncedAt, locale, t)}
         </div>
       )}
 
@@ -207,7 +211,7 @@ export default function BaptismPreparationScreen(): JSX.Element {
                       <FaCircle className="baptism-prep__milestone-icon--pending" aria-hidden="true" />
                     )}
                   </span>
-                  <span>{MILESTONE_LABELS[key]}</span>
+                  <span>{t(MILESTONE_LABEL_KEYS[key])}</span>
                 </label>
               ) : (
                 <>
@@ -216,7 +220,7 @@ export default function BaptismPreparationScreen(): JSX.Element {
                   ) : (
                     <FaCircle className="baptism-prep__milestone-icon baptism-prep__milestone-icon--pending" aria-hidden="true" />
                   )}
-                  <span>{MILESTONE_LABELS[key]}</span>
+                  <span>{t(MILESTONE_LABEL_KEYS[key])}</span>
                 </>
               )}
             </div>

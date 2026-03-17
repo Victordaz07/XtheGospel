@@ -85,6 +85,24 @@
       "commitmentPlaceholder": "Écrivez honnêtement ce que cette étape signifie pour vous.",
       "readyForBaptism": "je suis prêt à être baptisé",
       "keepPreparing": "Continuez à avancer dans votre préparation spirituelle.",
+      "milestones": {
+        "restoration": "Restauration",
+        "planOfSalvation": "Plan de salut",
+        "gospelOfJesusChrist": "Évangile de Jésus-Christ",
+        "commandments": "Commandements",
+        "churchAttendance": "Assister à l'Église",
+        "interview": "Entretien",
+        "dateScheduled": "Date prévue"
+      },
+      "sync": {
+        "loading": "Chargement de la préparation...",
+        "offline": "Hors ligne. Connectez-vous pour voir votre préparation.",
+        "retry": "Réessayer",
+        "mayBeStale": "Peut être obsolète",
+        "lastSynced": "Dernière synchronisation",
+        "justNow": "À l'instant",
+        "minutesAgo": "Il y a {{count}} min"
+      },
       "agenda": {
         "agendaTitle": "Préparation de l'agenda du baptême",
         "agendaSubtitle": "Personnalisez votre journée spéciale. Le leader missionnaire verra ces préférences.",
