@@ -23,10 +23,10 @@ import './NewMemberProfilePage.css';
 export default function NewMemberProfilePage(): JSX.Element {
   const navigate = useNavigate();
   const { mode, setMode } = useMode();
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
 
   const handleSettingClick = (setting: string): void => {
-    alert(`${setting} coming soon!`);
+    alert(`${setting} ${t('app.common.comingSoon')}`);
   };
 
   const handleModeChange = (newMode: AppMode): void => {
@@ -50,24 +50,23 @@ export default function NewMemberProfilePage(): JSX.Element {
         <div className="nm-profile__role-avatar">
           <FaUser />
         </div>
-        <h1 className="nm-profile__role-title">Welcome, Friend</h1>
-        <p className="nm-profile__role-label">Member</p>
+        <h1 className="nm-profile__role-title">{t('app.profileNewMember.welcomeFriend')}</h1>
+        <p className="nm-profile__role-label">{t('app.profile.member')}</p>
       </div>
 
       {/* Ward Family */}
       <section className="nm-profile__section">
-        <h2 className="nm-profile__section-title">My Ward Family</h2>
+        <h2 className="nm-profile__section-title">{t('app.profileNewMember.myWardFamily')}</h2>
         <div className="nm-profile__ward-info">
           <p className="nm-profile__ward-text">
-            Your ward is your spiritual family. As you attend meetings and
-            activities, you'll build meaningful friendships and find support.
+            {t('app.profileNewMember.wardInfo')}
           </p>
         </div>
       </section>
 
       {/* Ordinance Dates */}
       <section className="nm-profile__section">
-        <h2 className="nm-profile__section-title">Your Journey</h2>
+        <h2 className="nm-profile__section-title">{t('app.profile.myJourney')}</h2>
         <OrdinanceDatesSection />
       </section>
 
@@ -107,46 +106,46 @@ export default function NewMemberProfilePage(): JSX.Element {
 
       {/* Settings */}
       <section className="nm-profile__section">
-        <h2 className="nm-profile__section-title">Settings</h2>
+        <h2 className="nm-profile__section-title">{t('app.profileNewMember.settings')}</h2>
         <div className="nm-profile__settings">
           <button
             className="nm-profile__setting"
-            onClick={() => handleSettingClick('Notifications')}
+            onClick={() => handleSettingClick(t('app.profile.notifications'))}
           >
             <div className="nm-profile__setting-icon">
               <FaBell />
             </div>
             <div className="nm-profile__setting-content">
-              <h3 className="nm-profile__setting-title">Notifications</h3>
-              <p className="nm-profile__setting-desc">Manage your alerts</p>
+              <h3 className="nm-profile__setting-title">{t('app.profile.notifications')}</h3>
+              <p className="nm-profile__setting-desc">{t('app.profile.notificationsDesc')}</p>
             </div>
             <FaChevronRight className="nm-profile__setting-arrow" />
           </button>
 
           <button
             className="nm-profile__setting"
-            onClick={() => handleSettingClick('Language')}
+            onClick={() => handleSettingClick(t('app.profile.language'))}
           >
             <div className="nm-profile__setting-icon">
               <FaGlobe />
             </div>
             <div className="nm-profile__setting-content">
-              <h3 className="nm-profile__setting-title">Language</h3>
-              <p className="nm-profile__setting-desc">English</p>
+              <h3 className="nm-profile__setting-title">{t('app.profile.language')}</h3>
+              <p className="nm-profile__setting-desc">{locale.toUpperCase()}</p>
             </div>
             <FaChevronRight className="nm-profile__setting-arrow" />
           </button>
 
           <button
             className="nm-profile__setting"
-            onClick={() => handleSettingClick('Help')}
+            onClick={() => handleSettingClick(t('app.profile.help'))}
           >
             <div className="nm-profile__setting-icon">
               <FaCircleQuestion />
             </div>
             <div className="nm-profile__setting-content">
-              <h3 className="nm-profile__setting-title">Help & Support</h3>
-              <p className="nm-profile__setting-desc">Get assistance</p>
+              <h3 className="nm-profile__setting-title">{t('app.profileNewMember.helpSupport')}</h3>
+              <p className="nm-profile__setting-desc">{t('app.profileNewMember.getAssistance')}</p>
             </div>
             <FaChevronRight className="nm-profile__setting-arrow" />
           </button>
@@ -155,13 +154,13 @@ export default function NewMemberProfilePage(): JSX.Element {
 
       {/* Data & Privacy */}
       <section className="nm-profile__section">
-        <h2 className="nm-profile__section-title">Data & Privacy</h2>
+        <h2 className="nm-profile__section-title">{t('app.profile.dataPrivacy')}</h2>
         <DataPrivacySection classPrefix="nm-profile" />
       </section>
 
       {/* Version */}
       <footer className="nm-profile__version">
-        <p className="nm-profile__version-label">xTheGospel v1.0.0</p>
+        <p className="nm-profile__version-label">{t('app.profile.version', { version: '1.0.0' })}</p>
       </footer>
     </div>
   );

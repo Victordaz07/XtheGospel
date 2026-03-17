@@ -2,6 +2,7 @@
   "app": {
     "common": {
       "loading": "Loading...",
+      "comingSoon": "coming soon!",
       "save": "Save",
       "cancel": "Cancel",
       "delete": "Delete",
@@ -196,6 +197,14 @@
       "useThisId": "Use this ID to register in your ward",
       "shareTitle": "My xTheGospel ID",
       "shareText": "{{displayName}}\nxTheGospel ID: {{xtgId}}"
+    },
+    "profileNewMember": {
+      "welcomeFriend": "Welcome, friend",
+      "myWardFamily": "My ward family",
+      "wardInfo": "Your ward is your spiritual family. As you attend meetings and activities, you'll build meaningful friendships and find support.",
+      "settings": "Settings",
+      "helpSupport": "Help & Support",
+      "getAssistance": "Get assistance"
     },
     "ordinances": {
       "title": "Ordinance dates",

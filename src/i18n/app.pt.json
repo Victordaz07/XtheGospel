@@ -2,6 +2,7 @@
   "app": {
     "common": {
       "loading": "Carregando...",
+      "comingSoon": "em breve!",
       "save": "Manter",
       "cancel": "Cancelar",
       "delete": "Eliminar",
@@ -196,6 +197,14 @@
       "useThisId": "Use este ID para se registrar em sua ala",
       "shareTitle": "Meu xTheGospel ID",
       "shareText": "{{displayName}}\nxTheGospel ID: {{xtgId}}"
+    },
+    "profileNewMember": {
+      "welcomeFriend": "Bem-vindo, amigo",
+      "myWardFamily": "Minha família da ala",
+      "wardInfo": "Sua ala é sua família espiritual. Ao participar de reuniões e atividades, você criará amizades significativas e encontrará apoio.",
+      "settings": "Configurações",
+      "helpSupport": "Ajuda e suporte",
+      "getAssistance": "Obter ajuda"
     },
     "ordinances": {
       "title": "Datas das ordenanças",
