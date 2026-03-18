@@ -14,7 +14,7 @@ import './InvestigatorJournalPage.css';
  * Now with i18n support
  */
 export default function InvestigatorJournalPage(): JSX.Element {
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
   const [newEntry, setNewEntry] = useState('');
   const { journalEntries, addJournalEntry, deleteJournalEntry } = useInvestigatorStore();
   const { markJournalEntry } = useSpiritualMemoryStore();
@@ -49,7 +49,7 @@ export default function InvestigatorJournalPage(): JSX.Element {
 
   const getSourceTitle = (lessonId?: string): string | null => {
     if (!lessonId) return null;
-    const lesson = getLessonById(lessonId);
+    const lesson = getLessonById(lessonId, locale);
     if (lesson) return lesson.title;
     const topic = getGuideTopicById(lessonId);
     if (topic) return topic.title;

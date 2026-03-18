@@ -1,0 +1,36 @@
+---
+description: Estándares TypeScript y React para FamilyDash
+globs: src/**/*.{ts,tsx}
+alwaysApply: false
+---
+
+# TypeScript + React Standards
+
+## TypeScript (strict)
+
+- Mantener TypeScript strict; no usar `any` sin justificación explícita en comentario.
+- Tipar siempre retornos de funciones async.
+- Usar interfaces para dominio (`User`, `Family`, `Task`, `Finance`) y `type` para unions.
+- Evitar `as X` sin validación previa del dato.
+
+## React
+
+- En listas con más de 10 ítems esperados, usar `React.memo`.
+- Toda lógica Firebase debe vivir en custom hooks; evitar Firestore directo en componentes.
+- Nunca mutar estado de forma directa; usar actualizaciones inmutables (spread o Immer).
+- Secciones principales (Finances, Tasks, Calendar, Chat) deben tener Error Boundaries.
+- En componentes de datos, manejar siempre `loading`, `error`, `empty` y `data`.
+
+## Performance en UI
+
+- Lazy loading obligatorio de rutas con `React.lazy(() => import(...))`.
+- Evitar imports de librerías completas; importar miembros específicos.
+- Definir `width` y `height` en imágenes para prevenir CLS.
+- Usar `useCallback` y `useMemo` cuando handlers/props se pasan a hijos.
+
+## Patrones prohibidos
+
+- Evitar `useEffect(..., [])` para fetch inicial; preferir React Query o SWR.
+- No hardcodear strings en JSX; usar i18n.
+- No usar `console.log` en producción.
+- No deshabilitar ESLint con `eslint-disable` sin motivo y comentario.

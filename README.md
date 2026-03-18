@@ -272,6 +272,26 @@ flowchart TD
 
 ---
 
+# 🤖 6.1 Cursor AI Project Rules
+
+This repository includes project-level Cursor rules in `.cursor/rules/` to enforce:
+
+- Security and compliance constraints (Firebase, COPPA, GDPR, Vercel headers)
+- TypeScript and React implementation standards
+- Accessibility and UX guardrails (WCAG 2.1 AA, mobile-first)
+- Architecture and maintainability conventions
+- Pre-response safety checklist for AI-assisted coding
+
+Rule files:
+
+- `familydash-security-and-compliance.mdc` (`alwaysApply: true`)
+- `familydash-pre-response-checklist.mdc` (`alwaysApply: true`)
+- `familydash-typescript-react.mdc` (`globs: src/**/*.{ts,tsx}`)
+- `familydash-accessibility-and-ux.mdc` (`globs: src/**/*.{tsx,css}`)
+- `familydash-architecture-and-maintainability.mdc` (`globs: src/**/*`)
+
+---
+
 # 🚀 7. Quick Start
 
 ```bash
@@ -282,6 +302,19 @@ npm run preview
 ```
 
 **Default dev URL:** `http://localhost:3000`
+
+---
+
+# ☁️ 7.1 Vercel Deployment
+
+Production deploy is configured for Vercel with `vercel.json`.
+
+```bash
+npm run build
+vercel --prod
+```
+
+If you deploy through Git integration, pushing to `main` will trigger a new production deployment.
 
 ---
 

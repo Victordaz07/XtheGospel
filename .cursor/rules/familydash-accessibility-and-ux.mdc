@@ -1,0 +1,26 @@
+---
+description: Requisitos de accesibilidad WCAG AA y UX mobile-first
+globs: src/**/*.{tsx,css}
+alwaysApply: false
+---
+
+# Accessibility + UX Rules
+
+## Accesibilidad (WCAG 2.1 AA)
+
+- Botones de solo icono deben tener `aria-label`.
+- Imágenes informativas requieren `alt` descriptivo (no vacío, no "imagen").
+- No usar color como único canal de información.
+- Mantener contraste mínimo 4.5:1 en texto normal y 3:1 en texto grande.
+- Formularios con `<label>` y `htmlFor`; no depender solo de placeholder.
+- Modales con `aria-modal="true"`, `role="dialog"` y focus trap.
+- Nunca usar `user-scalable=no` en viewport.
+
+## UX y diseño
+
+- Mobile-first: diseñar primero para 375px.
+- Mostrar feedback visual en acciones (loading, success, error).
+- Animaciones/transiciones de máximo 300ms.
+- Confirmar acciones destructivas (eliminar, borrar, salir).
+- Errores de formularios deben mostrarse inline junto al campo.
+- Validar que cualquier nuevo componente funcione en tema claro/oscuro.

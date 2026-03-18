@@ -43,6 +43,8 @@
       "myJournal": "Mi diario",
       "myProgress": "Mi camino",
       "pray": "Orar",
+      "trainingTitle": "Capacitación",
+      "trainingSubtitle": "Prepara tu progreso en el sacerdocio",
       "chatWithMissionaries": "Chatear con misioneros",
       "noMissionariesAssigned": "Aún no tienes misioneros asignados",
       "chatError": "No se pudo abrir el chat. Intenta más tarde."

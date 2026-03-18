@@ -16,6 +16,12 @@ import {
   isCacheStale,
 } from './baptismPrepCache';
 import { getBaptismPreparation } from '../../modules/investigator/data/baptismPreparationData';
+import { StorageService } from '../../utils/storage';
+
+function isSpanishLocale(): boolean {
+  const lang = (StorageService.getItem('appLang') ?? 'en').toLowerCase();
+  return lang.startsWith('es');
+}
 
 export type BaptismPrepStatus = 'idle' | 'loading' | 'success' | 'offline' | 'error';
 export type BaptismPrepSource = 'cloud' | 'cache' | null;
@@ -167,8 +173,12 @@ export const useBaptismPrepStore = create<BaptismPrepState>((set, get) => ({
         'code' in error &&
         (error as { code?: string }).code === 'permission-denied';
       const msg = isPermissionDenied
-        ? 'No tienes acceso al barrio / tu cuenta no está vinculada.'
-        : 'No pudimos cargar tu preparación. Intenta de nuevo.';
+        ? (isSpanishLocale()
+          ? 'No tienes acceso al barrio / tu cuenta no está vinculada.'
+          : 'You do not have access to this ward / your account is not linked.')
+        : (isSpanishLocale()
+          ? 'No pudimos cargar tu preparación. Intenta de nuevo.'
+          : 'We could not load your preparation. Please try again.');
 
       const cached = readBaptismPrepCache(uid, wardId);
       if (cached) {
@@ -218,8 +228,12 @@ export const useBaptismPrepStore = create<BaptismPrepState>((set, get) => ({
       set({
         status: 'error',
         errorMessage: isPermissionDenied
-          ? 'No tienes acceso al barrio / tu cuenta no está vinculada.'
-          : 'No se pudo sincronizar. Tus cambios están guardados localmente.',
+          ? (isSpanishLocale()
+            ? 'No tienes acceso al barrio / tu cuenta no está vinculada.'
+            : 'You do not have access to this ward / your account is not linked.')
+          : (isSpanishLocale()
+            ? 'No se pudo sincronizar. Tus cambios están guardados localmente.'
+            : 'Could not sync. Your changes are stored locally.'),
       });
     }
   },

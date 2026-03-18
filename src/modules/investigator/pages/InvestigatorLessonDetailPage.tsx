@@ -92,8 +92,7 @@ export default function InvestigatorLessonDetailPage(): JSX.Element {
             {t('app.lessons.notAvailableTitle')}
           </h2>
           <p className="inv-lesson-detail__not-found-text">
-            Este contenido ahora vive en “Miembro Nuevo”. Aquí mantenemos solo
-            el Camino Misional (5 lecciones esenciales).
+            {t('app.lessons.notAvailableText')}
           </p>
         </div>
       </div>
@@ -169,7 +168,7 @@ export default function InvestigatorLessonDetailPage(): JSX.Element {
                       </div>
 
                       {section.hasAudio && (
-                        <AudioPlayer label={`Escuchar: ${section.title}`} />
+                        <AudioPlayer label={section.title} />
                       )}
 
                       {section.scriptureRef && (

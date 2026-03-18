@@ -1,0 +1,50 @@
+---
+description: Seguridad, privacidad y compliance obligatorios para FamilyDash
+alwaysApply: true
+---
+
+# FamilyDash Security + Compliance
+
+## Contexto crítico
+
+- App familiar con datos sensibles (finanzas, menores, calendario).
+- Aplicar COPPA + GDPR siempre.
+- Stack de backend: Firebase (Firestore, Auth, Storage, Cloud Functions).
+
+## Firebase y backend
+
+- Nunca usar `allow read, write: if true` en Firestore Security Rules.
+- Siempre validar ownership del usuario autenticado antes de leer/escribir.
+- Siempre usar `serverTimestamp()` en writes; nunca `new Date()`.
+- Nunca exponer lógica admin en cliente; usar Cloud Functions.
+- Siempre usar Firebase App Check en funciones nuevas que accedan a Firestore.
+- Toda colección nueva debe incluir sus Security Rules.
+
+## Autenticación
+
+- Contraseña mínima: 8 caracteres, 1 número y 1 carácter especial.
+- Implementar rate limiting en login (máx. 5 intentos, bloqueo 15 min).
+- Nunca almacenar tokens de auth en `localStorage`; usar cookies `httpOnly` o memoria.
+- Verificar estado de auth antes de renderizar contenido protegido.
+- `onAuthStateChanged` es la única fuente de verdad de sesión.
+
+## Menores (COPPA)
+
+- Limitar datos de menores a nombre + edad + avatar.
+- Requerir acción de padre/tutor para crear o modificar perfiles de menores.
+- Nunca mostrar ubicación de menores.
+- Anonimizar datos de menores en logs y analytics.
+
+## GDPR + privacidad
+
+- Nuevas recolecciones de datos deben reflejarse en Privacy Policy.
+- Cualquier feature con datos personales debe incluir opción de eliminación.
+- Nunca enviar PII a terceros sin consentimiento explícito.
+- En analytics usar solo eventos anónimos (sin `userId`, email, nombre).
+- Respetar "Do Not Track" del navegador.
+
+## HTTP y despliegue
+
+- Nunca quitar headers de seguridad existentes en `vercel.json`.
+- Si agregas dominios externos, actualizar CSP en `vercel.json`.
+- Nunca deshabilitar HTTPS en ningún entorno.

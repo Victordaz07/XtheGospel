@@ -5,6 +5,7 @@ import { getGuideTopicById } from '../data/guideTopics';
 import { getLessonById } from '../../investigator/data/lessons';
 import { useInvestigatorStore } from '../../investigator/store/useInvestigatorStore';
 import { useSpiritualMemoryStore } from '../../../core/memory/useSpiritualMemoryStore';
+import { useI18n } from '../../../context/I18nContext';
 import './NewMemberGuideDetailPage.css';
 
 interface TopicParams {
@@ -18,6 +19,7 @@ interface TopicParams {
  * Reuses the investigator journal store for continuity.
  */
 export default function NewMemberGuideDetailPage(): JSX.Element {
+  const { t, locale } = useI18n();
   const { topicId } = useParams<keyof TopicParams>() as TopicParams;
   const { addJournalEntry } = useInvestigatorStore();
   const { setLastLesson, markSavedToJournal } = useSpiritualMemoryStore();
@@ -26,7 +28,7 @@ export default function NewMemberGuideDetailPage(): JSX.Element {
   const [saved, setSaved] = useState(false);
 
   const topic = getGuideTopicById(topicId);
-  const lesson = topic ? null : getLessonById(topicId);
+  const lesson = topic ? null : getLessonById(topicId, locale);
 
   // Remember last visited topic
   useEffect(() => {
@@ -55,13 +57,13 @@ export default function NewMemberGuideDetailPage(): JSX.Element {
     return (
       <div className="nm-guide-detail">
         <Link to="/lessons" className="nm-guide-detail__back">
-          <FaArrowLeft /> Back to Guide
+          <FaArrowLeft /> {t('app.lessons.backToExplore')}
         </Link>
         <div className="nm-guide-detail__not-found">
           <div className="nm-guide-detail__not-found-icon">📚</div>
-          <h2 className="nm-guide-detail__not-found-title">Topic Not Found</h2>
+          <h2 className="nm-guide-detail__not-found-title">{t('app.lessons.notAvailableTitle')}</h2>
           <p className="nm-guide-detail__not-found-text">
-            The topic you're looking for doesn't exist.
+            {t('app.lessons.notAvailableText')}
           </p>
         </div>
       </div>
@@ -72,7 +74,7 @@ export default function NewMemberGuideDetailPage(): JSX.Element {
     <div className="nm-guide-detail">
       {/* Back Button */}
       <Link to="/lessons" className="nm-guide-detail__back">
-        <FaArrowLeft /> Back to Guide
+        <FaArrowLeft /> {t('app.lessons.backToExplore')}
       </Link>
 
       {/* Header */}
@@ -112,13 +114,13 @@ export default function NewMemberGuideDetailPage(): JSX.Element {
 
       {/* Reflection */}
       <div className="nm-guide-detail__reflection">
-        <h3 className="nm-guide-detail__reflection-label">Reflection</h3>
+        <h3 className="nm-guide-detail__reflection-label">{t('app.lessons.personalReflection')}</h3>
         <p className="nm-guide-detail__reflection-prompt">
           {topic ? topic.reflectionPrompt : lesson!.reflectionPrompt}
         </p>
         <textarea
           className="nm-guide-detail__reflection-textarea"
-          placeholder="Write your thoughts here..."
+          placeholder={t('app.lessons.reflectionPlaceholder')}
           value={reflection}
           onChange={e => setReflection(e.target.value)}
         />
@@ -128,12 +130,12 @@ export default function NewMemberGuideDetailPage(): JSX.Element {
             onClick={handleSaveReflection}
             disabled={!reflection.trim()}
           >
-            {saved ? 'Saved to Journal ✓' : 'Save to Journal'}
+            {saved ? t('app.lessons.savedToJournal') : t('app.lessons.saveToJournal')}
           </button>
         </div>
         {saved && (
           <p className="nm-guide-detail__saved-message">
-            Your reflection has been saved. View it in your Journal.
+            {t('app.lessons.savedMessage')}
           </p>
         )}
       </div>
@@ -141,8 +143,7 @@ export default function NewMemberGuideDetailPage(): JSX.Element {
       {/* Footer encouragement */}
       <footer className="nm-guide-detail__footer">
         <p className="nm-guide-detail__footer-text">
-          Take your time with these principles. Growth happens one day at a
-          time.
+          {t('app.lessons.footerText')}
         </p>
       </footer>
     </div>

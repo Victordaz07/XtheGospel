@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaChevronRight, FaPenToSquare, FaGraduationCap } from 'react-icons/fa6';
 import { useSpiritualMemoryStore } from '../../../core/memory/useSpiritualMemoryStore';
+import { useI18n } from '../../../context/I18nContext';
 import { 
   usePastoralPhase, 
   getPastoralMessage, 
@@ -65,6 +66,7 @@ const FIRST_TOPIC = {
  * ═══════════════════════════════════════════════════════════════════════════
  */
 export default function NewMemberHomePage(): JSX.Element {
+  const { t } = useI18n();
   const { lastLessonId, lastLessonTitle, isHydrated, hydrate } = useSpiritualMemoryStore();
   const phase = usePastoralPhase();
   const isReflective = useIsReflectivePhase();
@@ -139,7 +141,7 @@ export default function NewMemberHomePage(): JSX.Element {
         */}
         {isAbiding && (
           <div className="nm-home__abiding-journal">
-            <Link to="/journal" className="nm-home__abiding-journal-link" aria-label="Journal">
+            <Link to="/journal" className="nm-home__abiding-journal-link" aria-label={t('app.nav.journal')}>
               <FaPenToSquare />
             </Link>
           </div>
@@ -169,7 +171,7 @@ export default function NewMemberHomePage(): JSX.Element {
       */}
       <div className={`nm-home__welcome ${isQuestion ? 'nm-home__welcome--question' : ''}`}>
         {!isQuestion && (
-          <p className="nm-home__welcome-greeting">Welcome</p>
+          <p className="nm-home__welcome-greeting">{t('app.home.greeting')}</p>
         )}
         
         {isQuestion ? (
@@ -238,9 +240,9 @@ export default function NewMemberHomePage(): JSX.Element {
             <FaGraduationCap />
           </div>
           <div className="nm-home__training-content">
-            <h3 className="nm-home__training-title">Capacitación</h3>
+            <h3 className="nm-home__training-title">{t('app.home.trainingTitle')}</h3>
             <p className="nm-home__training-subtitle">
-              Prepara tu progreso en el sacerdocio
+              {t('app.home.trainingSubtitle')}
             </p>
           </div>
           <FaChevronRight className="nm-home__training-arrow" />

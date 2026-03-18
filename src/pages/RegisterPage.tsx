@@ -150,9 +150,14 @@ const RegisterPage: React.FC = () => {
   };
 
   const handleSelectType = (memberType: boolean) => {
-    setIsMember(memberType);
+    if (memberType) {
+      navigate('/home', { replace: true });
+      return;
+    }
+
+    setIsMember(false);
     resetForm();
-    setMode(memberType ? 'signup-member' : 'signup-friend');
+    setMode('signup-friend');
   };
 
   // Login Form (Default)

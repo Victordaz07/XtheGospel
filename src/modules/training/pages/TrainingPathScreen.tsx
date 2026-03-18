@@ -13,6 +13,7 @@ import { getLessonStatus, isLessonUnlocked, isTrackUnlocked } from '../utils/unl
 import type { UnlockContext } from '../utils/unlockLogic';
 import { paths, tracksById, lessonsById } from '../data/trainingPaths';
 import { LessonListItem } from '../components';
+import { useI18n } from '../../../context/I18nContext';
 import './TrainingPathScreen.css';
 
 const PRIESTHOOD_TRACK_ORDER = [
@@ -82,6 +83,7 @@ const DEFAULT_BULLETS = [
 ];
 
 export default function TrainingPathScreen(): JSX.Element {
+  const { locale } = useI18n();
   const location = useLocation();
   const nodeId = location.pathname.replace(/^\/training\/?/, '').split('/')[0] || null;
   const stage = useJourneyStage();
@@ -98,15 +100,38 @@ export default function TrainingPathScreen(): JSX.Element {
 
   const node = nodeId ? getNodeById(nodeId) : null;
   const lessons = nodeId ? getLessonsForNode(nodeId) : [];
+  const ui = locale === 'es'
+    ? {
+        back: 'Volver a Capacitación',
+        routeNotFound: 'Ruta no encontrada',
+        summaryTitle: 'Resumen del Track',
+        trackCompleted: 'Track completado ✓',
+        missingLessons: 'Te faltan',
+        continue: 'Continuar',
+        reviewLessons: 'Revisar lecciones',
+        nextRecommended: 'Siguiente recomendado',
+        unlockPrevious: 'Se desbloquea al completar el track anterior',
+      }
+    : {
+        back: 'Back to Training',
+        routeNotFound: 'Route not found',
+        summaryTitle: 'Track Summary',
+        trackCompleted: 'Track completed ✓',
+        missingLessons: 'You have',
+        continue: 'Continue',
+        reviewLessons: 'Review lessons',
+        nextRecommended: 'Next recommended',
+        unlockPrevious: 'Unlocks after completing the previous track',
+      };
 
   if (!node || !nodeId) {
     return (
       <div className="tr-path">
         <Link to="/training" className="tr-path__back">
-          <FaArrowLeft /> Volver a Capacitación
+          <FaArrowLeft /> {ui.back}
         </Link>
         <div className="tr-path__not-found">
-          <p>Ruta no encontrada</p>
+          <p>{ui.routeNotFound}</p>
         </div>
       </div>
     );
@@ -140,7 +165,7 @@ export default function TrainingPathScreen(): JSX.Element {
   return (
     <div className="tr-path">
       <Link to="/training" className="tr-path__back">
-        <FaArrowLeft /> Volver a Capacitación
+        <FaArrowLeft /> {ui.back}
       </Link>
 
       <header className="tr-path__header">
@@ -152,13 +177,13 @@ export default function TrainingPathScreen(): JSX.Element {
 
       {showSummary && (
         <div className="tr-path__summary">
-          <h2 className="tr-path__summary-title">Resumen del Track</h2>
+          <h2 className="tr-path__summary-title">{ui.summaryTitle}</h2>
           <div className="tr-path__summary-progress">
             <span className="tr-path__summary-count">{progress.completed}/{progress.total}</span>
             <span className="tr-path__summary-percent">({progress.percent}%)</span>
           </div>
           <p className="tr-path__summary-status">
-            {isComplete ? 'Track completado ✓' : `Te faltan ${remaining} lección${remaining !== 1 ? 'es' : ''}`}
+            {isComplete ? ui.trackCompleted : `${ui.missingLessons} ${remaining} ${locale === 'es' ? `lección${remaining !== 1 ? 'es' : ''}` : `lesson${remaining !== 1 ? 's' : ''}`}`}
           </p>
           <ul className="tr-path__summary-bullets">
             {bullets.map((b, i) => (
@@ -171,20 +196,20 @@ export default function TrainingPathScreen(): JSX.Element {
                 to={`/training/${nodeId}/${nextLesson.id}`}
                 className="tr-path__summary-btn"
               >
-                Continuar
+                {ui.continue}
               </Link>
             ) : firstLesson ? (
               <Link
                 to={`/training/${nodeId}/${firstLesson.id}`}
                 className="tr-path__summary-btn tr-path__summary-btn--secondary"
               >
-                Revisar lecciones
+                {ui.reviewLessons}
               </Link>
             ) : null}
           </div>
           {isComplete && nextTrack && (
             <div className="tr-path__summary-next">
-              <p className="tr-path__summary-next-label">Siguiente recomendado</p>
+              <p className="tr-path__summary-next-label">{ui.nextRecommended}</p>
               {nextTrackUnlocked ? (
                 <Link
                   to={`/training/${nextTrackId}`}
@@ -194,7 +219,7 @@ export default function TrainingPathScreen(): JSX.Element {
                 </Link>
               ) : (
                 <span className="tr-path__summary-next-locked">
-                  <FaLock aria-hidden /> {nextTrack.title} — Se desbloquea al completar el track anterior
+                  <FaLock aria-hidden /> {nextTrack.title} — {ui.unlockPrevious}
                 </span>
               )}
             </div>

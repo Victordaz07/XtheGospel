@@ -22,8 +22,7 @@ export default function InvestigatorHomePage(): JSX.Element {
   const { t, locale } = useI18n();
   const { lastLessonId } = useInvestigatorStore();
   const { openChat, status, clearStatus } = useChatNavigation();
-  const contentLocale: 'es' | 'en' =
-    locale === 'es' || t('app.nav.home').toLowerCase() === 'inicio' ? 'es' : 'en';
+  const contentLocale: 'es' | 'en' = locale === 'es' ? 'es' : 'en';
   const homeScripture = getHomeScripture(contentLocale);
   const coreLessons = getInvestigatorCoreLessons(contentLocale);
 

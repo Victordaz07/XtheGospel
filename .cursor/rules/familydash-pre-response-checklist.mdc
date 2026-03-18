@@ -1,0 +1,14 @@
+---
+description: Checklist obligatorio antes de proponer o escribir código
+alwaysApply: true
+---
+
+# Pre-Response Checklist
+
+Antes de proponer o escribir código, verificar:
+
+1. ¿Este cambio expone datos de usuarios no autenticados?
+2. ¿Afecta datos de menores? Si sí, aplicar restricciones COPPA.
+3. ¿Introduce dependencia nueva? Si sí, mencionar tamaño y mantenimiento.
+4. ¿Requiere actualizar Firestore Security Rules?
+5. ¿Requiere actualizar Privacy Policy o Terms?

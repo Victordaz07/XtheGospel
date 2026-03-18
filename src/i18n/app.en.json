@@ -43,6 +43,8 @@
       "myJournal": "My journal",
       "myProgress": "My progress",
       "pray": "Pray",
+      "trainingTitle": "Training",
+      "trainingSubtitle": "Prepare your priesthood growth",
       "chatWithMissionaries": "Chat with missionaries",
       "noMissionariesAssigned": "You don't have missionaries assigned yet",
       "chatError": "Could not open chat. Try again later."
