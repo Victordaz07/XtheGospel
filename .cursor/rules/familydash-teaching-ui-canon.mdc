@@ -1,0 +1,41 @@
+---
+description: UI canónica para capacitación, lecciones y guías (layout en capas, audio/imagen, reflexión)
+globs:
+  - "**/training/**/*.{ts,tsx,css}"
+  - "**/new-member/**/*.{ts,tsx,css}"
+  - "**/lessons/**/*.{ts,tsx,css}"
+  - "**/teaching-canon/**/*.{ts,tsx,css}"
+  - "**/pages/entry/**/*.{ts,tsx}"
+alwaysApply: false
+---
+
+# Canon UI: capacitación y enseñanza
+
+Toda pantalla nueva de **capacitación, enseñanza o guías** debe seguir el mismo patrón visual y pedagógico que la implementación de referencia.
+
+## Implementación de referencia
+
+- Componentes reutilizables: `App-Avanzada-Misional/src/ui/teaching-canon/`
+- Estilos compartidos: `App-Avanzada-Misional/src/ui/teaching-canon/TeachingCanon.css` (clases BEM `nm-guide-detail__*`)
+- Ejemplo de integración: `App-Avanzada-Misional/src/modules/new-member/pages/NewMemberGuideDetailPage.tsx`
+- Datos de ejemplo (audio, imágenes, secciones): `App-Avanzada-Misional/src/modules/new-member/data/guideTopics.es.ts`, `guideTopics.en.ts`, `guideTopicDiscussion.ts`, `guideTopics.types.ts`
+
+## Checklist obligatorio
+
+1. **Encabezado en capas**: categoría (eyebrow mayúsculas), título, subtítulo, nota de uso (cursiva) — usar `TeachingCanonHeroHeader` o equivalente con las mismas clases que `.nm-guide-detail__header`.
+2. **Placeholder de audio** (si hay audio previsto o narración): tarjeta con icono, eyebrow, título, resumen/pregunta, chips de duración y estado, ondas animadas, texto de intención — `TeachingCanonAudioCard`.
+3. **Placeholder de imagen** por bloque que lo requiera: borde discontinuo, icono, etiqueta, título corto, prompt — `TeachingCanonImagePlaceholder`.
+4. **Preguntas doctrinales** y **Aplicación en la vida real** como bloques explícitos (acordeón o tarjetas) — `TeachingCanonExtra`; textos de UI vía i18n (`app.lessons.*`).
+5. **Escrituras**: etiqueta + instrucción + `ScriptureReferenceCard` (patrón de sección o escritura destacada).
+6. **Reflexión personal (diario)** cuando aplique — `TeachingCanonReflection`.
+7. **Accesibilidad**: `aria-expanded` en acordeones, `aria-label` en placeholders; contraste y foco visibles.
+8. **Bilingüismo**: cadenas de UI en `app.es.json` / `app.en.json`; contenido largo en pares `*.es.ts` / `*.en.ts`. Tras cambiar claves: `npm run validate:i18n` en `App-Avanzada-Misional`.
+
+## Módulo Training
+
+- Migración incremental documentada en `App-Avanzada-Misional/src/modules/training/trainingCanonMigration.ts`.
+- Las lecciones nuevas deben preferir el shell canónico (`TeachingCanonShell`) cuando el contenido se modele con placeholders y bloques como la guía.
+
+## Qué no cubre esta regla
+
+- No sustituye reglas de seguridad Firebase ni COPPA; es solo presentación y estructura pedagógica.
